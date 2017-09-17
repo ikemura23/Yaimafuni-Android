@@ -1,14 +1,17 @@
 package com.ikmr.banbara23.yaeyama_liner_checker;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ikmr.banbara23.yaeyama_liner_checker.databinding.ActivityMainBinding;
 
 import java.util.Map;
 
@@ -20,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         // Read from the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -43,4 +46,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void onClick(View view) {
+        Log.d(TAG, "view.getId():" + view.getId());
+        switch (view.getId()) {
+            case R.id.top_activity_annei:
+                break;
+            case R.id.top_activity_ykf:
+                break;
+            case R.id.top_activity_dream:
+                break;
+        }
+    }
 }

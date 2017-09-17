@@ -85,6 +85,7 @@
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
+                            android:onClick="onClick"
                             />
 
                         <TextView
@@ -114,6 +115,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_below="@+id/top_activity_annei"
+                            android:onClick="onClick"
                             />
 
                         <TextView
@@ -143,6 +145,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_below="@+id/top_activity_ykf"
+                            android:onClick="onClick"
                             />
 
                         <TextView
@@ -216,6 +219,7 @@
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:longClickable="true"
+                android:onClick="onClick"
                 app:cardCornerRadius="4dp"
                 app:cardElevation="2dp"
                 >
@@ -245,6 +249,7 @@
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:longClickable="true"
+                android:onClick="onClick"
                 app:cardCornerRadius="4dp"
                 app:cardElevation="2dp"
                 >
@@ -292,6 +297,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="-44dp"
             android:layout_toRightOf="@+id/activity_bottom_ship_image"
+            android:onClick="onClick"
             android:padding="8dp"
             app:bl_arrowDirection="left"
             app:bl_arrowHeight="8dp"
@@ -303,10 +309,10 @@
             >
 
             <TextView
-                android:layout_alignTop="@+id/activity_bottom_view"
                 android:id="@+id/activity_top_weather_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_alignTop="@+id/activity_bottom_view"
                 android:gravity="center_vertical"
                 android:text="天気"
                 />
