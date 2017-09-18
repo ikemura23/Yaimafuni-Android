@@ -1,5 +1,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         Log.d(TAG, "view.getId():" + view.getId());
+        startActivity(new Intent(this, StatusListTabActivity.class));
         switch (view.getId()) {
             case R.id.top_activity_annei:
                 break;
