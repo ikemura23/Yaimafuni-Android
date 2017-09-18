@@ -59,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.top_activity_dream:
                 startActivity(new Intent(this, StatusListTabActivity.class));
                 break;
+            case R.id.top_activity_timetable:
+                startActivity(new Intent(this, TimeTableTabActivity.class));
+                break;
             case R.id.top_activity_setting:
                 startActivity(new Intent(this, SettingActivity.class));
                 break;
