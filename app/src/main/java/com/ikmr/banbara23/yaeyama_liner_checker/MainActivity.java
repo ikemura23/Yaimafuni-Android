@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        Log.d(TAG, "view.getId():" + view.getId());
 
         switch (view.getId()) {
             case R.id.top_activity_annei:
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, StatusListTabActivity.class));
                 break;
             case R.id.top_activity_setting:
-                startActivity(new Intent(this, OtherActivity.class));
+                startActivity(new Intent(this, SettingActivity.class));
                 break;
         }
     }
