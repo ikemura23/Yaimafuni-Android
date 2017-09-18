@@ -49,13 +49,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         Log.d(TAG, "view.getId():" + view.getId());
-        startActivity(new Intent(this, StatusListTabActivity.class));
+
         switch (view.getId()) {
             case R.id.top_activity_annei:
+                startActivity(new Intent(this, StatusListTabActivity.class));
                 break;
             case R.id.top_activity_ykf:
+                startActivity(new Intent(this, StatusListTabActivity.class));
                 break;
             case R.id.top_activity_dream:
+                startActivity(new Intent(this, StatusListTabActivity.class));
+                break;
+            case R.id.top_activity_setting:
+                startActivity(new Intent(this, OtherActivity.class));
                 break;
         }
     }
