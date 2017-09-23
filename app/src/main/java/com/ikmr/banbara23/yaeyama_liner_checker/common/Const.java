@@ -1,5 +1,5 @@
 
-package com.ikmr.banbara23.yaeyama_liner_checker;
+package com.ikmr.banbara23.yaeyama_liner_checker.common;
 
 /**
  * 定数クラス
@@ -63,7 +63,6 @@ public class Const {
         public final static String ANEI_LIST_TABLE = "AneiLinerStatusList";
         public final static String ANEI_DETAIL_TABLE = "AneiLinerStatusDetail";
         public final static String TopInfo = "TopInfo";
-
     }
 
     //カラム名
@@ -85,7 +84,6 @@ public class Const {
         public final static String port_oohara_status_type = "port_oohara_status_type";
         public final static String port_hatoma_status_type = "port_hatoma_status_type";
         public final static String port_hateruma_status_type = "port_hateruma_status_type";
-
     }
 
     public static final String weatherUrl = "http://weather.yahoo.co.jp/weather/jp/47/9410.html";

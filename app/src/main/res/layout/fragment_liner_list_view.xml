@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    >
+
+    <ImageView
+        android:id="@+id/view_status_list_status_icon_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        />
+
+    <TextView
+        android:id="@+id/view_status_list_port_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_toEndOf="@+id/view_status_list_status_icon_image"
+        android:layout_toRightOf="@+id/view_status_list_status_icon_image"
+        android:textColor="@color/secondary_text"
+        android:textSize="18dp"
+        tools:text="竹富"
+        />
+
+    <TextView
+        android:id="@+id/view_status_list_description_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/view_status_list_port_text"
+        android:layout_alignStart="@+id/view_status_list_port_text"
+        android:layout_below="@+id/view_status_list_port_text"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/dark_grey"
+        android:textSize="14dp"
+        tools:text="通常運航"
+        />
+</RelativeLayout>

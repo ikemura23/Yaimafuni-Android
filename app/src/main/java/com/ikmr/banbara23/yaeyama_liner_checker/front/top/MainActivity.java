@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker;
+package com.ikmr.banbara23.yaeyama_liner_checker.front.top;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -12,10 +12,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.ActivityMainBinding;
+import com.ikmr.banbara23.yaeyama_liner_checker.front.setting.SettingActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.front.time_table.TimeTableTabActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil;
 
 import java.util.Map;
 
+/**
+ * トップ画面
+ */
 public class MainActivity extends AppCompatActivity {
 
     private final String TAG = MainActivity.class.getSimpleName();

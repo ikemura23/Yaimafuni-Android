@@ -1,11 +1,14 @@
 
-package com.ikmr.banbara23.yaeyama_liner_checker;
+package com.ikmr.banbara23.yaeyama_liner_checker.front.setting;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
+
+import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.front.info.InfoActivity;
 
 /**
  * PreferenceFragment継承
@@ -25,7 +28,7 @@ public class SettingFragment extends PreferenceFragment {
             public boolean onPreferenceClick(Preference preference) {
                 Intent intent = new Intent(
                         getActivity(),
-                        com.ikmr.banbara23.yaeyama_liner_checker.OtherActivity.class);
+                        InfoActivity.class);
                 startActivity(intent);
                 return true;
             }

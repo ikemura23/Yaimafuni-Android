@@ -1,5 +1,5 @@
 
-package com.ikmr.banbara23.yaeyama_liner_checker;
+package com.ikmr.banbara23.yaeyama_liner_checker.front.info;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -8,12 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.R;
+
 /**
  * アプリ情報Activity
  */
-public class OtherActivity extends AppCompatActivity {
+public class InfoActivity extends AppCompatActivity {
 
-    private static final String TAG = OtherActivity.class.getSimpleName();
+    private static final String TAG = InfoActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
