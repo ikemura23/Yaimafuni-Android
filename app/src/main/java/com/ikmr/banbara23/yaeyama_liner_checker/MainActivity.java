@@ -65,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.top_activity_setting:
                 startActivity(new Intent(this, SettingActivity.class));
                 break;
+            case R.id.activity_top_bubble:
+                CustomTabUtil.start(this, "https://tenki.jp/forecast/10/50/9410/47207/3hours.html");
+                break;
         }
     }
 }
