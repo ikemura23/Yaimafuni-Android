@@ -1,44 +1,61 @@
-
 package com.ikmr.banbara23.yaeyama_liner_checker.model;
 
-/**
- * 運航ステータスのEnumクラス
- */
-public enum Status {
-    NORMAL("normal", "通常運航"),
-    CANCEL("cancel", "欠航"),
-    CAUTION("other", "注意"),
-    SUSPEND("suspend", "運休");
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    String status;
-    String statusName;
+import com.google.gson.annotations.SerializedName;
 
-    Status(String status, String statusName) {
-        this.status = status;
-        this.statusName = statusName;
+public class Status implements Parcelable {
+
+    @SerializedName("code")
+    private String code;
+    @SerializedName("text")
+    private String text;
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getStatus() {
-        return status;
+    public String getCode() {
+        return this.code;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public String getStatusName() {
-        return statusName;
-    }
-
-    public void setStatusName(String statusName) {
-        this.statusName = statusName;
+    public String getText() {
+        return this.text;
     }
 
     @Override
-    public String toString() {
-        return "Status{" +
-                "status='" + status + '\'' +
-                ", statusName='" + statusName + '\'' +
-                '}';
+    public int describeContents() {
+        return 0;
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.code);
+        dest.writeString(this.text);
+    }
+
+    public Status() {
+    }
+
+    protected Status(Parcel in) {
+        this.code = in.readString();
+        this.text = in.readString();
+    }
+
+    public static final Creator<Status> CREATOR = new Creator<Status>() {
+        @Override
+        public Status createFromParcel(Parcel source) {
+            return new Status(source);
+        }
+
+        @Override
+        public Status[] newArray(int size) {
+            return new Status[size];
+        }
+    };
 }

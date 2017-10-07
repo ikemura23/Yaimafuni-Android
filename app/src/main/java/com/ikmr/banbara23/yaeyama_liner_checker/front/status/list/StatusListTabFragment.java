@@ -5,27 +5,35 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.common.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseListFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailAnneiActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
-import com.ikmr.banbara23.yaeyama_liner_checker.model.Liner;
-import com.ikmr.banbara23.yaeyama_liner_checker.model.Result;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.CompanyStatus;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 一覧タブListFragment
  */
 public class StatusListTabFragment extends BaseListFragment {
 
-    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_LIST;
+    private static final String TAG = StatusListTabFragment.class.getSimpleName();
     StatusListAdapter mListAdapter;
     TextView mTitleText;
     TextView mUpdateText;
@@ -120,7 +128,7 @@ public class StatusListTabFragment extends BaseListFragment {
         mHeaderView = View.inflate(getActivity(), R.layout.fragment_status_list_header_view, null);
         mTitleText = (TextView) mHeaderView.findViewById(R.id.fragment_status_list_toolbar_title_text);
         mUpdateText = (TextView) mHeaderView.findViewById(R.id.fragment_status_list_toolbar_update_text);
-        mListAdapter = new StatusListAdapter();
+        mListAdapter = new StatusListAdapter(getContext());
 //        final AdRequest adRequest = new AdRequest.Builder().build();
 //        getActivity().runOnUiThread(new Runnable() {
 //            @Override
@@ -135,7 +143,7 @@ public class StatusListTabFragment extends BaseListFragment {
      *
      * @return
      */
-    private Company getParam() {
+    private Company getCompany() {
         return (Company) getArguments().get(StatusListTabFragment.class.getCanonicalName());
     }
 
@@ -147,23 +155,58 @@ public class StatusListTabFragment extends BaseListFragment {
 //        emptyButton.setVisibility(View.GONE);
         // キャッシュ処理
 //        CacheManager cacheManager = CacheManager.getInstance();
-//        if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryList(getParam())) {
+//        if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryList(getCompany())) {
 //            // キャッシュが無効なので通信必要
 //            startListQuery();
 //            // startDebugListQuery();
 //            return;
 //        }
         // キャッシュ有効なので不要
-//        Result result = cacheManager.getListResultCache(getParam());
+//        Result result = cacheManager.getListResultCache(getCompany());
 //        onResultListQuery(result);
 //        finishQuery();
+        String table;
+        switch (getCompany()) {
+            case ANNEI:
+                table = "anei";
+                break;
+            case YKF:
+                table = "ykf";
+                break;
+            case DREAM:
+                table = "dream";
+                break;
+            default:
+                table = "anei";
+        }
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(table);
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+//                Map<String, JSONObject> map = (Map<String, JSONObject>) dataSnapshot.getValue();
+//                String jsonString = new Gson().toJson(map);
+////                Log.d(TAG, "Value is: " + map.toString());
+//                CompanyStatus companyStatus = new Gson().fromJson(jsonString, CompanyStatus.class);
+                CompanyStatus companyStatus = dataSnapshot.getValue(CompanyStatus.class);
+                onResultListQuery(companyStatus);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
     }
 
     /**
      * 一覧の取得処理開始
      */
     private void startListQuery() {
-//        Company company = getParam();
+//        Company company = getCompany();
 //        compositeDisposable.add(
 //                StatusListApi.request(company)
 //                        .observeOn(AndroidSchedulers.mainThread())
@@ -196,10 +239,10 @@ public class StatusListTabFragment extends BaseListFragment {
      *
      * @param result 通信値
      */
-    private void saveResultToCache(Result result) {
-//        CacheManager.getInstance().saveNowListTimeStamp(getParam());
-//        CacheManager.getInstance().putResult(getParam(), result);
-    }
+//    private void saveResultToCache(Result result) {
+//        CacheManager.getInstance().saveNowListTimeStamp(getCompany());
+//        CacheManager.getInstance().putResult(getCompany(), result);
+//    }
 
     /**
      * 更新時間
@@ -234,17 +277,25 @@ public class StatusListTabFragment extends BaseListFragment {
 //        mProgressWheel.setVisibility(View.GONE);
     }
 
-    private void onResultListQuery(Result result) {
-        if (result == null || result.getLiners().isEmpty() || result.getLiners().size() == 0) {
-            failedQuery(new Exception("Error : " + getParam().getCompanyName() + " Status list api result a Null or Empty"));
+    private void onResultListQuery(CompanyStatus companyStatus) {
+        if (companyStatus == null) {
             return;
         }
         mHeaderView.setVisibility(View.VISIBLE);
-        setTitle(result.getTitle());
-        setUpdate(result.getUpdateTime());
+        setTitle(companyStatus.getComment());
+        setUpdate(companyStatus.getUpdateTime());
+
+        List<PortStatus> portStatuses = new ArrayList<>();
+        portStatuses.add(companyStatus.getKohama());
+        portStatuses.add(companyStatus.getTaketomi());
+        portStatuses.add(companyStatus.getKuroshima());
+        portStatuses.add(companyStatus.getOohara());
+        portStatuses.add(companyStatus.getUehara());
+        portStatuses.add(companyStatus.getHatoma());
+        portStatuses.add(companyStatus.getHateruma());
 
         mListAdapter.clear();
-        mListAdapter.addAll(result.getLiners());
+        mListAdapter.addAll(portStatuses);
     }
 
     public void failedQuery(Throwable e) {
@@ -262,17 +313,17 @@ public class StatusListTabFragment extends BaseListFragment {
             return;
         }
 
-        Liner liner = (Liner) getListAdapter().getItem(position - 1);
-        liner.setCompany(company);
+        PortStatus portStatus = (PortStatus) getListAdapter().getItem(position - 1);
+//        liner.setCompany(company);
         switch (company) {
             case ANNEI:
-                startStatusDetailActivity(liner);
+                startStatusDetailActivity(portStatus);
                 break;
             case YKF:
-                startStatusDetailYkfActivity(liner);
+                startStatusDetailYkfActivity(portStatus);
                 break;
             case DREAM:
-                startStatusDetailDreamActivity(liner);
+                startStatusDetailDreamActivity(portStatus);
                 break;
             default:
                 break;
@@ -282,12 +333,10 @@ public class StatusListTabFragment extends BaseListFragment {
 
     /**
      * 安栄の詳細画面に遷移
-     *
-     * @param liner 運航状況
      */
-    private void startStatusDetailActivity(Liner liner) {
+    private void startStatusDetailActivity(PortStatus portStatus) {
         Intent intent = new Intent(getActivity(), StatusDetailAnneiActivity.class);
-        intent.putExtra(StatusDetailAnneiActivity.class.getName(), liner);
+        intent.putExtra(StatusDetailAnneiActivity.class.getName(), portStatus);
         startActivity(intent);
     }
 
@@ -296,7 +345,7 @@ public class StatusListTabFragment extends BaseListFragment {
      *
      * @param liner
      */
-    private void startStatusDetailYkfActivity(Liner liner) {
+    private void startStatusDetailYkfActivity(PortStatus portStatus) {
 //        YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
 //        ykfLinerDetail.setLiner(liner);
 //        ykfLinerDetail.setPort(liner.getPort());
@@ -311,7 +360,7 @@ public class StatusListTabFragment extends BaseListFragment {
      *
      * @param liner
      */
-    private void startStatusDetailDreamActivity(Liner liner) {
+    private void startStatusDetailDreamActivity(PortStatus portStatus) {
 //        YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
 //        ykfLinerDetail.setLiner(liner);
 //        ykfLinerDetail.setPort(liner.getPort());
@@ -322,6 +371,6 @@ public class StatusListTabFragment extends BaseListFragment {
     }
 
 //    public void resetTimeStamp() {
-//        CacheManager.getInstance().resetTimeStamp(getParam());
+//        CacheManager.getInstance().resetTimeStamp(getCompany());
 //    }
 }
