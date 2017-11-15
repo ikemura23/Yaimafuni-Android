@@ -1,6 +1,5 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.anei;
+package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -13,15 +12,9 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.StringUtils;
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailAnneiActivity extends BaseActivity {
+public class StatusDetailActivity extends BaseActivity {
 
     Liner mLiner;
-    Fragment mFragment;
-//    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_DETAIL_ANNEI;
-    /**
-     * クエリ起動中かどうか
-     */
-    private boolean mQuerying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +24,20 @@ public class StatusDetailAnneiActivity extends BaseActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setSubtitle(R.string.company_name_annei);
         }
-//        ButterKnife.bind(this);
 
         setTitleString();
         if (savedInstanceState != null) {
             mLiner = (Liner) savedInstanceState.get(PortStatus.class.getCanonicalName());
         }
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, StatusDetailFragment.NewInstance(getParamPortStatus()))
+                .commit();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (mFragment == null) {
-            createFragment();
-        }
     }
 
     @Override
@@ -60,17 +53,7 @@ public class StatusDetailAnneiActivity extends BaseActivity {
     }
 
     private PortStatus getParamPortStatus() {
-        return getIntent().getParcelableExtra(StatusDetailAnneiActivity.class.getName());
-    }
-
-    /**
-     * フラグメント作成
-     */
-    private void createFragment() {
-        mFragment = StatusDetailAnneiFragment.NewInstance(getParamPortStatus());
-        getFragmentManager().beginTransaction()
-                .replace(R.id.container, mFragment)
-                .commit();
+        return getIntent().getParcelableExtra(StatusDetailActivity.class.getName());
     }
 
     @Override

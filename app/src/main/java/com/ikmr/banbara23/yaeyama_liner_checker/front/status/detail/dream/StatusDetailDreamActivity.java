@@ -27,7 +27,7 @@ public class StatusDetailDreamActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_status_detail);
+        setContentView(R.layout.status_detail_activity);
 //        mYkfLinerDetail = getIntent().getParcelableExtra(StatusDetailDreamActivity.class.getName());
 //        mLiner = mYkfLinerDetail.getLiner();
         if (getSupportActionBar() != null) {
