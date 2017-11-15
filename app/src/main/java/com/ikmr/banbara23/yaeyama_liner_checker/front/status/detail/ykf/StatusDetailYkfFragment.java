@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail;
+package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.ykf;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment;
 

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    >
+
+    <!--読み込みエラー時の再読み込みボタン-->
+    <Button
+        android:id="@+id/fragment_status_detail_reload_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="24dp"
+        android:text="再読み込み"
+        android:visibility="gone"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            >
+
+            <!--プログレスバー-->
+            <!--<com.pnikosis.materialishprogress.ProgressWheel-->
+            <!--android:id="@+id/fragment_status_detail_progressbar"-->
+            <!--android:layout_width="60dp"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:layout_margin="24dp"-->
+            <!--tools:visibility="gone"-->
+            <!--wheel:matProg_barColor="#5588FF"-->
+            <!--wheel:matProg_progressIndeterminate="true"-->
+            <!--/>-->
+
+            <!--ステータス-->
+            <!--<com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailTopView-->
+            <!--android:id="@+id/fragment_status_detail_top_view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:visibility="gone"-->
+            <!--/>-->
+
+            <!--時刻表-->
+            <android.support.v7.widget.CardView
+                android:id="@+id/fragment_time_annei_table_timetable_view"
+                style="@style/detail_card"
+                />
+
+            <!--時間と距離-->
+            <!--<com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView-->
+            <!--android:id="@+id/fragment_status_detail_distance_time_view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--/>-->
+
+            <!--料金-->
+            <!--<com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceHandicappedView-->
+            <!--android:id="@+id/fragment_status_detail_price_view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--/>-->
+
+            <!--&lt;!&ndash;ブラウザで見る、電話ボタン&ndash;&gt;-->
+            <!--<include-->
+            <!--layout="@layout/view_status_detail_action_box"/>-->
+
+            <!--広告-->
+            <!--<com.google.android.gms.ads.AdView-->
+            <!--android:id="@+id/adView"-->
+            <!--xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/status_detail_view_outer_space"-->
+            <!--android:layout_marginRight="@dimen/status_detail_view_outer_space"-->
+            <!--android:descendantFocusability="blocksDescendants"-->
+            <!--ads:adSize="BANNER"-->
+            <!--ads:adUnitId="@string/banner_ad_unit_id"-->
+            <!--/>-->
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

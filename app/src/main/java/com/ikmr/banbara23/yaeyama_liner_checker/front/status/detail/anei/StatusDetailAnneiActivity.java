@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail;
+package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.anei;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Liner;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.StringUtils;
 
 /**
@@ -26,7 +27,6 @@ public class StatusDetailAnneiActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_detail);
-        mLiner = getIntent().getParcelableExtra(StatusDetailAnneiActivity.class.getName());
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setSubtitle(R.string.company_name_annei);
@@ -35,7 +35,7 @@ public class StatusDetailAnneiActivity extends BaseActivity {
 
         setTitleString();
         if (savedInstanceState != null) {
-            mLiner = (Liner) savedInstanceState.get(Liner.class.getCanonicalName());
+            mLiner = (Liner) savedInstanceState.get(PortStatus.class.getCanonicalName());
         }
     }
 
@@ -59,11 +59,15 @@ public class StatusDetailAnneiActivity extends BaseActivity {
         mLiner = (Liner) savedInstanceState.get(Liner.class.getCanonicalName());
     }
 
+    private PortStatus getParamPortStatus() {
+        return getIntent().getParcelableExtra(StatusDetailAnneiActivity.class.getName());
+    }
+
     /**
      * フラグメント作成
      */
     private void createFragment() {
-        mFragment = StatusDetailAnneiFragment.NewInstance(mLiner);
+        mFragment = StatusDetailAnneiFragment.NewInstance(getParamPortStatus());
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, mFragment)
                 .commit();
@@ -84,16 +88,14 @@ public class StatusDetailAnneiActivity extends BaseActivity {
      * タイトルバーの設定
      */
     private void setTitleString() {
-        if (mLiner == null) {
+        PortStatus portStatus = getParamPortStatus();
+        if (getParamPortStatus() == null) {
             return;
         }
-        if (mLiner.getPort() == null) {
+        if (StringUtils.isEmpty(portStatus.getPortName())) {
+            setTitle("安栄観光 詳細");
             return;
         }
-        if (StringUtils.isEmpty(mLiner.getPort().getPort())) {
-            setTitle("運航状況の詳細");
-        }
-
-        setTitle(mLiner.getPort().getPort() + "航路");
+        setTitle(portStatus.getPortName());
     }
 }

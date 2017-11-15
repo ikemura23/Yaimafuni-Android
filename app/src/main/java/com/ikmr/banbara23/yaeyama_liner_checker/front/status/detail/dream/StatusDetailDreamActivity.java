@@ -1,5 +1,5 @@
 
-package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail;
+package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.dream;
 
 import android.app.Fragment;
 import android.os.Bundle;

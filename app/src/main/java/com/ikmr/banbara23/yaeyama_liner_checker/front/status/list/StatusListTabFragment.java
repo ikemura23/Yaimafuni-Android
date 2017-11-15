@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseListFragment;
-import com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailAnneiActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.anei.StatusDetailAnneiActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.CompanyStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;

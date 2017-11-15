@@ -1,10 +1,14 @@
 
-package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail;
+package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.anei;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment;
-import com.ikmr.banbara23.yaeyama_liner_checker.model.Liner;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 
 /**
  * 安栄の詳細フラグメント
@@ -89,29 +93,28 @@ public class StatusDetailAnneiFragment extends BaseFragment {
 //
 //    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 //
-    public static StatusDetailAnneiFragment NewInstance(Liner liner) {
+    public static StatusDetailAnneiFragment NewInstance(PortStatus portStatus) {
         StatusDetailAnneiFragment fragment = new StatusDetailAnneiFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable(StatusDetailAnneiFragment.class.getName(), liner);
+        bundle.putParcelable(StatusDetailAnneiFragment.class.getName(), portStatus);
         fragment.setArguments(bundle);
         return fragment;
     }
-//
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        startQuery();
-//    }
-//
-//    @Nullable
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        final View view = inflater.inflate(R.layout.fragment_status_detail_annei, container, false);
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        startQuery();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        final View view = inflater.inflate(R.layout.fragment_status_detail_annei, container, false);
 //        ButterKnife.bind(this, view);
 //        initAdView(mAdView);
 //        initTimeTableView();
-//        return view;
-//    }
+        return view;
+    }
 //
 //    private void initTimeTableView() {
 //        mTimeTableLayout.removeAllViews();
@@ -149,15 +152,17 @@ public class StatusDetailAnneiFragment extends BaseFragment {
 //        compositeDisposable.dispose();
 //    }
 //
-//    /**
-//     * パラメータ取得
-//     *
-//     * @return
-//     */
-//    private Liner getParam() {
-//        return getArguments().getParcelable(StatusDetailAnneiFragment.class.getName());
-//    }
-//
+
+    /**
+     * パラメータ取得
+     *
+     * @return
+     */
+    private PortStatus getParam() {
+        return getArguments().getParcelable(StatusDetailAnneiFragment.class.getName());
+    }
+
+    //
 //    private Port getPort() {
 //        return getParam().getPort();
 //    }
@@ -165,7 +170,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
 //    /**
 //     * 取得の開始
 //     */
-//    public void startQuery() {
+    public void startQuery() {
 //        mStatusDetailTopView.setVisibility(View.GONE);
 //        mFragmentStatusDetailErrorButton.setVisibility(View.GONE);
 //        mProgressBar.setVisibility(View.VISIBLE);
@@ -181,7 +186,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
 //
 //        startDetailQuery();
 //        startListQuery();
-//    }
+    }
 //
 //    /**
 //     * 取得処理の手前でキャッシュ取得か、通信するかの判定
