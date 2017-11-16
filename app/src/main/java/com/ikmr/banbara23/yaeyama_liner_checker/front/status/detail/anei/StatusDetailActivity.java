@@ -6,6 +6,7 @@ import android.view.MenuItem;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.StringUtils;
@@ -13,7 +14,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.StringUtils;
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailAnneiActivity extends BaseActivity {
+public class StatusDetailActivity extends BaseActivity {
 
     Liner mLiner;
     Fragment mFragment;
@@ -59,15 +60,16 @@ public class StatusDetailAnneiActivity extends BaseActivity {
         mLiner = (Liner) savedInstanceState.get(Liner.class.getCanonicalName());
     }
 
-    private PortStatus getParamPortStatus() {
-        return getIntent().getParcelableExtra(StatusDetailAnneiActivity.class.getName());
+    private Bundle getBundle() {
+        return getIntent().getBundleExtra(StatusDetailActivity.class.getName());
     }
 
     /**
      * フラグメント作成
      */
     private void createFragment() {
-        mFragment = StatusDetailAnneiFragment.NewInstance(getParamPortStatus());
+
+        mFragment = StatusDetailFragment.NewInstance(getBundle());
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, mFragment)
                 .commit();
@@ -88,14 +90,13 @@ public class StatusDetailAnneiActivity extends BaseActivity {
      * タイトルバーの設定
      */
     private void setTitleString() {
-        PortStatus portStatus = getParamPortStatus();
-        if (getParamPortStatus() == null) {
+        if (getBundle() == null) {
             return;
         }
-        if (StringUtils.isEmpty(portStatus.getPortName())) {
+        if (StringUtils.isEmpty(getBundle().getString("portName"))) {
             setTitle("安栄観光 詳細");
             return;
         }
-        setTitle(portStatus.getPortName());
+        setTitle(getBundle().getString("portName"));
     }
 }

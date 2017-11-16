@@ -82,4 +82,14 @@ public class PortStatus implements Parcelable {
             return new PortStatus[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "PortStatus{" +
+                "comment='" + comment + '\'' +
+                ", portCode='" + portCode + '\'' +
+                ", portName='" + portName + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

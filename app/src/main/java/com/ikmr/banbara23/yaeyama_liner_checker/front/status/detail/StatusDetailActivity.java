@@ -13,6 +13,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.StringUtils;
  * ステータス詳細のActivity
  */
 public class StatusDetailActivity extends BaseActivity {
+    private final String TAG = StatusDetailActivity.class.getSimpleName();
 
     Liner mLiner;
 
@@ -31,7 +32,7 @@ public class StatusDetailActivity extends BaseActivity {
         }
 
         getFragmentManager().beginTransaction()
-                .replace(R.id.container, StatusDetailFragment.NewInstance(getParamPortStatus()))
+                .replace(R.id.container, StatusDetailFragment.NewInstance(getIntent().getBundleExtra(StatusDetailFragment.class.getName())))
                 .commit();
     }
 

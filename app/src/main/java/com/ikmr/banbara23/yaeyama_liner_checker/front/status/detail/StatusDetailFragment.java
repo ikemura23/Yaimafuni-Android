@@ -3,13 +3,20 @@ package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 
 /**
@@ -100,13 +107,11 @@ public class StatusDetailFragment extends BaseFragment {
     /**
      * New Instance
      *
-     * @param portStatus
+     * @param bundle
      * @return
      */
-    public static StatusDetailFragment NewInstance(PortStatus portStatus) {
+    public static StatusDetailFragment NewInstance(Bundle bundle) {
         StatusDetailFragment fragment = new StatusDetailFragment();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(StatusDetailFragment.class.getName(), portStatus);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -165,12 +170,21 @@ public class StatusDetailFragment extends BaseFragment {
 //
 
     /**
-     * パラメータ取得
+     * パラメータ取得 会社
      *
      * @return
      */
-    private PortStatus getParam() {
-        return getArguments().getParcelable(StatusDetailFragment.class.getName());
+    private Company getArgCompany() {
+        return (Company) getArguments().getBundle(StatusDetailFragment.class.getName()).get("company");
+    }
+
+    /**
+     * パラメータ取得 港コード
+     *
+     * @return
+     */
+    private String getArgPortCode() {
+        return getArguments().getBundle(StatusDetailFragment.class.getName()).getString("portCode");
     }
 
     //
@@ -182,6 +196,30 @@ public class StatusDetailFragment extends BaseFragment {
 //     * 取得の開始
 //     */
     public void startQuery() {
+
+        String path = getTablePath();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(path);
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+//                Map<String, JSONObject> map = (Map<String, JSONObject>) dataSnapshot.getValue();
+//                String jsonString = new Gson().toJson(map);
+////                Log.d(TAG, "Value is: " + map.toString());
+//                CompanyStatus companyStatus = new Gson().fromJson(jsonString, CompanyStatus.class);
+                PortStatus portStatus = dataSnapshot.getValue(PortStatus.class);
+                holdData(portStatus);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
 //        mStatusDetailTopView.setVisibility(View.GONE);
 //        mFragmentStatusDetailErrorButton.setVisibility(View.GONE);
 //        mProgressBar.setVisibility(View.VISIBLE);
@@ -198,6 +236,17 @@ public class StatusDetailFragment extends BaseFragment {
 //        startDetailQuery();
 //        startListQuery();
     }
+
+    private void holdData(PortStatus portStatus) {
+        Log.d(TAG, portStatus.toString());
+    }
+
+    public String getTablePath() {
+        String companyName = getArgCompany().getCompanyName();
+        String portCode = getArgPortCode();
+        return companyName + "/" + portCode;
+    }
+
 //
 //    /**
 //     * 取得処理の手前でキャッシュ取得か、通信するかの判定

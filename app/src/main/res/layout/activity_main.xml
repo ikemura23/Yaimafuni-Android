@@ -52,7 +52,6 @@
                             android:id="@+id/activity_top_description"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
-                            android:drawableLeft="@drawable/ic_directions_boat_white_24dp"
                             android:drawablePadding="16dp"
                             android:gravity="center_vertical"
                             android:paddingLeft="16dp"
@@ -229,7 +228,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginLeft="16dp"
-                    android:drawableLeft="@drawable/ic_schedule_black_24dp"
                     android:drawablePadding="16dp"
                     android:gravity="center_vertical"
                     android:text="時刻表"
@@ -256,11 +254,10 @@
                 >
 
                 <!--時刻表-->
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginLeft="16dp"
-                    android:drawableLeft="@drawable/ic_settings_black_24dp"
                     android:drawablePadding="16dp"
                     android:gravity="center_vertical"
                     android:text="設定"

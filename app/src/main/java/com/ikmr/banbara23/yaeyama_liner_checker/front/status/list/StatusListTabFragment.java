@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseListFragment;
-import com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.anei.StatusDetailAnneiActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.anei.StatusDetailActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.CompanyStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
@@ -317,7 +317,7 @@ public class StatusListTabFragment extends BaseListFragment {
 //        liner.setCompany(company);
         switch (company) {
             case ANNEI:
-                startStatusDetailActivity(portStatus);
+                startStatusDetailActivity(company, portStatus);
                 break;
             case YKF:
                 startStatusDetailYkfActivity(portStatus);
@@ -334,16 +334,19 @@ public class StatusListTabFragment extends BaseListFragment {
     /**
      * 安栄の詳細画面に遷移
      */
-    private void startStatusDetailActivity(PortStatus portStatus) {
-        Intent intent = new Intent(getActivity(), StatusDetailAnneiActivity.class);
-        intent.putExtra(StatusDetailAnneiActivity.class.getName(), portStatus);
+    private void startStatusDetailActivity(Company company, PortStatus portStatus) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("company", company);
+        bundle.putString("portCode", portStatus.getPortCode());
+        bundle.putString("portName", portStatus.getPortName());
+
+        Intent intent = new Intent(getActivity(), StatusDetailActivity.class);
+        intent.putExtra(StatusDetailActivity.class.getName(), bundle);
         startActivity(intent);
     }
 
     /**
      * 八重山観光フェリーの詳細に遷移
-     *
-     * @param liner
      */
     private void startStatusDetailYkfActivity(PortStatus portStatus) {
 //        YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
@@ -357,8 +360,6 @@ public class StatusListTabFragment extends BaseListFragment {
 
     /**
      * ドリーム観光の詳細に遷移
-     *
-     * @param liner
      */
     private void startStatusDetailDreamActivity(PortStatus portStatus) {
 //        YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();

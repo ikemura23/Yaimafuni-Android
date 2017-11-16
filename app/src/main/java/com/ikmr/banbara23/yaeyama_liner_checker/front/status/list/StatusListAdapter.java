@@ -56,6 +56,7 @@ public class StatusListAdapter extends ArrayAdapter<PortStatus> {
                     imageResource = R.drawable.ic_status_cancel;
             }
             statusIconImage.setImageResource(imageResource);
+
             if (TextUtils.isEmpty(portStatus.getComment())) {
                 descriptionText.setText(portStatus.getStatus().getText());
             } else {
