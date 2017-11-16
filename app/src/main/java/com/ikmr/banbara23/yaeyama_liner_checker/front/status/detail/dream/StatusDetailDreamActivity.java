@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.common.Const;
+import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseActivity;
 
 /**
@@ -17,7 +17,7 @@ public class StatusDetailDreamActivity extends BaseActivity {
     //    YkfLinerDetail mYkfLinerDetail;
 //    Liner mLiner;
     Fragment mFragment;
-    private static final String TAG = Const.FireBaseAnalitycsTag.TOP;
+    private static final String TAG = Constants.FireBaseAnalitycsTag.TOP;
 
     private boolean mQuerying = false;
 

@@ -15,7 +15,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
  */
 public class StatusDetailAnneiFragment extends BaseFragment {
 
-//    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_DETAIL_ANNEI;
+//    private static final String TAG = Constants.FireBaseAnalitycsTag.STATUS_DETAIL_ANNEI;
 
     //    // ButterKnife Bind View --------------------------------------------
 //    @Bind(R.id.fragment_status_detail_progressbar)
@@ -254,13 +254,13 @@ public class StatusDetailAnneiFragment extends BaseFragment {
 //    private void startListQuery() {
 //        // キャッシュ処理
 //        CacheManager cacheManager = CacheManager.getInstance();
-//        if (cacheManager.isExpiryList(Company.ANNEI)) {
+//        if (cacheManager.isExpiryList(Company.ANEI)) {
 //            // キャッシュが無効なので通信必要
 //            startAnneiListQuery();
 //            return;
 //        }
 //        // キャッシュ有効なので不要
-//        Result result = cacheManager.getListResultCache(Company.ANNEI);
+//        Result result = cacheManager.getListResultCache(Company.ANEI);
 //        onResultListQuery(result);
 //        listQuerying = false;
 //        detailQuerying = false;
@@ -272,7 +272,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
 //     */
 //    private void startAnneiListQuery() {
 //        compositeDisposable.add(
-//                StatusListApi.request(Company.ANNEI)
+//                StatusListApi.request(Company.ANEI)
 //                        .observeOn(AndroidSchedulers.mainThread())
 //                        .subscribeOn(Schedulers.newThread())
 //                        .subscribeWith(new DisposableObserver<Result>() {
@@ -306,8 +306,8 @@ public class StatusDetailAnneiFragment extends BaseFragment {
 //     * @param result 通信値
 //     */
 //    private void saveResultListToCache(Result result) {
-//        CacheManager.getInstance().saveNowListTimeStamp(Company.ANNEI);
-//        CacheManager.getInstance().putResult(Company.ANNEI, result);
+//        CacheManager.getInstance().saveNowListTimeStamp(Company.ANEI);
+//        CacheManager.getInstance().putResult(Company.ANEI, result);
 //    }
 //
 //    /**

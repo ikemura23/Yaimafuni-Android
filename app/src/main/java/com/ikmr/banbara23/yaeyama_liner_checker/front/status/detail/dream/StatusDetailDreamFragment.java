@@ -8,7 +8,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment;
  */
 public class StatusDetailDreamFragment extends BaseFragment {
 
-//    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_DETAIL_YKF;
+//    private static final String TAG = Constants.FireBaseAnalitycsTag.STATUS_DETAIL_YKF;
 //
 //    // ButterKnife Bind View --------------------------------------------
 //    @Bind(R.id.fragment_status_detail_dream_top_view)

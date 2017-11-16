@@ -18,8 +18,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseListFragment;
-import com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.anei.StatusDetailActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.CompanyStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
@@ -155,19 +156,19 @@ public class StatusListTabFragment extends BaseListFragment {
 //        emptyButton.setVisibility(View.GONE);
         // キャッシュ処理
 //        CacheManager cacheManager = CacheManager.getInstance();
-//        if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryList(getCompany())) {
+//        if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryList(getCode())) {
 //            // キャッシュが無効なので通信必要
 //            startListQuery();
 //            // startDebugListQuery();
 //            return;
 //        }
         // キャッシュ有効なので不要
-//        Result result = cacheManager.getListResultCache(getCompany());
+//        Result result = cacheManager.getListResultCache(getCode());
 //        onResultListQuery(result);
 //        finishQuery();
         String table;
         switch (getCompany()) {
-            case ANNEI:
+            case ANEI:
                 table = "anei";
                 break;
             case YKF:
@@ -206,7 +207,7 @@ public class StatusListTabFragment extends BaseListFragment {
      * 一覧の取得処理開始
      */
     private void startListQuery() {
-//        Company company = getCompany();
+//        Company company = getCode();
 //        compositeDisposable.add(
 //                StatusListApi.request(company)
 //                        .observeOn(AndroidSchedulers.mainThread())
@@ -240,8 +241,8 @@ public class StatusListTabFragment extends BaseListFragment {
      * @param result 通信値
      */
 //    private void saveResultToCache(Result result) {
-//        CacheManager.getInstance().saveNowListTimeStamp(getCompany());
-//        CacheManager.getInstance().putResult(getCompany(), result);
+//        CacheManager.getInstance().saveNowListTimeStamp(getCode());
+//        CacheManager.getInstance().putResult(getCode(), result);
 //    }
 
     /**
@@ -316,7 +317,7 @@ public class StatusListTabFragment extends BaseListFragment {
         PortStatus portStatus = (PortStatus) getListAdapter().getItem(position - 1);
 //        liner.setCompany(company);
         switch (company) {
-            case ANNEI:
+            case ANEI:
                 startStatusDetailActivity(company, portStatus);
                 break;
             case YKF:
@@ -335,13 +336,10 @@ public class StatusListTabFragment extends BaseListFragment {
      * 安栄の詳細画面に遷移
      */
     private void startStatusDetailActivity(Company company, PortStatus portStatus) {
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("company", company);
-        bundle.putString("portCode", portStatus.getPortCode());
-        bundle.putString("portName", portStatus.getPortName());
-
         Intent intent = new Intent(getActivity(), StatusDetailActivity.class);
-        intent.putExtra(StatusDetailActivity.class.getName(), bundle);
+        intent.putExtra(Constants.BUNDLE_KEY_COMPANY, company);
+        intent.putExtra(Constants.BUNDLE_KEY_PORT_CODE, portStatus.getPortCode());
+        intent.putExtra(Constants.BUNDLE_KEY_PORT_NAME, portStatus.getPortName());
         startActivity(intent);
     }
 
@@ -372,6 +370,6 @@ public class StatusListTabFragment extends BaseListFragment {
     }
 
 //    public void resetTimeStamp() {
-//        CacheManager.getInstance().resetTimeStamp(getCompany());
+//        CacheManager.getInstance().resetTimeStamp(getCode());
 //    }
 }

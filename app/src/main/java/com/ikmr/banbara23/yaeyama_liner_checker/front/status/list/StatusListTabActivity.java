@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.common.Const;
+import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.ActivityListTabBinding;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
@@ -19,7 +19,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil;
  */
 public class StatusListTabActivity extends BaseActivity implements StatusListTabFragment.EmptyClickListener {
 
-    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_LIST;
+    private static final String TAG = Constants.FireBaseAnalitycsTag.STATUS_LIST;
     private static final int TAB_FIRST = 0;
     private static final int TAB_SECOND = 1;
     private static final int TAB_THREAD = 2;
@@ -59,7 +59,7 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
             return 0;
         }
         switch (company) {
-            case ANNEI:
+            case ANEI:
                 return TAB_FIRST;
             case YKF:
                 return TAB_SECOND;

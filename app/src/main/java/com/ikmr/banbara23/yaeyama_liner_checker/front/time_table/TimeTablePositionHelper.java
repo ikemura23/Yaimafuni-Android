@@ -37,7 +37,7 @@ public class TimeTablePositionHelper {
     public static int getInitSpinnerPosition(Company company) {
         String key = null;
         switch (company) {
-            case ANNEI:
+            case ANEI:
                 key = Base.getContext().getString(R.string.time_table_annei_init_spinner_value);
                 break;
             case YKF:
@@ -47,7 +47,7 @@ public class TimeTablePositionHelper {
                 key = Base.getContext().getString(R.string.time_table_dream_init_spinner_value);
                 break;
         }
-//        Timber.d("TimeTablePositionHelper", "getInitSpinnerPosition : " + company.getCompanyName() + " - " + PreferenceUtils.loadInt(key));
+//        Timber.d("TimeTablePositionHelper", "getInitSpinnerPosition : " + company.getName() + " - " + PreferenceUtils.loadInt(key));
         return PreferenceUtils.loadInt(key);
     }
 
@@ -59,7 +59,7 @@ public class TimeTablePositionHelper {
     public static void setCurrentSpinnerPosition(Company company, int currentPosition) {
         String key = null;
         switch (company) {
-            case ANNEI:
+            case ANEI:
                 key = Base.getContext().getString(R.string.time_table_annei_init_spinner_value);
                 break;
             case YKF:
@@ -69,7 +69,7 @@ public class TimeTablePositionHelper {
                 key = Base.getContext().getString(R.string.time_table_dream_init_spinner_value);
                 break;
         }
-//        Timber.d("TimeTablePositionHelper", "setCurrentSpinnerPosition : " + company.getCompanyName() + " - " + currentPosition);
+//        Timber.d("TimeTablePositionHelper", "setCurrentSpinnerPosition : " + company.getName() + " - " + currentPosition);
         PreferenceUtils.saveInt(key, currentPosition);
     }
 }

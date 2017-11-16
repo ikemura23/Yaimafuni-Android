@@ -7,7 +7,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment;
  */
 public class StatusDetailYkfFragment extends BaseFragment {
 
-//    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_DETAIL_DREAM;
+//    private static final String TAG = Constants.FireBaseAnalitycsTag.STATUS_DETAIL_DREAM;
 //
 //    @Bind(R.id.fragment_status_detail_ykf_top_view)
 //    StatusDetailTopView mStatusDetailTopView;

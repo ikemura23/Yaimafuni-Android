@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
@@ -25,7 +26,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 public class StatusDetailFragment extends BaseFragment {
     private static final String TAG = StatusDetailFragment.class.getSimpleName();
 
-//    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_DETAIL_ANNEI;
+//    private static final String TAG = Constants.FireBaseAnalitycsTag.STATUS_DETAIL_ANNEI;
 
     //    // ButterKnife Bind View --------------------------------------------
 //    @Bind(R.id.fragment_status_detail_progressbar)
@@ -175,7 +176,7 @@ public class StatusDetailFragment extends BaseFragment {
      * @return
      */
     private Company getArgCompany() {
-        return (Company) getArguments().getBundle(StatusDetailFragment.class.getName()).get("company");
+        return (Company) getArguments().getSerializable(Constants.BUNDLE_KEY_COMPANY);
     }
 
     /**
@@ -184,7 +185,7 @@ public class StatusDetailFragment extends BaseFragment {
      * @return
      */
     private String getArgPortCode() {
-        return getArguments().getBundle(StatusDetailFragment.class.getName()).getString("portCode");
+        return getArguments().getString(Constants.BUNDLE_KEY_PORT_CODE);
     }
 
     //
@@ -242,7 +243,7 @@ public class StatusDetailFragment extends BaseFragment {
     }
 
     public String getTablePath() {
-        String companyName = getArgCompany().getCompanyName();
+        String companyName = getArgCompany().getCode();
         String portCode = getArgPortCode();
         return companyName + "/" + portCode;
     }
@@ -314,13 +315,13 @@ public class StatusDetailFragment extends BaseFragment {
 //    private void startListQuery() {
 //        // キャッシュ処理
 //        CacheManager cacheManager = CacheManager.getInstance();
-//        if (cacheManager.isExpiryList(Company.ANNEI)) {
+//        if (cacheManager.isExpiryList(Company.ANEI)) {
 //            // キャッシュが無効なので通信必要
 //            startAnneiListQuery();
 //            return;
 //        }
 //        // キャッシュ有効なので不要
-//        Result result = cacheManager.getListResultCache(Company.ANNEI);
+//        Result result = cacheManager.getListResultCache(Company.ANEI);
 //        onResultListQuery(result);
 //        listQuerying = false;
 //        detailQuerying = false;
@@ -332,7 +333,7 @@ public class StatusDetailFragment extends BaseFragment {
 //     */
 //    private void startAnneiListQuery() {
 //        compositeDisposable.add(
-//                StatusListApi.request(Company.ANNEI)
+//                StatusListApi.request(Company.ANEI)
 //                        .observeOn(AndroidSchedulers.mainThread())
 //                        .subscribeOn(Schedulers.newThread())
 //                        .subscribeWith(new DisposableObserver<Result>() {
@@ -366,8 +367,8 @@ public class StatusDetailFragment extends BaseFragment {
 //     * @param result 通信値
 //     */
 //    private void saveResultListToCache(Result result) {
-//        CacheManager.getInstance().saveNowListTimeStamp(Company.ANNEI);
-//        CacheManager.getInstance().putResult(Company.ANNEI, result);
+//        CacheManager.getInstance().saveNowListTimeStamp(Company.ANEI);
+//        CacheManager.getInstance().putResult(Company.ANEI, result);
 //    }
 //
 //    /**

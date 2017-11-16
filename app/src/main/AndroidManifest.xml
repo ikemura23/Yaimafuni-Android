@@ -30,7 +30,7 @@
             />
 
         <activity
-            android:name=".front.status.detail.anei.StatusDetailActivity"
+            android:name=".front.status.detail.anei.StatusDetailAneiActivity"
             android:label="@string/title_activity_status_detail"
             />
         <activity
@@ -54,7 +54,10 @@
             android:name=".front.time_table.TimeTableTabActivity"
             android:label="@string/title_activity_timetable"
             />
-
+        <activity
+            android:name=".front.status.detail.StatusDetailActivity"
+            android:label="@string/title_activity_status_detail"
+            />
     </application>
 
 </manifest>

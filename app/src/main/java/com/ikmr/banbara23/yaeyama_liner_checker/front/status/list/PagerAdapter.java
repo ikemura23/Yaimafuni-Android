@@ -24,7 +24,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         Company company;
         switch (position) {
             case 0:
-                company = Company.ANNEI;
+                company = Company.ANEI;
                 break;
             case 1:
                 company = Company.YKF;

@@ -30,9 +30,8 @@ public class StatusDetailActivity extends BaseActivity {
         if (savedInstanceState != null) {
             mLiner = (Liner) savedInstanceState.get(PortStatus.class.getCanonicalName());
         }
-
         getFragmentManager().beginTransaction()
-                .replace(R.id.container, StatusDetailFragment.NewInstance(getIntent().getBundleExtra(StatusDetailFragment.class.getName())))
+                .replace(R.id.container, StatusDetailFragment.NewInstance(getIntent().getExtras()))
                 .commit();
     }
 

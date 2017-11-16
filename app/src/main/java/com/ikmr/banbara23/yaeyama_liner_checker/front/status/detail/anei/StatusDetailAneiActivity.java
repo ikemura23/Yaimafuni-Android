@@ -14,11 +14,11 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.StringUtils;
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailActivity extends BaseActivity {
+public class StatusDetailAneiActivity extends BaseActivity {
 
     Liner mLiner;
     Fragment mFragment;
-//    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_DETAIL_ANNEI;
+//    private static final String TAG = Constants.FireBaseAnalitycsTag.STATUS_DETAIL_ANNEI;
     /**
      * クエリ起動中かどうか
      */
@@ -61,7 +61,7 @@ public class StatusDetailActivity extends BaseActivity {
     }
 
     private Bundle getBundle() {
-        return getIntent().getBundleExtra(StatusDetailActivity.class.getName());
+        return getIntent().getBundleExtra(StatusDetailAneiActivity.class.getName());
     }
 
     /**

@@ -14,7 +14,7 @@ public class StatusDetailYkfActivity extends BaseActivity {
 //    Liner mLiner;
 //    Fragment mFragment;
 //
-//    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_DETAIL_YKF;
+//    private static final String TAG = Constants.FireBaseAnalitycsTag.STATUS_DETAIL_YKF;
 //
 //    /**
 //     * クエリ起動中かどうか

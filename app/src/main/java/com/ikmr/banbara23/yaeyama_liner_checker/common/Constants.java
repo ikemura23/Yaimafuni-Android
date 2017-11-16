@@ -4,7 +4,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.common;
 /**
  * 定数クラス
  */
-public class Const {
+public class Constants {
     // 通信全般のタイムアウト 10秒, Jsoupのデフォルトは3秒
     // http://jsoup.org/apidocs/org/jsoup/Connection.html
     public static final int CONNECTION_TIME_OUT = 10000;
@@ -87,4 +87,9 @@ public class Const {
     }
 
     public static final String weatherUrl = "http://weather.yahoo.co.jp/weather/jp/47/9410.html";
+
+    public static final String BUNDLE_KEY_DETAIL = "BUNDLE_KEY_DETAIL";
+    public static final String BUNDLE_KEY_COMPANY = "BUNDLE_KEY_COMPANY";
+    public static final String BUNDLE_KEY_PORT_CODE = "BUNDLE_KEY_PORT_CODE";
+    public static final String BUNDLE_KEY_PORT_NAME = "BUNDLE_KEY_PORT_NAME";
 }

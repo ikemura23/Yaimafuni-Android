@@ -8,13 +8,13 @@ import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.common.Const;
+import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
 
 public class CustomTabUtil {
 
     public static void start(Activity activity, String urlString) {
         if (TextUtils.isEmpty(urlString)) {
-            urlString = Const.weatherUrl;
+            urlString = Constants.weatherUrl;
         }
 
         Uri uri = Uri.parse(urlString);
