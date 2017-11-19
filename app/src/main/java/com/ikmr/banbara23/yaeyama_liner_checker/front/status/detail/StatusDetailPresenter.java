@@ -22,7 +22,7 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
     private Company company;
     private String portCode;
 
-    public StatusDetailPresenter(StatusDetailViewModel viewModel, Company company, String portCode) {
+    StatusDetailPresenter(StatusDetailViewModel viewModel, Company company, String portCode) {
         this.viewModel = viewModel;
         this.company = company;
         this.portCode = portCode;
@@ -57,9 +57,17 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
         });
     }
 
+    /**
+     * ViewModelにセット
+     *
+     * @param portStatus
+     */
     private void setViewModel(PortStatus portStatus) {
-        viewModel.portStatus.set(portStatus);
         Log.d(TAG, portStatus.toString());
+        // ViewModelにセット
+        viewModel.portStatus.set(portStatus);
+        // 画像セット
+        viewModel.setStatusDrawable(portStatus.getStatus().getCode());
     }
 
     public String getTablePath() {
