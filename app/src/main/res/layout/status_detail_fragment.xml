@@ -11,6 +11,11 @@
             name="statusViewModel"
             type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailViewModel"
             />
+
+        <variable
+            name="presenter"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailPresenter"
+            />
     </data>
 
     <ScrollView
@@ -32,59 +37,28 @@
                 app:statusViewModel="@{statusViewModel}"
                 />
 
-            <!--<com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailTopView-->
-            <!--android:id="@+id/fragment_status_detail_top_view"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:visibility="gone"-->
-            <!--/>-->
-
             <!--時刻表-->
             <android.support.v7.widget.CardView
                 android:id="@+id/fragment_time_annei_table_timetable_view"
                 style="@style/detail_card"
                 />
 
+            <!--時間と距離-->
             <include
                 layout="@layout/view_status_detail_distance_time"
                 />
-            <!--時間と距離-->
-            <!--<com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView-->
-            <!--android:id="@+id/fragment_status_detail_distance_time_view"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--/>-->
 
+            <!--料金-->
             <include
                 layout="@layout/view_status_detail_price_handicapped"
                 />
-            <!--料金-->
-            <!--<com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceHandicappedView-->
-            <!--android:id="@+id/fragment_status_detail_price_view"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--/>-->
 
+            <!--アクション-->
             <include
-                layout="@layout/view_status_detail_action_box"
+                layout="@layout/view_status_detail_action"
+                app:presenter="@{presenter}"
                 />
 
-            <!--&lt;!&ndash;ブラウザで見る、電話ボタン&ndash;&gt;-->
-            <!--<include-->
-            <!--layout="@layout/view_status_detail_action_box"/>-->
-
-            <!--広告-->
-            <!--<com.google.android.gms.ads.AdView-->
-            <!--android:id="@+id/adView"-->
-            <!--xmlns:ads="http://schemas.android.com/apk/res-auto"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="@dimen/status_detail_view_outer_space"-->
-            <!--android:layout_marginRight="@dimen/status_detail_view_outer_space"-->
-            <!--android:descendantFocusability="blocksDescendants"-->
-            <!--ads:adSize="BANNER"-->
-            <!--ads:adUnitId="@string/banner_ad_unit_id"-->
-            <!--/>-->
         </LinearLayout>
     </ScrollView>
 

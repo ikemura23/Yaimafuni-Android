@@ -72,7 +72,7 @@
 
             <!--&lt;!&ndash;ブラウザで見る、電話ボタン&ndash;&gt;-->
             <!--<include-->
-            <!--layout="@layout/view_status_detail_action_box"/>-->
+            <!--layout="@layout/view_status_detail_action"/>-->
 
             <!--広告-->
             <!--<com.google.android.gms.ads.AdView-->

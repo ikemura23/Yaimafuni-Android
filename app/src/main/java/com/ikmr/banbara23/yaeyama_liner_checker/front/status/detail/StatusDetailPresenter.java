@@ -65,4 +65,18 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
     public String getTablePath() {
         return company.getCode() + "/" + portCode;
     }
+
+    /**
+     * 外部電話アプリを起動
+     */
+    public void startTel() {
+        view.openTell("00000");
+    }
+
+    /**
+     * 外部ブラウザを起動
+     */
+    public void startWeb() {
+        view.openBrowser("");
+    }
 }

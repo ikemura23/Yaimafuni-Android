@@ -58,11 +58,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:visibility="@{statusViewModel.hasComment()? View.VISIBLE : View.GONE}"
                 >
                 <!--区切り横線-->
                 <include
                     layout="@layout/view_time_table_line_yoko"
-                    android:visibility="@{statusViewModel.hasComment()? View.VISIBLE : View.GONE}"
                     />
 
                 <!--更新日時-->
@@ -85,7 +85,6 @@
                     android:text="@{statusViewModel.portStatus.get().getComment()}"
                     android:layout_marginTop="8dp"
                     android:maxLines="5"
-                    android:visibility="@{statusViewModel.hasComment()? View.VISIBLE : View.GONE}"
                     tools:text="通常運航通"
                     />
 

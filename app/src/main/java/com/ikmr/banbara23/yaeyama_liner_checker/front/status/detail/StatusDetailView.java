@@ -7,4 +7,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.front.base.BaseView;
  */
 public interface StatusDetailView extends BaseView {
 
+    void openTell(String tel);
+
+    void openBrowser(String url);
 }
