@@ -1,6 +1,7 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,9 +24,11 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 /**
  * 安栄の詳細フラグメント
  */
-public class StatusDetailFragment extends BaseFragment {
+public class StatusDetailFragment extends BaseFragment implements StatusDetailView {
     private static final String TAG = StatusDetailFragment.class.getSimpleName();
-
+    StatusDetailFragmentBinding binding;
+    StatusDetailViewModel viewModel = new StatusDetailViewModel();
+    StatusDetailPresenter presenter;
 //    private static final String TAG = Constants.FireBaseAnalitycsTag.STATUS_DETAIL_ANNEI;
 
     //    // ButterKnife Bind View --------------------------------------------
@@ -120,19 +123,26 @@ public class StatusDetailFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        startQuery();
+        presenter.loadPortDetail();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        final View view = inflater.inflate(R.layout.fragment_status_detail_annei, container, false);
-//        initAdView(mAdView);
-//        initTimeTableView();
-        StatusDetailFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false);
+
+        presenter = new StatusDetailPresenter(viewModel, getArgCompany(), getArgPortCode());
+        presenter.attachView(this);
+        binding.setStatusViewModel(viewModel);
 
         return binding.getRoot();
     }
-//
+
+    @Override
+    public Context getContext() {
+        return this.getActivity();
+    }
+
+    //
 //    private void initTimeTableView() {
 //        mTimeTableLayout.removeAllViews();
 //        int viewResourceId = getAnneiTimeTableLayoutResourceId();
@@ -162,12 +172,11 @@ public class StatusDetailFragment extends BaseFragment {
 //        }
 //    }
 //
-//    @Override
-//    public void onDestroyView() {
-//        super.onDestroyView();
-//        ButterKnife.unbind(this);
-//        compositeDisposable.dispose();
-//    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        presenter.detachView();
+    }
 //
 
     /**
@@ -211,7 +220,7 @@ public class StatusDetailFragment extends BaseFragment {
 ////                Log.d(TAG, "Value is: " + map.toString());
 //                CompanyStatus companyStatus = new Gson().fromJson(jsonString, CompanyStatus.class);
                 PortStatus portStatus = dataSnapshot.getValue(PortStatus.class);
-                holdData(portStatus);
+                setViewModel(portStatus);
             }
 
             @Override
@@ -238,7 +247,8 @@ public class StatusDetailFragment extends BaseFragment {
 //        startListQuery();
     }
 
-    private void holdData(PortStatus portStatus) {
+    private void setViewModel(PortStatus portStatus) {
+        viewModel.portStatus.set(portStatus);
         Log.d(TAG, portStatus.toString());
     }
 

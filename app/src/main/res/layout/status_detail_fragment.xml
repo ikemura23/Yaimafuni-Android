@@ -1,10 +1,16 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <data>
 
         <import type="android.view.View"/>
+
+        <variable
+            name="statusViewModel"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailViewModel"
+            />
     </data>
 
     <ScrollView
@@ -20,19 +26,12 @@
             android:orientation="vertical"
             >
 
-            <!--プログレスバー-->
-            <!--<com.pnikosis.materialishprogress.ProgressWheel-->
-            <!--android:id="@+id/fragment_status_detail_progressbar"-->
-            <!--android:layout_width="60dp"-->
-            <!--android:layout_height="60dp"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:layout_margin="24dp"-->
-            <!--tools:visibility="gone"-->
-            <!--wheel:matProg_barColor="#5588FF"-->
-            <!--wheel:matProg_progressIndeterminate="true"-->
-            <!--/>-->
-
             <!--ステータス-->
+            <include
+                layout="@layout/view_status_detail_top"
+                app:statusViewModel="@{statusViewModel}"
+                />
+
             <!--<com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailTopView-->
             <!--android:id="@+id/fragment_status_detail_top_view"-->
             <!--android:layout_width="match_parent"-->
@@ -46,6 +45,9 @@
                 style="@style/detail_card"
                 />
 
+            <include
+                layout="@layout/view_status_detail_distance_time"
+                />
             <!--時間と距離-->
             <!--<com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView-->
             <!--android:id="@+id/fragment_status_detail_distance_time_view"-->
@@ -53,12 +55,19 @@
             <!--android:layout_height="wrap_content"-->
             <!--/>-->
 
+            <include
+                layout="@layout/view_status_detail_price_handicapped"
+                />
             <!--料金-->
             <!--<com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceHandicappedView-->
             <!--android:id="@+id/fragment_status_detail_price_view"-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"-->
             <!--/>-->
+
+            <include
+                layout="@layout/view_status_detail_action_box"
+                />
 
             <!--&lt;!&ndash;ブラウザで見る、電話ボタン&ndash;&gt;-->
             <!--<include-->
