@@ -1,7 +1,6 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.front.status.list;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -39,26 +38,14 @@ public class StatusListTabFragment extends BaseListFragment {
     TextView mTitleText;
     TextView mUpdateText;
     View mHeaderView;
-//    private AdView mAdView;
 
 //    private CompositeDisposable compositeDisposable = new CompositeDisposable();
-
-    // ButterKnife BindString --------------------------------------------
-//    @BindString(R.string.url_annei_list)
-//    String URL_ANNEI_LIST;
-//
-//    @Bind(R.id.fragment_status_list_progressbar)
-//    ProgressWheel mProgressWheel;
-//
-//    @Bind(R.id.fragment_status_list_empty_button)
-//    Button emptyButton;
 
     /**
      * リロードタップ
      *
      * @param view リロードボタン
      */
-//    @OnClick(R.id.fragment_status_list_empty_button)
     void emptyClick(View view) {
         if (getActivity() != null) {
             ((EmptyClickListener) getActivity()).emptyClick();
@@ -81,8 +68,6 @@ public class StatusListTabFragment extends BaseListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_list, container, false);
-//        mAdView = (AdView) view.findViewById(R.id.adView);
-//        ButterKnife.bind(this, view);
         initViews();
         return view;
     }
@@ -91,38 +76,22 @@ public class StatusListTabFragment extends BaseListFragment {
     public void onResume() {
         super.onResume();
         startQuery();
-//        if (mAdView != null) {
-//            mAdView.resume();
-//        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-//        if (mAdView != null) {
-//            mAdView.pause();
-//        }
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-//        ButterKnife.unbind(this);
-//        compositeDisposable.dispose();
-//        if (mAdView != null) {
-//            mAdView.destroy();
-//        }
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         getListView().addHeaderView(mHeaderView, null, false);
-        Activity activity = getActivity();
-//        if (activity != null && activity instanceof QueryInterface) {
-//            // API通信処理の開始準備の完了
-//            ((QueryInterface) activity).startQuery();
-//        }
     }
 
     private void initViews() {
@@ -130,13 +99,6 @@ public class StatusListTabFragment extends BaseListFragment {
         mTitleText = (TextView) mHeaderView.findViewById(R.id.fragment_status_list_toolbar_title_text);
         mUpdateText = (TextView) mHeaderView.findViewById(R.id.fragment_status_list_toolbar_update_text);
         mListAdapter = new StatusListAdapter(getContext());
-//        final AdRequest adRequest = new AdRequest.Builder().build();
-//        getActivity().runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                mAdView.loadAd(adRequest);
-//            }
-//        });
     }
 
     /**
@@ -149,24 +111,11 @@ public class StatusListTabFragment extends BaseListFragment {
     }
 
     private void startQuery() {
-//        mProgressWheel.setVisibility(View.VISIBLE);
         mHeaderView.setVisibility(View.GONE);
         mListAdapter.clear();
         setListAdapter(mListAdapter);
-//        emptyButton.setVisibility(View.GONE);
-        // キャッシュ処理
-//        CacheManager cacheManager = CacheManager.getInstance();
-//        if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryList(getCode())) {
-//            // キャッシュが無効なので通信必要
-//            startListQuery();
-//            // startDebugListQuery();
-//            return;
-//        }
-        // キャッシュ有効なので不要
-//        Result result = cacheManager.getListResultCache(getCode());
-//        onResultListQuery(result);
-//        finishQuery();
-        String table;
+
+        String table = "";
         switch (getCompany()) {
             case ANEI:
                 table = "anei";
@@ -177,73 +126,22 @@ public class StatusListTabFragment extends BaseListFragment {
             case DREAM:
                 table = "dream";
                 break;
-            default:
-                table = "anei";
         }
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(table);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-//                Map<String, JSONObject> map = (Map<String, JSONObject>) dataSnapshot.getValue();
-//                String jsonString = new Gson().toJson(map);
-////                Log.d(TAG, "Value is: " + map.toString());
-//                CompanyStatus companyStatus = new Gson().fromJson(jsonString, CompanyStatus.class);
                 CompanyStatus companyStatus = dataSnapshot.getValue(CompanyStatus.class);
                 onResultListQuery(companyStatus);
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
-                // Failed to read value
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
     }
-
-    /**
-     * 一覧の取得処理開始
-     */
-    private void startListQuery() {
-//        Company company = getCode();
-//        compositeDisposable.add(
-//                StatusListApi.request(company)
-//                        .observeOn(AndroidSchedulers.mainThread())
-//                        .subscribeOn(Schedulers.newThread())
-//                        .subscribeWith(new DisposableObserver<Result>() {
-//                            @Override
-//                            public void onComplete() {
-//                                // 完了
-//                                finishQuery();
-//                            }
-//
-//                            @Override
-//                            public void onError(Throwable e) {
-//                                // 失敗
-//                                failedQuery(e);
-//                            }
-//
-//                            @Override
-//                            public void onNext(Result result) {
-//                                // 値うけとる
-//                                onResultListQuery(result);
-//                                saveResultToCache(result);
-//                            }
-//                        })
-//        );
-    }
-
-    /**
-     * 通信した結果をキャッシュに保存
-     *
-     * @param result 通信値
-     */
-//    private void saveResultToCache(Result result) {
-//        CacheManager.getInstance().saveNowListTimeStamp(getCode());
-//        CacheManager.getInstance().putResult(getCode(), result);
-//    }
 
     /**
      * 更新時間
@@ -273,11 +171,6 @@ public class StatusListTabFragment extends BaseListFragment {
         mTitleText.setText(replaceTitle);
     }
 
-    public void finishQuery() {
-        mHeaderView.setVisibility(View.VISIBLE);
-//        mProgressWheel.setVisibility(View.GONE);
-    }
-
     private void onResultListQuery(CompanyStatus companyStatus) {
         if (companyStatus == null) {
             return;
@@ -299,13 +192,6 @@ public class StatusListTabFragment extends BaseListFragment {
         mListAdapter.addAll(portStatuses);
     }
 
-    public void failedQuery(Throwable e) {
-        mHeaderView.setVisibility(View.GONE);
-//        mProgressWheel.setVisibility(View.GONE);
-//        emptyButton.setVisibility(View.VISIBLE);
-//        Crashlytics.logException(e);
-    }
-
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
@@ -315,25 +201,11 @@ public class StatusListTabFragment extends BaseListFragment {
         }
 
         PortStatus portStatus = (PortStatus) getListAdapter().getItem(position - 1);
-//        liner.setCompany(company);
-        switch (company) {
-            case ANEI:
-                startStatusDetailActivity(company, portStatus);
-                break;
-            case YKF:
-                startStatusDetailYkfActivity(portStatus);
-                break;
-            case DREAM:
-                startStatusDetailDreamActivity(portStatus);
-                break;
-            default:
-                break;
-        }
-//        AnalyticsUtils.logSelectEvent(TAG, "list_item");
+        startStatusDetailActivity(company, portStatus);
     }
 
     /**
-     * 安栄の詳細画面に遷移
+     * 運行詳細に遷移
      */
     private void startStatusDetailActivity(Company company, PortStatus portStatus) {
         Intent intent = new Intent(getActivity(), StatusDetailActivity.class);
@@ -342,34 +214,4 @@ public class StatusListTabFragment extends BaseListFragment {
         intent.putExtra(Constants.BUNDLE_KEY_PORT_NAME, portStatus.getPortName());
         startActivity(intent);
     }
-
-    /**
-     * 八重山観光フェリーの詳細に遷移
-     */
-    private void startStatusDetailYkfActivity(PortStatus portStatus) {
-//        YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
-//        ykfLinerDetail.setLiner(liner);
-//        ykfLinerDetail.setPort(liner.getPort());
-//
-//        Intent intent = new Intent(getActivity(), StatusDetailYkfActivity.class);
-//        intent.putExtra(StatusDetailYkfActivity.class.getName(), ykfLinerDetail);
-//        startActivity(intent);
-    }
-
-    /**
-     * ドリーム観光の詳細に遷移
-     */
-    private void startStatusDetailDreamActivity(PortStatus portStatus) {
-//        YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
-//        ykfLinerDetail.setLiner(liner);
-//        ykfLinerDetail.setPort(liner.getPort());
-//
-//        Intent intent = new Intent(getActivity(), StatusDetailDreamActivity.class);
-//        intent.putExtra(StatusDetailDreamActivity.class.getName(), ykfLinerDetail);
-//        startActivity(intent);
-    }
-
-//    public void resetTimeStamp() {
-//        CacheManager.getInstance().resetTimeStamp(getCode());
-//    }
 }

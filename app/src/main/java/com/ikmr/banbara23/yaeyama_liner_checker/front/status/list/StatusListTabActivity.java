@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.ActivityListTabBinding;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
@@ -19,15 +18,13 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil;
  */
 public class StatusListTabActivity extends BaseActivity implements StatusListTabFragment.EmptyClickListener {
 
-    private static final String TAG = Constants.FireBaseAnalitycsTag.STATUS_LIST;
+    private static final String TAG = StatusListTabActivity.class.getSimpleName();
     private static final int TAB_FIRST = 0;
     private static final int TAB_SECOND = 1;
     private static final int TAB_THREAD = 2;
 
-    //    @Bind(R.id.activity_list_tab_layout)
     TabLayout tabLayout;
 
-    //    @Bind(R.id.activity_list_tab_view_pager)
     ViewPager viewPager;
     private String url;
 
@@ -41,10 +38,7 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
         }
         tabLayout = binding.activityListTabLayout;
         viewPager = binding.activityListTabViewPager;
-//        ButterKnife.bind(this);
-//        NCMB.initialize(Base.getContext(),
-//                BuildConfig.NCMB_APPLICATION_ID,
-//                BuildConfig.NCMB_CLIENT_KEY);
+
         createTab(getCurrentPosition());
     }
 
