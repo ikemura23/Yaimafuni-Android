@@ -10,6 +10,8 @@
 
         <import type="android.view.View"/>
 
+        <import type="android.text.TextUtils"/>
+
         <variable
             name="statusViewModel"
             type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailViewModel"
@@ -62,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="@{statusViewModel.hasComment()? View.VISIBLE : View.GONE}"
+                android:visibility="@{TextUtils.isEmpty(statusViewModel.portStatus.get().getComment())? View.GONE : View.VISIBLE}"
                 >
                 <!--区切り横線-->
                 <include
