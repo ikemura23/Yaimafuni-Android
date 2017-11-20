@@ -69,15 +69,17 @@
                             android:textSize="15sp"
                             />
 
-                        <!--<com.pnikosis.materialishprogress.ProgressWheel-->
-                        <!--android:id="@+id/activity_top_progress_bar"-->
-                        <!--android:layout_width="30dp"-->
-                        <!--android:layout_height="30dp"-->
-                        <!--android:layout_gravity="right|center_vertical"-->
-                        <!--android:layout_marginRight="16dp"-->
-                        <!--wheel:matProg_barColor="@color/white"-->
-                        <!--wheel:matProg_progressIndeterminate="true"-->
-                        <!--/>-->
+                        <ProgressBar
+                            android:id="@+id/activity_top_progressbar"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="end|center_vertical"
+                            android:layout_marginRight="16dp"
+                            android:indeterminate="true"
+                            android:indeterminateTint="@color/white"
+                            android:indeterminateTintMode="src_in"
+                            />
+
                     </android.support.v7.widget.CardView>
 
                     <!--運航情報-->

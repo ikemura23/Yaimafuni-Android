@@ -13,12 +13,18 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.TopCompanyInfo;
 import static android.content.ContentValues.TAG;
 
 /**
- * StatusDetailPresenter
+ * トップ画面のPresenter
  */
 public class TopPresenter implements Presenter<TopView> {
     private TopViewModel viewModel;
     private TopView view;
 
+    /**
+     * コンストラクタ
+     *
+     * @param view
+     * @param viewModel
+     */
     TopPresenter(TopView view, TopViewModel viewModel) {
         this.view = view;
         this.viewModel = viewModel;
@@ -27,6 +33,7 @@ public class TopPresenter implements Presenter<TopView> {
     @Override
     public void attachView(TopView view) {
         this.view = view;
+        view.showProgressBar();
     }
 
     @Override
@@ -34,8 +41,8 @@ public class TopPresenter implements Presenter<TopView> {
         view = null;
     }
 
-    protected void fetchData() {
-        String path = getTablePath();
+    protected void fetchTopStatus() {
+        String path = "top_company";
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(path);
 
@@ -43,7 +50,28 @@ public class TopPresenter implements Presenter<TopView> {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 TopCompanyInfo topCompanyInfo = dataSnapshot.getValue(TopCompanyInfo.class);
-                setViewModel(topCompanyInfo);
+                Log.d(TAG, "Value is: " + topCompanyInfo.toString());
+                onComplete(topCompanyInfo);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+    }
+
+    protected void fetchWeather() {
+        String path = "top_company";
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(path);
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                TopCompanyInfo topCompanyInfo = dataSnapshot.getValue(TopCompanyInfo.class);
+                Log.d(TAG, "Value is: " + topCompanyInfo.toString());
+                onComplete(topCompanyInfo);
             }
 
             @Override
@@ -54,17 +82,27 @@ public class TopPresenter implements Presenter<TopView> {
     }
 
     /**
-     * ViewModelにセット
+     * 通信が完了
      *
      * @param topCompanyInfo
      */
-    private void setViewModel(TopCompanyInfo topCompanyInfo) {
-        Log.d(TAG, "Value is: " + topCompanyInfo.toString());
-        // ViewModelにセット
+    private void onComplete(TopCompanyInfo topCompanyInfo) {
         viewModel.topCompany.set(topCompanyInfo);
+        setAneiStatus(topCompanyInfo.getAnei());
+        setYkfStatus(topCompanyInfo.getYkf());
+        setDreamStatus(topCompanyInfo.getDream());
+        view.hideProgressBar();
     }
 
-    public String getTablePath() {
-        return "top_company";
+    private void setAneiStatus(TopCompanyInfo.TopCompany anei) {
+        // TODO: 2017/11/21 ステータス表示を制御
+    }
+
+    private void setYkfStatus(TopCompanyInfo.TopCompany ykf) {
+        // TODO: 2017/11/21 ステータス表示を制御
+    }
+
+    private void setDreamStatus(TopCompanyInfo.TopCompany dream) {
+        // TODO: 2017/11/21 ステータス表示を制御
     }
 }

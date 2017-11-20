@@ -12,7 +12,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.databinding.ActivityMainBinding;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.setting.SettingActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.time_table.TimeTableTabActivity;
-import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil;
 
 /**
@@ -23,12 +22,13 @@ public class MainActivity extends AppCompatActivity implements TopView {
     private final String TAG = MainActivity.class.getSimpleName();
     private TopPresenter presenter;
     TopViewModel viewModel = new TopViewModel();
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         presenter = new TopPresenter(this, viewModel);
         binding.setPresenter(presenter);
         binding.setViewModel(viewModel);
@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements TopView {
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.fetchData();
+        presenter.fetchTopStatus();
+        presenter.fetchTopStatus();
     }
 
     public void onClick(View view) {
@@ -77,17 +78,12 @@ public class MainActivity extends AppCompatActivity implements TopView {
     }
 
     @Override
-    public void onClickedCompany(Company company) {
-
+    public void hideProgressBar() {
+        binding.activityTopProgressbar.setVisibility(View.GONE);
     }
 
     @Override
-    public void onClickedTimeTable() {
-
-    }
-
-    @Override
-    public void onClickedSetting() {
-
+    public void showProgressBar() {
+        binding.activityTopProgressbar.setVisibility(View.VISIBLE);
     }
 }
