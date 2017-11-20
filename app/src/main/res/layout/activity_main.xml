@@ -6,6 +6,15 @@
 
     <data>
 
+        <variable
+            name="presenter"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopPresenter"
+            />
+
+        <variable
+            name="viewModel"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopViewModel"
+            />
     </data>
 
     <RelativeLayout
