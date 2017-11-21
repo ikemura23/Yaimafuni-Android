@@ -2,25 +2,28 @@ package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail;
 
 import android.util.Log;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.base.Presenter;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.schedulers.Schedulers;
+
 import static android.content.ContentValues.TAG;
 
 /**
- * StatusDetailPresenter
+ * 運行詳細 Presenter
  */
 public class StatusDetailPresenter implements Presenter<StatusDetailView> {
     private StatusDetailViewModel viewModel;
     private StatusDetailView view;
     private Company company;
     private String portCode;
+    private CompositeDisposable mDisposable = new CompositeDisposable();
 
     StatusDetailPresenter(StatusDetailViewModel viewModel, Company company, String portCode) {
         this.viewModel = viewModel;
@@ -39,22 +42,21 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
     }
 
     protected void loadPortDetail() {
-        String path = getTablePath();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(path);
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                PortStatus portStatus = dataSnapshot.getValue(PortStatus.class);
-                setViewModel(portStatus);
-            }
+        mDisposable.add(
+                new ApiClient().getStatusDetail(getTablePath())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver<PortStatus>() {
+                            @Override
+                            public void onSuccess(@NonNull PortStatus portStatus) {
+                                setViewModel(portStatus);
+                            }
 
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
+                            @Override
+                            public void onError(@NonNull Throwable e) {
+                            }
+                        })
+        );
     }
 
     /**
@@ -70,7 +72,7 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
         viewModel.setStatusDrawable(portStatus.getStatus().getCode());
     }
 
-    public String getTablePath() {
+    private String getTablePath() {
         return company.getCode() + "/" + portCode;
     }
 

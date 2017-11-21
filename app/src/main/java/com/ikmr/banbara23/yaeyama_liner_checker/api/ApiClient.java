@@ -7,6 +7,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.TopCompanyInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo;
 
@@ -21,6 +22,9 @@ import static android.content.ContentValues.TAG;
  * APIクライアント
  */
 public class ApiClient {
+
+    private static final String WEATHER = "weather";
+    private static final String TOP_COMPANY = "top_company";
 
     public ApiClient() {
     }
@@ -42,7 +46,7 @@ public class ApiClient {
      * @return
      */
     public Single<WeatherInfo> getWeather() {
-        final DatabaseReference myRef = getRef("weather");
+        final DatabaseReference myRef = getRef(WEATHER);
         return Single.create(new SingleOnSubscribe<WeatherInfo>() {
             @Override
             public void subscribe(@NonNull final SingleEmitter<WeatherInfo> e) throws Exception {
@@ -65,8 +69,13 @@ public class ApiClient {
         });
     }
 
+    /**
+     * トップの会社ステータス
+     *
+     * @return
+     */
     public Single<TopCompanyInfo> getTopCompany() {
-        final DatabaseReference myRef = getRef("top_company");
+        final DatabaseReference myRef = getRef(TOP_COMPANY);
         return Single.create(new SingleOnSubscribe<TopCompanyInfo>() {
             @Override
             public void subscribe(@NonNull final SingleEmitter<TopCompanyInfo> e) throws Exception {
@@ -77,6 +86,36 @@ public class ApiClient {
                         TopCompanyInfo topCompanyInfo = dataSnapshot.getValue(TopCompanyInfo.class);
                         Log.d(TAG, "Value is: " + topCompanyInfo.toString());
                         e.onSuccess(topCompanyInfo);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        Log.w(TAG, "Failed to read value.", error.toException());
+                        e.onError(error.toException());
+                    }
+                });
+            }
+        });
+    }
+
+    /**
+     * 運行詳細のステータス
+     *
+     * @param path
+     * @return
+     */
+    public Single<PortStatus> getStatusDetail(String path) {
+        final DatabaseReference myRef = getRef(path);
+        return Single.create(new SingleOnSubscribe<PortStatus>() {
+            @Override
+            public void subscribe(@NonNull final SingleEmitter<PortStatus> e) throws Exception {
+                // APIリクエスト
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        PortStatus data = dataSnapshot.getValue(PortStatus.class);
+                        Log.d(TAG, "Value is: " + data.toString());
+                        e.onSuccess(data);
                     }
 
                     @Override
