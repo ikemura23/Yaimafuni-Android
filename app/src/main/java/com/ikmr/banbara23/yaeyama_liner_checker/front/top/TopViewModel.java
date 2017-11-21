@@ -9,7 +9,11 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.TopCompanyInfo;
  * Top画面のViewModel
  */
 public class TopViewModel {
-    ObservableField<TopCompanyInfo> topCompany = new ObservableField<>();
+    // ステータス
+    public ObservableField<TopCompanyInfo> topCompany = new ObservableField<>();
+
+    // 天気
+    public ObservableField<String> todayWeather = new ObservableField<>();
 
     ObservableInt aneiColor = new ObservableInt();
     ObservableInt ykfColor = new ObservableInt();

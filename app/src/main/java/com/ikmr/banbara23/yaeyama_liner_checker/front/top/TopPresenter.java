@@ -1,16 +1,15 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top;
 
-import android.util.Log;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.base.Presenter;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.TopCompanyInfo;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo;
 
-import static android.content.ContentValues.TAG;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * トップ画面のPresenter
@@ -18,6 +17,9 @@ import static android.content.ContentValues.TAG;
 public class TopPresenter implements Presenter<TopView> {
     private TopViewModel viewModel;
     private TopView view;
+    private ApiClient mApiClient;
+    private DisposableSingleObserver<WeatherInfo> mDisposableSingleObserver = null;
+    private CompositeDisposable mDisposable = new CompositeDisposable();
 
     /**
      * コンストラクタ
@@ -28,6 +30,8 @@ public class TopPresenter implements Presenter<TopView> {
     TopPresenter(TopView view, TopViewModel viewModel) {
         this.view = view;
         this.viewModel = viewModel;
+
+        mApiClient = new ApiClient();
     }
 
     @Override
@@ -38,47 +42,73 @@ public class TopPresenter implements Presenter<TopView> {
 
     @Override
     public void detachView() {
+        mDisposable.clear();
         view = null;
     }
 
-    protected void fetchTopStatus() {
-        String path = "top_company";
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(path);
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                TopCompanyInfo topCompanyInfo = dataSnapshot.getValue(TopCompanyInfo.class);
-                Log.d(TAG, "Value is: " + topCompanyInfo.toString());
-                onComplete(topCompanyInfo);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
+    public void onResume() {
+        fetchTopStatus();
+        fetchWeather();
     }
 
+    /**
+     * トップ用ステータスを取得
+     */
+    protected void fetchTopStatus() {
+        mDisposable.add(
+                mApiClient.getTopCompany()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver<TopCompanyInfo>() {
+                            @Override
+                            public void onSuccess(@NonNull TopCompanyInfo topCompanyInfo) {
+                                onComplete(topCompanyInfo);
+                            }
+
+                            @Override
+                            public void onError(@NonNull Throwable e) {
+                                view.hideProgressBar();
+                            }
+                        })
+        );
+    }
+
+    /**
+     * 天気を取得
+     */
     protected void fetchWeather() {
-        String path = "top_company";
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(path);
+        mDisposable.add(
+                mApiClient.getWeather()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver<WeatherInfo>() {
+                            @Override
+                            public void onSuccess(@NonNull WeatherInfo weatherInfo) {
+                                onCompleteFromWeather(weatherInfo);
+                            }
 
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                TopCompanyInfo topCompanyInfo = dataSnapshot.getValue(TopCompanyInfo.class);
-                Log.d(TAG, "Value is: " + topCompanyInfo.toString());
-                onComplete(topCompanyInfo);
-            }
+                            @Override
+                            public void onError(@NonNull Throwable e) {
+                            }
+                        })
+        );
+    }
 
-            @Override
-            public void onCancelled(DatabaseError error) {
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
+    /**
+     * 天気APIリクエスト完了
+     *
+     * @param weatherInfo
+     */
+    private void onCompleteFromWeather(WeatherInfo weatherInfo) {
+        if (weatherInfo.getToday() == null) {
+            return;
+        }
+        String weather = weatherInfo.getToday().getDate() +
+                " " +
+                weatherInfo.getToday().getWind() +
+                " 波" +
+                weatherInfo.getToday().getWave();
+        viewModel.todayWeather.set(weather);
     }
 
     /**

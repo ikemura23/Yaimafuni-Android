@@ -323,7 +323,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignTop="@+id/activity_bottom_view"
                 android:gravity="center_vertical"
-                android:text="天気"
+                android:text="@{viewModel.todayWeather}"
                 />
 
         </com.daasuu.bl.BubbleLayout>

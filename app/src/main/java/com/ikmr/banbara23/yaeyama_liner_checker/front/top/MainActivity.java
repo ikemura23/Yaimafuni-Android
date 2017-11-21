@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity implements TopView {
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.fetchTopStatus();
-        presenter.fetchTopStatus();
+        presenter.onResume();
     }
 
     public void onClick(View view) {
