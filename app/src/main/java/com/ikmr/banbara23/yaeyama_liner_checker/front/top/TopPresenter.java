@@ -1,5 +1,10 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top;
 
+import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
+import android.support.v4.content.ContextCompat;
+
+import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.base.Presenter;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.TopCompanyInfo;
@@ -95,6 +100,21 @@ public class TopPresenter implements Presenter<TopView> {
     }
 
     /**
+     * 通信が完了
+     *
+     * @param topCompanyInfo
+     */
+    private void onComplete(TopCompanyInfo topCompanyInfo) {
+        viewModel.topCompany.set(topCompanyInfo);
+
+        setStatus(topCompanyInfo.getAnei(), viewModel.aneiStatus, viewModel.aneiColor);
+        setStatus(topCompanyInfo.getYkf(), viewModel.ykfStatus, viewModel.ykfColor);
+        setStatus(topCompanyInfo.getDream(), viewModel.dreamStatus, viewModel.dreamColor);
+
+        view.hideProgressBar();
+    }
+
+    /**
      * 天気APIリクエスト完了
      *
      * @param weatherInfo
@@ -112,27 +132,31 @@ public class TopPresenter implements Presenter<TopView> {
     }
 
     /**
-     * 通信が完了
+     * ステータス値からTextViewの文字・色をセットする
      *
-     * @param topCompanyInfo
+     * @param company
+     * @param statusText
+     * @param colorInt
      */
-    private void onComplete(TopCompanyInfo topCompanyInfo) {
-        viewModel.topCompany.set(topCompanyInfo);
-        setAneiStatus(topCompanyInfo.getAnei());
-        setYkfStatus(topCompanyInfo.getYkf());
-        setDreamStatus(topCompanyInfo.getDream());
-        view.hideProgressBar();
-    }
-
-    private void setAneiStatus(TopCompanyInfo.TopCompany anei) {
-        // TODO: 2017/11/21 ステータス表示を制御
-    }
-
-    private void setYkfStatus(TopCompanyInfo.TopCompany ykf) {
-        // TODO: 2017/11/21 ステータス表示を制御
-    }
-
-    private void setDreamStatus(TopCompanyInfo.TopCompany dream) {
-        // TODO: 2017/11/21 ステータス表示を制御
+    private void setStatus(TopCompanyInfo.TopCompany company, ObservableField<String> statusText, ObservableInt colorInt) {
+        String status;
+        int color;
+        if (company.getCancel() > 0) {
+            status = "欠航あり";
+            color = ContextCompat.getColor(view.getContext(), R.color.status_cancel);
+        } else if (company.getSuspend() > 0) {
+            status = "運休あり";
+            color = ContextCompat.getColor(view.getContext(), R.color.status_cancel);
+        } else if (company.getCation() > 0) {
+            status = "注意あり";
+            color = ContextCompat.getColor(view.getContext(), R.color.status_cation);
+        } else {
+            status = "通常運行";
+            color = ContextCompat.getColor(view.getContext(), R.color.status_normal);
+        }
+        // ステータス文字
+        statusText.set(status);
+        // 文字色
+        colorInt.set(color);
     }
 }

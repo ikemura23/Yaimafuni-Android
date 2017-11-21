@@ -179,9 +179,11 @@
                             android:layout_marginEnd="16dp"
                             android:layout_marginRight="16dp"
                             android:gravity="center_vertical"
-                            android:textColor="@color/status_normal"
+                            android:text="@{viewModel.aneiStatus}"
+                            android:textColor="@{viewModel.aneiColor}"
                             android:textSize="15sp"
                             tools:text="通常運航"
+                            tools:textColor="@color/status_normal"
                             />
 
                         <TextView
@@ -194,9 +196,11 @@
                             android:layout_marginEnd="16dp"
                             android:layout_marginRight="16dp"
                             android:gravity="center_vertical"
-                            android:textColor="@color/status_cancel"
+                            android:text="@{viewModel.ykfStatus}"
+                            android:textColor="@{viewModel.ykfColor}"
                             android:textSize="15sp"
                             tools:text="欠航あり"
+                            tools:textColor="@color/status_cancel"
                             />
 
                         <TextView
@@ -209,9 +213,11 @@
                             android:layout_marginEnd="16dp"
                             android:layout_marginRight="16dp"
                             android:gravity="center_vertical"
-                            android:textColor="@color/status_cation"
+                            android:text="@{viewModel.dreamStatus}"
+                            android:textColor="@{viewModel.dreamColor}"
                             android:textSize="15sp"
                             tools:text="注意あり"
+                            tools:textColor="@color/status_cation"
                             />
                     </RelativeLayout>
                 </LinearLayout>

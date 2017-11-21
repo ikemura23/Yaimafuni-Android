@@ -15,11 +15,11 @@ public class TopViewModel {
     // 天気
     public ObservableField<String> todayWeather = new ObservableField<>();
 
-    ObservableInt aneiColor = new ObservableInt();
-    ObservableInt ykfColor = new ObservableInt();
-    ObservableInt dreamColor = new ObservableInt();
+    public ObservableInt aneiColor = new ObservableInt();
+    public ObservableInt ykfColor = new ObservableInt();
+    public ObservableInt dreamColor = new ObservableInt();
 
-    ObservableField<String> aneiStatus = new ObservableField<>();
-    ObservableField<String> ykfStatus = new ObservableField<>();
-    ObservableField<String> dreamStatus = new ObservableField<>();
+    public ObservableField<String> aneiStatus = new ObservableField<>();
+    public ObservableField<String> ykfStatus = new ObservableField<>();
+    public ObservableField<String> dreamStatus = new ObservableField<>();
 }
