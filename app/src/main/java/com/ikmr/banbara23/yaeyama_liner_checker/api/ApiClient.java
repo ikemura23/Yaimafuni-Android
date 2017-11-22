@@ -7,6 +7,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.TopCompanyInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo;
@@ -114,6 +115,36 @@ public class ApiClient {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         PortStatus data = dataSnapshot.getValue(PortStatus.class);
+                        Log.d(TAG, "Value is: " + data.toString());
+                        e.onSuccess(data);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        Log.w(TAG, "Failed to read value.", error.toException());
+                        e.onError(error.toException());
+                    }
+                });
+            }
+        });
+    }
+
+    /**
+     * 運行ステータス以外の情報
+     *
+     * @param port
+     * @return
+     */
+    public Single<DetailLinerInfo> getDetailLinerInfo(String port) {
+        final DatabaseReference myRef = getRef(port);
+        return Single.create(new SingleOnSubscribe<DetailLinerInfo>() {
+            @Override
+            public void subscribe(@NonNull final SingleEmitter<DetailLinerInfo> e) throws Exception {
+                // APIリクエスト
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        DetailLinerInfo data = dataSnapshot.getValue(DetailLinerInfo.class);
                         Log.d(TAG, "Value is: " + data.toString());
                         e.onSuccess(data);
                     }

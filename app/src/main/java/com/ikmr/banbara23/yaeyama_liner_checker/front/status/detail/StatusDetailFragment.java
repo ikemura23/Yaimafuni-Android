@@ -40,7 +40,13 @@ public class StatusDetailFragment extends BaseFragment implements StatusDetailVi
     @Override
     public void onResume() {
         super.onResume();
-        presenter.loadPortDetail();
+        presenter.onResume();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.onStop();
     }
 
     @Override

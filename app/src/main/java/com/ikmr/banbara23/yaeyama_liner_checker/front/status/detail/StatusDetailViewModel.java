@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.Base;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 
 /**
@@ -17,6 +18,8 @@ public class StatusDetailViewModel {
     public ObservableField<PortStatus> portStatus = new ObservableField<>();
 
     public ObservableField<Drawable> statusImage = new ObservableField<>();
+
+    public ObservableField<DetailLinerInfo> detailLinerInfo = new ObservableField<>();
 
     public boolean hasComment() {
         if (portStatus != null) {
