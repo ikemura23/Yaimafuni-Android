@@ -1,85 +1,88 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * 運行ステータス以外の情報
  */
-public class DetailLinerInfo {
+public class DetailLinerInfo implements Parcelable {
 
-    @SerializedName("driving_time")
-    private String driving_time;
-    @SerializedName("adult_one_way_fare")
-    private int adult_one_way_fare;
-    @SerializedName("adult_round_trip_fare")
-    private int adult_round_trip_fare;
-    @SerializedName("child_one_way_fare")
-    private int child_one_way_fare;
-    @SerializedName("child_round_trip_fare")
-    private int child_round_trip_fare;
-    @SerializedName("disability_one_way_fare")
-    private int disability_one_way_fare;
-    @SerializedName("disability_round_trip_fare")
-    private int disability_round_trip_fare;
+    @SerializedName("drivingTime")
+    private String drivingTime;
+    @SerializedName("adultOneWayFare")
+    private int adultOneWayFare;
+    @SerializedName("adultRoundTripFare")
+    private int adultRoundTripFare;
+    @SerializedName("childOneWayFare")
+    private int childOneWayFare;
+    @SerializedName("childRoundTripFare")
+    private int childRoundTripFare;
+    @SerializedName("disabilityOneWayFare")
+    private int disabilityOneWayFare;
+    @SerializedName("disabilityRoundTripFare")
+    private int disabilityRoundTripFare;
     @SerializedName("url")
     private String url;
     @SerializedName("tell")
     private String tell;
 
-    public String getDriving_time() {
-        return driving_time;
+    public String getDrivingTime() {
+        return drivingTime;
     }
 
-    public void setDriving_time(String driving_time) {
-        this.driving_time = driving_time;
+    public void setDrivingTime(String drivingTime) {
+        this.drivingTime = drivingTime;
     }
 
-    public int getAdult_one_way_fare() {
-        return adult_one_way_fare;
+    public int getAdultOneWayFare() {
+        return adultOneWayFare;
     }
 
-    public void setAdult_one_way_fare(int adult_one_way_fare) {
-        this.adult_one_way_fare = adult_one_way_fare;
+    public void setAdultOneWayFare(int adultOneWayFare) {
+        this.adultOneWayFare = adultOneWayFare;
     }
 
-    public int getAdult_round_trip_fare() {
-        return adult_round_trip_fare;
+    public int getAdultRoundTripFare() {
+        return adultRoundTripFare;
     }
 
-    public void setAdult_round_trip_fare(int adult_round_trip_fare) {
-        this.adult_round_trip_fare = adult_round_trip_fare;
+    public void setAdultRoundTripFare(int adultRoundTripFare) {
+        this.adultRoundTripFare = adultRoundTripFare;
     }
 
-    public int getChild_one_way_fare() {
-        return child_one_way_fare;
+    public int getChildOneWayFare() {
+        return childOneWayFare;
     }
 
-    public void setChild_one_way_fare(int child_one_way_fare) {
-        this.child_one_way_fare = child_one_way_fare;
+    public void setChildOneWayFare(int childOneWayFare) {
+        this.childOneWayFare = childOneWayFare;
     }
 
-    public int getChild_round_trip_fare() {
-        return child_round_trip_fare;
+    public int getChildRoundTripFare() {
+        return childRoundTripFare;
     }
 
-    public void setChild_round_trip_fare(int child_round_trip_fare) {
-        this.child_round_trip_fare = child_round_trip_fare;
+    public void setChildRoundTripFare(int childRoundTripFare) {
+        this.childRoundTripFare = childRoundTripFare;
     }
 
-    public int getDisability_one_way_fare() {
-        return disability_one_way_fare;
+    public int getDisabilityOneWayFare() {
+        return disabilityOneWayFare;
     }
 
-    public void setDisability_one_way_fare(int disability_one_way_fare) {
-        this.disability_one_way_fare = disability_one_way_fare;
+    public void setDisabilityOneWayFare(int disabilityOneWayFare) {
+        this.disabilityOneWayFare = disabilityOneWayFare;
     }
 
-    public int getDisability_round_trip_fare() {
-        return disability_round_trip_fare;
+    public int getDisabilityRoundTripFare() {
+        return disabilityRoundTripFare;
     }
 
-    public void setDisability_round_trip_fare(int disability_round_trip_fare) {
-        this.disability_round_trip_fare = disability_round_trip_fare;
+    public void setDisabilityRoundTripFare(int disabilityRoundTripFare) {
+        this.disabilityRoundTripFare = disabilityRoundTripFare;
     }
 
     public String getUrl() {
@@ -101,15 +104,60 @@ public class DetailLinerInfo {
     @Override
     public String toString() {
         return "DetailLinerInfo{" +
-                "driving_time='" + driving_time + '\'' +
-                ", adult_one_way_fare=" + adult_one_way_fare +
-                ", adult_round_trip_fare=" + adult_round_trip_fare +
-                ", child_one_way_fare=" + child_one_way_fare +
-                ", child_round_trip_fare=" + child_round_trip_fare +
-                ", disability_one_way_fare=" + disability_one_way_fare +
-                ", disability_round_trip_fare=" + disability_round_trip_fare +
+                "drivingTime='" + drivingTime + '\'' +
+                ", adultOneWayFare=" + adultOneWayFare +
+                ", adultRoundTripFare=" + adultRoundTripFare +
+                ", childOneWayFare=" + childOneWayFare +
+                ", childRoundTripFare=" + childRoundTripFare +
+                ", disabilityOneWayFare=" + disabilityOneWayFare +
+                ", disabilityRoundTripFare=" + disabilityRoundTripFare +
                 ", url='" + url + '\'' +
                 ", tell='" + tell + '\'' +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.drivingTime);
+        dest.writeInt(this.adultOneWayFare);
+        dest.writeInt(this.adultRoundTripFare);
+        dest.writeInt(this.childOneWayFare);
+        dest.writeInt(this.childRoundTripFare);
+        dest.writeInt(this.disabilityOneWayFare);
+        dest.writeInt(this.disabilityRoundTripFare);
+        dest.writeString(this.url);
+        dest.writeString(this.tell);
+    }
+
+    public DetailLinerInfo() {
+    }
+
+    protected DetailLinerInfo(Parcel in) {
+        this.drivingTime = in.readString();
+        this.adultOneWayFare = in.readInt();
+        this.adultRoundTripFare = in.readInt();
+        this.childOneWayFare = in.readInt();
+        this.childRoundTripFare = in.readInt();
+        this.disabilityOneWayFare = in.readInt();
+        this.disabilityRoundTripFare = in.readInt();
+        this.url = in.readString();
+        this.tell = in.readString();
+    }
+
+    public static final Parcelable.Creator<DetailLinerInfo> CREATOR = new Parcelable.Creator<DetailLinerInfo>() {
+        @Override
+        public DetailLinerInfo createFromParcel(Parcel source) {
+            return new DetailLinerInfo(source);
+        }
+
+        @Override
+        public DetailLinerInfo[] newArray(int size) {
+            return new DetailLinerInfo[size];
+        }
+    };
 }

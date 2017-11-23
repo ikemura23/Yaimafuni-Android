@@ -23,6 +23,7 @@ public class StatusDetailFragment extends BaseFragment implements StatusDetailVi
     private static final String TAG = StatusDetailFragment.class.getSimpleName();
     StatusDetailFragmentBinding binding;
     StatusDetailViewModel viewModel = new StatusDetailViewModel();
+    LinerInfoViewModel linerViewModel = new LinerInfoViewModel();
     StatusDetailPresenter presenter;
 
     /**
@@ -53,9 +54,10 @@ public class StatusDetailFragment extends BaseFragment implements StatusDetailVi
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false);
 
-        presenter = new StatusDetailPresenter(viewModel, getArgCompany(), getArgPortCode());
+        presenter = new StatusDetailPresenter(viewModel, linerViewModel, getArgCompany(), getArgPortCode());
         presenter.attachView(this);
         binding.setStatusViewModel(viewModel);
+        binding.setLinerInfoViewModel(linerViewModel);
         binding.setPresenter(presenter);
 
         return binding.getRoot();

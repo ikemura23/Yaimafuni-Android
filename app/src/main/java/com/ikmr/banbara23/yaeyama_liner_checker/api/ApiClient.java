@@ -140,8 +140,8 @@ public class ApiClient {
         return Single.create(new SingleOnSubscribe<DetailLinerInfo>() {
             @Override
             public void subscribe(@NonNull final SingleEmitter<DetailLinerInfo> e) throws Exception {
-                // APIリクエスト
-                myRef.addValueEventListener(new ValueEventListener() {
+                // データの 1 回読み取り
+                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         DetailLinerInfo data = dataSnapshot.getValue(DetailLinerInfo.class);

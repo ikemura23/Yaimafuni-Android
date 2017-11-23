@@ -1,79 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    style="@style/detail_card"
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.LinerInfoViewModel"
+            />
+    </data>
+
+    <android.support.v7.widget.CardView
+        style="@style/detail_card"
+
         >
 
-        <!--距離-->
-        <LinearLayout
-            android:id="@+id/view_status_detail_top_distance_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="距離"
-                android:textSize="16sp"
-                />
-
-            <!--区切り横線-->
-            <include layout="@layout/view_time_table_line_yoko"/>
-
-            <TextView
-                android:id="@+id/view_status_detail_top_distance_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textSize="16sp"
-                tools:text="6.6キロ"
-                />
-
-        </LinearLayout>
-
-        <!--所要時間-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:weightSum="2"
             >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="走行時間"
-                android:textSize="16sp"
-                />
+            <!--距離-->
+            <!--<LinearLayout-->
+            <!--android:id="@+id/view_status_detail_top_distance_layout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:orientation="vertical"-->
+            <!--&gt;-->
 
-            <!--区切り横線-->
-            <include layout="@layout/view_time_table_line_yoko"/>
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:text="距離"-->
+            <!--android:textSize="16sp"-->
+            <!--/>-->
 
-            <TextView
-                android:id="@+id/view_status_detail_top_time_text"
-                android:layout_width="wrap_content"
+            <!--&lt;!&ndash;区切り横線&ndash;&gt;-->
+            <!--<include layout="@layout/view_time_table_line_yoko"/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/view_status_detail_top_distance_text"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:textSize="16sp"-->
+            <!--tools:text="6.6キロ"-->
+            <!--/>-->
+
+            <!--</LinearLayout>-->
+
+            <!--所要時間-->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textSize="16sp"
-                tools:text="10分"
-                />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="走行時間"
+                    android:textSize="16sp"
+                    />
+
+                <!--区切り横線-->
+                <include layout="@layout/view_time_table_line_yoko"/>
+
+                <TextView
+                    android:id="@+id/view_status_detail_top_time_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"
+                    android:text="@{viewModel.detailLinerInfo.get().drivingTime}"
+                    tools:text="10分"
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
-
-</android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>
+</layout>

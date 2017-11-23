@@ -17,13 +17,15 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class StatusDetailPresenter implements Presenter<StatusDetailView> {
     private StatusDetailViewModel viewModel;
+    private LinerInfoViewModel linerViewModel;
     private StatusDetailView view;
     private Company company;
     private String portCode;
     private CompositeDisposable mDisposable = new CompositeDisposable();
 
-    StatusDetailPresenter(StatusDetailViewModel viewModel, Company company, String portCode) {
+    StatusDetailPresenter(StatusDetailViewModel viewModel, LinerInfoViewModel linerViewModel, Company company, String portCode) {
         this.viewModel = viewModel;
+        this.linerViewModel = linerViewModel;
         this.company = company;
         this.portCode = portCode;
     }
@@ -106,7 +108,7 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
      */
     private void setViewModelOfLinerInfo(DetailLinerInfo detailLinerInfo) {
         // ViewModelにセット
-        viewModel.detailLinerInfo.set(detailLinerInfo);
+        linerViewModel.detailLinerInfo.set(detailLinerInfo);
     }
 
     private String getTablePath() {

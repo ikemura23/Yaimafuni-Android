@@ -13,6 +13,11 @@
             />
 
         <variable
+            name="linerInfoViewModel"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.LinerInfoViewModel"
+            />
+
+        <variable
             name="presenter"
             type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailPresenter"
             />
@@ -46,6 +51,7 @@
             <!--時間と距離-->
             <include
                 layout="@layout/view_status_detail_distance_time"
+                app:viewModel="@{linerInfoViewModel}"
                 />
 
             <!--料金-->
