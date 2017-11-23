@@ -132,11 +132,11 @@ public class ApiClient {
     /**
      * 運行ステータス以外の情報
      *
-     * @param port
+     * @param path
      * @return
      */
-    public Single<DetailLinerInfo> getDetailLinerInfo(String port) {
-        final DatabaseReference myRef = getRef(port);
+    public Single<DetailLinerInfo> getDetailLinerInfo(final String path) {
+        final DatabaseReference myRef = getRef(path);
         return Single.create(new SingleOnSubscribe<DetailLinerInfo>() {
             @Override
             public void subscribe(@NonNull final SingleEmitter<DetailLinerInfo> e) throws Exception {
@@ -145,6 +145,10 @@ public class ApiClient {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         DetailLinerInfo data = dataSnapshot.getValue(DetailLinerInfo.class);
+                        if (data == null) {
+                            e.onError(new Exception(path + " api response is Null"));
+                            return;
+                        }
                         Log.d(TAG, "Value is: " + data.toString());
                         e.onSuccess(data);
                     }

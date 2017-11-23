@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
             name="viewModel"
             type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.LinerInfoViewModel"
@@ -128,6 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:textSize="16sp"
+                    android:visibility="@{viewModel.detailLinerInfo.get().childOneWayFare == 0 ? View.GONE : View.VISIBLE}"
                     android:text='@{viewModel.detailLinerInfo.get().childOneWayFare + "円"}'
                     tools:text="3,090円"
                     android:layout_weight="1"
@@ -137,6 +140,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:visibility="@{viewModel.detailLinerInfo.get().childRoundTripFare == 0 ? View.GONE : View.VISIBLE}"
                     android:textSize="16sp"
                     android:text='@{viewModel.detailLinerInfo.get().childRoundTripFare + "円"}'
                     tools:text="3,090円"
@@ -168,6 +172,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:textSize="16sp"
+                    android:visibility="@{viewModel.detailLinerInfo.get().disabilityOneWayFare == 0 ? View.GONE : View.VISIBLE}"
                     android:text='@{viewModel.detailLinerInfo.get().disabilityOneWayFare + "円"}'
                     tools:text="3,090円"
                     android:layout_weight="1"
@@ -178,6 +183,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:textSize="16sp"
+                    android:visibility="@{viewModel.detailLinerInfo.get().disabilityRoundTripFare == 0 ? View.GONE : View.VISIBLE}"
                     android:text='@{viewModel.detailLinerInfo.get().disabilityRoundTripFare + "円"}'
                     tools:text="3,090円"
                     android:layout_weight="1"

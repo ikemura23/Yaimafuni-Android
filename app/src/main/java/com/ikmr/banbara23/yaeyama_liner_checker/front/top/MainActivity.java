@@ -12,6 +12,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.databinding.ActivityMainBinding;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.setting.SettingActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.time_table.TimeTableTabActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil;
 
 /**
@@ -44,13 +45,13 @@ public class MainActivity extends AppCompatActivity implements TopView {
 
         switch (view.getId()) {
             case R.id.top_activity_annei:
-                startActivity(new Intent(this, StatusListTabActivity.class));
+                startListActivity(Company.ANEI);
                 break;
             case R.id.top_activity_ykf:
-                startActivity(new Intent(this, StatusListTabActivity.class));
+                startListActivity(Company.YKF);
                 break;
             case R.id.top_activity_dream:
-                startActivity(new Intent(this, StatusListTabActivity.class));
+                startListActivity(Company.DREAM);
                 break;
             case R.id.top_activity_timetable:
                 startActivity(new Intent(this, TimeTableTabActivity.class));
@@ -62,6 +63,12 @@ public class MainActivity extends AppCompatActivity implements TopView {
                 CustomTabUtil.start(this, "https://tenki.jp/forecast/10/50/9410/47207/3hours.html");
                 break;
         }
+    }
+
+    private void startListActivity(Company company) {
+        Intent intent = new Intent(this, StatusListTabActivity.class);
+        intent.putExtra(StatusListTabActivity.class.getCanonicalName(), company);
+        startActivity(intent);
     }
 
     @Override
