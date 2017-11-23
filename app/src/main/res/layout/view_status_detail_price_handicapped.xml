@@ -1,120 +1,190 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    style="@style/detail_card"
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.LinerInfoViewModel"
+            />
+    </data>
+
+    <android.support.v7.widget.CardView
+        style="@style/detail_card"
         >
 
-        <!--ヘッダー-->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
 
-            <!--ヘッダー文字-->
-            <TextView
-                android:layout_width="wrap_content"
+            <!--ヘッダー-->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginBottom="8dp"
-                android:text="料金"
-                android:textSize="16sp"
-                />
+                android:orientation="horizontal"
+                android:weightSum="3"
+                >
+
+                <!--ヘッダー文字-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:text="料金"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="8dp"
+                    android:text="片道"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="8dp"
+                    android:text="往復"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+
+
+            <include layout="@layout/view_time_table_line_yoko"/>
+
+            <!--大人-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="大人"
+                    android:textSize="16sp"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:text='@{viewModel.detailLinerInfo.get().adultOneWayFare + "円"}'
+                    tools:text="3,090円"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:text='@{viewModel.detailLinerInfo.get().adultRoundTripFare + "円"}'
+                    tools:text="3,090円"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+            <!--子ども-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="子供"
+                    android:textSize="16sp"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:text='@{viewModel.detailLinerInfo.get().childOneWayFare + "円"}'
+                    tools:text="3,090円"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:text='@{viewModel.detailLinerInfo.get().childRoundTripFare + "円"}'
+                    tools:text="3,090円"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+            <!--障害者-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="障害者"
+                    android:textSize="16sp"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:text='@{viewModel.detailLinerInfo.get().disabilityOneWayFare + "円"}'
+                    tools:text="3,090円"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:text='@{viewModel.detailLinerInfo.get().disabilityRoundTripFare + "円"}'
+                    tools:text="3,090円"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
 
         </LinearLayout>
 
-        <include layout="@layout/view_time_table_line_yoko"/>
-
-        <!--大人-->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="大人"
-                android:textSize="16sp"
-                />
-
-            <TextView
-                android:id="@+id/view_status_detail_price_adult"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textSize="16sp"
-                tools:text="片道 3,090円\n往復 5,870円"
-                />
-        </LinearLayout>
-
-        <!--子ども-->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="子ども"
-                android:textSize="16sp"
-                />
-
-            <TextView
-                android:id="@+id/view_status_detail_top_price_child"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textSize="16sp"
-                tools:text="片道 1,540円\n往復 2,930円"
-                />
-
-        </LinearLayout>
-
-        <!--障害者-->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="障害者"
-                android:textSize="16sp"
-                />
-
-            <TextView
-                android:id="@+id/view_status_detail_price_handicapped"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textSize="16sp"
-                tools:text="片道 1,550円"
-                />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>
+</layout>

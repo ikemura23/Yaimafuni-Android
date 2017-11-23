@@ -57,6 +57,7 @@
             <!--料金-->
             <include
                 layout="@layout/view_status_detail_price_handicapped"
+                app:viewModel="@{linerInfoViewModel}"
                 />
 
             <!--アクション-->
