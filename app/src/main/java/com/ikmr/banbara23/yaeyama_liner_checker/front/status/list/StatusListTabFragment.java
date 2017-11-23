@@ -4,19 +4,14 @@ package com.ikmr.banbara23.yaeyama_liner_checker.front.status.list;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseListFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailActivity;
@@ -28,6 +23,12 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.schedulers.Schedulers;
+
 /**
  * 一覧タブListFragment
  */
@@ -38,7 +39,7 @@ public class StatusListTabFragment extends BaseListFragment {
     TextView mTitleText;
     TextView mUpdateText;
     View mHeaderView;
-
+    private CompositeDisposable mDisposable = new CompositeDisposable();
 //    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     /**
@@ -81,6 +82,7 @@ public class StatusListTabFragment extends BaseListFragment {
     @Override
     public void onPause() {
         super.onPause();
+        mDisposable.clear();
     }
 
     @Override
@@ -115,32 +117,22 @@ public class StatusListTabFragment extends BaseListFragment {
         mListAdapter.clear();
         setListAdapter(mListAdapter);
 
-        String table = "";
-        switch (getCompany()) {
-            case ANEI:
-                table = "anei";
-                break;
-            case YKF:
-                table = "ykf";
-                break;
-            case DREAM:
-                table = "dream";
-                break;
-        }
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(table);
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                CompanyStatus companyStatus = dataSnapshot.getValue(CompanyStatus.class);
-                onResultListQuery(companyStatus);
-            }
+        mDisposable.add(
+                new ApiClient().getCompanyStatus(getCompany().getCode())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver<CompanyStatus>() {
+                            @Override
+                            public void onSuccess(@NonNull CompanyStatus companyStatus) {
+                                onResultListQuery(companyStatus);
+                            }
 
-            @Override
-            public void onCancelled(DatabaseError error) {
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
+                            @Override
+                            public void onError(@NonNull Throwable e) {
+                                e.fillInStackTrace();
+                            }
+                        })
+        );
     }
 
     /**
