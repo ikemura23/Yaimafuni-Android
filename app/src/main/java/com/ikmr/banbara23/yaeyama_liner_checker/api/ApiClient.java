@@ -11,6 +11,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.CompanyStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.TopCompanyInfo;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo;
 
 import io.reactivex.Single;
@@ -174,6 +175,34 @@ public class ApiClient {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         CompanyStatus data = dataSnapshot.getValue(CompanyStatus.class);
+                        if (data == null) {
+                            e.onError(new Exception(path + " api response is Null"));
+                            return;
+                        }
+                        Log.d(TAG, "Value is: " + data.toString());
+                        e.onSuccess(data);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        Log.w(TAG, "Failed to read value.", error.toException());
+                        e.onError(error.toException());
+                    }
+                });
+            }
+        });
+    }
+
+    public Single<TimeTable> getTimeTable(final String path) {
+        final DatabaseReference myRef = getRef(path);
+        return Single.create(new SingleOnSubscribe<TimeTable>() {
+            @Override
+            public void subscribe(@NonNull final SingleEmitter<TimeTable> e) throws Exception {
+                // データの 1 回読み取り
+                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        TimeTable data = dataSnapshot.getValue(TimeTable.class);
                         if (data == null) {
                             e.onError(new Exception(path + " api response is Null"));
                             return;

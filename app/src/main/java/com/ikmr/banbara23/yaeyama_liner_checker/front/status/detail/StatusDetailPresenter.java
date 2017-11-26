@@ -1,10 +1,13 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail;
 
+import android.util.Log;
+
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.base.Presenter;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
@@ -16,6 +19,7 @@ import io.reactivex.schedulers.Schedulers;
  * 運行詳細 Presenter
  */
 public class StatusDetailPresenter implements Presenter<StatusDetailView> {
+    private String TAG = StatusDetailPresenter.class.getSimpleName();
     private StatusDetailViewModel viewModel;
     private LinerInfoViewModel linerViewModel;
     private StatusDetailView view;
@@ -43,12 +47,16 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
     public void onResume() {
         loadPortDetail();
         loadDetailLinerInfo();
+        loadTimeTable();
     }
 
     public void onStop() {
         mDisposable.clear();
     }
 
+    /**
+     * 運行情報
+     */
     protected void loadPortDetail() {
         mDisposable.add(
                 new ApiClient().getStatusDetail(getTablePath())
@@ -67,6 +75,9 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
         );
     }
 
+    /**
+     * 運行ステータス以外の情報
+     */
     protected void loadDetailLinerInfo() {
         mDisposable.add(
                 new ApiClient().getDetailLinerInfo(getDetailLinerInfoPath())
@@ -80,6 +91,29 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
 
                             @Override
                             public void onError(@NonNull Throwable e) {
+                            }
+                        })
+        );
+    }
+
+    /**
+     * タイムテーブル
+     */
+    private void loadTimeTable() {
+        String path = company.getCode() + "_timeTable/" + portCode;
+        mDisposable.add(
+                new ApiClient().getTimeTable(path)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver<TimeTable>() {
+                            @Override
+                            public void onSuccess(@NonNull TimeTable timeTable) {
+                                Log.d(TAG, timeTable.toString());
+                            }
+
+                            @Override
+                            public void onError(@NonNull Throwable e) {
+
                             }
                         })
         );
