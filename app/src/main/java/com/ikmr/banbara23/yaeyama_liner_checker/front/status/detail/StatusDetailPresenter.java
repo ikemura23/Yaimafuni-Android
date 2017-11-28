@@ -22,14 +22,16 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
     private String TAG = StatusDetailPresenter.class.getSimpleName();
     private StatusDetailViewModel viewModel;
     private LinerInfoViewModel linerViewModel;
+    private TimeTableViewModel timeTableViewModel;
     private StatusDetailView view;
     private Company company;
     private String portCode;
     private CompositeDisposable mDisposable = new CompositeDisposable();
 
-    StatusDetailPresenter(StatusDetailViewModel viewModel, LinerInfoViewModel linerViewModel, Company company, String portCode) {
+    StatusDetailPresenter(StatusDetailViewModel viewModel, LinerInfoViewModel linerViewModel, TimeTableViewModel timeTableViewModel, Company company, String portCode) {
         this.viewModel = viewModel;
         this.linerViewModel = linerViewModel;
+        this.timeTableViewModel = timeTableViewModel;
         this.company = company;
         this.portCode = portCode;
     }
@@ -108,6 +110,7 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
                         .subscribeWith(new DisposableSingleObserver<TimeTable>() {
                             @Override
                             public void onSuccess(@NonNull TimeTable timeTable) {
+                                setTimeTableViewModel(timeTable);
                                 Log.d(TAG, timeTable.toString());
                             }
 
@@ -117,6 +120,15 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
                             }
                         })
         );
+    }
+
+    private void setTimeTableViewModel(TimeTable timeTable) {
+        if (timeTable.getHeader() != null) {
+            timeTableViewModel.header.set(timeTable.getHeader());
+        }
+        if (timeTable.getRow() != null || !timeTable.getRow().isEmpty()) {
+            timeTableViewModel.rows.addAll(timeTable.getRow());
+        }
     }
 
     private String getDetailLinerInfoPath() {

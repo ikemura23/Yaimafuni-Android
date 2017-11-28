@@ -8,6 +8,11 @@
     <data>
 
         <import type="android.view.View"/>
+
+        <variable
+            name="row"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.Row"
+            />
     </data>
 
     <android.support.constraint.ConstraintLayout

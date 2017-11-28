@@ -1,36 +1,32 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <data>
 
+        <variable
+            name="timeTableViewModel"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.TimeTableViewModel"
+            />
     </data>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <android.support.v7.widget.CardView
+        android:id="@+id/fragment_time_annei_table_timetable_view"
+        style="@style/detail_card"
         >
 
         <include
             layout="@layout/time_table_header"
+            app:header="@{timeTableViewModel.header}"
             />
 
-        <include
-            layout="@layout/time_table_row"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:inflateData="@{timeTableViewModel.rows}"
             />
 
-        <include
-            layout="@layout/time_table_row"
-            />
-
-        <include
-            layout="@layout/time_table_row"
-            />
-
-        <include
-            layout="@layout/time_table_row"
-            />
-
-    </LinearLayout>
+    </android.support.v7.widget.CardView>
 </layout>
