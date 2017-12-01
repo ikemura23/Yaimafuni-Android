@@ -16,17 +16,23 @@
         style="@style/detail_card"
         >
 
-        <include
-            layout="@layout/time_table_header"
-            app:header="@{timeTableViewModel.header}"
-            />
-
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:inflateData="@{timeTableViewModel.rows}"
-            />
+            android:orientation="vertical"
+            >
 
+            <include
+                layout="@layout/time_table_header"
+                app:header="@{timeTableViewModel.header}"
+                />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:inflateData="@{timeTableViewModel.rows}"
+                />
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 </layout>

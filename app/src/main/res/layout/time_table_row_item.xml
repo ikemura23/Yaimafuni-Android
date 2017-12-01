@@ -6,6 +6,11 @@
     <data>
 
         <import type="android.view.View"/>
+
+        <variable
+            name="item"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.Item"
+            />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -22,7 +27,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/linearLayout3"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             >
@@ -30,14 +34,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="09:00"
+                android:text="@{item.time}"
                 android:layout_marginRight="16dp"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="通常運行"
+                android:text="@{item.status.text}"
                 />
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>

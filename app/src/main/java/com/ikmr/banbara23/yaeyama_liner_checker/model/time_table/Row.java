@@ -3,13 +3,9 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model.time_table;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Row implements Parcelable {
-    @SerializedName("left")
-    public Left left;
-    @SerializedName("right")
-    public Right right;
+    private Item left;
+    private Item right;
 
     @Override
     public int describeContents() {
@@ -42,19 +38,19 @@ public class Row implements Parcelable {
         }
     };
 
-    public Left getLeft() {
+    public Item getLeft() {
         return left;
     }
 
-    public void setLeft(Left left) {
+    public void setLeft(Item left) {
         this.left = left;
     }
 
-    public Right getRight() {
+    public Item getRight() {
         return right;
     }
 
-    public void setRight(Right right) {
+    public void setRight(Item right) {
         this.right = right;
     }
 }
