@@ -12,8 +12,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.databinding.ActivityMainBinding;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.setting.SettingActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.time_table.TimeTableTabActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
-import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil;
 
 /**
  * トップ画面
@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity implements TopView {
                 startActivity(new Intent(this, SettingActivity.class));
                 break;
             case R.id.activity_top_bubble:
-                CustomTabUtil.start(this, "https://tenki.jp/forecast/10/50/9410/47207/3hours.html");
+                startActivity(new Intent(this, WeatherActivity.class));
+//                CustomTabUtil.start(this, "https://tenki.jp/forecast/10/50/9410/47207/3hours.html");
                 break;
         }
     }
