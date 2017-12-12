@@ -1,287 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     >
 
     <data>
 
+        <variable
+            name="titleText"
+            type="String"
+            />
+
+        <variable
+            name="viewModel"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherViewModel"
+            />
     </data>
 
     <android.support.v7.widget.CardView
-        android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardPreventCornerOverlap="false"
-        android:layout_marginRight="8dp"
-        card_view:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="8dp"
         android:layout_marginLeft="8dp"
-        card_view:layout_constraintLeft_toLeftOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        card_view:cardPreventCornerOverlap="false"
+        card_view:layout_constraintLeft_toLeftOf="parent"
+        card_view:layout_constraintRight_toRightOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingBottom="4dp"
             >
 
+            <!--タイトル-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/primary"
                 android:padding="8dp"
+                android:text='@{titleText + "の天気 " + viewModel.weather.get().date}'
                 android:textColor="@color/white"
-                android:text="今日の天気"
+                tools:text="今日の天気"
                 />
-
+            <!--天気-->
             <TextView
-                android:padding="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="天気"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:text='@{"天気 ： " + viewModel.weather.get().weather}'
+                tools:text="天気 ： 晴れ"
                 />
-
+            <!--気温-->
             <TextView
-                android:padding="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
                 android:text="気温"
                 />
-
+            <!--最高-->
             <TextView
-                android:padding="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="風"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="32dp"
+                android:text='@{"最高 ： " + viewModel.weather.get().temperature.hight}'
+                tools:text="最高 ： 29℃"
                 />
-
+            <!--最低-->
             <TextView
-                android:padding="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="波"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="32dp"
+                android:text='@{"最低 ： " + viewModel.weather.get().temperature.low}'
+                tools:text="最低 ： 29℃"
+                />
+            <!--風-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:text='@{"風 ： " + viewModel.weather.get().wind}'
+                tools:text="風 ： 北東の風やや強く℃"
+                />
+            <!--波-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:text='@{"風 ： " + viewModel.weather.get().wave}'
+                tools:text="波 ： 3メートル"
                 />
 
             <View
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:background="@color/dark_grey"
-                />
-
-            <TextView
-                android:padding="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="3時間毎の天気"
                 />
 
             <!--3時間毎の天気-->
-
-            <!--時間-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:padding="8dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="時間"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="06"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="09"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="12"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="15"
-                    android:layout_weight="1"
-                    />
-
-            </LinearLayout>
-
-            <View
-                android:layout_margin="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/dark_grey"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="3時間毎の天気"
                 />
 
-            <!--天気-->
+            <!--追加先レイアウト-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:padding="8dp"
+                android:weightSum="5"
+                app:inflateYourTimes="@{viewModel.weather.get().table}"
                 >
-
-                <TextView
-                    android:padding="8dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="天気"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="06"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="09"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="12"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="15"
-                    android:layout_weight="1"
-                    />
-
-            </LinearLayout>
-
-            <View
-                android:layout_margin="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/dark_grey"
-                />
-
-            <!--風向-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:padding="8dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="風向"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="06"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="09"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="12"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="15"
-                    android:layout_weight="1"
-                    />
-
-            </LinearLayout>
-
-            <View
-                android:layout_margin="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/dark_grey"
-                />
-
-            <!--風速-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:padding="8dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="風速"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="06"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="09"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="12"
-                    android:layout_weight="1"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="15"
-                    android:layout_weight="1"
+                <!--先頭はタイトル-->
+                <include
+                    layout="@layout/weather_view_row_title"
                     />
 
             </LinearLayout>

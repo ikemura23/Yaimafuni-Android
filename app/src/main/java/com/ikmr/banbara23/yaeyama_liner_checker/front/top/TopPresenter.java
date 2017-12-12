@@ -3,6 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.front.top;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient;
@@ -123,6 +124,7 @@ public class TopPresenter implements Presenter<TopView> {
         if (weatherInfo.getToday() == null) {
             return;
         }
+        Log.d("TopPresenter", weatherInfo.getToday().toString());
         String weather = weatherInfo.getToday().getDate() +
                 " " +
                 weatherInfo.getToday().getWind() +

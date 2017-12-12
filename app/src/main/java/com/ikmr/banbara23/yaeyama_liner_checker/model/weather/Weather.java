@@ -12,7 +12,7 @@ public class Weather {
     @SerializedName("date")
     private String date;
     @SerializedName("table")
-    private List<HourTimeTable> mHourTimes;
+    private List<Table> table;
     @SerializedName("temperature")
     private Temperature temperature;
     @SerializedName("wave")
@@ -30,12 +30,12 @@ public class Weather {
         return this.date;
     }
 
-    public List<HourTimeTable> getHourTimes() {
-        return mHourTimes;
+    public List<Table> getTable() {
+        return table;
     }
 
-    public void setHourTimes(List<HourTimeTable> hourTimes) {
-        mHourTimes = hourTimes;
+    public void setTable(List<Table> table) {
+        this.table = table;
     }
 
     public void setTemperature(Temperature temperature) {
@@ -74,7 +74,7 @@ public class Weather {
     public String toString() {
         return "Weather{" +
                 "date='" + date + '\'' +
-                ", mHourTimes=" + mHourTimes +
+                ", table=" + table +
                 ", temperature=" + temperature +
                 ", wave='" + wave + '\'' +
                 ", weather='" + weather + '\'' +

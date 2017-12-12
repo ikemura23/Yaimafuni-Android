@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * 時間毎の天気
  */
-public class HourTimeTable {
+public class Table {
 
     @SerializedName("hour")
     private String hour;
@@ -50,7 +50,7 @@ public class HourTimeTable {
 
     @Override
     public String toString() {
-        return "HourTimeTable{" +
+        return "Table{" +
                 "hour='" + hour + '\'' +
                 ", weather='" + weather + '\'' +
                 ", windBlow='" + windBlow + '\'' +

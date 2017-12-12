@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="table"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.weather.Table"
+            />
+    </data>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        tools:layout_width="wrap_content"
+        >
+
+
+        <!--時間-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{table.hour}"
+            tools:text="06"
+            />
+
+        <include
+            layout="@layout/row_delimiter"
+            />
+
+        <!--天気-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{table.weather}"
+            tools:text="晴れ"
+            />
+
+        <include
+            layout="@layout/row_delimiter"
+            />
+
+        <!--風向-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{table.windBlow}"
+            tools:text="北北西"
+            />
+
+        <include
+            layout="@layout/row_delimiter"
+            />
+
+        <!--風速-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{table.windSpeed}"
+            tools:text="3m"
+            />
+
+    </LinearLayout>
+
+</layout>
