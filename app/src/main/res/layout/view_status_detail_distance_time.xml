@@ -72,7 +72,7 @@
                     />
 
                 <!--区切り横線-->
-                <include layout="@layout/view_time_table_line_yoko"/>
+                <include layout="@layout/delimiter"/>
 
                 <TextView
                     android:id="@+id/view_status_detail_top_time_text"

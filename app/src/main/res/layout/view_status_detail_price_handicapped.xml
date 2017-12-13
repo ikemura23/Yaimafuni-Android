@@ -64,7 +64,7 @@
             </LinearLayout>
 
 
-            <include layout="@layout/view_time_table_line_yoko"/>
+            <include layout="@layout/delimiter"/>
 
             <!--大人-->
             <LinearLayout

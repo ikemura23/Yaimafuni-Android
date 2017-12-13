@@ -225,40 +225,40 @@
 
 
             <!--時刻表-->
-            <android.support.v7.widget.CardView
-                android:id="@+id/top_activity_timetable"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/activity_top_liner"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="8dp"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:longClickable="true"
-                android:onClick="onClick"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="2dp"
-                >
+            <!--<android.support.v7.widget.CardView-->
+            <!--android:id="@+id/top_activity_timetable"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/activity_top_liner"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:clickable="true"-->
+            <!--android:foreground="?android:attr/selectableItemBackground"-->
+            <!--android:longClickable="true"-->
+            <!--android:onClick="onClick"-->
+            <!--app:cardCornerRadius="4dp"-->
+            <!--app:cardElevation="2dp"-->
+            <!--&gt;-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="16dp"
-                    android:drawablePadding="16dp"
-                    android:gravity="center_vertical"
-                    android:text="時刻表"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="15sp"
-                    />
-            </android.support.v7.widget.CardView>
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:drawablePadding="16dp"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:text="時刻表"-->
+            <!--android:textColor="@color/secondary_text"-->
+            <!--android:textSize="15sp"-->
+            <!--/>-->
+            <!--</android.support.v7.widget.CardView>-->
 
             <!--設定-->
             <android.support.v7.widget.CardView
                 android:id="@+id/top_activity_setting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="@id/top_activity_timetable"
+                android:layout_below="@id/activity_top_liner"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"

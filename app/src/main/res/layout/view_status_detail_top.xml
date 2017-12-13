@@ -68,7 +68,7 @@
                 >
                 <!--区切り横線-->
                 <include
-                    layout="@layout/view_time_table_line_yoko"
+                    layout="@layout/delimiter"
                     />
 
                 <!--更新日時-->
