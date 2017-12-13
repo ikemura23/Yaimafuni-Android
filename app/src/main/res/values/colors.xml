@@ -31,4 +31,6 @@
     <color name="list_header">#e0e6ec</color>
     <color name="timetable_header">#dcdcf2</color>
     <color name="spinner_font_color">#303030</color>
+
+    <color name="orange2">#F7A325</color>
 </resources>

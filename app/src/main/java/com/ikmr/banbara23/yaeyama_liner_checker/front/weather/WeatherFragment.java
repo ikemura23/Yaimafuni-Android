@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBinding;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherViewModel;
+import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -41,5 +42,10 @@ public class WeatherFragment extends Fragment implements WeatherView {
     public void onDestroyView() {
         super.onDestroyView();
         mPresenter.detachView();
+    }
+
+    @Override
+    public void openBrowser() {
+        CustomTabUtil.start(getActivity(), getString(R.string.weather_open_url));
     }
 }

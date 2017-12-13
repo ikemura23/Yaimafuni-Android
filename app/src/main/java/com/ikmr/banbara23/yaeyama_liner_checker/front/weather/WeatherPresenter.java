@@ -66,4 +66,8 @@ public class WeatherPresenter implements Presenter<WeatherView> {
         mToday.weather.set(weatherInfo.getToday());
         mTomorrow.weather.set(weatherInfo.getTomorrow());
     }
+
+    public void onButtonClick() {
+        mView.openBrowser();
+    }
 }
