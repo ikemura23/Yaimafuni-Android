@@ -329,6 +329,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignTop="@+id/activity_bottom_view"
                 android:gravity="center_vertical"
+                android:textColor="@color/secondary_text"
                 android:text="@{viewModel.todayWeather}"
                 />
 

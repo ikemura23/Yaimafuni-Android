@@ -34,14 +34,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{item.time}"
                 android:layout_marginRight="16dp"
+                android:text="@{item.time}"
+                android:textColor="@color/secondary_text"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{item.status.text}"
+                android:textColor="@color/secondary_text"
                 />
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>

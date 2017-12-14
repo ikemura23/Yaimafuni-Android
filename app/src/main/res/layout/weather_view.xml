@@ -54,6 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
+                android:textColor="@color/secondary_text"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text='@{"天気 ： " + viewModel.weather.get().weather}'
@@ -66,12 +67,14 @@
                 android:layout_marginBottom="4dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
+                android:textColor="@color/secondary_text"
                 android:text="気温"
                 />
             <!--最高-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text"
                 android:layout_marginBottom="4dp"
                 android:layout_marginLeft="32dp"
                 android:text='@{"最高 ： " + viewModel.weather.get().temperature.hight}'
@@ -80,6 +83,7 @@
             <!--最低-->
             <TextView
                 android:layout_width="wrap_content"
+                android:textColor="@color/secondary_text"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:layout_marginLeft="32dp"
@@ -92,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:layout_marginLeft="8dp"
+                android:textColor="@color/secondary_text"
                 android:layout_marginTop="4dp"
                 android:text='@{"風 ： " + viewModel.weather.get().wind}'
                 tools:text="風 ： 北東の風やや強く℃"
@@ -101,6 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
+                android:textColor="@color/secondary_text"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="4dp"
                 android:text='@{"風 ： " + viewModel.weather.get().wave}'
@@ -119,6 +125,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text"
                 android:padding="8dp"
                 android:text="3時間毎の天気"
                 />

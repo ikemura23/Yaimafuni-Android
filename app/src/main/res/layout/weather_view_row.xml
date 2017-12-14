@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{table.hour}"
+            android:textColor="@color/secondary_text"
             tools:text="06"
             />
 
@@ -38,6 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{table.weather}"
+            android:textColor="@color/secondary_text"
             tools:text="晴れ"
             />
 
@@ -50,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{table.windBlow}"
+            android:textColor="@color/secondary_text"
             tools:text="北北西"
             />
 
@@ -62,6 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{table.windSpeed}"
+            android:textColor="@color/secondary_text"
             tools:text="3m"
             />
 

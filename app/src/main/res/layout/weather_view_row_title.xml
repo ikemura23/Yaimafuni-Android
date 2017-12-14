@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="時間"
+            android:textColor="@color/secondary_text"
             android:textStyle="bold"
             />
 
@@ -33,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="天気"
+            android:textColor="@color/secondary_text"
             android:textStyle="bold"
             />
 
@@ -45,6 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="風向"
+            android:textColor="@color/secondary_text"
             android:textStyle="bold"
             tools:text="北北西"
             />
@@ -58,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="風速"
+            android:textColor="@color/secondary_text"
             android:textStyle="bold"
             />
 

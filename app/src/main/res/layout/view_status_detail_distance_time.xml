@@ -23,38 +23,6 @@
             android:weightSum="2"
             >
 
-            <!--距離-->
-            <!--<LinearLayout-->
-            <!--android:id="@+id/view_status_detail_top_distance_layout"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginRight="16dp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:orientation="vertical"-->
-            <!--&gt;-->
-
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="8dp"-->
-            <!--android:text="距離"-->
-            <!--android:textSize="16sp"-->
-            <!--/>-->
-
-            <!--&lt;!&ndash;区切り横線&ndash;&gt;-->
-            <!--<include layout="@layout/view_time_table_line_yoko"/>-->
-
-            <!--<TextView-->
-            <!--android:id="@+id/view_status_detail_top_distance_text"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="8dp"-->
-            <!--android:textSize="16sp"-->
-            <!--tools:text="6.6キロ"-->
-            <!--/>-->
-
-            <!--</LinearLayout>-->
-
             <!--所要時間-->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -68,6 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:text="走行時間"
+                    android:textColor="@color/secondary_text"
                     android:textSize="16sp"
                     />
 
@@ -79,8 +48,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:textSize="16sp"
                     android:text="@{viewModel.detailLinerInfo.get().drivingTime}"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="16sp"
                     tools:text="10分"
                     />
 
