@@ -30,28 +30,12 @@
             android:label="@string/title_activity_status_list"
             />
         <activity
-            android:name=".front.status.detail.anei.StatusDetailAneiActivity"
-            android:label="@string/title_activity_status_detail"
-            />
-        <activity
-            android:name=".front.status.detail.ykf.StatusDetailYkfActivity"
-            android:label="@string/title_activity_status_detail"
-            />
-        <activity
             android:name=".front.info.InfoActivity"
             android:label="@string/title_activity_other"
             />
         <activity
-            android:name=".front.status.detail.dream.StatusDetailDreamActivity"
-            android:label="@string/title_activity_status_detail"
-            />
-        <activity
             android:name=".front.setting.SettingActivity"
             android:label="@string/title_activity_setting"
-            />
-        <activity
-            android:name=".front.time_table.TimeTableTabActivity"
-            android:label="@string/title_activity_timetable"
             />
         <activity
             android:name=".front.status.detail.StatusDetailActivity"

@@ -330,9 +330,20 @@
                 android:layout_alignTop="@+id/activity_bottom_view"
                 android:gravity="center_vertical"
                 android:textColor="@color/secondary_text"
+                android:ellipsize="end"
+                android:layout_marginRight="20dp"
+                android:maxLines="2"
                 android:text="@{viewModel.todayWeather}"
+                tools:text="@string/other_info"
                 />
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
+                />
         </com.daasuu.bl.BubbleLayout>
     </RelativeLayout>
 </layout>
