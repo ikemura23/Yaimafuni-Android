@@ -143,8 +143,8 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
     private void setViewModel(PortStatus portStatus) {
         // ViewModelにセット
         viewModel.portStatus.set(portStatus);
-        // 画像セット
-        viewModel.setStatusDrawable(portStatus.getStatus().getCode());
+        // ステータス色セット
+        viewModel.setStatusColor(portStatus.getStatus().getCode());
     }
 
     /**

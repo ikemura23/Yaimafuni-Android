@@ -8,10 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.common.StatusHelper;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 
 /**
@@ -33,35 +33,21 @@ public class StatusListAdapter extends ArrayAdapter<PortStatus> {
         if (view == null) {
             view = mInflater.inflate(R.layout.fragment_liner_list_view, parent, false);
         }
-        ImageView statusIconImage = (ImageView) view.findViewById(R.id.view_status_list_status_icon_image);
         TextView portText = (TextView) view.findViewById(R.id.view_status_list_port_text);
         TextView descriptionText = (TextView) view.findViewById(R.id.view_status_list_description_text);
+        TextView statusText = (TextView) view.findViewById(R.id.view_status_list_status);
 
         PortStatus portStatus = getItem(position);
         if (portStatus != null) {
-
+            // ステータス文字
             portText.setText(portStatus.getPortName());
-            int imageResource = 0;
-            switch (portStatus.getStatus().getCode()) {
-                case "normal":
-                    imageResource = R.drawable.ic_status_normal;
-                    break;
-                case "cancel":
-                    imageResource = R.drawable.ic_status_cancel;
-                    break;
-                case "cation":
-                    imageResource = R.drawable.ic_status_cation;
-                    break;
-                case "suspend":
-                    imageResource = R.drawable.ic_status_cancel;
-            }
-            statusIconImage.setImageResource(imageResource);
-
+            // 背景色
+            statusText.setBackgroundColor(StatusHelper.getStatusColor(portStatus.getStatus().getCode()));
+            // コメント
             if (TextUtils.isEmpty(portStatus.getComment())) {
-                descriptionText.setText(portStatus.getStatus().getText());
-            } else {
-                descriptionText.setText(portStatus.getComment());
+                descriptionText.setVisibility(View.GONE);
             }
+            descriptionText.setText(portStatus.getComment());
         }
         return view;
     }
