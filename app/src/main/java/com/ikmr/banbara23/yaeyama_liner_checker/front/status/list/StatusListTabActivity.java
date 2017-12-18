@@ -4,14 +4,12 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.ActivityListTabBinding;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
-import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil;
 
 /**
  * 一覧タブActivity
@@ -105,46 +103,17 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_list, menu);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
-//            case R.id.action_browser:
-//                launchBrowser();
-//                break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * カスタムタグでHPを表示
-     */
-    private void launchBrowser() {
-        CustomTabUtil.start(this, getCompanyHomepageUrl());
     }
 
     @Override
     public void emptyClick() {
         createTab(getCurrentPosition());
-    }
-
-    public String getCompanyHomepageUrl() {
-        switch (viewPager.getCurrentItem()) {
-            case TAB_FIRST:
-                return "http://www.aneikankou.co.jp/";
-            case TAB_SECOND:
-                return "http://www.yaeyama.co.jp/";
-            case TAB_THREAD:
-                return "http://ishigaki-dream.co.jp/";
-            default:
-                return null;
-        }
     }
 }

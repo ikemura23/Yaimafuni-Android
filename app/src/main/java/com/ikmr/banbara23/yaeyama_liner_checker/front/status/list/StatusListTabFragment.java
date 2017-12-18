@@ -40,23 +40,6 @@ public class StatusListTabFragment extends BaseListFragment {
     TextView mUpdateText;
     View mHeaderView;
     private CompositeDisposable mDisposable = new CompositeDisposable();
-//    private CompositeDisposable compositeDisposable = new CompositeDisposable();
-
-    /**
-     * リロードタップ
-     *
-     * @param view リロードボタン
-     */
-    void emptyClick(View view) {
-        if (getActivity() != null) {
-            ((EmptyClickListener) getActivity()).emptyClick();
-        }
-//        AnalyticsUtils.logSelectEvent(TAG, "reload");
-    }
-
-    public interface EmptyClickListener {
-        void emptyClick();
-    }
 
     public static StatusListTabFragment NewInstance(Company company) {
         StatusListTabFragment fragment = new StatusListTabFragment();
