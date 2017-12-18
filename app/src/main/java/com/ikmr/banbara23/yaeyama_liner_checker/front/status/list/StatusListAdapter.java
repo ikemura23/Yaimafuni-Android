@@ -41,6 +41,7 @@ public class StatusListAdapter extends ArrayAdapter<PortStatus> {
         if (portStatus != null) {
             // ステータス文字
             portText.setText(portStatus.getPortName());
+            statusText.setText(portStatus.getStatus().getText());
             // 背景色
             statusText.setBackgroundColor(StatusHelper.getStatusColor(portStatus.getStatus().getCode()));
             // コメント

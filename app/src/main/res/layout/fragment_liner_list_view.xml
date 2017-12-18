@@ -12,19 +12,19 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="48dp"
         android:layout_toLeftOf="@+id/view_status_list_status"
         android:layout_toStartOf="@+id/view_status_list_status"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
         >
+
         <!--港-->
         <TextView
             android:id="@+id/view_status_list_port_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
             android:gravity="center_vertical"
-            android:layout_weight="1"
             android:textColor="@color/secondary_text"
             android:textSize="18dp"
             tools:text="竹富"
@@ -35,15 +35,14 @@
             android:id="@+id/view_status_list_description_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:visibility="gone"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:ellipsize="end"
-            android:layout_weight="1"
-            android:maxLines="1"
             android:gravity="center_vertical"
+            android:maxLines="1"
             android:textColor="@color/dark_grey"
             android:textSize="14dp"
-            tools:text="通常運航"
+            tools:text="コメントコメントコメントコメントコメント"
+            tools:visibility="gone"
             />
     </LinearLayout>
     <!--ステータス文字-->
@@ -54,13 +53,13 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:paddingBottom="4dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="4dp"
-        android:text="運行"
+        android:paddingBottom="2dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="2dp"
         android:textColor="@color/white"
-        android:textSize="20dp"
-        tools:background="@color/status_normal"
+        android:textSize="16dp"
+        tools:background="@color/status_cation"
+        tools:text="一部欠航便有り"
         />
 </RelativeLayout>

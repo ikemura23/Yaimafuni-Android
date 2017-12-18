@@ -172,13 +172,19 @@ public class StatusListTabFragment extends BaseListFragment {
         setUpdate(companyStatus.getUpdateTime());
 
         List<PortStatus> portStatuses = new ArrayList<>();
-        portStatuses.add(companyStatus.getKohama());
         portStatuses.add(companyStatus.getTaketomi());
+        portStatuses.add(companyStatus.getKohama());
         portStatuses.add(companyStatus.getKuroshima());
         portStatuses.add(companyStatus.getOohara());
-        portStatuses.add(companyStatus.getUehara());
-        portStatuses.add(companyStatus.getHatoma());
-        portStatuses.add(companyStatus.getHateruma());
+        if (getCompany() != Company.DREAM) {
+            portStatuses.add(companyStatus.getUehara());
+            portStatuses.add(companyStatus.getHatoma());
+        } else {
+            portStatuses.add(companyStatus.getUehara());
+        }
+        if (companyStatus.getHateruma() != null) {
+            portStatuses.add(companyStatus.getHateruma());
+        }
 
         mListAdapter.clear();
         mListAdapter.addAll(portStatuses);
