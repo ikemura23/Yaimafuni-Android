@@ -14,7 +14,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 /**
  * 一覧タブActivity
  */
-public class StatusListTabActivity extends BaseActivity implements StatusListTabFragment.EmptyClickListener {
+public class StatusListTabActivity extends BaseActivity {
 
     private static final String TAG = StatusListTabActivity.class.getSimpleName();
     private static final int TAB_FIRST = 0;
@@ -110,10 +110,5 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void emptyClick() {
-        createTab(getCurrentPosition());
     }
 }
