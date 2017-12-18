@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
 
@@ -9,90 +8,93 @@
 
         <import type="android.view.View"/>
 
+        <import type="com.ikmr.banbara23.yaeyama_liner_checker.common.StatusHelper"/>
+
         <variable
             name="row"
             type="com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.Row"
             />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         >
 
         <LinearLayout
-            android:layout_width="190dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/linearLayout3"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:text="@{row.left.time}"
-                android:textColor="@color/secondary_text"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:paddingLeft="16dp"
+                >
+
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center"
+                    android:text="@{row.left.time}"
+                    android:textColor="@color/secondary_text"
+                    tools:text="06:00"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{row.left.status.text}"
+                    android:textColor="@{StatusHelper.getStatusColor(row.left.status.code)}"
+                    tools:text="通常運行"
+                    />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/list_header"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{row.left.status.text}"
-                android:textColor="@color/secondary_text"
-                />
-        </LinearLayout>
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:paddingLeft="16dp"
+                >
 
-        <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="169dp"
-            android:layout_height="16dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="208dp"
-            tools:layout_editor_absoluteY="9dp"
-            >
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center"
+                    android:text="@{row.right.time}"
+                    android:textColor="@color/secondary_text"
+                    tools:text="06:00"
+                    />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:text="@{row.right.time}"
-                android:textColor="@color/secondary_text"
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{row.right.status.text}"
+                    android:textColor="@{StatusHelper.getStatusColor(row.right.status.code)}"
+                    tools:text="通常運行"
+                    />
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{row.right.status.text}"
-                android:textColor="@color/secondary_text"
-                />
         </LinearLayout>
 
         <FrameLayout
             android:id="@+id/frameLayout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
             android:background="@color/list_header"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            >
-
-        </FrameLayout>
-    </android.support.constraint.ConstraintLayout>
+            />
+    </LinearLayout>
 </layout>

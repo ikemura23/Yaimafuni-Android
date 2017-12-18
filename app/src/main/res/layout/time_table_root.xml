@@ -22,15 +22,24 @@
             android:orientation="vertical"
             >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="時間別"
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp"
+                />
+
             <include
                 layout="@layout/time_table_header"
                 app:header="@{timeTableViewModel.header}"
                 />
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 app:inflateData="@{timeTableViewModel.rows}"
                 />
         </LinearLayout>

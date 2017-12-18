@@ -23,6 +23,7 @@ public class BindAdapter {
 
     @BindingAdapter({"inflateData"})
     public static void inflateData(LinearLayout layout, List<Row> data) {
+        layout.removeAllViews();
         LayoutInflater inflater = LayoutInflater.from(layout.getContext());
         for (Row row : data) {
             TimeTableRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.time_table_row, layout, true);
@@ -32,6 +33,7 @@ public class BindAdapter {
 
     @BindingAdapter({"inflateYourTimes"})
     public static void inflateYourTimes(LinearLayout layout, List<Table> tables) {
+        layout.removeAllViews();
         LayoutInflater inflater = LayoutInflater.from(layout.getContext());
         if (tables == null || tables.isEmpty()) {
             return;

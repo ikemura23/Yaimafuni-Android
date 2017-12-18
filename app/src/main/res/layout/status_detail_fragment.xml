@@ -29,9 +29,9 @@
     </data>
 
     <ScrollView
-        android:background="@color/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background"
         android:overScrollMode="never"
         >
 
@@ -50,7 +50,7 @@
 
             <!--時刻表-->
             <include
-                layout="@layout/delimiter"
+                layout="@layout/time_table_root"
                 app:timeTableViewModel="@{timeTableViewModel}"
                 />
 

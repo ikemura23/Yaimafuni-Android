@@ -127,6 +127,7 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
             timeTableViewModel.header.set(timeTable.getHeader());
         }
         if (timeTable.getRow() != null || !timeTable.getRow().isEmpty()) {
+            timeTableViewModel.rows.clear();
             timeTableViewModel.rows.addAll(timeTable.getRow());
         }
     }
