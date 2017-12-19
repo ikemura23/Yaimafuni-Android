@@ -28,7 +28,7 @@
     <color name="status_cation">#ffa500</color>
     <color name="status_cancel">#ff0000</color>
 
-    <color name="list_header">#e0e6ec</color>
+    <color name="list_header">#C9E6FF</color>
     <color name="timetable_header">#dcdcf2</color>
     <color name="spinner_font_color">#303030</color>
 
