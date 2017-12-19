@@ -3,7 +3,9 @@ package com.ikmr.banbara23.yaeyama_liner_checker.core;
 
 import android.app.Application;
 
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.database.FirebaseDatabase;
+import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
 
 public class ApplicationController extends Application {
 
@@ -18,7 +20,7 @@ public class ApplicationController extends Application {
         }
         Base.initialize(this);
 
-//        AnalyticsUtils.initialize(getApplicationContext());
+        MobileAds.initialize(this, Constants.AD_UNIT_ID);
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
     }
 

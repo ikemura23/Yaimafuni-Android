@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.ads.AdRequest;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment;
@@ -43,12 +44,14 @@ public class StatusDetailFragment extends BaseFragment implements StatusDetailVi
     public void onResume() {
         super.onResume();
         presenter.onResume();
+        binding.adView.resume();
     }
 
     @Override
     public void onStop() {
         super.onStop();
         presenter.onStop();
+        binding.adView.pause();
     }
 
     @Override
@@ -61,6 +64,9 @@ public class StatusDetailFragment extends BaseFragment implements StatusDetailVi
         binding.setLinerInfoViewModel(linerViewModel);
         binding.setTimeTableViewModel(timeTableViewModel);
         binding.setPresenter(presenter);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adView.loadAd(adRequest);
 
         return binding.getRoot();
     }
