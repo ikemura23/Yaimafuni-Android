@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="8dp"
+    android:paddingBottom="2dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingTop="8dp"
+    android:paddingTop="2dp"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="56dp"
         android:layout_toLeftOf="@+id/view_status_list_status"
         android:layout_toStartOf="@+id/view_status_list_status"
         android:gravity="center_vertical"
@@ -42,8 +42,27 @@
             android:textColor="@color/dark_grey"
             android:textSize="14dp"
             tools:text="コメントコメントコメントコメントコメント"
-            tools:visibility="gone"
+            tools:visibility="visible"
             />
+
+        <FrameLayout
+            android:id="@+id/ad_view_wrap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            >
+
+            <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                ads:adSize="BANNER"
+                ads:adUnitId="@string/ad_unit_id"
+                >
+            </com.google.android.gms.ads.AdView>
+        </FrameLayout>
     </LinearLayout>
     <!--ステータス文字-->
     <TextView

@@ -46,6 +46,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.google.android.gms:play-services-ads:11.0.4'
+//    compile 'com.github.clockbyte:admobadapter:1.4.5'
     testCompile 'junit:junit:4.12'
 }
 

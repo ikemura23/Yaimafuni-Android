@@ -168,6 +168,10 @@ public class StatusListTabFragment extends BaseListFragment {
         if (companyStatus.getHateruma() != null) {
             portStatuses.add(companyStatus.getHateruma());
         }
+        // 広告
+        PortStatus ad = new PortStatus();
+        ad.setPortCode("ad");
+        portStatuses.add(ad);
 
         mListAdapter.clear();
         mListAdapter.addAll(portStatuses);

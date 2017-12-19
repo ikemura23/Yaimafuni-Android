@@ -117,7 +117,6 @@ public class ApiClient {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         PortStatus data = dataSnapshot.getValue(PortStatus.class);
-                        Log.d(TAG, "Value is: " + data.toString());
                         e.onSuccess(data);
                     }
 
