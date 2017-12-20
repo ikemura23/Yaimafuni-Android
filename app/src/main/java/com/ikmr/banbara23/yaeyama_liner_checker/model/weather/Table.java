@@ -1,19 +1,13 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.model.weather;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * 時間毎の天気
  */
 public class Table {
 
-    @SerializedName("hour")
     private String hour;
-    @SerializedName("weather")
     private String weather;
-    @SerializedName("windBlow")
     private String windBlow;
-    @SerializedName("windSpeed")
     private String windSpeed;
 
     public void setHour(String hour) {

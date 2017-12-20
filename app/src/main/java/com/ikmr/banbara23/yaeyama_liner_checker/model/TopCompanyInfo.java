@@ -1,16 +1,11 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.model;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Topモデル
  */
 public class TopCompanyInfo {
-    @SerializedName("anei")
     private TopCompany anei;
-    @SerializedName("dream")
     private TopCompany dream;
-    @SerializedName("ykf")
     private TopCompany ykf;
 
     public TopCompany getAnei() {
@@ -47,13 +42,9 @@ public class TopCompanyInfo {
     }
 
     public static class TopCompany {
-        @SerializedName("cancel")
         private int cancel;
-        @SerializedName("cation")
         private int cation;
-        @SerializedName("nomal")
-        private int nomal;
-        @SerializedName("suspend")
+        private int normal;
         private int suspend;
 
         public int getCancel() {
@@ -72,12 +63,12 @@ public class TopCompanyInfo {
             this.cation = cation;
         }
 
-        public int getNomal() {
-            return nomal;
+        public int getNormal() {
+            return normal;
         }
 
-        public void setNomal(int nomal) {
-            this.nomal = nomal;
+        public void setNormal(int normal) {
+            this.normal = normal;
         }
 
         public int getSuspend() {
@@ -93,7 +84,7 @@ public class TopCompanyInfo {
             return "TopCompany{" +
                     "cancel=" + cancel +
                     ", cation=" + cation +
-                    ", nomal=" + nomal +
+                    ", normal=" + normal +
                     ", suspend=" + suspend +
                     '}';
         }

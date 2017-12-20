@@ -3,17 +3,11 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.SerializedName;
-
 public class PortStatus implements Parcelable {
 
-    @SerializedName("comment")
     private String comment;
-    @SerializedName("portCode")
     private String portCode;
-    @SerializedName("portName")
     private String portName;
-    @SerializedName("status")
     private Status status;
 
     public String getComment() {

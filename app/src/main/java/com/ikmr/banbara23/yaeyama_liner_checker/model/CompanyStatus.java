@@ -3,27 +3,16 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.SerializedName;
-
 public class CompanyStatus implements Parcelable {
 
-    @SerializedName("comment")
     private String comment;
-    @SerializedName("hateruma")
     private PortStatus hateruma;
-    @SerializedName("hatoma")
     private PortStatus hatoma;
-    @SerializedName("kohama")
     private PortStatus kohama;
-    @SerializedName("kuroshima")
     private PortStatus kuroshima;
-    @SerializedName("oohara")
     private PortStatus oohara;
-    @SerializedName("taketomi")
     private PortStatus taketomi;
-    @SerializedName("uehara")
     private PortStatus uehara;
-    @SerializedName("updateTime")
     private String updateTime;
 
     public void setComment(String comment) {

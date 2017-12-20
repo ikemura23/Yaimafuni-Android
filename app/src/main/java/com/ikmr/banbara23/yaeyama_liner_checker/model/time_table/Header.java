@@ -3,13 +3,9 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model.time_table;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Header implements Parcelable {
 
-    @SerializedName("left")
     public String left;
-    @SerializedName("right")
     public String right;
 
     @Override

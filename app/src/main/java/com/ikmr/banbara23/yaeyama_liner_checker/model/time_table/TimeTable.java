@@ -3,16 +3,12 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model.time_table;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class TimeTable implements Parcelable {
 
-    @SerializedName("header")
     public Header header;
-    @SerializedName("row")
     public List<Row> row;
 
     @Override

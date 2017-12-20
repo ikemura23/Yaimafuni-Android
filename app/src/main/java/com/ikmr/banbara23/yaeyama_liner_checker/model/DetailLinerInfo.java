@@ -3,30 +3,19 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * 運行ステータス以外の情報
  */
 public class DetailLinerInfo implements Parcelable {
 
-    @SerializedName("drivingTime")
     private String drivingTime;
-    @SerializedName("adultOneWayFare")
     private int adultOneWayFare;
-    @SerializedName("adultRoundTripFare")
     private int adultRoundTripFare;
-    @SerializedName("childOneWayFare")
     private int childOneWayFare;
-    @SerializedName("childRoundTripFare")
     private int childRoundTripFare;
-    @SerializedName("disabilityOneWayFare")
     private int disabilityOneWayFare;
-    @SerializedName("disabilityRoundTripFare")
     private int disabilityRoundTripFare;
-    @SerializedName("url")
     private String url;
-    @SerializedName("tell")
     private String tell;
 
     public String getDrivingTime() {

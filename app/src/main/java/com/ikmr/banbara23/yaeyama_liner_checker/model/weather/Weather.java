@@ -1,7 +1,5 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.model.weather;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 /**
@@ -9,17 +7,11 @@ import java.util.List;
  */
 public class Weather {
 
-    @SerializedName("date")
     private String date;
-    @SerializedName("table")
     private List<Table> table;
-    @SerializedName("temperature")
     private Temperature temperature;
-    @SerializedName("wave")
     private String wave;
-    @SerializedName("weather")
     private String weather;
-    @SerializedName("wind")
     private String wind;
 
     public void setDate(String date) {

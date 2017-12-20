@@ -3,13 +3,9 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Status implements Parcelable {
 
-    @SerializedName("code")
     private String code;
-    @SerializedName("text")
     private String text;
 
     public void setCode(String code) {

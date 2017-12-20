@@ -3,15 +3,11 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model.time_table;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.SerializedName;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Status;
 
 public class Right implements Parcelable {
-    @SerializedName("memo")
     public String memo;
-    @SerializedName("status")
     public Status status;
-    @SerializedName("time")
     public String time;
 
     @Override

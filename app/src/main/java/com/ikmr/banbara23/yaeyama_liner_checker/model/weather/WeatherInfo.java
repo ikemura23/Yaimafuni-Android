@@ -1,15 +1,11 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.model.weather;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * 天気ルート
  */
 public class WeatherInfo {
-    @SerializedName("today")
     private Weather today;
 
-    @SerializedName("tomorrow")
     private Weather tomorrow;
 
     public Weather getToday() {
