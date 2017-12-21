@@ -53,10 +53,9 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginTop="8dp"
-                    android:textStyle="bold"
-                    android:padding="6dp"
+                    android:layout_centerVertical="true"
                     android:background="@{statusViewModel.statusColor}"
+                    android:padding="4dp"
                     android:text="@{statusViewModel.portStatus.get().getStatus().getText()}"
                     android:textColor="@color/white"
                     android:textSize="20sp"
@@ -71,9 +70,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="8dp"
                 android:text="@{statusViewModel.portStatus.get().getComment()}"
                 android:visibility="@{TextUtils.isEmpty(statusViewModel.portStatus.get().getComment())? View.GONE : View.VISIBLE}"
-                tools:text="通常運航通"
+                tools:text="通常運航通通常運航通通常運航通通常運航通通常運航通通常運航通"
                 />
 
         </LinearLayout>
