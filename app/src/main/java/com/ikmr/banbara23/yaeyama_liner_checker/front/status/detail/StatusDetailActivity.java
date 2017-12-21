@@ -4,10 +4,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseActivity;
-import com.ikmr.banbara23.yaeyama_liner_checker.model.Liner;
-import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
-import com.ikmr.banbara23.yaeyama_liner_checker.utils.StringUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 
 /**
  * ステータス詳細のActivity
@@ -15,45 +14,19 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.StringUtils;
 public class StatusDetailActivity extends BaseActivity {
     private final String TAG = StatusDetailActivity.class.getSimpleName();
 
-    Liner mLiner;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.status_detail_activity);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setSubtitle(R.string.company_name_annei);
         }
 
-        setTitleString();
-        if (savedInstanceState != null) {
-            mLiner = (Liner) savedInstanceState.get(PortStatus.class.getCanonicalName());
-        }
+        setScreenTitle();
+
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, StatusDetailFragment.NewInstance(getIntent().getExtras()))
                 .commit();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putParcelable(Liner.class.getCanonicalName(), mLiner);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        mLiner = (Liner) savedInstanceState.get(Liner.class.getCanonicalName());
-    }
-
-    private PortStatus getParamPortStatus() {
-        return getIntent().getParcelableExtra(StatusDetailActivity.class.getName());
     }
 
     @Override
@@ -70,15 +43,15 @@ public class StatusDetailActivity extends BaseActivity {
     /**
      * タイトルバーの設定
      */
-    private void setTitleString() {
-        PortStatus portStatus = getParamPortStatus();
-        if (getParamPortStatus() == null) {
+    private void setScreenTitle() {
+        Company company = (Company) getIntent().getSerializableExtra(Constants.BUNDLE_KEY_COMPANY);
+        if (company == null) {
             return;
         }
-        if (StringUtils.isEmpty(portStatus.getPortName())) {
-            setTitle("安栄観光 詳細");
+        if (getSupportActionBar() == null) {
             return;
         }
-        setTitle(portStatus.getPortName());
+
+        setTitle(company.getName());
     }
 }
