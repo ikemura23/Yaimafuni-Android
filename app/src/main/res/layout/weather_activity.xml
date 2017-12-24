@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <data>
@@ -14,27 +15,17 @@
         android:orientation="vertical"
         >
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:navigationIcon="@drawable/ic_keyboard_arrow_right_black_24dp"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="八重山の天気"
-                android:textColor="@color/white"
-                android:textSize="@dimen/actionbar_text_size"
-                />
-        </android.support.v7.widget.Toolbar>
+        <include
+            android:id="@+id/include_title_bar"
+            layout="@layout/header_back"
+            app:title='@{"八重山の天気"}'
+            />
 
         <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
-        
+
     </LinearLayout>
 </layout>

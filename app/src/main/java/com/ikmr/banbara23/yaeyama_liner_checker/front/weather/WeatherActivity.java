@@ -15,7 +15,7 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_activity);
         WeatherActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.weather_activity);
-        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        binding.includeTitleBar.titleBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
