@@ -8,15 +8,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@drawable/top_background"
         >
+
+        <include
+            android:id="@+id/include_title_bar"
+            layout="@layout/header_back"
+            app:title='@{"運行状況"}'
+            />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/activity_list_tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
             android:elevation="6dp"
             android:minHeight="?attr/actionBarSize"
+            app:tabTextColor="@color/white"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:tabIndicatorColor="@color/orange3"
             />

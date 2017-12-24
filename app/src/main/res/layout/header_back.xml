@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -12,10 +12,12 @@
     </data>
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/title_bar"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@android:color/transparent"
+        app:navigationIcon="@drawable/ic_arrow_back"
         >
 
         <TextView
