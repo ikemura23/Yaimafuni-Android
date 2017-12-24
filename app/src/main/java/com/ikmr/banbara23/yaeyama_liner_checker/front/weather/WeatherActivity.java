@@ -1,10 +1,12 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.weather;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherActivityBinding;
 
 public class WeatherActivity extends AppCompatActivity {
 
@@ -12,7 +14,15 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_activity);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        WeatherActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.weather_activity);
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, WeatherFragment.NewInstance())
+                .commit();
     }
 }

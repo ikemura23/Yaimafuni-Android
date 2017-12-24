@@ -23,9 +23,9 @@
     </data>
 
     <ScrollView
+        android:id="@+id/weather_fragment_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
         >
 
         <LinearLayout

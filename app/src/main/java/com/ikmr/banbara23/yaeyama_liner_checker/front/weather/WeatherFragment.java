@@ -2,12 +2,12 @@ package com.ikmr.banbara23.yaeyama_liner_checker.front.weather;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBinding;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherViewModel;
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil;
@@ -15,7 +15,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class WeatherFragment extends Fragment implements WeatherView {
+public class WeatherFragment extends BaseFragment implements WeatherView {
 
     WeatherPresenter mPresenter;
 
@@ -47,5 +47,9 @@ public class WeatherFragment extends Fragment implements WeatherView {
     @Override
     public void openBrowser() {
         CustomTabUtil.start(getActivity(), getString(R.string.weather_open_url));
+    }
+
+    public static WeatherFragment NewInstance() {
+        return new WeatherFragment();
     }
 }

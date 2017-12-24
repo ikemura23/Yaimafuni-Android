@@ -4,7 +4,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -38,9 +37,6 @@ public class StatusListTabActivity extends BaseActivity {
                 finish();
             }
         });
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
         tabLayout = binding.activityListTabLayout;
         viewPager = binding.activityListTabViewPager;
 
@@ -107,15 +103,5 @@ public class StatusListTabActivity extends BaseActivity {
 
             }
         });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
