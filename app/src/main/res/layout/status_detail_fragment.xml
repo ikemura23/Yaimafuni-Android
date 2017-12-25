@@ -28,62 +28,54 @@
             />
     </data>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:overScrollMode="never"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!--ステータス-->
+        <include
+            layout="@layout/view_status_detail_top"
+            app:statusViewModel="@{statusViewModel}"
+            />
+
+        <!--時刻表-->
+        <include
+            layout="@layout/time_table_root"
+            app:timeTableViewModel="@{timeTableViewModel}"
+            />
+
+        <!--時間と距離-->
+        <include
+            layout="@layout/view_status_detail_distance_time"
+            app:viewModel="@{linerInfoViewModel}"
+            />
+
+        <!--料金-->
+        <include
+            layout="@layout/view_status_detail_price_handicapped"
+            app:viewModel="@{linerInfoViewModel}"
+            />
+
+        <!--アクション-->
+        <include
+            layout="@layout/view_status_detail_action"
+            app:presenter="@{presenter}"
+            />
+
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="8dp"
-            android:descendantFocusability="blocksDescendants"
-            android:orientation="vertical"
+            android:layout_gravity="center"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/ad_unit_id"
             >
-
-            <!--ステータス-->
-            <include
-                layout="@layout/view_status_detail_top"
-                app:statusViewModel="@{statusViewModel}"
-                />
-
-            <!--時刻表-->
-            <include
-                layout="@layout/time_table_root"
-                app:timeTableViewModel="@{timeTableViewModel}"
-                />
-
-            <!--時間と距離-->
-            <include
-                layout="@layout/view_status_detail_distance_time"
-                app:viewModel="@{linerInfoViewModel}"
-                />
-
-            <!--料金-->
-            <include
-                layout="@layout/view_status_detail_price_handicapped"
-                app:viewModel="@{linerInfoViewModel}"
-                />
-
-            <!--アクション-->
-            <include
-                layout="@layout/view_status_detail_action"
-                app:presenter="@{presenter}"
-                />
-
-            <com.google.android.gms.ads.AdView
-                xmlns:ads="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/adView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                ads:adSize="BANNER"
-                ads:adUnitId="@string/ad_unit_id"
-                >
-            </com.google.android.gms.ads.AdView>
-        </LinearLayout>
-    </ScrollView>
+        </com.google.android.gms.ads.AdView>
+    </LinearLayout>
 
 </layout>
