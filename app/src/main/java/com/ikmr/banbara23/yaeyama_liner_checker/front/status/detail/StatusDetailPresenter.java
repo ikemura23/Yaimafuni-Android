@@ -116,13 +116,14 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
 
                             @Override
                             public void onError(@NonNull Throwable e) {
-
+                                timeTableViewModel.canShow.set(false);
                             }
                         })
         );
     }
 
     private void setTimeTableViewModel(TimeTable timeTable) {
+
         if (timeTable.getHeader() != null) {
             timeTableViewModel.header.set(timeTable.getHeader());
         }
@@ -130,6 +131,7 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
             timeTableViewModel.rows.clear();
             timeTableViewModel.rows.addAll(timeTable.getRow());
         }
+        timeTableViewModel.canShow.set(true);
     }
 
     private String getDetailLinerInfoPath() {

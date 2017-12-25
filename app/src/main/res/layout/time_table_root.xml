@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
             name="timeTableViewModel"
             type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.TimeTableViewModel"
@@ -14,6 +16,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/fragment_time_annei_table_timetable_view"
         style="@style/detail_card"
+        android:visibility="@{timeTableViewModel.canShow ? View.VISIBLE : View.GONE}"
         >
 
         <LinearLayout
