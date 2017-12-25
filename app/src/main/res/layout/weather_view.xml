@@ -22,9 +22,9 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
         card_view:cardPreventCornerOverlap="false"
         card_view:layout_constraintLeft_toLeftOf="parent"
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="4dp"
+            android:paddingBottom="8dp"
             >
 
             <!--タイトル-->
@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/primary"
-                android:padding="8dp"
+                android:padding="16dp"
                 android:text='@{titleText + "の天気 " + viewModel.weather.get().date}'
                 android:textColor="@color/white"
                 tools:text="今日の天気"
@@ -54,10 +54,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:textColor="@color/secondary_text"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
                 android:text='@{"天気 ： " + viewModel.weather.get().weather}'
+                android:textColor="@color/secondary_text"
                 tools:text="天気 ： 晴れ"
                 />
             <!--気温-->
@@ -65,29 +65,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/secondary_text"
                 android:text="気温"
+                android:textColor="@color/secondary_text"
                 />
             <!--最高-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/secondary_text"
                 android:layout_marginBottom="4dp"
                 android:layout_marginLeft="32dp"
                 android:text='@{"最高 ： " + viewModel.weather.get().temperature.hight}'
+                android:textColor="@color/secondary_text"
                 tools:text="最高 ： 29℃"
                 />
             <!--最低-->
             <TextView
                 android:layout_width="wrap_content"
-                android:textColor="@color/secondary_text"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:layout_marginLeft="32dp"
                 android:text='@{"最低 ： " + viewModel.weather.get().temperature.low}'
+                android:textColor="@color/secondary_text"
                 tools:text="最低 ： 29℃"
                 />
             <!--風-->
@@ -95,10 +96,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:layout_marginLeft="8dp"
-                android:textColor="@color/secondary_text"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginTop="4dp"
                 android:text='@{"風 ： " + viewModel.weather.get().wind}'
+                android:textColor="@color/secondary_text"
                 tools:text="風 ： 北東の風やや強く℃"
                 />
             <!--波-->
@@ -106,16 +108,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:textColor="@color/secondary_text"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginTop="4dp"
                 android:text='@{"風 ： " + viewModel.weather.get().wave}'
+                android:textColor="@color/secondary_text"
                 tools:text="波 ： 3メートル"
                 />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/dark_grey"
@@ -125,27 +128,38 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/secondary_text"
-                android:padding="8dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="4dp"
                 android:text="3時間毎の天気"
+                android:textColor="@color/secondary_text"
                 />
 
-            <!--追加先レイアウト-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="4dp"
                 android:orientation="horizontal"
-                android:padding="8dp"
-                android:weightSum="5"
-                app:inflateYourTimes="@{viewModel.weather.get().table}"
                 >
                 <!--先頭はタイトル-->
                 <include
                     layout="@layout/weather_view_row_title"
                     />
 
-            </LinearLayout>
+                <!--追加先レイアウト-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:inflateYourTimes="@{viewModel.weather.get().table}"
+                    >
 
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </layout>

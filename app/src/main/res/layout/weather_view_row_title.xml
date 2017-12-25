@@ -9,16 +9,15 @@
     </data>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:orientation="vertical"
         tools:layout_width="wrap_content"
         >
 
         <!--時間-->
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="時間"
             android:textColor="@color/secondary_text"
@@ -31,7 +30,7 @@
 
         <!--天気-->
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="天気"
             android:textColor="@color/secondary_text"
@@ -44,12 +43,11 @@
 
         <!--風向-->
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="風向"
             android:textColor="@color/secondary_text"
             android:textStyle="bold"
-            tools:text="北北西"
             />
 
         <include
@@ -58,7 +56,7 @@
 
         <!--風速-->
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="風速"
             android:textColor="@color/secondary_text"
