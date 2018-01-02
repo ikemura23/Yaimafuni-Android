@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,6 +108,9 @@ public class StatusDetailFragment extends BaseFragment implements StatusDetailVi
      */
     @Override
     public void openTell(String tel) {
+        if (TextUtils.isEmpty(tel)) {
+            return;
+        }
         Intent intent = new Intent(
                 Intent.ACTION_VIEW,
                 Uri.parse("tel:" + tel));
@@ -124,6 +128,9 @@ public class StatusDetailFragment extends BaseFragment implements StatusDetailVi
      */
     @Override
     public void openBrowser(String url) {
+        if (TextUtils.isEmpty(url)) {
+            return;
+        }
         CustomTabUtil.start(getActivity(), url);
     }
 }
