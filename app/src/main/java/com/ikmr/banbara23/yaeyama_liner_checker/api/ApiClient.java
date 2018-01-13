@@ -1,5 +1,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.api;
 
+import android.app.Dialog;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
@@ -7,6 +9,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.core.Base;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.CompanyStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
@@ -83,7 +87,7 @@ public class ApiClient {
             @Override
             public void subscribe(@NonNull final SingleEmitter<TopCompanyInfo> e) throws Exception {
                 // APIリクエスト
-                myRef.addValueEventListener(new ValueEventListener() {
+                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         TopCompanyInfo topCompanyInfo = dataSnapshot.getValue(TopCompanyInfo.class);
@@ -113,7 +117,7 @@ public class ApiClient {
             @Override
             public void subscribe(@NonNull final SingleEmitter<PortStatus> e) throws Exception {
                 // APIリクエスト
-                myRef.addValueEventListener(new ValueEventListener() {
+                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         PortStatus data = dataSnapshot.getValue(PortStatus.class);
@@ -218,5 +222,17 @@ public class ApiClient {
                 });
             }
         });
+    }
+
+    private void showDialog(boolean show) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(Base.getContext());
+        builder.setView(R.layout.progress);
+        Dialog dialog = builder.create();
+
+        if (show) {
+            dialog.show();
+        } else {
+            dialog.dismiss();
+        }
     }
 }
