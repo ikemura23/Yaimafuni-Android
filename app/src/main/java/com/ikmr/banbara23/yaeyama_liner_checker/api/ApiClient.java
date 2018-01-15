@@ -58,7 +58,7 @@ public class ApiClient {
             @Override
             public void subscribe(@NonNull final SingleEmitter<WeatherInfo> e) throws Exception {
                 // APIリクエスト
-                myRef.addValueEventListener(new ValueEventListener() {
+                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         WeatherInfo weatherInfo = dataSnapshot.getValue(WeatherInfo.class);
