@@ -83,6 +83,7 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
                             public void onError(Throwable e) {
                                 timeTableViewModel.canShow.set(false);
                                 e.printStackTrace();
+                                hideDialog();
                             }
 
                             @Override
@@ -90,104 +91,18 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
                                 hideDialog();
                             }
                         })
-
-//                        .subscribeWith(new DisposableSingleObserver<StatusDetailRoot>() {
-//                            @Override
-//                            public void onSuccess(StatusDetailRoot root) {
-//
-//                                // 運行のステータス + ステータス文字の背景色
-//                                setViewModel(root.getPortStatus());
-//
-//                                // 運行関連情報（値段や時間）
-//                                setViewModelOfLinerInfo(root.getDetailLinerInfo());
-//
-//                                // 時間別の運行ステータス
-//                                setTimeTableViewModel(root.getTimeTable());
-//                            }
-//
-//                            @Override
-//                            public void onError(Throwable e) {
-//                                timeTableViewModel.canShow.set(false);
-//                                e.printStackTrace();
-//                            }
-//                        })
         );
-//        loadPortDetail();
-//        loadDetailLinerInfo();
-//        loadTimeTable();
     }
 
     public void onStop() {
         mDisposable.clear();
     }
 
-    /**
-     * 運行情報
-     */
-    protected void loadPortDetail() {
-//        mDisposable.add(
-//                new ApiClient().getStatusDetail(getTablePath())
-//                        .subscribeOn(Schedulers.io())
-//                        .observeOn(AndroidSchedulers.mainThread())
-//                        .subscribeWith(new DisposableSingleObserver<PortStatus>() {
-//                            @Override
-//                            public void onSuccess(@NonNull PortStatus portStatus) {
-//                                setViewModel(portStatus);
-//                            }
-//
-//                            @Override
-//                            public void onError(@NonNull Throwable e) {
-//                            }
-//                        })
-//        );
-    }
-
-    /**
-     * 運行ステータス以外の情報
-     */
-    protected void loadDetailLinerInfo() {
-//        mDisposable.add(
-//                new ApiClient().getDetailLinerInfo(getDetailLinerInfoPath())
-//                        .subscribeOn(Schedulers.io())
-//                        .observeOn(AndroidSchedulers.mainThread())
-//                        .subscribeWith(new DisposableSingleObserver<DetailLinerInfo>() {
-//                            @Override
-//                            public void onSuccess(@NonNull DetailLinerInfo detailLinerInfo) {
-//                                setViewModelOfLinerInfo(detailLinerInfo);
-//                            }
-//
-//                            @Override
-//                            public void onError(@NonNull Throwable e) {
-//                            }
-//                        })
-//        );
-    }
-
-    /**
-     * タイムテーブル
-     */
-    private void loadTimeTable() {
-//        String path = company.getCode() + "_timeTable/" + portCode;
-//        mDisposable.add(
-//                new ApiClient().getTimeTable(path)
-//                        .subscribeOn(Schedulers.io())
-//                        .observeOn(AndroidSchedulers.mainThread())
-//                        .subscribeWith(new DisposableSingleObserver<TimeTable>() {
-//                            @Override
-//                            public void onSuccess(@NonNull TimeTable timeTable) {
-//                                setTimeTableViewModel(timeTable);
-//                                Log.d(TAG, timeTable.toString());
-//                            }
-//
-//                            @Override
-//                            public void onError(@NonNull Throwable e) {
-//                                timeTableViewModel.canShow.set(false);
-//                            }
-//                        })
-//        );
-    }
-
     private void setTimeTableViewModel(TimeTable timeTable) {
+        if (timeTable.getRow() == null || timeTable.getRow().isEmpty()) {
+            timeTableViewModel.canShow.set(false);
+            return;
+        }
 
         if (timeTable.getHeader() != null) {
             timeTableViewModel.header.set(timeTable.getHeader());
@@ -197,10 +112,6 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
             timeTableViewModel.rows.addAll(timeTable.getRow());
         }
         timeTableViewModel.canShow.set(true);
-    }
-
-    private String getDetailLinerInfoPath() {
-        return company.getCode() + "_liner_info/" + portCode;
     }
 
     /**
@@ -223,10 +134,6 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
     private void setViewModelOfLinerInfo(DetailLinerInfo detailLinerInfo) {
         // ViewModelにセット
         linerViewModel.detailLinerInfo.set(detailLinerInfo);
-    }
-
-    private String getTablePath() {
-        return company.getCode() + "/" + portCode;
     }
 
     /**

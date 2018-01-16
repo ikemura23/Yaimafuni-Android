@@ -209,10 +209,8 @@ public class ApiClient {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         TimeTable data = dataSnapshot.getValue(TimeTable.class);
                         if (data == null) {
-                            e.onError(new Exception(path + " api response is Null"));
-                            return;
+                            data = new TimeTable();
                         }
-                        Log.d(TAG, "Value is: " + data.toString());
                         e.onSuccess(data);
                     }
 
