@@ -140,6 +140,9 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
      * 外部電話アプリを起動
      */
     public void startTel() {
+        if (linerViewModel.detailLinerInfo.get() == null) {
+            return;
+        }
         view.openTell(linerViewModel.detailLinerInfo.get().getTell());
     }
 
@@ -147,6 +150,9 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
      * ブラウザを起動
      */
     public void startWeb() {
+        if (linerViewModel.detailLinerInfo.get() == null) {
+            return;
+        }
         view.openBrowser(linerViewModel.detailLinerInfo.get().getUrl());
     }
 }
