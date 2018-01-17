@@ -44,7 +44,9 @@ public class ApiClient {
      */
     private static DatabaseReference getRef(String tablePath) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        return database.getReference(tablePath);
+        DatabaseReference reference = database.getReference(tablePath);
+        reference.keepSynced(false);
+        return reference;
     }
 
     /**
@@ -53,12 +55,12 @@ public class ApiClient {
      * @return
      */
     public Single<WeatherInfo> getWeather() {
-        final DatabaseReference myRef = getRef(WEATHER);
+        final DatabaseReference ref = getRef(WEATHER);
         return Single.create(new SingleOnSubscribe<WeatherInfo>() {
             @Override
             public void subscribe(@NonNull final SingleEmitter<WeatherInfo> e) throws Exception {
                 // APIリクエスト
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         WeatherInfo weatherInfo = dataSnapshot.getValue(WeatherInfo.class);
@@ -82,12 +84,12 @@ public class ApiClient {
      * @return
      */
     public Single<TopCompanyInfo> getTopCompany() {
-        final DatabaseReference myRef = getRef(TOP_COMPANY);
+        final DatabaseReference ref = getRef(TOP_COMPANY);
         return Single.create(new SingleOnSubscribe<TopCompanyInfo>() {
             @Override
             public void subscribe(@NonNull final SingleEmitter<TopCompanyInfo> e) throws Exception {
                 // APIリクエスト
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         TopCompanyInfo topCompanyInfo = dataSnapshot.getValue(TopCompanyInfo.class);
@@ -132,12 +134,12 @@ public class ApiClient {
      */
     public static Observable<PortStatus> getStatusDetail(Company company, String portCode) {
         final String path = company.getCode() + "/" + portCode;
-        final DatabaseReference myRef = getRef(path);
+        final DatabaseReference ref = getRef(path);
         return Single.create(new SingleOnSubscribe<PortStatus>() {
             @Override
             public void subscribe(@NonNull final SingleEmitter<PortStatus> e) throws Exception {
                 // APIリクエスト
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         PortStatus data = dataSnapshot.getValue(PortStatus.class);
@@ -165,12 +167,12 @@ public class ApiClient {
      */
     public static Observable<DetailLinerInfo> getDetailLinerInfo(Company company, String portCode) {
         final String path = company.getCode() + "_liner_info/" + portCode;
-        final DatabaseReference myRef = getRef(path);
+        final DatabaseReference ref = getRef(path);
         return Single.create(new SingleOnSubscribe<DetailLinerInfo>() {
             @Override
             public void subscribe(@NonNull final SingleEmitter<DetailLinerInfo> e) throws Exception {
                 // データの 1 回読み取り
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         DetailLinerInfo data = dataSnapshot.getValue(DetailLinerInfo.class);
@@ -199,12 +201,12 @@ public class ApiClient {
      */
     public static Observable<TimeTable> getTimeTable(Company company, String portCode) {
         final String path = company.getCode() + "_timeTable/" + portCode;
-        final DatabaseReference myRef = getRef(path);
+        final DatabaseReference ref = getRef(path);
         return Single.create(new SingleOnSubscribe<TimeTable>() {
             @Override
             public void subscribe(@NonNull final SingleEmitter<TimeTable> e) throws Exception {
                 // データの 1 回読み取り
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         TimeTable data = dataSnapshot.getValue(TimeTable.class);
@@ -231,12 +233,12 @@ public class ApiClient {
      * @return
      */
     public Single<CompanyStatus> getCompanyStatus(final String path) {
-        final DatabaseReference myRef = getRef(path);
+        final DatabaseReference ref = getRef(path);
         return Single.create(new SingleOnSubscribe<CompanyStatus>() {
             @Override
             public void subscribe(@NonNull final SingleEmitter<CompanyStatus> e) throws Exception {
                 // データの 1 回読み取り
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         CompanyStatus data = dataSnapshot.getValue(CompanyStatus.class);
