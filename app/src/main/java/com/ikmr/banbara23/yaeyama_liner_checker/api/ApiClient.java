@@ -177,8 +177,7 @@ public class ApiClient {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         DetailLinerInfo data = dataSnapshot.getValue(DetailLinerInfo.class);
                         if (data == null) {
-                            e.onError(new Exception(path + " api response is Null"));
-                            return;
+                            data = new DetailLinerInfo();
                         }
                         Log.d(TAG, "Value is: " + data.toString());
                         e.onSuccess(data);
