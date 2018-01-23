@@ -11,4 +11,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="actionbar_text_size">20sp</dimen>
+    <dimen name="top_card_col_height">48</dimen>
 </resources>
