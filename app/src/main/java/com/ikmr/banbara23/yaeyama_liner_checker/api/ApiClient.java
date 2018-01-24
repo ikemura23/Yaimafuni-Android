@@ -16,12 +16,17 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.TopCompanyInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo;
 
+import durdinapps.rxfirebase2.RxFirebaseDatabase;
+import io.reactivex.Flowable;
+import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.SingleEmitter;
 import io.reactivex.SingleOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function3;
+import io.reactivex.schedulers.Schedulers;
 
 import static android.content.ContentValues.TAG;
 
@@ -54,28 +59,11 @@ public class ApiClient {
      *
      * @return
      */
-    public Single<WeatherInfo> getWeather() {
+    public Maybe<WeatherInfo> getWeather() {
         final DatabaseReference ref = getRef(WEATHER);
-        return Single.create(new SingleOnSubscribe<WeatherInfo>() {
-            @Override
-            public void subscribe(@NonNull final SingleEmitter<WeatherInfo> e) throws Exception {
-                // APIリクエスト
-                ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        WeatherInfo weatherInfo = dataSnapshot.getValue(WeatherInfo.class);
-                        Log.d(TAG, "Value is: " + weatherInfo.toString());
-                        e.onSuccess(weatherInfo);
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        Log.w(TAG, "Failed to read value.", error.toException());
-                        e.onError(error.toException());
-                    }
-                });
-            }
-        });
+        return RxFirebaseDatabase.observeSingleValueEvent(ref, WeatherInfo.class)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     /**
@@ -85,6 +73,7 @@ public class ApiClient {
      */
     public Single<TopCompanyInfo> getTopCompany() {
         final DatabaseReference ref = getRef(TOP_COMPANY);
+        ref.keepSynced(false);
         return Single.create(new SingleOnSubscribe<TopCompanyInfo>() {
             @Override
             public void subscribe(@NonNull final SingleEmitter<TopCompanyInfo> e) throws Exception {
@@ -232,31 +221,9 @@ public class ApiClient {
      * @param path
      * @return
      */
-    public Single<CompanyStatus> getCompanyStatus(final String path) {
-        final DatabaseReference ref = getRef(path);
-        return Single.create(new SingleOnSubscribe<CompanyStatus>() {
-            @Override
-            public void subscribe(@NonNull final SingleEmitter<CompanyStatus> e) throws Exception {
-                // データの 1 回読み取り
-                ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        CompanyStatus data = dataSnapshot.getValue(CompanyStatus.class);
-                        if (data == null) {
-                            e.onError(new Exception(path + " api response is Null"));
-                            return;
-                        }
-                        Log.d(TAG, "Value is: " + data.toString());
-                        e.onSuccess(data);
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        Log.w(TAG, "Failed to read value.", error.toException());
-                        e.onError(error.toException());
-                    }
-                });
-            }
-        });
+    public Flowable<CompanyStatus> getCompanyStatus(final String path) {
+        return RxFirebaseDatabase.observeValueEvent(getRef(path), CompanyStatus.class)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }

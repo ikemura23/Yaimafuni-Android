@@ -23,11 +23,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableSingleObserver;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subscribers.ResourceSubscriber;
 
 /**
  * 一覧タブListFragment
@@ -40,6 +37,7 @@ public class StatusListTabFragment extends BaseListFragment {
     TextView mUpdateText;
     View mHeaderView;
     private CompositeDisposable mDisposable = new CompositeDisposable();
+    private ResourceSubscriber<CompanyStatus> resourceSubscriber;
 
     public static StatusListTabFragment NewInstance(Company company) {
         StatusListTabFragment fragment = new StatusListTabFragment();
@@ -66,6 +64,7 @@ public class StatusListTabFragment extends BaseListFragment {
     public void onPause() {
         super.onPause();
         mDisposable.clear();
+        resourceSubscriber.dispose();
     }
 
     @Override
@@ -99,23 +98,26 @@ public class StatusListTabFragment extends BaseListFragment {
         mHeaderView.setVisibility(View.GONE);
         mListAdapter.clear();
         setListAdapter(mListAdapter);
+        resourceSubscriber =
+                new ApiClient()
+                        .getCompanyStatus(getCompany().getCode())
+                        .subscribeWith(new ResourceSubscriber<CompanyStatus>() {
 
-        mDisposable.add(
-                new ApiClient().getCompanyStatus(getCompany().getCode())
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableSingleObserver<CompanyStatus>() {
                             @Override
-                            public void onSuccess(@NonNull CompanyStatus companyStatus) {
+                            public void onNext(CompanyStatus companyStatus) {
                                 onResultListQuery(companyStatus);
                             }
 
                             @Override
-                            public void onError(@NonNull Throwable e) {
-                                e.fillInStackTrace();
+                            public void onError(Throwable t) {
+
                             }
-                        })
-        );
+
+                            @Override
+                            public void onComplete() {
+
+                            }
+                        });
     }
 
     /**

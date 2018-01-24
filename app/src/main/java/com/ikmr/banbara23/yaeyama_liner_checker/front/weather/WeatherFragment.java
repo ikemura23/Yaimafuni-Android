@@ -1,5 +1,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.weather;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -39,6 +40,12 @@ public class WeatherFragment extends BaseFragment implements WeatherView {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.onResume();
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         mPresenter.detachView();
@@ -51,5 +58,10 @@ public class WeatherFragment extends BaseFragment implements WeatherView {
 
     public static WeatherFragment NewInstance() {
         return new WeatherFragment();
+    }
+
+    @Override
+    public Context getContext() {
+        return this.getActivity();
     }
 }

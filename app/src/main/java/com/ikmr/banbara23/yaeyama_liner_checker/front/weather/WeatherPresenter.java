@@ -1,15 +1,16 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.weather;
 
+import android.app.Dialog;
+import android.support.v7.app.AlertDialog;
+
+import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.base.Presenter;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherViewModel;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableSingleObserver;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.observers.DisposableMaybeObserver;
 
 public class WeatherPresenter implements Presenter<WeatherView> {
     private WeatherView mView;
@@ -25,7 +26,6 @@ public class WeatherPresenter implements Presenter<WeatherView> {
     @Override
     public void attachView(WeatherView view) {
         mView = view;
-        fetchWeather();
     }
 
     @Override
@@ -36,24 +36,35 @@ public class WeatherPresenter implements Presenter<WeatherView> {
         mView = null;
     }
 
+    public void onResume() {
+        fetchWeather();
+    }
+
     /**
      * 天気を取得
      */
     protected void fetchWeather() {
+        showDialog();
         mDisposable.add(
                 new ApiClient().getWeather()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableSingleObserver<WeatherInfo>() {
-                            @Override
-                            public void onSuccess(@NonNull WeatherInfo weatherInfo) {
-                                bindData(weatherInfo);
-                            }
+                        .subscribeWith(
+                                new DisposableMaybeObserver<WeatherInfo>() {
+                                    @Override
+                                    public void onSuccess(WeatherInfo weatherInfo) {
+                                        bindData(weatherInfo);
+                                        hideDialog();
+                                    }
 
-                            @Override
-                            public void onError(@NonNull Throwable e) {
-                            }
-                        })
+                                    @Override
+                                    public void onError(Throwable e) {
+                                        hideDialog();
+                                    }
+
+                                    @Override
+                                    public void onComplete() {
+
+                                    }
+                                })
         );
     }
 
@@ -69,5 +80,18 @@ public class WeatherPresenter implements Presenter<WeatherView> {
 
     public void onButtonClick() {
         mView.openBrowser();
+    }
+
+    private Dialog mDialog;
+
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mView.getContext());
+        builder.setView(R.layout.progress);
+        mDialog = builder.create();
+        mDialog.show();
+    }
+
+    private void hideDialog() {
+        mDialog.dismiss();
     }
 }

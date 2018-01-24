@@ -14,6 +14,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableMaybeObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -85,18 +86,23 @@ public class TopPresenter implements Presenter<TopView> {
     protected void fetchWeather() {
         mDisposable.add(
                 mApiClient.getWeather()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableSingleObserver<WeatherInfo>() {
-                            @Override
-                            public void onSuccess(@NonNull WeatherInfo weatherInfo) {
-                                onCompleteFromWeather(weatherInfo);
-                            }
+                        .subscribeWith(
+                                new DisposableMaybeObserver<WeatherInfo>() {
+                                    @Override
+                                    public void onSuccess(WeatherInfo weatherInfo) {
+                                        onCompleteFromWeather(weatherInfo);
+                                    }
 
-                            @Override
-                            public void onError(@NonNull Throwable e) {
-                            }
-                        })
+                                    @Override
+                                    public void onError(Throwable e) {
+
+                                    }
+
+                                    @Override
+                                    public void onComplete() {
+
+                                    }
+                                })
         );
     }
 
