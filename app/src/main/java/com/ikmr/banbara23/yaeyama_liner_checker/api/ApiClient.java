@@ -50,7 +50,6 @@ public class ApiClient {
     private static DatabaseReference getRef(String tablePath) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference(tablePath);
-        reference.keepSynced(false);
         return reference;
     }
 
@@ -61,6 +60,7 @@ public class ApiClient {
      */
     public Maybe<WeatherInfo> getWeather() {
         final DatabaseReference ref = getRef(WEATHER);
+        ref.keepSynced(false);
         return RxFirebaseDatabase.observeSingleValueEvent(ref, WeatherInfo.class)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -124,6 +124,7 @@ public class ApiClient {
     public static Observable<PortStatus> getStatusDetail(Company company, String portCode) {
         final String path = company.getCode() + "/" + portCode;
         final DatabaseReference ref = getRef(path);
+        ref.keepSynced(false);
         return Single.create(new SingleOnSubscribe<PortStatus>() {
             @Override
             public void subscribe(@NonNull final SingleEmitter<PortStatus> e) throws Exception {
@@ -157,6 +158,7 @@ public class ApiClient {
     public static Observable<DetailLinerInfo> getDetailLinerInfo(Company company, String portCode) {
         final String path = company.getCode() + "_liner_info/" + portCode;
         final DatabaseReference ref = getRef(path);
+        ref.keepSynced(false);
         return Single.create(new SingleOnSubscribe<DetailLinerInfo>() {
             @Override
             public void subscribe(@NonNull final SingleEmitter<DetailLinerInfo> e) throws Exception {
@@ -191,6 +193,7 @@ public class ApiClient {
     public static Observable<TimeTable> getTimeTable(Company company, String portCode) {
         final String path = company.getCode() + "_timeTable/" + portCode;
         final DatabaseReference ref = getRef(path);
+        ref.keepSynced(false);
         return Single.create(new SingleOnSubscribe<TimeTable>() {
             @Override
             public void subscribe(@NonNull final SingleEmitter<TimeTable> e) throws Exception {
@@ -222,7 +225,9 @@ public class ApiClient {
      * @return
      */
     public Flowable<CompanyStatus> getCompanyStatus(final String path) {
-        return RxFirebaseDatabase.observeValueEvent(getRef(path), CompanyStatus.class)
+        final DatabaseReference ref = getRef(path);
+        ref.keepSynced(false);
+        return RxFirebaseDatabase.observeValueEvent(ref, CompanyStatus.class)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
