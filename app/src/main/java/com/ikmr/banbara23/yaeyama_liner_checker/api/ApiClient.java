@@ -18,7 +18,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo;
 
 import durdinapps.rxfirebase2.RxFirebaseDatabase;
 import io.reactivex.Flowable;
-import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.SingleEmitter;
@@ -58,10 +57,10 @@ public class ApiClient {
      *
      * @return
      */
-    public Maybe<WeatherInfo> getWeather() {
+    public Flowable<WeatherInfo> getWeather() {
         final DatabaseReference ref = getRef(WEATHER);
         ref.keepSynced(false);
-        return RxFirebaseDatabase.observeSingleValueEvent(ref, WeatherInfo.class)
+        return RxFirebaseDatabase.observeValueEvent(ref, WeatherInfo.class)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
@@ -71,30 +70,35 @@ public class ApiClient {
      *
      * @return
      */
-    public Single<TopCompanyInfo> getTopCompany() {
+    public Flowable<TopCompanyInfo> getTopCompany() {
         final DatabaseReference ref = getRef(TOP_COMPANY);
         ref.keepSynced(false);
-        return Single.create(new SingleOnSubscribe<TopCompanyInfo>() {
-            @Override
-            public void subscribe(@NonNull final SingleEmitter<TopCompanyInfo> e) throws Exception {
-                // APIリクエスト
-                ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        TopCompanyInfo topCompanyInfo = dataSnapshot.getValue(TopCompanyInfo.class);
-                        Log.d(TAG, "Value is: " + topCompanyInfo.toString());
-                        e.onSuccess(topCompanyInfo);
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        Log.w(TAG, "Failed to read value.", error.toException());
-                        e.onError(error.toException());
-                    }
-                });
-            }
-        });
+        return RxFirebaseDatabase.observeValueEvent(ref, TopCompanyInfo.class)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
+//        ref.keepSynced(false);
+//        return Single.create(new SingleOnSubscribe<TopCompanyInfo>() {
+//            @Override
+//            public void subscribe(@NonNull final SingleEmitter<TopCompanyInfo> e) throws Exception {
+//                // APIリクエスト
+//                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        TopCompanyInfo topCompanyInfo = dataSnapshot.getValue(TopCompanyInfo.class);
+//                        Log.d(TAG, "Value is: " + topCompanyInfo.toString());
+//                        e.onSuccess(topCompanyInfo);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError error) {
+//                        Log.w(TAG, "Failed to read value.", error.toException());
+//                        e.onError(error.toException());
+//                    }
+//                });
+//            }
+//        });
+//}
 
     public static Observable<StatusDetailRoot> getDetailInfo(Company company, String portCode) {
 

@@ -11,12 +11,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.front.base.Presenter;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.TopCompanyInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableMaybeObserver;
-import io.reactivex.observers.DisposableSingleObserver;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subscribers.ResourceSubscriber;
 
 /**
  * トップ画面のPresenter
@@ -25,7 +21,6 @@ public class TopPresenter implements Presenter<TopView> {
     private TopViewModel viewModel;
     private TopView view;
     private ApiClient mApiClient;
-    private DisposableSingleObserver<WeatherInfo> mDisposableSingleObserver = null;
     private CompositeDisposable mDisposable = new CompositeDisposable();
 
     /**
@@ -63,17 +58,22 @@ public class TopPresenter implements Presenter<TopView> {
      */
     protected void fetchTopStatus() {
         mDisposable.add(
-                mApiClient.getTopCompany()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableSingleObserver<TopCompanyInfo>() {
+                mApiClient
+                        .getTopCompany()
+                        .subscribeWith(new ResourceSubscriber<TopCompanyInfo>() {
+
                             @Override
-                            public void onSuccess(@NonNull TopCompanyInfo topCompanyInfo) {
-                                onComplete(topCompanyInfo);
+                            public void onNext(TopCompanyInfo topCompanyInfo) {
+                                bindData(topCompanyInfo);
                             }
 
                             @Override
-                            public void onError(@NonNull Throwable e) {
+                            public void onError(Throwable t) {
+                                view.hideProgressBar();
+                            }
+
+                            @Override
+                            public void onComplete() {
                                 view.hideProgressBar();
                             }
                         })
@@ -85,22 +85,23 @@ public class TopPresenter implements Presenter<TopView> {
      */
     protected void fetchWeather() {
         mDisposable.add(
-                mApiClient.getWeather()
+                mApiClient
+                        .getWeather()
                         .subscribeWith(
-                                new DisposableMaybeObserver<WeatherInfo>() {
+                                new ResourceSubscriber<WeatherInfo>() {
                                     @Override
-                                    public void onSuccess(WeatherInfo weatherInfo) {
+                                    public void onNext(WeatherInfo weatherInfo) {
                                         onCompleteFromWeather(weatherInfo);
                                     }
 
                                     @Override
-                                    public void onError(Throwable e) {
-
+                                    public void onError(Throwable t) {
+                                        view.hideProgressBar();
                                     }
 
                                     @Override
                                     public void onComplete() {
-
+                                        view.hideProgressBar();
                                     }
                                 })
         );
@@ -111,7 +112,7 @@ public class TopPresenter implements Presenter<TopView> {
      *
      * @param topCompanyInfo
      */
-    private void onComplete(TopCompanyInfo topCompanyInfo) {
+    private void bindData(TopCompanyInfo topCompanyInfo) {
         viewModel.topCompany.set(topCompanyInfo);
 
         setStatus(topCompanyInfo.getAnei(), viewModel.aneiStatus, viewModel.aneiColor);

@@ -64,7 +64,9 @@ public class StatusListTabFragment extends BaseListFragment {
     public void onPause() {
         super.onPause();
         mDisposable.clear();
-        resourceSubscriber.dispose();
+        if (resourceSubscriber != null) {
+            resourceSubscriber.dispose();
+        }
     }
 
     @Override

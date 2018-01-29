@@ -10,7 +10,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherViewModel;
 
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableMaybeObserver;
+import io.reactivex.subscribers.ResourceSubscriber;
 
 public class WeatherPresenter implements Presenter<WeatherView> {
     private WeatherView mView;
@@ -48,9 +48,9 @@ public class WeatherPresenter implements Presenter<WeatherView> {
         mDisposable.add(
                 new ApiClient().getWeather()
                         .subscribeWith(
-                                new DisposableMaybeObserver<WeatherInfo>() {
+                                new ResourceSubscriber<WeatherInfo>() {
                                     @Override
-                                    public void onSuccess(WeatherInfo weatherInfo) {
+                                    public void onNext(WeatherInfo weatherInfo) {
                                         bindData(weatherInfo);
                                         hideDialog();
                                     }
