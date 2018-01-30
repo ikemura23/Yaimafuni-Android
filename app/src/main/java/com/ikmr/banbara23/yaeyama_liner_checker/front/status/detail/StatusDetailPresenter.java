@@ -12,10 +12,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableObserver;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subscribers.ResourceSubscriber;
 
 /**
  * 運行詳細 Presenter
@@ -63,10 +61,9 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
     public void onResume() {
         showDialog();
         mDisposable.add(
-                ApiClient.getDetailInfo(company, portCode)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<StatusDetailRoot>() {
+                ApiClient
+                        .getDetailInfo(company, portCode)
+                        .subscribeWith(new ResourceSubscriber<StatusDetailRoot>() {
                             @Override
                             public void onNext(StatusDetailRoot root) {
                                 // 運行のステータス + ステータス文字の背景色
@@ -77,6 +74,9 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
 
                                 // 時間別の運行ステータス
                                 setTimeTableViewModel(root.getTimeTable());
+
+                                // なぜかonCompleteが呼ばれない
+                                hideDialog();
                             }
 
                             @Override
@@ -88,7 +88,6 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
 
                             @Override
                             public void onComplete() {
-                                hideDialog();
                             }
                         })
         );
