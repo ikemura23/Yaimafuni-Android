@@ -111,7 +111,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="4dp"
-                android:text='@{"風 ： " + viewModel.weather.get().wave}'
+                android:text='@{"波 ： " + viewModel.weather.get().wave}'
                 android:textColor="@color/secondary_text"
                 tools:text="波 ： 3メートル"
                 />
