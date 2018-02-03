@@ -1,15 +1,10 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail;
 
-import android.app.Dialog;
-import android.support.v7.app.AlertDialog;
-
-import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.base.Presenter;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
-import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable;
 
 import io.reactivex.disposables.CompositeDisposable;
@@ -27,7 +22,6 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
     private Company company;
     private String portCode;
     private CompositeDisposable mDisposable = new CompositeDisposable();
-    private Dialog mDialog;
 
     StatusDetailPresenter(StatusDetailViewModel viewModel, LinerInfoViewModel linerViewModel, TimeTableViewModel timeTableViewModel, Company company, String portCode) {
         this.viewModel = viewModel;
@@ -47,47 +41,64 @@ public class StatusDetailPresenter implements Presenter<StatusDetailView> {
         view = null;
     }
 
-    private void showDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setView(R.layout.progress);
-        mDialog = builder.create();
-        mDialog.show();
-    }
-
-    private void hideDialog() {
-        mDialog.dismiss();
-    }
-
     public void onResume() {
-        showDialog();
+        // 運行のステータス + ステータス文字の背景色
         mDisposable.add(
-                ApiClient
-                        .getDetailInfo(company, portCode)
-                        .subscribeWith(new ResourceSubscriber<StatusDetailRoot>() {
+                ApiClient.getStatusDetail(company, portCode)
+                        .subscribeWith(new ResourceSubscriber<PortStatus>() {
                             @Override
-                            public void onNext(StatusDetailRoot root) {
-                                // 運行のステータス + ステータス文字の背景色
-                                setViewModel(root.getPortStatus());
-
-                                // 運行関連情報（値段や時間）
-                                setViewModelOfLinerInfo(root.getDetailLinerInfo());
-
-                                // 時間別の運行ステータス
-                                setTimeTableViewModel(root.getTimeTable());
-
-                                // なぜかonCompleteが呼ばれない
-                                hideDialog();
+                            public void onNext(PortStatus portStatus) {
+                                setViewModel(portStatus);
                             }
 
                             @Override
-                            public void onError(Throwable e) {
-                                timeTableViewModel.canShow.set(false);
-                                e.printStackTrace();
-                                hideDialog();
+                            public void onError(Throwable t) {
+
                             }
 
                             @Override
                             public void onComplete() {
+
+                            }
+                        })
+        );
+        // 運行関連情報（値段や時間）
+        mDisposable.add(
+                ApiClient.getDetailLinerInfo(company, portCode)
+                        .subscribeWith(new ResourceSubscriber<DetailLinerInfo>() {
+                            @Override
+                            public void onNext(DetailLinerInfo info) {
+                                setViewModelOfLinerInfo(info);
+                            }
+
+                            @Override
+                            public void onError(Throwable t) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
+                            }
+                        })
+        );
+        // 時間別の運行ステータス
+        mDisposable.add(
+                ApiClient.getTimeTable(company, portCode)
+                        .subscribeWith(new ResourceSubscriber<TimeTable>() {
+                            @Override
+                            public void onNext(TimeTable timeTable) {
+                                setTimeTableViewModel(timeTable);
+                            }
+
+                            @Override
+                            public void onError(Throwable t) {
+                                timeTableViewModel.canShow.set(false);
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                         })
         );
