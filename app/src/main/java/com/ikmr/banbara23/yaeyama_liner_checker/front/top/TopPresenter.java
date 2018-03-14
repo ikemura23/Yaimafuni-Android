@@ -117,7 +117,7 @@ public class TopPresenter implements Presenter<TopView> {
 
         setStatus(topCompanyInfo.getAnei(), viewModel.aneiStatus, viewModel.aneiColor);
         setStatus(topCompanyInfo.getYkf(), viewModel.ykfStatus, viewModel.ykfColor);
-        setStatus(topCompanyInfo.getDream(), viewModel.dreamStatus, viewModel.dreamColor);
+//        setStatus(topCompanyInfo.getDream(), viewModel.dreamStatus, viewModel.dreamColor);
 
         view.hideProgressBar();
     }

@@ -6,8 +6,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model;
  */
 public enum Company {
     ANEI("anei", "安栄観光"),
-    YKF("ykf", "八重山観光フェリー"),
-    DREAM("dream", "ドリーム観光");
+    YKF("ykf", "八重山観光フェリー");
 
     /**
      * フィールド変数

@@ -31,14 +31,10 @@
     <string name="tel_ykf">0980825010</string>
     <!--八重山観光フェリーのHP-->
     <string name="hp_ykf">http://www.yaeyama.co.jp</string>
-    <!--ドリーム観光の電話番号-->
-    <string name="tel_dream">0980843178</string>
-    <!--ドリーム観光のHP-->
-    <string name="hp_dream">http://ishigaki-dream.co.jp/</string>
 
     <!--その他-->
     <string name="other_info">
-        当アプリは個人が作成したアプリであり、安栄観光様・八重山観光フェリー様・ドリーム観光様の公式アプリではありません。\n当アプリについての安栄観光様・八重山観光フェリー様・ドリーム観光へのお問い合わせは、ご遠慮頂くようお願い申し上げます。
+        当アプリは個人が作成したアプリであり、安栄観光様・八重山観光フェリー様の公式アプリではありません。\n当アプリについての安栄観光様・八重山観光フェリー様へのお問い合わせは、ご遠慮頂くようお願い申し上げます。
     </string>
 
     <string name="mail_address">banbara.work@gmail.com</string>
@@ -70,163 +66,10 @@
 
     <string name="company_name_annei">安栄観光</string>
     <string name="company_name_ykf">八重山観光フェリー</string>
-    <string name="company_name_dream">ドリーム観光</string>
 
     <string name="company_tab_name_annei">安栄観光</string>
     <string name="company_tab_name_ykf">八重山観光\nフェリー</string>
-    <string name="company_tab_name_dream">ドリーム観光</string>
     <string name="company_tab_name_annei_and_ykf">安栄観光＆\n八重山観光フェリー</string>
-    <!--安栄の詳細情報-->
-    <!--竹富-->
-    <string name="annei_taketomi_distance">6.5km</string>
-    <string name="annei_taketomi_time">約10ｰ15分</string>
-    <string name="annei_taketomi_price_adult">片道 600円\n往復 1,150円</string>
-    <string name="annei_taketomi_price_child">片道 310円\n往復 590円</string>
-    <string name="annei_taketomi_price_handicapped">片道 310円</string>
-    <!--小浜-->
-    <string name="annei_kohama_distance">約17.7km</string>
-    <string name="annei_kohama_time">約25‐30分</string>
-    <string name="annei_kohama_price_adult">片道 1,060円\n往復 2,020円</string>
-    <string name="annei_kohama_price_child">片道 540円\n往復 1,020円</string>
-    <string name="annei_kohama_price_handicapped">片道 540円</string>
-    <!--黒島-->
-    <string name="annei_kuroshima_distance">約18.5km</string>
-    <string name="annei_kuroshima_time">約25‐30分</string>
-    <string name="annei_kuroshima_price_adult">片道 1,150円\n往復 2,190円</string>
-    <string name="annei_kuroshima_price_child">片道 580円\n往復 1,100円</string>
-    <string name="annei_kuroshima_price_handicapped">片道 580円</string>
-    <!--大原-->
-    <string name="annei_oohara_distance">約18.5km</string>
-    <string name="annei_oohara_time">約25‐30分</string>
-    <string name="annei_oohara_price_adult">片道 1,570円\n往復 2,980円</string>
-    <string name="annei_oohara_price_child">片道 790円\n往復 1,500円</string>
-    <string name="annei_oohara_price_handicapped">片道 790円</string>
-    <!--上原-->
-    <string name="annei_uehara_distance">約37.2km</string>
-    <string name="annei_uehara_time">約40‐45分</string>
-    <string name="annei_uehara_price_adult">片道 2,060円\n往復 3,910円</string>
-    <string name="annei_uehara_price_child">片道 1,030円\n往復 1,960円</string>
-    <string name="annei_uehara_price_handicapped">片道 1,030円</string>
-    <!--波照間-->
-    <string name="annei_hateruma_distance">約56km</string>
-    <string name="annei_hateruma_time">約60‐70分</string>
-    <string name="annei_hateruma_price_adult">片道 3,090円\n往復 5,870円</string>
-    <string name="annei_hateruma_price_child">片道 1,540円\n往復 2,930円</string>
-    <string name="annei_hateruma_price_handicapped">片道 1,550円</string>
-    <!--鳩間-->
-    <string name="annei_hatoma_distance">約km</string>
-    <string name="annei_hatoma_time">約40‐70分</string>
-    <string name="annei_hatoma_price_adult">片道 2,060円\n往復 3,910円</string>
-    <string name="annei_hatoma_price_child">片道 1,030円\往復 1,960円</string>
-    <string name="annei_hatoma_price_handicapped">片道 1,030円</string>
-
-    <!--八重山観光フェリーの詳細情報-->
-    <!--竹富-->
-    <string name="ykf_taketomi_time">約10〜15分</string>
-    <string name="ykf_taketomi_price_adult">片道 600円\n往復 1,150円</string>
-    <string name="ykf_taketomi_price_child">片道 310円\n往復 590円</string>
-    <!--小浜-->
-    <string name="ykf_kohama_time">約25〜30分</string>
-    <string name="ykf_kohama_price_adult">片道 1,060円\n往復 2,020円</string>
-    <string name="ykf_kohama_price_child">片道 540円\n往復 1,020円</string>
-    <!--黒島-->
-    <string name="ykf_kuroshima_time">約25〜30分</string>
-    <string name="ykf_kuroshima_price_adult">片道 1,150円\n往復 2,190円</string>
-    <string name="ykf_kuroshima_price_child">片道 580円\n往復 1,100円</string>
-    <!--大原-->
-    <string name="ykf_oohara_time">約35〜40分</string>
-    <string name="ykf_oohara_price_adult">片道 1,570円\n往復 2,980円</string>
-    <string name="ykf_oohara_price_child">片道 790円\n往復 1,500円</string>
-    <!--上原-->
-    <string name="ykf_uehara_time">約40〜45分</string>
-    <string name="ykf_uehara_price_adult">片道 2,060円\n往復 3,910円</string>
-    <string name="ykf_uehara_price_child">片道 1,030円\n往復 1,960円</string>
-    <!--鳩間-->
-    <string name="ykf_hatoma_time">約40〜45分</string>
-    <string name="ykf_hatoma_price_adult">片道 2,060円\n往復 3,910円</string>
-    <string name="ykf_hatoma_price_child">片道 1,030円\往復 1,960円</string>
-
-    <!--ドリームの詳細情報-->
-    <!--竹富-->
-    <string name="dream_taketomi_time">約10分〜15分</string>
-    <string name="dream_taketomi_price_adult">片道 600円\n往復 1,140円</string>
-    <string name="dream_taketomi_price_child">片道 300円\n往復 570円</string>
-    <string name="dream_taketomi_price_adult_ferry">片道 440円</string>
-    <string name="dream_taketomi_price_child_ferry">片道 220円</string>
-    <!--小浜-->
-    <string name="dream_kohama_time">約25分〜30分</string>
-    <string name="dream_kohama_price_adult">片道 1,060円\n往復 2,010円</string>
-    <string name="dream_kohama_price_child">片道 530円\n往復 1,010円</string>
-    <string name="dream_kohama_price_adult_ferry">片道 740円</string>
-    <string name="dream_kohama_price_child_ferry">片道 370円</string>
-    <!--小浜-竹富-->
-    <string name="dream_kohama_taketomi_price_adult">片道 1,030円\n往復 1,960円</string>
-    <string name="dream_kohama_taketomi_price_child">片道 520円\n往復 980円</string>
-    <!--黒島-->
-    <string name="dream_kuroshima_time">約30分〜35分</string>
-    <string name="dream_kuroshima_price_adult">片道 1,150円\n往復 2,190円</string>
-    <string name="dream_kuroshima_price_child">片道 580円\n往復 1,100円</string>
-    <string name="dream_kuroshima_price_adult_ferry">片道 820円</string>
-    <string name="dream_kuroshima_price_child_ferry">片道 410円</string>
-    <!--大原-->
-    <string name="dream_oohara_time">約35分〜45分</string>
-    <string name="dream_oohara_price_adult">片道 1,570円\n往復 2,980円</string>
-    <string name="dream_oohara_price_child">片道 790円\n往復 1,500円</string>
-    <string name="dream_oohara_price_adult_ferry">片道 1,100円</string>
-    <string name="dream_oohara_price_child_ferry">片道 550円</string>
-    <!--小浜-大原-->
-    <string name="dream_kohama_oohara_price_adult">片道 1,410円</string>
-    <string name="dream_kohama_oohara_price_child">片道 710円</string>
-    <!--竹富-大原-->
-    <string name="dream_taketomi_oohara_price_adult">片道 1,460円</string>
-    <string name="dream_taketomi_oohara_price_child">片道 730円</string>
-    <!--上原/鳩間-->
-    <string name="dream_uehara_time">約55分〜60分</string>
-    <string name="dream_uehara_price_adult_ferry">片道 1,420円</string>
-    <string name="dream_uehara_price_child_ferry">片道 710円</string>
-
-    <!-- 時刻表 -->
-    <string name="time_table_note_789">7~9月</string>
-    <string name="time_table_note_789_description">7・8・9月のみ運航</string>
-
-    <string name="time_table_note_4_9">4~9月</string>
-    <string name="time_table_note_4_9_description">4〜9月のみ運航</string>
-
-    <string name="time_table_note_456">4~6月</string>
-    <string name="time_table_note_456_description">4・5・4月のみ運航</string>
-
-    <string name="time_table_note_take">竹</string>
-    <string name="time_table_note_take_description">竹富島経由</string>
-    <string name="time_table_note_take_irregular_description">竹富島経由不定期</string>
-
-    <string name="time_table_note_hato">鳩</string>
-    <string name="time_table_note_hato_description">鳩間島経由</string>
-
-    <string name="time_table_oohara_buzz_description">上原航路欠航時、大原⇔上原方面への連結送迎バス（あんえいバス）があります。
-        石垣発11:00・大原発12:30便の送迎バスは大原港にて約30分の待ち時間がございます。</string>
-
-    <string name="time_table_note_oo">大</string>
-    <string name="time_table_note_oo_description">石垣発11:50・波照間発13:10便は不定期にて大原港経由の場合があります。</string>
-
-    <string name="time_table_note_uehara">上</string>
-    <string name="time_table_note_ue_description">鳩間島経由</string>
-    <string name="time_table_note_ue_description2">※鳩間島航路は上原航路の経由便の為、上原航路欠航時は運航なしです</string>
-
-    <string name="time_table_note_f">Ｆ</string>
-
-    <string name="time_table_note_kohama">小</string>
-
-    <string name="time_table_init_tab_value">TimeTableInitTabValue</string>
-    <string name="time_table_annei_init_spinner_value">TimeTableAnneiInitSpinnerValue</string>
-    <string name="time_table_ykf_init_spinner_value">TimeTableYkfInitSpinnerValue</string>
-    <string name="time_table_dream_init_spinner_value">TimeTableDreamInitSpinnerValue</string>
-
-    <string name="NCMB_annei_table">AnneiLiners</string>
-    <string name="NCMB_ykf_table">YkfLiners</string>
-    <string name="NCMB_dream_table">DreamLiners</string>
-    <string name="NCMB_get_column_name">result_json</string>
-    <string name="NCMB_sort_column_name">createDate</string>
-    <string name="empty_button_message">取得できませんでした\nタップしてリトライしてください</string>
 
     <!--トップ画面の港別ステータス-->
     <string name="top_status_normal">全便運航</string>

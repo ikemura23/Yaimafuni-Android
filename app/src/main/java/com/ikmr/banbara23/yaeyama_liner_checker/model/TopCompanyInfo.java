@@ -5,7 +5,6 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model;
  */
 public class TopCompanyInfo {
     private TopCompany anei;
-    private TopCompany dream;
     private TopCompany ykf;
 
     public TopCompany getAnei() {
@@ -14,14 +13,6 @@ public class TopCompanyInfo {
 
     public void setAnei(TopCompany anei) {
         this.anei = anei;
-    }
-
-    public TopCompany getDream() {
-        return dream;
-    }
-
-    public void setDream(TopCompany dream) {
-        this.dream = dream;
     }
 
     public TopCompany getYkf() {
@@ -36,7 +27,6 @@ public class TopCompanyInfo {
     public String toString() {
         return "Top_company{" +
                 "anei=" + anei +
-                ", dream=" + dream +
                 ", ykf=" + ykf +
                 '}';
     }

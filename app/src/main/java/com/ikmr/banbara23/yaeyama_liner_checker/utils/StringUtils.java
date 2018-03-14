@@ -1,28 +1,7 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.utils;
 
-import android.text.TextUtils;
-
 public class StringUtils {
-    /**
-     * 空白か
-     *
-     * @param value
-     * @return
-     */
-    public static boolean isEmpty(String value) {
-        return TextUtils.isEmpty(value);
-    }
-
-    /**
-     * 空白ではないか
-     *
-     * @param value
-     * @return
-     */
-    public static boolean isNotEmpty(String value) {
-        return !TextUtils.isEmpty(value);
-    }
 
     /**
      * 全角、半角スペースを削除
