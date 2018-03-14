@@ -26,7 +26,7 @@ public class ApplicationController extends Application {
         Base.initialize(this);
 
         MobileAds.initialize(this, getString(R.string.ad_unit_id));
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
         Crashlytics crashlytics = new Crashlytics.Builder()
                 .core(new CrashlyticsCore.Builder()
                         .disabled(BuildConfig.DEBUG).build())
