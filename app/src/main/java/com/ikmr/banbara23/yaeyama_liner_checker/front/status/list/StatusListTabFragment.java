@@ -163,12 +163,7 @@ public class StatusListTabFragment extends BaseListFragment {
         portStatuses.add(companyStatus.getKohama());
         portStatuses.add(companyStatus.getKuroshima());
         portStatuses.add(companyStatus.getOohara());
-        if (getCompany() != Company.DREAM) {
-            portStatuses.add(companyStatus.getUehara());
-            portStatuses.add(companyStatus.getHatoma());
-        } else {
-            portStatuses.add(companyStatus.getUehara());
-        }
+        portStatuses.add(companyStatus.getUehara());
         if (companyStatus.getHateruma() != null) {
             portStatuses.add(companyStatus.getHateruma());
         }

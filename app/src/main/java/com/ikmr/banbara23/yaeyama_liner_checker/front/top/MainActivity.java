@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity implements TopView {
             case R.id.top_activity_ykf:
                 startListActivity(Company.YKF);
                 break;
-            case R.id.top_activity_dream:
-                startListActivity(Company.DREAM);
-                break;
 //            case R.id.top_activity_setting:
 //                startActivity(new Intent(this, SettingActivity.class));
 //                break;

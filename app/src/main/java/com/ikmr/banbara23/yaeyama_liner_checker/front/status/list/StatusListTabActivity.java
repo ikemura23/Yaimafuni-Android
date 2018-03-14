@@ -19,7 +19,6 @@ public class StatusListTabActivity extends BaseActivity {
     private static final String TAG = StatusListTabActivity.class.getSimpleName();
     private static final int TAB_FIRST = 0;
     private static final int TAB_SECOND = 1;
-    private static final int TAB_THREAD = 2;
 
     TabLayout tabLayout;
 
@@ -58,8 +57,6 @@ public class StatusListTabActivity extends BaseActivity {
                 return TAB_FIRST;
             case YKF:
                 return TAB_SECOND;
-            case DREAM:
-                return TAB_THREAD;
             default:
                 return 0;
         }
@@ -81,7 +78,6 @@ public class StatusListTabActivity extends BaseActivity {
         tabLayout.removeAllTabs();
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_tab_name_annei)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_tab_name_ykf)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_tab_name_dream)));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);

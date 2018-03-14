@@ -28,9 +28,9 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 company = Company.YKF;
                 break;
-            case 2:
-                company = Company.DREAM;
-                break;
+//            case 2:
+//                company = Company.DREAM;
+//                break;
             default:
                 company = null;
         }
