@@ -48,195 +48,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingEnd="16dp"
+                android:padding="16dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:paddingStart="16dp"
                 >
-                <!--運航情報を見る-->
+
+                <include
+                    layout="@layout/top_port"
+                    />
+
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    />
+
                 <include
                     layout="@layout/top_company"
                     />
 
-                <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:gravity="center_vertical"-->
-                <!--android:orientation="vertical"-->
-                <!--&gt;-->
-
-                <!--<android.support.v7.widget.CardView-->
-                <!--android:id="@+id/activity_top_liner"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="16dp"-->
-                <!--android:layout_marginRight="16dp"-->
-                <!--app:cardCornerRadius="4dp"-->
-                <!--app:cardElevation="2dp"-->
-                <!--&gt;-->
-
-                <!--<LinearLayout-->
-                <!--android:id="@+id/linearLayout"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical"-->
-                <!--tools:context="com.ikmr.banbara23.yaeyama_liner_checker.activity.TopActivity"-->
-                <!--&gt;-->
-
-
-                <!--&lt;!&ndash;運航情報&ndash;&gt;-->
-                <!--<RelativeLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:background="@color/white"-->
-                <!--android:orientation="vertical"-->
-                <!--&gt;-->
-
-                <!--&lt;!&ndash;安栄&ndash;&gt;-->
-                <!--<Button-->
-                <!--android:id="@+id/top_activity_annei"-->
-                <!--style="?android:attr/borderlessButtonStyle"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:onClick="onClick"-->
-                <!--/>-->
-
-                <!--<TextView-->
-                <!--android:id="@+id/top_activity_annei_text"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:layout_marginLeft="16dp"-->
-                <!--android:gravity="left|center_vertical"-->
-                <!--android:text="@string/company_name_annei"-->
-                <!--android:textColor="@color/secondary_text"-->
-                <!--android:textSize="15sp"-->
-                <!--/>-->
-
-                <!--<FrameLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:layout_below="@+id/top_activity_annei"-->
-                <!--android:layout_marginLeft="16dp"-->
-                <!--android:layout_marginRight="16dp"-->
-                <!--android:background="@color/background"-->
-                <!--/>-->
-
-                <!--&lt;!&ndash;八重山観光フェリー&ndash;&gt;-->
-                <!--<Button-->
-                <!--android:id="@+id/top_activity_ykf"-->
-                <!--style="?android:attr/borderlessButtonStyle"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:layout_below="@+id/top_activity_annei"-->
-                <!--android:onClick="onClick"-->
-                <!--/>-->
-
-                <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:layout_below="@+id/top_activity_annei"-->
-                <!--android:layout_marginLeft="16dp"-->
-                <!--android:gravity="left|center_vertical"-->
-                <!--android:text="@string/company_name_ykf"-->
-                <!--android:textColor="@color/secondary_text"-->
-                <!--android:textSize="15sp"-->
-                <!--/>-->
-
-                <!--<FrameLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:layout_below="@+id/top_activity_ykf"-->
-                <!--android:layout_marginLeft="16dp"-->
-                <!--android:layout_marginRight="16dp"-->
-                <!--android:background="@color/background"-->
-                <!--/>-->
-
-                <!--&lt;!&ndash;ドリーム観光&ndash;&gt;-->
-                <!--<Button-->
-                <!--android:id="@+id/top_activity_dream"-->
-                <!--style="?android:attr/borderlessButtonStyle"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:layout_below="@+id/top_activity_ykf"-->
-                <!--android:onClick="onClick"-->
-                <!--/>-->
-
-                <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:layout_below="@+id/top_activity_ykf"-->
-                <!--android:layout_marginLeft="16dp"-->
-                <!--android:gravity="left|center_vertical"-->
-                <!--android:text="@string/company_name_dream"-->
-                <!--android:textColor="@color/secondary_text"-->
-                <!--android:textSize="15sp"-->
-                <!--/>-->
-
-                <!--<TextView-->
-                <!--android:id="@+id/top_activity_status_annei"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:layout_alignParentEnd="true"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_marginEnd="16dp"-->
-                <!--android:layout_marginRight="16dp"-->
-                <!--android:gravity="center_vertical"-->
-                <!--android:text="@{viewModel.aneiStatus}"-->
-                <!--android:textColor="@{viewModel.aneiColor}"-->
-                <!--android:textSize="15sp"-->
-                <!--tools:text="通常運航"-->
-                <!--tools:textColor="@color/status_normal"-->
-                <!--/>-->
-
-                <!--<TextView-->
-                <!--android:id="@+id/top_activity_status_ykf"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:layout_alignParentEnd="true"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_below="@+id/top_activity_annei"-->
-                <!--android:layout_marginEnd="16dp"-->
-                <!--android:layout_marginRight="16dp"-->
-                <!--android:gravity="center_vertical"-->
-                <!--android:text="@{viewModel.ykfStatus}"-->
-                <!--android:textColor="@{viewModel.ykfColor}"-->
-                <!--android:textSize="15sp"-->
-                <!--tools:text="欠航あり"-->
-                <!--tools:textColor="@color/status_cancel"-->
-                <!--/>-->
-
-                <!--<TextView-->
-                <!--android:id="@+id/top_activity_status_dream"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:layout_alignParentEnd="true"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_below="@+id/top_activity_status_ykf"-->
-                <!--android:layout_marginEnd="16dp"-->
-                <!--android:layout_marginRight="16dp"-->
-                <!--android:gravity="center_vertical"-->
-                <!--android:text="@{viewModel.dreamStatus}"-->
-                <!--android:textColor="@{viewModel.dreamColor}"-->
-                <!--android:textSize="15sp"-->
-                <!--tools:text="注意あり"-->
-                <!--tools:textColor="@color/status_cation"-->
-                <!--/>-->
-                <!--</RelativeLayout>-->
-                <!--</LinearLayout>-->
-                <!--</android.support.v7.widget.CardView>-->
-
-
-                <!--</LinearLayout>-->
-
-                <!--<ImageView-->
-                <!--android:id="@+id/activity_bottom_ship_image"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_alignTop="@+id/activity_bottom_view"-->
-                <!--android:layout_marginLeft="16dp"-->
-                <!--android:layout_marginTop="-33dp"-->
-                <!--android:src="@drawable/ship"-->
-                <!--/>-->
                 <android.support.v4.widget.Space
                     android:layout_width="match_parent"
                     android:layout_height="16dp"
@@ -245,48 +75,11 @@
                 <include
                     layout="@layout/top_weather"
                     />
-                <!--<com.daasuu.bl.BubbleLayout-->
-                <!--android:id="@+id/activity_top_bubble"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_alignTop="@+id/activity_bottom_view"-->
-                <!--android:layout_marginBottom="30dp"-->
-                <!--android:layout_marginLeft="4dp"-->
-                <!--android:layout_marginRight="16dp"-->
-                <!--android:layout_toRightOf="@+id/activity_bottom_ship_image"-->
-                <!--android:onClick="onClick"-->
-                <!--android:padding="8dp"-->
-                <!--app:bl_arrowDirection="left"-->
-                <!--app:bl_arrowHeight="8dp"-->
-                <!--app:bl_arrowPosition="20dp"-->
-                <!--app:bl_arrowWidth="8dp"-->
-                <!--app:bl_cornersRadius="30dp"-->
-                <!--app:bl_strokeColor="@color/white"-->
-                <!--app:bl_strokeWidth="1dp"-->
-                <!--&gt;-->
 
-                <!--<TextView-->
-                <!--android:id="@+id/activity_top_weather_text"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_alignTop="@+id/activity_bottom_view"-->
-                <!--android:layout_gravity="center_vertical"-->
-                <!--android:layout_marginRight="20dp"-->
-                <!--android:ellipsize="end"-->
-                <!--android:maxLines="2"-->
-                <!--android:text="@{viewModel.todayWeather}"-->
-                <!--android:textColor="@color/secondary_text"-->
-                <!--tools:text="@string/other_info"-->
-                <!--/>-->
-
-                <!--<ImageView-->
-                <!--android:id="@+id/imageView"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center_vertical|end"-->
-                <!--app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp"-->
-                <!--/>-->
-                <!--</com.daasuu.bl.BubbleLayout>-->
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    />
             </LinearLayout>
         </ScrollView>
 

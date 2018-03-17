@@ -1,31 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="8dp"
     >
 
-    <include
-        layout="@layout/top_port_row_item"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/port_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:text="TextView"
+        android:textColor="@color/textDarkPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="竹富島"
         />
 
     <include
+        android:id="@+id/anei"
         layout="@layout/top_port_row_item"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        app:layout_constraintEnd_toStartOf="@+id/ykf"
+        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintStart_toStartOf="@+id/port_name"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
     <include
+        android:id="@+id/ykf"
         layout="@layout/top_port_row_item"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/anei"
+        app:layout_constraintTop_toTopOf="parent"
         />
-</LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
