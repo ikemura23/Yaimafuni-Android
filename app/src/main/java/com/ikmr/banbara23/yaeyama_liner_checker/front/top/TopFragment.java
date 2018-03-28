@@ -14,7 +14,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopRootBinding;
 
 public class TopFragment extends BaseFragment implements TopView {
     TopRootBinding binding;
-    TopViewModel topViewModel;
+    TopViewModel topViewModel = new TopViewModel();
     TopPresenter topPresenter;
 
     public static Fragment newInstance() {
@@ -32,7 +32,8 @@ public class TopFragment extends BaseFragment implements TopView {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.top_root, container, false);
-
+        binding.setPresenter(topPresenter);
+        binding.setViewModel(topViewModel);
         return binding.getRoot();
     }
 

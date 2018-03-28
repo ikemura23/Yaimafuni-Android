@@ -64,7 +64,7 @@ public class TopPresenter implements Presenter<TopView> {
                                     @Override
                                     public void onNext(TopPort topPort) {
                                         Log.d("TopPresenter", "topPort:" + topPort);
-//                                        onCompleteFromWeather(weatherInfo);
+                                        bindTopPort(topPort);
                                     }
 
                                     @Override
@@ -78,6 +78,10 @@ public class TopPresenter implements Presenter<TopView> {
                                     }
                                 })
         );
+    }
+
+    private void bindTopPort(TopPort topPort) {
+        viewModel.topPort.set(topPort);
     }
 
     /**
@@ -140,13 +144,12 @@ public class TopPresenter implements Presenter<TopView> {
      * @param topCompanyInfo
      */
     private void bindData(TopCompanyInfo topCompanyInfo) {
-//        viewModel.topCompany.set(topCompanyInfo);
-//
-//        setStatus(topCompanyInfo.getAnei(), viewModel.aneiStatus, viewModel.aneiColor);
-//        setStatus(topCompanyInfo.getYkf(), viewModel.ykfStatus, viewModel.ykfColor);
-////        setStatus(topCompanyInfo.getDream(), viewModel.dreamStatus, viewModel.dreamColor);
-//
-//        view.hideProgressBar();
+        viewModel.topCompany.set(topCompanyInfo);
+
+        setStatus(topCompanyInfo.getAnei(), viewModel.aneiStatus, viewModel.aneiColor);
+        setStatus(topCompanyInfo.getYkf(), viewModel.ykfStatus, viewModel.ykfColor);
+
+        view.hideProgressBar();
     }
 
     /**
@@ -164,7 +167,7 @@ public class TopPresenter implements Presenter<TopView> {
                 weatherInfo.getToday().getWind() +
                 " 波" +
                 weatherInfo.getToday().getWave();
-//        viewModel.todayWeather.set(weather);
+        viewModel.todayWeather.set(weather);
     }
 
     /**
