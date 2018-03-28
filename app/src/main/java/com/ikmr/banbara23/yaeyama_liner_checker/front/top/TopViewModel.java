@@ -3,7 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.front.top;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.model.TopCompanyInfo;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopCompanyInfo;
 
 /**
  * Top画面のViewModel

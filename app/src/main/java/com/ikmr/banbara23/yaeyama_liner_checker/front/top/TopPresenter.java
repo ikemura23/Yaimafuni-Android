@@ -8,7 +8,8 @@ import android.util.Log;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.base.Presenter;
-import com.ikmr.banbara23.yaeyama_liner_checker.model.TopCompanyInfo;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopCompanyInfo;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo;
 
 import io.reactivex.disposables.CompositeDisposable;
@@ -49,14 +50,40 @@ public class TopPresenter implements Presenter<TopView> {
     }
 
     public void onResume() {
-        fetchTopStatus();
+        fetchCompanyStatus();
+        fetchPortStatus();
         fetchWeather();
+    }
+
+    private void fetchPortStatus() {
+        mDisposable.add(
+                mApiClient
+                        .getTopPortStatus()
+                        .subscribeWith(
+                                new ResourceSubscriber<TopPort>() {
+                                    @Override
+                                    public void onNext(TopPort topPort) {
+                                        Log.d("TopPresenter", "topPort:" + topPort);
+//                                        onCompleteFromWeather(weatherInfo);
+                                    }
+
+                                    @Override
+                                    public void onError(Throwable t) {
+                                        view.hideProgressBar();
+                                    }
+
+                                    @Override
+                                    public void onComplete() {
+                                        view.hideProgressBar();
+                                    }
+                                })
+        );
     }
 
     /**
      * トップ用ステータスを取得
      */
-    protected void fetchTopStatus() {
+    protected void fetchCompanyStatus() {
         mDisposable.add(
                 mApiClient
                         .getTopCompany()
@@ -113,13 +140,13 @@ public class TopPresenter implements Presenter<TopView> {
      * @param topCompanyInfo
      */
     private void bindData(TopCompanyInfo topCompanyInfo) {
-        viewModel.topCompany.set(topCompanyInfo);
-
-        setStatus(topCompanyInfo.getAnei(), viewModel.aneiStatus, viewModel.aneiColor);
-        setStatus(topCompanyInfo.getYkf(), viewModel.ykfStatus, viewModel.ykfColor);
-//        setStatus(topCompanyInfo.getDream(), viewModel.dreamStatus, viewModel.dreamColor);
-
-        view.hideProgressBar();
+//        viewModel.topCompany.set(topCompanyInfo);
+//
+//        setStatus(topCompanyInfo.getAnei(), viewModel.aneiStatus, viewModel.aneiColor);
+//        setStatus(topCompanyInfo.getYkf(), viewModel.ykfStatus, viewModel.ykfColor);
+////        setStatus(topCompanyInfo.getDream(), viewModel.dreamStatus, viewModel.dreamColor);
+//
+//        view.hideProgressBar();
     }
 
     /**
@@ -137,7 +164,7 @@ public class TopPresenter implements Presenter<TopView> {
                 weatherInfo.getToday().getWind() +
                 " 波" +
                 weatherInfo.getToday().getWave();
-        viewModel.todayWeather.set(weather);
+//        viewModel.todayWeather.set(weather);
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.model;
+package com.ikmr.banbara23.yaeyama_liner_checker.model.top;
 
 /**
  * Topモデル

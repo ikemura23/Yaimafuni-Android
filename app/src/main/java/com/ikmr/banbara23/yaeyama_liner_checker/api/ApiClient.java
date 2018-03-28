@@ -7,8 +7,9 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.CompanyStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot;
-import com.ikmr.banbara23.yaeyama_liner_checker.model.TopCompanyInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopCompanyInfo;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo;
 
 import durdinapps.rxfirebase2.RxFirebaseDatabase;
@@ -24,6 +25,7 @@ public class ApiClient {
 
     private static final String WEATHER = "weather";
     private static final String TOP_COMPANY = "top_company";
+    private static final String TOP_PORT = "top_port";
 
     public ApiClient() {
     }
@@ -62,6 +64,19 @@ public class ApiClient {
         final DatabaseReference ref = getRef(TOP_COMPANY);
         ref.keepSynced(false);
         return RxFirebaseDatabase.observeValueEvent(ref, TopCompanyInfo.class)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    /**
+     * トップの会社ステータス
+     *
+     * @return
+     */
+    public Flowable<TopPort> getTopPortStatus() {
+        final DatabaseReference ref = getRef(TOP_PORT);
+        ref.keepSynced(false);
+        return RxFirebaseDatabase.observeValueEvent(ref, TopPort.class)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
