@@ -6,6 +6,10 @@
 
     <data>
 
+        <variable
+            name="topPort"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort"
+            />
     </data>
 
     <android.support.v7.widget.CardView
@@ -53,6 +57,7 @@
             <include
                 android:id="@+id/taketomi"
                 layout="@layout/top_port_row"
+                app:ports="@{topPort.taketomi}"
                 />
 
             <include
@@ -62,6 +67,7 @@
             <include
                 android:id="@+id/kohama"
                 layout="@layout/top_port_row"
+                app:ports="@{topPort.kohama}"
                 />
 
             <include
@@ -71,6 +77,7 @@
             <include
                 android:id="@+id/kuroshima"
                 layout="@layout/top_port_row"
+                app:ports="@{topPort.kuroshima}"
                 />
 
             <include
@@ -80,6 +87,7 @@
             <include
                 android:id="@+id/oohara"
                 layout="@layout/top_port_row"
+                app:ports="@{topPort.oohara}"
                 />
 
             <include
@@ -89,6 +97,17 @@
             <include
                 android:id="@+id/uehara"
                 layout="@layout/top_port_row"
+                app:ports="@{topPort.uehara}"
+                />
+
+            <include
+                layout="@layout/delimiter"
+                />
+
+            <include
+                android:id="@+id/hatoma"
+                layout="@layout/top_port_row"
+                app:ports="@{topPort.hatoma}"
                 />
 
             <include
@@ -98,6 +117,7 @@
             <include
                 android:id="@+id/hateruma"
                 layout="@layout/top_port_row"
+                app:ports="@{topPort.hateruma}"
                 />
         </LinearLayout>
     </android.support.v7.widget.CardView>

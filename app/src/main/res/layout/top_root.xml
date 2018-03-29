@@ -1,5 +1,6 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <data>
@@ -30,6 +31,7 @@
 
             <include
                 layout="@layout/top_port"
+                app:topPort="@{viewModel.topPort}"
                 />
 
             <android.support.v4.widget.Space
