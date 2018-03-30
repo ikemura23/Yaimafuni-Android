@@ -20,13 +20,13 @@
         >
 
         <ProgressBar
-            android:id="@+id/harbor_progressbar"
+            android:id="@+id/port_progressbar"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="end"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
             android:indeterminate="true"
             android:indeterminateTint="@color/orange2"
             android:indeterminateTintMode="src_in"
@@ -44,10 +44,10 @@
                 android:layout_height="@dimen/top_card_col_height"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:drawableLeft="@drawable/ic_harbor_selector"
+                android:drawablePadding="8dp"
                 android:gravity="center_vertical"
                 android:text="港別の運行情報"
-                android:drawablePadding="8dp"
-                android:drawableLeft="@drawable/ic_harbor_selector"
                 />
 
             <include
@@ -56,7 +56,7 @@
 
             <include
                 android:id="@+id/taketomi"
-                layout="@layout/top_port_row"
+                layout="@layout/top_port_row2"
                 app:ports="@{topPort.taketomi}"
                 />
 
@@ -66,7 +66,7 @@
 
             <include
                 android:id="@+id/kohama"
-                layout="@layout/top_port_row"
+                layout="@layout/top_port_row2"
                 app:ports="@{topPort.kohama}"
                 />
 
@@ -76,7 +76,7 @@
 
             <include
                 android:id="@+id/kuroshima"
-                layout="@layout/top_port_row"
+                layout="@layout/top_port_row2"
                 app:ports="@{topPort.kuroshima}"
                 />
 
@@ -86,7 +86,7 @@
 
             <include
                 android:id="@+id/oohara"
-                layout="@layout/top_port_row"
+                layout="@layout/top_port_row2"
                 app:ports="@{topPort.oohara}"
                 />
 
@@ -96,7 +96,7 @@
 
             <include
                 android:id="@+id/uehara"
-                layout="@layout/top_port_row"
+                layout="@layout/top_port_row2"
                 app:ports="@{topPort.uehara}"
                 />
 
@@ -106,7 +106,7 @@
 
             <include
                 android:id="@+id/hatoma"
-                layout="@layout/top_port_row"
+                layout="@layout/top_port_row2"
                 app:ports="@{topPort.hatoma}"
                 />
 
@@ -116,7 +116,7 @@
 
             <include
                 android:id="@+id/hateruma"
-                layout="@layout/top_port_row"
+                layout="@layout/top_port_row2"
                 app:ports="@{topPort.hateruma}"
                 />
         </LinearLayout>

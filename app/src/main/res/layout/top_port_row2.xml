@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="ports"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.top.Ports"
+            />
+    </data>
+
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/port_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:text="@{ports.anei.portName}"
+            android:textColor="@color/textDarkPrimary"
+            android:padding="8dp"
+            tools:text="竹富島"
+            />
+
+        <include
+            android:id="@+id/anei"
+            layout="@layout/top_port_row_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:name='@{"安栄観光"}'
+            app:portStatus="@{ports.anei}"
+            />
+
+        <include
+            android:id="@+id/ykf"
+            layout="@layout/top_port_row_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            app:name='@{"八観フェ"}'
+            app:portStatus="@{ports.ykf}"
+            />
+
+    </FrameLayout>
+</layout>
