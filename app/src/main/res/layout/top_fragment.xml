@@ -34,6 +34,7 @@
             <include
                 layout="@layout/top_port"
                 app:topPort="@{viewModel.topPort}"
+                app:showProgress="@{viewModel.showPortProgress}"
                 />
 
             <android.support.v4.widget.Space
