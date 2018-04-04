@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <data>
+
+        <variable
+            name="presenter"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopPresenter"
+            />
 
         <variable
             name="ports"
@@ -10,9 +19,6 @@
     </data>
 
     <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
@@ -40,6 +46,7 @@
             android:layout_gravity="center"
             app:name='@{"安栄観光"}'
             app:portStatus="@{ports.anei}"
+            app:presenter="@{presenter}"
             />
 
         <include
@@ -50,6 +57,7 @@
             android:layout_gravity="right"
             app:name='@{"八観フェ"}'
             app:portStatus="@{ports.ykf}"
+            app:presenter="@{presenter}"
             />
 
     </FrameLayout>

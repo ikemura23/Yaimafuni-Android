@@ -33,8 +33,9 @@
             <!--港別-->
             <include
                 layout="@layout/top_port"
-                app:topPort="@{viewModel.topPort}"
+                app:presenter="@{presenter}"
                 app:showProgress="@{viewModel.showPortProgress}"
+                app:topPort="@{viewModel.topPort}"
                 />
 
             <android.support.v4.widget.Space
@@ -45,6 +46,7 @@
             <!--会社別-->
             <include
                 layout="@layout/top_company"
+                app:presenter="@{presenter}"
                 app:viewModel="@{viewModel}"
                 />
 
@@ -55,8 +57,9 @@
 
             <!--天気-->
             <include
-                app:viewModel="@{viewModel}"
                 layout="@layout/top_weather"
+                app:presenter="@{presenter}"
+                app:viewModel="@{viewModel}"
                 />
 
             <android.support.v4.widget.Space

@@ -7,6 +7,11 @@
     <data>
 
         <variable
+            name="presenter"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopPresenter"
+            />
+
+        <variable
             name="portStatus"
             type="com.ikmr.banbara23.yaeyama_liner_checker.model.top.PortStatus"
             />
