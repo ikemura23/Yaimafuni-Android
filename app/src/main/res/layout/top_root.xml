@@ -54,6 +54,7 @@
 
             <!--天気-->
             <include
+                app:viewModel="@{viewModel}"
                 layout="@layout/top_weather"
                 />
 

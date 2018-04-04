@@ -17,7 +17,8 @@ public class TopViewModel {
     public ObservableBoolean showPortProgress = new ObservableBoolean();
 
     // 天気
-    public ObservableField<String> todayWeather = new ObservableField<>();
+    public ObservableField<String> date = new ObservableField<>();
+    public ObservableField<String> weather = new ObservableField<>();
     public ObservableBoolean showWeatherProgres = new ObservableBoolean();
 
     // 会社別ステータス

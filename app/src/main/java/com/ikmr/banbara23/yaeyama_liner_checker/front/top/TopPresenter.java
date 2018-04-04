@@ -162,12 +162,15 @@ public class TopPresenter implements Presenter<TopView> {
             return;
         }
         Log.d("TopPresenter", weatherInfo.getToday().toString());
-        String weather = weatherInfo.getToday().getDate() +
-                " " +
+        //日付
+        viewModel.date.set(weatherInfo.getToday().getDate());
+        //天気＋波＋風速
+        String weather = weatherInfo.getToday().getWeather()
+                + " " +
                 weatherInfo.getToday().getWind() +
                 " 波" +
                 weatherInfo.getToday().getWave();
-        viewModel.todayWeather.set(weather);
+        viewModel.weather.set(weather);
     }
 
     /**

@@ -310,7 +310,6 @@
                 android:layout_marginRight="20dp"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text="@{viewModel.todayWeather}"
                 android:textColor="@color/secondary_text"
                 tools:text="@string/other_info"
                 />

@@ -7,6 +7,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopViewModel"
+            />
     </data>
 
     <android.support.v7.widget.CardView
@@ -19,29 +23,47 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             >
 
-            <ImageView
-                android:id="@+id/icon"
-                srcCompat="@drawable/ic_boat"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_weather"
-                />
+            <!--<ImageView-->
+            <!--android:id="@+id/icon"-->
+            <!--app:srcCompat="@drawable/ic_boat"-->
+            <!--android:layout_width="24dp"-->
+            <!--android:layout_height="24dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--tools:src="@drawable/ic_weather"-->
+            <!--/>-->
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/top_card_col_height"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:gravity="center_vertical"
-                android:text="今日の天気"
-                app:layout_constraintStart_toEndOf="@+id/icon"
+                android:text="天気"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <ProgressBar
+                android:id="@+id/activity_top_progressbar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/orange2"
+                android:indeterminateTintMode="src_in"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 />
 
             <View
@@ -53,35 +75,44 @@
                 app:layout_constraintTop_toBottomOf="@id/title"
                 />
 
-            <ProgressBar
-                android:layout_marginRight="16dp"
-                android:id="@+id/activity_top_progressbar"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="end|center_vertical"
-                android:layout_marginTop="8dp"
-                android:indeterminate="true"
-                android:indeterminateTint="@color/orange2"
-                android:indeterminateTintMode="src_in"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-
-            <TextView
-                android:layout_marginLeft="16dp"
-                android:id="@+id/anei"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/top_card_col_height"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-                android:text="今日の天気"
-                android:textColor="@color/textDarkPrimary"
-                android:textSize="16dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title"
-                />
+                >
 
+                <TextView
+                    android:id="@+id/today_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/top_card_col_height"
+                    android:layout_marginLeft="16dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="@{viewModel.date}"
+                    android:textColor="@color/textDarkPrimary"
+                    android:textSize="14sp"
+                    tools:text="@tools:sample/date/ddmmyy"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:paddingLeft="16dp"
+                    android:text="@{viewModel.weather}"
+                    android:textColor="@color/textDarkPrimary"
+                    android:textSize="14sp"
+                    tools:text="@tools:sample/lorem/random"
+                    />
+            </LinearLayout>
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 </layout>
