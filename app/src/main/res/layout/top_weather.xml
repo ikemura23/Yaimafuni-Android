@@ -34,6 +34,7 @@
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
+            android:onClick="@{() -> presenter.onClickWeather()}"
             >
 
             <!--<ImageView-->

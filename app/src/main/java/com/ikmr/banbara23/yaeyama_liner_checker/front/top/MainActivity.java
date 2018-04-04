@@ -1,6 +1,5 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top;
 
-import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -16,7 +15,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 /**
  * トップ画面
  */
-public class MainActivity extends AppCompatActivity implements TopView {
+public class MainActivity extends AppCompatActivity {
 
     private final String TAG = MainActivity.class.getSimpleName();
     private TopPresenter presenter;
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements TopView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        presenter = new TopPresenter(this, viewModel);
+//        presenter = new TopPresenter(this, viewModel);
         binding.setPresenter(presenter);
         binding.setViewModel(viewModel);
     }
@@ -68,20 +67,5 @@ public class MainActivity extends AppCompatActivity implements TopView {
         super.onDestroy();
         presenter.detachView();
         presenter = null;
-    }
-
-    @Override
-    public Context getContext() {
-        return this;
-    }
-
-    @Override
-    public void hideProgressBar() {
-        binding.activityTopProgressbar.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void showProgressBar() {
-        binding.activityTopProgressbar.setVisibility(View.VISIBLE);
     }
 }

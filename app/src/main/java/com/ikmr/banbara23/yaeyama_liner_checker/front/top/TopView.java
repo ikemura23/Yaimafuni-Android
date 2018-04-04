@@ -7,7 +7,5 @@ import com.ikmr.banbara23.yaeyama_liner_checker.front.base.BaseView;
  */
 public interface TopView extends BaseView {
 
-    void hideProgressBar();
-
-    void showProgressBar();
+    void navigateToWeather();
 }

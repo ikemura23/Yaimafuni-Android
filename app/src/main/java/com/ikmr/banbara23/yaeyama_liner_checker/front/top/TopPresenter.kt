@@ -1,17 +1,16 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top
 
+import android.content.Context
 import android.databinding.ObservableField
 import android.databinding.ObservableInt
 import android.support.v4.content.ContextCompat
 import android.util.Log
-
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
 import com.ikmr.banbara23.yaeyama_liner_checker.front.base.Presenter
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopCompanyInfo
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo
-
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subscribers.ResourceSubscriber
 
@@ -31,7 +30,6 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
 
     override fun attachView(view: TopView) {
         this.view = view
-        view.showProgressBar()
     }
 
     override fun detachView() {
@@ -134,8 +132,6 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
 
         setStatus(topCompanyInfo.anei, viewModel.aneiStatus, viewModel.aneiColor)
         setStatus(topCompanyInfo.ykf, viewModel.ykfStatus, viewModel.ykfColor)
-
-        view!!.hideProgressBar()
     }
 
     /**
@@ -186,5 +182,15 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
         statusText.set(status)
         // 文字色
         colorInt.set(color)
+    }
+
+    fun getContext(): Context {
+        return view!!.context
+    }
+
+    //イベントハンドリング
+
+    fun onClickWeather() {
+        view!!.navigateToWeather()
     }
 }
