@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment;
-import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopRootBinding;
+import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopFragmentBinding;
 
 public class TopFragment extends BaseFragment implements TopView {
-    TopRootBinding binding;
+    TopFragmentBinding binding;
     TopViewModel topViewModel = new TopViewModel();
     TopPresenter topPresenter;
 
@@ -31,7 +31,7 @@ public class TopFragment extends BaseFragment implements TopView {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.top_root, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.top_fragment, container, false);
         binding.setPresenter(topPresenter);
         binding.setViewModel(topViewModel);
         return binding.getRoot();
