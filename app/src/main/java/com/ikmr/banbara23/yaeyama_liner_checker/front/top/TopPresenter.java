@@ -144,7 +144,7 @@ public class TopPresenter implements Presenter<TopView> {
      * @param topCompanyInfo
      */
     private void bindData(TopCompanyInfo topCompanyInfo) {
-        viewModel.topCompany.set(topCompanyInfo);
+//        viewModel.topCompany.set(topCompanyInfo);
 
         setStatus(topCompanyInfo.getAnei(), viewModel.aneiStatus, viewModel.aneiColor);
         setStatus(topCompanyInfo.getYkf(), viewModel.ykfStatus, viewModel.ykfColor);

@@ -30,6 +30,7 @@
             android:padding="16dp"
             >
 
+            <!--港別-->
             <include
                 layout="@layout/top_port"
                 app:topPort="@{viewModel.topPort}"
@@ -40,8 +41,10 @@
                 android:layout_height="16dp"
                 />
 
+            <!--会社別-->
             <include
                 layout="@layout/top_company"
+                app:viewModel="@{viewModel}"
                 />
 
             <android.support.v4.widget.Space
@@ -49,6 +52,7 @@
                 android:layout_height="16dp"
                 />
 
+            <!--天気-->
             <include
                 layout="@layout/top_weather"
                 />
