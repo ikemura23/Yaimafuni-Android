@@ -7,6 +7,8 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
             name="viewModel"
             type="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopViewModel"
@@ -62,6 +64,7 @@
 
             <!--プログレスバー-->
             <ProgressBar
+                android:visibility="@{viewModel.showCompanyProgress ? View.VISIBLE : View.GONE}"
                 android:id="@+id/activity_top_progressbar"
                 android:layout_width="30dp"
                 android:layout_height="30dp"

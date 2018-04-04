@@ -46,6 +46,7 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
     }
 
     private fun fetchPortStatus() {
+        viewModel.showPortProgress.set(true)
         mDisposable.add(
                 mApiClient
                         .topPortStatus
@@ -54,14 +55,15 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
                                     override fun onNext(topPort: TopPort) {
                                         Log.d("TopPresenter", "topPort:$topPort")
                                         bindTopPort(topPort)
+                                        viewModel.showPortProgress.set(false)
                                     }
 
                                     override fun onError(t: Throwable) {
-                                        view!!.hideProgressBar()
+                                        viewModel.showPortProgress.set(false)
                                     }
 
                                     override fun onComplete() {
-                                        view!!.hideProgressBar()
+                                        viewModel.showPortProgress.set(false)
                                     }
                                 })
         )
@@ -75,6 +77,7 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
      * トップ用ステータスを取得
      */
     private fun fetchCompanyStatus() {
+        viewModel.showCompanyProgress.set(true)
         mDisposable.add(
                 mApiClient
                         .topCompany
@@ -82,14 +85,15 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
 
                             override fun onNext(topCompanyInfo: TopCompanyInfo) {
                                 bindData(topCompanyInfo)
+                                viewModel.showCompanyProgress.set(false)
                             }
 
                             override fun onError(t: Throwable) {
-                                view!!.hideProgressBar()
+                                viewModel.showCompanyProgress.set(false)
                             }
 
                             override fun onComplete() {
-                                view!!.hideProgressBar()
+                                viewModel.showCompanyProgress.set(false)
                             }
                         })
         )
@@ -99,6 +103,7 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
      * 天気を取得
      */
     private fun fetchWeather() {
+        viewModel.showWeatherProgress.set(true)
         mDisposable.add(
                 mApiClient
                         .weather
@@ -106,14 +111,15 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
                                 object : ResourceSubscriber<WeatherInfo>() {
                                     override fun onNext(weatherInfo: WeatherInfo) {
                                         onCompleteFromWeather(weatherInfo)
+                                        viewModel.showWeatherProgress.set(false)
                                     }
 
                                     override fun onError(t: Throwable) {
-                                        view!!.hideProgressBar()
+                                        viewModel.showWeatherProgress.set(false)
                                     }
 
                                     override fun onComplete() {
-                                        view!!.hideProgressBar()
+                                        viewModel.showWeatherProgress.set(false)
                                     }
                                 })
         )

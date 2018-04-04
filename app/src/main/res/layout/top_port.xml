@@ -6,9 +6,16 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
             name="topPort"
             type="com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort"
+            />
+
+        <variable
+            name="showProgress"
+            type="android.databinding.ObservableBoolean"
             />
     </data>
 
@@ -20,6 +27,7 @@
         >
 
         <ProgressBar
+            android:visibility="@{showProgress ? View.VISIBLE : View.GONE}"
             android:id="@+id/port_progressbar"
             android:layout_width="30dp"
             android:layout_height="30dp"
