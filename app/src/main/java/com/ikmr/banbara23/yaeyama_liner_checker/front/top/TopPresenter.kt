@@ -26,13 +26,8 @@ class TopPresenter
  * @param viewModel
  */
 internal constructor(private var view: TopView?, private val viewModel: TopViewModel) : Presenter<TopView> {
-    private val mApiClient: ApiClient
+    private val mApiClient: ApiClient = ApiClient()
     private val mDisposable = CompositeDisposable()
-
-    init {
-
-        mApiClient = ApiClient()
-    }
 
     override fun attachView(view: TopView) {
         this.view = view
@@ -79,7 +74,7 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
     /**
      * トップ用ステータスを取得
      */
-    protected fun fetchCompanyStatus() {
+    private fun fetchCompanyStatus() {
         mDisposable.add(
                 mApiClient
                         .topCompany
@@ -103,7 +98,7 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
     /**
      * 天気を取得
      */
-    protected fun fetchWeather() {
+    private fun fetchWeather() {
         mDisposable.add(
                 mApiClient
                         .weather
@@ -130,7 +125,6 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
      * @param topCompanyInfo
      */
     private fun bindData(topCompanyInfo: TopCompanyInfo) {
-        //        viewModel.topCompany.set(topCompanyInfo);
 
         setStatus(topCompanyInfo.anei, viewModel.aneiStatus, viewModel.aneiColor)
         setStatus(topCompanyInfo.ykf, viewModel.ykfStatus, viewModel.ykfColor)
