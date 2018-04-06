@@ -35,7 +35,7 @@ public class StatusDetailActivity extends BaseActivity {
 
         setScreenTitle();
 
-        getFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, StatusDetailFragment.NewInstance(getIntent().getExtras()))
                 .commit();
     }

@@ -1,10 +1,10 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +14,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopFragmentBinding;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.front.status.port.PortListActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 
@@ -87,5 +88,8 @@ public class TopFragment extends BaseFragment implements TopView {
     @Override
     public void navigateToPortStatusList(@NotNull String port) {
         Log.d(TAG, "navigateToPortStatusList:" + port);
+        Intent intent = new Intent(getActivity(), PortListActivity.class);
+        intent.putExtra(PortListActivity.class.getCanonicalName(), port);
+        startActivity(intent);
     }
 }

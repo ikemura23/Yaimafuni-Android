@@ -14,7 +14,7 @@ public class TopActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.top_activity);
 
-        getFragmentManager()
+        getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, TopFragment.newInstance())
                 .commit();

@@ -21,7 +21,7 @@ public class WeatherActivity extends AppCompatActivity {
                 finish();
             }
         });
-        getFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, WeatherFragment.NewInstance())
                 .commit();
     }

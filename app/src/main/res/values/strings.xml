@@ -8,6 +8,7 @@
     <string name="title_activity_tab_timetable">時刻表</string>
     <string name="title_activity_setting">設定</string>
     <string name="title_activity_other">アプリ情報</string>
+    <string name="title_activity_port">港の会社別一覧</string>
 
     <!--URL-->
     <!--安栄-->
