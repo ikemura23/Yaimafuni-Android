@@ -17,40 +17,39 @@
             app:title='@{"運行状況"}'
             />
 
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="6dp"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:tabIndicatorColor="@color/orange3"
+            app:tabTextColor="@color/white"
+            >
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/anei"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/company_tab_name_annei"
+                />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/ykf"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/company_tab_name_ykf"
+                />
+
+        </android.support.design.widget.TabLayout>
+
         <android.support.v4.view.ViewPager
             android:id="@+id/port_view_pager"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             >
-
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:elevation="6dp"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:tabIndicatorColor="@color/orange3"
-                app:tabTextColor="@color/white"
-                >
-
-                <android.support.design.widget.TabItem
-                    android:id="@+id/anei"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/company_tab_name_annei"
-                    />
-
-                <android.support.design.widget.TabItem
-                    android:id="@+id/ykf"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/company_tab_name_ykf"
-                    />
-
-            </android.support.design.widget.TabLayout>
-
-
         </android.support.v4.view.ViewPager>
 
     </LinearLayout>

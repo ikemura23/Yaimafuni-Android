@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopFragmentBinding;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabActivity;
@@ -89,7 +90,7 @@ public class TopFragment extends BaseFragment implements TopView {
     public void navigateToPortStatusList(@NotNull String port) {
         Log.d(TAG, "navigateToPortStatusList:" + port);
         Intent intent = new Intent(getActivity(), PortListActivity.class);
-        intent.putExtra(PortListActivity.class.getCanonicalName(), port);
+        intent.putExtra(Constants.BUNDLE_KEY_PORT_CODE, port);
         startActivity(intent);
     }
 }

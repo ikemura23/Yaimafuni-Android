@@ -14,11 +14,13 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
  * PagerAdapter
  */
 public class PortPagerAdapter extends FragmentStatePagerAdapter {
-    int mNumOfTabs;
+    private final int mTabCount;
+    private final String mPortCode;
 
-    public PortPagerAdapter(FragmentManager fm, int NumOfTabs) {
+    public PortPagerAdapter(FragmentManager fm, int tabCount, String portCode) {
         super(fm);
-        mNumOfTabs = NumOfTabs;
+        mTabCount = tabCount;
+        mPortCode = portCode;
     }
 
     @Override
@@ -35,6 +37,7 @@ public class PortPagerAdapter extends FragmentStatePagerAdapter {
                 company = null;
         }
         Bundle bundle = new Bundle();
+        bundle.putString(Constants.BUNDLE_KEY_PORT_CODE, mPortCode);
         bundle.putSerializable(Constants.BUNDLE_KEY_COMPANY, company);
         return StatusDetailFragment.NewInstance(bundle);
     }
@@ -46,6 +49,6 @@ public class PortPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return mNumOfTabs;
+        return mTabCount;
     }
 }

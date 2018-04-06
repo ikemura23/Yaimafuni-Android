@@ -12,36 +12,25 @@
             />
     </data>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:overScrollMode="never"
+        android:background="@drawable/top_background"
+        android:descendantFocusability="blocksDescendants"
+        android:orientation="vertical"
         >
 
-        <LinearLayout
+        <include
+            android:id="@+id/include_title_bar"
+            layout="@layout/header_back"
+            app:title="@{title}"
+            />
+
+        <FrameLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/top_background"
-            android:descendantFocusability="blocksDescendants"
-            android:orientation="vertical"
-            >
+            android:layout_height="match_parent"
+            />
 
-            <include
-                android:id="@+id/include_title_bar"
-                layout="@layout/header_back"
-                app:title="@{title}"
-                />
-
-            <FrameLayout
-                android:id="@+id/container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
-
-            <include
-                layout="@layout/bottom_sea"
-                />
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 </layout>
