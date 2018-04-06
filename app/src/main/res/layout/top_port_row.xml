@@ -8,13 +8,13 @@
     <data>
 
         <variable
-            name="presenter"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopPresenter"
+            name="ports"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.top.Ports"
             />
 
         <variable
-            name="ports"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.model.top.Ports"
+            name="presenter"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopPresenter"
             />
     </data>
 
@@ -24,6 +24,7 @@
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
+        android:onClick="@{() -> presenter.onClickPort(ports.anei.portName)}"
         android:orientation="horizontal"
         >
 
@@ -32,9 +33,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
+            android:padding="8dp"
             android:text="@{ports.anei.portName}"
             android:textColor="@color/textDarkPrimary"
-            android:padding="8dp"
             tools:text="竹富島"
             />
 
@@ -46,7 +47,6 @@
             android:layout_gravity="center"
             app:name='@{"安栄観光"}'
             app:portStatus="@{ports.anei}"
-            app:presenter="@{presenter}"
             />
 
         <include
@@ -57,7 +57,6 @@
             android:layout_gravity="right"
             app:name='@{"八観フェ"}'
             app:portStatus="@{ports.ykf}"
-            app:presenter="@{presenter}"
             />
 
     </FrameLayout>

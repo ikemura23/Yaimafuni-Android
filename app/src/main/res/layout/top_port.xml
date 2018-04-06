@@ -32,7 +32,6 @@
         >
 
         <ProgressBar
-            android:visibility="@{showProgress ? View.VISIBLE : View.GONE}"
             android:id="@+id/port_progressbar"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -43,6 +42,7 @@
             android:indeterminate="true"
             android:indeterminateTint="@color/orange2"
             android:indeterminateTintMode="src_in"
+            android:visibility="@{showProgress ? View.VISIBLE : View.GONE}"
             />
 
         <LinearLayout

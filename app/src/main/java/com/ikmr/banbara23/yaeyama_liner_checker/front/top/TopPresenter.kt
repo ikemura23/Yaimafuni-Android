@@ -8,6 +8,7 @@ import android.util.Log
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
 import com.ikmr.banbara23.yaeyama_liner_checker.front.base.Presenter
+import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopCompanyInfo
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo
@@ -192,5 +193,13 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
 
     fun onClickWeather() {
         view!!.navigateToWeather()
+    }
+
+    fun onClickPort(port: String) {
+        view!!.navigateToPortStatusList(port)
+    }
+
+    fun onClickCompany(company: Company) {
+        view!!.navigateToCompanyStatusList(company)
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,12 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopFragmentBinding;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
+
+import org.jetbrains.annotations.NotNull;
 
 public class TopFragment extends BaseFragment implements TopView {
+    private static final String TAG = BaseFragment.class.getSimpleName();
     TopFragmentBinding binding;
     TopViewModel topViewModel = new TopViewModel();
     TopPresenter topPresenter;
@@ -55,8 +60,28 @@ public class TopFragment extends BaseFragment implements TopView {
         }
     }
 
+    /**
+     * 天気クリック
+     */
     @Override
     public void navigateToWeather() {
+        Log.d(TAG, "navigateToWeather");
         startActivity(new Intent(getActivity(), WeatherActivity.class));
+    }
+
+    /**
+     * 会社別ステータス クリック
+     */
+    @Override
+    public void navigateToCompanyStatusList(@NotNull Company company) {
+        Log.d(TAG, "navigateToCompanyStatusList:" + company.getName());
+    }
+
+    /**
+     * 港別ステータス クリック
+     */
+    @Override
+    public void navigateToPortStatusList(@NotNull String port) {
+        Log.d(TAG, "navigateToPortStatusList:" + port);
     }
 }
