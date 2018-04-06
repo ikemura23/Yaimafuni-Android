@@ -24,7 +24,7 @@
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="@{() -> presenter.onClickPort(ports.anei.portName)}"
+        android:onClick="@{() -> presenter.onClickPort(ports.anei.portCode)}"
         android:orientation="horizontal"
         >
 

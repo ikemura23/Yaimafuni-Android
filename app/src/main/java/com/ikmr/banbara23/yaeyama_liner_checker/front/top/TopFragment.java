@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopFragmentBinding;
+import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 
@@ -75,6 +76,9 @@ public class TopFragment extends BaseFragment implements TopView {
     @Override
     public void navigateToCompanyStatusList(@NotNull Company company) {
         Log.d(TAG, "navigateToCompanyStatusList:" + company.getName());
+        Intent intent = new Intent(getActivity(), StatusListTabActivity.class);
+        intent.putExtra(StatusListTabActivity.class.getCanonicalName(), company);
+        startActivity(intent);
     }
 
     /**
