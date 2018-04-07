@@ -18,7 +18,12 @@ class PortListActivity : BaseActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.port_activity)
         binding.includeTitleBar?.titleBar?.setNavigationOnClickListener { finish() }
+        initTitle()
         initTab()
+    }
+
+    private fun initTitle() {
+        binding.title = intent.getStringExtra(Constants.BUNDLE_KEY_PORT_NAME)
     }
 
     private fun initTab() {
@@ -32,6 +37,10 @@ class PortListActivity : BaseActivity() {
                         binding.tabLayout.tabCount,
                         portCode)
         binding.tabLayout.setupWithViewPager(binding.portViewPager)
+    }
+
+    private fun getPortCode(): String {
+        return intent.getStringExtra(Constants.BUNDLE_KEY_PORT_CODE)
     }
 
 }

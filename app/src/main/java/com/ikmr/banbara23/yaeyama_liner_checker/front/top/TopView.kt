@@ -12,5 +12,5 @@ interface TopView : BaseView {
 
     fun navigateToCompanyStatusList(company: Company)
 
-    fun navigateToPortStatusList(port: String)
+    fun navigateToPortStatusList(portName: String, portCode: String)
 }

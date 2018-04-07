@@ -37,27 +37,24 @@
             android:onClick="@{() -> presenter.onClickWeather()}"
             >
 
-            <!--<ImageView-->
-            <!--android:id="@+id/icon"-->
-            <!--app:srcCompat="@drawable/ic_boat"-->
-            <!--android:layout_width="24dp"-->
-            <!--android:layout_height="24dp"-->
-            <!--android:layout_marginLeft="16dp"-->
-            <!--android:layout_marginTop="8dp"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toTopOf="parent"-->
-            <!--tools:src="@drawable/ic_weather"-->
-            <!--/>-->
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="24dp"
+                android:layout_height="@dimen/top_card_col_height"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_weather"
+                />
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/top_card_col_height"
                 android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
                 android:gravity="center_vertical"
                 android:text="天気"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/icon"
                 app:layout_constraintTop_toTopOf="parent"
                 />
 

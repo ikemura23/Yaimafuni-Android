@@ -87,10 +87,11 @@ public class TopFragment extends BaseFragment implements TopView {
      * 港別ステータス クリック
      */
     @Override
-    public void navigateToPortStatusList(@NotNull String port) {
-        Log.d(TAG, "navigateToPortStatusList:" + port);
+    public void navigateToPortStatusList(@NotNull String portName, @NotNull String portCode) {
+        Log.d(TAG, "navigateToPortStatusList:" + portName);
         Intent intent = new Intent(getActivity(), PortListActivity.class);
-        intent.putExtra(Constants.BUNDLE_KEY_PORT_CODE, port);
+        intent.putExtra(Constants.BUNDLE_KEY_PORT_NAME, portName);
+        intent.putExtra(Constants.BUNDLE_KEY_PORT_CODE, portCode);
         startActivity(intent);
     }
 }

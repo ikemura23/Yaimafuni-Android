@@ -195,8 +195,8 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
         view!!.navigateToWeather()
     }
 
-    fun onClickPort(port: String) {
-        view!!.navigateToPortStatusList(port)
+    fun onClickPort(portName: String, portCode: String) {
+        view!!.navigateToPortStatusList(portName, portCode)
     }
 
     fun onClickCompany(company: Company) {

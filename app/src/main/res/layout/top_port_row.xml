@@ -24,8 +24,10 @@
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="@{() -> presenter.onClickPort(ports.anei.portCode)}"
+        android:onClick="@{() -> presenter.onClickPort(ports.anei.portName, ports.anei.portCode)}"
         android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         >
 
         <TextView
@@ -33,7 +35,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
-            android:padding="8dp"
             android:text="@{ports.anei.portName}"
             android:textColor="@color/textDarkPrimary"
             tools:text="竹富島"
