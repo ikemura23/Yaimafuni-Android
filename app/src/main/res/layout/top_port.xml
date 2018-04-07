@@ -52,16 +52,30 @@
             android:padding="8dp"
             >
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/top_card_col_height"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:drawableLeft="@drawable/ic_harbor_selector"
-                android:drawablePadding="8dp"
-                android:gravity="center_vertical"
-                android:text="港別の運行情報"
-                />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--app:srcCompat="@drawable/ic_harbor"-->
+                <!--/>-->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/top_card_col_height"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center_vertical"
+                    android:text="港別の運行情報"
+                    />
+
+            </LinearLayout>
 
             <include
                 layout="@layout/delimiter"
