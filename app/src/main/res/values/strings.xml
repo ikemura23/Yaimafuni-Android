@@ -10,17 +10,6 @@
     <string name="title_activity_other">アプリ情報</string>
     <string name="title_activity_port">港の会社別一覧</string>
 
-    <!--URL-->
-    <!--安栄-->
-    <string name="url_annei_list">http://www.aneikankou.co.jp/</string>
-    <string name="url_annei_taketomi">http://aneikankou.co.jp/liner/taketomijima.html</string>
-    <string name="url_annei_kohama">http://www.aneikankou.co.jp/liner/kohamajima.html</string>
-    <string name="url_annei_kuroshima">http://www.aneikankou.co.jp/liner/kuroshima.html</string>
-    <string name="url_annei_oohara">http://www.aneikankou.co.jp/liner/iriomotejima_oohara.html</string>
-    <string name="url_annei_uehara">http://www.aneikankou.co.jp/liner/iriomotejima_uehara.html</string>
-    <string name="url_annei_hateruma">http://www.aneikankou.co.jp/liner/haterumajima.html</string>
-    <string name="url_annei_hatoma">http://aneikankou.co.jp/liner/hatomajima.html</string>
-
     <!--広告-->
     <string name="banner_ad_unit_id">ca-app-pub-3362500010746452/4785171723</string>
 
