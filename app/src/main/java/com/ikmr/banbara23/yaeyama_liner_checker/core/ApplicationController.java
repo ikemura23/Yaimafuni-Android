@@ -1,7 +1,9 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.core;
 
-import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
@@ -12,7 +14,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R;
 
 import io.fabric.sdk.android.Fabric;
 
-public class ApplicationController extends Application {
+public class ApplicationController extends MultiDexApplication {
 
     private static ApplicationController mApplicationController;
 
@@ -32,6 +34,12 @@ public class ApplicationController extends Application {
                         .disabled(BuildConfig.DEBUG).build())
                 .build();
         Fabric.with(this, crashlytics);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     public static synchronized ApplicationController getInstance() {
