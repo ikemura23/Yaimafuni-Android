@@ -39,7 +39,7 @@ public class PortPagerAdapter extends FragmentStatePagerAdapter {
         Bundle bundle = new Bundle();
         bundle.putString(Constants.BUNDLE_KEY_PORT_CODE, mPortCode);
         bundle.putSerializable(Constants.BUNDLE_KEY_COMPANY, company);
-        return StatusDetailFragment.NewInstance(bundle);
+        return StatusDetailFragment.Companion.NewInstance(bundle);
     }
 
     @Override
