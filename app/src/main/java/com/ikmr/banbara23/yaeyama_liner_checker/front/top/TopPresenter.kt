@@ -17,15 +17,13 @@ import io.reactivex.subscribers.ResourceSubscriber
 
 /**
  * トップ画面のPresenter
- */
-class TopPresenter
-/**
- * コンストラクタ
- *
  * @param view
  * @param viewModel
  */
-internal constructor(private var view: TopView?, private val viewModel: TopViewModel) : Presenter<TopView> {
+class TopPresenter(
+    private var view: TopView?,
+    private val viewModel: TopViewModel
+) : Presenter<TopView> {
     private val mApiClient: ApiClient = ApiClient()
     private val mDisposable = CompositeDisposable()
 
@@ -47,24 +45,24 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
     private fun fetchPortStatus() {
         viewModel.showPortProgress.set(true)
         mDisposable.add(
-                mApiClient
-                        .topPortStatus
-                        .subscribeWith(
-                                object : ResourceSubscriber<TopPort>() {
-                                    override fun onNext(topPort: TopPort) {
-                                        Log.d("TopPresenter", "topPort:$topPort")
-                                        bindTopPort(topPort)
-                                        viewModel.showPortProgress.set(false)
-                                    }
+            mApiClient
+                    .topPortStatus
+                    .subscribeWith(
+                        object : ResourceSubscriber<TopPort>() {
+                            override fun onNext(topPort: TopPort) {
+                                Log.d("TopPresenter", "topPort:$topPort")
+                                bindTopPort(topPort)
+                                viewModel.showPortProgress.set(false)
+                            }
 
-                                    override fun onError(t: Throwable) {
-                                        viewModel.showPortProgress.set(false)
-                                    }
+                            override fun onError(t: Throwable) {
+                                viewModel.showPortProgress.set(false)
+                            }
 
-                                    override fun onComplete() {
-                                        viewModel.showPortProgress.set(false)
-                                    }
-                                })
+                            override fun onComplete() {
+                                viewModel.showPortProgress.set(false)
+                            }
+                        })
         )
     }
 
@@ -78,23 +76,23 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
     private fun fetchCompanyStatus() {
         viewModel.showCompanyProgress.set(true)
         mDisposable.add(
-                mApiClient
-                        .topCompany
-                        .subscribeWith(object : ResourceSubscriber<TopCompanyInfo>() {
+            mApiClient
+                    .topCompany
+                    .subscribeWith(object : ResourceSubscriber<TopCompanyInfo>() {
 
-                            override fun onNext(topCompanyInfo: TopCompanyInfo) {
-                                bindData(topCompanyInfo)
-                                viewModel.showCompanyProgress.set(false)
-                            }
+                        override fun onNext(topCompanyInfo: TopCompanyInfo) {
+                            bindData(topCompanyInfo)
+                            viewModel.showCompanyProgress.set(false)
+                        }
 
-                            override fun onError(t: Throwable) {
-                                viewModel.showCompanyProgress.set(false)
-                            }
+                        override fun onError(t: Throwable) {
+                            viewModel.showCompanyProgress.set(false)
+                        }
 
-                            override fun onComplete() {
-                                viewModel.showCompanyProgress.set(false)
-                            }
-                        })
+                        override fun onComplete() {
+                            viewModel.showCompanyProgress.set(false)
+                        }
+                    })
         )
     }
 
@@ -104,23 +102,23 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
     private fun fetchWeather() {
         viewModel.showWeatherProgress.set(true)
         mDisposable.add(
-                mApiClient
-                        .weather
-                        .subscribeWith(
-                                object : ResourceSubscriber<WeatherInfo>() {
-                                    override fun onNext(weatherInfo: WeatherInfo) {
-                                        onCompleteFromWeather(weatherInfo)
-                                        viewModel.showWeatherProgress.set(false)
-                                    }
+            mApiClient
+                    .weather
+                    .subscribeWith(
+                        object : ResourceSubscriber<WeatherInfo>() {
+                            override fun onNext(weatherInfo: WeatherInfo) {
+                                onCompleteFromWeather(weatherInfo)
+                                viewModel.showWeatherProgress.set(false)
+                            }
 
-                                    override fun onError(t: Throwable) {
-                                        viewModel.showWeatherProgress.set(false)
-                                    }
+                            override fun onError(t: Throwable) {
+                                viewModel.showWeatherProgress.set(false)
+                            }
 
-                                    override fun onComplete() {
-                                        viewModel.showWeatherProgress.set(false)
-                                    }
-                                })
+                            override fun onComplete() {
+                                viewModel.showWeatherProgress.set(false)
+                            }
+                        })
         )
     }
 
@@ -174,7 +172,7 @@ internal constructor(private var view: TopView?, private val viewModel: TopViewM
             color = ContextCompat.getColor(view!!.context, R.color.status_cancel)
         } else if (company.cation > 0) {
             status = "注意あり"
-            color = ContextCompat.getColor(view!!.context, R.color.status_cation)
+            color = ContextCompat.getColor(context, R.color.status_cation)
         } else {
             status = "通常運行"
             color = ContextCompat.getColor(view!!.context, R.color.status_normal)

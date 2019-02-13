@@ -1,4 +1,3 @@
-
 package com.ikmr.banbara23.yaeyama_liner_checker.front.status.list;
 
 import android.content.Context;
@@ -55,7 +54,7 @@ public class StatusListAdapter extends ArrayAdapter<PortStatus> {
             portText.setText(portStatus.getPortName());
             statusText.setText(portStatus.getStatus().getText());
             // 背景色
-            statusText.setBackgroundColor(StatusHelper.getStatusColor(portStatus.getStatus().getCode()));
+            statusText.setBackgroundColor(StatusHelper.INSTANCE.getStatusColor(portStatus.getStatus().getCode()));
             // コメント
             if (TextUtils.isEmpty(portStatus.getComment())) {
                 descriptionText.setVisibility(View.GONE);
