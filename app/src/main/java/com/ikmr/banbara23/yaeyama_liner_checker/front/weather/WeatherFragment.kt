@@ -1,12 +1,10 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.weather
 
-import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBinding
@@ -49,9 +47,7 @@ class WeatherFragment : BaseFragment(), WeatherView {
         CustomTabUtil.start(activity, getString(R.string.weather_open_url))
     }
 
-    override fun getContext(): Context? {
-        return this.activity
-    }
+    override fun getContext() = requireActivity()
 
     companion object {
 

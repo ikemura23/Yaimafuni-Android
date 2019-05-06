@@ -1,6 +1,5 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top
 
-import android.content.Context
 import android.databinding.ObservableField
 import android.databinding.ObservableInt
 import android.support.v4.content.ContextCompat
@@ -164,18 +163,24 @@ class TopPresenter(
     private fun setStatus(company: TopCompanyInfo.TopCompany, statusText: ObservableField<String>, colorInt: ObservableInt) {
         val status: String
         val color: Int
-        if (company.cancel > 0) {
-            status = "欠航あり"
-            color = ContextCompat.getColor(view!!.context, R.color.status_cancel)
-        } else if (company.suspend > 0) {
-            status = "運休あり"
-            color = ContextCompat.getColor(view!!.context, R.color.status_cancel)
-        } else if (company.cation > 0) {
-            status = "注意あり"
-            color = ContextCompat.getColor(context, R.color.status_cation)
-        } else {
-            status = "通常運行"
-            color = ContextCompat.getColor(view!!.context, R.color.status_normal)
+
+        when {
+            company.cancel > 0 -> {
+                status = "欠航あり"
+                color = ContextCompat.getColor(getContext(), R.color.status_cancel)
+            }
+            company.suspend > 0 -> {
+                status = "運休あり"
+                color = ContextCompat.getColor(getContext(), R.color.status_cancel)
+            }
+            company.cation > 0 -> {
+                status = "注意あり"
+                color = ContextCompat.getColor(getContext(), R.color.status_cation)
+            }
+            else -> {
+                status = "通常運行"
+                color = ContextCompat.getColor(getContext(), R.color.status_normal)
+            }
         }
         // ステータス文字
         statusText.set(status)
@@ -183,9 +188,7 @@ class TopPresenter(
         colorInt.set(color)
     }
 
-    fun getContext(): Context {
-        return view!!.context
-    }
+    fun getContext() = view!!.getContext()
 
     //イベントハンドリング
 

@@ -76,6 +76,8 @@ class TopFragment : Fragment(), TopView {
         startActivity(intent)
     }
 
+    override fun getContext() = requireActivity()
+
     companion object {
         private val TAG = BaseFragment::class.java.simpleName
 
