@@ -1,6 +1,5 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail
 
-import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.net.Uri
@@ -9,7 +8,6 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.google.android.gms.ads.AdRequest
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
@@ -72,9 +70,7 @@ class StatusDetailFragment : BaseFragment(), StatusDetailView {
         return binding.root
     }
 
-    override fun getContext(): Context? {
-        return this.activity
-    }
+    override fun getContext() = requireActivity()
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -121,7 +117,7 @@ class StatusDetailFragment : BaseFragment(), StatusDetailView {
          * @param bundle
          * @return
          */
-        fun NewInstance(bundle: Bundle): StatusDetailFragment {
+        fun newInstance(bundle: Bundle): StatusDetailFragment {
             val fragment = StatusDetailFragment()
             fragment.arguments = bundle
             return fragment

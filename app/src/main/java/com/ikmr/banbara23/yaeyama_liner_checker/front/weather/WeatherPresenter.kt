@@ -73,7 +73,7 @@ class WeatherPresenter(
     }
 
     private fun showDialog() {
-        val builder = AlertDialog.Builder(mView!!.context)
+        val builder = AlertDialog.Builder(mView!!.getContext())
         builder.setView(R.layout.progress)
         mDialog = builder.create()
         mDialog?.show()

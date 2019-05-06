@@ -3,8 +3,6 @@ package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseActivity
@@ -22,15 +20,14 @@ class StatusDetailActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.status_detail_activity)
         binding = DataBindingUtil.setContentView(this, R.layout.status_detail_activity)
-        binding.includeTitleBar!!.titleBar.setNavigationOnClickListener { finish() }
-        if (supportActionBar != null) {
-            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        }
+        binding.includeTitleBar.titleBar.setNavigationOnClickListener { finish() }
+        supportActionBar?.run { setDisplayHomeAsUpEnabled(true) }
 
-        setScreenTitle()
+        setupTitleText()
 
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.container, StatusDetailFragment.NewInstance(intent.extras!!))
+        supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.container, StatusDetailFragment.newInstance(intent.extras!!))
                 .commit()
     }
 
@@ -45,7 +42,7 @@ class StatusDetailActivity : BaseActivity() {
     /**
      * タイトルバーの設定
      */
-    private fun setScreenTitle() {
+    private fun setupTitleText() {
         val company = intent.getSerializableExtra(Constants.BUNDLE_KEY_COMPANY) as Company
         binding.title = company.getName()
     }

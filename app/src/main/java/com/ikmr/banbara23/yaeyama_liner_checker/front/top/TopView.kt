@@ -1,5 +1,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top
 
+import android.content.Context
 import com.ikmr.banbara23.yaeyama_liner_checker.front.base.BaseView
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 
@@ -7,6 +8,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
  * 港詳細のViewインターフェイス
  */
 interface TopView : BaseView {
+
+    fun getContext(): Context
 
     fun navigateToWeather()
 

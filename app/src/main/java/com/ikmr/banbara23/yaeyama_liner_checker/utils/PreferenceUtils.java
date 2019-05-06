@@ -14,7 +14,7 @@ public final class PreferenceUtils {
     }
 
     private static Context getContext() {
-        return ApplicationController.getInstance().getApplicationContext();
+        return ApplicationController.Companion.getInstance().getApplicationContext();
     }
 
     public static void saveInt(String key, int value) {
