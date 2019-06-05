@@ -10,9 +10,6 @@
     <string name="title_activity_other">アプリ情報</string>
     <string name="title_activity_port">港の会社別一覧</string>
 
-    <!--広告-->
-    <string name="banner_ad_unit_id">ca-app-pub-3362500010746452/4785171723</string>
-
     <!--安栄の電話番号-->
     <string name="tel_annei">0980830055</string>
     <!--八重山観光フェリーのHP-->
@@ -68,5 +65,4 @@
     <string name="top_status_suspend">運休あり</string>
     <string name="title_activity_weather">八重山の天気</string>
     <string name="weather_open_url">https://tenki.jp/forecast/10/50/9410/47207/</string>
-    <string name="ad_unit_id">ca-app-pub-3362500010746452~3308438523</string>
 </resources>

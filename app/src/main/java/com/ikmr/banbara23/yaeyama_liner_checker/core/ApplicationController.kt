@@ -3,14 +3,10 @@ package com.ikmr.banbara23.yaeyama_liner_checker.core
 import android.content.Context
 import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
-
 import com.crashlytics.android.Crashlytics
 import com.crashlytics.android.core.CrashlyticsCore
-import com.google.android.gms.ads.MobileAds
 import com.google.firebase.database.FirebaseDatabase
 import com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig
-import com.ikmr.banbara23.yaeyama_liner_checker.R
-
 import io.fabric.sdk.android.Fabric
 
 class ApplicationController : MultiDexApplication() {
@@ -23,7 +19,6 @@ class ApplicationController : MultiDexApplication() {
         }
         Base.initialize(this)
 
-        MobileAds.initialize(this, getString(R.string.ad_unit_id))
         FirebaseDatabase.getInstance().setPersistenceEnabled(false)
         val crashlytics = Crashlytics.Builder()
                 .core(CrashlyticsCore.Builder()
