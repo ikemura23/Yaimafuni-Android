@@ -8,7 +8,6 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.gms.ads.AdRequest
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment
@@ -45,13 +44,11 @@ class StatusDetailFragment : BaseFragment(), StatusDetailView {
     override fun onResume() {
         super.onResume()
         presenter.onResume()
-        binding.adView.resume()
     }
 
     override fun onStop() {
         super.onStop()
         presenter.onStop()
-        binding.adView.pause()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -63,9 +60,6 @@ class StatusDetailFragment : BaseFragment(), StatusDetailView {
         binding.linerInfoViewModel = linerViewModel
         binding.timeTableViewModel = timeTableViewModel
         binding.presenter = presenter
-
-        val adRequest = AdRequest.Builder().build()
-        binding.adView.loadAd(adRequest)
 
         return binding.root
     }
