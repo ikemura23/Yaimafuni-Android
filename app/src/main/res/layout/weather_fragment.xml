@@ -7,23 +7,8 @@
     <data>
 
         <variable
-            name="presenter"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherPresenter"
-            />
-
-        <variable
             name="viewModel"
             type="com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherScreenViewModel"
-            />
-
-        <variable
-            name="today"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherViewModel"
-            />
-
-        <variable
-            name="tomorrow"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherViewModel"
             />
     </data>
 
