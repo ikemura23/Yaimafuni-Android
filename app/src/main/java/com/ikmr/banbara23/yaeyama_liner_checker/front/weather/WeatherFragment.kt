@@ -1,5 +1,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.weather
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,30 +19,46 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 class WeatherFragment : BaseFragment(), WeatherView {
 
     private lateinit var presenter: WeatherPresenter
-
+    private val viewModel: WeatherScreenViewModel by lazy {
+        ViewModelProviders.of(this).get(WeatherScreenViewModel::class.java)
+    }
+    private lateinit var binding: WeatherFragmentBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-        val binding = DataBindingUtil.inflate<WeatherFragmentBinding>(inflater, R.layout.weather_fragment, container, false)
+        binding = DataBindingUtil.inflate<WeatherFragmentBinding>(inflater, R.layout.weather_fragment, container, false)
 
         val today = WeatherViewModel()
         val tomorrow = WeatherViewModel()
-        binding.today = today
-        binding.tomorrow = tomorrow
+//        binding.today = today
+//        binding.tomorrow = tomorrow
 
-        presenter = WeatherPresenter(today, tomorrow)
-        binding.presenter = presenter
-        presenter.attachView(this)
+//        presenter = WeatherPresenter(today, tomorrow)
+//        binding.presenter = presenter
+//        presenter.attachView(this)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
+        setupViewModel()
         return binding.root
+    }
+
+    private fun setupViewModel() {
+        viewModel.item.observe(viewLifecycleOwner, Observer { data ->
+            data ?: return@Observer
+            binding.apply {
+
+            }
+        })
     }
 
     override fun onResume() {
         super.onResume()
-        presenter.onResume()
+//        presenter.onResume()
+        viewModel.load()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        presenter.detachView()
+//        presenter.detachView()
     }
 
     override fun openBrowser() {

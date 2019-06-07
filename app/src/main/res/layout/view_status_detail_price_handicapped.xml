@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
 
         <variable
             name="viewModel"
@@ -13,9 +13,7 @@
             />
     </data>
 
-    <android.support.v7.widget.CardView
-        style="@style/detail_card"
-        >
+    <android.support.v7.widget.CardView style="@style/detail_card">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,8 +64,7 @@
                     />
             </LinearLayout>
 
-
-            <include layout="@layout/delimiter"/>
+            <include layout="@layout/delimiter" />
 
             <!--大人-->
             <LinearLayout
@@ -94,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text='@{viewModel.detailLinerInfo.get().adultOneWayFare + "円"}'
+                    android:text='@{viewModel.detailLinerInfo.adultOneWayFare + "円"}'
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp"
                     tools:text="3,090円"
@@ -105,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text='@{viewModel.detailLinerInfo.get().adultRoundTripFare + "円"}'
+                    android:text='@{viewModel.detailLinerInfo.adultRoundTripFare + "円"}'
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp"
                     tools:text="3,090円"
@@ -137,10 +134,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text='@{viewModel.detailLinerInfo.get().childOneWayFare + "円"}'
+                    android:text='@{viewModel.detailLinerInfo.childOneWayFare + "円"}'
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp"
-                    android:visibility="@{viewModel.detailLinerInfo.get().childOneWayFare == 0 ? View.GONE : View.VISIBLE}"
+                    android:visibility="@{viewModel.detailLinerInfo.childOneWayFare == 0 ? View.GONE : View.VISIBLE}"
                     tools:text="3,090円"
                     />
 
@@ -149,10 +146,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text='@{viewModel.detailLinerInfo.get().childRoundTripFare + "円"}'
+                    android:text='@{viewModel.detailLinerInfo.childRoundTripFare + "円"}'
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp"
-                    android:visibility="@{viewModel.detailLinerInfo.get().childRoundTripFare == 0 ? View.GONE : View.VISIBLE}"
+                    android:visibility="@{viewModel.detailLinerInfo.childRoundTripFare == 0 ? View.GONE : View.VISIBLE}"
                     tools:text="3,090円"
                     />
             </LinearLayout>
@@ -182,10 +179,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text='@{viewModel.detailLinerInfo.get().disabilityOneWayFare + "円"}'
+                    android:text='@{viewModel.detailLinerInfo.disabilityOneWayFare + "円"}'
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp"
-                    android:visibility="@{viewModel.detailLinerInfo.get().disabilityOneWayFare == 0 ? View.GONE : View.VISIBLE}"
+                    android:visibility="@{viewModel.detailLinerInfo.disabilityOneWayFare == 0 ? View.GONE : View.VISIBLE}"
                     tools:text="3,090円"
                     />
 
@@ -194,10 +191,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text='@{viewModel.detailLinerInfo.get().disabilityRoundTripFare + "円"}'
+                    android:text='@{viewModel.detailLinerInfo.disabilityRoundTripFare + "円"}'
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp"
-                    android:visibility="@{viewModel.detailLinerInfo.get().disabilityRoundTripFare == 0 ? View.GONE : View.VISIBLE}"
+                    android:visibility="@{viewModel.detailLinerInfo.disabilityRoundTripFare == 0 ? View.GONE : View.VISIBLE}"
                     tools:text="3,090円"
                     />
             </LinearLayout>

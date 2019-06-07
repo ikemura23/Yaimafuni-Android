@@ -12,6 +12,11 @@
             />
 
         <variable
+            name="viewModel"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherScreenViewModel"
+            />
+
+        <variable
             name="today"
             type="com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherViewModel"
             />
@@ -22,7 +27,6 @@
             />
     </data>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,13 +36,13 @@
         <include
             layout="@layout/weather_view"
             app:titleText='@{"今日"}'
-            app:viewModel="@{today}"
+            app:data="@{viewModel.item.today}"
             />
 
         <include
             layout="@layout/weather_view"
             app:titleText='@{"明日"}'
-            app:viewModel="@{tomorrow}"
+            app:data="@{viewModel.item.tomorrow}"
             />
 
         <Button

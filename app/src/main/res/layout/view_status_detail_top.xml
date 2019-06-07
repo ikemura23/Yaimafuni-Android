@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="com.ikmr.banbara23.yaeyama_liner_checker.R"/>
+        <import type="com.ikmr.banbara23.yaeyama_liner_checker.R" />
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
 
-        <import type="android.text.TextUtils"/>
+        <import type="android.text.TextUtils" />
 
         <variable
             name="statusViewModel"
@@ -17,9 +17,7 @@
             />
     </data>
 
-    <android.support.v7.widget.CardView
-        style="@style/detail_card"
-        >
+    <android.support.v7.widget.CardView style="@style/detail_card">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,7 +37,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    android:text="@{statusViewModel.portStatus.get().portName}"
+                    android:text="@{statusViewModel.portStatus.portName}"
                     android:textColor="@color/secondary_text"
                     android:textSize="20dp"
                     tools:text="波照間航路"
@@ -56,7 +54,7 @@
                     android:layout_centerVertical="true"
                     android:background="@{statusViewModel.statusColor}"
                     android:padding="4dp"
-                    android:text="@{statusViewModel.portStatus.get().getStatus().getText()}"
+                    android:text="@{statusViewModel.portStatus.getStatus().getText()}"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     tools:background="@color/status_normal"
@@ -71,8 +69,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="8dp"
-                android:text="@{statusViewModel.portStatus.get().getComment()}"
-                android:visibility="@{TextUtils.isEmpty(statusViewModel.portStatus.get().getComment())? View.GONE : View.VISIBLE}"
+                android:text="@{statusViewModel.portStatus.getComment()}"
+                android:visibility="@{TextUtils.isEmpty(statusViewModel.portStatus.getComment())? View.GONE : View.VISIBLE}"
                 tools:text="通常運航通通常運航通通常運航通通常運航通通常運航通通常運航通"
                 />
 
