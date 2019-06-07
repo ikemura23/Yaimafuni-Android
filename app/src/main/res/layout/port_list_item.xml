@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="2dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="2dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_toLeftOf="@+id/view_status_list_status"
+        android:layout_toStartOf="@+id/view_status_list_status"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        >
+
+        <!--港-->
+        <TextView
+            android:id="@+id/port_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textColor="@color/secondary_text"
+            android:textSize="18dp"
+            tools:text="竹富"
+            />
+
+        <!--コメント-->
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/dark_grey"
+            android:textSize="14dp"
+            tools:text="コメントコメントコメントコメントコメント"
+            tools:visibility="visible"
+            />
+
+    </LinearLayout>
+    <!--ステータス文字-->
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingBottom="2dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="2dp"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        tools:background="@color/status_cation"
+        tools:text="一部欠航便有り"
+        />
+</RelativeLayout>
