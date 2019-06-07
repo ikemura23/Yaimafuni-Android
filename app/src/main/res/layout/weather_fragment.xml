@@ -53,7 +53,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="8dp"
             android:background="#F7A325"
-            android:onClick="@{() -> presenter.onButtonClick()}"
+            android:onClick="@{() -> viewModel.moreButtonClick()}"
             android:text="天気を詳しく見る"
             android:textColor="@color/white"
             />

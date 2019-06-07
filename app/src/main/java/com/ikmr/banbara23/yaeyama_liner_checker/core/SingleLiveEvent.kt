@@ -33,7 +33,7 @@ class SingleLiveEvent<T> : MutableLiveData<T>(), LiveEvent {
     }
 
     override fun postValue(value: T) {
-        super.postValue(value)
+        super.setValue(value)
     }
 }
 

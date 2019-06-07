@@ -15,7 +15,7 @@ class WeatherActivity : AppCompatActivity() {
         binding.includeTitleBar.titleBar.setNavigationOnClickListener { finish() }
         supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.container, WeatherFragment.NewInstance())
+                .replace(R.id.container, WeatherFragment.newInstance())
                 .commit()
     }
 }
