@@ -66,11 +66,11 @@
             <!--app:viewModel="@{linerInfoViewModel}"-->
             <!--/>-->
 
-            <!--&lt;!&ndash;料金&ndash;&gt;-->
-            <!--<include-->
-            <!--layout="@layout/view_status_detail_price_handicapped"-->
-            <!--app:viewModel="@{linerInfoViewModel}"-->
-            <!--/>-->
+            <!--料金-->
+            <include
+                layout="@layout/view_status_detail_price_handicapped"
+                app:detailLinerInfo="@{viewModel.detailLinerInfo}"
+                />
 
             <!--アクション-->
             <include

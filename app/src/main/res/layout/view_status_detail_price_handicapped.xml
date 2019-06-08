@@ -8,8 +8,8 @@
         <import type="android.view.View" />
 
         <variable
-            name="viewModel"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.LinerInfoViewModel"
+            name="detailLinerInfo"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo"
             />
     </data>
 
@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text='@{viewModel.detailLinerInfo.adultOneWayFare + "円"}'
+                    android:text='@{detailLinerInfo.adultOneWayFare + "円"}'
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp"
                     tools:text="3,090円"
@@ -102,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text='@{viewModel.detailLinerInfo.adultRoundTripFare + "円"}'
+                    android:text='@{detailLinerInfo.adultRoundTripFare + "円"}'
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp"
                     tools:text="3,090円"
@@ -134,10 +134,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text='@{viewModel.detailLinerInfo.childOneWayFare + "円"}'
+                    android:text='@{detailLinerInfo.childOneWayFare + "円"}'
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp"
-                    android:visibility="@{viewModel.detailLinerInfo.childOneWayFare == 0 ? View.GONE : View.VISIBLE}"
+                    android:visibility="@{detailLinerInfo.childOneWayFare == 0 ? View.GONE : View.VISIBLE}"
                     tools:text="3,090円"
                     />
 
@@ -146,10 +146,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text='@{viewModel.detailLinerInfo.childRoundTripFare + "円"}'
+                    android:text='@{detailLinerInfo.childRoundTripFare + "円"}'
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp"
-                    android:visibility="@{viewModel.detailLinerInfo.childRoundTripFare == 0 ? View.GONE : View.VISIBLE}"
+                    android:visibility="@{detailLinerInfo.childRoundTripFare == 0 ? View.GONE : View.VISIBLE}"
                     tools:text="3,090円"
                     />
             </LinearLayout>
@@ -179,10 +179,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text='@{viewModel.detailLinerInfo.disabilityOneWayFare + "円"}'
+                    android:text='@{detailLinerInfo.disabilityOneWayFare + "円"}'
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp"
-                    android:visibility="@{viewModel.detailLinerInfo.disabilityOneWayFare == 0 ? View.GONE : View.VISIBLE}"
+                    android:visibility="@{detailLinerInfo.disabilityOneWayFare == 0 ? View.GONE : View.VISIBLE}"
                     tools:text="3,090円"
                     />
 
@@ -191,10 +191,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text='@{viewModel.detailLinerInfo.disabilityRoundTripFare + "円"}'
+                    android:text='@{detailLinerInfo.disabilityRoundTripFare + "円"}'
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp"
-                    android:visibility="@{viewModel.detailLinerInfo.disabilityRoundTripFare == 0 ? View.GONE : View.VISIBLE}"
+                    android:visibility="@{detailLinerInfo.disabilityRoundTripFare == 0 ? View.GONE : View.VISIBLE}"
                     tools:text="3,090円"
                     />
             </LinearLayout>
