@@ -57,14 +57,14 @@
             <!--時刻表-->
             <!--<include-->
             <!--layout="@layout/time_table_root"-->
-            <!--app:timeTableViewModel="@{timeTableViewModel}"-->
-            <!--/>-->
-
-            <!--&lt;!&ndash;時間と距離&ndash;&gt;-->
-            <!--<include-->
-            <!--layout="@layout/view_status_detail_distance_time"-->
             <!--app:viewModel="@{linerInfoViewModel}"-->
             <!--/>-->
+
+            <!--時間と距離-->
+            <include
+                layout="@layout/view_status_detail_distance_time"
+                app:detailLinerInfo="@{viewModel.detailLinerInfo}"
+                />
 
             <!--料金-->
             <include

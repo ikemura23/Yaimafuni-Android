@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.LinerInfoViewModel"
+            name="detailLinerInfo"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo"
             />
     </data>
 
@@ -47,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@{viewModel.detailLinerInfo.drivingTime}"
+                    android:text="@{detailLinerInfo.drivingTime}"
                     android:textColor="@color/secondary_text"
                     android:textSize="16sp"
                     tools:text="10分"
