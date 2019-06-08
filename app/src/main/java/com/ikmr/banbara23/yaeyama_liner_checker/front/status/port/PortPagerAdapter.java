@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
-import com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatus.PortStatusDetailFragment;
 
 /**
  * PagerAdapter
@@ -38,7 +38,7 @@ public class PortPagerAdapter extends FragmentStatePagerAdapter {
         Bundle bundle = new Bundle();
         bundle.putString(Constants.BUNDLE_KEY_PORT_CODE, mPortCode);
         bundle.putSerializable(Constants.BUNDLE_KEY_COMPANY, company);
-        return StatusDetailFragment.Companion.newInstance(bundle);
+        return PortStatusDetailFragment.Companion.newInstance(bundle);
     }
 
     @Override

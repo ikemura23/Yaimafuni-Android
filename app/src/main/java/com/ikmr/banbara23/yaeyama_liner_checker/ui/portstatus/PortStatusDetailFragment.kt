@@ -1,36 +1,37 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatus
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.net.Uri
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
-import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 
 /**
- * 安栄の詳細フラグメント
+ * 詳細フラグメント
  */
-class StatusDetailFragment : BaseFragment(), StatusDetailView {
+class PortStatusDetailFragment : Fragment() {
     private lateinit var binding: StatusDetailFragmentBinding
-    private var viewModel = StatusDetailViewModel()
-    private var linerViewModel = LinerInfoViewModel()
-    private var timeTableViewModel = TimeTableViewModel()
-    private lateinit var presenter: StatusDetailPresenter
+    private val viewModel: PortStatusDetailViewModel by lazy {
+        ViewModelProviders.of(this).get(PortStatusDetailViewModel::class.java)
+    }
 
     /**
      * パラメータ取得 会社
      *
      * @return
      */
-    private val argCompany: Company
+    private val company: Company
         get() = arguments!!.getSerializable(Constants.BUNDLE_KEY_COMPANY) as Company
 
     /**
@@ -38,37 +39,36 @@ class StatusDetailFragment : BaseFragment(), StatusDetailView {
      *
      * @return
      */
-    private val argPortCode: String?
-        get() = arguments!!.getString(Constants.BUNDLE_KEY_PORT_CODE)
-
-    override fun onResume() {
-        super.onResume()
-        presenter.onResume()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        presenter.onStop()
-    }
+    private val portCode: String
+        get() = arguments!!.getString(Constants.BUNDLE_KEY_PORT_CODE) ?: ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false)
-
-        presenter = StatusDetailPresenter(viewModel, linerViewModel, timeTableViewModel, argCompany, argPortCode!!)
-        presenter.attachView(this)
-        binding.statusViewModel = viewModel
+//        binding.statusViewModel = viewModel
 //        binding.linerInfoViewModel = linerViewModel
 //        binding.timeTableViewModel = timeTableViewModel
 //        binding.presenter = presenter
-
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
-    override fun getContext() = requireActivity()
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        presenter.detachView()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.event.observe(viewLifecycleOwner, Observer { nav ->
+            when (nav) {
+                is PortStatusDetailViewModel.Nav.Error -> {
+                    // todo: エラーメッセージ
+                }
+                is PortStatusDetailViewModel.Nav.Web -> {
+                    openBrowser(nav.url)
+                }
+                is PortStatusDetailViewModel.Nav.Tell -> {
+                    openTell(nav.tellNo)
+                }
+            }
+        })
+        viewModel.load(company, portCode)
     }
 
     /**
@@ -76,7 +76,7 @@ class StatusDetailFragment : BaseFragment(), StatusDetailView {
      *
      * @param tel
      */
-    override fun openTell(tel: String) {
+    private fun openTell(tel: String) {
         if (TextUtils.isEmpty(tel)) {
             return
         }
@@ -95,7 +95,7 @@ class StatusDetailFragment : BaseFragment(), StatusDetailView {
      *
      * @param url
      */
-    override fun openBrowser(url: String) {
+    private fun openBrowser(url: String) {
         if (TextUtils.isEmpty(url)) {
             return
         }
@@ -103,7 +103,7 @@ class StatusDetailFragment : BaseFragment(), StatusDetailView {
     }
 
     companion object {
-        private val TAG = StatusDetailFragment::class.java.simpleName
+        private val TAG = PortStatusDetailFragment::class.java.simpleName
 
         /**
          * New Instance
@@ -111,8 +111,8 @@ class StatusDetailFragment : BaseFragment(), StatusDetailView {
          * @param bundle
          * @return
          */
-        fun newInstance(bundle: Bundle): StatusDetailFragment {
-            val fragment = StatusDetailFragment()
+        fun newInstance(bundle: Bundle): PortStatusDetailFragment {
+            val fragment = PortStatusDetailFragment()
             fragment.arguments = bundle
             return fragment
         }
