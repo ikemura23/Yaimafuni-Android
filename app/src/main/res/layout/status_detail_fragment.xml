@@ -73,11 +73,10 @@
             <!--/>-->
 
             <!--アクション-->
-            <!--<include-->
-            <!--layout="@layout/view_status_detail_action"-->
-            <!--app:presenter="@{presenter}"-->
-            <!--app:viewModel="@{viewModel}"-->
-            <!--/>-->
+            <include
+                layout="@layout/view_status_detail_action"
+                app:viewModel="@{viewModel}"
+                />
 
             <include layout="@layout/bottom_sea" />
         </LinearLayout>
