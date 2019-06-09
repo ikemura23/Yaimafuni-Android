@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatus.PortStatusDetailViewModel"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailViewModel"
             />
 
         <variable

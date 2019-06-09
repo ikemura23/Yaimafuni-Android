@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatus
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders

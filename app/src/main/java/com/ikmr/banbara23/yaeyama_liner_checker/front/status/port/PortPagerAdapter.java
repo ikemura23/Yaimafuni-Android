@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
-import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatus.PortStatusDetailFragment;
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailFragment;
 
 /**
  * PagerAdapter
