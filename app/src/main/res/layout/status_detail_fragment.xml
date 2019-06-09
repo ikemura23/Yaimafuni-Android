@@ -55,10 +55,10 @@
                 />
 
             <!--時刻表-->
-            <!--<include-->
-            <!--layout="@layout/time_table_root"-->
-            <!--app:viewModel="@{linerInfoViewModel}"-->
-            <!--/>-->
+            <include
+                layout="@layout/time_table_root"
+                app:viewModel="@{viewModel}"
+                />
 
             <!--時間と距離-->
             <include

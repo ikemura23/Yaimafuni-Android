@@ -44,10 +44,6 @@ class PortStatusDetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false)
-//        binding.statusViewModel = viewModel
-//        binding.linerInfoViewModel = linerViewModel
-//        binding.timeTableViewModel = timeTableViewModel
-//        binding.presenter = presenter
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root

@@ -20,9 +20,6 @@ class PortStatusDetailViewModel : ViewModel() {
     val detailLinerInfo = MutableLiveData<DetailLinerInfo>()
     val timeTable = MutableLiveData<TimeTable>()
 
-    // 上部ステータス値の背景色
-    var statusColor = MutableLiveData<Int>()
-
     private lateinit var database: DatabaseReference// ...
     var event = SingleLiveEvent<Nav>()
 
@@ -96,7 +93,6 @@ class PortStatusDetailViewModel : ViewModel() {
     }
 
     companion object {
-
         private val TAG = PortStatusDetailViewModel::class.java.simpleName
     }
 }
