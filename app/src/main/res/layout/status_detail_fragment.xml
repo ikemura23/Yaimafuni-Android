@@ -11,26 +11,6 @@
             name="viewModel"
             type="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailViewModel"
             />
-
-        <variable
-            name="statusViewModel"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailViewModel"
-            />
-
-        <!--<variable-->
-        <!--name="linerInfoViewModel"-->
-        <!--type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.LinerInfoViewModel"-->
-        <!--/>-->
-
-        <!--<variable-->
-        <!--name="timeTableViewModel"-->
-        <!--type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.TimeTableViewModel"-->
-        <!--/>-->
-
-        <!--<variable-->
-        <!--name="presenter"-->
-        <!--type="com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailPresenter"-->
-        <!--/>-->
     </data>
 
     <ScrollView
