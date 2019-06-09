@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
+import com.ikmr.banbara23.yaeyama_liner_checker.common.CustomLinearLayoutManager
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
@@ -46,6 +47,8 @@ class PortStatusDetailFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.timeTable.list.layoutManager = CustomLinearLayoutManager(requireContext())
+        binding.timeTable.list.adapter = PortStatusDetailAdapter(viewLifecycleOwner, viewModel.timeTable)
         return binding.root
     }
 

@@ -40,10 +40,9 @@
                 />
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/time_table_list"
+                android:id="@+id/list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layoutManager="LinearLayoutManager"
                 tools:listitem="@layout/time_table_row"
                 />
 

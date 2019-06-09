@@ -6,9 +6,9 @@
 
     <data>
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
 
-        <import type="com.ikmr.banbara23.yaeyama_liner_checker.common.StatusHelper"/>
+        <import type="com.ikmr.banbara23.yaeyama_liner_checker.common.StatusHelper" />
 
         <variable
             name="row"
@@ -37,20 +37,19 @@
                 >
 
                 <TextView
+                    android:id="@+id/left_time"
                     android:layout_width="48dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="@{row.left.time}"
                     android:textColor="@color/secondary_text"
                     tools:text="06:00"
                     />
 
                 <TextView
+                    android:id="@+id/left_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{row.left.status.text}"
-                    android:textColor="@{StatusHelper.getStatusColor(row.left.status.code)}"
                     tools:text="通常運行"
                     />
             </LinearLayout>
@@ -70,20 +69,19 @@
                 >
 
                 <TextView
+                    android:id="@+id/right_time"
                     android:layout_width="48dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="@{row.right.time}"
                     android:textColor="@color/secondary_text"
                     tools:text="06:00"
                     />
 
                 <TextView
+                    android:id="@+id/right_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{row.right.status.text}"
-                    android:textColor="@{StatusHelper.getStatusColor(row.right.status.code)}"
                     tools:text="通常運行"
                     />
             </LinearLayout>
