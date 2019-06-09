@@ -63,7 +63,7 @@
             />
 
         <activity
-            android:name=".front.status.port.PortListActivity"
+            android:name=".ui.portlisttab.PortListTabActivity"
             android:label="@string/title_activity_port"
             />
     </application>

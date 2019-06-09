@@ -13,9 +13,9 @@ import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabActivity
-import com.ikmr.banbara23.yaeyama_liner_checker.front.status.port.PortListActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab.PortListTabActivity
 
 class TopFragment : Fragment(), TopView {
 
@@ -70,7 +70,7 @@ class TopFragment : Fragment(), TopView {
      */
     override fun navigateToPortStatusList(portName: String, portCode: String) {
         Log.d(TAG, "navigateToPortStatusList:$portName")
-        val intent = Intent(activity, PortListActivity::class.java)
+        val intent = Intent(activity, PortListTabActivity::class.java)
         intent.putExtra(Constants.BUNDLE_KEY_PORT_NAME, portName)
         intent.putExtra(Constants.BUNDLE_KEY_PORT_CODE, portCode)
         startActivity(intent)
