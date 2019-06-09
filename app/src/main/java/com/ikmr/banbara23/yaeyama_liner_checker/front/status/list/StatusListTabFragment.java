@@ -13,10 +13,10 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseListFragment;
-import com.ikmr.banbara23.yaeyama_liner_checker.front.status.detail.StatusDetailActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.CompanyStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -187,7 +187,7 @@ public class StatusListTabFragment extends BaseListFragment {
      * 運行詳細に遷移
      */
     private void startStatusDetailActivity(Company company, PortStatus portStatus) {
-        Intent intent = new Intent(getActivity(), StatusDetailActivity.class);
+        Intent intent = new Intent(getActivity(), PortStatusDetailActivity.class);
         intent.putExtra(Constants.BUNDLE_KEY_COMPANY, company);
         intent.putExtra(Constants.BUNDLE_KEY_PORT_CODE, portStatus.getPortCode());
         intent.putExtra(Constants.BUNDLE_KEY_PORT_NAME, portStatus.getPortName());

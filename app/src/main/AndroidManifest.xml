@@ -59,6 +59,7 @@
             android:name=".front.status.detail.StatusDetailActivity"
             android:label="@string/title_activity_status_detail"
             />
+        <activity android:name=".ui.portstatusdetail.PortStatusDetailActivity" />
         <activity
             android:name=".front.weather.WeatherActivity"
             android:label="@string/title_activity_weather"
