@@ -20,9 +20,11 @@ class PortStatusDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.status_detail_activity)
-        val binding = DataBindingUtil.setContentView<StatusDetailActivityBinding>(this, R.layout.status_detail_activity)
-        binding.includeTitleBar.titleBar.setNavigationOnClickListener { finish() }
-        binding.title = company.getName()
+        DataBindingUtil.setContentView<StatusDetailActivityBinding>(this, R.layout.status_detail_activity).let {
+            it.includeTitleBar.titleBar.setNavigationOnClickListener { finish() }
+            it.title = company.getName()
+        }
+
         supportActionBar?.run { setDisplayHomeAsUpEnabled(true) }
 
         supportFragmentManager
