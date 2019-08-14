@@ -25,10 +25,6 @@
             android:name="io.fabric.ApiKey"
             android:value="df76d795ad6d60d4449a01b75a4be2b9469add8b"
             />
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3362500010746452~3308438523"
-            />
 
         <activity
             android:name=".front.top.TopActivity"
