@@ -8,84 +8,20 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <!--時刻表ベース-->
-    <style name="time_table_text">
-        <item name="android:textColor">@color/secondary_text</item>
-        <item name="android:gravity">center</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:textSize">@dimen/timetable_font_size</item>
-        <item name="android:padding">8dp</item>
-    </style>
 
     <!--時刻表ヘッダー-->
-    <style name="time_table_text.header" parent="time_table_text">
-        <item name="android:background">@color/timetable_header</item>
-    </style>
 
     <!--時刻表ボディ-->
-    <style name="time_table_text.body" parent="time_table_text">
-    </style>
 
     <!--時刻表の安栄アイコン-->
-    <style name="time_table_anei_icon_text">
-        <item name="android:layout_gravity">center_horizontal|center</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:textSize">18dp</item>
-        <item name="android:padding">1dp</item>
-        <item name="android:text">安栄</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/red</item>
-    </style>
 
     <!--時刻表の八重山観光フェリーアイコン-->
-    <style name="time_table_ykf_icon_text">
-        <item name="android:layout_gravity">center_horizontal|center</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:textSize">12dp</item>
-        <item name="android:padding">1dp</item>
-        <item name="android:text">八重山\n観光フ</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/medium_blue</item>
-    </style>
 
     <!--時刻表のドリーム観光の注意書き-->
-    <style name="time_table_dream_text">
-        <item name="android:gravity">center_horizontal</item>
-        <item name="android:layout_gravity">center_horizontal|center</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:textSize">12dp</item>
-        <item name="android:padding">1dp</item>
-        <item name="android:text">高速\nｶｰﾌｪﾘｰ</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/orange</item>
-    </style>
 
     <!--時刻表の注意書き-->
-    <style name="time_table_caution_text">
-        <item name="android:layout_marginLeft">2dp</item>
-        <item name="android:layout_centerVertical">true</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:textSize">12dp</item>
-        <item name="android:paddingBottom">2dp</item>
-        <item name="android:paddingLeft">4dp</item>
-        <item name="android:paddingRight">4dp</item>
-        <item name="android:paddingTop">2dp</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
 
     <!--時刻表の注意書き-->
-    <style name="time_table_caution_description_text">
-        <item name="android:layout_marginLeft">8dp</item>
-        <item name="android:textColor">@color/secondary_text</item>
-        <item name="android:layout_centerVertical">true</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:textSize">12dp</item>
-    </style>
 
     <!--詳細画面のCardView共通スタイル-->
     <style name="detail_card" parent="CardView">
@@ -105,7 +41,4 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 </resources>

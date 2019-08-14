@@ -1,68 +1,31 @@
 <resources>
     <string name="app_name">やいまふに</string>
     <!--アプリ情報-->
-    <string name="action_settings">Settings</string>
     <string name="title_activity_status_list">運航状況一覧</string>
-    <string name="title_activity_status_detail">運航状況の詳細</string>
-    <string name="title_activity_timetable">時刻表</string>
-    <string name="title_activity_tab_timetable">時刻表</string>
     <string name="title_activity_setting">設定</string>
     <string name="title_activity_other">アプリ情報</string>
     <string name="title_activity_port">港の会社別一覧</string>
 
     <!--安栄の電話番号-->
-    <string name="tel_annei">0980830055</string>
     <!--八重山観光フェリーのHP-->
-    <string name="hp_annei">http://aneikankou.co.jp/</string>
     <!--八重山観光フェリーの電話番号-->
-    <string name="tel_ykf">0980825010</string>
     <!--八重山観光フェリーのHP-->
-    <string name="hp_ykf">http://www.yaeyama.co.jp</string>
 
     <!--その他-->
     <string name="other_info">
         当アプリは個人が作成したアプリであり、安栄観光様・八重山観光フェリー様の公式アプリではありません。\n当アプリについての安栄観光様・八重山観光フェリー様へのお問い合わせは、ご遠慮頂くようお願い申し上げます。
     </string>
 
-    <string name="mail_address">banbara.work@gmail.com</string>
-    <string name="EXTRA_SUBJECT">へのご意見</string>
-
     <string name="form_address">
         https://docs.google.com/forms/d/1JXzrILj5OPWVlv1QcJbROSuqFyri9s8rgc7dZR-Ate0/viewform?usp=send_form
     </string>
 
     <!--時刻表-->
-    <string name="time_table_title">時刻表</string>
-    <string name="time_table_port_ishigaki">石垣発</string>
-    <string name="time_table_port_taketomi">竹富発</string>
-    <string name="time_table_port_kuroshima">黒島発</string>
-    <string name="time_table_port_kohama">小浜発</string>
-    <string name="time_table_port_uehara">上原(西表)発</string>
-    <string name="time_table_port_oohara">大原(西表)発</string>
-    <string name="time_table_port_hateruma">波照間発</string>
-    <string name="time_table_port_hatoma">鳩間発</string>
-
-    <string name="route_taketomi">石垣島 - 竹富島</string>
-    <string name="route_kuroshima">石垣島 - 黒島</string>
-    <string name="route_kohama">石垣島 - 小浜島</string>
-    <string name="route_uehara">石垣島 - 上原(西表島)</string>
-    <string name="route_uehara_hatoma">石垣島 - 鳩間島経由上原(西表島)</string>
-    <string name="route_oohara">石垣島 - 大原(西表島)</string>
-    <string name="route_hateruma">石垣島 - 波照間島</string>
-    <string name="route_hatoma">石垣島 - 鳩間島</string>
-
-    <string name="company_name_annei">安栄観光</string>
-    <string name="company_name_ykf">八重山観光フェリー</string>
 
     <string name="company_tab_name_annei">安栄観光</string>
     <string name="company_tab_name_ykf">八重山観光\nフェリー</string>
-    <string name="company_tab_name_annei_and_ykf">安栄観光＆\n八重山観光フェリー</string>
 
     <!--トップ画面の港別ステータス-->
-    <string name="top_status_normal">全便運航</string>
-    <string name="top_status_cancel">欠航あり</string>
-    <string name="top_status_cation">注意あり</string>
-    <string name="top_status_suspend">運休あり</string>
     <string name="title_activity_weather">八重山の天気</string>
     <string name="weather_open_url">https://tenki.jp/forecast/10/50/9410/47207/</string>
 </resources>

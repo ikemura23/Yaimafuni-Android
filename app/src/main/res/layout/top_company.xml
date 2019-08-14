@@ -7,7 +7,7 @@
 
     <data>
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
 
         <variable
             name="presenter"
@@ -19,7 +19,7 @@
             type="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopViewModel"
             />
 
-        <import type="com.ikmr.banbara23.yaeyama_liner_checker.model.Company"/>
+        <import type="com.ikmr.banbara23.yaeyama_liner_checker.model.Company" />
     </data>
 
     <android.support.v7.widget.CardView
