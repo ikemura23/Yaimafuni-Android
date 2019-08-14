@@ -6,7 +6,7 @@
 
     <data>
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
 
         <variable
             name="presenter"
@@ -75,9 +75,7 @@
 
             </LinearLayout>
 
-            <include
-                layout="@layout/delimiter"
-                />
+            <include layout="@layout/delimiter" />
 
             <include
                 android:id="@+id/taketomi"
@@ -86,9 +84,7 @@
                 app:presenter="@{presenter}"
                 />
 
-            <include
-                layout="@layout/delimiter"
-                />
+            <include layout="@layout/delimiter" />
 
             <include
                 android:id="@+id/kohama"
@@ -97,9 +93,7 @@
                 app:presenter="@{presenter}"
                 />
 
-            <include
-                layout="@layout/delimiter"
-                />
+            <include layout="@layout/delimiter" />
 
             <include
                 android:id="@+id/kuroshima"
@@ -108,9 +102,7 @@
                 app:presenter="@{presenter}"
                 />
 
-            <include
-                layout="@layout/delimiter"
-                />
+            <include layout="@layout/delimiter" />
 
             <include
                 android:id="@+id/oohara"
@@ -119,9 +111,7 @@
                 app:presenter="@{presenter}"
                 />
 
-            <include
-                layout="@layout/delimiter"
-                />
+            <include layout="@layout/delimiter" />
 
             <include
                 android:id="@+id/uehara"
@@ -130,9 +120,7 @@
                 app:presenter="@{presenter}"
                 />
 
-            <include
-                layout="@layout/delimiter"
-                />
+            <include layout="@layout/delimiter" />
 
             <include
                 android:id="@+id/hatoma"
@@ -141,9 +129,7 @@
                 app:presenter="@{presenter}"
                 />
 
-            <include
-                layout="@layout/delimiter"
-                />
+            <include layout="@layout/delimiter" />
 
             <include
                 android:id="@+id/hateruma"

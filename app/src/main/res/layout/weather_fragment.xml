@@ -20,14 +20,14 @@
 
         <include
             layout="@layout/weather_view"
-            app:titleText='@{"今日"}'
             app:data="@{viewModel.item.today}"
+            app:titleText='@{"今日"}'
             />
 
         <include
             layout="@layout/weather_view"
-            app:titleText='@{"明日"}'
             app:data="@{viewModel.item.tomorrow}"
+            app:titleText='@{"明日"}'
             />
 
         <Button

@@ -16,9 +16,9 @@
             type="String"
             />
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
 
-        <import type="com.ikmr.banbara23.yaeyama_liner_checker.common.StatusHelper"/>
+        <import type="com.ikmr.banbara23.yaeyama_liner_checker.common.StatusHelper" />
     </data>
 
     <LinearLayout

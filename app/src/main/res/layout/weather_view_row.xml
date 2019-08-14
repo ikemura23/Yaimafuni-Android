@@ -20,7 +20,6 @@
         tools:layout_width="wrap_content"
         >
 
-
         <!--時間-->
         <TextView
             android:layout_width="match_parent"
@@ -30,9 +29,7 @@
             tools:text="06"
             />
 
-        <include
-            layout="@layout/row_delimiter"
-            />
+        <include layout="@layout/row_delimiter" />
 
         <!--天気-->
         <TextView
@@ -43,9 +40,7 @@
             tools:text="晴れ"
             />
 
-        <include
-            layout="@layout/row_delimiter"
-            />
+        <include layout="@layout/row_delimiter" />
 
         <!--風向-->
         <TextView
@@ -56,9 +51,7 @@
             tools:text="北北西"
             />
 
-        <include
-            layout="@layout/row_delimiter"
-            />
+        <include layout="@layout/row_delimiter" />
 
         <!--風速-->
         <TextView

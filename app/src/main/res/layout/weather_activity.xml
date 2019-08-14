@@ -33,9 +33,7 @@
                 android:layout_height="match_parent"
                 />
 
-            <include
-                layout="@layout/bottom_sea"
-                />
+            <include layout="@layout/bottom_sea" />
         </LinearLayout>
     </ScrollView>
 </layout>
