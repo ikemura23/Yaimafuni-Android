@@ -67,6 +67,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
                 />
+
+            <!--台風-->
+            <include
+                layout="@layout/top_typhoon"
+                app:presenter="@{presenter}"
+                app:viewModel="@{viewModel}"
+                />
+
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                />
         </LinearLayout>
     </ScrollView>
 </layout>
