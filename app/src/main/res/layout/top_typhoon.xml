@@ -82,14 +82,6 @@
                 app:layout_constraintTop_toBottomOf="@id/title"
                 />
 
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="horizontal"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toBottomOf="@id/title"-->
-            <!--                >-->
-
             <TextView
                 android:id="@+id/today_label"
                 android:layout_width="0dp"
@@ -110,22 +102,6 @@
                 tools:text="@tools:sample/date/ddmmyy"
                 />
 
-            <!--                <TextView-->
-            <!--                    android:layout_width="0dp"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_marginEnd="16dp"-->
-            <!--                    android:layout_marginRight="16dp"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:ellipsize="end"-->
-            <!--                    android:gravity="center_vertical"-->
-            <!--                    android:maxLines="1"-->
-            <!--                    android:paddingLeft="16dp"-->
-            <!--                    android:text="@{viewModel.weather}"-->
-            <!--                    android:textColor="@color/textDarkPrimary"-->
-            <!--                    android:textSize="14sp"-->
-            <!--                    tools:text="@tools:sample/lorem/random"-->
-            <!--                    />-->
-            <!--            </LinearLayout>-->
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 </layout>
