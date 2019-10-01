@@ -11,12 +11,13 @@
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_width="180dp"
+        android:layout_height="170dp"
         android:layout_marginBottom="18dp"
         android:layout_marginTop="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
+        android:scaleType="fitCenter"
         tools:src="@drawable/top_background"
         />
 
@@ -63,6 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:text="大きさ：大型"
         app:layout_constraintStart_toEndOf="@+id/image"
         app:layout_constraintTop_toTopOf="@+id/image"
