@@ -28,4 +28,12 @@
     <!--トップ画面の港別ステータス-->
     <string name="title_activity_weather">八重山の天気</string>
     <string name="weather_open_url">https://tenki.jp/forecast/10/50/9410/47207/</string>
+
+    <!--台風-->
+    <string name="typhoon_area">存在地域 : %s</string>
+    <string name="typhoon_scale">大きさ : %s</string>
+    <string name="typhoon_intensity">強さ : %s</string>
+    <string name="typhoon_pressure">中心気圧 : %s</string>
+    <string name="typhoon_maxWindSpeed">中心最大風速 : %s</string>
+
 </resources>
