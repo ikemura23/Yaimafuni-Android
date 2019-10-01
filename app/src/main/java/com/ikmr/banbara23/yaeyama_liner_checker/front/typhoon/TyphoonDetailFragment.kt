@@ -40,6 +40,7 @@ class TyphoonDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.typhoon_detail_list, container, false)
+        binding.includeTitleBar.titleBar.setNavigationOnClickListener { activity?.finish() }
         binding.list.adapter = TyphoonRecyclerViewAdapter(listOf(), listener)
         return binding.root
     }
