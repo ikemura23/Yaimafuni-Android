@@ -65,7 +65,7 @@
 
             <android.support.v4.widget.Space
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
+                android:layout_height="16dp"
                 />
 
             <!--台風-->
