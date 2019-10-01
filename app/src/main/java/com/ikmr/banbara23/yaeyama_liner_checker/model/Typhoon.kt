@@ -1,5 +1,9 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.model
 
+data class TyphoonRoot(
+    val tenkiJp: List<Typhoon>
+)
+
 /**
  * 台風のモデル
  */
