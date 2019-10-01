@@ -17,21 +17,10 @@ import io.reactivex.subscribers.ResourceSubscriber
 
 class TyphoonDetailFragment : Fragment(), OnTyphoonDetailFragmentInteractionListener {
 
-    // TODO: Customize parameters
-    private var columnCount = 1
-
     private val apiClient = ApiClient()
     private val disposable = CompositeDisposable()
 
     private lateinit var binding: TyphoonDetailFragmentBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -84,19 +73,6 @@ class TyphoonDetailFragment : Fragment(), OnTyphoonDetailFragmentInteractionList
 
     override fun onListFragmentInteraction(item: Typhoon?) {
         CustomTabUtil.start(activity, getString(R.string.typhoon_open_url))
-    }
-
-    companion object {
-
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-                TyphoonDetailFragment().apply {
-                    arguments = Bundle().apply {
-                        putInt(ARG_COLUMN_COUNT, columnCount)
-                    }
-                }
     }
 }
 
