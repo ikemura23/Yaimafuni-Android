@@ -12,6 +12,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopCompanyInfo
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo
+import durdinapps.rxfirebase2.DataSnapshotMapper
 import durdinapps.rxfirebase2.RxFirebaseDatabase
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -44,14 +45,13 @@ class ApiClient {
      */
     val typhoon: Flowable<List<Typhoon>>
         get() {
-//            val ref = getRef(TYPHOON)
-//            // ref.keepSynced(false)
-//            return RxFirebaseDatabase.observeValueEvent(ref, DataSnapshotMapper.listOf(Typhoon::class.java))
-//                    .subscribeOn(Schedulers.io())
-//                    .observeOn(AndroidSchedulers.mainThread())
-            return DummyRepository.typhoon()
+            val ref = getRef(TYPHOON)
+            return RxFirebaseDatabase.observeValueEvent(ref, DataSnapshotMapper.listOf(Typhoon::class.java))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
+//            return DummyRepository.typhoon()
+//                    .subscribeOn(Schedulers.io())
+//                    .observeOn(AndroidSchedulers.mainThread())
         }
 
     /**
