@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
-import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonDetailListBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonDetailFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 import io.reactivex.disposables.CompositeDisposable
@@ -20,12 +20,10 @@ class TyphoonDetailFragment : Fragment(), OnTyphoonDetailFragmentInteractionList
     // TODO: Customize parameters
     private var columnCount = 1
 
-//    private var listener: OnTyphoonDetailFragmentInteractionListener? = null
-
     private val apiClient = ApiClient()
     private val disposable = CompositeDisposable()
 
-    private lateinit var binding: TyphoonDetailListBinding
+    private lateinit var binding: TyphoonDetailFragmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +37,7 @@ class TyphoonDetailFragment : Fragment(), OnTyphoonDetailFragmentInteractionList
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.typhoon_detail_list, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.typhoon_detail_fragment, container, false)
         binding.includeTitleBar.titleBar.setNavigationOnClickListener { activity?.finish() }
         binding.list.adapter = TyphoonRecyclerViewAdapter(listOf(), this)
         return binding.root
@@ -79,18 +77,8 @@ class TyphoonDetailFragment : Fragment(), OnTyphoonDetailFragmentInteractionList
         adapter.updateData(typhoonList)
     }
 
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        if (context is OnTyphoonDetailFragmentInteractionListener) {
-//            listener = context
-//        } else {
-//            // throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
-//        }
-//    }
-
     override fun onDetach() {
         super.onDetach()
-//        listener = null
         disposable.dispose()
     }
 
