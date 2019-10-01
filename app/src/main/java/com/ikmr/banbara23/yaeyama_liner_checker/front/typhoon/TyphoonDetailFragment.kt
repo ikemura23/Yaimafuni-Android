@@ -10,17 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
-import com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.dummy.DummyContent.DummyItem
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subscribers.ResourceSubscriber
 import kotlinx.android.synthetic.main.typhoon_detail_list.list
 
-/**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [TyphoonDetailFragment.OnListFragmentInteractionListener] interface.
- */
 class TyphoonDetailFragment : Fragment() {
 
     // TODO: Customize parameters
@@ -102,28 +96,14 @@ class TyphoonDetailFragment : Fragment() {
         listener = null
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson
-     * [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
     interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
+        fun onListFragmentInteraction(item: Typhoon?)
     }
 
     companion object {
 
-        // TODO: Customize parameter argument names
         const val ARG_COLUMN_COUNT = "column-count"
 
-        // TODO: Customize parameter initialization
         @JvmStatic
         fun newInstance(columnCount: Int) =
                 TyphoonDetailFragment().apply {
