@@ -247,4 +247,8 @@ class TopPresenter(
     fun onClickCompany(company: Company) {
         view!!.navigateToCompanyStatusList(company)
     }
+
+    fun onClickTyphoon() {
+        view?.navigateToTyphoon()
+    }
 }
