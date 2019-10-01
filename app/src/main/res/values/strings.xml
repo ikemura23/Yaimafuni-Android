@@ -35,5 +35,6 @@
     <string name="typhoon_intensity">強さ : %s</string>
     <string name="typhoon_pressure">中心気圧 : %s</string>
     <string name="typhoon_maxWindSpeed">中心最大風速 : %s</string>
+    <string name="typhoon_open_url">https://tenki.jp/lite/bousai/typhoon/</string>
 
 </resources>

@@ -1,6 +1,5 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon
 
-import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,15 +11,16 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonDetailListBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
+import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subscribers.ResourceSubscriber
 
-class TyphoonDetailFragment : Fragment() {
+class TyphoonDetailFragment : Fragment(), OnTyphoonDetailFragmentInteractionListener {
 
     // TODO: Customize parameters
     private var columnCount = 1
 
-    private var listener: OnListFragmentInteractionListener? = null
+//    private var listener: OnTyphoonDetailFragmentInteractionListener? = null
 
     private val apiClient = ApiClient()
     private val disposable = CompositeDisposable()
@@ -41,7 +41,7 @@ class TyphoonDetailFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.typhoon_detail_list, container, false)
         binding.includeTitleBar.titleBar.setNavigationOnClickListener { activity?.finish() }
-        binding.list.adapter = TyphoonRecyclerViewAdapter(listOf(), listener)
+        binding.list.adapter = TyphoonRecyclerViewAdapter(listOf(), this)
         return binding.root
     }
 
@@ -79,23 +79,23 @@ class TyphoonDetailFragment : Fragment() {
         adapter.updateData(typhoonList)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnListFragmentInteractionListener) {
-            listener = context
-        } else {
-            // throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
-        }
-    }
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//        if (context is OnTyphoonDetailFragmentInteractionListener) {
+//            listener = context
+//        } else {
+//            // throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
+//        }
+//    }
 
     override fun onDetach() {
         super.onDetach()
-        listener = null
+//        listener = null
         disposable.dispose()
     }
 
-    interface OnListFragmentInteractionListener {
-        fun onListFragmentInteraction(item: Typhoon?)
+    override fun onListFragmentInteraction(item: Typhoon?) {
+        CustomTabUtil.start(activity, getString(R.string.typhoon_open_url))
     }
 
     companion object {
@@ -110,4 +110,8 @@ class TyphoonDetailFragment : Fragment() {
                     }
                 }
     }
+}
+
+interface OnTyphoonDetailFragmentInteractionListener {
+    fun onListFragmentInteraction(item: Typhoon?)
 }

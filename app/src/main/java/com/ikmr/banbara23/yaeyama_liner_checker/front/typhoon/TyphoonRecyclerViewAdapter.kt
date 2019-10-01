@@ -7,13 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonDetailItemBinding
-import com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.TyphoonDetailFragment.OnListFragmentInteractionListener
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import com.squareup.picasso.Picasso
 
 class TyphoonRecyclerViewAdapter(
     private var mValues: List<Typhoon>,
-    private val mListener: OnListFragmentInteractionListener?
+    private val mListener: OnTyphoonDetailFragmentInteractionListener?
 ) : RecyclerView.Adapter<TyphoonRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
@@ -32,8 +31,6 @@ class TyphoonRecyclerViewAdapter(
             parent,
             false
         )
-//        val view = LayoutInflater.from(parent.context)
-//                .inflate(R.layout.typhoon_detail_item, parent, false)
         return ViewHolder(binding)
     }
 
@@ -41,17 +38,7 @@ class TyphoonRecyclerViewAdapter(
         val typhoon = mValues[position]
         holder.binding.typhoon = typhoon
 
-        holder.binding.apply {
-            Picasso.get().load(typhoon.img).into(image)
-//            datetime.text = typhoon.dateTime
-//            name.text = typhoon.name
-//            area.text = typhoon.area
-//            scale.text = typhoon.scale
-//            intensity.text = typhoon.intensity
-//            pressure.text = typhoon.pressure
-//            maxWindSpeed.text = typhoon.maxWindSpeedNearCenter
-        }
-
+        Picasso.get().load(typhoon.img).into(holder.binding.image)
 
         with(holder.binding.root) {
             tag = typhoon
@@ -66,15 +53,5 @@ class TyphoonRecyclerViewAdapter(
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(val binding: TyphoonDetailItemBinding) : RecyclerView.ViewHolder(binding.root) {
-
-//        val image: ImageView = mView.image
-//        val dateTime: TextView = mView.datetime
-//        val name: TextView = mView.name
-//        val area: TextView = mView.area
-//        val scale: TextView = mView.scale
-//        val intensity: TextView = mView.intensity
-//        val pressure: TextView = mView.pressure
-//        val maxWindSpeed: TextView = mView.maxWindSpeed
-    }
+    inner class ViewHolder(val binding: TyphoonDetailItemBinding) : RecyclerView.ViewHolder(binding.root)
 }
