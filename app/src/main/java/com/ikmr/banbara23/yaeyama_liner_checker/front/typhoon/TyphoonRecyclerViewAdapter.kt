@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.TyphoonDetailFragment.OnListFragmentInteractionListener
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.typhoon_detail_item.view.area
 import kotlinx.android.synthetic.main.typhoon_detail_item.view.datetime
 import kotlinx.android.synthetic.main.typhoon_detail_item.view.image
@@ -42,6 +43,7 @@ class TyphoonRecyclerViewAdapter(
         val typhoon = mValues[position]
 
         holder.apply {
+            Picasso.get().load(typhoon.img).into(image)
             dateTime.text = typhoon.dateTime
             name.text = typhoon.name
             area.text = typhoon.area
