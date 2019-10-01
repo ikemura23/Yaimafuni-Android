@@ -1,19 +1,19 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon
 
 import android.content.Context
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
+import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonDetailListBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subscribers.ResourceSubscriber
-import kotlinx.android.synthetic.main.typhoon_detail_list.list
 
 class TyphoonDetailFragment : Fragment() {
 
@@ -24,6 +24,8 @@ class TyphoonDetailFragment : Fragment() {
 
     private val apiClient = ApiClient()
     private val disposable = CompositeDisposable()
+
+    private lateinit var binding: TyphoonDetailListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,15 +39,9 @@ class TyphoonDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.typhoon_detail_list, container, false)
-
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                adapter = TyphoonRecyclerViewAdapter(listOf(), listener)
-            }
-        }
-        return view
+        binding = DataBindingUtil.inflate(inflater, R.layout.typhoon_detail_list, container, false)
+        binding.list.adapter = TyphoonRecyclerViewAdapter(listOf(), listener)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -78,7 +74,7 @@ class TyphoonDetailFragment : Fragment() {
     }
 
     private fun bindTyphoon(typhoonList: List<Typhoon>) {
-        val adapter = list.adapter as TyphoonRecyclerViewAdapter
+        val adapter = binding.list.adapter as TyphoonRecyclerViewAdapter
         adapter.updateData(typhoonList)
     }
 
@@ -94,6 +90,7 @@ class TyphoonDetailFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         listener = null
+        disposable.dispose()
     }
 
     interface OnListFragmentInteractionListener {
