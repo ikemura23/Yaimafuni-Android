@@ -26,6 +26,8 @@
             android:layout_gravity="center"
             android:layout_margin="30dp"
             android:text="台風は発生していません。"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             android:visibility="gone"
             />
 

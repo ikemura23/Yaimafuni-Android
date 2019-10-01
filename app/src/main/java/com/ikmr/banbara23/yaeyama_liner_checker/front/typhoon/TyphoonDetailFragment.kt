@@ -62,6 +62,11 @@ class TyphoonDetailFragment : Fragment(), OnTyphoonDetailFragmentInteractionList
     }
 
     private fun bindTyphoon(typhoonList: List<Typhoon>) {
+        if (typhoonList.isEmpty()) {
+            binding.list.visibility = View.GONE
+            binding.emptyView.visibility = View.VISIBLE
+            return
+        }
         val adapter = binding.list.adapter as TyphoonRecyclerViewAdapter
         adapter.updateData(typhoonList)
     }

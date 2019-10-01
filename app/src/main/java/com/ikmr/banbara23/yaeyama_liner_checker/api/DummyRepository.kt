@@ -10,13 +10,6 @@ object DummyRepository {
         return Flowable.create({ emitter ->
             emitter.onNext(makeDummyData())
         }, BackpressureStrategy.LATEST)
-        // todo:後で戻す
-//        return Flowable.create(FlowableOnSubscribe<List<Typhoon>>() {
-//            @Override
-//            fun  subscribe(emitter:FlowableEmitter<List<Typhoon>> ) {
-//
-//                emitter.onComplete();
-//        })
     }
 
     private fun makeDummyData(): List<Typhoon> =
