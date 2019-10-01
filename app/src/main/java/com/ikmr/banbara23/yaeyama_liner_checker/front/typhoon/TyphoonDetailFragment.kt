@@ -4,12 +4,17 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.dummy.DummyContent
+import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
 import com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.dummy.DummyContent.DummyItem
+import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.subscribers.ResourceSubscriber
+import kotlinx.android.synthetic.main.typhoon_detail_list.list
 
 /**
  * A fragment representing a list of Items.
@@ -22,6 +27,9 @@ class TyphoonDetailFragment : Fragment() {
     private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null
+
+    private val apiClient = ApiClient()
+    private val disposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +48,44 @@ class TyphoonDetailFragment : Fragment() {
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
-                adapter = TyphoonRecyclerViewAdapter(DummyContent.ITEMS, listener)
+                adapter = TyphoonRecyclerViewAdapter(listOf(), listener)
             }
         }
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fetchTyphoon()
+    }
+
+    /**
+     * 台風を取得
+     */
+    private fun fetchTyphoon() {
+        disposable.add(
+            apiClient
+                    .typhoon
+                    .subscribeWith(
+                        object : ResourceSubscriber<List<Typhoon>>() {
+                            override fun onNext(typhoonList: List<Typhoon>) {
+                                Log.d("fetchTyphoon", typhoonList.toString())
+                                bindTyphoon(typhoonList)
+                            }
+
+                            override fun onError(t: Throwable) {
+                                Log.d("fetchTyphoon", t.toString())
+                            }
+
+                            override fun onComplete() {
+                            }
+                        })
+        )
+    }
+
+    private fun bindTyphoon(typhoonList: List<Typhoon>) {
+        val adapter = list.adapter as TyphoonRecyclerViewAdapter
+        adapter.updateData(typhoonList)
     }
 
     override fun onAttach(context: Context) {

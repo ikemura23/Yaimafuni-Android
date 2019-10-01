@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.TyphoonDetailFragment.OnListFragmentInteractionListener
 import com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.dummy.DummyContent.DummyItem
+import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import kotlinx.android.synthetic.main.typhoon_detail_item.view.area
 import kotlinx.android.synthetic.main.typhoon_detail_item.view.datetime
 import kotlinx.android.synthetic.main.typhoon_detail_item.view.image
@@ -24,7 +25,7 @@ import kotlinx.android.synthetic.main.typhoon_detail_item.view.scale
  * TODO: Replace the implementation with code for your data type.
  */
 class TyphoonRecyclerViewAdapter(
-    private val mValues: List<DummyItem>,
+    private var mValues: List<Typhoon>,
     private val mListener: OnListFragmentInteractionListener?
 ) : RecyclerView.Adapter<TyphoonRecyclerViewAdapter.ViewHolder>() {
 
@@ -46,25 +47,31 @@ class TyphoonRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = mValues[position]
+        val typhoon = mValues[position]
 
         holder.apply {
-            dateTime.text = "a"
-            name.text = "a"
-            area.text = "a"
-            scale.text = "a"
-            intensity.text = "a"
-            pressure.text = "a"
-            maxWindSpeed.text = "a"
+            dateTime.text = typhoon.dateTime
+            name.text = typhoon.name
+            area.text = typhoon.area
+            scale.text = typhoon.scale
+            intensity.text = typhoon.intensity
+            pressure.text = typhoon.pressure
+            maxWindSpeed.text = typhoon.maxWindSpeedNearCenter
         }
 
         with(holder.mView) {
-            tag = item
+            tag = typhoon
             setOnClickListener(mOnClickListener)
         }
     }
 
     override fun getItemCount(): Int = mValues.size
+
+    fun updateData(typhoonList: List<Typhoon>) {
+//        mValues = listOf()
+        mValues = typhoonList
+        notifyDataSetChanged()
+    }
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         val image: ImageView = mView.image
