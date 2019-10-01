@@ -8,10 +8,10 @@ class TyphoonDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_typhoon_detail)
+        setContentView(R.layout.typhoon_detail_activity)
         supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.container, TyphoonDetailFragment.newInstance(5))
-            .commit()
+                .beginTransaction()
+                .replace(R.id.container, TyphoonDetailFragment())
+                .commit()
     }
 }
