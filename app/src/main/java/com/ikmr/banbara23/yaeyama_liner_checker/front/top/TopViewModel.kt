@@ -28,4 +28,8 @@ class TopViewModel {
     var ykfStatus = ObservableField<String>()
 
     var showCompanyProgress = ObservableBoolean()
+
+    // 台風
+    var typhoon = ObservableField<String>()
+    var showTyphoonProgress = ObservableBoolean()
 }

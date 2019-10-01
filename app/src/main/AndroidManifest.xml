@@ -5,13 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission
-        android:name="android.permission.READ_PHONE_STATE"
-        tools:node="remove"
-        />
-
     <application
         android:name=".core.ApplicationController"
         android:allowBackup="true"
@@ -21,10 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="df76d795ad6d60d4449a01b75a4be2b9469add8b"
-            />
+        <activity android:name=".front.typhoon.TyphoonDetailActivity" />
 
         <activity
             android:name=".front.top.TopActivity"
@@ -39,6 +29,7 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".front.status.list.StatusListTabActivity"
             android:label="@string/title_activity_status_list"
@@ -57,11 +48,23 @@
             android:label="@string/title_activity_weather"
             android:theme="@style/AppTheme.NoActionBar"
             />
-
         <activity
             android:name=".ui.portlisttab.PortListTabActivity"
             android:label="@string/title_activity_port"
             />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="df76d795ad6d60d4449a01b75a4be2b9469add8b"
+            />
     </application>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.READ_PHONE_STATE"
+        tools:node="remove"
+        />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -13,6 +13,8 @@ interface TopView : BaseView {
 
     fun navigateToWeather()
 
+    fun navigateToTyphoon()
+
     fun navigateToCompanyStatusList(company: Company)
 
     fun navigateToPortStatusList(portName: String, portCode: String)
