@@ -8,8 +8,8 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@color/white"
         app:cardPreventCornerOverlap="false"
         >
@@ -19,15 +19,14 @@
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
             android:orientation="vertical"
-            android:padding="16dp"
+            android:padding="8dp"
             >
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="180dp"
-                android:layout_height="170dp"
-                android:layout_marginBottom="18dp"
-                android:layout_marginTop="18dp"
+                android:layout_width="170dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="8dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/name"
@@ -39,86 +38,110 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{typhoon.name}"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                tools:text="タイトル123456789"
                 />
 
             <TextView
                 android:id="@+id/area"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text='@{@string/typhoon_area(typhoon.area)}'
+                android:textSize="@dimen/typhoon_text_size"
                 app:layout_constraintEnd_toEndOf="@+id/barrier"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/maxWindSpeed"
+                tools:text="存在地域：東シナ海"
                 />
 
             <TextView
                 android:id="@+id/datetime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
                 android:text="@{typhoon.dateTime}"
+                android:textSize="@dimen/typhoon_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                tools:text="YYYY/MM/DD"
                 />
 
             <TextView
                 android:id="@+id/scale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
                 android:text='@{@string/typhoon_scale(typhoon.scale)}'
+                android:textSize="@dimen/typhoon_text_size"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toTopOf="@+id/image"
+                tools:text="強さ"
                 />
 
             <TextView
                 android:id="@+id/intensity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text='@{@string/typhoon_intensity(typhoon.intensity)}'
+                android:textSize="@dimen/typhoon_text_size"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/scale"
+                tools:text="強さ"
                 />
 
             <TextView
                 android:id="@+id/pressure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text='@{@string/typhoon_pressure(typhoon.pressure)}'
+                android:textSize="@dimen/typhoon_text_size"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/intensity"
+                tools:text="気圧"
                 />
 
             <TextView
                 android:id="@+id/maxWindSpeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text='@{@string/typhoon_maxWindSpeed(typhoon.maxWindSpeedNearCenter)}'
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.08"
+                android:textSize="@dimen/typhoon_text_size"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/pressure"
+                tools:text="中心の最大風速"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:gravity="center"
+                android:text="詳しくみる"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/typhoon_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
             <android.support.constraint.Barrier
