@@ -24,8 +24,8 @@
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="180dp"
-                android:layout_height="170dp"
+                android:layout_width="170dp"
+                android:layout_height="160dp"
                 android:layout_marginTop="8dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{typhoon.name}"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -53,11 +53,12 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text='@{@string/typhoon_area(typhoon.area)}'
+                android:textSize="@dimen/typhoon_text_size"
                 app:layout_constraintEnd_toEndOf="@+id/barrier"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/maxWindSpeed"
-                tools:text="エリア"
+                tools:text="存在地域：東シナ海"
                 />
 
             <TextView
@@ -68,6 +69,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:text="@{typhoon.dateTime}"
+                android:textSize="@dimen/typhoon_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="YYYY/MM/DD"
@@ -81,6 +83,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
                 android:text='@{@string/typhoon_scale(typhoon.scale)}'
+                android:textSize="@dimen/typhoon_text_size"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toTopOf="@+id/image"
                 tools:text="強さ"
@@ -94,6 +97,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text='@{@string/typhoon_intensity(typhoon.intensity)}'
+                android:textSize="@dimen/typhoon_text_size"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/scale"
                 tools:text="強さ"
@@ -107,6 +111,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text='@{@string/typhoon_pressure(typhoon.pressure)}'
+                android:textSize="@dimen/typhoon_text_size"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/intensity"
                 tools:text="気圧"
@@ -120,6 +125,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text='@{@string/typhoon_maxWindSpeed(typhoon.maxWindSpeedNearCenter)}'
+                android:textSize="@dimen/typhoon_text_size"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/pressure"
                 tools:text="中心の最大風速"
@@ -128,10 +134,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
                 android:gravity="center"
                 android:text="詳しくみる"
-                android:textSize="12sp"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/typhoon_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 />
