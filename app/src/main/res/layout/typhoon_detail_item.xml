@@ -19,15 +19,14 @@
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
             android:orientation="vertical"
-            android:padding="16dp"
+            android:padding="8dp"
             >
 
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="180dp"
                 android:layout_height="170dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="18dp"
+                android:layout_marginTop="8dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/name"
@@ -124,6 +123,17 @@
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/pressure"
                 tools:text="中心の最大風速"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:gravity="center"
+                android:text="詳しくみる"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
 
             <android.support.constraint.Barrier
