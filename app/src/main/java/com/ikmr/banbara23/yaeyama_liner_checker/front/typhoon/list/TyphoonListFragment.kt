@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon
+package com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -15,7 +15,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subscribers.ResourceSubscriber
 
-class TyphoonDetailFragment : Fragment(), OnTyphoonDetailFragmentInteractionListener {
+class TyphoonDetailFragment : Fragment(),
+    OnTyphoonDetailFragmentInteractionListener {
 
     private val apiClient = ApiClient()
     private val disposable = CompositeDisposable()
@@ -28,7 +29,11 @@ class TyphoonDetailFragment : Fragment(), OnTyphoonDetailFragmentInteractionList
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.typhoon_list_fragment, container, false)
         binding.includeTitleBar.titleBar.setNavigationOnClickListener { activity?.finish() }
-        binding.list.adapter = TyphoonRecyclerViewAdapter(listOf(), this)
+        binding.list.adapter =
+            TyphoonRecyclerViewAdapter(
+                listOf(),
+                this
+            )
         return binding.root
     }
 

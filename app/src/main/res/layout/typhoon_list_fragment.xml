@@ -39,7 +39,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             app:layoutManager="LinearLayoutManager"
-            tools:context="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.TyphoonDetailFragment"
+            tools:context="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list.TyphoonDetailFragment"
             tools:listitem="@layout/typhoon_list_item"
             />
 

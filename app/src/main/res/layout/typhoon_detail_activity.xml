@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.TyphoonDetailActivity"
+    tools:context="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list.TyphoonDetailActivity"
     >
 
     <FrameLayout
