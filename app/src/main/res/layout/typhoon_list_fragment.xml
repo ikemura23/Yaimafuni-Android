@@ -40,7 +40,7 @@
             android:layout_marginRight="16dp"
             app:layoutManager="LinearLayoutManager"
             tools:context="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.TyphoonDetailFragment"
-            tools:listitem="@layout/typhoon_detail_item"
+            tools:listitem="@layout/typhoon_list_item"
             />
 
     </LinearLayout>
