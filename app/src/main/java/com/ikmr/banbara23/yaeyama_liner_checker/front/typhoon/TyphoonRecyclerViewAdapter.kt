@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonDetailItemBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonListItemBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import com.squareup.picasso.Picasso
 
@@ -25,9 +25,9 @@ class TyphoonRecyclerViewAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding: TyphoonDetailItemBinding = DataBindingUtil.inflate(
+        val binding: TyphoonListItemBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
-            R.layout.typhoon_detail_item,
+            R.layout.typhoon_list_item,
             parent,
             false
         )
@@ -53,5 +53,5 @@ class TyphoonRecyclerViewAdapter(
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(val binding: TyphoonDetailItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding: TyphoonListItemBinding) : RecyclerView.ViewHolder(binding.root)
 }
