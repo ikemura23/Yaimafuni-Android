@@ -24,10 +24,11 @@
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="170dp"
-                android:layout_height="160dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_marginTop="8dp"
                 android:scaleType="fitCenter"
+                app:layout_constraintDimensionRatio="H,16:9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/name"
                 tools:src="@tools:sample/backgrounds/scenic"
@@ -45,21 +46,21 @@
                 tools:text="タイトル123456789"
                 />
 
-            <TextView
-                android:id="@+id/area"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:text='@{@string/typhoon_area(typhoon.area)}'
-                android:textSize="@dimen/typhoon_text_size"
-                app:layout_constraintEnd_toEndOf="@+id/barrier"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/image"
-                app:layout_constraintTop_toBottomOf="@+id/maxWindSpeed"
-                tools:text="存在地域：東シナ海"
-                />
+            <!--            <TextView
+                            android:id="@+id/area"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text='@{@string/typhoon_area(typhoon.area)}'
+                            android:textSize="@dimen/typhoon_text_size"
+                            app:layout_constraintEnd_toEndOf="@+id/barrier"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/image"
+                            app:layout_constraintTop_toBottomOf="@+id/maxWindSpeed"
+                            tools:text="存在地域：東シナ海"
+                            />-->
 
             <TextView
                 android:id="@+id/datetime"
@@ -131,18 +132,26 @@
                 tools:text="中心の最大風速"
                 />
 
-            <TextView
+            <android.support.v7.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
-                android:gravity="center"
-                android:text="詳しくみる"
-                android:textColor="@color/secondary_text"
-                android:textSize="@dimen/typhoon_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
                 />
+            <!--            <TextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"-->
+            <!--                android:gravity="center"-->
+            <!--                android:text="詳しくみる"-->
+            <!--                android:textColor="@color/secondary_text"-->
+            <!--                android:textSize="@dimen/typhoon_text_size"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                />-->
 
             <android.support.constraint.Barrier
                 android:id="@+id/barrier"
