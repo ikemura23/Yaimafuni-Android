@@ -6,9 +6,29 @@ import android.os.Parcelable;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Status;
 
 public class Left implements Parcelable {
+    public static final Parcelable.Creator<Left> CREATOR = new Parcelable.Creator<Left>() {
+        @Override
+        public Left createFromParcel(Parcel source) {
+            return new Left(source);
+        }
+
+        @Override
+        public Left[] newArray(int size) {
+            return new Left[size];
+        }
+    };
     public String memo;
     public Status status;
     public String time;
+
+    public Left() {
+    }
+
+    protected Left(Parcel in) {
+        this.memo = in.readString();
+        this.status = in.readParcelable(Status.class.getClassLoader());
+        this.time = in.readString();
+    }
 
     @Override
     public int describeContents() {
@@ -21,27 +41,6 @@ public class Left implements Parcelable {
         dest.writeParcelable(this.status, flags);
         dest.writeString(this.time);
     }
-
-    public Left() {
-    }
-
-    protected Left(Parcel in) {
-        this.memo = in.readString();
-        this.status = in.readParcelable(Status.class.getClassLoader());
-        this.time = in.readString();
-    }
-
-    public static final Parcelable.Creator<Left> CREATOR = new Parcelable.Creator<Left>() {
-        @Override
-        public Left createFromParcel(Parcel source) {
-            return new Left(source);
-        }
-
-        @Override
-        public Left[] newArray(int size) {
-            return new Left[size];
-        }
-    };
 
     public String getMemo() {
         return memo;
@@ -70,9 +69,9 @@ public class Left implements Parcelable {
     @Override
     public String toString() {
         return "Left{" +
-                "memo='" + memo + '\'' +
-                ", status=" + status +
-                ", time='" + time + '\'' +
-                '}';
+               "memo='" + memo + '\'' +
+               ", status=" + status +
+               ", time='" + time + '\'' +
+               '}';
     }
 }

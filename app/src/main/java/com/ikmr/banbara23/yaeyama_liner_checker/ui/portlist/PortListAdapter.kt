@@ -17,8 +17,8 @@ import kotlinx.android.synthetic.main.port_list_item.view.status
 class PortListAdapter(
     lifecycleOwner: LifecycleOwner,
     portStatuses: MutableLiveData<List<PortStatus>>,
-    private val listener: PortListFragment.OnListFragmentInteractionListener?)
-    : RecyclerView.Adapter<PortListAdapter.ViewHolder>() {
+    private val listener: PortListFragment.OnListFragmentInteractionListener?
+) : RecyclerView.Adapter<PortListAdapter.ViewHolder>() {
 
     private val items = mutableListOf<PortStatus>()
 

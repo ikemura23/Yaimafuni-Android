@@ -34,10 +34,11 @@ class PortListTabActivity : AppCompatActivity() {
             binding.tabLayout.removeTabAt(1)
         }
         binding.portViewPager.adapter =
-                PortPagerAdapter(
-                    supportFragmentManager,
-                    binding.tabLayout.tabCount,
-                    portCode)
+            PortPagerAdapter(
+                supportFragmentManager,
+                binding.tabLayout.tabCount,
+                portCode
+            )
         binding.tabLayout.setupWithViewPager(binding.portViewPager)
     }
 }

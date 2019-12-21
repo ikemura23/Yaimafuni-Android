@@ -4,28 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Row implements Parcelable {
-    private Item left;
-    private Item right;
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(this.left, flags);
-        dest.writeParcelable(this.right, flags);
-    }
-
-    public Row() {
-    }
-
-    protected Row(Parcel in) {
-        this.left = in.readParcelable(Left.class.getClassLoader());
-        this.right = in.readParcelable(Right.class.getClassLoader());
-    }
-
     public static final Parcelable.Creator<Row> CREATOR = new Parcelable.Creator<Row>() {
         @Override
         public Row createFromParcel(Parcel source) {
@@ -37,6 +15,27 @@ public class Row implements Parcelable {
             return new Row[size];
         }
     };
+    private Item left;
+    private Item right;
+
+    public Row() {
+    }
+
+    protected Row(Parcel in) {
+        this.left = in.readParcelable(Left.class.getClassLoader());
+        this.right = in.readParcelable(Right.class.getClassLoader());
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.left, flags);
+        dest.writeParcelable(this.right, flags);
+    }
 
     public Item getLeft() {
         return left;

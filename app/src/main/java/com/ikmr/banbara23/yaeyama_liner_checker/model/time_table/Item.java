@@ -6,9 +6,29 @@ import android.os.Parcelable;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Status;
 
 public class Item implements Parcelable {
+    public static final Creator<Item> CREATOR = new Creator<Item>() {
+        @Override
+        public Item createFromParcel(Parcel source) {
+            return new Item(source);
+        }
+
+        @Override
+        public Item[] newArray(int size) {
+            return new Item[size];
+        }
+    };
     private String memo;
     private Status status;
     private String time;
+
+    public Item() {
+    }
+
+    protected Item(Parcel in) {
+        this.memo = in.readString();
+        this.status = in.readParcelable(Status.class.getClassLoader());
+        this.time = in.readString();
+    }
 
     @Override
     public int describeContents() {
@@ -21,27 +41,6 @@ public class Item implements Parcelable {
         dest.writeParcelable(this.status, flags);
         dest.writeString(this.time);
     }
-
-    public Item() {
-    }
-
-    protected Item(Parcel in) {
-        this.memo = in.readString();
-        this.status = in.readParcelable(Status.class.getClassLoader());
-        this.time = in.readString();
-    }
-
-    public static final Creator<Item> CREATOR = new Creator<Item>() {
-        @Override
-        public Item createFromParcel(Parcel source) {
-            return new Item(source);
-        }
-
-        @Override
-        public Item[] newArray(int size) {
-            return new Item[size];
-        }
-    };
 
     public String getMemo() {
         return memo;
@@ -70,9 +69,9 @@ public class Item implements Parcelable {
     @Override
     public String toString() {
         return "Left{" +
-                "memo='" + memo + '\'' +
-                ", status=" + status +
-                ", time='" + time + '\'' +
-                '}';
+               "memo='" + memo + '\'' +
+               ", status=" + status +
+               ", time='" + time + '\'' +
+               '}';
     }
 }

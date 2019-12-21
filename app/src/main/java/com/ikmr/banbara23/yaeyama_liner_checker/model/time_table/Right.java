@@ -6,9 +6,29 @@ import android.os.Parcelable;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Status;
 
 public class Right implements Parcelable {
+    public static final Parcelable.Creator<Right> CREATOR = new Parcelable.Creator<Right>() {
+        @Override
+        public Right createFromParcel(Parcel source) {
+            return new Right(source);
+        }
+
+        @Override
+        public Right[] newArray(int size) {
+            return new Right[size];
+        }
+    };
     public String memo;
     public Status status;
     public String time;
+
+    public Right() {
+    }
+
+    protected Right(Parcel in) {
+        this.memo = in.readString();
+        this.status = in.readParcelable(Status.class.getClassLoader());
+        this.time = in.readString();
+    }
 
     @Override
     public int describeContents() {
@@ -21,27 +41,6 @@ public class Right implements Parcelable {
         dest.writeParcelable(this.status, flags);
         dest.writeString(this.time);
     }
-
-    public Right() {
-    }
-
-    protected Right(Parcel in) {
-        this.memo = in.readString();
-        this.status = in.readParcelable(Status.class.getClassLoader());
-        this.time = in.readString();
-    }
-
-    public static final Parcelable.Creator<Right> CREATOR = new Parcelable.Creator<Right>() {
-        @Override
-        public Right createFromParcel(Parcel source) {
-            return new Right(source);
-        }
-
-        @Override
-        public Right[] newArray(int size) {
-            return new Right[size];
-        }
-    };
 
     public String getMemo() {
         return memo;
@@ -70,9 +69,9 @@ public class Right implements Parcelable {
     @Override
     public String toString() {
         return "Right{" +
-                "memo='" + memo + '\'' +
-                ", status=" + status +
-                ", time='" + time + '\'' +
-                '}';
+               "memo='" + memo + '\'' +
+               ", status=" + status +
+               ", time='" + time + '\'' +
+               '}';
     }
 }

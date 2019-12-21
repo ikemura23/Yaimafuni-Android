@@ -15,8 +15,8 @@ class SettingActivity : AppCompatActivity() {
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         }
         fragmentManager.beginTransaction()
-                .add(android.R.id.content, SettingFragment())
-                .commit()
+            .add(android.R.id.content, SettingFragment())
+            .commit()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

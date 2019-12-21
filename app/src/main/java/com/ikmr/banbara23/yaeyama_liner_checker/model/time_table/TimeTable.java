@@ -8,29 +8,6 @@ import java.util.List;
 
 public class TimeTable implements Parcelable {
 
-    public Header header;
-    public List<Row> row;
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(this.header, flags);
-        dest.writeList(this.row);
-    }
-
-    public TimeTable() {
-    }
-
-    protected TimeTable(Parcel in) {
-        this.header = in.readParcelable(Header.class.getClassLoader());
-        this.row = new ArrayList<Row>();
-        in.readList(this.row, Row.class.getClassLoader());
-    }
-
     public static final Parcelable.Creator<TimeTable> CREATOR = new Parcelable.Creator<TimeTable>() {
         @Override
         public TimeTable createFromParcel(Parcel source) {
@@ -42,6 +19,28 @@ public class TimeTable implements Parcelable {
             return new TimeTable[size];
         }
     };
+    public Header header;
+    public List<Row> row;
+
+    public TimeTable() {
+    }
+
+    protected TimeTable(Parcel in) {
+        this.header = in.readParcelable(Header.class.getClassLoader());
+        this.row = new ArrayList<Row>();
+        in.readList(this.row, Row.class.getClassLoader());
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.header, flags);
+        dest.writeList(this.row);
+    }
 
     public Header getHeader() {
         return header;
@@ -62,8 +61,8 @@ public class TimeTable implements Parcelable {
     @Override
     public String toString() {
         return "TimeTable{" +
-                "header=" + header +
-                ", row=" + row +
-                '}';
+               "header=" + header +
+               ", row=" + row +
+               '}';
     }
 }

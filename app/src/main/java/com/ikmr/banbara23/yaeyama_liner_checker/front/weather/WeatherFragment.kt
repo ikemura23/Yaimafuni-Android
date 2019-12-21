@@ -21,8 +21,10 @@ class WeatherFragment : Fragment() {
         ViewModelProviders.of(this).get(WeatherScreenViewModel::class.java)
     }
     private lateinit var binding: WeatherFragmentBinding
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.weather_fragment, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel

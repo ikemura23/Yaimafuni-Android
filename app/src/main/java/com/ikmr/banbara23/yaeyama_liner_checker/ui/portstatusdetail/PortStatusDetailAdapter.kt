@@ -19,8 +19,8 @@ import kotlinx.android.synthetic.main.time_table_row.view.right_time
 
 class PortStatusDetailAdapter(
     lifecycleOwner: LifecycleOwner,
-    timetable: MutableLiveData<TimeTable>)
-    : RecyclerView.Adapter<PortStatusDetailAdapter.ViewHolder>() {
+    timetable: MutableLiveData<TimeTable>
+) : RecyclerView.Adapter<PortStatusDetailAdapter.ViewHolder>() {
     private val items = mutableListOf<Row>()
 
     init {

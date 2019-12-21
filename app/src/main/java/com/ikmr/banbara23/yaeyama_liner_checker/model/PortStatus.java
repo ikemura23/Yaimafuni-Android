@@ -5,10 +5,31 @@ import android.os.Parcelable;
 
 public class PortStatus implements Parcelable {
 
+    public static final Parcelable.Creator<PortStatus> CREATOR = new Parcelable.Creator<PortStatus>() {
+        @Override
+        public PortStatus createFromParcel(Parcel source) {
+            return new PortStatus(source);
+        }
+
+        @Override
+        public PortStatus[] newArray(int size) {
+            return new PortStatus[size];
+        }
+    };
     private String comment;
     private String portCode;
     private String portName;
     private Status status;
+
+    public PortStatus() {
+    }
+
+    protected PortStatus(Parcel in) {
+        this.comment = in.readString();
+        this.portCode = in.readString();
+        this.portName = in.readString();
+        this.status = in.readParcelable(Status.class.getClassLoader());
+    }
 
     public String getComment() {
         return comment;
@@ -55,35 +76,13 @@ public class PortStatus implements Parcelable {
         dest.writeParcelable(this.status, flags);
     }
 
-    public PortStatus() {
-    }
-
-    protected PortStatus(Parcel in) {
-        this.comment = in.readString();
-        this.portCode = in.readString();
-        this.portName = in.readString();
-        this.status = in.readParcelable(Status.class.getClassLoader());
-    }
-
-    public static final Parcelable.Creator<PortStatus> CREATOR = new Parcelable.Creator<PortStatus>() {
-        @Override
-        public PortStatus createFromParcel(Parcel source) {
-            return new PortStatus(source);
-        }
-
-        @Override
-        public PortStatus[] newArray(int size) {
-            return new PortStatus[size];
-        }
-    };
-
     @Override
     public String toString() {
         return "PortStatus{" +
-                "comment='" + comment + '\'' +
-                ", portCode='" + portCode + '\'' +
-                ", portName='" + portName + '\'' +
-                ", status=" + status +
-                '}';
+               "comment='" + comment + '\'' +
+               ", portCode='" + portCode + '\'' +
+               ", portName='" + portName + '\'' +
+               ", status=" + status +
+               '}';
     }
 }

@@ -5,8 +5,27 @@ import android.os.Parcelable;
 
 public class Header implements Parcelable {
 
+    public static final Parcelable.Creator<Header> CREATOR = new Parcelable.Creator<Header>() {
+        @Override
+        public Header createFromParcel(Parcel source) {
+            return new Header(source);
+        }
+
+        @Override
+        public Header[] newArray(int size) {
+            return new Header[size];
+        }
+    };
     public String left;
     public String right;
+
+    public Header() {
+    }
+
+    protected Header(Parcel in) {
+        this.left = in.readString();
+        this.right = in.readString();
+    }
 
     @Override
     public int describeContents() {
@@ -19,40 +38,20 @@ public class Header implements Parcelable {
         dest.writeString(this.right);
     }
 
-    public Header() {
-    }
-
-    protected Header(Parcel in) {
-        this.left = in.readString();
-        this.right = in.readString();
-    }
-
-    public static final Parcelable.Creator<Header> CREATOR = new Parcelable.Creator<Header>() {
-        @Override
-        public Header createFromParcel(Parcel source) {
-            return new Header(source);
-        }
-
-        @Override
-        public Header[] newArray(int size) {
-            return new Header[size];
-        }
-    };
-
     public String getLeft() {
         return left;
+    }
+
+    public void setLeft(String left) {
+        this.left = left;
     }
 
     @Override
     public String toString() {
         return "Header{" +
-                "left='" + left + '\'' +
-                ", right='" + right + '\'' +
-                '}';
-    }
-
-    public void setLeft(String left) {
-        this.left = left;
+               "left='" + left + '\'' +
+               ", right='" + right + '\'' +
+               '}';
     }
 
     public String getRight() {
