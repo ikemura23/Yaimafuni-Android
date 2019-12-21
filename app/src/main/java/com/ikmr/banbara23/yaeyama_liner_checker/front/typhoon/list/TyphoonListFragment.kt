@@ -15,7 +15,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subscribers.ResourceSubscriber
 
-class TyphoonDetailFragment : Fragment(),
+class TyphoonListFragment : Fragment(),
     OnTyphoonDetailFragmentInteractionListener {
 
     private val apiClient = ApiClient()

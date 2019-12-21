@@ -13,7 +13,7 @@ class TyphoonListActivity : AppCompatActivity() {
             .beginTransaction()
             .replace(
                 R.id.container,
-                TyphoonDetailFragment()
+                TyphoonListFragment()
             )
             .commit()
     }
