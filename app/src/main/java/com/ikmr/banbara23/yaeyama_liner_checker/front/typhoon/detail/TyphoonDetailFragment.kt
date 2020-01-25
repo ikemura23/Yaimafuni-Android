@@ -11,6 +11,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.FragmentTyphoonDetailBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
+import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 import com.squareup.picasso.Picasso
 
 /**
@@ -36,6 +37,10 @@ class TyphoonDetailFragment : Fragment() {
         binding.includeTitleBar.titleBar.setNavigationOnClickListener { requireActivity().finish() }
         // 画像読み込み
         Picasso.get().load(typhoon.img).into(binding.image)
+        // Webで見るボタン
+        binding.button.setOnClickListener {
+            CustomTabUtil.start(requireActivity(), getString(R.string.typhoon_open_url))
+        }
     }
 
     companion object {
