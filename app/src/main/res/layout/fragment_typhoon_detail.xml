@@ -1,16 +1,143 @@
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.detail.TyphoonDetailFragment"
-    >
+<layout>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <variable
+            name="typhoon"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon"
+            />
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        />
+        android:background="@drawable/top_background"
+        android:orientation="vertical"
+        tools:context="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.detail.TyphoonDetailFragment"
+        >
 
-</FrameLayout>
+        <include
+            android:id="@+id/include_title_bar"
+            layout="@layout/header_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title='@{ typhoon.name }'
+            />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            >
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="H,16:9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/backgrounds/scenic"
+                    />
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image"
+                    >
+                    <!--台風情報-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{ "更新日:" + typhoon.dateTime }'
+                            tools:text="更新日:"
+                            />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="8dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{ "大きさ:" + typhoon.scale }'
+                            tools:text="大きさ:"
+                            />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="8dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{ "強さ:" + typhoon.intensity }'
+                            tools:text="強さ:"
+                            />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="8dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{ "存在地域:" + typhoon.area }'
+                            tools:text="存在地域:"
+                            />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="8dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{ "中心気圧:" + typhoon.pressure }'
+                            tools:text="中心気圧:"
+                            />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="8dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{ "中心最大風速:" + typhoon.maxWindSpeedNearCenter }'
+                            tools:text="中心最大風速:"
+                            />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>
