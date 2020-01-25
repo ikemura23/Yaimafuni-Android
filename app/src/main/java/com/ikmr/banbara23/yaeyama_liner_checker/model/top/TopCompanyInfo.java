@@ -26,9 +26,9 @@ public class TopCompanyInfo {
     @Override
     public String toString() {
         return "Top_company{" +
-                "anei=" + anei +
-                ", ykf=" + ykf +
-                '}';
+               "anei=" + anei +
+               ", ykf=" + ykf +
+               '}';
     }
 
     public static class TopCompany {
@@ -72,11 +72,11 @@ public class TopCompanyInfo {
         @Override
         public String toString() {
             return "TopCompany{" +
-                    "cancel=" + cancel +
-                    ", cation=" + cation +
-                    ", normal=" + normal +
-                    ", suspend=" + suspend +
-                    '}';
+                   "cancel=" + cancel +
+                   ", cation=" + cation +
+                   ", normal=" + normal +
+                   ", suspend=" + suspend +
+                   '}';
         }
     }
 }

@@ -1,4 +1,3 @@
-
 package com.ikmr.banbara23.yaeyama_liner_checker.common;
 
 /**
@@ -43,6 +42,11 @@ public class Constants {
 
     // キャッシュの保存時間(分)
     public static final int SAVE_TIME = 3;
+    public static final String weatherUrl = "http://weather.yahoo.co.jp/weather/jp/47/9410.html";
+    public static final String BUNDLE_KEY_DETAIL = "BUNDLE_KEY_DETAIL";
+    public static final String BUNDLE_KEY_COMPANY = "BUNDLE_KEY_COMPANY";
+    public static final String BUNDLE_KEY_PORT_CODE = "BUNDLE_KEY_PORT_CODE";
+    public static final String BUNDLE_KEY_PORT_NAME = "BUNDLE_KEY_PORT_NAME";
 
     // FireBase Analytics
     public class FireBaseAnalitycsTag {
@@ -85,11 +89,4 @@ public class Constants {
         public final static String port_hatoma_status_type = "port_hatoma_status_type";
         public final static String port_hateruma_status_type = "port_hateruma_status_type";
     }
-
-    public static final String weatherUrl = "http://weather.yahoo.co.jp/weather/jp/47/9410.html";
-
-    public static final String BUNDLE_KEY_DETAIL = "BUNDLE_KEY_DETAIL";
-    public static final String BUNDLE_KEY_COMPANY = "BUNDLE_KEY_COMPANY";
-    public static final String BUNDLE_KEY_PORT_CODE = "BUNDLE_KEY_PORT_CODE";
-    public static final String BUNDLE_KEY_PORT_NAME = "BUNDLE_KEY_PORT_NAME";
 }

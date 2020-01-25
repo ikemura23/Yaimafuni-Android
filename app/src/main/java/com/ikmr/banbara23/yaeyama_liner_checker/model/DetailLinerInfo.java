@@ -8,6 +8,17 @@ import android.os.Parcelable;
  */
 public class DetailLinerInfo implements Parcelable {
 
+    public static final Parcelable.Creator<DetailLinerInfo> CREATOR = new Parcelable.Creator<DetailLinerInfo>() {
+        @Override
+        public DetailLinerInfo createFromParcel(Parcel source) {
+            return new DetailLinerInfo(source);
+        }
+
+        @Override
+        public DetailLinerInfo[] newArray(int size) {
+            return new DetailLinerInfo[size];
+        }
+    };
     private String drivingTime;
     private int adultOneWayFare;
     private int adultRoundTripFare;
@@ -17,6 +28,21 @@ public class DetailLinerInfo implements Parcelable {
     private int disabilityRoundTripFare;
     private String url;
     private String tell;
+
+    public DetailLinerInfo() {
+    }
+
+    protected DetailLinerInfo(Parcel in) {
+        this.drivingTime = in.readString();
+        this.adultOneWayFare = in.readInt();
+        this.adultRoundTripFare = in.readInt();
+        this.childOneWayFare = in.readInt();
+        this.childRoundTripFare = in.readInt();
+        this.disabilityOneWayFare = in.readInt();
+        this.disabilityRoundTripFare = in.readInt();
+        this.url = in.readString();
+        this.tell = in.readString();
+    }
 
     public String getDrivingTime() {
         return drivingTime;
@@ -93,16 +119,16 @@ public class DetailLinerInfo implements Parcelable {
     @Override
     public String toString() {
         return "DetailLinerInfo{" +
-                "drivingTime='" + drivingTime + '\'' +
-                ", adultOneWayFare=" + adultOneWayFare +
-                ", adultRoundTripFare=" + adultRoundTripFare +
-                ", childOneWayFare=" + childOneWayFare +
-                ", childRoundTripFare=" + childRoundTripFare +
-                ", disabilityOneWayFare=" + disabilityOneWayFare +
-                ", disabilityRoundTripFare=" + disabilityRoundTripFare +
-                ", url='" + url + '\'' +
-                ", tell='" + tell + '\'' +
-                '}';
+               "drivingTime='" + drivingTime + '\'' +
+               ", adultOneWayFare=" + adultOneWayFare +
+               ", adultRoundTripFare=" + adultRoundTripFare +
+               ", childOneWayFare=" + childOneWayFare +
+               ", childRoundTripFare=" + childRoundTripFare +
+               ", disabilityOneWayFare=" + disabilityOneWayFare +
+               ", disabilityRoundTripFare=" + disabilityRoundTripFare +
+               ", url='" + url + '\'' +
+               ", tell='" + tell + '\'' +
+               '}';
     }
 
     @Override
@@ -122,31 +148,4 @@ public class DetailLinerInfo implements Parcelable {
         dest.writeString(this.url);
         dest.writeString(this.tell);
     }
-
-    public DetailLinerInfo() {
-    }
-
-    protected DetailLinerInfo(Parcel in) {
-        this.drivingTime = in.readString();
-        this.adultOneWayFare = in.readInt();
-        this.adultRoundTripFare = in.readInt();
-        this.childOneWayFare = in.readInt();
-        this.childRoundTripFare = in.readInt();
-        this.disabilityOneWayFare = in.readInt();
-        this.disabilityRoundTripFare = in.readInt();
-        this.url = in.readString();
-        this.tell = in.readString();
-    }
-
-    public static final Parcelable.Creator<DetailLinerInfo> CREATOR = new Parcelable.Creator<DetailLinerInfo>() {
-        @Override
-        public DetailLinerInfo createFromParcel(Parcel source) {
-            return new DetailLinerInfo(source);
-        }
-
-        @Override
-        public DetailLinerInfo[] newArray(int size) {
-            return new DetailLinerInfo[size];
-        }
-    };
 }

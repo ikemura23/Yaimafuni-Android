@@ -28,9 +28,9 @@ class PortStatusDetailActivity : AppCompatActivity() {
         supportActionBar?.run { setDisplayHomeAsUpEnabled(true) }
 
         supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.container, PortStatusDetailFragment.newInstance(intent.extras!!))
-                .commit()
+            .beginTransaction()
+            .replace(R.id.container, PortStatusDetailFragment.newInstance(intent.extras!!))
+            .commit()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

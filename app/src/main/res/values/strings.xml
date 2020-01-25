@@ -32,4 +32,7 @@
     <string name="typhoon_maxWindSpeed">中心最大風速 : %s</string>
     <string name="typhoon_open_url">https://tenki.jp/lite/bousai/typhoon/</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

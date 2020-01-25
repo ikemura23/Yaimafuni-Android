@@ -13,8 +13,8 @@ class TopActivity : BaseActivity() {
         setContentView(R.layout.top_activity)
 
         supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.container, TopFragment.newInstance())
-                .commit()
+            .beginTransaction()
+            .replace(R.id.container, TopFragment.newInstance())
+            .commit()
     }
 }

@@ -27,8 +27,8 @@ public class WeatherInfo {
     @Override
     public String toString() {
         return "WeatherInfo{" +
-                "today=" + today +
-                ", tomorrow=" + tomorrow +
-                '}';
+               "today=" + today +
+               ", tomorrow=" + tomorrow +
+               '}';
     }
 }

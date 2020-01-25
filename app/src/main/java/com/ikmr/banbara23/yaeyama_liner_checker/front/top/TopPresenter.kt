@@ -47,23 +47,23 @@ class TopPresenter(
         viewModel.showPortProgress.set(true)
         mDisposable.add(
             mApiClient
-                    .topPortStatus
-                    .subscribeWith(
-                        object : ResourceSubscriber<TopPort>() {
-                            override fun onNext(topPort: TopPort) {
-                                Log.d("TopPresenter", "topPort:$topPort")
-                                bindTopPort(topPort)
-                                viewModel.showPortProgress.set(false)
-                            }
+                .topPortStatus
+                .subscribeWith(
+                    object : ResourceSubscriber<TopPort>() {
+                        override fun onNext(topPort: TopPort) {
+                            Log.d("TopPresenter", "topPort:$topPort")
+                            bindTopPort(topPort)
+                            viewModel.showPortProgress.set(false)
+                        }
 
-                            override fun onError(t: Throwable) {
-                                viewModel.showPortProgress.set(false)
-                            }
+                        override fun onError(t: Throwable) {
+                            viewModel.showPortProgress.set(false)
+                        }
 
-                            override fun onComplete() {
-                                viewModel.showPortProgress.set(false)
-                            }
-                        })
+                        override fun onComplete() {
+                            viewModel.showPortProgress.set(false)
+                        }
+                    })
         )
     }
 
@@ -78,22 +78,22 @@ class TopPresenter(
         viewModel.showCompanyProgress.set(true)
         mDisposable.add(
             mApiClient
-                    .topCompany
-                    .subscribeWith(object : ResourceSubscriber<TopCompanyInfo>() {
+                .topCompany
+                .subscribeWith(object : ResourceSubscriber<TopCompanyInfo>() {
 
-                        override fun onNext(topCompanyInfo: TopCompanyInfo) {
-                            bindData(topCompanyInfo)
-                            viewModel.showCompanyProgress.set(false)
-                        }
+                    override fun onNext(topCompanyInfo: TopCompanyInfo) {
+                        bindData(topCompanyInfo)
+                        viewModel.showCompanyProgress.set(false)
+                    }
 
-                        override fun onError(t: Throwable) {
-                            viewModel.showCompanyProgress.set(false)
-                        }
+                    override fun onError(t: Throwable) {
+                        viewModel.showCompanyProgress.set(false)
+                    }
 
-                        override fun onComplete() {
-                            viewModel.showCompanyProgress.set(false)
-                        }
-                    })
+                    override fun onComplete() {
+                        viewModel.showCompanyProgress.set(false)
+                    }
+                })
         )
     }
 
@@ -104,22 +104,22 @@ class TopPresenter(
         viewModel.showWeatherProgress.set(true)
         mDisposable.add(
             mApiClient
-                    .weather
-                    .subscribeWith(
-                        object : ResourceSubscriber<WeatherInfo>() {
-                            override fun onNext(weatherInfo: WeatherInfo) {
-                                onCompleteFromWeather(weatherInfo)
-                                viewModel.showWeatherProgress.set(false)
-                            }
+                .weather
+                .subscribeWith(
+                    object : ResourceSubscriber<WeatherInfo>() {
+                        override fun onNext(weatherInfo: WeatherInfo) {
+                            onCompleteFromWeather(weatherInfo)
+                            viewModel.showWeatherProgress.set(false)
+                        }
 
-                            override fun onError(t: Throwable) {
-                                viewModel.showWeatherProgress.set(false)
-                            }
+                        override fun onError(t: Throwable) {
+                            viewModel.showWeatherProgress.set(false)
+                        }
 
-                            override fun onComplete() {
-                                viewModel.showWeatherProgress.set(false)
-                            }
-                        })
+                        override fun onComplete() {
+                            viewModel.showWeatherProgress.set(false)
+                        }
+                    })
         )
     }
 
@@ -130,24 +130,24 @@ class TopPresenter(
         viewModel.showTyphoonProgress.set(true)
         mDisposable.add(
             mApiClient
-                    .typhoon
-                    .subscribeWith(
-                        object : ResourceSubscriber<List<Typhoon>>() {
-                            override fun onNext(typhoonList: List<Typhoon>) {
-                                Log.d("fetchTyphoon", typhoonList.toString())
-                                bindTyphoon(typhoonList)
-                                viewModel.showTyphoonProgress.set(false)
-                            }
+                .typhoon
+                .subscribeWith(
+                    object : ResourceSubscriber<List<Typhoon>>() {
+                        override fun onNext(typhoonList: List<Typhoon>) {
+                            Log.d("fetchTyphoon", typhoonList.toString())
+                            bindTyphoon(typhoonList)
+                            viewModel.showTyphoonProgress.set(false)
+                        }
 
-                            override fun onError(t: Throwable) {
-                                Log.d("fetchTyphoon", t.toString())
-                                viewModel.showTyphoonProgress.set(false)
-                            }
+                        override fun onError(t: Throwable) {
+                            Log.d("fetchTyphoon", t.toString())
+                            viewModel.showTyphoonProgress.set(false)
+                        }
 
-                            override fun onComplete() {
-                                viewModel.showTyphoonProgress.set(false)
-                            }
-                        })
+                        override fun onComplete() {
+                            viewModel.showTyphoonProgress.set(false)
+                        }
+                    })
         )
     }
 
@@ -164,7 +164,7 @@ class TopPresenter(
     }
 
     private fun createTyhoonText(typhoonList: List<Typhoon>): String =
-            typhoonList.map { it.name }.reduce { ty1, ty2 -> "$ty1, $ty2" }
+        typhoonList.map { it.name }.reduce { ty1, ty2 -> "$ty1, $ty2" }
 
     /**
      * 通信が完了
@@ -191,10 +191,10 @@ class TopPresenter(
         viewModel.date.set(weatherInfo.today.date)
         //天気＋波＋風速
         val weather = (weatherInfo.today.weather
-                + " " +
-                weatherInfo.today.wind +
-                " 波" +
-                weatherInfo.today.wave)
+            + " " +
+            weatherInfo.today.wind +
+            " 波" +
+            weatherInfo.today.wave)
         viewModel.weather.set(weather)
     }
 

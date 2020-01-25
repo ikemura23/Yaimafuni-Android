@@ -81,7 +81,8 @@ class PortStatusDetailFragment : Fragment() {
         }
         val intent = Intent(
             Intent.ACTION_VIEW,
-            Uri.parse("tel:$tel"))
+            Uri.parse("tel:$tel")
+        )
         try {
             startActivity(intent)
         } catch (e: Exception) {

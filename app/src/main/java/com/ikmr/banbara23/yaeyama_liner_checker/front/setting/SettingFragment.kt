@@ -23,7 +23,8 @@ class SettingFragment : PreferenceFragment() {
         preferenceScreen.onPreferenceClickListener = Preference.OnPreferenceClickListener {
             val intent = Intent(
                 activity,
-                InfoActivity::class.java)
+                InfoActivity::class.java
+            )
             startActivity(intent)
             true
         }

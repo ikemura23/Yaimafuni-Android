@@ -5,6 +5,17 @@ import android.os.Parcelable;
 
 public class CompanyStatus implements Parcelable {
 
+    public static final Parcelable.Creator<CompanyStatus> CREATOR = new Parcelable.Creator<CompanyStatus>() {
+        @Override
+        public CompanyStatus createFromParcel(Parcel source) {
+            return new CompanyStatus(source);
+        }
+
+        @Override
+        public CompanyStatus[] newArray(int size) {
+            return new CompanyStatus[size];
+        }
+    };
     private String comment;
     private PortStatus hateruma;
     private PortStatus hatoma;
@@ -15,91 +26,106 @@ public class CompanyStatus implements Parcelable {
     private PortStatus uehara;
     private String updateTime;
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public CompanyStatus() {
+    }
+
+    protected CompanyStatus(Parcel in) {
+        this.comment = in.readString();
+        this.hateruma = in.readParcelable(PortStatus.class.getClassLoader());
+        this.hatoma = in.readParcelable(PortStatus.class.getClassLoader());
+        this.kohama = in.readParcelable(PortStatus.class.getClassLoader());
+        this.kuroshima = in.readParcelable(PortStatus.class.getClassLoader());
+        this.oohara = in.readParcelable(PortStatus.class.getClassLoader());
+        this.taketomi = in.readParcelable(PortStatus.class.getClassLoader());
+        this.uehara = in.readParcelable(PortStatus.class.getClassLoader());
+        this.updateTime = in.readString();
     }
 
     public String getComment() {
         return this.comment;
     }
 
-    public void setHateruma(PortStatus hateruma) {
-        this.hateruma = hateruma;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public PortStatus getHateruma() {
         return this.hateruma;
     }
 
-    public void setHatoma(PortStatus hatoma) {
-        this.hatoma = hatoma;
+    public void setHateruma(PortStatus hateruma) {
+        this.hateruma = hateruma;
     }
 
     public PortStatus getHatoma() {
         return this.hatoma;
     }
 
-    public void setKohama(PortStatus kohama) {
-        this.kohama = kohama;
+    public void setHatoma(PortStatus hatoma) {
+        this.hatoma = hatoma;
     }
 
     public PortStatus getKohama() {
         return this.kohama;
     }
 
-    public void setKuroshima(PortStatus kuroshima) {
-        this.kuroshima = kuroshima;
+    public void setKohama(PortStatus kohama) {
+        this.kohama = kohama;
     }
 
     public PortStatus getKuroshima() {
         return this.kuroshima;
     }
 
-    public void setOohara(PortStatus oohara) {
-        this.oohara = oohara;
+    public void setKuroshima(PortStatus kuroshima) {
+        this.kuroshima = kuroshima;
     }
 
     public PortStatus getOohara() {
         return this.oohara;
     }
 
-    public void setTaketomi(PortStatus taketomi) {
-        this.taketomi = taketomi;
+    public void setOohara(PortStatus oohara) {
+        this.oohara = oohara;
     }
 
     public PortStatus getTaketomi() {
         return this.taketomi;
     }
 
-    public void setUehara(PortStatus uehara) {
-        this.uehara = uehara;
+    public void setTaketomi(PortStatus taketomi) {
+        this.taketomi = taketomi;
     }
 
     public PortStatus getUehara() {
         return this.uehara;
     }
 
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
+    public void setUehara(PortStatus uehara) {
+        this.uehara = uehara;
     }
 
     public String getUpdateTime() {
         return this.updateTime;
     }
 
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
+
     @Override
     public String toString() {
         return "CompanyStatus{" +
-                "comment='" + comment + '\'' +
-                ", hateruma=" + hateruma +
-                ", hatoma=" + hatoma +
-                ", kohama=" + kohama +
-                ", kuroshima=" + kuroshima +
-                ", oohara=" + oohara +
-                ", taketomi=" + taketomi +
-                ", uehara=" + uehara +
-                ", updateTime='" + updateTime + '\'' +
-                '}';
+               "comment='" + comment + '\'' +
+               ", hateruma=" + hateruma +
+               ", hatoma=" + hatoma +
+               ", kohama=" + kohama +
+               ", kuroshima=" + kuroshima +
+               ", oohara=" + oohara +
+               ", taketomi=" + taketomi +
+               ", uehara=" + uehara +
+               ", updateTime='" + updateTime + '\'' +
+               '}';
     }
 
     @Override
@@ -119,31 +145,4 @@ public class CompanyStatus implements Parcelable {
         dest.writeParcelable(this.uehara, flags);
         dest.writeString(this.updateTime);
     }
-
-    public CompanyStatus() {
-    }
-
-    protected CompanyStatus(Parcel in) {
-        this.comment = in.readString();
-        this.hateruma = in.readParcelable(PortStatus.class.getClassLoader());
-        this.hatoma = in.readParcelable(PortStatus.class.getClassLoader());
-        this.kohama = in.readParcelable(PortStatus.class.getClassLoader());
-        this.kuroshima = in.readParcelable(PortStatus.class.getClassLoader());
-        this.oohara = in.readParcelable(PortStatus.class.getClassLoader());
-        this.taketomi = in.readParcelable(PortStatus.class.getClassLoader());
-        this.uehara = in.readParcelable(PortStatus.class.getClassLoader());
-        this.updateTime = in.readString();
-    }
-
-    public static final Parcelable.Creator<CompanyStatus> CREATOR = new Parcelable.Creator<CompanyStatus>() {
-        @Override
-        public CompanyStatus createFromParcel(Parcel source) {
-            return new CompanyStatus(source);
-        }
-
-        @Override
-        public CompanyStatus[] newArray(int size) {
-            return new CompanyStatus[size];
-        }
-    };
 }

@@ -21,9 +21,11 @@ class ApplicationController : MultiDexApplication() {
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(false)
         val crashlytics = Crashlytics.Builder()
-                .core(CrashlyticsCore.Builder()
-                        .disabled(BuildConfig.DEBUG).build())
-                .build()
+            .core(
+                CrashlyticsCore.Builder()
+                    .disabled(BuildConfig.DEBUG).build()
+            )
+            .build()
         Fabric.with(this, crashlytics)
     }
 

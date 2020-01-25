@@ -1,4 +1,3 @@
-
 package com.ikmr.banbara23.yaeyama_liner_checker.model;
 
 import android.os.Parcel;
@@ -6,6 +5,18 @@ import android.os.Parcelable;
 
 public class Liner implements Parcelable {
 
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Liner> CREATOR = new Parcelable.Creator<Liner>() {
+        @Override
+        public Liner createFromParcel(Parcel in) {
+            return new Liner(in);
+        }
+
+        @Override
+        public Liner[] newArray(int size) {
+            return new Liner[size];
+        }
+    };
     public Company company;
     public Port port;
     public Status status;
@@ -33,19 +44,6 @@ public class Liner implements Parcelable {
         dest.writeValue(status);
         dest.writeString(text);
     }
-
-    @SuppressWarnings("unused")
-    public static final Parcelable.Creator<Liner> CREATOR = new Parcelable.Creator<Liner>() {
-        @Override
-        public Liner createFromParcel(Parcel in) {
-            return new Liner(in);
-        }
-
-        @Override
-        public Liner[] newArray(int size) {
-            return new Liner[size];
-        }
-    };
 
     public Company getCompany() {
         return company;
@@ -82,10 +80,10 @@ public class Liner implements Parcelable {
     @Override
     public String toString() {
         return "Liner{" +
-                "company=" + company +
-                ", port=" + port +
-                ", status=" + status +
-                ", text='" + text + '\'' +
-                '}';
+               "company=" + company +
+               ", port=" + port +
+               ", status=" + status +
+               ", text='" + text + '\'' +
+               '}';
     }
 }

@@ -1,4 +1,3 @@
-
 package com.ikmr.banbara23.yaeyama_liner_checker.model;
 
 /**
@@ -30,8 +29,8 @@ public enum Company {
     @Override
     public String toString() {
         return "Company{" +
-                "code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+               "code='" + code + '\'' +
+               ", name='" + name + '\'' +
+               '}';
     }
 }

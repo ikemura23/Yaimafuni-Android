@@ -14,8 +14,8 @@ class WeatherActivity : AppCompatActivity() {
         val binding = DataBindingUtil.setContentView<WeatherActivityBinding>(this, R.layout.weather_activity)
         binding.includeTitleBar.titleBar.setNavigationOnClickListener { finish() }
         supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.container, WeatherFragment.newInstance())
-                .commit()
+            .beginTransaction()
+            .replace(R.id.container, WeatherFragment.newInstance())
+            .commit()
     }
 }

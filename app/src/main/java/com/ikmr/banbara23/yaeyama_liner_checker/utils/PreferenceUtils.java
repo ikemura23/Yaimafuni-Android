@@ -9,6 +9,9 @@ import com.ikmr.banbara23.yaeyama_liner_checker.core.Base;
 
 public final class PreferenceUtils {
 
+    private PreferenceUtils() {
+    }
+
     private static SharedPreferences getDefaultSharedPreferences(final Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
@@ -56,8 +59,5 @@ public final class PreferenceUtils {
 
     public static boolean getBoolean(final String key) {
         return getDefaultSharedPreferences(getContext()).getBoolean(key, true);
-    }
-
-    private PreferenceUtils() {
     }
 }

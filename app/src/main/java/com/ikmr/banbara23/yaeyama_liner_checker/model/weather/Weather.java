@@ -14,12 +14,12 @@ public class Weather {
     private String weather;
     private String wind;
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getDate() {
         return this.date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public List<Table> getTable() {
@@ -30,47 +30,47 @@ public class Weather {
         this.table = table;
     }
 
-    public void setTemperature(Temperature temperature) {
-        this.temperature = temperature;
-    }
-
     public Temperature getTemperature() {
         return this.temperature;
     }
 
-    public void setWave(String wave) {
-        this.wave = wave;
+    public void setTemperature(Temperature temperature) {
+        this.temperature = temperature;
     }
 
     public String getWave() {
         return this.wave;
     }
 
-    public void setWeather(String weather) {
-        this.weather = weather;
+    public void setWave(String wave) {
+        this.wave = wave;
     }
 
     public String getWeather() {
         return this.weather;
     }
 
-    public void setWind(String wind) {
-        this.wind = wind;
+    public void setWeather(String weather) {
+        this.weather = weather;
     }
 
     public String getWind() {
         return this.wind;
     }
 
+    public void setWind(String wind) {
+        this.wind = wind;
+    }
+
     @Override
     public String toString() {
         return "Weather{" +
-                "date='" + date + '\'' +
-                ", table=" + table +
-                ", temperature=" + temperature +
-                ", wave='" + wave + '\'' +
-                ", weather='" + weather + '\'' +
-                ", wind='" + wind + '\'' +
-                '}';
+               "date='" + date + '\'' +
+               ", table=" + table +
+               ", temperature=" + temperature +
+               ", wave='" + wave + '\'' +
+               ", weather='" + weather + '\'' +
+               ", wind='" + wind + '\'' +
+               '}';
     }
 }
