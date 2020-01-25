@@ -12,7 +12,7 @@ class TyphoonDetailActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.typhoon_detail_container, TyphoonDetailFragment.newInstance("", ""))
+            .replace(R.id.typhoon_detail_container, TyphoonDetailFragment.newInstance(intent.extras!!))
             .commitNow()
     }
 }

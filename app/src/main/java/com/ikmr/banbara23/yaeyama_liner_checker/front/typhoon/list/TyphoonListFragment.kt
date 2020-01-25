@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
+import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonListFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.detail.TyphoonDetailActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
@@ -83,8 +84,10 @@ class TyphoonListFragment : Fragment(),
     }
 
     override fun onListFragmentInteraction(item: Typhoon?) {
-        requireActivity().startActivity(Intent(context, TyphoonDetailActivity::class.java))
-        // CustomTabUtil.start(activity, getString(R.string.typhoon_open_url))
+        val intent = Intent(context, TyphoonDetailActivity::class.java).apply {
+            putExtra(Constants.BUNDLE_KEY_DETAIL, item)
+        }
+        requireActivity().startActivity(intent)
     }
 }
 
