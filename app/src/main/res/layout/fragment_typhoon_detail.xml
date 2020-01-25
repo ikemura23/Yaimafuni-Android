@@ -71,67 +71,73 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text='@{ "更新日:" + typhoon.dateTime }'
+                            android:text='@{ "更新日: " + typhoon.dateTime }'
+                            android:textSize="16sp"
                             tools:text="更新日:"
                             />
 
                         <Space
                             android:layout_width="wrap_content"
-                            android:layout_height="8dp"
+                            android:layout_height="16dp"
                             />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text='@{ "大きさ:" + typhoon.scale }'
+                            android:text='@{ "大きさ: " + typhoon.scale }'
+                            android:textSize="16sp"
                             tools:text="大きさ:"
                             />
 
                         <Space
                             android:layout_width="wrap_content"
-                            android:layout_height="8dp"
+                            android:layout_height="16dp"
                             />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text='@{ "強さ:" + typhoon.intensity }'
+                            android:text='@{ "強さ: " + typhoon.intensity }'
+                            android:textSize="16sp"
                             tools:text="強さ:"
                             />
 
                         <Space
                             android:layout_width="wrap_content"
-                            android:layout_height="8dp"
+                            android:layout_height="16dp"
                             />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text='@{ "存在地域:" + typhoon.area }'
+                            android:text='@{ "存在地域: " + typhoon.area }'
+                            android:textSize="16sp"
                             tools:text="存在地域:"
                             />
 
                         <Space
                             android:layout_width="wrap_content"
-                            android:layout_height="8dp"
+                            android:layout_height="16dp"
                             />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text='@{ "中心気圧:" + typhoon.pressure }'
+                            android:text='@{ "中心気圧: " + typhoon.pressure }'
+                            android:textSize="16sp"
                             tools:text="中心気圧:"
                             />
 
                         <Space
                             android:layout_width="wrap_content"
-                            android:layout_height="8dp"
+                            android:layout_height="16dp"
                             />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text='@{ "中心最大風速:" + typhoon.maxWindSpeedNearCenter }'
+                            android:text='@{ "中心最大風速: " + typhoon.maxWindSpeedNearCenter }'
+                            android:textSize="16sp"
                             tools:text="中心最大風速:"
                             />
 
