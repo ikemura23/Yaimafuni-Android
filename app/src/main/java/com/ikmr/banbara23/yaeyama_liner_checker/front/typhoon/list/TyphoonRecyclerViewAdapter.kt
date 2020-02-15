@@ -1,10 +1,10 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list
 
-import android.databinding.DataBindingUtil
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.RecyclerView
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonListItemBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 class TyphoonRecyclerViewAdapter(
     private var mValues: List<Typhoon>,
     private val mListener: OnTyphoonDetailFragmentInteractionListener?
-) : RecyclerView.Adapter<TyphoonRecyclerViewAdapter.ViewHolder>() {
+) : androidx.recyclerview.widget.RecyclerView.Adapter<TyphoonRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
 
@@ -53,5 +53,6 @@ class TyphoonRecyclerViewAdapter(
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(val binding: TyphoonListItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding: TyphoonListItemBinding) :
+        androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root)
 }

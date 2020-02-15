@@ -1,18 +1,18 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.portlist
 
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus
 
-class PortListFragment : Fragment() {
+class PortListFragment : androidx.fragment.app.Fragment() {
 
     private var listener: OnListFragmentInteractionListener? = null
     private lateinit var viewModel: PortListViewModel
@@ -20,9 +20,9 @@ class PortListFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.port_list_fragment, container, false)
 
-        if (view is RecyclerView) {
+        if (view is androidx.recyclerview.widget.RecyclerView) {
             with(view) {
-                layoutManager = LinearLayoutManager(context)
+                layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
                 adapter = PortListAdapter(viewLifecycleOwner, viewModel.items, listener)
             }
         }

@@ -22,7 +22,7 @@
         android:orientation="vertical"
         >
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:navigationIcon="@drawable/ic_keyboard_arrow_right_black_24dp"
@@ -35,7 +35,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/actionbar_text_size"
                 />
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
         <FrameLayout
             android:id="@+id/container"

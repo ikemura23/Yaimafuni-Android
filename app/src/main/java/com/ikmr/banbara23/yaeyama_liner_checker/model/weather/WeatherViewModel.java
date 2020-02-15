@@ -1,6 +1,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.model.weather;
 
-import android.databinding.ObservableField;
+import androidx.databinding.ObservableField;
 
 public class WeatherViewModel {
     public ObservableField<Weather> weather = new ObservableField<>();

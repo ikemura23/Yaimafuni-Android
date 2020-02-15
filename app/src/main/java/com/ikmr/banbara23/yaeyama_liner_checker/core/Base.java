@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
+
+import androidx.annotation.NonNull;
 
 /**
  * Base helps to get {@link Context}, {@link Resources}, {@link AssetManager},

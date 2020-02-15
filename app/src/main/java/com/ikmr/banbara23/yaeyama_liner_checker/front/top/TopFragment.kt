@@ -1,13 +1,13 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top
 
 import android.content.Intent
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment
@@ -18,7 +18,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab.PortListTabActivity
 
-class TopFragment : Fragment(), TopView {
+class TopFragment : androidx.fragment.app.Fragment(), TopView {
 
     private lateinit var binding: TopFragmentBinding
     private var topViewModel = TopViewModel()
@@ -87,7 +87,7 @@ class TopFragment : Fragment(), TopView {
     companion object {
         private val TAG = BaseFragment::class.java.simpleName
 
-        fun newInstance(): Fragment {
+        fun newInstance(): androidx.fragment.app.Fragment {
             return TopFragment()
         }
     }

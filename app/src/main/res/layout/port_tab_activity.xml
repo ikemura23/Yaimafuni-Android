@@ -25,7 +25,7 @@
             app:title="@{title}"
             />
 
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,27 +36,27 @@
             app:tabTextColor="@color/white"
             >
 
-            <android.support.design.widget.TabItem
+            <com.google.android.material.tabs.TabItem
                 android:id="@+id/anei"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/company_tab_name_annei"
                 />
 
-            <android.support.design.widget.TabItem
+            <com.google.android.material.tabs.TabItem
                 android:id="@+id/ykf"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/company_tab_name_ykf"
                 />
 
-        </android.support.design.widget.TabLayout>
+        </com.google.android.material.tabs.TabLayout>
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/port_view_pager"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            ></android.support.v4.view.ViewPager>
+            ></androidx.viewpager.widget.ViewPager>
 
     </LinearLayout>
 </layout>

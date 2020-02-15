@@ -1,12 +1,11 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.detail
 
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.FragmentTyphoonDetailBinding
@@ -17,7 +16,7 @@ import com.squareup.picasso.Picasso
 /**
  * 台風詳細 Fragment
  */
-class TyphoonDetailFragment : Fragment() {
+class TyphoonDetailFragment : androidx.fragment.app.Fragment() {
     private lateinit var binding: FragmentTyphoonDetailBinding
     private val typhoon: Typhoon
         get() = arguments!!.getParcelable(Constants.BUNDLE_KEY_DETAIL) as Typhoon

@@ -14,7 +14,7 @@
             />
     </data>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/fragment_time_annei_table_timetable_view"
         style="@style/detail_card"
         >
@@ -39,7 +39,7 @@
                 app:header="@{viewModel.timeTable.header}"
                 />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,5 +47,5 @@
                 />
 
         </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </layout>

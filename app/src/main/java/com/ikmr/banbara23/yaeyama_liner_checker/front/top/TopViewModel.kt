@@ -1,8 +1,8 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top
 
-import android.databinding.ObservableBoolean
-import android.databinding.ObservableField
-import android.databinding.ObservableInt
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
 

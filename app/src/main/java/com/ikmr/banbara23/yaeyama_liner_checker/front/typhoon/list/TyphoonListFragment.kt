@@ -1,13 +1,13 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list
 
 import android.content.Intent
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
@@ -17,7 +17,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subscribers.ResourceSubscriber
 
-class TyphoonListFragment : Fragment(),
+class TyphoonListFragment : androidx.fragment.app.Fragment(),
     OnTyphoonDetailFragmentInteractionListener {
 
     private val apiClient = ApiClient()

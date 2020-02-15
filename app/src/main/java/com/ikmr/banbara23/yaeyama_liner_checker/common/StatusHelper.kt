@@ -1,6 +1,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.common
 
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.core.Base
