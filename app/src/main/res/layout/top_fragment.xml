@@ -39,7 +39,7 @@
                 app:topPort="@{viewModel.topPort}"
                 />
 
-            <android.support.v4.widget.Space
+            <androidx.legacy.widget.Space
                 android:layout_width="match_parent"
                 android:layout_height="16dp"
                 />
@@ -51,7 +51,7 @@
                 app:viewModel="@{viewModel}"
                 />
 
-            <android.support.v4.widget.Space
+            <androidx.legacy.widget.Space
                 android:layout_width="match_parent"
                 android:layout_height="16dp"
                 />
@@ -63,7 +63,7 @@
                 app:viewModel="@{viewModel}"
                 />
 
-            <android.support.v4.widget.Space
+            <androidx.legacy.widget.Space
                 android:layout_width="match_parent"
                 android:layout_height="16dp"
                 />
@@ -75,7 +75,7 @@
                 app:viewModel="@{viewModel}"
                 />
 
-            <android.support.v4.widget.Space
+            <androidx.legacy.widget.Space
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
                 />

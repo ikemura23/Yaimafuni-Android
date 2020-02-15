@@ -1,9 +1,9 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top
 
-import android.databinding.ObservableField
-import android.databinding.ObservableInt
-import android.support.v4.content.ContextCompat
 import android.util.Log
+import androidx.core.content.ContextCompat
+import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
 import com.ikmr.banbara23.yaeyama_liner_checker.front.base.Presenter

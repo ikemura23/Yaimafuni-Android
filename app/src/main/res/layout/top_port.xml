@@ -20,11 +20,11 @@
 
         <variable
             name="showProgress"
-            type="android.databinding.ObservableBoolean"
+            type="androidx.databinding.ObservableBoolean"
             />
     </data>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="4dp"
@@ -138,5 +138,5 @@
                 app:presenter="@{presenter}"
                 />
         </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </layout>

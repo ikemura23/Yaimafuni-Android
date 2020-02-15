@@ -1,8 +1,8 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.setting
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 
 /**
  * 設定画面のアクティビティ

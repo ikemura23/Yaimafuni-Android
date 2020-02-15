@@ -1,11 +1,12 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.common;
 
-import android.databinding.BindingAdapter;
-import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.DataBindingUtil;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TimeTableRowBinding;

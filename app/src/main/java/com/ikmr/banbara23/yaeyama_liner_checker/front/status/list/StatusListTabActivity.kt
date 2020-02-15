@@ -1,9 +1,9 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.status.list
 
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.design.widget.TabLayout
-import android.support.v4.view.ViewPager
+import androidx.databinding.DataBindingUtil
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.ActivityListTabBinding
@@ -16,7 +16,7 @@ class StatusListTabActivity : BaseActivity() {
 
     internal var tabLayout: TabLayout? = null
 
-    internal var viewPager: ViewPager? = null
+    internal var viewPager: androidx.viewpager.widget.ViewPager? = null
 
     /**
      * 前回開いていたタブ番号を取得
@@ -63,8 +63,13 @@ class StatusListTabActivity : BaseActivity() {
         val adapter = PagerAdapter(supportFragmentManager, tabLayout!!.tabCount)
         viewPager!!.adapter = adapter
         viewPager!!.currentItem = position
-        viewPager!!.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
-        tabLayout!!.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+        viewPager!!.addOnPageChangeListener(
+            TabLayout.TabLayoutOnPageChangeListener(
+                tabLayout
+            )
+        )
+        tabLayout!!.addOnTabSelectedListener(object :
+            TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 viewPager!!.currentItem = tab.position
             }
