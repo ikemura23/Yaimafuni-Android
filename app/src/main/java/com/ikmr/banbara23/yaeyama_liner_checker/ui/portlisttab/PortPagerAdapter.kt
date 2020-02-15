@@ -3,6 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailFragment
@@ -14,7 +15,7 @@ class PortPagerAdapter(
     fm: FragmentManager,
     private val tabCount: Int,
     private val portCode: String
-) : androidx.fragment.app.FragmentStatePagerAdapter(fm) {
+) : FragmentStatePagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
         val company: Company?
