@@ -15,7 +15,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 /**
  * A placeholder fragment containing a simple view.
  */
-class WeatherFragment : androidx.fragment.app.Fragment() {
+class WeatherFragment : Fragment() {
 
     private val viewModel: WeatherScreenViewModel by lazy {
         ViewModelProviders.of(this).get(WeatherScreenViewModel::class.java)

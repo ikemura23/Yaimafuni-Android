@@ -18,7 +18,7 @@ class PortListAdapter(
     lifecycleOwner: LifecycleOwner,
     portStatuses: MutableLiveData<List<PortStatus>>,
     private val listener: PortListFragment.OnListFragmentInteractionListener?
-) : androidx.recyclerview.widget.RecyclerView.Adapter<PortListAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<PortListAdapter.ViewHolder>() {
 
     private val items = mutableListOf<PortStatus>()
 
@@ -55,7 +55,7 @@ class PortListAdapter(
 
     override fun getItemCount(): Int = items.size
 
-    inner class ViewHolder(val view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val portName: TextView = view.port_name
         val description: TextView = view.description
         val status: TextView = view.status

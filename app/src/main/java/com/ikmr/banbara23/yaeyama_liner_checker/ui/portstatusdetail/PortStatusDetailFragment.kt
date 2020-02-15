@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ikmr.banbara23.yaeyama_liner_checker.R
@@ -20,7 +21,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 /**
  * 詳細フラグメント
  */
-class PortStatusDetailFragment : androidx.fragment.app.Fragment() {
+class PortStatusDetailFragment : Fragment() {
     private lateinit var binding: StatusDetailFragmentBinding
     private val viewModel: PortStatusDetailViewModel by lazy {
         ViewModelProviders.of(this).get(PortStatusDetailViewModel::class.java)

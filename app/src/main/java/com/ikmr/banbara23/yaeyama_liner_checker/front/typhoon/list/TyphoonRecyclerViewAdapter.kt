@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 class TyphoonRecyclerViewAdapter(
     private var mValues: List<Typhoon>,
     private val mListener: OnTyphoonDetailFragmentInteractionListener?
-) : androidx.recyclerview.widget.RecyclerView.Adapter<TyphoonRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<TyphoonRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
 
@@ -54,5 +54,5 @@ class TyphoonRecyclerViewAdapter(
     }
 
     inner class ViewHolder(val binding: TyphoonListItemBinding) :
-        androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root)
+        RecyclerView.ViewHolder(binding.root)
 }

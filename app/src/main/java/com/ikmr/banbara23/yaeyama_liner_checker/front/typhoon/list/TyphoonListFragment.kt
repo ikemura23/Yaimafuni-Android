@@ -17,7 +17,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subscribers.ResourceSubscriber
 
-class TyphoonListFragment : androidx.fragment.app.Fragment(),
+class TyphoonListFragment : Fragment(),
     OnTyphoonDetailFragmentInteractionListener {
 
     private val apiClient = ApiClient()

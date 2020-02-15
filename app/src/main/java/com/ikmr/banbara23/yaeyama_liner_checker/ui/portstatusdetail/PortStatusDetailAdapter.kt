@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.time_table_row.view.right_time
 class PortStatusDetailAdapter(
     lifecycleOwner: LifecycleOwner,
     timetable: MutableLiveData<TimeTable>
-) : androidx.recyclerview.widget.RecyclerView.Adapter<PortStatusDetailAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<PortStatusDetailAdapter.ViewHolder>() {
     private val items = mutableListOf<Row>()
 
     init {
@@ -59,7 +59,7 @@ class PortStatusDetailAdapter(
 
     override fun getItemCount(): Int = items.size
 
-    inner class ViewHolder(val view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val leftTime: TextView = view.left_time
         val leftStatus: TextView = view.left_status
         val rightTime: TextView = view.right_time
