@@ -120,8 +120,6 @@ class PortStatusDetailFragment : Fragment() {
     }
 
     companion object {
-        private val TAG = PortStatusDetailFragment::class.java.simpleName
-
         /**
          * New Instance
          *
