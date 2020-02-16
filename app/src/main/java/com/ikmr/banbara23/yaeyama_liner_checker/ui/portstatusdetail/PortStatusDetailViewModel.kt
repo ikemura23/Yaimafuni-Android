@@ -76,14 +76,18 @@ class PortStatusDetailViewModel : ViewModel() {
      * 外部電話アプリを起動
      */
     fun startTel() {
-        event.postValue(Nav.Tell(""))
+        detailLinerInfo.value?.let { info ->
+            event.setValue(Nav.Tell(info.tell))
+        }
     }
 
     /**
      * ブラウザを起動
      */
     fun startWeb() {
-        event.postValue(Nav.Web(""))
+        detailLinerInfo.value?.let { info ->
+            event.setValue(Nav.Web(info.url))
+        }
     }
 
     sealed class Nav : LiveEvent {
