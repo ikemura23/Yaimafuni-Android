@@ -23,8 +23,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
             android:orientation="vertical"
             >
 
@@ -55,8 +55,8 @@
 
             <!--アクション-->
             <include
+                android:id="@+id/action"
                 layout="@layout/view_status_detail_action"
-                app:viewModel="@{viewModel}"
                 />
 
             <include layout="@layout/bottom_sea" />

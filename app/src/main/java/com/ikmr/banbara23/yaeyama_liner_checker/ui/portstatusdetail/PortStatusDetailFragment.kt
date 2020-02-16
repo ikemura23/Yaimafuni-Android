@@ -47,13 +47,24 @@ class PortStatusDetailFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.timeTable.list.layoutManager = CustomLinearLayoutManager(requireContext())
-        binding.timeTable.list.adapter = PortStatusDetailAdapter(viewLifecycleOwner, viewModel.timeTable)
         return binding.root
+    }
+
+    private fun setupViews() {
+        binding.let {
+            // 時刻表
+            it.timeTable.list.layoutManager = CustomLinearLayoutManager(requireContext())
+            it.timeTable.list.adapter = PortStatusDetailAdapter(viewLifecycleOwner, viewModel.timeTable)
+            // Webで見る
+            it.action.web.setOnClickListener { viewModel.startWeb() }
+            // 電話する
+            it.action.tell.setOnClickListener { viewModel.startTel() }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupViews()
         viewModel.event.observe(viewLifecycleOwner, Observer { nav ->
             when (nav) {
                 is PortStatusDetailViewModel.Nav.Error -> {
