@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.common.CustomLinearLayoutManager
@@ -26,22 +27,15 @@ class PortStatusDetailFragment : Fragment() {
     private val viewModel: PortStatusDetailViewModel by lazy {
         ViewModelProviders.of(this).get(PortStatusDetailViewModel::class.java)
     }
+    private val firebaseAnalytics: FirebaseAnalytics by lazy { FirebaseAnalytics.getInstance(requireActivity()) }
 
-    /**
-     * パラメータ取得 会社
-     *
-     * @return
-     */
+    /** パラメータ取得 会社 */
     private val company: Company
-        get() = arguments!!.getSerializable(Constants.BUNDLE_KEY_COMPANY) as Company
+        get() = arguments?.getSerializable(Constants.BUNDLE_KEY_COMPANY) as Company
 
-    /**
-     * パラメータ取得 港コード
-     *
-     * @return
-     */
+    /** 港コード */
     private val portCode: String
-        get() = arguments!!.getString(Constants.BUNDLE_KEY_PORT_CODE) ?: ""
+        get() = arguments?.getString(Constants.BUNDLE_KEY_PORT_CODE) ?: ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false)
@@ -87,6 +81,12 @@ class PortStatusDetailFragment : Fragment() {
      * @param tel
      */
     private fun openTell(tel: String) {
+        // アナリティクス イベント送信
+        val bundle = Bundle().apply {
+            putString(FirebaseAnalytics.Param.CONTENT_TYPE, "tel")
+        }
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
+
         if (TextUtils.isEmpty(tel)) {
             return
         }
@@ -107,6 +107,12 @@ class PortStatusDetailFragment : Fragment() {
      * @param url
      */
     private fun openBrowser(url: String) {
+        // アナリティクス イベント送信
+        val bundle = Bundle().apply {
+            putString(FirebaseAnalytics.Param.CONTENT_TYPE, "web")
+        }
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
+
         if (TextUtils.isEmpty(url)) {
             return
         }
@@ -114,8 +120,6 @@ class PortStatusDetailFragment : Fragment() {
     }
 
     companion object {
-        private val TAG = PortStatusDetailFragment::class.java.simpleName
-
         /**
          * New Instance
          *
