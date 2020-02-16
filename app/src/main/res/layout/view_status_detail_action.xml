@@ -6,32 +6,32 @@
 
     <data>
 
-        <variable
-            name="viewModel"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailViewModel"
-            />
+        <!--        <variable-->
+        <!--            name="viewModel"-->
+        <!--            type="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailViewModel"-->
+        <!--            />-->
 
     </data>
     <!--下段-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal"
         android:weightSum="2"
         >
 
         <!--ブラウザで表示-->
         <androidx.cardview.widget.CardView
+            android:id="@+id/web"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="4dp"
             android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
             android:layout_weight="1"
             android:foreground="?attr/selectableItemBackground"
-            android:onClick="@{() -> viewModel.startWeb()}"
             card_view:cardCornerRadius="3dp"
             >
 
@@ -44,7 +44,6 @@
                 />
 
             <TextView
-                android:id="@+id/view_status_detail_web_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -56,13 +55,13 @@
 
         <!--電話-->
         <androidx.cardview.widget.CardView
+            android:id="@+id/tell"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="4dp"
             android:layout_marginLeft="4dp"
+            android:layout_marginBottom="4dp"
             android:layout_weight="1"
             android:foreground="?attr/selectableItemBackground"
-            android:onClick="@{() -> viewModel.startTel()}"
             card_view:cardCornerRadius="3dp"
             >
 
@@ -75,7 +74,6 @@
                 />
 
             <TextView
-                android:id="@+id/view_status_detail_tell_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
