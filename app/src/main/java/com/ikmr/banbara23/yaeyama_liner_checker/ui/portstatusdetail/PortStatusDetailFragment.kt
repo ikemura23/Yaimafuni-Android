@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.common.CustomLinearLayoutManager
@@ -26,6 +27,7 @@ class PortStatusDetailFragment : Fragment() {
     private val viewModel: PortStatusDetailViewModel by lazy {
         ViewModelProviders.of(this).get(PortStatusDetailViewModel::class.java)
     }
+    private val firebaseAnalytics: FirebaseAnalytics by lazy { FirebaseAnalytics.getInstance(requireActivity()) }
 
     /**
      * パラメータ取得 会社
@@ -87,6 +89,12 @@ class PortStatusDetailFragment : Fragment() {
      * @param tel
      */
     private fun openTell(tel: String) {
+        // アナリティクス イベント送信
+        val bundle = Bundle().apply {
+            putString(FirebaseAnalytics.Param.CONTENT_TYPE, "tell")
+        }
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
+
         if (TextUtils.isEmpty(tel)) {
             return
         }
