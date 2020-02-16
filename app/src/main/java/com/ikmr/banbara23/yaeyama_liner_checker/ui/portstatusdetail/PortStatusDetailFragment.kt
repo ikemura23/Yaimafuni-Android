@@ -29,21 +29,13 @@ class PortStatusDetailFragment : Fragment() {
     }
     private val firebaseAnalytics: FirebaseAnalytics by lazy { FirebaseAnalytics.getInstance(requireActivity()) }
 
-    /**
-     * パラメータ取得 会社
-     *
-     * @return
-     */
+    /** パラメータ取得 会社 */
     private val company: Company
-        get() = arguments!!.getSerializable(Constants.BUNDLE_KEY_COMPANY) as Company
+        get() = arguments?.getSerializable(Constants.BUNDLE_KEY_COMPANY) as Company
 
-    /**
-     * パラメータ取得 港コード
-     *
-     * @return
-     */
+    /** 港コード */
     private val portCode: String
-        get() = arguments!!.getString(Constants.BUNDLE_KEY_PORT_CODE) ?: ""
+        get() = arguments?.getString(Constants.BUNDLE_KEY_PORT_CODE) ?: ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false)
@@ -91,7 +83,7 @@ class PortStatusDetailFragment : Fragment() {
     private fun openTell(tel: String) {
         // アナリティクス イベント送信
         val bundle = Bundle().apply {
-            putString(FirebaseAnalytics.Param.CONTENT_TYPE, "tell")
+            putString(FirebaseAnalytics.Param.CONTENT_TYPE, "tel")
         }
         firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
 
