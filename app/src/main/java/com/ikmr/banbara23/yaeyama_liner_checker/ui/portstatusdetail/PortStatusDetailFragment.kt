@@ -115,6 +115,12 @@ class PortStatusDetailFragment : Fragment() {
      * @param url
      */
     private fun openBrowser(url: String) {
+        // アナリティクス イベント送信
+        val bundle = Bundle().apply {
+            putString(FirebaseAnalytics.Param.CONTENT_TYPE, "web")
+        }
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
+
         if (TextUtils.isEmpty(url)) {
             return
         }
