@@ -8,6 +8,7 @@ import com.crashlytics.android.core.CrashlyticsCore
 import com.google.firebase.database.FirebaseDatabase
 import com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig
 import io.fabric.sdk.android.Fabric
+import timber.log.Timber
 
 class ApplicationController : MultiDexApplication() {
 
@@ -27,6 +28,8 @@ class ApplicationController : MultiDexApplication() {
             )
             .build()
         Fabric.with(this, crashlytics)
+        // デバッグビルドのみログ出力
+        Timber.plant(Timber.DebugTree())
     }
 
     override fun attachBaseContext(base: Context) {
