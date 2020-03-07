@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Row(
-    val left: Item = Item(),
-    val right: Item = Item()
+    val left: RowItem = RowItem(),
+    val right: RowItem = RowItem()
 ) : Parcelable
