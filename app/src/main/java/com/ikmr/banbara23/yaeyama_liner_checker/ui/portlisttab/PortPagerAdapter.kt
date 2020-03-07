@@ -23,9 +23,11 @@ class PortPagerAdapter(
             1 -> Company.YKF
             else -> Company.ANEI
         }
-        val bundle = Bundle()
-        bundle.putString(Constants.BUNDLE_KEY_PORT_CODE, portCode)
-        bundle.putSerializable(Constants.BUNDLE_KEY_COMPANY, company)
+        val bundle = Bundle().apply {
+            putString(Constants.BUNDLE_KEY_PORT_CODE, portCode)
+            putSerializable(Constants.BUNDLE_KEY_COMPANY, company)
+        }
+
         return PortStatusDetailFragment.newInstance(bundle)
     }
 
