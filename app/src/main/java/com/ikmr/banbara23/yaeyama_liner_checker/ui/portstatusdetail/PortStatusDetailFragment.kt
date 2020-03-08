@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
-import com.ikmr.banbara23.yaeyama_liner_checker.common.CustomLinearLayoutManager
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
@@ -22,12 +21,13 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 /**
  * 詳細フラグメント
  */
-class PortStatusDetailFragment : Fragment() {
+class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusDetailClickListener {
     private lateinit var binding: StatusDetailFragmentBinding
     private val viewModel: PortStatusDetailViewModel by lazy {
         ViewModelProviders.of(this).get(PortStatusDetailViewModel::class.java)
     }
     private val firebaseAnalytics: FirebaseAnalytics by lazy { FirebaseAnalytics.getInstance(requireActivity()) }
+    private lateinit var controller: StatusDetailEpoxyController
 
     /** パラメータ取得 会社 */
     private val company: Company
@@ -45,15 +45,20 @@ class PortStatusDetailFragment : Fragment() {
     }
 
     private fun setupViews() {
+        controller = StatusDetailEpoxyController(this)
+        binding.listView.adapter = controller.adapter
         binding.let {
             // 時刻表
-            it.timeTable.list.layoutManager = CustomLinearLayoutManager(requireContext())
-            it.timeTable.list.adapter = PortStatusDetailAdapter(viewLifecycleOwner, viewModel.timeTable)
-            // Webで見る
-            it.action.web.setOnClickListener { viewModel.startWeb() }
-            // 電話する
-            it.action.tell.setOnClickListener { viewModel.startTel() }
+            // it.timeTable.list.layoutManager = CustomLinearLayoutManager(requireContext())
+            // it.timeTable.list.adapter = PortStatusDetailAdapter(viewLifecycleOwner, viewModel.timeTable)
+            // // Webで見る
+            // it.action.web.setOnClickListener { viewModel.startWeb() }
+            // // 電話する
+            // it.action.tell.setOnClickListener { viewModel.startTel() }
         }
+        viewModel.statusDetailRoot.observe(viewLifecycleOwner, Observer {
+            controller.setData(it)
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -117,6 +122,14 @@ class PortStatusDetailFragment : Fragment() {
             return
         }
         CustomTabUtil.start(requireActivity(), url)
+    }
+
+    override fun onWebClicked(url: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onTelClicked(tel: String) {
+        TODO("Not yet implemented")
     }
 
     companion object {

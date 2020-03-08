@@ -13,53 +13,77 @@
             />
     </data>
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:overScrollMode="never"
+        android:orientation="vertical"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_view"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:orientation="vertical"
-            >
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            />
 
-            <!--ステータス-->
-            <include
-                layout="@layout/view_status_detail_top"
-                app:portStatus="@{viewModel.portStatus}"
-                />
+        <!--    <ScrollView-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="match_parent"-->
+        <!--        android:fillViewport="true"-->
+        <!--        android:overScrollMode="never"-->
+        <!--        >-->
 
-            <!--時刻表-->
-            <include
-                android:id="@+id/time_table"
-                layout="@layout/time_table_root"
-                app:viewModel="@{viewModel}"
-                />
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="8dp"-->
+        <!--            android:layout_marginBottom="16dp"-->
+        <!--            android:orientation="vertical"-->
+        <!--            >-->
 
-            <!--時間と距離-->
-            <include
-                layout="@layout/view_status_detail_distance_time"
-                app:detailLinerInfo="@{viewModel.detailLinerInfo}"
-                />
+        <!--            &lt;!&ndash;ステータス&ndash;&gt;-->
+        <!--            <include-->
+        <!--                layout="@layout/view_status_detail_top"-->
+        <!--                app:portStatus="@{viewModel.portStatus}"-->
+        <!--                />-->
 
-            <!--料金-->
-            <include
-                layout="@layout/view_status_detail_price_handicapped"
-                app:detailLinerInfo="@{viewModel.detailLinerInfo}"
-                />
+        <!--            &lt;!&ndash;時刻表&ndash;&gt;-->
+        <!--            <include-->
+        <!--                android:id="@+id/time_table"-->
+        <!--                layout="@layout/time_table_root"-->
+        <!--                app:viewModel="@{viewModel}"-->
+        <!--                />-->
 
-            <!--アクション-->
-            <include
-                android:id="@+id/action"
-                layout="@layout/view_status_detail_action"
-                />
+        <!--            &lt;!&ndash;時間と距離&ndash;&gt;-->
+        <!--            <include-->
+        <!--                layout="@layout/view_status_detail_distance_time"-->
+        <!--                app:detailLinerInfo="@{viewModel.detailLinerInfo}"-->
+        <!--                />-->
 
-            <include layout="@layout/bottom_sea" />
-        </LinearLayout>
-    </ScrollView>
+        <!--            &lt;!&ndash;料金&ndash;&gt;-->
+        <!--            <include-->
+        <!--                layout="@layout/view_status_detail_price_handicapped"-->
+        <!--                app:detailLinerInfo="@{viewModel.detailLinerInfo}"-->
+        <!--                />-->
+
+        <!--            &lt;!&ndash;アクション&ndash;&gt;-->
+        <!--            <include-->
+        <!--                android:id="@+id/action"-->
+        <!--                layout="@layout/view_status_detail_action"-->
+        <!--                />-->
+
+        <include
+            layout="@layout/bottom_sea"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--        </LinearLayout>-->
+    <!--    </ScrollView>-->
 </layout>

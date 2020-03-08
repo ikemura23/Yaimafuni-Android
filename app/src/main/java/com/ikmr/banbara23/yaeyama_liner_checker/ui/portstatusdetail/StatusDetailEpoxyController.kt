@@ -1,0 +1,63 @@
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail
+
+import com.airbnb.epoxy.TypedEpoxyController
+import com.ikmr.banbara23.yaeyama_liner_checker.databinding.ViewStatusDetailActionBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot
+import com.ikmr.banbara23.yaeyama_liner_checker.timeTableRoot
+import com.ikmr.banbara23.yaeyama_liner_checker.viewStatusDetailAction
+import com.ikmr.banbara23.yaeyama_liner_checker.viewStatusDetailPriceHandicapped
+import com.ikmr.banbara23.yaeyama_liner_checker.viewStatusDetailTop
+
+class StatusDetailEpoxyController(private val listener: StatusDetailClickListener?) :
+    TypedEpoxyController<StatusDetailRoot>() {
+
+    interface StatusDetailClickListener {
+        /**　ブラウザで見るクリック */
+        fun onWebClicked(url: String)
+
+        /** 電話するクリック */
+        fun onTelClicked(tel: String)
+    }
+
+    override fun buildModels(root: StatusDetailRoot) {
+        val portStatus = root.portStatus
+        val timeTable = root.timeTable
+        val linerInfo = root.detailLinerInfo
+
+        // 運行ステータス
+        viewStatusDetailTop {
+            id(portStatus.hashCode())
+            portStatus(portStatus)
+        }
+
+        // 時刻表
+        timeTableRoot {
+            id(timeTable.hashCode())
+
+        }
+
+        // 料金
+        viewStatusDetailPriceHandicapped {
+            id(linerInfo.hashCode())
+        }
+
+        // アクション
+        viewStatusDetailAction {
+            id("action")
+            onBind { _, view, _ ->
+                val binding = view.dataBinding as ViewStatusDetailActionBinding
+                binding.web.setOnClickListener {
+                    listener?.onWebClicked(linerInfo.url)
+                }
+                binding.tell.setOnClickListener {
+                    listener?.onTelClicked(linerInfo.tell)
+                }
+            }
+        }
+
+        // 一番下部の海
+        // bottomSea {
+        //     id("sea")
+        // }
+    }
+}

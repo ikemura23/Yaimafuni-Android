@@ -5,10 +5,9 @@
                                  R.layout.view_status_detail_price_handicapped,
                                  R.layout.view_status_detail_action,
                                  R.layout.bottom_sea,
+                                 R.layout.time_table_header
                          })
 
 package com.ikmr.banbara23.yaeyama_liner_checker;
 
 import com.airbnb.epoxy.EpoxyDataBindingLayouts;
-
-
