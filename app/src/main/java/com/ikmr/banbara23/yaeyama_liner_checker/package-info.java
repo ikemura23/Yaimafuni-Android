@@ -1,5 +1,10 @@
 @EpoxyDataBindingLayouts({
                                  R.layout.view_status_detail_top,
+                                 R.layout.time_table_root,
+                                 R.layout.view_status_detail_distance_time,
+                                 R.layout.view_status_detail_price_handicapped,
+                                 R.layout.view_status_detail_action,
+                                 R.layout.bottom_sea,
                          })
 
 package com.ikmr.banbara23.yaeyama_liner_checker;
