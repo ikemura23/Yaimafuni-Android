@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.FragmentTyphoonDetailBinding
@@ -38,7 +37,7 @@ class TyphoonDetailFragment : androidx.fragment.app.Fragment() {
         Picasso.get().load(typhoon.img).into(binding.image)
         // Webで見るボタン
         binding.button.setOnClickListener {
-            CustomTabUtil.start(requireActivity(), getString(R.string.typhoon_open_url))
+            CustomTabUtil.start(requireActivity(), Constants.TYPHOON_URL)
         }
     }
 

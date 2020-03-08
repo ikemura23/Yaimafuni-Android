@@ -18,19 +18,20 @@ class PortPagerAdapter(
 ) : FragmentStatePagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
-        val company: Company?
-        when (position) {
-            0 -> company = Company.ANEI
-            1 -> company = Company.YKF
-            else -> company = null
+        val company = when (position) {
+            0 -> Company.ANEI
+            1 -> Company.YKF
+            else -> Company.ANEI
         }
-        val bundle = Bundle()
-        bundle.putString(Constants.BUNDLE_KEY_PORT_CODE, portCode)
-        bundle.putSerializable(Constants.BUNDLE_KEY_COMPANY, company)
+        val bundle = Bundle().apply {
+            putString(Constants.BUNDLE_KEY_PORT_CODE, portCode)
+            putSerializable(Constants.BUNDLE_KEY_COMPANY, company)
+        }
+
         return PortStatusDetailFragment.newInstance(bundle)
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
+    override fun getPageTitle(position: Int): String {
         return if (position == 0) "安栄観光" else "八重山観光\nフェリー"
     }
 

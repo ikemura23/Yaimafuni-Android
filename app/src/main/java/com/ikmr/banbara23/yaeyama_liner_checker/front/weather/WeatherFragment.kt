@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ikmr.banbara23.yaeyama_liner_checker.R
+import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 
@@ -49,7 +50,7 @@ class WeatherFragment : Fragment() {
     }
 
     private fun openBrowser() {
-        CustomTabUtil.start(activity, getString(R.string.weather_open_url))
+        CustomTabUtil.start(requireActivity(), Constants.WEATHER_URL)
     }
 
     companion object {

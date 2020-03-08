@@ -116,7 +116,7 @@ class PortStatusDetailFragment : Fragment() {
         if (TextUtils.isEmpty(url)) {
             return
         }
-        CustomTabUtil.start(activity, url)
+        CustomTabUtil.start(requireActivity(), url)
     }
 
     companion object {
