@@ -3,11 +3,10 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail
 import com.airbnb.epoxy.TypedEpoxyController
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.ViewStatusDetailActionBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot
-import com.ikmr.banbara23.yaeyama_liner_checker.timeTableRoot
+import com.ikmr.banbara23.yaeyama_liner_checker.timeTableHeader
 import com.ikmr.banbara23.yaeyama_liner_checker.timeTableRow
+import com.ikmr.banbara23.yaeyama_liner_checker.viewSpace
 import com.ikmr.banbara23.yaeyama_liner_checker.viewStatusDetailAction
-import com.ikmr.banbara23.yaeyama_liner_checker.viewStatusDetailDistanceTime
-import com.ikmr.banbara23.yaeyama_liner_checker.viewStatusDetailPriceHandicapped
 import com.ikmr.banbara23.yaeyama_liner_checker.viewStatusDetailTop
 
 class StatusDetailEpoxyController(private val listener: StatusDetailClickListener?) :
@@ -32,28 +31,25 @@ class StatusDetailEpoxyController(private val listener: StatusDetailClickListene
             portStatus(portStatus)
         }
 
-        // 時刻表
-        timeTableRoot {
-            id(timeTable.hashCode())
+        viewSpace {
+            id("space1")
+        }
+
+        // 時刻表 ヘッダー
+        timeTableHeader {
+            id("header ${timeTable.header.hashCode()}")
             header(timeTable.header)
-            timeTable.row.forEach { row ->
-                timeTableRow {
-                    id(row.left.status.code + row.left.time)
-                    row(row)
-                }
+        }
+        // 時刻表
+        timeTable.row.forEach { row ->
+            timeTableRow {
+                id("row_${row.hashCode()}")
+                row(row)
             }
         }
-
-        // 料金
-        viewStatusDetailPriceHandicapped {
-            id(linerInfo.hashCode())
-            detailLinerInfo(linerInfo)
-        }
-
-        // 時刻
-        viewStatusDetailDistanceTime {
-            id(linerInfo.hashCode())
-            detailLinerInfo(linerInfo)
+        
+        viewSpace {
+            id("space1")
         }
 
         // アクション
@@ -69,10 +65,5 @@ class StatusDetailEpoxyController(private val listener: StatusDetailClickListene
                 }
             }
         }
-
-        // 一番下部の海
-        // bottomSea {
-        //     id("sea")
-        // }
     }
 }
