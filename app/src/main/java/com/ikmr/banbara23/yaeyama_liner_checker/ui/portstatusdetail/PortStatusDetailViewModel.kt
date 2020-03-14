@@ -3,32 +3,35 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
-import com.ikmr.banbara23.yaeyama_liner_checker.core.LiveEvent
+import com.ikmr.banbara23.yaeyama_liner_checker.ext.logD
+import com.ikmr.banbara23.yaeyama_liner_checker.ext.logE
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
-import com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo
-import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus
 import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot
+import io.reactivex.disposables.Disposable
 
+/**
+ * 運行詳細 ViewModel
+ */
 class PortStatusDetailViewModel : ViewModel() {
     val statusDetailRoot = MutableLiveData<StatusDetailRoot>()
-    val portStatus = MutableLiveData<PortStatus>()
-    val detailLinerInfo = MutableLiveData<DetailLinerInfo>()
-
     private val apiClient = ApiClient()
+    private lateinit var disposable: Disposable
 
     /**
      * 天気取得
      */
     fun load(company: Company, portCode: String) {
-        apiClient.getDetailInfo(company, portCode).subscribe {
-            statusDetailRoot.postValue(it)
-        }
+        disposable = apiClient.getDetailInfo(company, portCode).subscribe(
+            { data ->
+                statusDetailRoot.postValue(data)
+            }, {
+                logE(it)
+            }, {
+                logD("complete")
+            })
     }
 
-    sealed class Nav : LiveEvent {
-        object Error : Nav()
-        data class Web(val url: String) : Nav()
-        data class Tell(val tellNo: String) : Nav()
+    fun dispose() {
+        disposable.dispose()
     }
 }
-

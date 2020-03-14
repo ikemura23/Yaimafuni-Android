@@ -57,6 +57,11 @@ class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusD
         viewModel.load(company, portCode)
     }
 
+    override fun onDestroyView() {
+        viewModel.dispose()
+        super.onDestroyView()
+    }
+
     /**
      * 電話アプリを起動
      *
