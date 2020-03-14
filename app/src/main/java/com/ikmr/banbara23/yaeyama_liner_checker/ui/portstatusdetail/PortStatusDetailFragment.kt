@@ -47,15 +47,6 @@ class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusD
     private fun setupViews() {
         controller = StatusDetailEpoxyController(this)
         binding.listView.adapter = controller.adapter
-        binding.let {
-            // 時刻表
-            // it.timeTable.list.layoutManager = CustomLinearLayoutManager(requireContext())
-            // it.timeTable.list.adapter = PortStatusDetailAdapter(viewLifecycleOwner, viewModel.timeTable)
-            // // Webで見る
-            // it.action.web.setOnClickListener { viewModel.startWeb() }
-            // // 電話する
-            // it.action.tell.setOnClickListener { viewModel.startTel() }
-        }
         viewModel.statusDetailRoot.observe(viewLifecycleOwner, Observer {
             controller.setData(it)
         })
@@ -125,11 +116,11 @@ class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusD
     }
 
     override fun onWebClicked(url: String) {
-        TODO("Not yet implemented")
+        openBrowser(url)
     }
 
     override fun onTelClicked(tel: String) {
-        TODO("Not yet implemented")
+        openTell(tel)
     }
 
     companion object {
