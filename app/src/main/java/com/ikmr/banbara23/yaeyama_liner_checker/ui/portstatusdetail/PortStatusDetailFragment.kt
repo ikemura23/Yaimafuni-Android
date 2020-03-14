@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
-import com.ikmr.banbara23.yaeyama_liner_checker.common.CustomLinearLayoutManager
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
@@ -22,12 +21,13 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 /**
  * 詳細フラグメント
  */
-class PortStatusDetailFragment : Fragment() {
+class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusDetailClickListener {
     private lateinit var binding: StatusDetailFragmentBinding
     private val viewModel: PortStatusDetailViewModel by lazy {
         ViewModelProviders.of(this).get(PortStatusDetailViewModel::class.java)
     }
     private val firebaseAnalytics: FirebaseAnalytics by lazy { FirebaseAnalytics.getInstance(requireActivity()) }
+    private lateinit var controller: StatusDetailEpoxyController
 
     /** パラメータ取得 会社 */
     private val company: Company
@@ -39,40 +39,27 @@ class PortStatusDetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false)
-        binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
     private fun setupViews() {
-        binding.let {
-            // 時刻表
-            it.timeTable.list.layoutManager = CustomLinearLayoutManager(requireContext())
-            it.timeTable.list.adapter = PortStatusDetailAdapter(viewLifecycleOwner, viewModel.timeTable)
-            // Webで見る
-            it.action.web.setOnClickListener { viewModel.startWeb() }
-            // 電話する
-            it.action.tell.setOnClickListener { viewModel.startTel() }
-        }
+        controller = StatusDetailEpoxyController(this)
+        binding.listView.adapter = controller.adapter
+        viewModel.statusDetailRoot.observe(viewLifecycleOwner, Observer {
+            controller.setData(it)
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
-        viewModel.event.observe(viewLifecycleOwner, Observer { nav ->
-            when (nav) {
-                is PortStatusDetailViewModel.Nav.Error -> {
-                    // todo: エラーメッセージ
-                }
-                is PortStatusDetailViewModel.Nav.Web -> {
-                    openBrowser(nav.url)
-                }
-                is PortStatusDetailViewModel.Nav.Tell -> {
-                    openTell(nav.tellNo)
-                }
-            }
-        })
         viewModel.load(company, portCode)
+    }
+
+    override fun onDestroyView() {
+        viewModel.dispose()
+        super.onDestroyView()
     }
 
     /**
@@ -117,6 +104,14 @@ class PortStatusDetailFragment : Fragment() {
             return
         }
         CustomTabUtil.start(requireActivity(), url)
+    }
+
+    override fun onWebClicked(url: String) {
+        openBrowser(url)
+    }
+
+    override fun onTelClicked(tel: String) {
+        openTell(tel)
     }
 
     companion object {

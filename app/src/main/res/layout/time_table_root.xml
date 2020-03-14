@@ -9,8 +9,8 @@
         <import type="android.view.View" />
 
         <variable
-            name="viewModel"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailViewModel"
+            name="header"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.Header"
             />
     </data>
 
@@ -36,7 +36,7 @@
 
             <include
                 layout="@layout/time_table_header"
-                app:header="@{viewModel.timeTable.header}"
+                app:header="@{ header }"
                 />
 
             <androidx.recyclerview.widget.RecyclerView

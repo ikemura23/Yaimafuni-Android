@@ -96,6 +96,20 @@ class ApiClient {
             .observeOn(AndroidSchedulers.mainThread())
     }
 
+    fun getDetailInfo(company: Company, portCode: String): Flowable<StatusDetailRoot> {
+        return Flowable.zip(
+                // ステータスのみ
+                getStatusDetail(company, portCode),
+                // 運行関連（走行時間、金額など）
+                getDetailLinerInfo(company, portCode),
+                // 時間別の運行ステータス
+                getTimeTable(company, portCode),
+                Function3(::StatusDetailRoot)
+            )
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
     companion object {
 
         private const val WEATHER = "weather"
@@ -114,24 +128,6 @@ class ApiClient {
             return database.getReference(tablePath)
         }
 
-        fun getDetailInfo(company: Company, portCode: String): Flowable<StatusDetailRoot> {
-
-            return Flowable.zip(
-                // ステータスのみ
-                getStatusDetail(company, portCode),
-                // 運行関連（走行時間、金額など）
-                getDetailLinerInfo(company, portCode),
-                // 時間別の運行ステータス
-                getTimeTable(company, portCode),
-                Function3 { portStatus, detailLinerInfo, timeTable ->
-                    StatusDetailRoot(
-                        portStatus,
-                        detailLinerInfo,
-                        timeTable
-                    )
-                })
-        }
-
         /**
          * 運行詳細のステータス
          *
@@ -142,8 +138,6 @@ class ApiClient {
             val ref = getRef(path)
             ref.keepSynced(false)
             return RxFirebaseDatabase.observeValueEvent(ref, PortStatus::class.java)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
         }
 
         /**
@@ -156,8 +150,6 @@ class ApiClient {
             val ref = getRef(path)
             ref.keepSynced(false)
             return RxFirebaseDatabase.observeValueEvent(ref, DetailLinerInfo::class.java)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
         }
 
         /**
@@ -170,8 +162,6 @@ class ApiClient {
             val ref = getRef(path)
             ref.keepSynced(false)
             return RxFirebaseDatabase.observeValueEvent(ref, TimeTable::class.java)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
         }
     }
 }

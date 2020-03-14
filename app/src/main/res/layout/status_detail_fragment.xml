@@ -3,63 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <data>
-
-        <import type="android.view.View" />
-
-        <variable
-            name="viewModel"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailViewModel"
-            />
-    </data>
-
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:overScrollMode="never"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <androidx.cardview.widget.CardView
+            style="@style/detail_card"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:orientation="vertical"
             >
 
-            <!--ステータス-->
-            <include
-                layout="@layout/view_status_detail_top"
-                app:portStatus="@{viewModel.portStatus}"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 />
 
-            <!--時刻表-->
-            <include
-                android:id="@+id/time_table"
-                layout="@layout/time_table_root"
-                app:viewModel="@{viewModel}"
-                />
+        </androidx.cardview.widget.CardView>
 
-            <!--時間と距離-->
-            <include
-                layout="@layout/view_status_detail_distance_time"
-                app:detailLinerInfo="@{viewModel.detailLinerInfo}"
-                />
-
-            <!--料金-->
-            <include
-                layout="@layout/view_status_detail_price_handicapped"
-                app:detailLinerInfo="@{viewModel.detailLinerInfo}"
-                />
-
-            <!--アクション-->
-            <include
-                android:id="@+id/action"
-                layout="@layout/view_status_detail_action"
-                />
-
-            <include layout="@layout/bottom_sea" />
-        </LinearLayout>
-    </ScrollView>
+        <include
+            android:id="@+id/bottom_sea"
+            layout="@layout/bottom_sea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            />
+    </FrameLayout>
 </layout>
