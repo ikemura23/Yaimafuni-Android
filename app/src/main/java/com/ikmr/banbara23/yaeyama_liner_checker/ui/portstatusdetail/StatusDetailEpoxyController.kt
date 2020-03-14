@@ -4,7 +4,9 @@ import com.airbnb.epoxy.TypedEpoxyController
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.ViewStatusDetailActionBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot
 import com.ikmr.banbara23.yaeyama_liner_checker.timeTableRoot
+import com.ikmr.banbara23.yaeyama_liner_checker.timeTableRow
 import com.ikmr.banbara23.yaeyama_liner_checker.viewStatusDetailAction
+import com.ikmr.banbara23.yaeyama_liner_checker.viewStatusDetailDistanceTime
 import com.ikmr.banbara23.yaeyama_liner_checker.viewStatusDetailPriceHandicapped
 import com.ikmr.banbara23.yaeyama_liner_checker.viewStatusDetailTop
 
@@ -33,12 +35,25 @@ class StatusDetailEpoxyController(private val listener: StatusDetailClickListene
         // 時刻表
         timeTableRoot {
             id(timeTable.hashCode())
-
+            header(timeTable.header)
+            timeTable.row.forEach { row ->
+                timeTableRow {
+                    id(row.left.status.code + row.left.time)
+                    row(row)
+                }
+            }
         }
 
         // 料金
         viewStatusDetailPriceHandicapped {
             id(linerInfo.hashCode())
+            detailLinerInfo(linerInfo)
+        }
+
+        // 時刻
+        viewStatusDetailDistanceTime {
+            id(linerInfo.hashCode())
+            detailLinerInfo(linerInfo)
         }
 
         // アクション
