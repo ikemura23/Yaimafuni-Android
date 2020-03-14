@@ -55,19 +55,6 @@ class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusD
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
-        viewModel.event.observe(viewLifecycleOwner, Observer { nav ->
-            when (nav) {
-                is PortStatusDetailViewModel.Nav.Error -> {
-                    // todo: エラーメッセージ
-                }
-                is PortStatusDetailViewModel.Nav.Web -> {
-                    openBrowser(nav.url)
-                }
-                is PortStatusDetailViewModel.Nav.Tell -> {
-                    openTell(nav.tellNo)
-                }
-            }
-        })
         viewModel.load(company, portCode)
     }
 
