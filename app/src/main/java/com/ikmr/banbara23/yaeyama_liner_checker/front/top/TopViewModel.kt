@@ -1,9 +1,8 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top
 
+import android.graphics.drawable.Drawable
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
-import androidx.databinding.ObservableInt
-
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
 
 /**
@@ -21,8 +20,8 @@ class TopViewModel {
     var showWeatherProgress = ObservableBoolean()
 
     // 会社別ステータス
-    var aneiColor = ObservableInt()
-    var ykfColor = ObservableInt()
+    // var aneiColor = ObservableInt()
+    // var ykfColor = ObservableInt()
 
     var aneiStatus = ObservableField<String>()
     var ykfStatus = ObservableField<String>()
@@ -32,4 +31,7 @@ class TopViewModel {
     // 台風
     var typhoon = ObservableField<String>()
     var showTyphoonProgress = ObservableBoolean()
+
+    var aneiBackground = ObservableField<Drawable>()
+    var ykfBackground = ObservableField<Drawable>()
 }
