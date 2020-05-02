@@ -1,13 +1,11 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top
 
 import android.util.Log
-import androidx.core.content.ContextCompat
-import androidx.databinding.ObservableField
-import androidx.databinding.ObservableInt
-import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
+import com.ikmr.banbara23.yaeyama_liner_checker.ext.getDrawableCompat
 import com.ikmr.banbara23.yaeyama_liner_checker.front.base.Presenter
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
+import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusType
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopCompanyInfo
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
@@ -173,8 +171,17 @@ class TopPresenter(
      */
     private fun bindData(topCompanyInfo: TopCompanyInfo) {
 
-        setStatus(topCompanyInfo.anei, viewModel.aneiStatus, viewModel.aneiColor)
-        setStatus(topCompanyInfo.ykf, viewModel.ykfStatus, viewModel.ykfColor)
+        // 安栄観光
+        getStatusType(topCompanyInfo.anei).let { status ->
+            viewModel.aneiStatus.set(status.text)
+            viewModel.aneiBackground.set(getContext().getDrawableCompat(status.background))
+        }
+        // Ykf
+        getStatusType(topCompanyInfo.ykf).let { status ->
+            viewModel.ykfStatus.set(status.text)
+            viewModel.ykfBackground.set(getContext().getDrawableCompat(status.background))
+
+        }
     }
 
     /**
@@ -198,39 +205,13 @@ class TopPresenter(
         viewModel.weather.set(weather)
     }
 
-    /**
-     * ステータス値からTextViewの文字・色をセットする
-     *
-     * @param company
-     * @param statusText
-     * @param colorInt
-     */
-    private fun setStatus(company: TopCompanyInfo.TopCompany, statusText: ObservableField<String>, colorInt: ObservableInt) {
-        val status: String
-        val color: Int
-
-        when {
-            company.cancel > 0 -> {
-                status = "欠航あり"
-                color = ContextCompat.getColor(getContext(), R.color.status_cancel)
-            }
-            company.suspend > 0 -> {
-                status = "運休あり"
-                color = ContextCompat.getColor(getContext(), R.color.status_cancel)
-            }
-            company.cation > 0 -> {
-                status = "注意あり"
-                color = ContextCompat.getColor(getContext(), R.color.status_cation)
-            }
-            else -> {
-                status = "通常運行"
-                color = ContextCompat.getColor(getContext(), R.color.status_normal)
-            }
+    private fun getStatusType(company: TopCompanyInfo.TopCompany): StatusType {
+        return when {
+            company.cancel > 0 -> StatusType.CANCEL
+            company.suspend > 0 -> StatusType.SUSPEND
+            company.cation > 0 -> StatusType.CATION
+            else -> StatusType.NORMAL
         }
-        // ステータス文字
-        statusText.set(status)
-        // 文字色
-        colorInt.set(color)
     }
 
     fun getContext() = view!!.getContext()

@@ -42,7 +42,7 @@ public class StatusListAdapter extends ArrayAdapter<PortStatus> {
         portText.setText(portStatus.getPortName());
         statusText.setText(portStatus.getStatus().getText());
         // 背景色
-        statusText.setBackgroundColor(StatusHelper.INSTANCE.getStatusColor(portStatus.getStatus().getCode()));
+        statusText.setBackground(StatusHelper.getStatusColor(portStatus.getStatus().getCode()));
         // コメント
         if (TextUtils.isEmpty(portStatus.getComment())) {
             descriptionText.setVisibility(View.GONE);
