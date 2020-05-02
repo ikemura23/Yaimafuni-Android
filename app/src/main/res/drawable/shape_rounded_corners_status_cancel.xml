@@ -2,15 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle">
-            <corners
-                android:topRightRadius="4dp"
-                android:bottomRightRadius="4dp"
-                android:bottomLeftRadius="4dp"
-                android:topLeftRadius="4dp"
-                />
-            <solid
-                android:color="@color/status_cancel"
-                />
+            <corners android:bottomLeftRadius="4dp" android:bottomRightRadius="4dp" android:topLeftRadius="4dp" android:topRightRadius="4dp" />
+            <solid android:color="@color/status_cancel" />
         </shape>
     </item>
 </selector>

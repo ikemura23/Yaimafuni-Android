@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?><!--ヘッダー情報-->
 <LinearLayout
-    android:id="@+id/fragment_status_list_header"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_status_list_header"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/list_header"
@@ -15,8 +15,8 @@
         android:id="@+id/fragment_status_list_toolbar_title_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginBottom="4dp"
         android:lineSpacingExtra="2dp"
         android:textColor="@color/secondary_text"
         android:textSize="14sp"
