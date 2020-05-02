@@ -47,7 +47,7 @@ class StatusDetailEpoxyController(private val listener: StatusDetailClickListene
                 row(row)
             }
         }
-        
+
         viewSpace {
             id("space1")
         }

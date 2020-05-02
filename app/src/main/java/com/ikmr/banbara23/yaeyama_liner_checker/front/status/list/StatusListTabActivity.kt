@@ -2,7 +2,6 @@ package com.ikmr.banbara23.yaeyama_liner_checker.front.status.list
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseActivity

@@ -22,10 +22,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
         card_view:cardPreventCornerOverlap="false"
         card_view:layout_constraintLeft_toLeftOf="parent"
         card_view:layout_constraintRight_toRightOf="parent"
@@ -53,9 +53,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp"
                 android:text='@{"天気 ： " + data.weather}'
                 android:textColor="@color/secondary_text"
                 tools:text="天気 ： 晴れ"
@@ -64,10 +64,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
                 android:text="気温"
                 android:textColor="@color/secondary_text"
                 />
@@ -75,8 +75,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="32dp"
+                android:layout_marginBottom="4dp"
                 android:text='@{"最高 ： " + data.temperature.hight}'
                 android:textColor="@color/secondary_text"
                 tools:text="最高 ： 29℃"
@@ -85,8 +85,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="32dp"
+                android:layout_marginBottom="4dp"
                 android:text='@{"最低 ： " + data.temperature.low}'
                 android:textColor="@color/secondary_text"
                 tools:text="最低 ： 29℃"
@@ -95,10 +95,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
                 android:text='@{"風 ： " + data.wind}'
                 android:textColor="@color/secondary_text"
                 tools:text="風 ： 北東の風やや強く℃"
@@ -107,10 +107,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
                 android:text='@{"波 ： " + data.wave}'
                 android:textColor="@color/secondary_text"
                 tools:text="波 ： 3メートル"
@@ -119,8 +119,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:background="@color/dark_grey"
                 />
 
@@ -128,10 +128,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
                 android:text="3時間毎の天気"
                 android:textColor="@color/secondary_text"
                 />
@@ -139,10 +139,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
                 android:orientation="horizontal"
                 >
                 <!--先頭はタイトル-->

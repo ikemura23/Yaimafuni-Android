@@ -98,14 +98,14 @@ class ApiClient {
 
     fun getDetailInfo(company: Company, portCode: String): Flowable<StatusDetailRoot> {
         return Flowable.zip(
-                // ステータスのみ
-                getStatusDetail(company, portCode),
-                // 運行関連（走行時間、金額など）
-                getDetailLinerInfo(company, portCode),
-                // 時間別の運行ステータス
-                getTimeTable(company, portCode),
-                Function3(::StatusDetailRoot)
-            )
+            // ステータスのみ
+            getStatusDetail(company, portCode),
+            // 運行関連（走行時間、金額など）
+            getDetailLinerInfo(company, portCode),
+            // 時間別の運行ステータス
+            getTimeTable(company, portCode),
+            Function3(::StatusDetailRoot)
+        )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
