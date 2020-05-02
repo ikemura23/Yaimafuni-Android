@@ -171,9 +171,6 @@ class TopPresenter(
      */
     private fun bindData(topCompanyInfo: TopCompanyInfo) {
 
-        // setStatus(topCompanyInfo.anei, viewModel.aneiStatus, viewModel.aneiColor)
-        // setStatus(topCompanyInfo.ykf, viewModel.ykfStatus, viewModel.ykfColor)
-
         // 安栄観光
         getStatusType(topCompanyInfo.anei).let { status ->
             viewModel.aneiStatus.set(status.text)
@@ -207,41 +204,6 @@ class TopPresenter(
             weatherInfo.today.wave)
         viewModel.weather.set(weather)
     }
-
-    // /**
-    //  * ステータス値からTextViewの文字・色をセットする
-    //  *
-    //  * @param company
-    //  * @param statusText
-    //  * @param colorInt
-    //  */
-    // private fun setStatus(company: TopCompanyInfo.TopCompany, statusText: ObservableField<String>, colorInt: ObservableInt) {
-    //     val status: String
-    //     val color: Int
-    //
-    //     when {
-    //         company.cancel > 0 -> {
-    //             status = "欠航あり"
-    //             color = ContextCompat.getColor(getContext(), R.color.status_cancel)
-    //         }
-    //         company.suspend > 0 -> {
-    //             status = "運休あり"
-    //             color = ContextCompat.getColor(getContext(), R.color.status_cancel)
-    //         }
-    //         company.cation > 0 -> {
-    //             status = "注意あり"
-    //             color = ContextCompat.getColor(getContext(), R.color.status_cation)
-    //         }
-    //         else -> {
-    //             status = "通常運行"
-    //             color = ContextCompat.getColor(getContext(), R.color.status_normal)
-    //         }
-    //     }
-    //     // ステータス文字
-    //     statusText.set(status)
-    //     // 文字色
-    //     colorInt.set(color)
-    // }
 
     private fun getStatusType(company: TopCompanyInfo.TopCompany): StatusType {
         return when {
