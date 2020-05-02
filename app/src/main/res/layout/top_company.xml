@@ -57,6 +57,7 @@
                 android:text="会社別の運行情報"
                 android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@+id/icon"
+                app:layout_constraintTop_toTopOf="parent"
                 />
 
             <View
