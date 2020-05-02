@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso
 class TyphoonDetailFragment : androidx.fragment.app.Fragment() {
     private lateinit var binding: FragmentTyphoonDetailBinding
     private val typhoon: Typhoon
-        get() = arguments!!.getParcelable(Constants.BUNDLE_KEY_DETAIL) as Typhoon
+        get() = arguments?.getParcelable(Constants.BUNDLE_KEY_DETAIL) as? Typhoon ?: Typhoon()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
