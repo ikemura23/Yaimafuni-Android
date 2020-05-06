@@ -60,3 +60,5 @@ freeline_project_description.json
 .idea/misc.xml
 
 app/release
+
+/.idea/navEditor.xml
