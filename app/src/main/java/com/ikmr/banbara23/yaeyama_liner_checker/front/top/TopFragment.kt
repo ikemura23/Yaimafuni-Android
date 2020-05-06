@@ -14,7 +14,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabActivity
-import com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list.TyphoonListActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab.PortListTabActivity
 
@@ -58,7 +57,8 @@ class TopFragment : Fragment(), TopView {
 
     override fun navigateToTyphoon() {
         Log.d(TAG, "navigateToTyphoon")
-        startActivity(Intent(activity, TyphoonListActivity::class.java))
+        findNavController().navigate(R.id.action_topFragment_to_typhoonListFragment)
+        // startActivity(Intent(activity, TyphoonListActivity::class.java))
     }
 
     /**
