@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list.TyphoonListActivity
-import com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab.PortListTabActivity
 
@@ -53,7 +53,7 @@ class TopFragment : Fragment(), TopView {
      */
     override fun navigateToWeather() {
         Log.d(TAG, "navigateToWeather")
-        startActivity(Intent(activity, WeatherActivity::class.java))
+        findNavController().navigate(R.id.weatherFragment)
     }
 
     override fun navigateToTyphoon() {
