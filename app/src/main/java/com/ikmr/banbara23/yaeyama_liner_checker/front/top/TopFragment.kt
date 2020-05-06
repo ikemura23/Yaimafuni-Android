@@ -16,6 +16,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab.PortListTabActivity
+import timber.log.Timber
 
 class TopFragment : Fragment(), TopView {
 
@@ -51,14 +52,13 @@ class TopFragment : Fragment(), TopView {
      * 天気クリック
      */
     override fun navigateToWeather() {
-        Log.d(TAG, "navigateToWeather")
+        Timber.d("navigateToWeather")
         findNavController().navigate(R.id.action_topFragment_to_weatherFragment)
     }
 
     override fun navigateToTyphoon() {
-        Log.d(TAG, "navigateToTyphoon")
+        Timber.d("navigateToTyphoon")
         findNavController().navigate(R.id.action_topFragment_to_typhoonListFragment)
-        // startActivity(Intent(activity, TyphoonListActivity::class.java))
     }
 
     /**
