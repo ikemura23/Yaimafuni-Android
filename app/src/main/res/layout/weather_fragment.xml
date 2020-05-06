@@ -14,34 +14,64 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         >
 
-        <include
-            layout="@layout/weather_view"
-            app:data="@{viewModel.item.today}"
-            app:titleText='@{"今日"}'
-            />
-
-        <include
-            layout="@layout/weather_view"
-            app:data="@{viewModel.item.tomorrow}"
-            app:titleText='@{"明日"}'
-            />
-
-        <Button
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="8dp"
-            android:background="#F7A325"
-            android:onClick="@{() -> viewModel.moreButtonClick()}"
-            android:text="天気を詳しく見る"
-            android:textColor="@color/white"
-            />
+            android:layout_height="?attr/actionBarSize"
+            android:navigationIcon="@drawable/ic_keyboard_arrow_right_black_24dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="やいまふに"
+                android:textColor="@color/white"
+                android:textSize="@dimen/actionbar_text_size"
+                />
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <include
+                    layout="@layout/weather_view"
+                    app:data="@{viewModel.item.today}"
+                    app:titleText='@{"今日"}'
+                    />
+
+                <include
+                    layout="@layout/weather_view"
+                    app:data="@{viewModel.item.tomorrow}"
+                    app:titleText='@{"明日"}'
+                    />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#F7A325"
+                    android:onClick="@{() -> viewModel.moreButtonClick()}"
+                    android:text="天気を詳しく見る"
+                    android:textColor="@color/white"
+                    />
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
 </layout>
