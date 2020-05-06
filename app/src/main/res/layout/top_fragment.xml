@@ -16,69 +16,91 @@
             />
     </data>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        android:fillViewport="true"
-        android:overScrollMode="never"
+        android:orientation="vertical"
         >
 
-        <LinearLayout
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
+            android:layout_height="?attr/actionBarSize"
+            android:navigationIcon="@drawable/ic_keyboard_arrow_right_black_24dp"
             >
 
-            <!--港別-->
-            <include
-                layout="@layout/top_port"
-                app:presenter="@{presenter}"
-                app:showProgress="@{viewModel.showPortProgress}"
-                app:topPort="@{viewModel.topPort}"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="やいまふに"
+                android:textColor="@color/white"
+                android:textSize="@dimen/actionbar_text_size"
                 />
+        </androidx.appcompat.widget.Toolbar>
 
-            <androidx.legacy.widget.Space
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            >
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="16dp"
-                />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                >
 
-            <!--会社別-->
-            <include
-                layout="@layout/top_company"
-                app:presenter="@{presenter}"
-                app:viewModel="@{viewModel}"
-                />
+                <!--港別-->
+                <include
+                    layout="@layout/top_port"
+                    app:presenter="@{presenter}"
+                    app:showProgress="@{viewModel.showPortProgress}"
+                    app:topPort="@{viewModel.topPort}"
+                    />
 
-            <androidx.legacy.widget.Space
-                android:layout_width="match_parent"
-                android:layout_height="16dp"
-                />
+                <androidx.legacy.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    />
 
-            <!--天気-->
-            <include
-                layout="@layout/top_weather"
-                app:presenter="@{presenter}"
-                app:viewModel="@{viewModel}"
-                />
+                <!--会社別-->
+                <include
+                    layout="@layout/top_company"
+                    app:presenter="@{presenter}"
+                    app:viewModel="@{viewModel}"
+                    />
 
-            <androidx.legacy.widget.Space
-                android:layout_width="match_parent"
-                android:layout_height="16dp"
-                />
+                <androidx.legacy.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    />
 
-            <!--台風-->
-            <include
-                layout="@layout/top_typhoon"
-                app:presenter="@{presenter}"
-                app:viewModel="@{viewModel}"
-                />
+                <!--天気-->
+                <include
+                    layout="@layout/top_weather"
+                    app:presenter="@{presenter}"
+                    app:viewModel="@{viewModel}"
+                    />
 
-            <androidx.legacy.widget.Space
-                android:layout_width="match_parent"
-                android:layout_height="38dp"
-                />
-        </LinearLayout>
-    </ScrollView>
+                <androidx.legacy.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    />
+
+                <!--台風-->
+                <include
+                    layout="@layout/top_typhoon"
+                    app:presenter="@{presenter}"
+                    app:viewModel="@{viewModel}"
+                    />
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </layout>
