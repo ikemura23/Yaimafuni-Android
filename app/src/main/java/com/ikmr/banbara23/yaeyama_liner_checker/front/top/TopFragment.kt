@@ -53,7 +53,7 @@ class TopFragment : Fragment(), TopView {
      */
     override fun navigateToWeather() {
         Log.d(TAG, "navigateToWeather")
-        findNavController().navigate(R.id.weatherFragment)
+        findNavController().navigate(R.id.action_topFragment_to_weatherFragment)
     }
 
     override fun navigateToTyphoon() {
