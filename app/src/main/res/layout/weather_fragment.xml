@@ -19,15 +19,17 @@
         >
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/title_bar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:navigationIcon="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:background="@android:color/transparent"
+            app:navigationIcon="@drawable/ic_arrow_back"
             >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="やいまふに"
+                android:text="八重山の天気"
                 android:textColor="@color/white"
                 android:textSize="@dimen/actionbar_text_size"
                 />

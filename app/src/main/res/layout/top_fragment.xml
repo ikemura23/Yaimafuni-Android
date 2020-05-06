@@ -25,7 +25,6 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:navigationIcon="@drawable/ic_keyboard_arrow_right_black_24dp"
             >
 
             <TextView
@@ -40,7 +39,6 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
             android:fillViewport="true"
             android:overScrollMode="never"
             >
