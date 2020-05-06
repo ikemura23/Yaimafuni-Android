@@ -3,6 +3,61 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/topFragment"
     >
 
+    <fragment
+        android:id="@+id/topFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopFragment"
+        android:label="TopFragment"
+        >
+        <action
+            android:id="@+id/action_topFragment_to_statusListTabFragment"
+            app:destination="@id/statusListTabFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            />
+        <action
+            android:id="@+id/action_topFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment"
+            />
+        <action
+            android:id="@+id/action_topFragment_to_typhoonListFragment"
+            app:destination="@id/typhoonListFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/statusListTabFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabFragment"
+        android:label="StatusListTabFragment"
+        >
+        <action
+            android:id="@+id/action_statusListTabFragment_to_portStatusDetailFragment"
+            app:destination="@id/portStatusDetailFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherFragment"
+        android:label="WeatherFragment"
+        />
+    <fragment
+        android:id="@+id/typhoonListFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list.TyphoonListFragment"
+        android:label="TyphoonListFragment"
+        >
+        <action
+            android:id="@+id/action_typhoonListFragment_to_typhoonDetailFragment"
+            app:destination="@id/typhoonDetailFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/typhoonDetailFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.detail.TyphoonDetailFragment"
+        android:label="TyphoonDetailFragment"
+        />
+    <fragment
+        android:id="@+id/portStatusDetailFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailFragment"
+        android:label="PortStatusDetailFragment"
+        />
 </navigation>
