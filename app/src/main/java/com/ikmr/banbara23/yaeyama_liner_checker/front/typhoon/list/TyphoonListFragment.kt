@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
@@ -30,17 +31,17 @@ class TyphoonListFragment : Fragment(),
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.typhoon_list_fragment, container, false)
-        binding.includeTitleBar.titleBar.setNavigationOnClickListener { activity?.finish() }
-        binding.list.adapter =
-            TyphoonRecyclerViewAdapter(
-                listOf(),
-                this
-            )
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.toolBar.setNavigationOnClickListener { findNavController().navigateUp() }
+        binding.list.adapter =
+            TyphoonRecyclerViewAdapter(
+                listOf(),
+                this
+            )
         fetchTyphoon()
     }
 
