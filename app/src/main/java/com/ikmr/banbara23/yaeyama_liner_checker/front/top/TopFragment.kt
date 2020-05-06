@@ -13,7 +13,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopFragmentBinding
-import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab.PortListTabActivity
 import timber.log.Timber
@@ -66,9 +65,12 @@ class TopFragment : Fragment(), TopView {
      */
     override fun navigateToCompanyStatusList(company: Company) {
         Log.d(TAG, "navigateToCompanyStatusList:" + company.getName())
-        val intent = Intent(activity, StatusListTabActivity::class.java)
-        intent.putExtra(StatusListTabActivity::class.java.canonicalName, company)
-        startActivity(intent)
+        TopFragmentDirections.actionTopFragmentToStatusListTabFragment(company).let {
+            findNavController().navigate(it)
+        }
+        // val intent = Intent(activity, StatusListTabActivity::class.java)
+        // intent.putExtra(StatusListTabActivity::class.java.canonicalName, company)
+        // startActivity(intent)
     }
 
     /**

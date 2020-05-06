@@ -14,6 +14,10 @@
         <action
             android:id="@+id/action_topFragment_to_statusListTabFragment"
             app:destination="@id/statusListTabFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
             />
         <action
             android:id="@+id/action_topFragment_to_weatherFragment"
@@ -40,6 +44,10 @@
         <action
             android:id="@+id/action_statusListTabFragment_to_portStatusDetailFragment"
             app:destination="@id/portStatusDetailFragment"
+            />
+        <argument
+            android:name="company"
+            app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Company"
             />
     </fragment>
     <fragment

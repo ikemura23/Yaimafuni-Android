@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
@@ -54,6 +57,12 @@ public class StatusListTabFragment extends BaseListFragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         startQuery();
@@ -92,7 +101,7 @@ public class StatusListTabFragment extends BaseListFragment {
      * @return
      */
     private Company getCompany() {
-        return (Company) getArguments().get(StatusListTabFragment.class.getCanonicalName());
+        return StatusListTabFragmentArgs.fromBundle(getArguments()).getCompany();
     }
 
     private void startQuery() {
