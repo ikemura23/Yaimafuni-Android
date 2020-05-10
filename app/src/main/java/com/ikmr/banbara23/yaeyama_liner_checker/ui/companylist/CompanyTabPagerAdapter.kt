@@ -1,20 +1,17 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.companylist
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
+import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabFragment
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
-import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailFragment
 
 /**
- * 港別の運行一覧 PagerAdapter
+ * 会社一覧タブ PagerAdapter
  */
-class PortPagerAdapter(
+class CompanyTabPagerAdapter(
     fm: FragmentManager,
-    private val tabCount: Int,
-    private val portCode: String
+    private var tabCount: Int
 ) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getItem(position: Int): Fragment {
@@ -23,12 +20,7 @@ class PortPagerAdapter(
             1 -> Company.YKF
             else -> Company.ANEI
         }
-        val bundle = Bundle().apply {
-            putString(Constants.BUNDLE_KEY_PORT_CODE, portCode)
-            putSerializable(Constants.BUNDLE_KEY_COMPANY, company)
-        }
-
-        return PortStatusDetailFragment.newInstance(bundle)
+        return StatusListTabFragment.NewInstance(company)
     }
 
     override fun getPageTitle(position: Int): String {

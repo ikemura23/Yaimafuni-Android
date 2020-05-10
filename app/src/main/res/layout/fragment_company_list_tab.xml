@@ -24,7 +24,6 @@
             android:layout_height="wrap_content"
             android:elevation="6dp"
             android:minHeight="?attr/actionBarSize"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:tabIndicatorColor="@color/orange3"
             app:tabIndicatorHeight="4dp"
             app:tabTextColor="@color/white"

@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.FragmentCompanyListTabBinding
-import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.PagerAdapter
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 
 class CompanyListTabFragment : Fragment() {
@@ -36,11 +35,15 @@ class CompanyListTabFragment : Fragment() {
      * タブの生成
      */
     private fun setupTab() {
-        binding.tabViewPager.adapter =
-            PagerAdapter(
-                childFragmentManager,
-                binding.tabLayout.tabCount
-            )
+        binding.tabViewPager.adapter = CompanyTabPagerAdapter(
+            childFragmentManager,
+            binding.tabLayout.tabCount
+        )
         binding.tabLayout.setupWithViewPager(binding.tabViewPager)
+        // 初期選択タブの設定
+        when (company) {
+            Company.ANEI -> binding.tabViewPager.currentItem = 0
+            Company.YKF -> binding.tabViewPager.currentItem = 1
+        }
     }
 }
