@@ -48,13 +48,16 @@ class TopFragment : Fragment(), TopView {
     }
 
     /**
-     * 天気クリック
+     * 天気に遷移
      */
     override fun navigateToWeather() {
         Timber.d("navigateToWeather")
         findNavController().navigate(R.id.action_topFragment_to_weatherFragment)
     }
 
+    /**
+     *　台風に遷移
+     */
     override fun navigateToTyphoon() {
         Timber.d("navigateToTyphoon")
         findNavController().navigate(R.id.action_topFragment_to_typhoonListFragment)
