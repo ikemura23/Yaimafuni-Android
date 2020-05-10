@@ -9,13 +9,13 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailFragment
 
 /**
- * PagerAdapter
+ * 港別の運行一覧 PagerAdapter
  */
 class PortPagerAdapter(
     fm: FragmentManager,
     private val tabCount: Int,
     private val portCode: String
-) : FragmentStatePagerAdapter(fm) {
+) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getItem(position: Int): Fragment {
         val company = when (position) {

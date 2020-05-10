@@ -4,47 +4,54 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.ikmr.banbara23.yaeyama_liner_checker.databinding.FragmentPortListTabBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab.PortPagerAdapter
 
 /**
- * A simple [Fragment] subclass.
- * Use the [PortListTabFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * 港別の運行一覧
  */
 class PortListTabFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private lateinit var binding: FragmentPortListTabBinding
+    private val portCode: String by lazy {
+        PortListTabFragmentArgs.fromBundle(requireArguments()).portCode
+    }
+    private val portName: String by lazy {
+        PortListTabFragmentArgs.fromBundle(requireArguments()).portName
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_port_list_tab, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_port_list_tab, container, false)
+        return binding.root
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PortListTabFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.title = portName
+        binding.includeTitleBar.titleBar.setNavigationOnClickListener { findNavController().navigateUp() }
+        setupTab()
+    }
+
+    /**
+     * タブの生成
+     */
+    private fun setupTab() {
+        // 波照間航路は八重山観光フェリーがないので、八重山観光フェリータブを消して安栄タブのみにする
+        if (portCode == "hateruma") {
+            binding.tabLayout.removeTabAt(1)
+        }
+        binding.portViewPager.adapter =
+            PortPagerAdapter(
+                childFragmentManager,
+                binding.tabLayout.tabCount,
+                portCode
+            )
+        binding.tabLayout.setupWithViewPager(binding.portViewPager)
     }
 }
