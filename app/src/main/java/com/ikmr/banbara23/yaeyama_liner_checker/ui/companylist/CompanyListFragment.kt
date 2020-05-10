@@ -13,6 +13,9 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.CompanyListFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
+import com.ikmr.banbara23.yaeyama_liner_checker.model.CompanyStatus
+import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus
+import timber.log.Timber
 
 class CompanyListFragment : Fragment() {
 
@@ -39,9 +42,19 @@ class CompanyListFragment : Fragment() {
         binding.recyclerView.setController(epoxyController)
         // ViewModel
         viewModel.companyStatus.observe(viewLifecycleOwner, Observer {
-            epoxyController.setData(it)
+            val uiData = CompanyListUIData(
+                comment = it.comment,
+                updateTime = it.updateTime,
+                list = convertToList(it),
+                onClickHandler = ::onItemClicked
+            )
+            epoxyController.setData(uiData)
         })
         viewModel.load(company)
+    }
+
+    private fun onItemClicked(portStatus: PortStatus) {
+        Timber.d(portStatus.toString())
     }
 
     companion object {
@@ -49,4 +62,31 @@ class CompanyListFragment : Fragment() {
             arguments = bundleOf(Constants.BUNDLE_KEY_COMPANY to company)
         }
     }
+
+    /**
+     * 運行情報を配列にする
+     */
+    private fun convertToList(companyStatus: CompanyStatus): List<PortStatus> {
+        val list = arrayListOf<PortStatus>(
+            companyStatus.taketomi,
+            companyStatus.kohama,
+            companyStatus.kuroshima,
+            companyStatus.oohara,
+            companyStatus.uehara
+        )
+        return list.also {
+            companyStatus.hateruma?.let { hateruma ->
+                it.add(hateruma)
+            }
+        }.toList()
+    }
 }
+
+typealias OnClickHandler = (portStatus: PortStatus) -> Unit
+
+data class CompanyListUIData(
+    val comment: String,
+    val updateTime: String,
+    val list: List<PortStatus>,
+    val onClickHandler: OnClickHandler
+)
