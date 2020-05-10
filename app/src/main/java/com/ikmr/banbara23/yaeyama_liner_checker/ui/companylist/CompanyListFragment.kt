@@ -43,8 +43,8 @@ class CompanyListFragment : Fragment() {
         // ViewModel
         viewModel.companyStatus.observe(viewLifecycleOwner, Observer {
             val uiData = CompanyListUIData(
-                comment = it.comment,
-                updateTime = it.updateTime,
+                comment = it.comment ?: "",
+                updateTime = it.updateTime ?: "",
                 list = convertToList(it),
                 onClickHandler = ::onItemClicked
             )

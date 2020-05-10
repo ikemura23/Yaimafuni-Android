@@ -15,6 +15,10 @@ class CompanyListEpoxyController : TypedEpoxyController<CompanyListUIData>() {
         }
         // 運行情報一覧
         data.list.forEach { portStatus ->
+            // 区切り線
+            rowDelimiter {
+                id("row")
+            }
             // 運行情報
             fragmentLinerListView {
                 id(portStatus.hashCode())
@@ -24,10 +28,10 @@ class CompanyListEpoxyController : TypedEpoxyController<CompanyListUIData>() {
                     data.onClickHandler(model.portStatus())
                 }
             }
-            // 区切り線
-            rowDelimiter {
-                id("row")
-            }
+        }
+        // 区切り線
+        rowDelimiter {
+            id("row_last")
         }
     }
 }
