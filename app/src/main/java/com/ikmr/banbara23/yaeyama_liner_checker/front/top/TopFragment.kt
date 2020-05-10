@@ -63,9 +63,9 @@ class TopFragment : Fragment(), TopView {
      */
     override fun navigateToCompanyStatusList(company: Company) {
         Timber.d("navigateToCompanyStatusList:%s", company.getName())
-        TopFragmentDirections.actionTopFragmentToStatusListTabFragment(company).let {
-            findNavController().navigate(it)
-        }
+        findNavController().navigate(
+            TopFragmentDirections.actionTopFragmentToCompanyListTabFragment(company)
+        )
     }
 
     /**
@@ -76,10 +76,6 @@ class TopFragment : Fragment(), TopView {
         findNavController().navigate(
             TopFragmentDirections.actionTopFragmentToPortListTabFragment(portName, portCode)
         )
-        // val intent = Intent(activity, PortListTabActivity::class.java)
-        // intent.putExtra(Constants.BUNDLE_KEY_PORT_NAME, portName)
-        // intent.putExtra(Constants.BUNDLE_KEY_PORT_CODE, portCode)
-        // startActivity(intent)
     }
 
     override fun getContext() = requireActivity()

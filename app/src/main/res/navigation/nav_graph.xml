@@ -13,14 +13,6 @@
         android:label="TopFragment"
         >
         <action
-            android:id="@+id/action_topFragment_to_statusListTabFragment"
-            app:destination="@id/statusListTabFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right"
-            />
-        <action
             android:id="@+id/action_topFragment_to_weatherFragment"
             app:destination="@id/weatherFragment"
             app:enterAnim="@anim/slide_in_right"
@@ -44,19 +36,13 @@
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right"
             />
-    </fragment>
-    <fragment
-        android:id="@+id/statusListTabFragment"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabFragment"
-        android:label="StatusListTabFragment"
-        >
         <action
-            android:id="@+id/action_statusListTabFragment_to_portStatusDetailFragment"
-            app:destination="@id/portStatusDetailFragment"
-            />
-        <argument
-            android:name="company"
-            app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Company"
+            android:id="@+id/action_topFragment_to_companyListTabFragment"
+            app:destination="@id/companyListTabFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
             />
     </fragment>
     <fragment
@@ -97,5 +83,15 @@
         >
         <argument android:name="portName" />
         <argument android:name="portCode" />
+    </fragment>
+    <fragment
+        android:id="@+id/companyListTabFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.companylist.CompanyListTabFragment"
+        android:label="CompanyListTabFragment"
+        >
+        <argument
+            android:name="company"
+            app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Company"
+            />
     </fragment>
 </navigation>

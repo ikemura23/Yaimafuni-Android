@@ -11,11 +11,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.ListFragment;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants;
-import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseListFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.CompanyStatus;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus;
@@ -31,7 +31,7 @@ import io.reactivex.subscribers.ResourceSubscriber;
 /**
  * 一覧タブListFragment
  */
-public class StatusListTabFragment extends BaseListFragment {
+public class StatusListTabFragment extends ListFragment {
 
     private static final String TAG = StatusListTabFragment.class.getSimpleName();
     StatusListAdapter mListAdapter;
@@ -101,7 +101,7 @@ public class StatusListTabFragment extends BaseListFragment {
      * @return
      */
     private Company getCompany() {
-        return StatusListTabFragmentArgs.fromBundle(getArguments()).getCompany();
+        return (Company) getArguments().get(StatusListTabFragment.class.getCanonicalName());
     }
 
     private void startQuery() {
