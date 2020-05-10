@@ -2,6 +2,7 @@
 <navigation
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
     app:startDestination="@id/topFragment"
     >
@@ -34,6 +35,10 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_topFragment_to_portListTabFragment"
+            app:destination="@id/portListTabFragment"
             />
     </fragment>
     <fragment
@@ -80,4 +85,13 @@
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailFragment"
         android:label="PortStatusDetailFragment"
         />
+    <fragment
+        android:id="@+id/portListTabFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portlist.PortListTabFragment"
+        android:label="fragment_port_list_tab"
+        tools:layout="@layout/fragment_port_list_tab"
+        >
+        <argument android:name="portName" />
+        <argument android:name="portCode" />
+    </fragment>
 </navigation>

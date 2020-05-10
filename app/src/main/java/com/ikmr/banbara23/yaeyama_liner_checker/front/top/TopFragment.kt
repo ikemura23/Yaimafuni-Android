@@ -1,6 +1,5 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
-import com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab.PortListTabActivity
 import timber.log.Timber
 
 class TopFragment : Fragment(), TopView {
@@ -75,11 +72,14 @@ class TopFragment : Fragment(), TopView {
      * 港別ステータス クリック
      */
     override fun navigateToPortStatusList(portName: String, portCode: String) {
-        Timber.d("navigateToPortStatusList:$portName")
-        val intent = Intent(activity, PortListTabActivity::class.java)
-        intent.putExtra(Constants.BUNDLE_KEY_PORT_NAME, portName)
-        intent.putExtra(Constants.BUNDLE_KEY_PORT_CODE, portCode)
-        startActivity(intent)
+        Timber.d("navigateToPortStatusList:$portName $portCode")
+        findNavController().navigate(
+            TopFragmentDirections.actionTopFragmentToPortListTabFragment(portName, portCode)
+        )
+        // val intent = Intent(activity, PortListTabActivity::class.java)
+        // intent.putExtra(Constants.BUNDLE_KEY_PORT_NAME, portName)
+        // intent.putExtra(Constants.BUNDLE_KEY_PORT_CODE, portCode)
+        // startActivity(intent)
     }
 
     override fun getContext() = requireActivity()
