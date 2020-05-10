@@ -2,7 +2,6 @@ package com.ikmr.banbara23.yaeyama_liner_checker.front.top
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
-import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab.PortListTabActivity
@@ -67,20 +65,17 @@ class TopFragment : Fragment(), TopView {
      * 会社別ステータス クリック
      */
     override fun navigateToCompanyStatusList(company: Company) {
-        Log.d(TAG, "navigateToCompanyStatusList:" + company.getName())
+        Timber.d("navigateToCompanyStatusList:%s", company.getName())
         TopFragmentDirections.actionTopFragmentToStatusListTabFragment(company).let {
             findNavController().navigate(it)
         }
-        // val intent = Intent(activity, StatusListTabActivity::class.java)
-        // intent.putExtra(StatusListTabActivity::class.java.canonicalName, company)
-        // startActivity(intent)
     }
 
     /**
      * 港別ステータス クリック
      */
     override fun navigateToPortStatusList(portName: String, portCode: String) {
-        Log.d(TAG, "navigateToPortStatusList:$portName")
+        Timber.d("navigateToPortStatusList:$portName")
         val intent = Intent(activity, PortListTabActivity::class.java)
         intent.putExtra(Constants.BUNDLE_KEY_PORT_NAME, portName)
         intent.putExtra(Constants.BUNDLE_KEY_PORT_CODE, portCode)
@@ -88,12 +83,4 @@ class TopFragment : Fragment(), TopView {
     }
 
     override fun getContext() = requireActivity()
-
-    companion object {
-        private val TAG = BaseFragment::class.java.simpleName
-
-        fun newInstance(): Fragment {
-            return TopFragment()
-        }
-    }
 }
