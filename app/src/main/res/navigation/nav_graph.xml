@@ -74,7 +74,20 @@
         android:id="@+id/portStatusDetailFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailFragment"
         android:label="PortStatusDetailFragment"
-        />
+        >
+        <argument
+            android:name="company"
+            app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Company"
+            />
+        <argument
+            android:name="portCode"
+            app:argType="string"
+            />
+        <argument
+            android:name="portName"
+            app:argType="string"
+            />
+    </fragment>
     <fragment
         android:id="@+id/portListTabFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portlist.PortListTabFragment"
@@ -83,6 +96,10 @@
         >
         <argument android:name="portName" />
         <argument android:name="portCode" />
+        <action
+            android:id="@+id/action_portListTabFragment_to_portStatusDetailFragment"
+            app:destination="@id/portStatusDetailFragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/companyListTabFragment"
@@ -93,5 +110,14 @@
             android:name="company"
             app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Company"
             />
+        <action
+            android:id="@+id/action_companyListTabFragment_to_companyListFragment"
+            app:destination="@id/companyListFragment"
+            />
     </fragment>
+    <fragment
+        android:id="@+id/companyListFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.companylist.CompanyListFragment"
+        android:label="CompanyListFragment"
+        />
 </navigation>
