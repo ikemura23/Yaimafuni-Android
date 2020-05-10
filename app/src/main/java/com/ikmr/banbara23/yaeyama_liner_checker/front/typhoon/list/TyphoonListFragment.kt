@@ -1,6 +1,5 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,12 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
-import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonListFragmentBinding
-import com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.detail.TyphoonDetailActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subscribers.ResourceSubscriber
+import timber.log.Timber
 
 class TyphoonListFragment : Fragment(),
     OnTyphoonDetailFragmentInteractionListener {
@@ -85,10 +83,11 @@ class TyphoonListFragment : Fragment(),
     }
 
     override fun onListFragmentInteraction(item: Typhoon?) {
-        val intent = Intent(context, TyphoonDetailActivity::class.java).apply {
-            putExtra(Constants.BUNDLE_KEY_DETAIL, item)
+        item ?: return
+        Timber.d(item.toString())
+        TyphoonListFragmentDirections.actionTyphoonListFragmentToTyphoonDetailFragment(item).let {
+            findNavController().navigate(it)
         }
-        requireActivity().startActivity(intent)
     }
 }
 

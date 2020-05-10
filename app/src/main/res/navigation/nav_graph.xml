@@ -69,7 +69,12 @@
         android:id="@+id/typhoonDetailFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.detail.TyphoonDetailFragment"
         android:label="TyphoonDetailFragment"
-        />
+        >
+        <argument
+            android:name="typhoon"
+            app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon"
+            />
+    </fragment>
     <fragment
         android:id="@+id/portStatusDetailFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailFragment"
