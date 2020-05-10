@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.CompanyListFragmentBinding
@@ -15,7 +16,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 
 class CompanyListFragment : Fragment() {
 
-    private lateinit var viewModel: CompanyListViewModel
+    private val viewModel by viewModels<CompanyListViewModel>()
     private lateinit var epoxyController: CompanyListEpoxyController
     private lateinit var binding: CompanyListFragmentBinding
     private val company: Company by lazy {
@@ -27,14 +28,20 @@ class CompanyListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.company_list_fragment, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Epoxy
         epoxyController = CompanyListEpoxyController()
         binding.recyclerView.setController(epoxyController)
-        viewModel = ViewModelProviders.of(this).get(CompanyListViewModel::class.java)
+        // ViewModel
+        viewModel.companyStatus.observe(viewLifecycleOwner, Observer {
+            epoxyController.setData(it)
+        })
+        viewModel.load(company)
     }
 
     companion object {
