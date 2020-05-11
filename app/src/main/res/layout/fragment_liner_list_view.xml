@@ -26,10 +26,11 @@
         <import type="android.view.View" />
     </data>
 
-    <FrameLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
+        android:background="@color/white"
+        android:checkable="true"
         android:clickable="true"
         android:focusable="true"
         android:onClick="@{onItemViewClick}"
@@ -38,7 +39,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:paddingLeft="16dp"
             android:paddingTop="2dp"
             android:paddingRight="16dp"
@@ -103,5 +103,5 @@
                 tools:text="一部欠航便有り"
                 />
         </RelativeLayout>
-    </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

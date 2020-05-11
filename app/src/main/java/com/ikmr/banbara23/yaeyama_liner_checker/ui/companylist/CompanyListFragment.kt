@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.CompanyListFragmentBinding
@@ -32,6 +33,7 @@ class CompanyListFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.company_list_fragment, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
+        Timber.d(company.toString())
         return binding.root
     }
 
@@ -54,7 +56,20 @@ class CompanyListFragment : Fragment() {
     }
 
     private fun onItemClicked(portStatus: PortStatus) {
+        Timber.d(company.toString())
         Timber.d(portStatus.toString())
+        val bundle = bundleOf(
+            Constants.BUNDLE_KEY_COMPANY to company,
+            Constants.BUNDLE_KEY_PORT_CODE to portStatus.portCode
+        )
+
+        findNavController().navigate(
+            CompanyListTabFragmentDirections.actionCompanyListTabFragmentToPortStatusDetailFragment(
+                company = company,
+                portCode = portStatus.portCode,
+                portName = portStatus.portName
+            )
+        )
     }
 
     companion object {
