@@ -34,7 +34,6 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.portstatusdetail.PortStatusDetailActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
