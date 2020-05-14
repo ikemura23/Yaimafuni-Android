@@ -21,7 +21,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
-        <activity android:name=".front.typhoon.detail.TyphoonDetailActivity"></activity>
         <activity android:name=".front.typhoon.list.TyphoonListActivity" />
         <activity
             android:name=".front.top.TopActivity"
