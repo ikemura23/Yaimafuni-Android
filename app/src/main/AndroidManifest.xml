@@ -35,10 +35,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".front.info.InfoActivity"
-            android:label="@string/title_activity_other"
-            />
-        <activity
             android:name=".front.setting.SettingActivity"
             android:label="@string/title_activity_setting"
             />
