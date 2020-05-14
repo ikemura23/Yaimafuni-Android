@@ -111,8 +111,26 @@
             app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Company"
             />
         <action
-            android:id="@+id/action_companyListTabFragment_to_portStatusDetailFragment"
-            app:destination="@id/portStatusDetailFragment"
+            android:id="@+id/action_companyListTabFragment_to_companyDetailFragment"
+            app:destination="@id/companyDetailFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/companyDetailFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.companydetail.CompanyDetailFragment"
+        android:label="CompanyDetailFragment"
+        >
+        <argument
+            android:name="company"
+            app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Company"
+            />
+        <argument
+            android:name="portCode"
+            app:argType="string"
+            />
+        <argument
+            android:name="portName"
+            app:argType="string"
             />
     </fragment>
 </navigation>

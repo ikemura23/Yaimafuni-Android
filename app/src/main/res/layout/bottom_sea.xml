@@ -10,18 +10,10 @@
         android:orientation="vertical"
         >
 
-        <androidx.legacy.widget.Space
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="38dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="8dp"
             android:background="#007AB7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

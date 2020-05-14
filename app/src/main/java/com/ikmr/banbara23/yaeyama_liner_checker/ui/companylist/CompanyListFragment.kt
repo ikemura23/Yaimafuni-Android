@@ -64,7 +64,7 @@ class CompanyListFragment : Fragment() {
         )
 
         findNavController().navigate(
-            CompanyListTabFragmentDirections.actionCompanyListTabFragmentToPortStatusDetailFragment(
+            CompanyListTabFragmentDirections.actionCompanyListTabFragmentToCompanyDetailFragment(
                 company = company,
                 portCode = portStatus.portCode,
                 portName = portStatus.portName
