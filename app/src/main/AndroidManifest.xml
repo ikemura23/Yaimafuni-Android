@@ -34,10 +34,6 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".front.setting.SettingActivity"
-            android:label="@string/title_activity_setting"
-            />
         <activity android:name=".ui.portstatusdetail.PortStatusDetailActivity" />
         <activity
             android:name=".front.weather.WeatherActivity"
