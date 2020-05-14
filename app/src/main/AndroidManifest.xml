@@ -35,10 +35,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.portstatusdetail.PortStatusDetailActivity" />
-        <activity
-            android:name=".ui.portlisttab.PortListTabActivity"
-            android:label="@string/title_activity_port"
-            />
 
         <meta-data
             android:name="io.fabric.ApiKey"
