@@ -14,15 +14,13 @@
 
     <application
         android:name=".core.ApplicationController"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
-        <activity android:name=".front.typhoon.detail.TyphoonDetailActivity"></activity>
-        <activity android:name=".front.typhoon.list.TyphoonListActivity" />
         <activity
             android:name=".front.top.TopActivity"
             android:label="@string/app_name"
@@ -36,28 +34,6 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".front.status.list.StatusListTabActivity"
-            android:label="@string/title_activity_status_list"
-            />
-        <activity
-            android:name=".front.info.InfoActivity"
-            android:label="@string/title_activity_other"
-            />
-        <activity
-            android:name=".front.setting.SettingActivity"
-            android:label="@string/title_activity_setting"
-            />
-        <activity android:name=".ui.portstatusdetail.PortStatusDetailActivity" />
-        <activity
-            android:name=".front.weather.WeatherActivity"
-            android:label="@string/title_activity_weather"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity
-            android:name=".ui.portlisttab.PortListTabActivity"
-            android:label="@string/title_activity_port"
-            />
 
         <meta-data
             android:name="io.fabric.ApiKey"

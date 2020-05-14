@@ -1,36 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?><!--ヘッダー情報-->
-<LinearLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_status_list_header"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/list_header"
-    android:orientation="vertical"
-    android:padding="8dp"
     >
 
-    <!--タイトル-->
-    <TextView
-        android:id="@+id/fragment_status_list_toolbar_title_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="4dp"
-        android:lineSpacingExtra="2dp"
-        android:textColor="@color/secondary_text"
-        android:textSize="14sp"
-        tools:text="title"
-        />
+    <data>
 
-    <!--更新時刻-->
-    <TextView
-        android:id="@+id/fragment_status_list_toolbar_update_text"
+        <variable
+            name="title"
+            type="String"
+            />
+
+        <variable
+            name="updateTime"
+            type="String"
+            />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/fragment_status_list_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:textColor="@color/text_description"
-        android:textSize="14sp"
-        tools:text="yyyy/MM/dd hh:mm:ss更新"
-        />
-</LinearLayout>
+        android:background="@color/list_header"
+        android:orientation="vertical"
+        android:padding="8dp"
+        >
+
+        <!--タイトル-->
+        <TextView
+            android:id="@+id/fragment_status_list_toolbar_title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="4dp"
+            android:lineSpacingExtra="2dp"
+            android:text="@{title}"
+            android:textColor="@color/secondary_text"
+            android:textSize="14sp"
+            tools:text="title"
+            />
+
+        <!--更新時刻-->
+        <TextView
+            android:id="@+id/fragment_status_list_toolbar_update_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="@{updateTime}"
+            android:textColor="@color/text_description"
+            android:textSize="14sp"
+            tools:text="yyyy/MM/dd hh:mm:ss更新"
+            />
+    </LinearLayout>
+</layout>

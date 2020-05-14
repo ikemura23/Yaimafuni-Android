@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBinding
@@ -34,6 +35,7 @@ class WeatherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.titleBar.setNavigationOnClickListener { findNavController().navigateUp() }
         setupViewModel()
         viewModel.load()
     }

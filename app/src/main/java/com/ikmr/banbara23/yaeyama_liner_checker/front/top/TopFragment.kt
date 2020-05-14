@@ -1,22 +1,16 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
-import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseFragment
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopFragmentBinding
-import com.ikmr.banbara23.yaeyama_liner_checker.front.status.list.StatusListTabActivity
-import com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list.TyphoonListActivity
-import com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
-import com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab.PortListTabActivity
+import timber.log.Timber
 
 class TopFragment : Fragment(), TopView {
 
@@ -49,46 +43,40 @@ class TopFragment : Fragment(), TopView {
     }
 
     /**
-     * 天気クリック
+     * 天気に遷移
      */
     override fun navigateToWeather() {
-        Log.d(TAG, "navigateToWeather")
-        startActivity(Intent(activity, WeatherActivity::class.java))
+        Timber.d("navigateToWeather")
+        findNavController().navigate(R.id.action_topFragment_to_weatherFragment)
     }
 
+    /**
+     *　台風に遷移
+     */
     override fun navigateToTyphoon() {
-        Log.d(TAG, "navigateToTyphoon")
-        startActivity(Intent(activity, TyphoonListActivity::class.java))
+        Timber.d("navigateToTyphoon")
+        findNavController().navigate(R.id.action_topFragment_to_typhoonListFragment)
     }
 
     /**
      * 会社別ステータス クリック
      */
     override fun navigateToCompanyStatusList(company: Company) {
-        Log.d(TAG, "navigateToCompanyStatusList:" + company.getName())
-        val intent = Intent(activity, StatusListTabActivity::class.java)
-        intent.putExtra(StatusListTabActivity::class.java.canonicalName, company)
-        startActivity(intent)
+        Timber.d("navigateToCompanyStatusList:%s", company.getName())
+        findNavController().navigate(
+            TopFragmentDirections.actionTopFragmentToCompanyListTabFragment(company)
+        )
     }
 
     /**
      * 港別ステータス クリック
      */
     override fun navigateToPortStatusList(portName: String, portCode: String) {
-        Log.d(TAG, "navigateToPortStatusList:$portName")
-        val intent = Intent(activity, PortListTabActivity::class.java)
-        intent.putExtra(Constants.BUNDLE_KEY_PORT_NAME, portName)
-        intent.putExtra(Constants.BUNDLE_KEY_PORT_CODE, portCode)
-        startActivity(intent)
+        Timber.d("navigateToPortStatusList:$portName $portCode")
+        findNavController().navigate(
+            TopFragmentDirections.actionTopFragmentToPortListTabFragment(portName, portCode)
+        )
     }
 
     override fun getContext() = requireActivity()
-
-    companion object {
-        private val TAG = BaseFragment::class.java.simpleName
-
-        fun newInstance(): Fragment {
-            return TopFragment()
-        }
-    }
 }
