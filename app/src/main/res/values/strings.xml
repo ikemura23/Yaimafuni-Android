@@ -1,27 +1,8 @@
 <resources>
     <string name="app_name">やいまふに</string>
-    <!--アプリ情報-->
-    <string name="title_activity_status_list">運航状況一覧</string>
-    <string name="title_activity_setting">設定</string>
-    <string name="title_activity_other">アプリ情報</string>
-    <string name="title_activity_port">港の会社別一覧</string>
-
-    <!--その他-->
-    <string name="other_info">
-        当アプリは個人が作成したアプリであり、安栄観光様・八重山観光フェリー様の公式アプリではありません。\n当アプリについての安栄観光様・八重山観光フェリー様へのお問い合わせは、ご遠慮頂くようお願い申し上げます。
-    </string>
-
-    <string name="form_address">
-        https://docs.google.com/forms/d/1JXzrILj5OPWVlv1QcJbROSuqFyri9s8rgc7dZR-Ate0/viewform?usp=send_form
-    </string>
-
-    <!--時刻表-->
 
     <string name="company_tab_name_annei">安栄観光</string>
     <string name="company_tab_name_ykf">八重山観光\nフェリー</string>
-
-    <!--トップ画面の港別ステータス-->
-    <string name="title_activity_weather">八重山の天気</string>
 
     <!--台風-->
     <string name="typhoon_area">存在地域 : %s</string>
@@ -29,8 +10,5 @@
     <string name="typhoon_intensity">強さ : %s</string>
     <string name="typhoon_pressure">中心気圧 : %s</string>
     <string name="typhoon_maxWindSpeed">中心最大風速 : %s</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
