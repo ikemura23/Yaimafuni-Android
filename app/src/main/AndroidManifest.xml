@@ -35,10 +35,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".front.status.list.StatusListTabActivity"
-            android:label="@string/title_activity_status_list"
-            />
-        <activity
             android:name=".front.info.InfoActivity"
             android:label="@string/title_activity_other"
             />
