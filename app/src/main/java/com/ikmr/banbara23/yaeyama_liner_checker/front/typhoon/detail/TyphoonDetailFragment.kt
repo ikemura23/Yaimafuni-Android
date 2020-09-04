@@ -44,9 +44,4 @@ class TyphoonDetailFragment : Fragment() {
             CustomTabUtil.start(requireActivity(), Constants.TYPHOON_URL)
         }
     }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(args: Bundle) = TyphoonDetailFragment().apply { arguments = args }
-    }
 }

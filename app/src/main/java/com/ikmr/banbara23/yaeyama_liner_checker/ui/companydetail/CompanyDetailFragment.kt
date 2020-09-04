@@ -36,10 +36,6 @@ class CompanyDetailFragment : Fragment(), StatusDetailEpoxyController.StatusDeta
     private val portCode: String
         get() = CompanyDetailFragmentArgs.fromBundle(requireArguments()).portCode
 
-    /** 港名 */
-    private val portName: String
-        get() = CompanyDetailFragmentArgs.fromBundle(requireArguments()).portName
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.company_detail_fragment, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
@@ -117,9 +113,5 @@ class CompanyDetailFragment : Fragment(), StatusDetailEpoxyController.StatusDeta
 
     override fun onTelClicked(tel: String) {
         openTell(tel)
-    }
-
-    companion object {
-        fun newInstance() = CompanyDetailFragment()
     }
 }

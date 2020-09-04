@@ -54,11 +54,4 @@ class WeatherFragment : Fragment() {
     private fun openBrowser() {
         CustomTabUtil.start(requireActivity(), Constants.WEATHER_URL)
     }
-
-    companion object {
-
-        fun newInstance(): WeatherFragment {
-            return WeatherFragment()
-        }
-    }
 }
