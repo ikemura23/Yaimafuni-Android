@@ -4,11 +4,13 @@ import android.os.Bundle
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseActivity
+import com.ikmr.banbara23.yaeyama_liner_checker.ext.configureStatusBar
 
 class TopActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.top_activity)
+        configureStatusBar()
     }
 }
