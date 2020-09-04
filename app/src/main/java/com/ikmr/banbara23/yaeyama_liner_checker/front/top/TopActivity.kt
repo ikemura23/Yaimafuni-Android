@@ -11,8 +11,4 @@ class TopActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.top_activity)
     }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return super.onSupportNavigateUp()
-    }
 }
