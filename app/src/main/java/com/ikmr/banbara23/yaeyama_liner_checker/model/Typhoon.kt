@@ -3,10 +3,6 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
-data class TyphoonRoot(
-    val tenkiJp: List<Typhoon>
-)
-
 /**
  * 台風のモデル
  */
