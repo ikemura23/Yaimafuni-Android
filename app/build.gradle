@@ -3,6 +3,7 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 29
@@ -69,9 +70,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.2.2'
     implementation 'com.google.firebase:firebase-database:19.2.1'
     // crashlytics
-    implementation('com.crashlytics.sdk.android:crashlytics:2.9.5') {
-        transitive = true
-    }
+    implementation 'com.google.firebase:firebase-crashlytics:17.2.2'
     // rx2firebase
     implementation 'com.github.FrangSierra:RxFirebase:1.5.6'
     // RxJava
