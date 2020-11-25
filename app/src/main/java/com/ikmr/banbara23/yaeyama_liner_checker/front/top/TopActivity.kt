@@ -19,19 +19,14 @@ class TopActivity : BaseActivity() {
         val request = reviewManager.requestReviewFlow()
         request.addOnCompleteListener { request ->
             if (request.isSuccessful) {
-                Timber.d("successful")
-                // We got the ReviewInfo object
                 val reviewInfo = request.result
                 val flow = reviewManager.launchReviewFlow(this, reviewInfo)
-                flow.addOnCompleteListener { _ ->
-                    Timber.d("onCompleteListener")
-                    // The flow has finished. The API does not indicate whether the user
-                    // reviewed or not, or even whether the review dialog was shown. Thus, no
-                    // matter the result, we continue our app flow.
+                flow.addOnCompleteListener {
+                    Timber.d("complete")
                 }
             } else {
-                Timber.d("not successful")
-                // There was some problem, continue regardless of the result.
+                // 失敗しても無視する
+                Timber.d("failed")
             }
         }
     }
