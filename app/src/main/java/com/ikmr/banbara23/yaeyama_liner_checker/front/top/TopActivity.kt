@@ -1,6 +1,8 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.top
 
 import android.os.Bundle
+import com.google.android.play.core.review.ReviewInfo
+import com.google.android.play.core.tasks.Task
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.di.AppInjector.reviewManager
@@ -17,9 +19,9 @@ class TopActivity : BaseActivity() {
 
     private fun setupInAppReview() {
         val request = reviewManager.requestReviewFlow()
-        request.addOnCompleteListener { request ->
-            if (request.isSuccessful) {
-                val reviewInfo = request.result
+        request.addOnCompleteListener { task: Task<ReviewInfo> ->
+            if (task.isSuccessful) {
+                val reviewInfo = task.result
                 val flow = reviewManager.launchReviewFlow(this, reviewInfo)
                 flow.addOnCompleteListener {
                     Timber.d("complete")
