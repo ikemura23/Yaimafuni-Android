@@ -16,6 +16,7 @@ class TopActivity : BaseActivity() {
     }
 
     private fun setupInAppReview() {
+        // val manager = FakeReviewManager(this)
         val manager = ReviewManagerFactory.create(this)
         val request = manager.requestReviewFlow()
         request.addOnCompleteListener { request ->
