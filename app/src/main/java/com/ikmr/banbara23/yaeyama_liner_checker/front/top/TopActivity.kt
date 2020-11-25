@@ -9,7 +9,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.di.AppInjector.reviewManager
 import timber.log.Timber
 
 class TopActivity : BaseActivity() {
-    private val reviewManager = reviewManager(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.top_activity)
@@ -18,6 +17,7 @@ class TopActivity : BaseActivity() {
     }
 
     private fun setupInAppReview() {
+        val reviewManager = reviewManager(this)
         val request = reviewManager.requestReviewFlow()
         request.addOnCompleteListener { task: Task<ReviewInfo> ->
             if (task.isSuccessful) {
