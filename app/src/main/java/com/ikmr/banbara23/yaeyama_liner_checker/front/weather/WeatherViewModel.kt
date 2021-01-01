@@ -51,3 +51,7 @@ class WeatherScreenViewModel : ViewModel() {
     }
 }
 
+sealed class WeatherUiState {
+    data class Success(val weatherInfo: WeatherInfo)
+    data class Error(val message: String)
+}
