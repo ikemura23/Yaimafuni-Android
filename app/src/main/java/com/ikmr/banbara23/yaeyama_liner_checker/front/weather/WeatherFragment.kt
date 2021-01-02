@@ -27,7 +27,7 @@ class WeatherFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.weather_fragment, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
@@ -39,7 +39,6 @@ class WeatherFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.titleBar.setNavigationOnClickListener { findNavController().navigateUp() }
         setupViewModel()
-        // viewModel.load()
         viewModel.fetchWeather()
     }
 
