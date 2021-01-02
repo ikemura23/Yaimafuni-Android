@@ -3,7 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model.weather
 /**
  * 天気 一日分
  */
-class Weather(
+data class Weather(
     // 日付
     var date: String = "",
     // 3時間毎の天気

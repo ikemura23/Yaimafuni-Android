@@ -1,14 +1,10 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.weather
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.ikmr.banbara23.yaeyama_liner_checker.WeatherRepository
 import com.ikmr.banbara23.yaeyama_liner_checker.core.LiveEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.core.SingleLiveEvent
@@ -17,6 +13,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+/**
+ * 天気詳細 ViewModel
+ */
 class WeatherScreenViewModel : ViewModel() {
 
     private val database: DatabaseReference by lazy {
@@ -29,24 +28,24 @@ class WeatherScreenViewModel : ViewModel() {
     val item = MutableLiveData<WeatherInfo>()
     var event = SingleLiveEvent<Nav>()
 
-    /**
-     * 天気取得
-     */
-    fun load() {
-        database.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-                Log.d("WeatherViewModel", p0.message)
-                event.postValue(Nav.Error)
-            }
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                item.value = snapshot.getValue(WeatherInfo::class.java)
-                item.value?.let {
-                    Log.d("WeatherViewModel", it.toString())
-                }
-            }
-        })
-    }
+    // /**
+    //  * 天気取得
+    //  */
+    // fun load() {
+    //     database.addValueEventListener(object : ValueEventListener {
+    //         override fun onCancelled(p0: DatabaseError) {
+    //             Log.d("WeatherViewModel", p0.message)
+    //             event.postValue(Nav.Error)
+    //         }
+    //
+    //         override fun onDataChange(snapshot: DataSnapshot) {
+    //             item.value = snapshot.getValue(WeatherInfo::class.java)
+    //             item.value?.let {
+    //                 Log.d("WeatherViewModel", it.toString())
+    //             }
+    //         }
+    //     })
+    // }
 
     @ExperimentalCoroutinesApi
     fun fetchWeather() {
