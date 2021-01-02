@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.ikmr.banbara23.yaeyama_liner_checker.WeatherRepository
+import com.ikmr.banbara23.yaeyama_liner_checker.repository.WeatherRepository
 import com.ikmr.banbara23.yaeyama_liner_checker.core.LiveEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.core.SingleLiveEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo

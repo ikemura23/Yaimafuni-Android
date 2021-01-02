@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker
+package com.ikmr.banbara23.yaeyama_liner_checker.repository
 
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
