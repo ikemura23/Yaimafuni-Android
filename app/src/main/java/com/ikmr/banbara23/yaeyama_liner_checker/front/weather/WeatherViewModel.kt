@@ -28,25 +28,6 @@ class WeatherScreenViewModel : ViewModel() {
     val item = MutableLiveData<WeatherInfo>()
     var event = SingleLiveEvent<Nav>()
 
-    // /**
-    //  * 天気取得
-    //  */
-    // fun load() {
-    //     database.addValueEventListener(object : ValueEventListener {
-    //         override fun onCancelled(p0: DatabaseError) {
-    //             Log.d("WeatherViewModel", p0.message)
-    //             event.postValue(Nav.Error)
-    //         }
-    //
-    //         override fun onDataChange(snapshot: DataSnapshot) {
-    //             item.value = snapshot.getValue(WeatherInfo::class.java)
-    //             item.value?.let {
-    //                 Log.d("WeatherViewModel", it.toString())
-    //             }
-    //         }
-    //     })
-    // }
-
     @ExperimentalCoroutinesApi
     fun fetchWeather() {
         viewModelScope.launch {

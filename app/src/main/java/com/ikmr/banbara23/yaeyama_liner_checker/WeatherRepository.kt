@@ -25,26 +25,24 @@ class WeatherRepository(private val ref: DatabaseReference) {
      * 天気を取得
      */
     @ExperimentalCoroutinesApi
-    fun fetchWeather(): Flow<WeatherUiState> {
-        return callbackFlow<WeatherUiState> {
-            ref.addValueEventListener(object : ValueEventListener {
-                // 正常に取得できた
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    snapshot.getValue(WeatherInfo::class.java)?.let { weather ->
-                        Timber.d(weather.toString())
-                        offer(WeatherUiState.Success(weather))
-                    }
+    fun fetchWeather(): Flow<WeatherUiState> = callbackFlow {
+        ref.addValueEventListener(object : ValueEventListener {
+            // 正常に取得できた
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.getValue(WeatherInfo::class.java)?.let { weather ->
+                    Timber.d(weather.toString())
+                    offer(WeatherUiState.Success(weather))
                 }
-
-                // エラー
-                override fun onCancelled(error: DatabaseError) {
-                    Timber.e(error.message)
-                    offer(WeatherUiState.Error(error.message))
-                }
-            })
-            awaitClose {
-                // TODO: DatabaseReference は自動で破棄される
             }
+
+            // エラー
+            override fun onCancelled(error: DatabaseError) {
+                Timber.e(error.message)
+                offer(WeatherUiState.Error(error.message))
+            }
+        })
+        awaitClose {
+            // TODO: DatabaseReference は自動で破棄される
         }
     }
 
@@ -52,17 +50,12 @@ class WeatherRepository(private val ref: DatabaseReference) {
      * テスト表示用
      */
     @ExperimentalCoroutinesApi
-    fun fetchDummyWeather(): Flow<WeatherUiState> {
-        return callbackFlow<WeatherUiState> {
-            delay(3000)
-            // 値を送信
-            offer(WeatherUiState.Success(createDummyData()))
-            // offer(WeatherUiState.Error("error"))
+    fun fetchDummyWeather(): Flow<WeatherUiState> = callbackFlow {
+        delay(3000)
+        // 値を送信
+        offer(WeatherUiState.Success(createDummyData()))
+        // offer(WeatherUiState.Error("error"))
 
-            awaitClose {
-                // TODO: DatabaseReferenceを開放する
-            }
-        }
     }
 
     private fun createDummyData(): WeatherInfo {
