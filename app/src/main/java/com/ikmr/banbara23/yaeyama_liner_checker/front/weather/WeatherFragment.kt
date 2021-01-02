@@ -13,6 +13,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
  * A placeholder fragment containing a simple view.
@@ -33,11 +34,13 @@ class WeatherFragment : Fragment() {
         return binding.root
     }
 
+    @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.titleBar.setNavigationOnClickListener { findNavController().navigateUp() }
         setupViewModel()
-        viewModel.load()
+        // viewModel.load()
+        viewModel.fetchWeather()
     }
 
     private fun setupViewModel() {
