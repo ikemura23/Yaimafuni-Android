@@ -5,7 +5,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherUiState
-import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.HourlyWeather
+import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.Table
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.Temperature
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.Weather
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo
@@ -69,8 +69,8 @@ class WeatherRepository(private val ref: DatabaseReference) {
             wave = "2.5メートル",
             weather = "曇り",
             wind = "北東の風やや強く",
-            hourlyWeather = listOf(
-                HourlyWeather(
+            table = listOf(
+                Table(
                     hour = "06",
                     weather = "晴れ",
                     windBlow = "1",

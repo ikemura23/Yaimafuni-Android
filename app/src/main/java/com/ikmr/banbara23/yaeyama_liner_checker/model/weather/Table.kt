@@ -3,7 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model.weather
 /**
  * 時間毎の天気
  */
-data class HourlyWeather(
+data class Table(
     // 時間
     var hour: String = "",
     // 天気

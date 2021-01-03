@@ -12,7 +12,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TimeTableRowBinding;
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherViewRowBinding;
 import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.Row;
-import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.HourlyWeather;
+import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.Table;
 
 import java.util.List;
 
@@ -33,16 +33,16 @@ public class BindAdapter {
     }
 
     @BindingAdapter({"inflateYourTimes"})
-    public static void inflateYourTimes(LinearLayout layout, List<HourlyWeather> hourlyWeathers) {
+    public static void inflateYourTimes(LinearLayout layout, List<Table> tables) {
         layout.removeAllViews();
         LayoutInflater inflater = LayoutInflater.from(layout.getContext());
-        if (hourlyWeathers == null || hourlyWeathers.isEmpty()) {
+        if (tables == null || tables.isEmpty()) {
             return;
         }
         WeatherViewRowBinding binding;
-        for (HourlyWeather hourlyWeather : hourlyWeathers) {
+        for (Table table : tables) {
             binding = DataBindingUtil.inflate(inflater, R.layout.weather_view_row, layout, true);
-            binding.setTable(hourlyWeather);
+            binding.setTable(table);
         }
     }
 }

@@ -8,7 +8,7 @@
 
         <variable
             name="table"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.model.weather.HourlyWeather"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.weather.Table"
             />
     </data>
 
