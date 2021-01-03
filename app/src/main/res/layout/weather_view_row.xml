@@ -13,17 +13,17 @@
     </data>
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:gravity="center"
         android:orientation="vertical"
-        tools:layout_width="wrap_content"
         >
 
         <!--時間-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@{table.hour}"
             android:textColor="@color/secondary_text"
             tools:text="06"
@@ -33,8 +33,9 @@
 
         <!--天気-->
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@{table.weather}"
             android:textColor="@color/secondary_text"
             tools:text="晴れ"
@@ -44,8 +45,9 @@
 
         <!--風向-->
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@{table.windBlow}"
             android:textColor="@color/secondary_text"
             tools:text="北北西"
@@ -55,8 +57,9 @@
 
         <!--風速-->
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@{table.windSpeed}"
             android:textColor="@color/secondary_text"
             tools:text="3m"
