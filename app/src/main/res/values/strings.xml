@@ -9,5 +9,9 @@
     <string name="typhoon_intensity">強さ : %s</string>
     <string name="typhoon_pressure">中心気圧 : %s</string>
     <string name="typhoon_maxWindSpeed">中心最大風速 : %s</string>
+    <string name="title_activity_home">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 </resources>
