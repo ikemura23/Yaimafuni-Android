@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBinding
@@ -38,11 +39,19 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.titleBar.setNavigationOnClickListener { findNavController().navigateUp() }
+
+        binding.today.timeList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.today.timeList.adapter = WeatherTimeListAdaptor()
+
         setupViewModel()
         viewModel.fetchWeather()
     }
 
     private fun setupViewModel() {
+        viewModel.item.observe(viewLifecycleOwner) {
+            (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(it.today.table)
+        }
+
         viewModel.event.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is WeatherScreenViewModel.Nav.Error -> {

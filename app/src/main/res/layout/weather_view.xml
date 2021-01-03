@@ -149,14 +149,21 @@
                 <include layout="@layout/weather_view_row_title" />
 
                 <!--追加先レイアウト-->
-                <LinearLayout
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    app:inflateYourTimes="@{data.table}"-->
+<!--                    >-->
+
+<!--                </LinearLayout>-->
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/time_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:inflateYourTimes="@{data.table}"
-                    >
-
-                </LinearLayout>
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

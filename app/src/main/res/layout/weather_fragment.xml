@@ -49,6 +49,7 @@
                 >
 
                 <include
+                    android:id="@+id/today"
                     layout="@layout/weather_view"
                     app:data="@{viewModel.item.today}"
                     app:titleText='@{"今日"}'
