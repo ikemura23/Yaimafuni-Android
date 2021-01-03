@@ -11,7 +11,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.Table
 /**
  * 天気詳細 横スクロールできる時間ごと天気
  */
-class WeatherTimeListAdaptor() : RecyclerView.Adapter<WeatherTimeListAdaptor.ViewHolder>() {
+class WeatherTimeListAdaptor : RecyclerView.Adapter<WeatherTimeListAdaptor.ViewHolder>() {
 
     private var tableItems: List<Table> = listOf()
 
@@ -31,7 +31,6 @@ class WeatherTimeListAdaptor() : RecyclerView.Adapter<WeatherTimeListAdaptor.Vie
 
         with(holder.binding.root) {
             tag = table
-            // TODO: クリック処理
         }
     }
 
