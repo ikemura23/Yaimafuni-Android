@@ -40,9 +40,13 @@ class WeatherFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.titleBar.setNavigationOnClickListener { findNavController().navigateUp() }
 
-        binding.today.timeList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.today.timeList.adapter = WeatherTimeListAdaptor()
+        // 今日の天気のリスト設定
+        with(binding.today.timeList) {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = WeatherTimeListAdaptor()
+        }
 
+        // 明日の天気のリスト設定
         with(binding.tomorrow.timeList) {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = WeatherTimeListAdaptor()
