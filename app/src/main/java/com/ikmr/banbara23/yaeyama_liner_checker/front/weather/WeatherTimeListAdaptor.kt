@@ -28,10 +28,7 @@ class WeatherTimeListAdaptor : RecyclerView.Adapter<WeatherTimeListAdaptor.ViewH
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val table = tableItems[position]
         holder.binding.table = table
-
-        with(holder.binding.root) {
-            tag = table
-        }
+        holder.binding.root.tag = table
     }
 
     override fun getItemCount(): Int {
