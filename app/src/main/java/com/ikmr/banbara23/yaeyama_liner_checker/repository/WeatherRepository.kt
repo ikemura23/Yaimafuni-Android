@@ -29,6 +29,7 @@ class WeatherRepository(private val ref: DatabaseReference) {
         ref.addValueEventListener(object : ValueEventListener {
             // 正常に取得できた
             override fun onDataChange(snapshot: DataSnapshot) {
+                Timber.d(snapshot.toString())
                 snapshot.getValue(WeatherInfo::class.java)?.let { weather ->
                     Timber.d(weather.toString())
                     offer(WeatherUiState.Success(weather))
@@ -62,7 +63,7 @@ class WeatherRepository(private val ref: DatabaseReference) {
         val weather = Weather(
             date = "1月2日(土)",
             temperature = Temperature(
-                height = "15℃",
+                hight = "15℃",
                 low = "12℃"
             ),
             wave = "2.5メートル",

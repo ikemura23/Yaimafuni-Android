@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
                 android:layout_marginBottom="4dp"
-                android:text='@{"最高 ： " + data.temperature.height}'
+                android:text='@{"最高 ： " + data.temperature.hight}'
                 android:textColor="@color/secondary_text"
                 tools:text="最高 ： 29℃"
                 />

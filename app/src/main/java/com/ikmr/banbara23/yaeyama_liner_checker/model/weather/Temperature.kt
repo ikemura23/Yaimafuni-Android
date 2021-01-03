@@ -5,7 +5,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model.weather
  */
 data class Temperature(
     // 最高
-    var height: String = "",
+    var hight: String = "",
     // 最低
     var low: String = ""
 )
