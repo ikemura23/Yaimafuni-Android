@@ -3,18 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/topFragment"
         android:icon="@drawable/ic_directions_boat_white"
         android:title="@string/title_home"
         />
 
     <item
-        android:id="@+id/navigation_weather"
+        android:id="@+id/weatherFragment"
         android:icon="@drawable/ic_weather_white"
         android:title="@string/title_weather"
         />
     <item
-        android:id="@+id/navigation_typhoon"
+        android:id="@+id/typhoonListFragment"
         android:icon="@drawable/ic_typhoon_white"
         android:title="@string/title_typhoon"
         />
