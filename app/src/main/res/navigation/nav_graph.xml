@@ -11,6 +11,7 @@
         android:id="@+id/topFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopFragment"
         android:label="TopFragment"
+        tools:layout="@layout/top_fragment"
         >
         <action
             android:id="@+id/action_topFragment_to_weatherFragment"
@@ -49,11 +50,13 @@
         android:id="@+id/weatherFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherFragment"
         android:label="WeatherFragment"
+        tools:layout="@layout/weather_fragment"
         />
     <fragment
         android:id="@+id/typhoonListFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list.TyphoonListFragment"
         android:label="TyphoonListFragment"
+        tools:layout="@layout/typhoon_list_fragment"
         >
         <action
             android:id="@+id/action_typhoonListFragment_to_typhoonDetailFragment"
@@ -64,6 +67,7 @@
         android:id="@+id/typhoonDetailFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.detail.TyphoonDetailFragment"
         android:label="TyphoonDetailFragment"
+        tools:layout="@layout/fragment_typhoon_detail"
         >
         <argument
             android:name="typhoon"
@@ -74,6 +78,7 @@
         android:id="@+id/portStatusDetailFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailFragment"
         android:label="PortStatusDetailFragment"
+        tools:layout="@layout/status_detail_fragment"
         >
         <argument
             android:name="company"
@@ -105,6 +110,7 @@
         android:id="@+id/companyListTabFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.companylist.CompanyListTabFragment"
         android:label="CompanyListTabFragment"
+        tools:layout="@layout/company_list_fragment"
         >
         <argument
             android:name="company"
@@ -119,6 +125,7 @@
         android:id="@+id/companyDetailFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.companydetail.CompanyDetailFragment"
         android:label="CompanyDetailFragment"
+        tools:layout="@layout/company_detail_fragment"
         >
         <argument
             android:name="company"
