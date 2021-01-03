@@ -26,6 +26,8 @@
     <color name="orange2">#F7A325</color>
     <color name="orange3">#f99700</color>
 
+    <color name="see_blue">#007AB7</color>
+
     <!-- Dark Text Color for Light Background -->
     <color name="textDarkPrimary">#DE000000</color> <!--DE for %87 opacity-->
     <!--8A for %54 opacity-->
