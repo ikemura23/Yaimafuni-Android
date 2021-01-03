@@ -9,22 +9,23 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.home.ui.home.HomeFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home"
+        tools:layout="@layout/top_fragment"
         />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.home.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard"
+        android:id="@+id/navigation_weather"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherFragment"
+        android:label="@string/title_weather"
+        tools:layout="@layout/weather_fragment"
         />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.home.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications"
+        android:id="@+id/navigation_typhoon"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list.TyphoonListFragment"
+        android:label="@string/title_weather"
+        tools:layout="@layout/typhoon_list_fragment"
         />
+
 </navigation>
