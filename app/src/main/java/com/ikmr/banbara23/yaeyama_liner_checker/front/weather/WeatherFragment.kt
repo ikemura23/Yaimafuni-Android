@@ -6,17 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import timber.log.Timber
 
 /**
- * A placeholder fragment containing a simple view.
+ * 天気詳細
  */
 class WeatherFragment : Fragment() {
 
@@ -38,19 +39,35 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.titleBar.setNavigationOnClickListener { findNavController().navigateUp() }
+
+        // 今日の天気のリスト設定
+        with(binding.today.timeList) {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = WeatherTimeListAdaptor()
+        }
+
+        // 明日の天気のリスト設定
+        with(binding.tomorrow.timeList) {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = WeatherTimeListAdaptor()
+        }
+
         setupViewModel()
         viewModel.fetchWeather()
     }
 
     private fun setupViewModel() {
-        viewModel.event.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is WeatherScreenViewModel.Nav.Error -> {
-                    //エラーメッセージ
-                }
+        viewModel.item.observe(viewLifecycleOwner) {
+            (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(it.today.table)
+            (binding.tomorrow.timeList.adapter as WeatherTimeListAdaptor).update(it.tomorrow.table)
+        }
+
+        viewModel.event.observe(viewLifecycleOwner) { nav ->
+            when (nav) {
+                is WeatherScreenViewModel.Nav.Error -> Timber.e("WeatherFragment でエラー発生")
                 is WeatherScreenViewModel.Nav.More -> openBrowser()
             }
-        })
+        }
     }
 
     private fun openBrowser() {
