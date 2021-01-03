@@ -43,6 +43,11 @@ class WeatherFragment : Fragment() {
         binding.today.timeList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.today.timeList.adapter = WeatherTimeListAdaptor()
 
+        with(binding.tomorrow.timeList) {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = WeatherTimeListAdaptor()
+        }
+
         setupViewModel()
         viewModel.fetchWeather()
     }
@@ -50,6 +55,7 @@ class WeatherFragment : Fragment() {
     private fun setupViewModel() {
         viewModel.item.observe(viewLifecycleOwner) {
             (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(it.today.table)
+            (binding.tomorrow.timeList.adapter as WeatherTimeListAdaptor).update(it.tomorrow.table)
         }
 
         viewModel.event.observe(viewLifecycleOwner, Observer {
