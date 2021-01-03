@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,9 +14,10 @@ import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import timber.log.Timber
 
 /**
- * A placeholder fragment containing a simple view.
+ * 天気詳細
  */
 class WeatherFragment : Fragment() {
 
@@ -62,14 +62,12 @@ class WeatherFragment : Fragment() {
             (binding.tomorrow.timeList.adapter as WeatherTimeListAdaptor).update(it.tomorrow.table)
         }
 
-        viewModel.event.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is WeatherScreenViewModel.Nav.Error -> {
-                    //エラーメッセージ
-                }
+        viewModel.event.observe(viewLifecycleOwner) { nav ->
+            when (nav) {
+                is WeatherScreenViewModel.Nav.Error -> Timber.e("WeatherFragment でエラー発生")
                 is WeatherScreenViewModel.Nav.More -> openBrowser()
             }
-        })
+        }
     }
 
     private fun openBrowser() {
