@@ -57,7 +57,7 @@ class WeatherFragment : Fragment() {
     }
 
     private fun setupViewModel() {
-        viewModel.item.observe(viewLifecycleOwner) {
+        viewModel.weather.observe(viewLifecycleOwner) {
             (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(it.today.table)
             (binding.tomorrow.timeList.adapter as WeatherTimeListAdaptor).update(it.tomorrow.table)
         }
