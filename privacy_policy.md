@@ -15,16 +15,6 @@
 - [Firebase Analytics 利用ポリシー | Firebase](https://firebase.google.com/policies/analytics/?hl=ja)
 - [Fabric Software and Services Agreement](https://fabric.io/privacy)
 
-## 本アプリに掲載されている広告について
-
-本アプリは第三者配信の広告サービスを利用しています。
-
-広告配信事業者は、ユーザーの興味に応じた広告を表示するために本アプリの操作データを使用することがあります。
-
-詳細については下記をご覧ください。
-
-Google AdMobについて：[AdMob および AdSense ポリシー](https://support.google.com/admob/answer/6128543?hl=ja)
-
 ## 個人情報の管理と利用目的
 
 当運営者は、上記のツール以外で個人を特定すること、そのデータを保持することは行いません。 本アプリ及び当運営者が提供するサービスの改善を行うために、解析ツールを導入しております。
