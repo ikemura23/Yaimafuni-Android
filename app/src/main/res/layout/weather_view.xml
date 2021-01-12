@@ -145,18 +145,16 @@
                 android:layout_marginBottom="4dp"
                 android:orientation="horizontal"
                 >
-                <!--先頭はタイトル-->
+                <!--3時間毎 天気 タイトル-->
                 <include layout="@layout/weather_view_row_title" />
 
-                <!--追加先レイアウト-->
-                <LinearLayout
+                <!--3時間毎 天気 横スクロールリスト-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/time_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:inflateYourTimes="@{data.table}"
-                    >
-
-                </LinearLayout>
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

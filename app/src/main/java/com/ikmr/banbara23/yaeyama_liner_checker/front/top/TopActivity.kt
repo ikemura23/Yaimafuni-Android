@@ -4,11 +4,12 @@ import android.os.Bundle
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.tasks.Task
 import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.core.BaseActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.di.AppInjector.reviewManager
+import androidx.appcompat.app.AppCompatActivity
 import timber.log.Timber
 
-class TopActivity : BaseActivity() {
+class TopActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.top_activity)

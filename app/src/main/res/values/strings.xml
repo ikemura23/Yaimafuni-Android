@@ -5,7 +5,6 @@
     <string name="company_tab_name_ykf">八重山観光\nフェリー</string>
 
     <!--台風-->
-    <string name="typhoon_area">存在地域 : %s</string>
     <string name="typhoon_scale">大きさ : %s</string>
     <string name="typhoon_intensity">強さ : %s</string>
     <string name="typhoon_pressure">中心気圧 : %s</string>
