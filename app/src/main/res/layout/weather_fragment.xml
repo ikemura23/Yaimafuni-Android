@@ -51,14 +51,14 @@
                 <include
                     android:id="@+id/today"
                     layout="@layout/weather_view"
-                    app:data="@{viewModel.item.today}"
+                    app:data="@{viewModel.weather.today}"
                     app:titleText='@{"今日"}'
                     />
 
                 <include
                     android:id="@+id/tomorrow"
                     layout="@layout/weather_view"
-                    app:data="@{viewModel.item.tomorrow}"
+                    app:data="@{viewModel.weather.tomorrow}"
                     app:titleText='@{"明日"}'
                     />
 

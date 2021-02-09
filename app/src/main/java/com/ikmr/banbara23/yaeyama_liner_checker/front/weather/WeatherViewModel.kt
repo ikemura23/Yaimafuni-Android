@@ -1,5 +1,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.front.weather
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,6 +13,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * 天気詳細 ViewModel
@@ -25,20 +27,21 @@ class WeatherScreenViewModel : ViewModel() {
         WeatherRepository(database)
     }
 
-    val item = MutableLiveData<WeatherInfo>()
+
+    private val _weather = MutableLiveData<WeatherInfo>()
+    val weather :LiveData<WeatherInfo> = _weather
     var event = SingleLiveEvent<Nav>()
 
     @ExperimentalCoroutinesApi
     fun fetchWeather() {
         viewModelScope.launch {
+            // StateFlowの購読
             weatherRepository.fetchWeather().collect { state ->
                 when (state) {
-                    is WeatherUiState.Success -> {
-                        item.value = state.weatherInfo
-                    }
-                    is WeatherUiState.Error -> {
-                        event.postValue(Nav.Error)
-                    }
+                    // 成功
+                    is WeatherUiState.Success ->  _weather.value = state.weatherInfo
+                    // エラー処理
+                    is WeatherUiState.Error -> event.postValue(Nav.Error)
                 }
             }
         }
