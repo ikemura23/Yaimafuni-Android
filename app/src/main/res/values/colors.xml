@@ -38,4 +38,7 @@
     <!--B2 for %70 opacity-->
     <!--80 for %50 opacity-->
     <!--4C for %30 opacity-->
+
+    <color name="enable_icon_color">#ffffff</color>
+    <color name="disable_icon_color">#CACACA</color>
 </resources>
