@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
-            android:text="@{ports.anei.portName}"
+            android:text="西表島大原航路"
             android:textColor="@color/textDarkPrimary"
             tools:text="竹富島"
             />
@@ -53,6 +53,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:orientation="vertical"
             android:padding="8dp"
             >

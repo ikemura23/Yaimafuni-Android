@@ -113,7 +113,7 @@
 
                     <include
                         android:id="@+id/kohama"
-                        layout="@layout/top_port_row"
+                        layout="@layout/dash_board_port_list_item"
                         app:ports="@{topPort.kohama}"
                         />
 
@@ -121,7 +121,7 @@
 
                     <include
                         android:id="@+id/kuroshima"
-                        layout="@layout/top_port_row"
+                        layout="@layout/dash_board_port_list_item"
                         app:ports="@{topPort.kuroshima}"
                         />
 
@@ -129,7 +129,7 @@
 
                     <include
                         android:id="@+id/oohara"
-                        layout="@layout/top_port_row"
+                        layout="@layout/dash_board_port_list_item"
                         app:ports="@{topPort.oohara}"
                         />
 
@@ -137,7 +137,7 @@
 
                     <include
                         android:id="@+id/uehara"
-                        layout="@layout/top_port_row"
+                        layout="@layout/dash_board_port_list_item"
                         app:ports="@{topPort.uehara}"
                         />
 
@@ -145,7 +145,7 @@
 
                     <include
                         android:id="@+id/hatoma"
-                        layout="@layout/top_port_row"
+                        layout="@layout/dash_board_port_list_item"
                         app:ports="@{topPort.hatoma}"
                         />
 
@@ -153,7 +153,7 @@
 
                     <include
                         android:id="@+id/hateruma"
-                        layout="@layout/top_port_row"
+                        layout="@layout/dash_board_port_list_item"
                         app:ports="@{topPort.hateruma}"
                         />
                 </LinearLayout>
