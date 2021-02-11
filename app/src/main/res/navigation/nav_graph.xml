@@ -140,4 +140,10 @@
             app:argType="string"
             />
     </fragment>
+    <fragment
+        android:id="@+id/dashBoardFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard.DashBoardFragment"
+        android:label="dash_board_fragment"
+        tools:layout="@layout/dash_board_fragment"
+        />
 </navigation>
