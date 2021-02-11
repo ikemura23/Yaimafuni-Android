@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="ports"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.top.Ports"
+            />
+
+        <variable
+            name="presenter"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopPresenter"
+            />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        >
+
+        <TextView
+            android:id="@+id/port_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:text="@{ports.anei.portName}"
+            android:textColor="@color/textDarkPrimary"
+            tools:text="竹富島"
+            />
+
+        <!--        <include-->
+        <!--            android:id="@+id/anei"-->
+        <!--            layout="@layout/dash_board_port_list_item_port"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_marginLeft="8dp"-->
+        <!--            app:name='@{"安栄観光"}'-->
+        <!--            app:portStatus="@{ports.anei}"-->
+        <!--            />-->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="安栄観光"
+                android:textColor="@color/textDarkPrimary"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:padding="4dp"
+                android:text="運行"
+                android:textColor="@color/white"
+                tools:background="@drawable/shape_rounded_corners_status_nomal"
+                tools:text="運行"
+                />
+        </LinearLayout>
+
+        <!--        <include-->
+        <!--            android:id="@+id/ykf"-->
+        <!--            layout="@layout/top_port_row_item"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="right"-->
+        <!--            app:name='@{"八観フェ"}'-->
+        <!--            app:portStatus="@{ports.ykf}"-->
+        <!--            />-->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:orientation="vertical"
+            android:padding="8dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="八観フェ"
+                android:textColor="@color/textDarkPrimary"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:padding="4dp"
+                android:text="欠航"
+                android:textColor="@color/white"
+                tools:background="@drawable/shape_rounded_corners_status_cancel"
+                tools:text="欠航"
+                />
+        </LinearLayout>
+    </FrameLayout>
+</layout>
