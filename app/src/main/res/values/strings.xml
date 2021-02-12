@@ -15,5 +15,7 @@
     <string name="title_weather">天気</string>
     <string name="title_typhoon">台風</string>
     <string name="dash_board_title">港別の運行情報</string>
+    <string name="tab_annei">安栄観光</string>
+    <string name="tab_ykf">八重山観光\nフェリー</string>
 
 </resources>
