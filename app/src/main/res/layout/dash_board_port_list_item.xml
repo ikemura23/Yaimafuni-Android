@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
 
@@ -33,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
-            android:text="西表島大原航路"
+            android:text="@{ ports.anei.portName }"
             android:textColor="@color/textDarkPrimary"
             tools:text="竹富島"
             />
@@ -73,8 +74,9 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
                 android:padding="4dp"
-                android:text="運行"
+                android:text="@{ ports.anei.status.text }"
                 android:textColor="@color/white"
+                app:backgroundColorOfStatus="@{ ports.anei.status.code }"
                 tools:background="@drawable/shape_rounded_corners_status_nomal"
                 tools:text="運行"
                 />
@@ -112,7 +114,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
                 android:padding="4dp"
-                android:text="欠航"
+                android:text="@{ ports.anei.status.text }"
                 android:textColor="@color/white"
                 tools:background="@drawable/shape_rounded_corners_status_cancel"
                 tools:text="欠航"
