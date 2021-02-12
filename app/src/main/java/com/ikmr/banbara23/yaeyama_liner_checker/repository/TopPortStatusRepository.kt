@@ -59,23 +59,95 @@ class TopPortStatusRepository(private val dbRef: DatabaseReference) {
 
     }
 
-    private fun createDummyData(): TopPort {
-        val dummy = TopPort(
-            hateruma = Ports(
-                anei = PortStatus(
-                    portCode = "a",
-                    portName = "aE,",
-                    comment = "teste",
-                    status = Status(
-                        text = "normal",
-                        code = "nomarl",
-                    )
+    /**
+     * 開発用ダミーデータ
+     */
+    private fun createDummyData() = TopPort(
+        taketomi = Ports(
+            anei = PortStatus(
+                portCode = "a",
+                portName = "aE,",
+                comment = "teste",
+                status = Status(
+                    text = "normal",
+                    code = "nomarl",
+                )
+            )
+        ),
+        kohama = Ports(
+            anei = PortStatus(
+                portCode = "a",
+                portName = "aE,",
+                comment = "teste",
+                status = Status(
+                    text = "normal",
+                    code = "nomarl",
+                )
+            )
+        ),
+        oohara = Ports(
+            anei = PortStatus(
+                portCode = "a",
+                portName = "aE,",
+                comment = "teste",
+                status = Status(
+                    text = "normal",
+                    code = "nomarl",
+                )
+            )
+        ),
+        uehara = Ports(
+            anei = PortStatus(
+                portCode = "a",
+                portName = "aE,",
+                comment = "teste",
+                status = Status(
+                    text = "normal",
+                    code = "nomarl",
+                )
+            )
+        ),
+        hatoma = Ports(
+            anei = PortStatus(
+                portCode = "hatoma",
+                portName = "鳩間島航路",
+                comment = "海上時化の為、全便欠航。",
+                status = Status(
+                    text = "通常運航",
+                    code = "normal",
+                )
+            ),
+            ykf = PortStatus(
+                portCode = "hatoma",
+                portName = "鳩間",
+                comment = "海上時化の為、全便欠航。",
+                status = Status(
+                    text = "欠航",
+                    code = "cancel",
+                )
+            )
+        ),
+        kuroshima = Ports(
+            anei = PortStatus(
+                portCode = "a",
+                portName = "aE,",
+                comment = "teste",
+                status = Status(
+                    text = "normal",
+                    code = "nomarl",
+                )
+            )
+        ),
+        hateruma = Ports(
+            anei = PortStatus(
+                portCode = "a",
+                portName = "aE,",
+                comment = "teste",
+                status = Status(
+                    text = "normal",
+                    code = "nomarl",
                 )
             )
         )
-
-        return dummy
-    }
+    )
 }
-
-

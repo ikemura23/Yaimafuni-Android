@@ -16,6 +16,11 @@
             name="presenter"
             type="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopPresenter"
             />
+
+        <variable
+            name="viewModel"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard.DashBoardViewModel"
+            />
     </data>
 
     <FrameLayout
@@ -24,6 +29,7 @@
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
+        android:onClick="@{ ()-> viewModel.onClickPort(ports) }"
         android:orientation="horizontal"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"

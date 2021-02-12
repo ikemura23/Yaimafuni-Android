@@ -28,6 +28,7 @@ class DashBoardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.viewModel = viewModel
         viewModel.uiState.observe(viewLifecycleOwner) {
             Timber.d("$it")
             binding.topPort = it

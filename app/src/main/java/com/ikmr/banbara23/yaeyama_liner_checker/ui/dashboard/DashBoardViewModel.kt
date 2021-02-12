@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.ikmr.banbara23.yaeyama_liner_checker.model.top.Ports
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
 import com.ikmr.banbara23.yaeyama_liner_checker.repository.TopPortStatusRepository
 import kotlinx.coroutines.flow.collect
@@ -27,7 +28,7 @@ class DashBoardViewModelImpl : DashBoardViewModel() {
 
     fun fetchTopPortStatus() {
         viewModelScope.launch {
-            topPortStatusRepository.getDummyTopPortStatus().collect { state ->
+            topPortStatusRepository.getTopPortStatus().collect { state ->
                 when (state) {
                     is TopPortStatusState.Success -> uiState.value = state.topPort
                     else -> Timber.e("$state")
@@ -35,6 +36,13 @@ class DashBoardViewModelImpl : DashBoardViewModel() {
             }
 
         }
+    }
+
+    /**
+     * 港クリック
+     */
+    override fun onClickPort(ports: Ports) {
+        Timber.d("clicked: $ports")
     }
 }
 

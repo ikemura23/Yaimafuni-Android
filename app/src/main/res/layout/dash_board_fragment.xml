@@ -112,6 +112,7 @@
                         android:id="@+id/taketomi"
                         layout="@layout/dash_board_port_list_item"
                         app:ports="@{topPort.taketomi}"
+                        app:viewModel="@{viewModel}"
                         />
 
                     <include layout="@layout/delimiter" />
@@ -120,6 +121,7 @@
                         android:id="@+id/kohama"
                         layout="@layout/dash_board_port_list_item"
                         app:ports="@{topPort.kohama}"
+                        app:viewModel="@{viewModel}"
                         />
 
                     <include layout="@layout/delimiter" />
@@ -128,6 +130,7 @@
                         android:id="@+id/kuroshima"
                         layout="@layout/dash_board_port_list_item"
                         app:ports="@{topPort.kuroshima}"
+                        app:viewModel="@{viewModel}"
                         />
 
                     <include layout="@layout/delimiter" />
@@ -136,6 +139,7 @@
                         android:id="@+id/oohara"
                         layout="@layout/dash_board_port_list_item"
                         app:ports="@{topPort.oohara}"
+                        app:viewModel="@{viewModel}"
                         />
 
                     <include layout="@layout/delimiter" />
@@ -144,6 +148,7 @@
                         android:id="@+id/uehara"
                         layout="@layout/dash_board_port_list_item"
                         app:ports="@{topPort.uehara}"
+                        app:viewModel="@{viewModel}"
                         />
 
                     <include layout="@layout/delimiter" />
@@ -152,6 +157,7 @@
                         android:id="@+id/hatoma"
                         layout="@layout/dash_board_port_list_item"
                         app:ports="@{topPort.hatoma}"
+                        app:viewModel="@{viewModel}"
                         />
 
                     <include layout="@layout/delimiter" />
@@ -160,6 +166,7 @@
                         android:id="@+id/hateruma"
                         layout="@layout/dash_board_port_list_item"
                         app:ports="@{topPort.hateruma}"
+                        app:viewModel="@{viewModel}"
                         />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
