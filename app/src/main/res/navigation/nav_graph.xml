@@ -13,22 +13,22 @@
         android:label="dash_board_fragment"
         tools:layout="@layout/dash_board_fragment"
         >
-        <action
-            android:id="@+id/action_topFragment_to_weatherFragment"
-            app:destination="@id/weatherFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right"
-            />
-        <action
-            android:id="@+id/action_topFragment_to_typhoonListFragment"
-            app:destination="@id/typhoonListFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right"
-            />
+        <!--        <action-->
+        <!--            android:id="@+id/action_topFragment_to_weatherFragment"-->
+        <!--            app:destination="@id/weatherFragment"-->
+        <!--            app:enterAnim="@anim/slide_in_right"-->
+        <!--            app:exitAnim="@anim/slide_out_left"-->
+        <!--            app:popEnterAnim="@android:anim/slide_in_left"-->
+        <!--            app:popExitAnim="@android:anim/slide_out_right"-->
+        <!--            />-->
+        <!--        <action-->
+        <!--            android:id="@+id/action_topFragment_to_typhoonListFragment"-->
+        <!--            app:destination="@id/typhoonListFragment"-->
+        <!--            app:enterAnim="@anim/slide_in_right"-->
+        <!--            app:exitAnim="@anim/slide_out_left"-->
+        <!--            app:popEnterAnim="@android:anim/slide_in_left"-->
+        <!--            app:popExitAnim="@android:anim/slide_out_right"-->
+        <!--            />-->
         <action
             android:id="@+id/action_topFragment_to_portListTabFragment"
             app:destination="@id/portListTabFragment"
@@ -37,14 +37,14 @@
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right"
             />
-        <action
-            android:id="@+id/action_topFragment_to_companyListTabFragment"
-            app:destination="@id/companyListTabFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right"
-            />
+        <!--        <action-->
+        <!--            android:id="@+id/action_topFragment_to_companyListTabFragment"-->
+        <!--            app:destination="@id/companyListTabFragment"-->
+        <!--            app:enterAnim="@anim/slide_in_right"-->
+        <!--            app:exitAnim="@anim/slide_out_left"-->
+        <!--            app:popEnterAnim="@android:anim/slide_in_left"-->
+        <!--            app:popExitAnim="@android:anim/slide_out_right"-->
+        <!--            />-->
     </fragment>
     <fragment
         android:id="@+id/weatherFragment"
