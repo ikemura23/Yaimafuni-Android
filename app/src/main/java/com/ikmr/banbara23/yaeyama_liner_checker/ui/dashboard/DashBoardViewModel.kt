@@ -17,6 +17,7 @@ import timber.log.Timber
 class DashBoardViewModelImpl : DashBoardViewModel() {
 
     override val uiState = MutableLiveData<TopPort>()
+    override val nav = MutableLiveData<Nav>()
 
     private val database: DatabaseReference by lazy {
         FirebaseDatabase.getInstance().reference.ref.child("top_port")
@@ -34,7 +35,6 @@ class DashBoardViewModelImpl : DashBoardViewModel() {
                     else -> Timber.e("$state")
                 }
             }
-
         }
     }
 
@@ -43,6 +43,11 @@ class DashBoardViewModelImpl : DashBoardViewModel() {
      */
     override fun onClickPort(ports: Ports) {
         Timber.d("clicked: $ports")
+        nav.value = Nav.GoDetail(ports)
+    }
+
+    sealed class Nav {
+        data class GoDetail(val ports: Ports) : Nav()
     }
 }
 

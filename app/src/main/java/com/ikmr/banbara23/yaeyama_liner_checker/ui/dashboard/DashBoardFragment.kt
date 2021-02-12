@@ -34,6 +34,15 @@ class DashBoardFragment : Fragment() {
             binding.topPort = it
         }
         viewModel.fetchTopPortStatus()
+        viewModel.nav.observe(viewLifecycleOwner, ::navigate)
+    }
+
+    private fun navigate(nav: DashBoardViewModelImpl.Nav) {
+        when (nav) {
+            is DashBoardViewModelImpl.Nav.GoDetail -> {
+                // findNavController().navigate()
+            }
+        }
     }
 
     companion object {
