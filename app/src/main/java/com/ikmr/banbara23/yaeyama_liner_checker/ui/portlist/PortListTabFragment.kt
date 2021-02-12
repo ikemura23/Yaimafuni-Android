@@ -43,11 +43,13 @@ class PortListTabFragment : Fragment() {
         if (portCode == "hateruma") {
             binding.tabLayout.removeTabAt(1)
         }
+        PortListTabFragmentArgs
         binding.portViewPager.adapter =
             PortPagerAdapter(
+                requireContext(),
                 childFragmentManager,
                 binding.tabLayout.tabCount,
-                portCode
+                portCode,
             )
         binding.tabLayout.setupWithViewPager(binding.portViewPager)
     }
