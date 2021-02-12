@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TopFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
@@ -47,7 +46,7 @@ class TopFragment : Fragment(), TopView {
      */
     override fun navigateToWeather() {
         Timber.d("navigateToWeather")
-        findNavController().navigate(R.id.action_topFragment_to_weatherFragment)
+        // findNavController().navigate(R.id.action_topFragment_to_weatherFragment)
     }
 
     /**
@@ -55,7 +54,7 @@ class TopFragment : Fragment(), TopView {
      */
     override fun navigateToTyphoon() {
         Timber.d("navigateToTyphoon")
-        findNavController().navigate(R.id.action_topFragment_to_typhoonListFragment)
+        // findNavController().navigate(R.id.action_topFragment_to_typhoonListFragment)
     }
 
     /**
@@ -63,9 +62,9 @@ class TopFragment : Fragment(), TopView {
      */
     override fun navigateToCompanyStatusList(company: Company) {
         Timber.d("navigateToCompanyStatusList:%s", company.getName())
-        findNavController().navigate(
-            TopFragmentDirections.actionTopFragmentToCompanyListTabFragment(company)
-        )
+        // findNavController().navigate(
+        //     TopFragmentDirections.actionTopFragmentToCompanyListTabFragment(company)
+        // )
     }
 
     /**
@@ -73,9 +72,9 @@ class TopFragment : Fragment(), TopView {
      */
     override fun navigateToPortStatusList(portName: String, portCode: String) {
         Timber.d("navigateToPortStatusList:$portName $portCode")
-        findNavController().navigate(
-            TopFragmentDirections.actionTopFragmentToPortListTabFragment(portName, portCode)
-        )
+        // findNavController().navigate(
+        //     TopFragmentDirections.actionTopFragmentToPortListTabFragment(portName, portCode)
+        // )
     }
 
     override fun getContext() = requireActivity()

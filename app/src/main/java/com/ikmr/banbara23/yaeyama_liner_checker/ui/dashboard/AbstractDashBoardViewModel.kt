@@ -1,0 +1,13 @@
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard
+
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import com.ikmr.banbara23.yaeyama_liner_checker.model.top.Ports
+import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
+
+abstract class DashBoardViewModel : ViewModel() {
+    abstract val uiState: LiveData<TopPort>
+    abstract val nav: LiveData<DashBoardViewModelImpl.Nav>
+
+    abstract fun onClickPort(ports: Ports)
+}

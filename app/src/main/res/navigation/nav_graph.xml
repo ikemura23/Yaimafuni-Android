@@ -4,31 +4,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/topFragment"
+    app:startDestination="@id/dashBoardFragment"
     >
 
     <fragment
-        android:id="@+id/topFragment"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.top.TopFragment"
-        android:label="TopFragment"
-        tools:layout="@layout/top_fragment"
+        android:id="@+id/dashBoardFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard.DashBoardFragment"
+        android:label="dash_board_fragment"
+        tools:layout="@layout/dash_board_fragment"
         >
-        <action
-            android:id="@+id/action_topFragment_to_weatherFragment"
-            app:destination="@id/weatherFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right"
-            />
-        <action
-            android:id="@+id/action_topFragment_to_typhoonListFragment"
-            app:destination="@id/typhoonListFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right"
-            />
+        <!--        <action-->
+        <!--            android:id="@+id/action_topFragment_to_weatherFragment"-->
+        <!--            app:destination="@id/weatherFragment"-->
+        <!--            app:enterAnim="@anim/slide_in_right"-->
+        <!--            app:exitAnim="@anim/slide_out_left"-->
+        <!--            app:popEnterAnim="@android:anim/slide_in_left"-->
+        <!--            app:popExitAnim="@android:anim/slide_out_right"-->
+        <!--            />-->
+        <!--        <action-->
+        <!--            android:id="@+id/action_topFragment_to_typhoonListFragment"-->
+        <!--            app:destination="@id/typhoonListFragment"-->
+        <!--            app:enterAnim="@anim/slide_in_right"-->
+        <!--            app:exitAnim="@anim/slide_out_left"-->
+        <!--            app:popEnterAnim="@android:anim/slide_in_left"-->
+        <!--            app:popExitAnim="@android:anim/slide_out_right"-->
+        <!--            />-->
         <action
             android:id="@+id/action_topFragment_to_portListTabFragment"
             app:destination="@id/portListTabFragment"
@@ -37,14 +37,14 @@
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right"
             />
-        <action
-            android:id="@+id/action_topFragment_to_companyListTabFragment"
-            app:destination="@id/companyListTabFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right"
-            />
+        <!--        <action-->
+        <!--            android:id="@+id/action_topFragment_to_companyListTabFragment"-->
+        <!--            app:destination="@id/companyListTabFragment"-->
+        <!--            app:enterAnim="@anim/slide_in_right"-->
+        <!--            app:exitAnim="@anim/slide_out_left"-->
+        <!--            app:popEnterAnim="@android:anim/slide_in_left"-->
+        <!--            app:popExitAnim="@android:anim/slide_out_right"-->
+        <!--            />-->
     </fragment>
     <fragment
         android:id="@+id/weatherFragment"
@@ -140,4 +140,10 @@
             app:argType="string"
             />
     </fragment>
+    <!--    <fragment-->
+    <!--        android:id="@+id/dashBoardFragment"-->
+    <!--        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard.DashBoardFragment"-->
+    <!--        android:label="dash_board_fragment"-->
+    <!--        tools:layout="@layout/dash_board_fragment"-->
+    <!--        />-->
 </navigation>
