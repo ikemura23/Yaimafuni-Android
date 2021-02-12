@@ -13,10 +13,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
+import timber.log.Timber
 
 /**
  * 詳細フラグメント
@@ -31,11 +31,11 @@ class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusD
 
     /** パラメータ取得 会社 */
     private val company: Company
-        get() = arguments?.getSerializable(Constants.BUNDLE_KEY_COMPANY) as Company
+        get() = arguments?.getSerializable("company") as Company
 
     /** 港コード */
     private val portCode: String
-        get() = arguments?.getString(Constants.BUNDLE_KEY_PORT_CODE) ?: ""
+        get() = arguments?.getString("portCode") ?: ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false)
@@ -54,6 +54,7 @@ class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusD
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
+        arguments?.let { Timber.d(arguments.toString()) }
         viewModel.load(company, portCode)
     }
 

@@ -29,14 +29,32 @@
         <!--            app:popEnterAnim="@android:anim/slide_in_left"-->
         <!--            app:popExitAnim="@android:anim/slide_out_right"-->
         <!--            />-->
+        <!--        <action-->
+        <!--            android:id="@+id/action_topFragment_to_portListTabFragment"-->
+        <!--            app:destination="@id/portListTabFragment"-->
+        <!--            app:enterAnim="@anim/slide_in_right"-->
+        <!--            app:exitAnim="@anim/slide_out_left"-->
+        <!--            app:popEnterAnim="@android:anim/slide_in_left"-->
+        <!--            app:popExitAnim="@android:anim/slide_out_right"-->
+        <!--            />-->
+
         <action
-            android:id="@+id/action_topFragment_to_portListTabFragment"
-            app:destination="@id/portListTabFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right"
-            />
+            android:id="@+id/action_dashBoardFragment_to_portStatusDetailActivity"
+            app:destination="@id/nav_status_detail"
+            >
+            <argument
+                android:name="portCode"
+                app:argType="string"
+                />
+            <argument
+                android:name="portName"
+                app:argType="string"
+                />
+            <argument
+                android:name="company"
+                app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Company"
+                />
+        </action>
         <!--        <action-->
         <!--            android:id="@+id/action_topFragment_to_companyListTabFragment"-->
         <!--            app:destination="@id/companyListTabFragment"-->
@@ -74,38 +92,38 @@
             app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon"
             />
     </fragment>
-    <fragment
-        android:id="@+id/portStatusDetailFragment"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailFragment"
-        android:label="PortStatusDetailFragment"
-        tools:layout="@layout/status_detail_fragment"
-        >
-        <argument
-            android:name="company"
-            app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Company"
-            />
-        <argument
-            android:name="portCode"
-            app:argType="string"
-            />
-        <argument
-            android:name="portName"
-            app:argType="string"
-            />
-    </fragment>
-    <fragment
-        android:id="@+id/portListTabFragment"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portlist.PortListTabFragment"
-        android:label="fragment_port_list_tab"
-        tools:layout="@layout/fragment_port_list_tab"
-        >
-        <argument android:name="portName" />
-        <argument android:name="portCode" />
-        <action
-            android:id="@+id/action_portListTabFragment_to_portStatusDetailFragment"
-            app:destination="@id/portStatusDetailFragment"
-            />
-    </fragment>
+    <!--    <fragment-->
+    <!--        android:id="@+id/portStatusDetailFragment"-->
+    <!--        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailFragment"-->
+    <!--        android:label="PortStatusDetailFragment"-->
+    <!--        tools:layout="@layout/status_detail_fragment"-->
+    <!--        >-->
+    <!--        <argument-->
+    <!--            android:name="company"-->
+    <!--            app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Company"-->
+    <!--            />-->
+    <!--        <argument-->
+    <!--            android:name="portCode"-->
+    <!--            app:argType="string"-->
+    <!--            />-->
+    <!--        <argument-->
+    <!--            android:name="portName"-->
+    <!--            app:argType="string"-->
+    <!--            />-->
+    <!--    </fragment>-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/portListTabFragment"-->
+    <!--        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portlist.PortListTabFragment"-->
+    <!--        android:label="fragment_port_list_tab"-->
+    <!--        tools:layout="@layout/fragment_port_list_tab"-->
+    <!--        >-->
+    <!--        <argument android:name="portName" />-->
+    <!--        <argument android:name="portCode" />-->
+    <!--        <action-->
+    <!--            android:id="@+id/action_portListTabFragment_to_portStatusDetailFragment"-->
+    <!--            app:destination="@id/portStatusDetailFragment"-->
+    <!--            />-->
+    <!--    </fragment>-->
     <fragment
         android:id="@+id/companyListTabFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.companylist.CompanyListTabFragment"
@@ -140,10 +158,24 @@
             app:argType="string"
             />
     </fragment>
+
+    <activity
+        android:id="@+id/portStatusDetailActivity"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailActivity"
+        android:label="PortStatusDetailActivity"
+        tools:layout="@layout/port_status_detail_activity"
+        >
+        <argument android:name="portName" />
+        <argument android:name="portCode" />
+    </activity>
+
+    <include app:graph="@navigation/nav_status_detail" />
+
     <!--    <fragment-->
     <!--        android:id="@+id/dashBoardFragment"-->
     <!--        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard.DashBoardFragment"-->
     <!--        android:label="dash_board_fragment"-->
     <!--        tools:layout="@layout/dash_board_fragment"-->
     <!--        />-->
+
 </navigation>
