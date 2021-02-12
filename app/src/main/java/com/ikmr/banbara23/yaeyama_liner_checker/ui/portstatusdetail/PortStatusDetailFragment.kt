@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_COMPANY
@@ -26,7 +26,7 @@ import timber.log.Timber
 class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusDetailClickListener {
     private lateinit var binding: StatusDetailFragmentBinding
     private val viewModel: PortStatusDetailViewModel by lazy {
-        ViewModelProviders.of(this).get(PortStatusDetailViewModel::class.java)
+        ViewModelProvider(this).get(PortStatusDetailViewModel::class.java)
     }
     private val firebaseAnalytics: FirebaseAnalytics by lazy { FirebaseAnalytics.getInstance(requireActivity()) }
     private lateinit var controller: StatusDetailEpoxyController
@@ -37,7 +37,7 @@ class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusD
 
     /** 港コード */
     private val portCode: String
-        get() = arguments?.getString(BUNDLE_KEY_PORT_CODE) ?: ""
+        get() = arguments?.getString(BUNDLE_KEY_PORT_CODE) ?: throw IllegalArgumentException("portCodeがありません")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false)
