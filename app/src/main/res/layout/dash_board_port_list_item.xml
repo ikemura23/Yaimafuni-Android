@@ -39,17 +39,7 @@
             tools:text="竹富島"
             />
 
-        <!--        <include-->
-        <!--            android:id="@+id/anei"-->
-        <!--            layout="@layout/dash_board_port_list_item_port"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_gravity="center"-->
-        <!--            android:layout_marginLeft="8dp"-->
-        <!--            app:name='@{"安栄観光"}'-->
-        <!--            app:portStatus="@{ports.anei}"-->
-        <!--            />-->
-
+        <!-- 安栄観光 -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -82,16 +72,7 @@
                 />
         </LinearLayout>
 
-        <!--        <include-->
-        <!--            android:id="@+id/ykf"-->
-        <!--            layout="@layout/top_port_row_item"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_gravity="right"-->
-        <!--            app:name='@{"八観フェ"}'-->
-        <!--            app:portStatus="@{ports.ykf}"-->
-        <!--            />-->
-
+        <!-- 八重山観光フェリー -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,8 +95,9 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
                 android:padding="4dp"
-                android:text="@{ ports.anei.status.text }"
+                android:text="@{ ports.ykf.status.text }"
                 android:textColor="@color/white"
+                app:backgroundColorOfStatus="@{ ports.ykf.status.code }"
                 tools:background="@drawable/shape_rounded_corners_status_cancel"
                 tools:text="欠航"
                 />
