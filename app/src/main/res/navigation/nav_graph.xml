@@ -29,14 +29,14 @@
         <!--            app:popEnterAnim="@android:anim/slide_in_left"-->
         <!--            app:popExitAnim="@android:anim/slide_out_right"-->
         <!--            />-->
-        <!--        <action-->
-        <!--            android:id="@+id/action_topFragment_to_portListTabFragment"-->
-        <!--            app:destination="@id/portListTabFragment"-->
-        <!--            app:enterAnim="@anim/slide_in_right"-->
-        <!--            app:exitAnim="@anim/slide_out_left"-->
-        <!--            app:popEnterAnim="@android:anim/slide_in_left"-->
-        <!--            app:popExitAnim="@android:anim/slide_out_right"-->
-        <!--            />-->
+        <action
+            android:id="@+id/action_topFragment_to_portListTabFragment"
+            app:destination="@id/portListTabFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            />
 
         <action
             android:id="@+id/action_dashBoardFragment_to_portStatusDetailActivity"
@@ -111,19 +111,19 @@
     <!--            app:argType="string"-->
     <!--            />-->
     <!--    </fragment>-->
-    <!--    <fragment-->
-    <!--        android:id="@+id/portListTabFragment"-->
-    <!--        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portlist.PortListTabFragment"-->
-    <!--        android:label="fragment_port_list_tab"-->
-    <!--        tools:layout="@layout/fragment_port_list_tab"-->
-    <!--        >-->
-    <!--        <argument android:name="portName" />-->
-    <!--        <argument android:name="portCode" />-->
-    <!--        <action-->
-    <!--            android:id="@+id/action_portListTabFragment_to_portStatusDetailFragment"-->
-    <!--            app:destination="@id/portStatusDetailFragment"-->
-    <!--            />-->
-    <!--    </fragment>-->
+    <fragment
+        android:id="@+id/portListTabFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portlist.PortListTabFragment"
+        android:label="fragment_port_list_tab"
+        tools:layout="@layout/fragment_port_list_tab"
+        >
+        <argument android:name="portName" />
+        <argument android:name="portCode" />
+        <action
+            android:id="@+id/action_portListTabFragment_to_portStatusDetailFragment"
+            app:destination="@id/portStatusDetailFragment"
+            />
+    </fragment>
     <fragment
         android:id="@+id/companyListTabFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.companylist.CompanyListTabFragment"

@@ -13,6 +13,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ikmr.banbara23.yaeyama_liner_checker.R
+import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_COMPANY
+import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_PORT_CODE
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
@@ -31,11 +33,11 @@ class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusD
 
     /** パラメータ取得 会社 */
     private val company: Company
-        get() = arguments?.getSerializable("company") as Company
+        get() = arguments?.getSerializable(BUNDLE_KEY_COMPANY) as? Company ?: Company.ANEI
 
     /** 港コード */
     private val portCode: String
-        get() = arguments?.getString("portCode") ?: ""
+        get() = arguments?.getString(BUNDLE_KEY_PORT_CODE) ?: ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false)
