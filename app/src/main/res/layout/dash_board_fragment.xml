@@ -10,6 +10,11 @@
         <import type="android.view.View" />
 
         <variable
+            name="viewModel"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard.DashBoardViewModel"
+            />
+
+        <variable
             name="topPort"
             type="com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort"
             />
