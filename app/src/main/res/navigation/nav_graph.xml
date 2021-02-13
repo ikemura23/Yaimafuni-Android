@@ -37,24 +37,6 @@
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right"
             />
-
-        <action
-            android:id="@+id/action_dashBoardFragment_to_portStatusDetailActivity"
-            app:destination="@id/nav_status_detail"
-            >
-            <argument
-                android:name="portCode"
-                app:argType="string"
-                />
-            <argument
-                android:name="portName"
-                app:argType="string"
-                />
-            <argument
-                android:name="company"
-                app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Company"
-                />
-        </action>
         <!--        <action-->
         <!--            android:id="@+id/action_topFragment_to_companyListTabFragment"-->
         <!--            app:destination="@id/companyListTabFragment"-->

@@ -47,34 +47,12 @@ class DashBoardFragment : Fragment() {
         when (nav) {
             is DashBoardViewModelImpl.Nav.GoDetail -> {
 
-                // DashBoardFragmentDirections.actionDashBoardFragmentToPortStatusDetailActivity(
-                //     company = Company.ANEI,
-                //     portName = nav.ports.anei.portName,
-                //     portCode = nav.ports.anei.portCode,
-                // ).let { directions ->
-                //     findNavController().navigate(directions)
-                // }
-
                 DashBoardFragmentDirections.actionTopFragmentToPortListTabFragment(
                     portName = nav.ports.anei.portName,
                     portCode = nav.ports.anei.portCode,
                 ).let { directions ->
                     findNavController().navigate(directions)
                 }
-
-                // DashBoardFragmentDirections.actionDashBoardFragmentToPortStatusDetailActivity(
-                //     company = Company.ANEI,
-                //     portName = nav.ports.anei.portName,
-                //     portCode = nav.ports.anei.portCode,
-                // ).let { directions ->
-                //     Timber.d(directions.arguments.toString())
-                //     Intent(requireActivity(), PortStatusDetailActivity::class.java).apply {
-                //         putExtras(directions.arguments)
-                //     }
-                // }.let { intent ->
-                //     Timber.d(intent.extras.toString())
-                //     startActivity(intent)
-                // }
             }
         }
     }
