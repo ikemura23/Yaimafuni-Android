@@ -4,6 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.ikmr.banbara23.yaeyama_liner_checker.core.Event
+import com.ikmr.banbara23.yaeyama_liner_checker.core.toEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.Ports
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
 import com.ikmr.banbara23.yaeyama_liner_checker.repository.TopPortStatusRepository
@@ -17,7 +19,7 @@ import timber.log.Timber
 class DashBoardViewModelImpl : DashBoardViewModel() {
 
     override val uiState = MutableLiveData<TopPort>()
-    override val nav = MutableLiveData<Nav>()
+    override val nav = MutableLiveData<Event<Nav>>()
 
     private val database: DatabaseReference by lazy {
         FirebaseDatabase.getInstance().reference.ref.child("top_port")
@@ -43,7 +45,7 @@ class DashBoardViewModelImpl : DashBoardViewModel() {
      */
     override fun onClickPort(ports: Ports) {
         Timber.d("clicked: $ports")
-        nav.value = Nav.GoDetail(ports)
+        nav.value = Nav.GoDetail(ports).toEvent()
     }
 
     sealed class Nav {
