@@ -23,16 +23,23 @@ class PortListTabFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_port_list_tab, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // binding.title = portName
-        binding.includeTitleBar.titleBar.setNavigationOnClickListener { findNavController().navigateUp() }
+        setupTitle()
         setupTab()
+    }
+
+    /**
+     * タイトル設定
+     */
+    private fun setupTitle() {
+        binding.title = PortListTabFragmentArgs.fromBundle(requireArguments()).portName
+        binding.includeTitleBar.titleBar.setNavigationOnClickListener { findNavController().navigateUp() }
     }
 
     /**
