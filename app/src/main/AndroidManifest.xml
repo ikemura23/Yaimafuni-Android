@@ -21,7 +21,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
-        <activity android:name=".ui.portstatusdetail.PortStatusDetailActivity"></activity>
         <activity
             android:name=".ui.home.HomeActivity"
             android:label="@string/title_activity_home"

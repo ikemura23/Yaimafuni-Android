@@ -159,16 +159,6 @@
             />
     </fragment>
 
-    <activity
-        android:id="@+id/portStatusDetailActivity"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailActivity"
-        android:label="PortStatusDetailActivity"
-        tools:layout="@layout/port_status_detail_activity"
-        >
-        <argument android:name="portName" />
-        <argument android:name="portCode" />
-    </activity>
-
     <include app:graph="@navigation/nav_status_detail" />
 
     <!--    <fragment-->
