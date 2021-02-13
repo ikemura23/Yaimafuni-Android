@@ -101,10 +101,6 @@
         >
         <argument android:name="portName" />
         <argument android:name="portCode" />
-        <action
-            android:id="@+id/action_portListTabFragment_to_portStatusDetailFragment"
-            app:destination="@id/portStatusDetailFragment"
-            />
     </fragment>
     <fragment
         android:id="@+id/companyListTabFragment"
@@ -140,8 +136,6 @@
             app:argType="string"
             />
     </fragment>
-
-    <include app:graph="@navigation/nav_status_detail" />
 
     <!--    <fragment-->
     <!--        android:id="@+id/dashBoardFragment"-->
