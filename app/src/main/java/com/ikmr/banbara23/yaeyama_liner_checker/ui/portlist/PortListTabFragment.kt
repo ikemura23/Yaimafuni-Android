@@ -19,23 +19,27 @@ class PortListTabFragment : Fragment() {
     private val portCode: String by lazy {
         PortListTabFragmentArgs.fromBundle(requireArguments()).portCode
     }
-    private val portName: String by lazy {
-        PortListTabFragmentArgs.fromBundle(requireArguments()).portName
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_port_list_tab, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.title = portName
-        binding.includeTitleBar.titleBar.setNavigationOnClickListener { findNavController().navigateUp() }
+        setupTitle()
         setupTab()
+    }
+
+    /**
+     * タイトル設定
+     */
+    private fun setupTitle() {
+        binding.title = PortListTabFragmentArgs.fromBundle(requireArguments()).portName
+        binding.includeTitleBar.titleBar.setNavigationOnClickListener { findNavController().navigateUp() }
     }
 
     /**
@@ -46,11 +50,13 @@ class PortListTabFragment : Fragment() {
         if (portCode == "hateruma") {
             binding.tabLayout.removeTabAt(1)
         }
+        PortListTabFragmentArgs
         binding.portViewPager.adapter =
             PortPagerAdapter(
+                requireContext(),
                 childFragmentManager,
                 binding.tabLayout.tabCount,
-                portCode
+                portCode,
             )
         binding.tabLayout.setupWithViewPager(binding.portViewPager)
     }

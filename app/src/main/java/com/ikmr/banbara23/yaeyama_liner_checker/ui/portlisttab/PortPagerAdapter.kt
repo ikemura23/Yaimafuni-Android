@@ -1,9 +1,11 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab
 
-import android.os.Bundle
+import android.content.Context
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailFragment
@@ -12,9 +14,10 @@ import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDe
  * 港別の運行一覧 PagerAdapter
  */
 class PortPagerAdapter(
+    val context: Context,
     fm: FragmentManager,
     private val tabCount: Int,
-    private val portCode: String
+    private val portCode: String,
 ) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getItem(position: Int): Fragment {
@@ -23,19 +26,28 @@ class PortPagerAdapter(
             1 -> Company.YKF
             else -> Company.ANEI
         }
-        val bundle = Bundle().apply {
-            putString(Constants.BUNDLE_KEY_PORT_CODE, portCode)
-            putSerializable(Constants.BUNDLE_KEY_COMPANY, company)
-        }
+
+        val bundle = bundleOf(
+            Constants.BUNDLE_KEY_PORT_CODE to portCode,
+            Constants.BUNDLE_KEY_COMPANY to company
+        )
 
         return PortStatusDetailFragment.newInstance(bundle)
     }
 
     override fun getPageTitle(position: Int): String {
-        return if (position == 0) "安栄観光" else "八重山観光\nフェリー"
+        return context.resources.getString(TAB_TITLES[position])
     }
 
     override fun getCount(): Int {
         return tabCount
     }
 }
+
+/**
+ * タブ名
+ */
+private val TAB_TITLES = arrayOf(
+    R.string.tab_annei,
+    R.string.tab_ykf
+)

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.DashBoardFragmentBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.ext.observeEvent
 import timber.log.Timber
 
 /**
@@ -35,7 +36,7 @@ class DashBoardFragment : Fragment() {
             binding.topPort = it
         }
         viewModel.fetchTopPortStatus()
-        viewModel.nav.observe(viewLifecycleOwner, this::onNavigate)
+        viewModel.nav.observeEvent(viewLifecycleOwner, this::onNavigate)
     }
 
     /**
@@ -45,9 +46,10 @@ class DashBoardFragment : Fragment() {
         Timber.d("navigate: $nav")
         when (nav) {
             is DashBoardViewModelImpl.Nav.GoDetail -> {
+
                 DashBoardFragmentDirections.actionTopFragmentToPortListTabFragment(
-                    nav.ports.anei.portName,
-                    nav.ports.anei.portCode,
+                    portName = nav.ports.anei.portName,
+                    portCode = nav.ports.anei.portCode,
                 ).let { directions ->
                     findNavController().navigate(directions)
                 }

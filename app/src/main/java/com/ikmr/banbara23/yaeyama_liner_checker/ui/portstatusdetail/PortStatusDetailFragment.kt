@@ -10,13 +10,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
+import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_COMPANY
+import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_PORT_CODE
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
+import timber.log.Timber
 
 /**
  * 詳細フラグメント
@@ -24,18 +26,18 @@ import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusDetailClickListener {
     private lateinit var binding: StatusDetailFragmentBinding
     private val viewModel: PortStatusDetailViewModel by lazy {
-        ViewModelProviders.of(this).get(PortStatusDetailViewModel::class.java)
+        ViewModelProvider(this).get(PortStatusDetailViewModel::class.java)
     }
     private val firebaseAnalytics: FirebaseAnalytics by lazy { FirebaseAnalytics.getInstance(requireActivity()) }
     private lateinit var controller: StatusDetailEpoxyController
 
     /** パラメータ取得 会社 */
     private val company: Company
-        get() = arguments?.getSerializable(Constants.BUNDLE_KEY_COMPANY) as Company
+        get() = arguments?.getSerializable(BUNDLE_KEY_COMPANY) as? Company ?: Company.ANEI
 
     /** 港コード */
     private val portCode: String
-        get() = arguments?.getString(Constants.BUNDLE_KEY_PORT_CODE) ?: ""
+        get() = arguments?.getString(BUNDLE_KEY_PORT_CODE) ?: throw IllegalArgumentException("portCodeがありません")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false)
@@ -54,6 +56,7 @@ class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusD
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
+        arguments?.let { Timber.d(arguments.toString()) }
         viewModel.load(company, portCode)
     }
 
