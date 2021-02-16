@@ -1,6 +1,5 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ext
 
-import android.content.res.Resources
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
@@ -25,6 +24,9 @@ fun <T : ViewDataBinding> AppCompatActivity.viewBinding(): ReadOnlyProperty<AppC
     }
 }
 
+// Fragment.viewBinding() 用
+class FragmentViewNotFoundException : Exception("Fragment#getView() returned null.")
+
 /**
  * FragmentのDataBindingを設定する
  *
@@ -43,7 +45,7 @@ fun <T : ViewDataBinding> AppCompatActivity.viewBinding(): ReadOnlyProperty<AppC
 fun <T : ViewDataBinding> Fragment.viewBinding(): ReadOnlyProperty<Fragment, T> {
     return object : ReadOnlyProperty<Fragment, T> {
         override fun getValue(thisRef: Fragment, property: KProperty<*>): T {
-            val view = thisRef.view ?: throw Resources.NotFoundException("Fragment view is null")
+            val view = thisRef.view ?: throw FragmentViewNotFoundException()
             val binding = DataBindingUtil.bind<T>(view)!!
             binding.lifecycleOwner = thisRef.viewLifecycleOwner
             return binding
