@@ -27,6 +27,18 @@ fun <T : ViewDataBinding> AppCompatActivity.viewBinding(): ReadOnlyProperty<AppC
 
 /**
  * FragmentのDataBindingを設定する
+ *
+ * Example
+ *
+ * ```
+ * private val binding: WeatherFragmentBinding by viewBinding()
+ *
+ * override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+ *   super.onViewCreated(view, savedInstanceState)
+ *   binding.viewModel ...
+ * }
+ * ```
+ *
  */
 fun <T : ViewDataBinding> Fragment.viewBinding(): ReadOnlyProperty<Fragment, T> {
     return object : ReadOnlyProperty<Fragment, T> {
