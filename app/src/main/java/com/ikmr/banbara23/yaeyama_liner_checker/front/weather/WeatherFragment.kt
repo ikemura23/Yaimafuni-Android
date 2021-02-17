@@ -3,7 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.front.weather
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
@@ -19,7 +19,7 @@ import timber.log.Timber
 class WeatherFragment : Fragment(R.layout.weather_fragment) {
 
     private val viewModel: WeatherScreenViewModel by lazy {
-        ViewModelProviders.of(this).get(WeatherScreenViewModel::class.java)
+        ViewModelProvider(this).get(WeatherScreenViewModel::class.java)
     }
     private val binding: WeatherFragmentBinding by viewBinding()
 
