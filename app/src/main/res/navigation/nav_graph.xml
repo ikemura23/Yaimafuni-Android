@@ -30,20 +30,24 @@
         />
     <fragment
         android:id="@+id/typhoonListFragment"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list.TyphoonListFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.list.TyphoonListFragment"
         android:label="TyphoonListFragment"
         tools:layout="@layout/typhoon_list_fragment"
         >
         <action
             android:id="@+id/action_typhoonListFragment_to_typhoonDetailFragment"
             app:destination="@id/typhoonDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
             />
     </fragment>
     <fragment
         android:id="@+id/typhoonDetailFragment"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.detail.TyphoonDetailFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.detail.TyphoonDetailFragment"
         android:label="TyphoonDetailFragment"
-        tools:layout="@layout/fragment_typhoon_detail"
+        tools:layout="@layout/typhoon_detail_fragment"
         >
         <argument
             android:name="typhoon"
