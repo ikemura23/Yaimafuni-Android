@@ -6,7 +6,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import timber.log.Timber
@@ -14,10 +13,10 @@ import timber.log.Timber
 /**
  * 台風情報を取得
  */
-@ExperimentalCoroutinesApi
+@Suppress("EXPERIMENTAL_API_USAGE")
 class TyphoonRepository(private val dbRef: DatabaseReference) {
 
-    fun fetchTyphoonList(): Flow<TyphoonUiState> = callbackFlow {
+    fun getTyphoonList(): Flow<TyphoonUiState> = callbackFlow {
         dbRef.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
