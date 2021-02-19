@@ -7,21 +7,20 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.FirebaseDatabase
 import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonListFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.repository.TyphoonRepository
 import com.ikmr.banbara23.yaeyama_liner_checker.repository.TyphoonUiState
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
+/**
+ * 台風一覧 Fragment
+ */
 class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment),
     OnTyphoonDetailFragmentInteractionListener {
 
-    private val apiClient = ApiClient()
-    private val disposable = CompositeDisposable()
     private val binding: TyphoonListFragmentBinding by viewBinding()
     private val repository: TyphoonRepository by lazy {
         // TODO: DI化したい
@@ -54,6 +53,9 @@ class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment),
         }
     }
 
+    /**
+     * 表示
+     */
     private fun bindTyphoon(typhoonList: List<Typhoon>) {
         if (typhoonList.isEmpty()) {
             binding.list.visibility = View.GONE

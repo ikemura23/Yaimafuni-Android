@@ -6,13 +6,13 @@ import com.ikmr.banbara23.yaeyama_liner_checker.repository.TyphoonUiState
 import kotlinx.coroutines.flow.Flow
 
 /**
- * 台風
+ * 台風一覧 ViewModel
  */
 class TyphoonListViewModel constructor(
     private val typhoonRepository: TyphoonRepository,
 ) : ViewModel() {
-    // val uiState = MutableLiveData<TyphoonUiState>()
-    fun getTyphoonList(): Flow<TyphoonUiState> {
-        return typhoonRepository.getTyphoonList()
-    }
+    /**
+     * 台風一覧を取得する
+     */
+    fun getTyphoonList(): Flow<TyphoonUiState> = typhoonRepository.getTyphoonList()
 }

@@ -10,6 +10,9 @@ import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonListItemBindi
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import com.squareup.picasso.Picasso
 
+/**
+ * 台風一覧 アダプター
+ */
 class TyphoonRecyclerViewAdapter(
     private var mValues: List<Typhoon> = listOf(),
     private val mListener: OnTyphoonDetailFragmentInteractionListener?
