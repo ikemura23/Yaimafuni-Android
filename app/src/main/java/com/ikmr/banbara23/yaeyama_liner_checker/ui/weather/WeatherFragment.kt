@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.front.weather
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.weather
 
 import android.os.Bundle
 import android.view.View

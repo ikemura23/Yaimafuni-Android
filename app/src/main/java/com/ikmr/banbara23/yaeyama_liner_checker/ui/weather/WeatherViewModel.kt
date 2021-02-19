@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.front.weather
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.weather
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,14 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.ikmr.banbara23.yaeyama_liner_checker.repository.WeatherRepository
 import com.ikmr.banbara23.yaeyama_liner_checker.core.LiveEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.core.SingleLiveEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo
+import com.ikmr.banbara23.yaeyama_liner_checker.repository.WeatherRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 /**
  * 天気詳細 ViewModel
@@ -27,9 +26,8 @@ class WeatherScreenViewModel : ViewModel() {
         WeatherRepository(database)
     }
 
-
     private val _weather = MutableLiveData<WeatherInfo>()
-    val weather :LiveData<WeatherInfo> = _weather
+    val weather: LiveData<WeatherInfo> = _weather
     var event = SingleLiveEvent<Nav>()
 
     @ExperimentalCoroutinesApi
@@ -39,7 +37,7 @@ class WeatherScreenViewModel : ViewModel() {
             weatherRepository.fetchWeather().collect { state ->
                 when (state) {
                     // 成功
-                    is WeatherUiState.Success ->  _weather.value = state.weatherInfo
+                    is WeatherUiState.Success -> _weather.value = state.weatherInfo
                     // エラー処理
                     is WeatherUiState.Error -> event.postValue(Nav.Error)
                 }

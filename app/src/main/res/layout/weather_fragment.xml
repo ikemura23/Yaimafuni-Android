@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherScreenViewModel"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.ui.weather.WeatherScreenViewModel"
             />
     </data>
 

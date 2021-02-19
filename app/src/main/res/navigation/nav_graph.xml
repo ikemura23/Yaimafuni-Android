@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/weatherFragment"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.weather.WeatherFragment"
         android:label="WeatherFragment"
         tools:layout="@layout/weather_fragment"
         />

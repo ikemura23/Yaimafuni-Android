@@ -4,11 +4,11 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.ikmr.banbara23.yaeyama_liner_checker.front.weather.WeatherUiState
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.Table
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.Temperature
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.Weather
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.weather.WeatherUiState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.delay
