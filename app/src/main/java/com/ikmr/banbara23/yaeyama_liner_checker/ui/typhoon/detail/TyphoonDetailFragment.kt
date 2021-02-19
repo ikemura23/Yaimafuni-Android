@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.FragmentTyphoonDetailBinding
@@ -28,6 +29,8 @@ class TyphoonDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_typhoon_detail, container, false)
+        binding.includeTitle.titleBar.setNavigationOnClickListener { findNavController().navigateUp() }
+        binding.includeTitle.title = typhoon?.name
         binding.typhoon = typhoon
         return binding.root
     }
