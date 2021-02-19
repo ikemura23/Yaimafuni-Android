@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
-import com.ikmr.banbara23.yaeyama_liner_checker.databinding.FragmentTyphoonDetailBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonDetailFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 import com.squareup.picasso.Picasso
@@ -19,7 +19,7 @@ import timber.log.Timber
  * 台風詳細 Fragment
  */
 class TyphoonDetailFragment : Fragment() {
-    private lateinit var binding: FragmentTyphoonDetailBinding
+    private lateinit var binding: TyphoonDetailFragmentBinding
     private val typhoon: Typhoon? by lazy {
         TyphoonDetailFragmentArgs.fromBundle(requireArguments()).typhoon
     }
@@ -28,7 +28,7 @@ class TyphoonDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_typhoon_detail, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.typhoon_detail_fragment, container, false)
         binding.includeTitle.titleBar.setNavigationOnClickListener { findNavController().navigateUp() }
         binding.includeTitle.title = typhoon?.name
         binding.typhoon = typhoon

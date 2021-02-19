@@ -43,7 +43,7 @@
         android:id="@+id/typhoonDetailFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.detail.TyphoonDetailFragment"
         android:label="TyphoonDetailFragment"
-        tools:layout="@layout/fragment_typhoon_detail"
+        tools:layout="@layout/typhoon_detail_fragment"
         >
         <argument
             android:name="typhoon"
