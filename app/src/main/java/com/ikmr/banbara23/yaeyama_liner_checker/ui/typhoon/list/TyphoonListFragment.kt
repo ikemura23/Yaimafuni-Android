@@ -1,40 +1,28 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.list
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonListFragmentBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subscribers.ResourceSubscriber
 import timber.log.Timber
 
-class TyphoonListFragment : Fragment(),
+class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment),
     OnTyphoonDetailFragmentInteractionListener {
 
     private val apiClient = ApiClient()
     private val disposable = CompositeDisposable()
-
-    private lateinit var binding: TyphoonListFragmentBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.typhoon_list_fragment, container, false)
-        return binding.root
-    }
+    private val binding: TyphoonListFragmentBinding by viewBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.toolBar.setNavigationOnClickListener { findNavController().navigateUp() }
         binding.list.adapter =
             TyphoonRecyclerViewAdapter(
                 listOf(),

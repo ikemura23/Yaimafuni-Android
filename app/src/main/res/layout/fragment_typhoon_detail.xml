@@ -1,4 +1,8 @@
-<layout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <data>
 
@@ -8,157 +12,174 @@
             />
     </data>
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:background="@drawable/top_background"-->
+    <!--        android:orientation="vertical"-->
+    <!--        tools:context="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.detail.TyphoonDetailFragment"-->
+    <!--        >-->
+
+    <!--        <include-->
+    <!--            android:id="@+id/include_title_bar"-->
+    <!--            layout="@layout/header_back"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent"-->
+    <!--            app:title='@{ typhoon.name }'-->
+    <!--            />-->
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/top_background"
-        android:orientation="vertical"
-        tools:context="com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.detail.TyphoonDetailFragment"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        tools:background="@drawable/top_background"
         >
 
-        <include
-            android:id="@+id/include_title_bar"
-            layout="@layout/header_back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title='@{ typhoon.name }'
-            />
-
-        <ScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never"
+            android:layout_height="wrap_content"
             >
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/title_bar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                app:layout_constraintTop_toTopOf="parent"
                 >
 
-                <ImageView
-                    android:id="@+id/image"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    app:layout_constraintDimensionRatio="H,16:9"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/backgrounds/scenic"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/actionbar_text_size"
+                    tools:text="タイトル"
                     />
+            </androidx.appcompat.widget.Toolbar>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card"
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintDimensionRatio="H,16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_bar"
+                tools:src="@tools:sample/backgrounds/scenic"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image"
+                >
+                <!--台風情報-->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    app:cardCornerRadius="4dp"
-                    app:cardElevation="2dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/image"
+                    android:orientation="vertical"
                     >
-                    <!--台風情報-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
+
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:orientation="vertical"
-                        >
+                        android:text='@{ "更新日: " + typhoon.dateTime }'
+                        android:textSize="16sp"
+                        tools:text="更新日:"
+                        />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text='@{ "更新日: " + typhoon.dateTime }'
-                            android:textSize="16sp"
-                            tools:text="更新日:"
-                            />
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        />
 
-                        <Space
-                            android:layout_width="wrap_content"
-                            android:layout_height="16dp"
-                            />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{ "大きさ: " + typhoon.scale }'
+                        android:textSize="16sp"
+                        tools:text="大きさ:"
+                        />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text='@{ "大きさ: " + typhoon.scale }'
-                            android:textSize="16sp"
-                            tools:text="大きさ:"
-                            />
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        />
 
-                        <Space
-                            android:layout_width="wrap_content"
-                            android:layout_height="16dp"
-                            />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{ "強さ: " + typhoon.intensity }'
+                        android:textSize="16sp"
+                        tools:text="強さ:"
+                        />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text='@{ "強さ: " + typhoon.intensity }'
-                            android:textSize="16sp"
-                            tools:text="強さ:"
-                            />
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        />
 
-                        <Space
-                            android:layout_width="wrap_content"
-                            android:layout_height="16dp"
-                            />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{ "存在地域: " + typhoon.area }'
+                        android:textSize="16sp"
+                        tools:text="存在地域:"
+                        />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text='@{ "存在地域: " + typhoon.area }'
-                            android:textSize="16sp"
-                            tools:text="存在地域:"
-                            />
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        />
 
-                        <Space
-                            android:layout_width="wrap_content"
-                            android:layout_height="16dp"
-                            />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{ "中心気圧: " + typhoon.pressure }'
+                        android:textSize="16sp"
+                        tools:text="中心気圧:"
+                        />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text='@{ "中心気圧: " + typhoon.pressure }'
-                            android:textSize="16sp"
-                            tools:text="中心気圧:"
-                            />
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        />
 
-                        <Space
-                            android:layout_width="wrap_content"
-                            android:layout_height="16dp"
-                            />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{ "中心最大風速: " + typhoon.maxWindSpeedNearCenter }'
+                        android:textSize="16sp"
+                        tools:text="中心最大風速:"
+                        />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text='@{ "中心最大風速: " + typhoon.maxWindSpeedNearCenter }'
-                            android:textSize="16sp"
-                            tools:text="中心最大風速:"
-                            />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@color/orange3"
+                android:text="Webブラウザでみる"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card"
+                />
 
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:background="@color/orange3"
-                    android:text="Webブラウザでみる"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/card"
-                    />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
-    </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <!--    </LinearLayout>-->
 </layout>

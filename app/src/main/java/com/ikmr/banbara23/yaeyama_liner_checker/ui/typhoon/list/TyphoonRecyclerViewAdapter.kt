@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.list
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.list
 
 import android.view.LayoutInflater
 import android.view.View

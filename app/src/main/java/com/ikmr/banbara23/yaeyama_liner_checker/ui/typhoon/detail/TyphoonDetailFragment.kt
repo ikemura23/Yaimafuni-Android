@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.front.typhoon.detail
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,8 +34,6 @@ class TyphoonDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // 戻る設定
-        binding.includeTitleBar.titleBar.setNavigationOnClickListener { requireActivity().finish() }
         // 画像読み込み
         Timber.d(typhoon.toString())
         typhoon?.let { Picasso.get().load(it.img).into(binding.image) }
