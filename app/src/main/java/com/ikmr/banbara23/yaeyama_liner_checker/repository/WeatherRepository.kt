@@ -43,7 +43,7 @@ class WeatherRepository(private val dbRef: DatabaseReference) {
             }
         })
         awaitClose {
-            // TODO: DatabaseReference は自動で破棄される
+            // DatabaseReference は自動で破棄される
         }
     }
 
