@@ -9,7 +9,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.Temperature
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.Weather
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.weather.WeatherUiState
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -19,12 +18,12 @@ import timber.log.Timber
 /**
  * 天気 Repository
  */
+@Suppress("EXPERIMENTAL_API_USAGE")
 class WeatherRepository(private val dbRef: DatabaseReference) {
 
     /**
      * 天気を取得
      */
-    @ExperimentalCoroutinesApi
     fun fetchWeather(): Flow<WeatherUiState> = callbackFlow { // callbackFlowの戻り値はFlow型
         // DBへの接続
         dbRef.addValueEventListener(object : ValueEventListener {
@@ -50,7 +49,6 @@ class WeatherRepository(private val dbRef: DatabaseReference) {
     /**
      * テスト表示用
      */
-    @ExperimentalCoroutinesApi
     fun fetchDummyWeather(): Flow<WeatherUiState> = callbackFlow {
         while (true) {
             delay(3000)

@@ -6,11 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.ikmr.banbara23.yaeyama_liner_checker.core.LiveEvent
-import com.ikmr.banbara23.yaeyama_liner_checker.core.SingleLiveEvent
+import com.ikmr.banbara23.yaeyama_liner_checker.core.Event
+import com.ikmr.banbara23.yaeyama_liner_checker.core.toEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo
 import com.ikmr.banbara23.yaeyama_liner_checker.repository.WeatherRepository
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -26,20 +25,22 @@ class WeatherScreenViewModel : ViewModel() {
         WeatherRepository(database)
     }
 
-    private val _weather = MutableLiveData<WeatherInfo>()
-    val weather: LiveData<WeatherInfo> = _weather
-    var event = SingleLiveEvent<Nav>()
+    // UI状態
+    private val _state = MutableLiveData<WeatherUiState>()
+    val state: LiveData<WeatherUiState> = _state
 
-    @ExperimentalCoroutinesApi
+    // イベント
+    val event = MutableLiveData<Event<Nav>>()
+
     fun fetchWeather() {
         viewModelScope.launch {
             // StateFlowの購読
             weatherRepository.fetchWeather().collect { state ->
                 when (state) {
                     // 成功
-                    is WeatherUiState.Success -> _weather.value = state.weatherInfo
+                    is WeatherUiState.Success -> _state.value = WeatherUiState.Success(state.weatherInfo)
                     // エラー処理
-                    is WeatherUiState.Error -> event.postValue(Nav.Error)
+                    is WeatherUiState.Error -> _state.value = WeatherUiState.Error(state.message)
                 }
             }
         }
@@ -49,10 +50,10 @@ class WeatherScreenViewModel : ViewModel() {
      * 天気を詳しく見るをクリック
      */
     fun moreButtonClick() {
-        event.setValue(Nav.More)
+        event.value = Nav.More.toEvent()
     }
 
-    sealed class Nav : LiveEvent {
+    sealed class Nav {
         object Error : Nav()
         object More : Nav()
     }
