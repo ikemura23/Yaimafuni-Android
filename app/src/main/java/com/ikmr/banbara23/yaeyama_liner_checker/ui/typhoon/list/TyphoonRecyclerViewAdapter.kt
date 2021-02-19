@@ -11,7 +11,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import com.squareup.picasso.Picasso
 
 class TyphoonRecyclerViewAdapter(
-    private var mValues: List<Typhoon>,
+    private var mValues: List<Typhoon> = listOf(),
     private val mListener: OnTyphoonDetailFragmentInteractionListener?
 ) : RecyclerView.Adapter<TyphoonRecyclerViewAdapter.ViewHolder>() {
 
