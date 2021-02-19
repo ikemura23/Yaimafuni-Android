@@ -46,6 +46,7 @@
                 android:id="@+id/include_title"
                 layout="@layout/header_back"
                 app:layout_constraintTop_toTopOf="parent"
+                app:title="@{ typhoon.name }"
                 />
 
             <ImageView
