@@ -4,13 +4,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.ext.observeEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
 /**
@@ -40,21 +44,35 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
         }
 
         setupViewModel()
-        viewModel.fetchWeather()
+        // viewModel.fetchWeather()
     }
 
     private fun setupViewModel() {
-        viewModel.weather.observe(viewLifecycleOwner) {
-            (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(it.today.table)
-            (binding.tomorrow.timeList.adapter as WeatherTimeListAdaptor).update(it.tomorrow.table)
+        lifecycleScope.launchWhenCreated {
+            viewModel.getWeather().collect { state ->
+                when (state) {
+                    is WeatherUiState.Success -> {
+                        bindData(state.weatherInfo)
+                    }
+                    is WeatherUiState.Error -> {
+                        Timber.e(state.message)
+                    }
+                }
+            }
         }
 
-        viewModel.event.observe(viewLifecycleOwner) { nav ->
+        viewModel.event.observeEvent(viewLifecycleOwner) { nav ->
             when (nav) {
                 is WeatherScreenViewModel.Nav.Error -> Timber.e("WeatherFragment でエラー発生")
                 is WeatherScreenViewModel.Nav.More -> openBrowser()
             }
         }
+    }
+
+    private fun bindData(weather: WeatherInfo) {
+        binding.weather = weather
+        (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(weather.today.table)
+        (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(weather.tomorrow.table)
     }
 
     private fun openBrowser() {

@@ -46,6 +46,8 @@ class WeatherScreenViewModel : ViewModel() {
         }
     }
 
+    fun getWeather() = weatherRepository.fetchWeather()
+
     /**
      * 天気を詳しく見るをクリック
      */

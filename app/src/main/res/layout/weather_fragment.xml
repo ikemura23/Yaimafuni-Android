@@ -10,6 +10,11 @@
             name="viewModel"
             type="com.ikmr.banbara23.yaeyama_liner_checker.ui.weather.WeatherScreenViewModel"
             />
+
+        <variable
+            name="weather"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo"
+            />
     </data>
 
     <ScrollView
@@ -44,14 +49,14 @@
             <include
                 android:id="@+id/today"
                 layout="@layout/weather_view"
-                app:data="@{viewModel.weather.today}"
+                app:data="@{weather.today}"
                 app:titleText='@{"今日"}'
                 />
 
             <include
                 android:id="@+id/tomorrow"
                 layout="@layout/weather_view"
-                app:data="@{viewModel.weather.tomorrow}"
+                app:data="@{weather.tomorrow}"
                 app:titleText='@{"明日"}'
                 />
 
