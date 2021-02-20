@@ -1,51 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="56dp"
     android:paddingLeft="16dp"
     android:paddingTop="2dp"
     android:paddingRight="16dp"
     android:paddingBottom="2dp"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_toStartOf="@+id/view_status_list_status"
-        android:layout_toLeftOf="@+id/view_status_list_status"
+    <!--港-->
+    <TextView
+        android:id="@+id/port_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:orientation="vertical"
-        >
+        android:textColor="@color/secondary_text"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpUsage"
+        tools:text="竹富"
+        />
 
-        <!--港-->
-        <TextView
-            android:id="@+id/port_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:textColor="@color/secondary_text"
-            android:textSize="18dp"
-            tools:text="竹富"
-            />
+    <!--コメント-->
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:textColor="@color/dark_grey"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpUsage"
+        tools:text="コメントコメントコメントコメントコメント"
+        tools:visibility="visible"
+        />
 
-        <!--コメント-->
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:textColor="@color/dark_grey"
-            android:textSize="14dp"
-            tools:text="コメントコメントコメントコメントコメント"
-            tools:visibility="visible"
-            />
-
-    </LinearLayout>
     <!--ステータス文字-->
     <TextView
         android:id="@+id/status"
@@ -60,7 +56,11 @@
         android:paddingBottom="2dp"
         android:textColor="@color/white"
         android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:background="@color/status_cation"
+        tools:ignore="SpUsage"
         tools:text="一部欠航便有り"
         />
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
