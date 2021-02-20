@@ -43,8 +43,9 @@ class DashBoardViewModelImpl : DashBoardViewModel() {
     /**
      * 港クリック
      */
-    override fun onClickPort(ports: Ports) {
+    override fun onClickPort(ports: Ports?) {
         Timber.d("clicked: $ports")
+        ports ?: return
         nav.value = Nav.GoDetail(ports).toEvent()
     }
 

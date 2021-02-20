@@ -10,5 +10,5 @@ abstract class DashBoardViewModel : ViewModel() {
     abstract val uiState: LiveData<TopPort>
     abstract val nav: LiveData<Event<DashBoardViewModelImpl.Nav>>
 
-    abstract fun onClickPort(ports: Ports)
+    abstract fun onClickPort(ports: Ports?)
 }
