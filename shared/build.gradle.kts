@@ -20,11 +20,10 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(
-                    "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
+                    "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+                )
                 // firebase
-//                implementation("com.google.firebase:firebase-bom:26.5.0")
-                implementation("com.google.firebase:firebase-database-ktx:19.6.0")
-                implementation("com.google.firebase:firebase-database:19.6.0")
+                implementation("dev.gitlive:firebase-database:1.2.0")
             }
         }
         val commonTest by getting {
@@ -59,7 +58,8 @@ val packForXcode by tasks.creating(Sync::class) {
     val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
     val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
     val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
-    val framework = kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
+    val framework =
+        kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
     inputs.property("mode", mode)
     dependsOn(framework.linkTask)
     val targetDir = File(buildDir, "xcode-frameworks")
