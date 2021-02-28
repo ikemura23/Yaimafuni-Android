@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     kotlin("multiplatform")
+    kotlin("plugin.serialization")
     id("com.android.library")
-
 }
 
 kotlin {
@@ -22,6 +22,7 @@ kotlin {
                 implementation(
                     "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
                 )
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.1")
                 // firebase
                 implementation("dev.gitlive:firebase-database:1.2.0")
             }
