@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+
 }
 
 kotlin {
@@ -15,7 +16,14 @@ kotlin {
         }
     }
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                // firebase
+//                implementation("com.google.firebase:firebase-bom:26.5.0")
+                implementation("com.google.firebase:firebase-database-ktx:19.6.0")
+                implementation("com.google.firebase:firebase-database:19.6.0")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
