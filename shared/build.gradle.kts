@@ -16,8 +16,11 @@ kotlin {
         }
     }
     sourceSets {
+        val coroutineVersion = "1.4.2"
         val commonMain by getting {
             dependencies {
+                implementation(
+                    "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
                 // firebase
 //                implementation("com.google.firebase:firebase-bom:26.5.0")
                 implementation("com.google.firebase:firebase-database-ktx:19.6.0")
