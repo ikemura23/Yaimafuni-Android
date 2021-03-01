@@ -1,8 +1,11 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.model.weather
+package com.ikemura.shared.model.weather
+
+import kotlinx.serialization.Serializable
 
 /**
  * 天気 一日分
  */
+@Serializable
 data class Weather(
     // 日付
     var date: String = "",

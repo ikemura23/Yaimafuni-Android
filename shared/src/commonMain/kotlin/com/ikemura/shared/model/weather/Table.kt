@@ -1,8 +1,11 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.model.weather
+package com.ikemura.shared.model.weather
+
+import kotlinx.serialization.Serializable
 
 /**
  * 時間毎の天気
  */
+@Serializable
 data class Table(
     // 時間
     var hour: String = "",

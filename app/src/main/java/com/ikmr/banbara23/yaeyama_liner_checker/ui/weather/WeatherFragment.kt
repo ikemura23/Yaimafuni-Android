@@ -11,7 +11,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.observeEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
-import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo
+import com.ikemura.shared.model.weather.WeatherInfo
+import com.ikemura.shared.repository.WeatherUiState
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -33,23 +34,26 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
         binding.viewModel = viewModel
         // 今日の天気のリスト設定
         with(binding.today.timeList) {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = WeatherTimeListAdaptor()
         }
 
         // 明日の天気のリスト設定
         with(binding.tomorrow.timeList) {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = WeatherTimeListAdaptor()
         }
 
         setupViewModel()
-        // viewModel.fetchWeather()
+//         viewModel.fetchWeather()
     }
 
     private fun setupViewModel() {
         lifecycleScope.launchWhenCreated {
             viewModel.getWeather().collect { state ->
+                Timber.d(state.toString())
                 when (state) {
                     is WeatherUiState.Success -> {
                         bindData(state.weatherInfo)
@@ -70,7 +74,7 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
     }
 
     private fun bindData(weather: WeatherInfo) {
-        binding.weather = weather
+        binding.weather = weather // TODO:エラー解決したい
         (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(weather.today.table)
         (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(weather.tomorrow.table)
     }
