@@ -20,13 +20,6 @@ import kotlinx.coroutines.launch
  */
 class WeatherScreenViewModel : ViewModel() {
 
-//    private val database: DatabaseReference by lazy {
-//        FirebaseDatabase.getInstance().reference.ref.child("weather")
-//    }
-//    private val weatherRepository: WeatherRepository by lazy {
-//        WeatherRepository(database)
-//    }
-
     private val weatherRepository = WeatherRepository()
 
     // UI状態
@@ -35,23 +28,6 @@ class WeatherScreenViewModel : ViewModel() {
 
     // イベント
     val event = MutableLiveData<Event<Nav>>()
-
-//    @InternalCoroutinesApi
-//    fun fetchWeather() {
-//        viewModelScope.launch {
-//            // StateFlowの購読
-//            weatherRepository.fetchWeather().collect { state ->
-//                when (state) {
-//                    // 成功
-//                    is WeatherUiState.Success -> _state.value =
-//                        WeatherUiState.Success(state.weatherInfo)
-//                    // エラー処理
-//                    is WeatherUiState.Error -> _state.value = WeatherUiState.Error(state.message)
-//                }
-//            }
-//        }
-//    }
-
     fun getWeather() = weatherRepository.fetchWeather()
 
     /**

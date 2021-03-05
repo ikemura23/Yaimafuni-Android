@@ -47,7 +47,6 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
         }
 
         setupViewModel()
-//         viewModel.fetchWeather()
     }
 
     private fun setupViewModel() {
