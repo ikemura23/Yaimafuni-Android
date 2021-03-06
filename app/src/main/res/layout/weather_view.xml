@@ -15,7 +15,7 @@
 
         <variable
             name="data"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.model.weather.Weather"
+            type="com.ikemura.shared.model.weather.Weather"
             />
     </data>
 

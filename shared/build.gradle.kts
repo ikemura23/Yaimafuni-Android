@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     kotlin("multiplatform")
+    kotlin("plugin.serialization")
     id("com.android.library")
 }
 
@@ -15,7 +16,17 @@ kotlin {
         }
     }
     sourceSets {
-        val commonMain by getting
+        val coroutineVersion = "1.4.2"
+        val commonMain by getting {
+            dependencies {
+                implementation(
+                    "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+                )
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.1")
+                // firebase
+                implementation("dev.gitlive:firebase-database:1.2.0")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
@@ -48,7 +59,8 @@ val packForXcode by tasks.creating(Sync::class) {
     val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
     val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
     val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
-    val framework = kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
+    val framework =
+        kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
     inputs.property("mode", mode)
     dependsOn(framework.linkTask)
     val targetDir = File(buildDir, "xcode-frameworks")

@@ -1,8 +1,11 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.model.weather
+package com.ikemura.shared.model.weather
+
+import kotlinx.serialization.Serializable
 
 /**
  * 天気ルート
  */
+@Serializable
 data class WeatherInfo(
     // 今日の天気
     var today: Weather = Weather(),

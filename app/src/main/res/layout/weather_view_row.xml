@@ -8,7 +8,7 @@
 
         <variable
             name="table"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.model.weather.Table"
+            type="com.ikemura.shared.model.weather.Table"
             />
     </data>
 

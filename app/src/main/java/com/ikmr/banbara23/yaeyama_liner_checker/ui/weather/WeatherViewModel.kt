@@ -8,8 +8,10 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.ikmr.banbara23.yaeyama_liner_checker.core.Event
 import com.ikmr.banbara23.yaeyama_liner_checker.core.toEvent
-import com.ikmr.banbara23.yaeyama_liner_checker.model.weather.WeatherInfo
-import com.ikmr.banbara23.yaeyama_liner_checker.repository.WeatherRepository
+import com.ikemura.shared.model.weather.WeatherInfo
+import com.ikemura.shared.repository.WeatherRepository
+import com.ikemura.shared.repository.WeatherUiState
+import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -18,12 +20,7 @@ import kotlinx.coroutines.launch
  */
 class WeatherScreenViewModel : ViewModel() {
 
-    private val database: DatabaseReference by lazy {
-        FirebaseDatabase.getInstance().reference.ref.child("weather")
-    }
-    private val weatherRepository: WeatherRepository by lazy {
-        WeatherRepository(database)
-    }
+    private val weatherRepository = WeatherRepository()
 
     // UI状態
     private val _state = MutableLiveData<WeatherUiState>()
@@ -31,21 +28,6 @@ class WeatherScreenViewModel : ViewModel() {
 
     // イベント
     val event = MutableLiveData<Event<Nav>>()
-
-    fun fetchWeather() {
-        viewModelScope.launch {
-            // StateFlowの購読
-            weatherRepository.fetchWeather().collect { state ->
-                when (state) {
-                    // 成功
-                    is WeatherUiState.Success -> _state.value = WeatherUiState.Success(state.weatherInfo)
-                    // エラー処理
-                    is WeatherUiState.Error -> _state.value = WeatherUiState.Error(state.message)
-                }
-            }
-        }
-    }
-
     fun getWeather() = weatherRepository.fetchWeather()
 
     /**
@@ -59,9 +41,4 @@ class WeatherScreenViewModel : ViewModel() {
         object Error : Nav()
         object More : Nav()
     }
-}
-
-sealed class WeatherUiState {
-    data class Success(val weatherInfo: WeatherInfo) : WeatherUiState()
-    data class Error(val message: String) : WeatherUiState()
 }
