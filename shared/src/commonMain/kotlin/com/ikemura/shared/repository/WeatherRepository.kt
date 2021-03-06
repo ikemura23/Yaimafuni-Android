@@ -17,35 +17,19 @@ import kotlinx.serialization.DeserializationStrategy
  */
 @Suppress("EXPERIMENTAL_API_USAGE")
 class WeatherRepository(
+    // TODO: DIする
 //    private val dbRef: DatabaseReference
 ) {
 
     /**
      * 天気を取得
      */
-    fun fetchWeather(): Flow<WeatherUiState> = flow { // callbackFlowの戻り値はFlow型
+    fun fetchWeather(): Flow<WeatherUiState> = flow {
         val dbRef = Firebase.database(Firebase.app).reference("weather")
         dbRef.valueEvents.collect { snapShot: DataSnapshot ->
             val weather = snapShot.value(WeatherInfo.serializer())
             emit(WeatherUiState.Success(weather))
         }
-
-//        // DBへの接続
-//        dbRef.addValueEventListener(object : ValueEventListener {
-//            // 正常に取得できた
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                snapshot.getValue(WeatherInfo::class.java)?.let { weather ->
-////                    Timber.d(weather.toString())
-//                    // offerで購読側に値を流せる
-//                    offer(WeatherUiState.Success(weather))
-//                }
-//            }
-//
-//            // エラー
-//            override fun onCancelled(error: DatabaseError) {
-//                offer(WeatherUiState.Error(error.message))
-//            }
-//        })
     }
 
 //    /**
