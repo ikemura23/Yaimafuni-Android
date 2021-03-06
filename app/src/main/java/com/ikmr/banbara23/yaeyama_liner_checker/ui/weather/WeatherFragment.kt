@@ -47,6 +47,7 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
         }
 
         setupViewModel()
+        binding.weather = WeatherInfo() // null文字の表示対策、いつか対応して消したい
     }
 
     private fun setupViewModel() {
@@ -73,6 +74,7 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
     }
 
     private fun bindData(weather: WeatherInfo) {
+        Timber.d(weather.toString())
         binding.weather = weather // TODO:エラー解決したい
         (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(weather.today.table)
         (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(weather.tomorrow.table)

@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Temperature(
     // 最高
-    var hight: String = "",
+    val hight: String = "",
     // 最低
-    var low: String = ""
+    val low: String = ""
 )
