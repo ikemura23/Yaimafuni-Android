@@ -50,7 +50,7 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
     }
 
     private fun setupViewModel() {
-        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
+        lifecycleScope.launchWhenCreated {
             viewModel.getWeather().collect { state ->
                 Timber.d(state.toString())
                 when (state) {
@@ -62,23 +62,14 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
                     }
                 }
             }
-            // Actionの購読
-            viewModel.action.collect { nav ->
-                Timber.d("$nav")
-                when (nav) {
-                    WeatherScreenViewModel.Nav.More -> openBrowser()
-                    WeatherScreenViewModel.Nav.Error ->
-                        Timber.e("WeatherFragment でエラー発生")
-                }
-            }
         }
 
-//        viewModel.event.observeEvent(viewLifecycleOwner) { nav ->
-//            when (nav) {
-//                is WeatherScreenViewModel.Nav.Error -> Timber.e("WeatherFragment でエラー発生")
-//                is WeatherScreenViewModel.Nav.More -> openBrowser()
-//            }
-//        }
+        viewModel.event.observeEvent(viewLifecycleOwner) { nav ->
+            when (nav) {
+                is WeatherScreenViewModel.Nav.Error -> Timber.e("WeatherFragment でエラー発生")
+                is WeatherScreenViewModel.Nav.More -> openBrowser()
+            }
+        }
     }
 
     private fun bindData(weather: WeatherInfo) {
