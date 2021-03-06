@@ -8,11 +8,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Table(
     // 時間
-    var hour: String = "",
+    val hour: String = "",
     // 天気
-    var weather: String = "",
+    val weather: String = "",
     // 風向き
-    var windBlow: String = "",
+    val windBlow: String = "",
     // 風速
-    var windSpeed: String = ""
+    val windSpeed: String = ""
 )
