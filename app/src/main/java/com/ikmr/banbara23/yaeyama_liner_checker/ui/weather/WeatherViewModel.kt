@@ -12,8 +12,11 @@ import com.ikemura.shared.model.weather.WeatherInfo
 import com.ikemura.shared.repository.WeatherRepository
 import com.ikemura.shared.repository.WeatherUiState
 import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * 天気詳細 ViewModel
@@ -28,13 +31,22 @@ class WeatherScreenViewModel : ViewModel() {
 
     // イベント
     val event = MutableLiveData<Event<Nav>>()
+
+    private val _action = MutableSharedFlow<Nav>()
+    val action: SharedFlow<Nav>
+        get() = _action
+
     fun getWeather() = weatherRepository.fetchWeather()
 
     /**
      * 天気を詳しく見るをクリック
      */
     fun moreButtonClick() {
-        event.value = Nav.More.toEvent()
+        Timber.d("moreButtonClick")
+//        event.value = Nav.More.toEvent()
+        viewModelScope.launch {
+            _action.emit(Nav.More)
+        }
     }
 
     sealed class Nav {
