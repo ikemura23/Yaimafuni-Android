@@ -41,6 +41,7 @@ class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment),
     private fun fetchTyphoon() {
         lifecycleScope.launchWhenCreated {
             viewModel.getTyphoonList().collect { state ->
+                Timber.d("TyphoonUiState.Success: $state")
                 when (state) {
                     is TyphoonUiState.Success -> {
                         bindTyphoon(state.typhoonList)
@@ -57,6 +58,7 @@ class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment),
      * 表示
      */
     private fun bindTyphoon(typhoonList: List<Typhoon>) {
+        Timber.d("bindTyphoon: $typhoonList")
         if (typhoonList.isEmpty()) {
             binding.list.visibility = View.GONE
             binding.emptyView.visibility = View.VISIBLE
