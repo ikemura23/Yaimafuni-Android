@@ -9,21 +9,11 @@ class ApplicationController : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        if (instance == null) {
-            instance = this
-        }
         Base.initialize(this)
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(false)
 
         // デバッグビルドのみログ出力
         Timber.plant(Timber.DebugTree())
-    }
-
-    companion object {
-
-        @get:Synchronized
-        var instance: ApplicationController? = null
-            private set
     }
 }
