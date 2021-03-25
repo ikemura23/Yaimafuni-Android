@@ -22,7 +22,7 @@ kotlin {
                 implementation(
                     "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
                 )
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.1.0")
                 // firebase
                 implementation("dev.gitlive:firebase-database:1.2.0")
             }
