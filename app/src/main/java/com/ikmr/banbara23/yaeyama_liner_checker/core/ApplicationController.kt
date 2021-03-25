@@ -1,12 +1,10 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.core
 
-import android.content.Context
-import androidx.multidex.MultiDex
-import androidx.multidex.MultiDexApplication
+import android.app.Application
 import com.google.firebase.database.FirebaseDatabase
 import timber.log.Timber
 
-class ApplicationController : MultiDexApplication() {
+class ApplicationController : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -20,11 +18,6 @@ class ApplicationController : MultiDexApplication() {
 
         // デバッグビルドのみログ出力
         Timber.plant(Timber.DebugTree())
-    }
-
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(base)
-        MultiDex.install(this)
     }
 
     companion object {
