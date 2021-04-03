@@ -4,7 +4,7 @@ import android.app.Application
 import com.google.firebase.database.FirebaseDatabase
 import timber.log.Timber
 
-class ApplicationController : Application() {
+class MainApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
