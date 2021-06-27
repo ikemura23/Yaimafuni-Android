@@ -1,7 +1,9 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.home
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -25,7 +27,8 @@ class HomeActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navView.setupWithNavController(navHostFragment.navController)
 
-        setupInAppReview()
+        if (isShowReview()) setupInAppReview()
+        countUpLaunchCount()
     }
 
     /**
@@ -46,5 +49,27 @@ class HomeActivity : AppCompatActivity() {
                 Timber.e("Review Failed")
             }
         }
+    }
+
+    private fun isShowReview(): Boolean {
+        val count = getLaunchCount()
+        Timber.d("launch count: $count")
+        return count % 5 == 0 // 5回ずつの起動が条件
+    }
+
+    private fun getLaunchCount(): Int {
+        val sharedPreferences = getPreferences(Context.MODE_PRIVATE)
+        return sharedPreferences.getInt(KEY_REVIEW, 0)
+    }
+
+    private fun countUpLaunchCount() {
+        val count = getLaunchCount()
+        getPreferences(Context.MODE_PRIVATE).edit {
+            putInt(KEY_REVIEW, count + 1)
+        }
+    }
+
+    companion object {
+        private const val KEY_REVIEW = "KEY_REVIEW"
     }
 }
