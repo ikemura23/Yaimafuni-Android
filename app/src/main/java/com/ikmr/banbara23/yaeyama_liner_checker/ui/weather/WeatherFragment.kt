@@ -6,13 +6,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ikemura.shared.model.weather.WeatherInfo
+import com.ikemura.shared.repository.WeatherUiState
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.observeEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
-import com.ikemura.shared.model.weather.WeatherInfo
-import com.ikemura.shared.repository.WeatherUiState
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -77,7 +77,7 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
         Timber.d(weather.toString())
         binding.weather = weather // TODO:エラー解決したい
         (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(weather.today.table)
-        (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(weather.tomorrow.table)
+        (binding.tomorrow.timeList.adapter as WeatherTimeListAdaptor).update(weather.tomorrow.table)
     }
 
     private fun openBrowser() {
