@@ -54,7 +54,7 @@ class HomeActivity : AppCompatActivity() {
     private fun isShowReview(): Boolean {
         val count = getLaunchCount()
         Timber.d("launch count: $count")
-        return count % 5 == 0 // 5回ずつの起動が条件
+        return count > 0 && count % 5 == 0 // 5回ずつの起動が条件
     }
 
     private fun getLaunchCount(): Int {
