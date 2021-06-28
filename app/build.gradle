@@ -12,7 +12,7 @@ android {
         applicationId "com.banbara.yaeyama.liner.checker"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 66
+        versionCode 67
         versionName "4.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
