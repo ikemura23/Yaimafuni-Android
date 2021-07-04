@@ -7,7 +7,7 @@ import android.text.TextUtils
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ikmr.banbara23.yaeyama_liner_checker.R
@@ -24,7 +24,7 @@ class CompanyDetailFragment : Fragment(R.layout.company_detail_fragment),
     private val firebaseAnalytics: FirebaseAnalytics by lazy { FirebaseAnalytics.getInstance(requireActivity()) }
     private lateinit var controller: StatusDetailEpoxyController
     private val viewModel: PortStatusDetailViewModel by lazy {
-        ViewModelProviders.of(this).get(PortStatusDetailViewModel::class.java)
+        ViewModelProvider(this).get(PortStatusDetailViewModel::class.java)
     }
 
     /** パラメータ取得 会社 */
