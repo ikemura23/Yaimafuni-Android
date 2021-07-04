@@ -39,6 +39,16 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+
+    // Navigation Componentの Directionsが認識されない対応
+    // https://stackoverflow.com/a/67875849
+    sourceSets {
+        main {
+            java {
+                srcDir("build/generated/source/navigation-args")
+            }
+        }
+    }
 }
 
 dependencies {
