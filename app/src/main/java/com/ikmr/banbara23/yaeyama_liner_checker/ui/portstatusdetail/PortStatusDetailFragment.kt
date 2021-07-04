@@ -4,10 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,6 +13,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_COMPANY
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_PORT_CODE
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 import timber.log.Timber
@@ -23,8 +21,9 @@ import timber.log.Timber
 /**
  * 詳細フラグメント
  */
-class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusDetailClickListener {
-    private lateinit var binding: StatusDetailFragmentBinding
+class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment),
+    StatusDetailEpoxyController.StatusDetailClickListener {
+    private val binding: StatusDetailFragmentBinding by viewBinding()
     private val viewModel: PortStatusDetailViewModel by lazy {
         ViewModelProvider(this).get(PortStatusDetailViewModel::class.java)
     }
@@ -38,12 +37,6 @@ class PortStatusDetailFragment : Fragment(), StatusDetailEpoxyController.StatusD
     /** 港コード */
     private val portCode: String
         get() = arguments?.getString(BUNDLE_KEY_PORT_CODE) ?: throw IllegalArgumentException("portCodeがありません")
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.status_detail_fragment, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-        return binding.root
-    }
 
     private fun setupViews() {
         controller = StatusDetailEpoxyController(this)
