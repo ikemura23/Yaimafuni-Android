@@ -16,11 +16,10 @@ import timber.log.Timber
 /**
  * ホーム画面、Bottom NavigationのあるActivity
  */
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(R.layout.home_activity) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_activity)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         // val navController = findNavController(R.id.nav_host_fragment) <= ビルドは成功するが起動するとエラーとなる、↓で解決
