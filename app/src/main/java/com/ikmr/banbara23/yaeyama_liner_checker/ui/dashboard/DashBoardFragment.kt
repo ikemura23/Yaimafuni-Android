@@ -38,7 +38,7 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
         when (nav) {
             is DashBoardViewModelImpl.Nav.GoDetail -> {
 
-                DashBoardFragmentDirections.actionTopFragmentToPortListTabFragment(
+                DashBoardFragmentDirections.actionDashBoardFragmentToPortStatusDetailActivity(
                     portName = nav.ports.anei.portName,
                     portCode = nav.ports.anei.portCode,
                 ).let { directions ->
