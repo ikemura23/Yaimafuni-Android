@@ -1,11 +1,8 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.companylist
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -13,30 +10,21 @@ import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.CompanyListFragmentBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.model.CompanyStatus
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus
 import timber.log.Timber
 
-class CompanyListFragment : Fragment() {
+class CompanyListFragment : Fragment(R.layout.company_list_fragment) {
 
     private val viewModel by viewModels<CompanyListViewModel>()
     private lateinit var epoxyController: CompanyListEpoxyController
-    private lateinit var binding: CompanyListFragmentBinding
+    private val binding: CompanyListFragmentBinding by viewBinding()
     private val company: Company by lazy {
         requireArguments().getSerializable(Constants.BUNDLE_KEY_COMPANY) as Company
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.company_list_fragment, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-        Timber.d(company.toString())
-        return binding.root
-    }
-
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Epoxy
