@@ -4,10 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -15,13 +12,15 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.CompanyDetailFragmentBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailViewModel
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.StatusDetailEpoxyController
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 
-class CompanyDetailFragment : Fragment(), StatusDetailEpoxyController.StatusDetailClickListener {
-    private lateinit var binding: CompanyDetailFragmentBinding
+class CompanyDetailFragment : Fragment(R.layout.company_detail_fragment),
+    StatusDetailEpoxyController.StatusDetailClickListener {
+    private val binding: CompanyDetailFragmentBinding by viewBinding()
     private val firebaseAnalytics: FirebaseAnalytics by lazy { FirebaseAnalytics.getInstance(requireActivity()) }
     private lateinit var controller: StatusDetailEpoxyController
     private val viewModel: PortStatusDetailViewModel by lazy {
@@ -35,12 +34,6 @@ class CompanyDetailFragment : Fragment(), StatusDetailEpoxyController.StatusDeta
     /** 港コード */
     private val portCode: String
         get() = CompanyDetailFragmentArgs.fromBundle(requireArguments()).portCode
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.company_detail_fragment, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-        return binding.root
-    }
 
     private fun setupViews() {
         controller = StatusDetailEpoxyController(this)
