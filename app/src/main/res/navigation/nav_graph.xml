@@ -20,6 +20,13 @@
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right"
             />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_portStatusDetailActivity"
+            app:destination="@id/portStatusDetailActivity"
+            >
+            <argument android:name="portName" />
+            <argument android:name="portCode" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/weatherFragment"
@@ -96,5 +103,11 @@
             app:argType="string"
             />
     </fragment>
+    <activity
+        android:id="@+id/portStatusDetailActivity"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailActivity"
+        android:label="port_status_detail_activity"
+        tools:layout="@layout/port_status_detail_activity"
+        />
 
 </navigation>
