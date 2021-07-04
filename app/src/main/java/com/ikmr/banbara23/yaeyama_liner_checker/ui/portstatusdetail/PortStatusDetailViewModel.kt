@@ -3,11 +3,10 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
-import com.ikmr.banbara23.yaeyama_liner_checker.ext.logD
-import com.ikmr.banbara23.yaeyama_liner_checker.ext.logE
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot
 import io.reactivex.disposables.Disposable
+import timber.log.Timber
 
 /**
  * 運行詳細 ViewModel
@@ -25,9 +24,9 @@ class PortStatusDetailViewModel : ViewModel() {
             { data ->
                 statusDetailRoot.postValue(data)
             }, {
-                logE(it)
+                Timber.e(it)
             }, {
-                logD("complete")
+                Timber.d("complete")
             })
     }
 
