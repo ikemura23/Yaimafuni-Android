@@ -9,6 +9,9 @@ import com.google.android.material.tabs.TabLayout
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.PortStatusDetailActivityBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.main.SectionsPagerAdapter
 
+/**
+ * ステータス詳細のActivity
+ */
 class PortStatusDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: PortStatusDetailActivityBinding
