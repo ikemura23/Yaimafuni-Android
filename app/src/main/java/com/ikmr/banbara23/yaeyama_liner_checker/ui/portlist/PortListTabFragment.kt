@@ -1,31 +1,21 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.portlist
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.FragmentPortListTabBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab.PortPagerAdapter
 
 /**
  * 港別の運行一覧
  */
-class PortListTabFragment : Fragment() {
-    private lateinit var binding: FragmentPortListTabBinding
+class PortListTabFragment : Fragment(R.layout.fragment_port_list_tab) {
+    private val binding: FragmentPortListTabBinding by viewBinding()
     private val portCode: String by lazy {
         PortListTabFragmentArgs.fromBundle(requireArguments()).portCode
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_port_list_tab, container, false)
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
