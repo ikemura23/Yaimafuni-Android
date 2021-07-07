@@ -38,6 +38,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        />
+        >
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/anei"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/company_tab_name_annei"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/ykf"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/company_tab_name_ykf"
+            />
+    </androidx.viewpager.widget.ViewPager>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
