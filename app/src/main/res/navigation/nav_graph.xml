@@ -108,6 +108,9 @@
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailActivity"
         android:label="port_status_detail_activity"
         tools:layout="@layout/port_status_detail_activity"
-        />
+        >
+        <argument android:name="portName" />
+        <argument android:name="portCode" />
+    </activity>
 
 </navigation>

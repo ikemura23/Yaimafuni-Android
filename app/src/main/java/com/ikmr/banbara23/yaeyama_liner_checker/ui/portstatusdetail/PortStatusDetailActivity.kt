@@ -16,6 +16,14 @@ class PortStatusDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: PortStatusDetailActivityBinding
 
+    private val portCode: String by lazy {
+        PortStatusDetailActivityArgs.fromBundle(intent.extras!!).portCode
+    }
+
+    private val portName: String by lazy {
+        PortStatusDetailActivityArgs.fromBundle(intent.extras!!).portName
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
