@@ -27,8 +27,18 @@ class PortStatusDetailActivity : AppCompatActivity() {
 
         binding = PortStatusDetailActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        setupTitle()
         setupTabLayout()
+    }
+
+    /**
+     * タイトル設定
+     */
+    private fun setupTitle() {
+        binding.includeTitleBar.title = portName
+        binding.includeTitleBar.titleBar.setNavigationOnClickListener {
+            finish()
+        }
     }
 
     /**
