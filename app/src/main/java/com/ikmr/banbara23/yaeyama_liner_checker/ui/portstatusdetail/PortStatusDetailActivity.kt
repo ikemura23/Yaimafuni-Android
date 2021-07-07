@@ -28,6 +28,13 @@ class PortStatusDetailActivity : AppCompatActivity() {
         binding = PortStatusDetailActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupTabLayout()
+    }
+
+    /**
+     * タブ設定
+     */
+    private fun setupTabLayout() {
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         val viewPager: ViewPager = binding.viewPager
         viewPager.adapter = sectionsPagerAdapter
