@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.PortStatusDetailActivityBinding
-import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.main.SectionsPagerAdapter
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.portlisttab.PortPagerAdapter
 
 /**
  * ステータス詳細のActivity
@@ -35,9 +35,15 @@ class PortStatusDetailActivity : AppCompatActivity() {
      * タブ設定
      */
     private fun setupTabLayout() {
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
+        val portPagerAdapter = PortPagerAdapter(
+            this,
+            supportFragmentManager,
+            binding.tabs.tabCount,
+            portCode,
+        )
+
         val viewPager: ViewPager = binding.viewPager
-        viewPager.adapter = sectionsPagerAdapter
+        viewPager.adapter = portPagerAdapter
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
     }

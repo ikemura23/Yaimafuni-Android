@@ -12,8 +12,7 @@ private val TAB_TITLES = arrayOf(
 )
 
 /**
- * A [FragmentPagerAdapter] that returns a fragment corresponding to
- * one of the sections/tabs/pages.
+ * TODO: このクラスは削除対象
  */
 class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
