@@ -23,10 +23,7 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_portStatusDetailActivity"
             app:destination="@id/portStatusDetailActivity"
-            >
-            <argument android:name="portName" />
-            <argument android:name="portCode" />
-        </action>
+            />
     </fragment>
     <fragment
         android:id="@+id/weatherFragment"
