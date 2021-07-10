@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/top_background"
     tools:context=".ui.portstatusdetail.PortStatusDetailActivity"
     >
 
@@ -13,17 +14,6 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
         >
-
-        <!--        <TextView-->
-        <!--            android:id="@+id/title"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:gravity="center"-->
-        <!--            android:minHeight="?actionBarSize"-->
-        <!--            android:padding="@dimen/appbar_padding"-->
-        <!--            android:text="@string/app_name"-->
-        <!--            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"-->
-        <!--            />-->
 
         <include
             android:id="@+id/include_title_bar"
@@ -36,6 +26,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            app:tabIndicatorColor="@color/orange3"
+            app:tabIndicatorHeight="4dp"
+            app:tabTextColor="@color/white"
             />
     </com.google.android.material.appbar.AppBarLayout>
 
