@@ -2,7 +2,9 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.tabs.TabLayoutMediator
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.PortStatusDetailActivityBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 
 /**
  * ステータス詳細のActivity
@@ -42,14 +44,14 @@ class PortStatusDetailActivity : AppCompatActivity() {
      * タブ設定
      */
     private fun setupTabLayout() {
-        val pagerAdapter = PortStatusPagerAdapter(
-            this,
-            portCode,
+        binding.viewPager.adapter = PortStatusPagerAdapter(
+            fa = this,
+            portCode = portCode,
         )
 
-        val viewPager = binding.viewPager
-        viewPager.adapter = pagerAdapter
-        // val tabs: TabLayout = binding.tabs
-        // tabs.setupWithViewPager(viewPager)
+        // https://developer.android.com/guide/navigation/navigation-swipe-view-2
+        TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
+            tab.text = Company.values()[position].getName()
+        }.attach()
     }
 }
