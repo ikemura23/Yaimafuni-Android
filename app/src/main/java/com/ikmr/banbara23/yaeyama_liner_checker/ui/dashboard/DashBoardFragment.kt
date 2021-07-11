@@ -37,13 +37,17 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
         Timber.d("navigate: $nav")
         when (nav) {
             is DashBoardViewModelImpl.Nav.GoDetail -> {
+                DashBoardFragmentDirections.actionDashBoardFragmentToRouteStatusDetailDialogFragment(
 
-                DashBoardFragmentDirections.actionDashBoardFragmentToPortStatusDetailActivity(
-                    portName = nav.ports.anei.portName,
-                    portCode = nav.ports.anei.portCode,
                 ).let { directions ->
                     findNavController().navigate(directions)
                 }
+                // DashBoardFragmentDirections.actionDashBoardFragmentToPortStatusDetailActivity(
+                //     portName = nav.ports.anei.portName,
+                //     portCode = nav.ports.anei.portCode,
+                // ).let { directions ->
+                //     findNavController().navigate(directions)
+                // }
             }
         }
     }

@@ -24,6 +24,10 @@
             android:id="@+id/action_dashBoardFragment_to_portStatusDetailActivity"
             app:destination="@id/portStatusDetailActivity"
             />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_routeStatusDetailDialogFragment"
+            app:destination="@id/routeStatusDetailDialogFragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/weatherFragment"
@@ -109,5 +113,12 @@
         <argument android:name="portName" />
         <argument android:name="portCode" />
     </activity>
+
+    <dialog
+        android:id="@+id/routeStatusDetailDialogFragment"
+        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.route.RouteStatusDetailDialogFragment"
+        android:label="RouteStatusDetailDialogFragment"
+        tools:layout="@layout/route_status_detail_dialog_fragment"
+        />
 
 </navigation>
