@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingTop="16dp"
-        android:paddingBottom="68dp"
+        android:paddingBottom="16dp"
         tools:background="@drawable/top_background"
         >
 
