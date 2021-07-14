@@ -41,4 +41,5 @@
 
     <color name="enable_icon_color">#ffffff</color>
     <color name="disable_icon_color">#CACACA</color>
+    <color name="modal_bg">#80000000</color>
 </resources>

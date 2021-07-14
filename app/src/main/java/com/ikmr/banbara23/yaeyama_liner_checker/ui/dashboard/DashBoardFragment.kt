@@ -22,6 +22,7 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         viewModel.uiState.observe(viewLifecycleOwner) {
             Timber.d("$it")
             binding.topPort = it
@@ -37,8 +38,7 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
         Timber.d("navigate: $nav")
         when (nav) {
             is DashBoardViewModelImpl.Nav.GoDetail -> {
-
-                DashBoardFragmentDirections.actionTopFragmentToPortListTabFragment(
+                DashBoardFragmentDirections.actionDashBoardFragmentToPortStatusDetailActivity(
                     portName = nav.ports.anei.portName,
                     portCode = nav.ports.anei.portCode,
                 ).let { directions ->
@@ -46,9 +46,5 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
                 }
             }
         }
-    }
-
-    companion object {
-        fun newInstance() = DashBoardFragment()
     }
 }

@@ -11,6 +11,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailFragment
 
 /**
+ * TODO: このクラスは使わなくなったので削除対象
+ *
  * 港別の運行一覧 PagerAdapter
  */
 class PortPagerAdapter(
