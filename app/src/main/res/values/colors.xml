@@ -40,6 +40,7 @@
     <!--4C for %30 opacity-->
 
     <color name="enable_icon_color">#ffffff</color>
-    <color name="disable_icon_color">#CACACA</color>
+    <!-- https://material.io/components/bottom-navigation#theming -->
+    <color name="disable_icon_color">#4Cffffff</color>
     <color name="modal_bg">#80000000</color>
 </resources>
