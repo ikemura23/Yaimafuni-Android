@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
+    package="com.ikmr.banbara23.yaeyama_liner_checker"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ikmr.banbara23.yaeyama_liner_checker"
     >
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -25,7 +25,7 @@
             android:name=".ui.portstatusdetail.PortStatusDetailActivity"
             android:label="@string/title_activity_port_status_detail"
             android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
+            />
         <activity android:name=".ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
