@@ -17,8 +17,5 @@
     <string name="dash_board_title">港別の運行情報</string>
     <string name="tab_annei">安栄観光</string>
     <string name="tab_ykf">八重山観光\nフェリー</string>
-    <string name="title_activity_port_status_detail">PortStatusDetailActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
 
 </resources>

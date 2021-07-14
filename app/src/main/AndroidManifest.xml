@@ -23,7 +23,6 @@
         >
         <activity
             android:name=".ui.portstatusdetail.PortStatusDetailActivity"
-            android:label="@string/title_activity_port_status_detail"
             android:theme="@style/AppTheme.NoActionBar"
             />
         <activity android:name=".ui.home.HomeActivity">
