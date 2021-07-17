@@ -28,8 +28,8 @@ class StatusDetailRepository {
         }
     }
 
-    sealed class UiState {
-        data class Success(val data: PortStatus) : UiState()
-        data class Error(val error: Throwable) : UiState()
+    fun fetchTimeTable(company: Company, portCode: String) {
+        val path = "${company.code}/$portCode"
+        val dbRef = database.reference(path)
     }
 }
