@@ -49,11 +49,6 @@ class ApiClient {
 
     companion object {
 
-        private const val WEATHER = "weather"
-        private const val TYPHOON = "typhoon/tenkijp"
-        private const val TOP_COMPANY = "top_company"
-        private const val TOP_PORT = "top_port"
-
         /**
          * DBの参照を作成して返す
          *
