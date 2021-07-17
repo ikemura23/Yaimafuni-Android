@@ -5,9 +5,9 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.ikemura.shared.model.statusdetail.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
-import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailFragment
 
 /**

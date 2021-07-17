@@ -2,8 +2,8 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ikemura.shared.model.statusdetail.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.api.ApiClient
-import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot
 import io.reactivex.disposables.Disposable
 import timber.log.Timber

@@ -9,12 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.ikemura.shared.model.statusdetail.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_COMPANY
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_PORT_CODE
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
-import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 import timber.log.Timber
 

@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.model
+package com.ikemura.shared.model.statusdetail
 
 /**
  * 会社のenum
