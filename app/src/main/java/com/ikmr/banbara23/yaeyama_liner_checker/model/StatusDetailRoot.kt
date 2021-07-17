@@ -11,6 +11,6 @@ import com.ikemura.shared.model.time_table.TimeTable
  */
 data class StatusDetailRoot(
     val portStatus: PortStatus,
-    val detailLinerInfo: DetailLinerInfo,
+    val detailLinerInfo: DetailLinerInfo = DetailLinerInfo(),
     val timeTable: TimeTable
 )
