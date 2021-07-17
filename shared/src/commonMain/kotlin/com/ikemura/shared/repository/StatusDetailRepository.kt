@@ -28,7 +28,7 @@ class StatusDetailRepository {
     }
 
     fun fetchTimeTable(company: Company, portCode: String): Flow<UiState<TimeTable>> = flow {
-        val path = "${company.code}/$portCode"
+        val path = "${company.code}_timeTable/$portCode"
         val dbRef = database.reference(path)
         dbRef.valueEvents.collect {
             val data = it.value(TimeTable.serializer())
