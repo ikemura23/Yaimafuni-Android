@@ -1,36 +1,19 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.model;
+package com.ikmr.banbara23.yaeyama_liner_checker.model
 
 /**
  * 会社のenum
  */
-public enum Company {
+enum class Company(
+    val code: String,
+    val fullName: String
+) {
     ANEI("anei", "安栄観光"),
     YKF("ykf", "八重山観光フェリー");
 
-    /**
-     * フィールド変数
-     */
-    private String code;
-    private String name;
-
-    Company(String code, String name) {
-        this.code = code;
-        this.name = name;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
+    override fun toString(): String {
         return "Company{" +
-               "code='" + code + '\'' +
-               ", name='" + name + '\'' +
-               '}';
+            "code='" + code + '\'' +
+            ", name='" + fullName + '\'' +
+            '}'
     }
 }
