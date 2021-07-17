@@ -11,7 +11,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopCompanyInfo
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
-import com.ikemura.shared.model.weather.WeatherInfo
 import durdinapps.rxfirebase2.DataSnapshotMapper
 import durdinapps.rxfirebase2.RxFirebaseDatabase
 import io.reactivex.Flowable
@@ -23,20 +22,6 @@ import io.reactivex.schedulers.Schedulers
  * APIクライアント
  */
 class ApiClient {
-
-    /**
-     * 天気情報
-     *
-     * @return
-     */
-    val weather: Flowable<WeatherInfo>
-        get() {
-            val ref = getRef(WEATHER)
-            ref.keepSynced(false)
-            return RxFirebaseDatabase.observeValueEvent(ref, WeatherInfo::class.java)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-        }
 
     /**
      * 台風
