@@ -1,7 +1,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 /**
  * 台風のモデル

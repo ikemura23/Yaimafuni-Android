@@ -1,7 +1,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.model.time_table
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Header(
