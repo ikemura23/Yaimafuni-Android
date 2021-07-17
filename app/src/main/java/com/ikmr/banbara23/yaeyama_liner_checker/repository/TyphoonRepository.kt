@@ -1,6 +1,5 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.repository
 
-import android.util.Log
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -25,17 +24,17 @@ class TyphoonRepository(private val dbRef: DatabaseReference) {
                 Timber.d("snapshot.childrenCount: ${snapshot.childrenCount}")
                 // 0件チェック
                 if (!snapshot.hasChildren()) {
-                    offer(TyphoonUiState.Success(listOf()))
+                    trySend(TyphoonUiState.Success(listOf()))
                     return
                 }
                 snapshot.getValue<List<Typhoon>>()?.let { typhoon ->
                     Timber.d(typhoon.toString())
-                    offer(TyphoonUiState.Success(typhoon))
+                    trySend(TyphoonUiState.Success(typhoon))
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                offer(TyphoonUiState.Error(error.message))
+                trySend(TyphoonUiState.Error(error.message))
             }
         })
         awaitClose {
