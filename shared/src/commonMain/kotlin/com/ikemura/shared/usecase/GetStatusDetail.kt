@@ -5,11 +5,9 @@ import com.ikemura.shared.model.statusdetail.PortStatus
 import com.ikemura.shared.model.statusdetail.StatusDetailResult
 import com.ikemura.shared.repository.StatusDetailRepository
 import com.ikemura.shared.repository.UiState
-import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.zip
 
-@InternalCoroutinesApi
 class GetStatusDetail(
     private val statusDetailRepository: StatusDetailRepository,
 ) {
