@@ -3,16 +3,10 @@ package com.ikmr.banbara23.yaeyama_liner_checker.api
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
-import com.ikmr.banbara23.yaeyama_liner_checker.model.CompanyStatus
 import com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus
 import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot
-import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable
-import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopCompanyInfo
-import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
-import com.ikemura.shared.model.weather.WeatherInfo
-import durdinapps.rxfirebase2.DataSnapshotMapper
 import durdinapps.rxfirebase2.RxFirebaseDatabase
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -23,78 +17,6 @@ import io.reactivex.schedulers.Schedulers
  * APIクライアント
  */
 class ApiClient {
-
-    /**
-     * 天気情報
-     *
-     * @return
-     */
-    val weather: Flowable<WeatherInfo>
-        get() {
-            val ref = getRef(WEATHER)
-            ref.keepSynced(false)
-            return RxFirebaseDatabase.observeValueEvent(ref, WeatherInfo::class.java)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-        }
-
-    /**
-     * 台風
-     *
-     * @return
-     */
-    val typhoon: Flowable<List<Typhoon>>
-        get() {
-            val ref = getRef(TYPHOON)
-            return RxFirebaseDatabase.observeValueEvent(ref, DataSnapshotMapper.listOf(Typhoon::class.java))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-            // return DummyRepository.typhoon()
-            //     .subscribeOn(Schedulers.io())
-            //     .observeOn(AndroidSchedulers.mainThread())
-        }
-
-    /**
-     * トップの会社ステータス
-     *
-     * @return
-     */
-    val topCompany: Flowable<TopCompanyInfo>
-        get() {
-            val ref = getRef(TOP_COMPANY)
-            ref.keepSynced(false)
-            return RxFirebaseDatabase.observeValueEvent(ref, TopCompanyInfo::class.java)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-        }
-
-    /**
-     * トップの会社ステータス
-     *
-     * @return
-     */
-    val topPortStatus: Flowable<TopPort>
-        get() {
-            val ref = getRef(TOP_PORT)
-            ref.keepSynced(false)
-            return RxFirebaseDatabase.observeValueEvent(ref, TopPort::class.java)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-        }
-
-    /**
-     * 会社別の運行ステータス一覧（anei ,ykf, dream of list)
-     *
-     * @param path
-     * @return
-     */
-    fun getCompanyStatus(path: String): Flowable<CompanyStatus> {
-        val ref = getRef(path)
-        ref.keepSynced(false)
-        return RxFirebaseDatabase.observeValueEvent(ref, CompanyStatus::class.java)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
 
     fun getDetailInfo(company: Company, portCode: String): Flowable<StatusDetailRoot> {
         return Flowable.zip(
@@ -111,11 +33,6 @@ class ApiClient {
     }
 
     companion object {
-
-        private const val WEATHER = "weather"
-        private const val TYPHOON = "typhoon/tenkijp"
-        private const val TOP_COMPANY = "top_company"
-        private const val TOP_PORT = "top_port"
 
         /**
          * DBの参照を作成して返す

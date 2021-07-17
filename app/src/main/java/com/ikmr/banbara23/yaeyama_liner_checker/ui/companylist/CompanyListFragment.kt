@@ -24,7 +24,7 @@ class CompanyListFragment : Fragment(R.layout.company_list_fragment) {
     private val company: Company by lazy {
         requireArguments().getSerializable(Constants.BUNDLE_KEY_COMPANY) as Company
     }
-    
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Epoxy
@@ -40,7 +40,7 @@ class CompanyListFragment : Fragment(R.layout.company_list_fragment) {
             )
             epoxyController.setData(uiData)
         })
-        viewModel.load(company)
+        // viewModel.load(company)
     }
 
     private fun onItemClicked(portStatus: PortStatus) {
