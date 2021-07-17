@@ -24,7 +24,7 @@ kotlin {
                 )
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.1.0")
                 // firebase
-                implementation("dev.gitlive:firebase-database:1.2.0")
+                implementation("dev.gitlive:firebase-database:1.3.1")
             }
         }
         val commonTest by getting {
