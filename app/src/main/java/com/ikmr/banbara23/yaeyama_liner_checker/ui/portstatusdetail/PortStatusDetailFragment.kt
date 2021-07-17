@@ -67,12 +67,6 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment),
         super.onViewCreated(view, savedInstanceState)
         setupViews()
         arguments?.let { Timber.d(arguments.toString()) }
-        // viewModel.load(company, portCode)
-    }
-
-    override fun onDestroyView() {
-        // viewModel.dispose()
-        super.onDestroyView()
     }
 
     /**
