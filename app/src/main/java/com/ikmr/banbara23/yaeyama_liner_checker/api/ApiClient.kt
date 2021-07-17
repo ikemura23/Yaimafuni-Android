@@ -3,7 +3,6 @@ package com.ikmr.banbara23.yaeyama_liner_checker.api
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
-import com.ikmr.banbara23.yaeyama_liner_checker.model.CompanyStatus
 import com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus
 import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot
@@ -18,20 +17,6 @@ import io.reactivex.schedulers.Schedulers
  * APIクライアント
  */
 class ApiClient {
-
-    /**
-     * 会社別の運行ステータス一覧（anei ,ykf, dream of list)
-     *
-     * @param path
-     * @return
-     */
-    fun getCompanyStatus(path: String): Flowable<CompanyStatus> {
-        val ref = getRef(path)
-        ref.keepSynced(false)
-        return RxFirebaseDatabase.observeValueEvent(ref, CompanyStatus::class.java)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
 
     fun getDetailInfo(company: Company, portCode: String): Flowable<StatusDetailRoot> {
         return Flowable.zip(
