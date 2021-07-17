@@ -1,5 +1,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.model
 
+import com.ikemura.shared.model.statusdetail.PortStatus
 import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable
 
 /**

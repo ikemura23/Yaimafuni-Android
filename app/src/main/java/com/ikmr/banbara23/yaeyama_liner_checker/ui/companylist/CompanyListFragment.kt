@@ -7,13 +7,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.ikemura.shared.model.statusdetail.PortStatus
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.CompanyListFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.model.CompanyStatus
-import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus
 import timber.log.Timber
 
 class CompanyListFragment : Fragment(R.layout.company_list_fragment) {

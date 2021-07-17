@@ -1,12 +1,9 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.model.time_table
 
-import android.os.Parcelable
 import com.ikemura.shared.model.statusdetail.Status
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
 data class RowItem(
     val memo: String = "",
     val status: Status = Status(),
     val time: String = ""
-) : Parcelable
+)

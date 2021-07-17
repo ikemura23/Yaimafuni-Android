@@ -3,6 +3,8 @@ package com.ikmr.banbara23.yaeyama_liner_checker.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.ikemura.shared.model.statusdetail.PortStatus;
+
 public class CompanyStatus implements Parcelable {
 
     public static final Parcelable.Creator<CompanyStatus> CREATOR = new Parcelable.Creator<CompanyStatus>() {
