@@ -6,16 +6,20 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.ikemura.shared.model.statusdetail.Company
+import com.ikemura.shared.model.statusdetail.StatusDetailResult
+import com.ikemura.shared.repository.UiState
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_COMPANY
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_PORT_CODE
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
-import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
+import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
+import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
 /**
@@ -41,21 +45,28 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment),
     private fun setupViews() {
         controller = StatusDetailEpoxyController(this)
         binding.listView.adapter = controller.adapter
-        viewModel.statusDetailRoot.observe(viewLifecycleOwner, Observer {
-            controller.setData(it)
-        })
+        viewLifecycleOwner.lifecycleScope.launchWhenResumed {
+            viewModel.getStatusDetail(company, portCode).collect { uiState ->
+                when (uiState) {
+                    is UiState.Success<StatusDetailResult> -> {
+                        val root = StatusDetailRoot(
+                            portStatus = uiState.data.portStatus,
+                            timeTable = uiState.data.timeTable
+                        )
+                        controller.setData(root)
+                    }
+                    else -> {
+                        // 処理しない
+                    }
+                }
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
         arguments?.let { Timber.d(arguments.toString()) }
-        viewModel.load(company, portCode)
-    }
-
-    override fun onDestroyView() {
-        viewModel.dispose()
-        super.onDestroyView()
     }
 
     /**

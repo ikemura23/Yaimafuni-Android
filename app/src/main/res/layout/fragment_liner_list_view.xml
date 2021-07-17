@@ -13,7 +13,7 @@
 
         <variable
             name="portStatus"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus"
+            type="com.ikemura.shared.model.statusdetail.PortStatus"
             />
 
         <variable

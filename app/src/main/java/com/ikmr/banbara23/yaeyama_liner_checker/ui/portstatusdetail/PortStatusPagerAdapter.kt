@@ -4,8 +4,8 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.ikemura.shared.model.statusdetail.Company
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
-import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
 
 class PortStatusPagerAdapter(
     fa: FragmentActivity,

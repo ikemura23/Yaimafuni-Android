@@ -12,7 +12,7 @@
 
         <variable
             name="row"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.Row"
+            type="com.ikemura.shared.model.time_table.Row"
             />
     </data>
 

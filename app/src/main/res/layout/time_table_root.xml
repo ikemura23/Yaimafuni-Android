@@ -10,7 +10,7 @@
 
         <variable
             name="header"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.Header"
+            type="com.ikemura.shared.model.time_table.Header"
             />
     </data>
 

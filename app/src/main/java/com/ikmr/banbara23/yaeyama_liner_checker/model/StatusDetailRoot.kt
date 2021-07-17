@@ -1,6 +1,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.model
 
-import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable
+import com.ikemura.shared.model.statusdetail.PortStatus
+import com.ikemura.shared.model.time_table.TimeTable
 
 /**
  * ステータス詳細を表示するルートモデル
@@ -10,6 +11,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable
  */
 data class StatusDetailRoot(
     val portStatus: PortStatus,
-    val detailLinerInfo: DetailLinerInfo,
+    val detailLinerInfo: DetailLinerInfo = DetailLinerInfo(),
     val timeTable: TimeTable
 )

@@ -2,11 +2,11 @@ package com.ikmr.banbara23.yaeyama_liner_checker.api
 
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.ikmr.banbara23.yaeyama_liner_checker.model.Company
+import com.ikemura.shared.model.statusdetail.Company
+import com.ikemura.shared.model.statusdetail.PortStatus
+import com.ikemura.shared.model.time_table.TimeTable
 import com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo
-import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus
 import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot
-import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable
 import durdinapps.rxfirebase2.RxFirebaseDatabase
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,6 +16,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * APIクライアント
  */
+// TODO: 削除対象
 class ApiClient {
 
     fun getDetailInfo(company: Company, portCode: String): Flowable<StatusDetailRoot> {
