@@ -8,7 +8,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo
 import com.ikmr.banbara23.yaeyama_liner_checker.model.PortStatus
 import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot
 import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable
-import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopCompanyInfo
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
 import durdinapps.rxfirebase2.RxFirebaseDatabase
 import io.reactivex.Flowable
@@ -20,20 +19,6 @@ import io.reactivex.schedulers.Schedulers
  * APIクライアント
  */
 class ApiClient {
-
-    /**
-     * トップの会社ステータス
-     *
-     * @return
-     */
-    val topCompany: Flowable<TopCompanyInfo>
-        get() {
-            val ref = getRef(TOP_COMPANY)
-            ref.keepSynced(false)
-            return RxFirebaseDatabase.observeValueEvent(ref, TopCompanyInfo::class.java)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-        }
 
     /**
      * トップの会社ステータス
