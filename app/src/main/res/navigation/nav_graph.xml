@@ -67,21 +67,6 @@
         <argument android:name="portCode" />
     </fragment>
     <fragment
-        android:id="@+id/companyListTabFragment"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.companylist.CompanyListTabFragment"
-        android:label="CompanyListTabFragment"
-        tools:layout="@layout/company_list_fragment"
-        >
-        <argument
-            android:name="company"
-            app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Company"
-            />
-        <action
-            android:id="@+id/action_companyListTabFragment_to_companyDetailFragment"
-            app:destination="@id/companyDetailFragment"
-            />
-    </fragment>
-    <fragment
         android:id="@+id/companyDetailFragment"
         android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.companydetail.CompanyDetailFragment"
         android:label="CompanyDetailFragment"
