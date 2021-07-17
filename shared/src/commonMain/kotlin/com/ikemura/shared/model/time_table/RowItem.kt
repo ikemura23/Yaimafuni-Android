@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.model.time_table
+package com.ikemura.shared.model.time_table
 
 import com.ikemura.shared.model.statusdetail.Status
 

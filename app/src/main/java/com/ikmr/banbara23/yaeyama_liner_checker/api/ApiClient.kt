@@ -4,9 +4,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.ikemura.shared.model.statusdetail.Company
 import com.ikemura.shared.model.statusdetail.PortStatus
+import com.ikemura.shared.model.time_table.TimeTable
 import com.ikmr.banbara23.yaeyama_liner_checker.model.DetailLinerInfo
 import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot
-import com.ikmr.banbara23.yaeyama_liner_checker.model.time_table.TimeTable
 import durdinapps.rxfirebase2.RxFirebaseDatabase
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
