@@ -16,6 +16,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * APIクライアント
  */
+// TODO: 削除対象
 class ApiClient {
 
     fun getDetailInfo(company: Company, portCode: String): Flowable<StatusDetailRoot> {
