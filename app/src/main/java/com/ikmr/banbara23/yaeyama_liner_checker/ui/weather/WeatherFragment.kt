@@ -14,7 +14,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBindi
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.observeEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
@@ -28,7 +27,6 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
     }
     private val binding: WeatherFragmentBinding by viewBinding()
 
-    @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
