@@ -2,15 +2,13 @@ package com.ikemura.shared.repository
 
 import com.ikemura.shared.model.weather.WeatherInfo
 import dev.gitlive.firebase.Firebase
-import dev.gitlive.firebase.FirebaseApp
 import dev.gitlive.firebase.app
 import dev.gitlive.firebase.database.DataSnapshot
-import dev.gitlive.firebase.database.DatabaseReference
-import dev.gitlive.firebase.database.FirebaseDatabase
 import dev.gitlive.firebase.database.database
-import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.*
-import kotlinx.serialization.DeserializationStrategy
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 /**
  * 天気 Repository
@@ -26,10 +24,14 @@ class WeatherRepository(
      */
     fun fetchWeather(): Flow<WeatherUiState> = flow {
         val dbRef = Firebase.database(Firebase.app).reference("weather")
-        dbRef.valueEvents.collect { snapShot: DataSnapshot ->
-            val weather = snapShot.value(WeatherInfo.serializer())
-            emit(WeatherUiState.Success(weather))
-        }
+        dbRef.valueEvents
+            .map { snapShot: DataSnapshot ->
+                val deserializeValue = snapShot.value(WeatherInfo.serializer())
+                UiState.Success(deserializeValue)
+            }
+            .catch {
+                UiState.Error(it)
+            }
     }
 
 //    /**
