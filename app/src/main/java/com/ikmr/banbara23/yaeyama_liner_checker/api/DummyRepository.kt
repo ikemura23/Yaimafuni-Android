@@ -1,16 +1,8 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.api
 
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
-import io.reactivex.BackpressureStrategy
-import io.reactivex.Flowable
 
 object DummyRepository {
-
-    fun typhoon(): Flowable<List<Typhoon>> {
-        return Flowable.create({ emitter ->
-            emitter.onNext(makeDummyData())
-        }, BackpressureStrategy.LATEST)
-    }
 
     private fun makeDummyData(): List<Typhoon> =
         listOf(
