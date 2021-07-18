@@ -9,7 +9,6 @@ import dev.gitlive.firebase.database.FirebaseDatabase
 import dev.gitlive.firebase.database.database
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
@@ -34,9 +33,11 @@ class StatusDetailRepository {
     fun fetchTimeTable(company: Company, portCode: String): Flow<UiState<TimeTable>> = flow {
         val path = "${company.code}_timeTable/$portCode"
         val dbRef = database.reference(path)
-        dbRef.valueEvents.collect {
-            val data = it.value(TimeTable.serializer())
-            emit(UiState.Success(data))
-        }
+        dbRef.valueEvents
+            .map {
+                val deserializeValue = it.value(TimeTable.serializer())
+                UiState.Success(deserializeValue)
+            }
+            .catch { UiState.Error(it) }
     }
 }
