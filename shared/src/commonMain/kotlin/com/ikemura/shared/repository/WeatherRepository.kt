@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.map
 /**
  * 天気 Repository
  */
-@Suppress("EXPERIMENTAL_API_USAGE")
 class WeatherRepository(
     // TODO: DIする
 //    private val dbRef: DatabaseReference
