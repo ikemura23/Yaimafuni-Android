@@ -8,8 +8,6 @@
 
         <import type="android.view.View" />
 
-        <import type="com.ikmr.banbara23.yaeyama_liner_checker.common.StatusHelper" />
-
         <variable
             name="row"
             type="com.ikemura.shared.model.time_table.Row"

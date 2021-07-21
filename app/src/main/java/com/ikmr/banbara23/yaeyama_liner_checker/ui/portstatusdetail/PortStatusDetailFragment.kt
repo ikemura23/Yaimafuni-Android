@@ -25,14 +25,16 @@ import timber.log.Timber
 /**
  * 詳細フラグメント
  */
-class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment),
-    StatusDetailEpoxyController.StatusDetailClickListener {
+class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
     private val binding: StatusDetailFragmentBinding by viewBinding()
     private val viewModel: PortStatusDetailViewModel by lazy {
         ViewModelProvider(this).get(PortStatusDetailViewModel::class.java)
     }
-    private val firebaseAnalytics: FirebaseAnalytics by lazy { FirebaseAnalytics.getInstance(requireActivity()) }
-    private lateinit var controller: StatusDetailEpoxyController
+    private val firebaseAnalytics: FirebaseAnalytics by lazy {
+        FirebaseAnalytics.getInstance(
+            requireActivity()
+        )
+    }
 
     /** パラメータ取得 会社 */
     private val company: Company
@@ -40,11 +42,12 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment),
 
     /** 港コード */
     private val portCode: String
-        get() = arguments?.getString(BUNDLE_KEY_PORT_CODE) ?: throw IllegalArgumentException("portCodeがありません")
+        get() = arguments?.getString(BUNDLE_KEY_PORT_CODE)
+            ?: throw IllegalArgumentException("portCodeがありません")
 
     private fun setupViews() {
-        controller = StatusDetailEpoxyController(this)
-        binding.listView.adapter = controller.adapter
+//        controller = StatusDetailEpoxyController(this)
+//        binding.listView.adapter = controller.adapter
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
             viewModel.getStatusDetail(company, portCode).collect { uiState ->
                 when (uiState) {
@@ -53,7 +56,7 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment),
                             portStatus = uiState.data.portStatus,
                             timeTable = uiState.data.timeTable
                         )
-                        controller.setData(root)
+//                        controller.setData(root)
                     }
                     else -> {
                         // 処理しない
@@ -113,13 +116,13 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment),
         CustomTabUtil.start(requireActivity(), url)
     }
 
-    override fun onWebClicked(url: String) {
-        openBrowser(url)
-    }
-
-    override fun onTelClicked(tel: String) {
-        openTell(tel)
-    }
+//    override fun onWebClicked(url: String) {
+//        openBrowser(url)
+//    }
+//
+//    override fun onTelClicked(tel: String) {
+//        openTell(tel)
+//    }
 
     companion object {
         /**
