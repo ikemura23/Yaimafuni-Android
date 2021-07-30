@@ -100,22 +100,22 @@ dependencies {
 
     // Jetpack Compose toolkit dependencies
     // https://developer.android.com/jetpack/compose/setup#compose-compiler
-    implementation("androidx.compose.ui:ui:1.0.0-rc02")
+    implementation("androidx.compose.ui:ui:1.0.0")
     // Tooling support (Previews, etc.)
-    implementation("androidx.compose.ui:ui-tooling:1.0.0-rc02")
+    implementation("androidx.compose.ui:ui-tooling:1.0.0")
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-    implementation("androidx.compose.foundation:foundation:1.0.0-rc02")
+    implementation("androidx.compose.foundation:foundation:1.0.0")
     // Material Design
-    implementation("androidx.compose.material:material:1.0.0-rc02")
+    implementation("androidx.compose.material:material:1.0.0")
     // Material design icons
-    implementation("androidx.compose.material:material-icons-core:1.0.0-rc02")
-    implementation("androidx.compose.material:material-icons-extended:1.0.0-rc02")
+    implementation("androidx.compose.material:material-icons-core:1.0.0")
+    implementation("androidx.compose.material:material-icons-extended:1.0.0")
     // Integration with observables
-    implementation("androidx.compose.runtime:runtime-livedata:1.0.0-rc02")
-    implementation("androidx.compose.runtime:runtime-rxjava2:1.0.0-rc02")
+    implementation("androidx.compose.runtime:runtime-livedata:1.0.0")
+    implementation("androidx.compose.runtime:runtime-rxjava2:1.0.0")
 
     // UI Tests
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.0.0-rc02")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.0.0")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
