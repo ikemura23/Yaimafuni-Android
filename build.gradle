@@ -2,7 +2,7 @@
 
 buildscript {
     ext.kotlin_version = '1.5.20'
-    ext.gradlePluginVersion = '4.2.2'
+    ext.gradlePluginVersion = '7.0.0'
     repositories {
         google()
         jcenter()
@@ -16,7 +16,7 @@ buildscript {
 
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.4.1'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.5.2'
         classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
     }
 }
