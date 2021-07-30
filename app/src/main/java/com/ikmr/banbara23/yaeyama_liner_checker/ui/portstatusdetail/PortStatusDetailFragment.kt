@@ -46,8 +46,6 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
             ?: throw IllegalArgumentException("portCodeがありません")
 
     private fun setupViews() {
-//        controller = StatusDetailEpoxyController(this)
-//        binding.listView.adapter = controller.adapter
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
             viewModel.getStatusDetail(company, portCode).collect { uiState ->
                 when (uiState) {
@@ -56,7 +54,6 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
                             portStatus = uiState.data.portStatus,
                             timeTable = uiState.data.timeTable
                         )
-//                        controller.setData(root)
                     }
                     else -> {
                         // 処理しない
