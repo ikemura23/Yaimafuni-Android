@@ -32,6 +32,7 @@ android {
     buildFeatures {
         dataBinding = true
         viewBinding = true
+        compose = true
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -40,7 +41,9 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
-
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.0.0'
+    }
     // Navigation Componentの Directionsが認識されない対応
     // https://stackoverflow.com/a/67875849
     sourceSets {
@@ -94,14 +97,25 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
-    // Epoxy
-    implementation 'com.airbnb.android:epoxy:3.9.0'
-    implementation 'com.airbnb.android:epoxy-databinding:3.9.0'
-    kapt 'com.airbnb.android:epoxy-processor:3.9.0'
-
     // In-App Review
     implementation 'com.google.android.play:core:1.10.0'
     implementation 'com.google.android.play:core-ktx:1.8.1'
+
+    // Jetpack Compose toolkit dependencies
+    // https://developer.android.com/jetpack/compose/setup#compose-compiler
+    implementation("androidx.compose.ui:ui:1.0.0")
+    // Tooling support (Previews, etc.)
+    implementation("androidx.compose.ui:ui-tooling:1.0.0")
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation("androidx.compose.foundation:foundation:1.0.0")
+    // Material Design
+    implementation("androidx.compose.material:material:1.0.0")
+    // Material design icons
+    implementation("androidx.compose.material:material-icons-core:1.0.0")
+    implementation("androidx.compose.material:material-icons-extended:1.0.0")
+
+    // UI Tests
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.0.0")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {

@@ -22,7 +22,7 @@ class GetStatusDetail(
                 )
                 UiState.Success(result)
             } else {
-                UiState.Error(Exception())
+                UiState.Error(Exception("運行詳細データの取得でエラーが発生"))
             }
         }
     }

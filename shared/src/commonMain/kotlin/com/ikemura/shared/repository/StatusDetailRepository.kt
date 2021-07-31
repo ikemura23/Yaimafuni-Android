@@ -9,7 +9,6 @@ import dev.gitlive.firebase.database.FirebaseDatabase
 import dev.gitlive.firebase.database.database
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
 class StatusDetailRepository {
@@ -19,10 +18,10 @@ class StatusDetailRepository {
     /**
      * 運行情報の詳細を取得する
      */
-    fun fetchStatusDetail(company: Company, portCode: String): Flow<UiState<PortStatus>> = flow {
+    fun fetchStatusDetail(company: Company, portCode: String): Flow<UiState<PortStatus>> {
         val path = "${company.code}/$portCode"
         val dbRef = database.reference(path)
-        dbRef.valueEvents
+        return dbRef.valueEvents
             .map {
                 val deserializeValue = it.value(PortStatus.serializer())
                 UiState.Success(deserializeValue)
@@ -30,10 +29,10 @@ class StatusDetailRepository {
             .catch { UiState.Error(it) }
     }
 
-    fun fetchTimeTable(company: Company, portCode: String): Flow<UiState<TimeTable>> = flow {
+    fun fetchTimeTable(company: Company, portCode: String): Flow<UiState<TimeTable>> {
         val path = "${company.code}_timeTable/$portCode"
         val dbRef = database.reference(path)
-        dbRef.valueEvents
+        return dbRef.valueEvents
             .map {
                 val deserializeValue = it.value(TimeTable.serializer())
                 UiState.Success(deserializeValue)

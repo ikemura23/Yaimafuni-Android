@@ -21,8 +21,6 @@
             type="View.OnClickListener"
             />
 
-        <import type="com.ikmr.banbara23.yaeyama_liner_checker.common.StatusHelper" />
-
         <import type="android.view.View" />
     </data>
 
@@ -92,7 +90,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@{StatusHelper.getStatusColor(portStatus.status.code)}"
                 android:paddingLeft="4dp"
                 android:paddingTop="2dp"
                 android:paddingRight="4dp"
