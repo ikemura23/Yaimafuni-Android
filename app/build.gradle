@@ -41,7 +41,9 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
-
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.0.0'
+    }
     // Navigation Componentの Directionsが認識されない対応
     // https://stackoverflow.com/a/67875849
     sourceSets {
