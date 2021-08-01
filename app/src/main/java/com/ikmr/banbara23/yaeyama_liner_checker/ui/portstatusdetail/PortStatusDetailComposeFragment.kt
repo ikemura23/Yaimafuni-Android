@@ -4,11 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import com.google.android.material.composethemeadapter.MdcTheme
 
@@ -30,10 +35,17 @@ class PortStatusDetailComposeFragment : Fragment() {
 
 @Composable
 private fun Screen() {
-    Text(
-        text = "hello world",
-        style = MaterialTheme.typography.h5,
-    )
+    Card {
+        Row {
+            Text(
+                text = "港名",
+            )
+            Text(
+                text = "ステータス",
+            )
+        }
+
+    }
 }
 
 @Preview
