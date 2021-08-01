@@ -32,14 +32,13 @@ class TopPortStatusRepository(private val dbRef: DatabaseReference) {
             override fun onDataChange(snapshot: DataSnapshot) {
                 snapshot.getValue(TopPort::class.java)?.let { response ->
                     Timber.d(response.toString())
-                    // offerで購読側に値を流せる
-                    offer(TopPortStatusState.Success(response))
+                    trySend(TopPortStatusState.Success(response))
                 }
             }
 
             // エラー
             override fun onCancelled(error: DatabaseError) {
-                offer(TopPortStatusState.Error(error.toException()))
+                trySend(TopPortStatusState.Error(error.toException()))
             }
         })
         awaitClose {
