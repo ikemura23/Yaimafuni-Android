@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,15 +21,23 @@ class PortStatusDetailComposeFragment : Fragment() {
         return ComposeView(requireContext()).apply {
             setContent {
                 MdcTheme {
-
+                    Screen()
                 }
             }
         }
     }
 }
 
-@Preview
 @Composable
 private fun Screen() {
+    Text(
+        text = "hello world",
+        style = MaterialTheme.typography.h5,
+    )
+}
 
+@Preview
+@Composable
+private fun PreviewScreen() {
+    Screen()
 }
