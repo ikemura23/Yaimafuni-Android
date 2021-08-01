@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
+import com.google.android.material.composethemeadapter.MdcTheme
 
 /**
  * 運行詳細のCompose Fragment
@@ -15,7 +16,9 @@ class PortStatusDetailComposeFragment : Fragment() {
         // FragmentにComposeを使う書き方
         return ComposeView(requireContext()).apply {
             setContent {
+                MdcTheme {
 
+                }
             }
         }
     }
