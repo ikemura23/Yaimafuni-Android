@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -44,27 +45,29 @@ class PortStatusDetailComposeFragment : Fragment() {
 @Composable
 private fun Screen() {
     Card {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(
-                text = "港名",
-            )
-            Text(
-                text = "ステータス",
-                color = Color.White,
+        Column {
+            Row(
                 modifier = Modifier
-                    .background(
-                        color = Color.Blue,
-                        shape = RoundedCornerShape(16)
-                    )
-                    .padding(vertical = 4.dp, horizontal = 8.dp)
-            )
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = "港名",
+                )
+                Text(
+                    text = "ステータス",
+                    color = Color.White,
+                    modifier = Modifier
+                        .background(
+                            color = Color.Blue,
+                            shape = RoundedCornerShape(16)
+                        )
+                        .padding(vertical = 4.dp, horizontal = 8.dp)
+                )
+            }
         }
-
+        // TODO:コメント
     }
 }
 
