@@ -44,12 +44,15 @@ class PortStatusDetailComposeFragment : Fragment() {
 
 @Composable
 private fun Screen() {
-    Card {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
         Column {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp),
+                    .padding(vertical = 4.dp, horizontal = 8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
@@ -66,8 +69,11 @@ private fun Screen() {
                         .padding(vertical = 4.dp, horizontal = 8.dp)
                 )
             }
+            Text(
+                text = "コメントコメントコメントコメントコメントコメントコメントコメント",
+                modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
+            )
         }
-        // TODO:コメント
     }
 }
 
