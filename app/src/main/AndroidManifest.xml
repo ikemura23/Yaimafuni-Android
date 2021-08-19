@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    package="com.ikmr.banbara23.yaeyama_liner_checker"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ikmr.banbara23.yaeyama_liner_checker"
     >
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
+        <activity
+            android:name=".ui.portstatusdetail.PortStatusDetailComposeActivity"
+            android:exported="true"
+            android:label="@string/title_activity_port_status_detail_compose"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".ui.portstatusdetail.PortStatusDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"
