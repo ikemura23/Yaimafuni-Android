@@ -81,8 +81,10 @@ private fun Screen() {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
-private fun PreviewScreen() {
-    Screen()
+fun DefaultPreviewPortStatusDetail() {
+    YaimafuniAndroidTheme {
+        Screen()
+    }
 }
