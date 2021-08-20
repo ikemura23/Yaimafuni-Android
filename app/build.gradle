@@ -43,7 +43,7 @@ android {
         targetCompatibility = '1.8'
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.0.0'
+        kotlinCompilerExtensionVersion '1.0.1'
         kotlinCompilerVersion '1.5.21'
     }
     // Navigation Componentの Directionsが認識されない対応
