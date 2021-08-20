@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -25,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import com.google.android.material.composethemeadapter.MdcTheme
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.YaimafuniAndroidTheme
 
 /**
  * 運行詳細のCompose Fragment
@@ -34,8 +36,10 @@ class PortStatusDetailComposeFragment : Fragment() {
         // FragmentにComposeを使う書き方
         return ComposeView(requireContext()).apply {
             setContent {
-                MdcTheme {
-                    Screen()
+                YaimafuniAndroidTheme {
+                    Surface(color = MaterialTheme.colors.background) {
+                        Screen()
+                    }
                 }
             }
         }
