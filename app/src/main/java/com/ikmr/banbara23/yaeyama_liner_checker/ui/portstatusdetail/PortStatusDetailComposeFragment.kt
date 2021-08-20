@@ -19,10 +19,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.StatusColor
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.TableHeaderColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.YaimafuniAndroidTheme
 
 /**
@@ -78,10 +80,39 @@ private fun Screen() {
     }
 }
 
+/**
+ * テーブルのヘッダー
+ */
+@Composable
+fun TimeTableListHeader(
+    leftTitle: String = "石垣島",
+    rightTitle: String = "大原港",
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(color = TableHeaderColor),
+        horizontalArrangement = Arrangement.SpaceAround,
+    ) {
+        Text(
+            text = leftTitle,
+            modifier = Modifier.padding(4.dp),
+            fontWeight = FontWeight.Bold,
+            color = Color.White,
+        )
+        Text(
+            text = rightTitle,
+            modifier = Modifier.padding(4.dp),
+            fontWeight = FontWeight.Bold,
+            color = Color.White,
+        )
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreviewPortStatusDetail() {
     YaimafuniAndroidTheme {
-        Screen()
+        TimeTableListHeader()
     }
 }
