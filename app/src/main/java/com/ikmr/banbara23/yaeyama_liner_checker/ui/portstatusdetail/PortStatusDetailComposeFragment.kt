@@ -7,11 +7,16 @@ import android.view.ViewGroup
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -109,10 +114,74 @@ fun TimeTableListHeader(
     }
 }
 
+/**
+ * テーブルのアイテム
+ */
+@Composable
+fun TimeTableListItem(
+    leftTime: String = "00:00",
+    leftStatus: String = "通常運行",
+    rightTime: String = "00:00",
+    rightStatus: String = "通常運行",
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(IntrinsicSize.Min),
+    ) {
+        // 左側（石垣）
+        Row(
+            modifier = Modifier
+                .weight(1f)
+        ) {
+            // 時刻
+            Text(
+                text = leftTime,
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(4.dp),
+            )
+            // ステータス文字
+            Text(
+                text = leftStatus,
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(4.dp),
+            )
+        }
+        Divider(
+            color = Color.Black,
+            modifier = Modifier
+                .fillMaxHeight()
+                .width(1.dp)
+        )
+        // 右側（ターゲット港）
+        Row(
+            modifier = Modifier
+                .weight(1f)
+        ) {
+            // 時刻
+            Text(
+                text = rightTime,
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(4.dp),
+            )
+            // ステータス文字
+            Text(
+                text = rightStatus,
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(4.dp),
+            )
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreviewPortStatusDetail() {
     YaimafuniAndroidTheme {
-        TimeTableListHeader()
+        TimeTableListItem()
     }
 }
