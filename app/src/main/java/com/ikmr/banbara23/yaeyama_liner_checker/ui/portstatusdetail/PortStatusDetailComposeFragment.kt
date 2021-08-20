@@ -85,6 +85,18 @@ private fun Screen() {
     }
 }
 
+@Composable
+fun TimeTableList(items: List<String>) {
+    Column {
+        TimeTableListHeader()
+        items.forEach { item ->
+            TimeTableListItem(
+                leftStatus = item // TODO:仮
+            )
+        }
+    }
+}
+
 /**
  * テーブルのヘッダー
  */
@@ -181,7 +193,8 @@ fun TimeTableListItem(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreviewPortStatusDetail() {
+    val items = listOf("a", "b", "c", "d", "f")
     YaimafuniAndroidTheme {
-        TimeTableListItem()
+        TimeTableList(items)
     }
 }
