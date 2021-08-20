@@ -29,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.StatusColor
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.TableDividerColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.TableHeaderColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.YaimafuniAndroidTheme
 
@@ -90,6 +91,10 @@ fun TimeTableList(items: List<String>) {
     Column {
         TimeTableListHeader()
         items.forEach { item ->
+            Divider(
+                color = TableDividerColor,
+                modifier = Modifier.height(1.dp)
+            )
             TimeTableListItem(
                 leftStatus = item // TODO:仮
             )
@@ -162,7 +167,7 @@ fun TimeTableListItem(
             )
         }
         Divider(
-            color = Color.Black,
+            color = TableDividerColor,
             modifier = Modifier
                 .fillMaxHeight()
                 .width(1.dp)
