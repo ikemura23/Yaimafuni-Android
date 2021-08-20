@@ -61,10 +61,10 @@ private fun Screen() {
                 )
                 Text(
                     text = "ステータス",
-                    color = StatusColor.Normal,
+                    color = Color.White,
                     modifier = Modifier
                         .background(
-                            color = Color.Blue,
+                            color = StatusColor.Normal,
                             shape = RoundedCornerShape(16)
                         )
                         .padding(vertical = 4.dp, horizontal = 8.dp)

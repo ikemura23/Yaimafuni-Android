@@ -8,5 +8,5 @@ val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 
 object StatusColor {
-    val Normal = Color(0x003F51B5)
+    val Normal = Color(0xFF4169e1)
 }
