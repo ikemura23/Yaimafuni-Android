@@ -29,16 +29,30 @@
             app:layout_constraintTop_toTopOf="parent"
             >
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list_view"
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="vertical"-->
+            <!--                >-->
+
+            <com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortMainStatusComposeView
+                android:id="@+id/PortMainStatusComposeView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:overScrollMode="never"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 />
+
+            <!--            </LinearLayout>-->
+
+            <!--            <androidx.recyclerview.widget.RecyclerView-->
+            <!--                android:id="@+id/list_view"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:overScrollMode="never"-->
+            <!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent"-->
+            <!--                />-->
         </androidx.cardview.widget.CardView>
     </FrameLayout>
 </layout>

@@ -54,6 +54,9 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
                             portStatus = uiState.data.portStatus,
                             timeTable = uiState.data.timeTable
                         )
+                        binding.PortMainStatusComposeView.let { view ->
+                            view.portStatus = root.portStatus
+                        }
                     }
                     else -> {
                         // 処理しない
