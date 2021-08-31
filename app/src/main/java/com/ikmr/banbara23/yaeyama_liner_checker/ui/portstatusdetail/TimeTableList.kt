@@ -20,21 +20,28 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ikemura.shared.model.statusdetail.Status
+import com.ikemura.shared.model.time_table.Header
+import com.ikemura.shared.model.time_table.RowItem
+import com.ikemura.shared.model.time_table.TimeTable
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.TableDividerColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.TableHeaderColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.YaimafuniAndroidTheme
 
 @Composable
-fun TimeTableList(items: List<String>) {
+fun TimeTableList(timeTable: TimeTable) {
     Column {
-        TimeTableListHeader()
-        items.forEach { item ->
+        TimeTableListHeader(header = timeTable.header)
+        timeTable.row.forEach { row ->
             Divider(
                 color = TableDividerColor,
                 modifier = Modifier.height(1.dp)
             )
             TimeTableListItem(
-                leftStatus = item // TODO:仮
+                leftStatus = row.left.status.text,
+                leftTime = row.left.time,
+                rightStatus = row.right.status.text,
+                rightTime = row.right.time
             )
         }
     }
@@ -45,8 +52,7 @@ fun TimeTableList(items: List<String>) {
  */
 @Composable
 fun TimeTableListHeader(
-    leftTitle: String = "石垣島",
-    rightTitle: String = "大原港",
+    header: Header = Header(left = "石垣島", right = "大原港"),
 ) {
     Row(
         modifier = Modifier
@@ -55,13 +61,13 @@ fun TimeTableListHeader(
         horizontalArrangement = Arrangement.SpaceAround,
     ) {
         Text(
-            text = leftTitle,
+            text = header.left,
             modifier = Modifier.padding(4.dp),
             fontWeight = FontWeight.Bold,
             color = Color.White,
         )
         Text(
-            text = rightTitle,
+            text = header.right,
             modifier = Modifier.padding(4.dp),
             fontWeight = FontWeight.Bold,
             color = Color.White,
@@ -138,8 +144,48 @@ fun TimeTableListItem(
 private fun TimeTableListPreview() {
     YaimafuniAndroidTheme {
         Surface(color = MaterialTheme.colors.background) {
-            val items = listOf("a", "b", "c", "d", "f")
-            TimeTableList(items)
+            val items = listOf("10:00", "b", "c", "d", "f")
+            listOf("10:00", "11:00", "12:00", "13:00", "14:00")
+            val header = Header(left = "石垣島", right = "大原港")
+            val rowItem = RowItem(
+                status = Status(code = "nomal", text = "通常運行"),
+                time = "00:00",
+                memo = "", // 使ってる？
+            )
+            val row = com.ikemura.shared.model.time_table.Row(
+                left = rowItem,
+                right = rowItem
+            )
+            val rows = listOf(row, row, row, row, row, row, row)
+            val timeTable = TimeTable(
+                header = header,
+                row = rows
+            )
+            TimeTableList(timeTable)
+        }
+    }
+}
+
+@Preview(name = "ヘッダー")
+@Composable
+fun TimeTableListHeaderPreview() {
+    val dummy = Header(left = "石垣島", right = "大原港")
+    YaimafuniAndroidTheme {
+        TimeTableListHeader(dummy)
+    }
+}
+
+@Preview(name = "Rowアイテム")
+@Composable
+fun TimeTableListItemPreview() {
+    YaimafuniAndroidTheme {
+        Surface(color = MaterialTheme.colors.background) {
+            TimeTableListItem(
+                leftTime = "00:00",
+                leftStatus = "通常運行",
+                rightTime = "00:00",
+                rightStatus = "通常運行",
+            )
         }
     }
 }
