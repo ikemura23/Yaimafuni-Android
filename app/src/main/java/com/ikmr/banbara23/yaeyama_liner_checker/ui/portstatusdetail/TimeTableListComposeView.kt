@@ -3,7 +3,9 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail
 import android.content.Context
 import android.util.AttributeSet
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.AbstractComposeView
+import com.ikemura.shared.model.time_table.TimeTable
 
 /**
  * 時刻別の運行リストをxmlでComposeを表示するComposeView
@@ -20,9 +22,16 @@ class TimeTableListComposeView @JvmOverloads constructor(
     defStyleAttr: Int = 0,
 ) : AbstractComposeView(context, attrs, defStyleAttr) {
 
+    private val timeTableState = mutableStateOf(TimeTable())
+    private var timeTable: TimeTable
+        get() = timeTableState.value
+        set(value) {
+            timeTableState.value = value
+        }
+
     @Composable
     override fun Content() {
         val items = listOf("a", "b", "c", "d", "f")
-        TimeTableList(items = items)
+        TimeTableList(timeTableState.value)
     }
 }
