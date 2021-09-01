@@ -16,6 +16,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -102,25 +103,10 @@ fun TimeTableListItem(
             .height(IntrinsicSize.Min),
     ) {
         // 左側（石垣）
-        Row(
-            modifier = Modifier
-                .weight(1f)
-        ) {
-            // 時刻
-            Text(
-                text = leftTime,
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(4.dp),
-            )
-            // ステータス文字
-            Text(
-                text = leftStatus,
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(4.dp),
-            )
-        }
+        TimeTableRowItem(
+            time = leftTime,
+            status = leftStatus
+        )
         Divider(
             color = TableDividerColor,
             modifier = Modifier
@@ -128,25 +114,35 @@ fun TimeTableListItem(
                 .width(1.dp)
         )
         // 右側（ターゲット港）
-        Row(
+        TimeTableRowItem(
+            time = rightTime,
+            status = rightStatus
+        )
+    }
+}
+
+@Composable
+fun TimeTableRowItem(time: String, status: String) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        // modifier = Modifier.weight(1f)
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+    ) {
+        // 時刻
+        Text(
+            text = time,
             modifier = Modifier
                 .weight(1f)
-        ) {
-            // 時刻
-            Text(
-                text = rightTime,
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(4.dp),
-            )
-            // ステータス文字
-            Text(
-                text = rightStatus,
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(4.dp),
-            )
-        }
+                .padding(4.dp),
+        )
+        // ステータス文字
+        Text(
+            text = status,
+            modifier = Modifier
+                .weight(1f)
+                .padding(4.dp),
+        )
     }
 }
 
@@ -186,9 +182,9 @@ fun TimeTableListHeaderPreview() {
     }
 }
 
-@Preview(name = "Rowアイテム")
+@Preview(name = "ボディ > Row")
 @Composable
-fun TimeTableListItemPreview() {
+fun TimeTableListRowPreview() {
     YaimafuniAndroidTheme {
         Surface(color = MaterialTheme.colors.background) {
             TimeTableListItem(
@@ -196,6 +192,20 @@ fun TimeTableListItemPreview() {
                 leftStatus = "通常運行",
                 rightTime = "00:00",
                 rightStatus = "通常運行",
+            )
+        }
+    }
+}
+
+@Preview(name = "ボディ > Row > アイテム")
+@Composable
+private fun TimeTableRowItemPreview() {
+    YaimafuniAndroidTheme {
+        Surface(color = MaterialTheme.colors.background) {
+            TimeTableRowItem(
+                time = "16：45\n" +
+                    "    上原経由",
+                status = "通常運行"
             )
         }
     }
