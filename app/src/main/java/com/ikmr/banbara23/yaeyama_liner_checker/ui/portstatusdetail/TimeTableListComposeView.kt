@@ -31,7 +31,6 @@ class TimeTableListComposeView @JvmOverloads constructor(
 
     @Composable
     override fun Content() {
-        val items = listOf("a", "b", "c", "d", "f")
         TimeTableList(timeTableState.value)
     }
 }

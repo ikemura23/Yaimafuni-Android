@@ -28,9 +28,11 @@ import com.ikemura.shared.model.time_table.TimeTable
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.TableDividerColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.TableHeaderColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.YaimafuniAndroidTheme
+import timber.log.Timber
 
 @Composable
 fun TimeTableList(timeTable: TimeTable) {
+    Timber.d(timeTable.toString())
     Card(
         modifier = Modifier.fillMaxWidth()
     ) {
