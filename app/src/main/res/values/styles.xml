@@ -25,11 +25,8 @@
 
     <!--詳細画面のCardView共通スタイル-->
     <style name="detail_card" parent="CardView">
-        <item name="android:layout_marginLeft">@dimen/status_detail_view_outer_space</item>
-        <item name="android:layout_marginRight">@dimen/status_detail_view_outer_space</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_marginBottom">4dp</item>
         <item name="contentPadding">16dp</item>
         <item name="cardCornerRadius">3dp</item>
         <item name="cardElevation">2dp</item>

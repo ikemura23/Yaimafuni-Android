@@ -1,9 +1,5 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,29 +14,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.fragment.app.Fragment
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.StatusColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.YaimafuniAndroidTheme
-
-/**
- * 運行詳細のCompose Fragment
- */
-class PortStatusDetailComposeFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // FragmentにComposeを使う書き方
-        return ComposeView(requireContext()).apply {
-            setContent {
-                YaimafuniAndroidTheme {
-                    Surface(color = MaterialTheme.colors.background) {
-                        PortStatusDetail()
-                    }
-                }
-            }
-        }
-    }
-}
 
 @Composable
 private fun PortStatusDetail() {
@@ -57,22 +34,34 @@ private fun PortStatusDetail() {
             ) {
                 Text(
                     text = "港名",
+                    style = MaterialTheme.typography.h6,
                 )
                 Text(
                     text = "ステータス",
                     color = Color.White,
+                    style = MaterialTheme.typography.h6,
                     modifier = Modifier
                         .background(
                             color = StatusColor.Normal,
                             shape = RoundedCornerShape(16)
                         )
-                        .padding(vertical = 4.dp, horizontal = 8.dp)
+                        .padding(vertical = 4.dp, horizontal = 4.dp)
                 )
             }
             Text(
                 text = "コメントコメントコメントコメントコメントコメントコメントコメント",
                 modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
             )
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun PortStatusDetailPreview() {
+    YaimafuniAndroidTheme {
+        Surface(color = MaterialTheme.colors.background) {
+            PortStatusDetail()
         }
     }
 }
