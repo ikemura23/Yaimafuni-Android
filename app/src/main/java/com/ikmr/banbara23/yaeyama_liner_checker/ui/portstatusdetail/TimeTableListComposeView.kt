@@ -23,7 +23,7 @@ class TimeTableListComposeView @JvmOverloads constructor(
 ) : AbstractComposeView(context, attrs, defStyleAttr) {
 
     private val timeTableState = mutableStateOf(TimeTable())
-    private var timeTable: TimeTable
+    var timeTable: TimeTable
         get() = timeTableState.value
         set(value) {
             timeTableState.value = value

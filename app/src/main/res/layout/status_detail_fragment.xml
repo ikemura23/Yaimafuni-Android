@@ -25,7 +25,19 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:orientation="vertical"
+            android:paddingBottom="16dp"
             >
+
+            <com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortMainStatusComposeView
+                android:id="@+id/PortMainStatusComposeView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                />
 
             <androidx.cardview.widget.CardView
                 style="@style/detail_card"
@@ -34,8 +46,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 >
 
-                <com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortMainStatusComposeView
-                    android:id="@+id/PortMainStatusComposeView"
+                <com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.TimeTableListComposeView
+                    android:id="@+id/TimeTableListComposeView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     />

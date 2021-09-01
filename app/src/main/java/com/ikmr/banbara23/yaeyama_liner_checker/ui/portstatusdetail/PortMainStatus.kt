@@ -4,9 +4,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -25,49 +27,49 @@ fun PortMainStatus(
     status: Status = Status("nomal", "通常運行"),
     statusDescription: String = "コメントコメントコメントコメントコメントコメントコメントコメント",
 ) {
-    // Card(
-    //     modifier = Modifier
-    //         .fillMaxWidth()
-    // ) {
-    Column {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 4.dp, horizontal = 8.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
+    Card(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
         ) {
-            Text(
-                text = portName,
-                style = MaterialTheme.typography.h6,
-            )
-            // ステータスの背景色
-            val statusBackgroundColor = when (status.code) {
-                "nomal" -> StatusColor.Normal
-                "cation" -> StatusColor.Cation
-                "cancel" -> StatusColor.Cancel
-                else -> StatusColor.Cation
-            }
-            Text(
-                text = status.text,
-                color = Color.White,
-                style = MaterialTheme.typography.h6,
+            Row(
                 modifier = Modifier
-                    .background(
-                        color = statusBackgroundColor,
-                        shape = RoundedCornerShape(16)
-                    )
-                    .padding(vertical = 4.dp, horizontal = 4.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = portName,
+                    style = MaterialTheme.typography.h6,
+                )
+                // ステータスの背景色
+                val statusBackgroundColor = when (status.code) {
+                    "nomal" -> StatusColor.Normal
+                    "cation" -> StatusColor.Cation
+                    "cancel" -> StatusColor.Cancel
+                    else -> StatusColor.Cation
+                }
+                Text(
+                    text = status.text,
+                    color = Color.White,
+                    style = MaterialTheme.typography.h6,
+                    modifier = Modifier
+                        .background(
+                            color = statusBackgroundColor,
+                            shape = RoundedCornerShape(16)
+                        )
+                        .padding(vertical = 4.dp, horizontal = 4.dp)
+                )
+            }
+            Spacer(modifier = Modifier.padding(vertical = 4.dp))
+            Text(
+                text = statusDescription,
             )
+            // Spacer(modifier = Modifier.height(8.dp))
+            // val items = listOf("a", "b", "c", "d", "f")
+            // TimeTableList(items)
         }
-        Text(
-            text = statusDescription,
-            modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
-        )
-        // Spacer(modifier = Modifier.height(8.dp))
-        // val items = listOf("a", "b", "c", "d", "f")
-        // TimeTableList(items)
     }
-    // }
 }
 
 @Preview
