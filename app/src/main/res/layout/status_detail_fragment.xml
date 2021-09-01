@@ -22,7 +22,7 @@
             <com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortMainStatusComposeView
                 android:id="@+id/PortMainStatusComposeView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 />
 
             <Space
@@ -33,7 +33,7 @@
             <com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.TimeTableListComposeView
                 android:id="@+id/TimeTableListComposeView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 />
 
             <Space
