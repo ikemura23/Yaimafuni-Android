@@ -65,9 +65,6 @@ fun PortMainStatus(
             Text(
                 text = statusDescription,
             )
-            // Spacer(modifier = Modifier.height(8.dp))
-            // val items = listOf("a", "b", "c", "d", "f")
-            // TimeTableList(items)
         }
     }
 }

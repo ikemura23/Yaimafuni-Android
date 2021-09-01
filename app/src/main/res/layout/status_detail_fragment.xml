@@ -3,14 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-    <data>
-
-        <variable
-            name="title"
-            type="String"
-            />
-    </data>
-
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -38,13 +30,6 @@
                 android:layout_height="16dp"
                 />
 
-            <!--            <androidx.cardview.widget.CardView-->
-            <!--                style="@style/detail_card"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toTopOf="parent"-->
-            <!--                >-->
-
             <com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.TimeTableListComposeView
                 android:id="@+id/TimeTableListComposeView"
                 android:layout_width="match_parent"
@@ -55,7 +40,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="16dp"
                 />
-            <!--            </androidx.cardview.widget.CardView>-->
         </LinearLayout>
     </ScrollView>
 </layout>
