@@ -43,12 +43,7 @@ fun PortMainStatus(
                     style = MaterialTheme.typography.h6,
                 )
                 // ステータスの背景色
-                val statusBackgroundColor = when (status.code) {
-                    "nomal" -> StatusColor.Normal
-                    "cation" -> StatusColor.Cation
-                    "cancel" -> StatusColor.Cancel
-                    else -> StatusColor.Cation
-                }
+                val statusBackgroundColor = status.getStatusBackgroundColor()
                 Text(
                     text = status.text,
                     color = Color.White,
@@ -77,4 +72,12 @@ private fun PortMainStatusPreview() {
             PortMainStatus()
         }
     }
+}
+
+// ステータスの背景色
+fun Status.getStatusBackgroundColor() = when (this.code) {
+    "nomal" -> StatusColor.Normal
+    "cation" -> StatusColor.Cation
+    "cancel" -> StatusColor.Cancel
+    else -> StatusColor.Cation
 }
