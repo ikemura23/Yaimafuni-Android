@@ -63,10 +63,12 @@ fun PortMainStatus(
                     )
                 }
             }
-            Spacer(modifier = Modifier.padding(vertical = 4.dp))
-            Text(
-                text = statusDescription,
-            )
+            if (statusDescription.isNotEmpty()) {
+                Spacer(modifier = Modifier.padding(vertical = 4.dp))
+                Text(
+                    text = statusDescription,
+                )
+            }
         }
     }
 }
