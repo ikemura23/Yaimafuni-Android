@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.ikemura.shared.model.statusdetail.Status
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.StatusColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.YaimafuniAndroidTheme
+import timber.log.Timber
 
 @Composable
 fun PortMainStatus(
@@ -27,6 +28,10 @@ fun PortMainStatus(
     status: Status = Status("nomal", "通常運行"),
     statusDescription: String = "コメントコメントコメントコメントコメントコメントコメントコメント",
 ) {
+    Timber.d("portName: $portName")
+    Timber.d("status: $status")
+    Timber.d("statusDescription: $statusDescription")
+
     Card(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -76,7 +81,7 @@ private fun PortMainStatusPreview() {
 
 // ステータスの背景色
 fun Status.getStatusBackgroundColor() = when (this.code) {
-    "nomal" -> StatusColor.Normal
+    "nomal", "normal" -> StatusColor.Normal
     "cation" -> StatusColor.Cation
     "cancel" -> StatusColor.Cancel
     else -> StatusColor.Cation
