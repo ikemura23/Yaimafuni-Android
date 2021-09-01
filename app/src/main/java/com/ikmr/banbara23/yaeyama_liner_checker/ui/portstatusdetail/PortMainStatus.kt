@@ -47,19 +47,21 @@ fun PortMainStatus(
                     text = portName,
                     style = MaterialTheme.typography.h6,
                 )
-                // ステータスの背景色
-                val statusBackgroundColor = status.getStatusBackgroundColor()
-                Text(
-                    text = status.text,
-                    color = Color.White,
-                    style = MaterialTheme.typography.h6,
-                    modifier = Modifier
-                        .background(
-                            color = statusBackgroundColor,
-                            shape = RoundedCornerShape(16)
-                        )
-                        .padding(vertical = 4.dp, horizontal = 4.dp)
-                )
+                if (status.code.isNotEmpty()) {
+                    // ステータスの背景色
+                    val statusBackgroundColor = status.getStatusBackgroundColor()
+                    Text(
+                        text = status.text,
+                        color = Color.White,
+                        style = MaterialTheme.typography.h6,
+                        modifier = Modifier
+                            .background(
+                                color = statusBackgroundColor,
+                                shape = RoundedCornerShape(16)
+                            )
+                            .padding(vertical = 4.dp, horizontal = 4.dp)
+                    )
+                }
             }
             Spacer(modifier = Modifier.padding(vertical = 4.dp))
             Text(
