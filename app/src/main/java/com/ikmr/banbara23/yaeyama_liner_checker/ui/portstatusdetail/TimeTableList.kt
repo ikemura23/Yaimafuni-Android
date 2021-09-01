@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.Card
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -30,19 +31,27 @@ import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.Yai
 
 @Composable
 fun TimeTableList(timeTable: TimeTable) {
-    Column {
-        TimeTableListHeader(header = timeTable.header)
-        timeTable.row.forEach { row ->
-            Divider(
-                color = TableDividerColor,
-                modifier = Modifier.height(1.dp)
+    Card(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            TimeTableListHeader(
+                header = timeTable.header
             )
-            TimeTableListItem(
-                leftStatus = row.left.status.text,
-                leftTime = row.left.time,
-                rightStatus = row.right.status.text,
-                rightTime = row.right.time
-            )
+            timeTable.row.forEach { row ->
+                Divider(
+                    color = TableDividerColor,
+                    modifier = Modifier.height(1.dp)
+                )
+                TimeTableListItem(
+                    leftStatus = row.left.status.text,
+                    leftTime = row.left.time,
+                    rightStatus = row.right.status.text,
+                    rightTime = row.right.time
+                )
+            }
         }
     }
 }
