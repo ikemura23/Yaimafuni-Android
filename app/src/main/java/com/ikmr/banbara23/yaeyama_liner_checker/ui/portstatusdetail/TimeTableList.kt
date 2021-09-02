@@ -102,10 +102,16 @@ fun TimeTableListItem(
             .fillMaxWidth()
             .height(IntrinsicSize.Min),
     ) {
+        // TODO: modifierをパラメータで渡したくないため、weightを使わない方法にできるか？
+        val modifier = Modifier
+            .fillMaxWidth()
+            .weight(1f)
+        
         // 左側（石垣）
         TimeTableRowItem(
             time = leftTime,
-            status = leftStatus
+            status = leftStatus,
+            modifier = modifier,
         )
         Divider(
             color = TableDividerColor,
@@ -116,16 +122,16 @@ fun TimeTableListItem(
         // 右側（ターゲット港）
         TimeTableRowItem(
             time = rightTime,
-            status = rightStatus
+            status = rightStatus,
+            modifier = modifier,
         )
     }
 }
 
 @Composable
-fun TimeTableRowItem(time: String, status: String) {
+fun TimeTableRowItem(time: String, status: String, modifier: Modifier) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
-        // modifier = Modifier.weight(1f)
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
     ) {
@@ -197,15 +203,19 @@ fun TimeTableListRowPreview() {
     }
 }
 
-@Preview(name = "ボディ > Row > アイテム")
+@Preview(name = "TimeTableRowItem")
 @Composable
 private fun TimeTableRowItemPreview() {
     YaimafuniAndroidTheme {
         Surface(color = MaterialTheme.colors.background) {
+            val modifier = Modifier
+                .fillMaxWidth()
+
             TimeTableRowItem(
                 time = "16：45\n" +
                     "    上原経由",
-                status = "通常運行"
+                status = "通常運行",
+                modifier
             )
         }
     }
