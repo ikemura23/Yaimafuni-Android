@@ -7,7 +7,6 @@ import dev.gitlive.firebase.database.DataSnapshot
 import dev.gitlive.firebase.database.database
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
 /**
@@ -21,9 +20,9 @@ class WeatherRepository(
     /**
      * 天気を取得
      */
-    fun fetchWeather(): Flow<WeatherUiState> = flow {
+    fun fetchWeather(): Flow<UiState<WeatherInfo>> {
         val dbRef = Firebase.database(Firebase.app).reference("weather")
-        dbRef.valueEvents
+        return dbRef.valueEvents
             .map { snapShot: DataSnapshot ->
                 val deserializeValue = snapShot.value(WeatherInfo.serializer())
                 UiState.Success(deserializeValue)

@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ikemura.shared.model.weather.WeatherInfo
-import com.ikemura.shared.repository.WeatherUiState
+import com.ikemura.shared.repository.UiState
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBinding
@@ -49,15 +49,15 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
     }
 
     private fun setupViewModel() {
-        lifecycleScope.launchWhenCreated {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             viewModel.getWeather().collect { state ->
                 Timber.d(state.toString())
                 when (state) {
-                    is WeatherUiState.Success -> {
-                        bindData(state.weatherInfo)
+                    is UiState.Success -> {
+                        bindData(state.data)
                     }
-                    is WeatherUiState.Error -> {
-                        Timber.e(state.message)
+                    is UiState.Error -> {
+                        Timber.e(state.error)
                     }
                 }
             }
