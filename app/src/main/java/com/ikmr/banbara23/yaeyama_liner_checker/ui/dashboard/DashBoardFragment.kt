@@ -30,12 +30,8 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
             viewModel.fetchTopStatus().collect { state ->
                 when (state) {
-                    is UiState.Success -> {
-                        binding.topPort = state.data
-                    }
-                    else -> {
-                        // TODO: エラー処理を実装
-                    }
+                    is UiState.Success -> binding.topPort = state.data
+                    is UiState.Error -> Timber.e(state.error)
                 }
             }
         }
