@@ -7,22 +7,17 @@ data class TopPort(
     var taketomi: Ports = Ports(),
     var kuroshima: Ports = Ports(),
     var oohara: Ports = Ports(),
-    var uehara: Ports = Ports()
+    var uehara: Ports = Ports(),
 )
 
 data class Ports(
     val anei: PortStatus = PortStatus(),
-    val ykf: PortStatus = PortStatus()
+    val ykf: PortStatus = PortStatus(),
 )
 
 data class PortStatus(
     var comment: String = "",
     var portCode: String = "",
     var portName: String = "",
-    var status: Status = Status()
-)
-
-data class Status(
-    var code: String = "",
-    var text: String = ""
+    var status: Status = Status(),
 )
