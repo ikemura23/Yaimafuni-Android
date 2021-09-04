@@ -1,5 +1,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Card
 import androidx.compose.material.Surface
@@ -13,7 +14,9 @@ fun DashBoard() {
     Card(
         modifier = Modifier.fillMaxWidth()
     ) {
+        Column {
 
+        }
     }
 }
 
