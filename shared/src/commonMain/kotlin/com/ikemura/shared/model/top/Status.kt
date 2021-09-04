@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.model.top
+package com.ikemura.shared.model.top
 
 data class Status(
     var code: String = "",

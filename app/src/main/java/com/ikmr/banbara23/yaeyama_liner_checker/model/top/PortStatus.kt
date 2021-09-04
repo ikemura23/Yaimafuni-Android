@@ -1,5 +1,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.model.top
 
+import com.ikemura.shared.model.top.Status
+
 data class PortStatus(
     var comment: String = "",
     var portCode: String = "",
