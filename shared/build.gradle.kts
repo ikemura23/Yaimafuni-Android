@@ -17,6 +17,7 @@ kotlin {
     }
     sourceSets {
         val coroutineVersion = "1.4.2"
+        val koinVersion = "3.1.2"
         val commonMain by getting {
             dependencies {
                 implementation(
@@ -25,12 +26,16 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.2.0")
                 // firebase
                 implementation("dev.gitlive:firebase-database:1.3.1")
+                // Koin core features
+                implementation("io.insert-koin:koin-core:$koinVersion")
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+                // Koin test features
+                implementation("io.insert-koin:koin-test:$koinVersion")
             }
         }
         val androidMain by getting
