@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.ikemura.shared.repository.UiState
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.DashBoardFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.observeEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
+import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
 /**
@@ -23,11 +26,19 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.uiState.observe(viewLifecycleOwner) {
-            Timber.d("$it")
-            binding.topPort = it
+
+        viewLifecycleOwner.lifecycleScope.launchWhenResumed {
+            viewModel.fetchTopStatus().collect { state ->
+                when (state) {
+                    is UiState.Success -> {
+                        binding.topPort = state.data
+                    }
+                    else -> {
+                        // TODO: エラー処理を実装
+                    }
+                }
+            }
         }
-        viewModel.fetchTopPortStatus()
         viewModel.nav.observeEvent(viewLifecycleOwner, this::onNavigate)
     }
 

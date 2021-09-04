@@ -6,9 +6,12 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.ikemura.shared.model.top.Ports
 import com.ikemura.shared.model.top.TopPort
+import com.ikemura.shared.repository.TopStatusRepository
+import com.ikemura.shared.repository.UiState
 import com.ikmr.banbara23.yaeyama_liner_checker.core.Event
 import com.ikmr.banbara23.yaeyama_liner_checker.core.toEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.repository.TopPortStatusRepository
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -29,6 +32,8 @@ class DashBoardViewModelImpl : DashBoardViewModel() {
         TopPortStatusRepository(database)
     }
 
+    private val topStatusRepository = TopStatusRepository()
+
     fun fetchTopPortStatus() {
         viewModelScope.launch {
             topPortStatusRepository.getTopPortStatus().collect { state ->
@@ -38,6 +43,10 @@ class DashBoardViewModelImpl : DashBoardViewModel() {
                 }
             }
         }
+    }
+
+    fun fetchTopStatus(): Flow<UiState<TopPort>> {
+        return topStatusRepository.fetchTopStatus()
     }
 
     /**
