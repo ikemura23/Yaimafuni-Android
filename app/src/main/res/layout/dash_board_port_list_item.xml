@@ -9,7 +9,7 @@
 
         <variable
             name="ports"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.model.top.Ports"
+            type="com.ikmr.banbara23.yaeyama_liner_checker.model.Ports"
             />
 
         <variable
