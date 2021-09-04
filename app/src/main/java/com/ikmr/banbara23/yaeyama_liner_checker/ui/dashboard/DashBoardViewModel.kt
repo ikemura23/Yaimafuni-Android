@@ -3,7 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard
 import androidx.lifecycle.MutableLiveData
 import com.ikemura.shared.model.top.Ports
 import com.ikemura.shared.model.top.TopPort
-import com.ikemura.shared.repository.TopStatusRepository
+import com.ikemura.shared.repository.TopStatusRepositoryImpl
 import com.ikemura.shared.repository.UiState
 import com.ikmr.banbara23.yaeyama_liner_checker.core.Event
 import com.ikmr.banbara23.yaeyama_liner_checker.core.toEvent
@@ -17,7 +17,7 @@ class DashBoardViewModelImpl : DashBoardViewModel() {
 
     override val nav = MutableLiveData<Event<Nav>>()
 
-    private val topStatusRepository = TopStatusRepository()
+    private val topStatusRepository = TopStatusRepositoryImpl() // TODO: DIする
 
     fun fetchTopStatus(): Flow<UiState<TopPort>> {
         return topStatusRepository.fetchTopStatus()
