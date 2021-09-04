@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ikemura.shared.model.statusdetail.Status
 import com.ikemura.shared.model.time_table.Header
+import com.ikemura.shared.model.time_table.Row
 import com.ikemura.shared.model.time_table.RowItem
 import com.ikemura.shared.model.time_table.TimeTable
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.TableDividerColor
@@ -170,7 +171,7 @@ private fun TimeTableListPreview() {
                 left = rowItem,
                 right = rowItem
             )
-            val rows = listOf(row, row, row, row, row, row, row)
+            val rows = List(5) { row }
             val timeTable = TimeTable(
                 header = header,
                 row = rows
