@@ -27,9 +27,9 @@ import com.ikemura.shared.model.time_table.Header
 import com.ikemura.shared.model.time_table.Row
 import com.ikemura.shared.model.time_table.RowItem
 import com.ikemura.shared.model.time_table.TimeTable
-import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.TableDividerColor
-import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.TableHeaderColor
-import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.YaimafuniAndroidTheme
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.TableDividerColor
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.TableHeaderColor
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 import timber.log.Timber
 
 typealias TimeRow = Row

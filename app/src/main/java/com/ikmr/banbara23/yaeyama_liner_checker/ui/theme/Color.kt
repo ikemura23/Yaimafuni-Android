@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

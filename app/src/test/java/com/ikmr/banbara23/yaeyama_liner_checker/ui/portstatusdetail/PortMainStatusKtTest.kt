@@ -1,7 +1,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail
 
 import com.ikemura.shared.model.statusdetail.Status
-import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.StatusColor
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.StatusColor
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
