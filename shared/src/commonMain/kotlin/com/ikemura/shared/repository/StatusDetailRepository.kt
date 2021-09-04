@@ -3,17 +3,16 @@ package com.ikemura.shared.repository
 import com.ikemura.shared.model.statusdetail.Company
 import com.ikemura.shared.model.statusdetail.PortStatus
 import com.ikemura.shared.model.time_table.TimeTable
-import dev.gitlive.firebase.Firebase
-import dev.gitlive.firebase.app
 import dev.gitlive.firebase.database.FirebaseDatabase
-import dev.gitlive.firebase.database.database
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class StatusDetailRepository {
+class StatusDetailRepository : KoinComponent {
     // Firebase Realtime Database
-    private var database: FirebaseDatabase = Firebase.database(Firebase.app)
+    private val database: FirebaseDatabase by inject()
 
     /**
      * 運行情報の詳細を取得する
