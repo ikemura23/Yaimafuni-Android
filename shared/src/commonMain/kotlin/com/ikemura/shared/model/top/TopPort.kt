@@ -1,5 +1,8 @@
 package com.ikemura.shared.model.top
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class TopPort(
     var hateruma: Ports = Ports(),
     var hatoma: Ports = Ports(),
