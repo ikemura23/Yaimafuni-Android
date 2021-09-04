@@ -4,16 +4,11 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.ikmr.banbara23.yaeyama_liner_checker.model.Ports
-import com.ikmr.banbara23.yaeyama_liner_checker.model.top.PortStatus
-import com.ikmr.banbara23.yaeyama_liner_checker.model.top.Status
 import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard.TopPortStatusState
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.flow
 import timber.log.Timber
 
 /**
@@ -46,107 +41,107 @@ class TopPortStatusRepository(private val dbRef: DatabaseReference) {
         }
     }
 
-    /**
-     * テスト表示用
-     */
-    fun getDummyTopPortStatus(): Flow<TopPortStatusState> = flow {
-        while (true) {
-            delay(2000)
-            // 値を送信
-            emit(TopPortStatusState.Success(createDummyData()))
-        }
-
-    }
-
-    /**
-     * 開発用ダミーデータ
-     */
-    private fun createDummyData() = TopPort(
-        taketomi = Ports(
-            anei = PortStatus(
-                portCode = "a",
-                portName = "aE,",
-                comment = "teste",
-                status = Status(
-                    text = "normal",
-                    code = "nomarl",
-                )
-            )
-        ),
-        kohama = Ports(
-            anei = PortStatus(
-                portCode = "a",
-                portName = "aE,",
-                comment = "teste",
-                status = Status(
-                    text = "normal",
-                    code = "nomarl",
-                )
-            )
-        ),
-        oohara = Ports(
-            anei = PortStatus(
-                portCode = "a",
-                portName = "aE,",
-                comment = "teste",
-                status = Status(
-                    text = "normal",
-                    code = "nomarl",
-                )
-            )
-        ),
-        uehara = Ports(
-            anei = PortStatus(
-                portCode = "a",
-                portName = "aE,",
-                comment = "teste",
-                status = Status(
-                    text = "normal",
-                    code = "nomarl",
-                )
-            )
-        ),
-        hatoma = Ports(
-            anei = PortStatus(
-                portCode = "hatoma",
-                portName = "鳩間島航路",
-                comment = "海上時化の為、全便欠航。",
-                status = Status(
-                    text = "通常運航",
-                    code = "normal",
-                )
-            ),
-            ykf = PortStatus(
-                portCode = "hatoma",
-                portName = "鳩間",
-                comment = "海上時化の為、全便欠航。",
-                status = Status(
-                    text = "欠航",
-                    code = "cancel",
-                )
-            )
-        ),
-        kuroshima = Ports(
-            anei = PortStatus(
-                portCode = "a",
-                portName = "aE,",
-                comment = "teste",
-                status = Status(
-                    text = "normal",
-                    code = "nomarl",
-                )
-            )
-        ),
-        hateruma = Ports(
-            anei = PortStatus(
-                portCode = "a",
-                portName = "aE,",
-                comment = "teste",
-                status = Status(
-                    text = "normal",
-                    code = "nomarl",
-                )
-            )
-        )
-    )
+//     /**
+//      * テスト表示用
+//      */
+//     fun getDummyTopPortStatus(): Flow<TopPortStatusState> = flow {
+//         while (true) {
+//             delay(2000)
+//             // 値を送信
+//             emit(TopPortStatusState.Success(createDummyData()))
+//         }
+//
+//     }
+//
+//     /**
+//      * 開発用ダミーデータ
+//      */
+//     private fun createDummyData() = TopPort(
+//         taketomi = Ports(
+//             anei = PortStatus(
+//                 portCode = "a",
+//                 portName = "aE,",
+//                 comment = "teste",
+//                 status = Status(
+//                     text = "normal",
+//                     code = "nomarl",
+//                 )
+//             )
+//         ),
+//         kohama = Ports(
+//             anei = PortStatus(
+//                 portCode = "a",
+//                 portName = "aE,",
+//                 comment = "teste",
+//                 status = Status(
+//                     text = "normal",
+//                     code = "nomarl",
+//                 )
+//             )
+//         ),
+//         oohara = Ports(
+//             anei = PortStatus(
+//                 portCode = "a",
+//                 portName = "aE,",
+//                 comment = "teste",
+//                 status = Status(
+//                     text = "normal",
+//                     code = "nomarl",
+//                 )
+//             )
+//         ),
+//         uehara = Ports(
+//             anei = PortStatus(
+//                 portCode = "a",
+//                 portName = "aE,",
+//                 comment = "teste",
+//                 status = Status(
+//                     text = "normal",
+//                     code = "nomarl",
+//                 )
+//             )
+//         ),
+//         hatoma = Ports(
+//             anei = PortStatus(
+//                 portCode = "hatoma",
+//                 portName = "鳩間島航路",
+//                 comment = "海上時化の為、全便欠航。",
+//                 status = Status(
+//                     text = "通常運航",
+//                     code = "normal",
+//                 )
+//             ),
+//             ykf = PortStatus(
+//                 portCode = "hatoma",
+//                 portName = "鳩間",
+//                 comment = "海上時化の為、全便欠航。",
+//                 status = Status(
+//                     text = "欠航",
+//                     code = "cancel",
+//                 )
+//             )
+//         ),
+//         kuroshima = Ports(
+//             anei = PortStatus(
+//                 portCode = "a",
+//                 portName = "aE,",
+//                 comment = "teste",
+//                 status = Status(
+//                     text = "normal",
+//                     code = "nomarl",
+//                 )
+//             )
+//         ),
+//         hateruma = Ports(
+//             anei = PortStatus(
+//                 portCode = "a",
+//                 portName = "aE,",
+//                 comment = "teste",
+//                 status = Status(
+//                     text = "normal",
+//                     code = "nomarl",
+//                 )
+//             )
+//         )
+//     )
 }
