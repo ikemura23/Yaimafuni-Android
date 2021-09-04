@@ -1,5 +1,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.model.top
 
+import com.ikmr.banbara23.yaeyama_liner_checker.model.Ports
+
 data class TopPort(
     var hateruma: Ports = Ports(),
     var hatoma: Ports = Ports(),
@@ -9,9 +11,3 @@ data class TopPort(
     var oohara: Ports = Ports(),
     var uehara: Ports = Ports(),
 )
-
-data class Ports(
-    val anei: PortStatus = PortStatus(),
-    val ykf: PortStatus = PortStatus(),
-)
-
