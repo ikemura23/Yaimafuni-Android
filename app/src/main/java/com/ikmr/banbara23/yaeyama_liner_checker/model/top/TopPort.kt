@@ -15,9 +15,3 @@ data class Ports(
     val ykf: PortStatus = PortStatus(),
 )
 
-data class PortStatus(
-    var comment: String = "",
-    var portCode: String = "",
-    var portName: String = "",
-    var status: Status = Status(),
-)
