@@ -31,6 +31,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.Tab
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.ui.theme.YaimafuniAndroidTheme
 import timber.log.Timber
 
+typealias TimeRow = Row
+
 @Composable
 fun TimeTableList(timeTable: TimeTable) {
     Timber.d(timeTable.toString())
@@ -106,7 +108,7 @@ fun TimeTableListItem(
         val modifier = Modifier
             .fillMaxWidth()
             .weight(1f)
-        
+
         // 左側（石垣）
         TimeTableRowItem(
             time = leftTime,
@@ -157,15 +159,14 @@ fun TimeTableRowItem(time: String, status: String, modifier: Modifier) {
 private fun TimeTableListPreview() {
     YaimafuniAndroidTheme {
         Surface(color = MaterialTheme.colors.background) {
-            val items = listOf("10:00", "b", "c", "d", "f")
-            listOf("10:00", "11:00", "12:00", "13:00", "14:00")
             val header = Header(left = "石垣島", right = "大原港")
             val rowItem = RowItem(
                 status = Status(code = "nomal", text = "通常運行"),
                 time = "00:00",
                 memo = "", // 使ってる？
             )
-            val row = com.ikemura.shared.model.time_table.Row(
+            // TimeRowとは、typealiasでRowクラスの別名、composeのRowと名前が同じなので紛らわしい
+            val row = TimeRow(
                 left = rowItem,
                 right = rowItem
             )
