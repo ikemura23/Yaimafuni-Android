@@ -16,7 +16,7 @@
 
         <variable
             name="topPort"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort"
+            type="com.ikemura.shared.model.top.TopPort"
             />
 
         <variable

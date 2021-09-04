@@ -4,7 +4,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
+import com.ikemura.shared.model.top.TopPort
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard.TopPortStatusState
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow

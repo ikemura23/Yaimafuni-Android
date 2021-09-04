@@ -5,9 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.ikemura.shared.model.top.Ports
+import com.ikemura.shared.model.top.TopPort
 import com.ikmr.banbara23.yaeyama_liner_checker.core.Event
 import com.ikmr.banbara23.yaeyama_liner_checker.core.toEvent
-import com.ikmr.banbara23.yaeyama_liner_checker.model.top.TopPort
 import com.ikmr.banbara23.yaeyama_liner_checker.repository.TopPortStatusRepository
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

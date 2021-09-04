@@ -1,6 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.model.top
-
-import com.ikemura.shared.model.top.Ports
+package com.ikemura.shared.model.top
 
 data class TopPort(
     var hateruma: Ports = Ports(),
