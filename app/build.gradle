@@ -13,7 +13,7 @@ android {
     buildToolsVersion '30.0.2'
     defaultConfig {
         applicationId "com.banbara.yaeyama.liner.checker"
-        minSdkVersion 24
+        minSdk 24
         targetSdkVersion 30
         versionCode 72
         versionName "4.2.0"
