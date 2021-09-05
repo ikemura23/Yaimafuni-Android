@@ -2,6 +2,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -81,7 +82,7 @@ fun DashBoardHeader() {
 @Preview
 @Composable
 fun DashBoardPreview() {
-    val dummyPorts: List<Ports> = (1..5).toList().map { dummyPort }
+    val dummyPorts: List<Ports> = (1..5).toList().map { dummyPort } + dummyPort2
     YaimafuniAndroidTheme {
         Surface {
             DashBoard(dummyPorts)
@@ -91,12 +92,13 @@ fun DashBoardPreview() {
 
 @Composable
 fun DashBoardRowItem(
+    modifier: Modifier,
     portName: String,
     status: Status,
 ) {
     val statusBackgroundColor = status.getStatusBackgroundColor()
     Column(
-        modifier = Modifier.padding(8.dp),
+        modifier = modifier.padding(8.dp),
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -129,6 +131,7 @@ fun DashBoardRowItemPreview() {
             DashBoardRowItem(
                 portName = portName,
                 status = status,
+                modifier = Modifier,
             )
         }
     }
@@ -146,19 +149,22 @@ fun Status.getStatusBackgroundColor() = when (this.code) {
 fun DashBoardRow(
     port: Ports,
 ) {
-    Row(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(text = port.anei.portName)
+        Text(
+            text = port.anei.portName,
+            modifier = Modifier.align(Alignment.CenterStart)
+        )
         DashBoardRowItem(
+            modifier = Modifier.align(Alignment.Center),
             portName = "安栄観光",
             status = port.anei.status
         )
         DashBoardRowItem(
+            modifier = Modifier.align(Alignment.CenterEnd),
             portName = "八観フェ",
             status = port.ykf.status
         )
@@ -190,6 +196,27 @@ private val dummyPort = Ports(
     ykf = PortStatus(
         portCode = "hatoma",
         portName = "鳩間",
+        comment = "海上時化の為、全便欠航。",
+        status = Status(
+            text = "欠航",
+            code = "cancel",
+        )
+    )
+)
+
+private val dummyPort2 = Ports(
+    anei = PortStatus(
+        portCode = "hatoma",
+        portName = "上原航路",
+        comment = "海上時化の為、全便欠航。",
+        status = Status(
+            text = "通常運航",
+            code = "normal",
+        )
+    ),
+    ykf = PortStatus(
+        portCode = "hatoma",
+        portName = "上原",
         comment = "海上時化の為、全便欠航。",
         status = Status(
             text = "欠航",
