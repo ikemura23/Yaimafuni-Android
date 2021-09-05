@@ -121,3 +121,42 @@ fun Status.getStatusBackgroundColor() = when (this.code) {
     "cancel" -> StatusColor.Cancel
     else -> StatusColor.Cation
 }
+
+@Composable
+fun DashBoardRow(
+    portName: String,
+    aneiStatus: Status,
+    ykfStatus: Status,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(text = portName)
+        DashBoardRowItem(
+            portName = "安栄観光",
+            status = aneiStatus
+        )
+        DashBoardRowItem(
+            portName = "八観フェ",
+            status = ykfStatus
+        )
+    }
+}
+
+@Preview(name = "Body Row")
+@Composable
+fun DashBoardRowPreview() {
+    YaimafuniAndroidTheme {
+        Surface {
+            DashBoardRow(
+                "港名",
+                Status("normal", text = "運行"),
+                Status("normal", text = "運行")
+            )
+        }
+    }
+}
