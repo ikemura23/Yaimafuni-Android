@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
 
@@ -61,122 +60,6 @@
                 android:layout_margin="16dp"
                 />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="2dp"
-                >
-
-                <ProgressBar
-                    android:id="@+id/port_progressbar"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:indeterminate="true"
-                    android:indeterminateTint="@color/orange2"
-                    android:indeterminateTintMode="src_in"
-                    android:visibility="@{showProgress ? View.VISIBLE : View.GONE}"
-                    />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:orientation="horizontal"
-                        >
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            app:srcCompat="@drawable/ic_harbor"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="@dimen/top_card_col_height"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginLeft="16dp"
-                            android:gravity="center_vertical"
-                            android:text="@string/dash_board_title"
-                            />
-
-                    </LinearLayout>
-
-                    <include layout="@layout/delimiter" />
-
-                    <include
-                        android:id="@+id/taketomi"
-                        layout="@layout/dash_board_port_list_item"
-                        app:ports="@{topPort.taketomi}"
-                        app:viewModel="@{viewModel}"
-                        />
-
-                    <include layout="@layout/delimiter" />
-
-                    <include
-                        android:id="@+id/kohama"
-                        layout="@layout/dash_board_port_list_item"
-                        app:ports="@{topPort.kohama}"
-                        app:viewModel="@{viewModel}"
-                        />
-
-                    <include layout="@layout/delimiter" />
-
-                    <include
-                        android:id="@+id/kuroshima"
-                        layout="@layout/dash_board_port_list_item"
-                        app:ports="@{topPort.kuroshima}"
-                        app:viewModel="@{viewModel}"
-                        />
-
-                    <include layout="@layout/delimiter" />
-
-                    <include
-                        android:id="@+id/oohara"
-                        layout="@layout/dash_board_port_list_item"
-                        app:ports="@{topPort.oohara}"
-                        app:viewModel="@{viewModel}"
-                        />
-
-                    <include layout="@layout/delimiter" />
-
-                    <include
-                        android:id="@+id/uehara"
-                        layout="@layout/dash_board_port_list_item"
-                        app:ports="@{topPort.uehara}"
-                        app:viewModel="@{viewModel}"
-                        />
-
-                    <include layout="@layout/delimiter" />
-
-                    <include
-                        android:id="@+id/hatoma"
-                        layout="@layout/dash_board_port_list_item"
-                        app:ports="@{topPort.hatoma}"
-                        app:viewModel="@{viewModel}"
-                        />
-
-                    <include layout="@layout/delimiter" />
-
-                    <include
-                        android:id="@+id/hateruma"
-                        layout="@layout/dash_board_port_list_item"
-                        app:ports="@{topPort.hateruma}"
-                        app:viewModel="@{viewModel}"
-                        />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
 
