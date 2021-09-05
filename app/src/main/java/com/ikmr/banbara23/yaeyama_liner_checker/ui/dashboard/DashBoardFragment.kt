@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import com.ikemura.shared.repository.UiState
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.DashBoardFragmentBinding
-import com.ikmr.banbara23.yaeyama_liner_checker.ext.observeEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
@@ -28,30 +27,35 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
         binding.lifecycleOwner = viewLifecycleOwner
 
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
-            viewModel.fetchTopStatus().collect { state ->
+            viewModel.fetchTopStatuses().collect { state ->
                 when (state) {
-                    is UiState.Success -> binding.topPort = state.data
+                    is UiState.Success -> {
+                        binding.DashBoardComposeView.apply {
+                            ports = state.data
+                            onRowClick = { port ->
+                                Timber.d("clicked status: $port")
+                                navigateToStatusDetail(
+                                    portCode = port.anei.portCode,
+                                    portName = port.anei.portName
+                                )
+                            }
+                        }
+                    }
                     is UiState.Error -> Timber.e(state.error)
                 }
             }
         }
-        viewModel.nav.observeEvent(viewLifecycleOwner, this::onNavigate)
     }
 
     /**
      * 画面遷移
      */
-    private fun onNavigate(nav: DashBoardViewModelImpl.Nav) {
-        Timber.d("navigate: $nav")
-        when (nav) {
-            is DashBoardViewModelImpl.Nav.GoDetail -> {
-                DashBoardFragmentDirections.actionDashBoardFragmentToPortStatusDetailActivity(
-                    portName = nav.ports.anei.portName,
-                    portCode = nav.ports.anei.portCode,
-                ).let { directions ->
-                    findNavController().navigate(directions)
-                }
-            }
+    private fun navigateToStatusDetail(portName: String, portCode: String) {
+        DashBoardFragmentDirections.actionDashBoardFragmentToPortStatusDetailActivity(
+            portName = portName,
+            portCode = portCode,
+        ).let { directions ->
+            findNavController().navigate(directions)
         }
     }
 }
