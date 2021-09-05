@@ -23,18 +23,23 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.ikemura.shared.model.top.Status
+import com.ikemura.shared.model.statusdetail.PortStatus
+import com.ikemura.shared.model.statusdetail.Status
+import com.ikemura.shared.model.top.Ports
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.StatusColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 
 @Composable
-fun DashBoard() {
+fun DashBoard(ports: List<Ports>) {
     Card(
         modifier = Modifier.fillMaxWidth()
     ) {
         Column {
-
+            DashBoardHeader()
+            ports.forEach { p ->
+                DashBoardRow(p)
+            }
         }
     }
 }
@@ -62,9 +67,10 @@ fun DashBoardHeader() {
 @Preview
 @Composable
 fun DashBoardPreview() {
+    val dummyPorts: List<Ports> = (1..5).toList().map { dummyPort }
     YaimafuniAndroidTheme {
         Surface {
-            DashBoard()
+            DashBoard(dummyPorts)
         }
     }
 }
@@ -124,9 +130,7 @@ fun Status.getStatusBackgroundColor() = when (this.code) {
 
 @Composable
 fun DashBoardRow(
-    portName: String,
-    aneiStatus: Status,
-    ykfStatus: Status,
+    port: Ports,
 ) {
     Row(
         modifier = Modifier
@@ -135,14 +139,14 @@ fun DashBoardRow(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(text = portName)
+        Text(text = port.anei.portName)
         DashBoardRowItem(
             portName = "安栄観光",
-            status = aneiStatus
+            status = port.anei.status
         )
         DashBoardRowItem(
             portName = "八観フェ",
-            status = ykfStatus
+            status = port.ykf.status
         )
     }
 }
@@ -153,10 +157,29 @@ fun DashBoardRowPreview() {
     YaimafuniAndroidTheme {
         Surface {
             DashBoardRow(
-                "港名",
-                Status("normal", text = "運行"),
-                Status("normal", text = "運行")
+                dummyPort
             )
         }
     }
 }
+
+private val dummyPort = Ports(
+    anei = PortStatus(
+        portCode = "hatoma",
+        portName = "鳩間島航路",
+        comment = "海上時化の為、全便欠航。",
+        status = Status(
+            text = "通常運航",
+            code = "normal",
+        )
+    ),
+    ykf = PortStatus(
+        portCode = "hatoma",
+        portName = "鳩間",
+        comment = "海上時化の為、全便欠航。",
+        status = Status(
+            text = "欠航",
+            code = "cancel",
+        )
+    )
+)
