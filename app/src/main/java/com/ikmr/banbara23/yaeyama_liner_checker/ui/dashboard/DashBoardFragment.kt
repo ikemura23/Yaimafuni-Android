@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import com.ikemura.shared.repository.UiState
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.DashBoardFragmentBinding
-import com.ikmr.banbara23.yaeyama_liner_checker.ext.observeEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
@@ -35,7 +34,10 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
                             ports = state.data
                             onRowClick = { port ->
                                 Timber.d("clicked status: $port")
-                                // TODO: 詳細へ画面遷移
+                                navigateToStatusDetail(
+                                    portCode = port.anei.portCode,
+                                    portName = port.anei.portName
+                                )
                             }
                         }
                     }
@@ -43,23 +45,35 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
                 }
             }
         }
-        viewModel.nav.observeEvent(viewLifecycleOwner, this::onNavigate)
+        // viewModel.nav.observeEvent(viewLifecycleOwner, this::onNavigate)
     }
 
     /**
      * 画面遷移
      */
-    private fun onNavigate(nav: DashBoardViewModelImpl.Nav) {
-        Timber.d("navigate: $nav")
-        when (nav) {
-            is DashBoardViewModelImpl.Nav.GoDetail -> {
-                DashBoardFragmentDirections.actionDashBoardFragmentToPortStatusDetailActivity(
-                    portName = nav.ports.anei.portName,
-                    portCode = nav.ports.anei.portCode,
-                ).let { directions ->
-                    findNavController().navigate(directions)
-                }
-            }
+    // private fun onNavigate(nav: DashBoardViewModelImpl.Nav) {
+    //     Timber.d("navigate: $nav")
+    //     when (nav) {
+    //         is DashBoardViewModelImpl.Nav.GoDetail -> {
+    //             DashBoardFragmentDirections.actionDashBoardFragmentToPortStatusDetailActivity(
+    //                 portName = nav.ports.anei.portName,
+    //                 portCode = nav.ports.anei.portCode,
+    //             ).let { directions ->
+    //                 findNavController().navigate(directions)
+    //             }
+    //         }
+    //     }
+    // }
+
+    /**
+     * 画面遷移
+     */
+    private fun navigateToStatusDetail(portName: String, portCode: String) {
+        DashBoardFragmentDirections.actionDashBoardFragmentToPortStatusDetailActivity(
+            portName = portName,
+            portCode = portCode,
+        ).let { directions ->
+            findNavController().navigate(directions)
         }
     }
 }
