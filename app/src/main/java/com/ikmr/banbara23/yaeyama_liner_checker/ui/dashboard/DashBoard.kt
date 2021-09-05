@@ -104,7 +104,7 @@ fun DashBoardRowItem(
             text = portName,
             style = MaterialTheme.typography.body2,
         )
-        Spacer(modifier = Modifier.padding(8.dp))
+        Spacer(modifier = Modifier.padding(4.dp))
         Text(
             text = status.text,
             color = Color.White,
