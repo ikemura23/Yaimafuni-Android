@@ -3,7 +3,9 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard
 import android.content.Context
 import android.util.AttributeSet
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.AbstractComposeView
+import com.ikemura.shared.model.top.Ports
 
 /**
  * DashBoardをDataBindingで使うクラス
@@ -15,7 +17,15 @@ class DashBoardComposeView @JvmOverloads constructor(
     defStyleAttr: Int = 0,
 ) : AbstractComposeView(context, attributes, defStyleAttr) {
 
+    private val _ports = mutableStateOf<List<Ports>>(listOf())
+    var ports: List<Ports>
+        get() = _ports.value
+        set(value) {
+            _ports.value = value
+        }
+
     @Composable
     override fun Content() {
+        DashBoard(ports)
     }
 }
