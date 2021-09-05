@@ -76,6 +76,8 @@ fun DashBoardHeader() {
         )
         Spacer(modifier = Modifier.padding(8.dp))
         Text(text = stringResource(id = R.string.dash_board_title))
+
+        // TODO: ProgressBarを配置する（dash_board_fragment.xml の id/port_progressbar を参照）
     }
 }
 
