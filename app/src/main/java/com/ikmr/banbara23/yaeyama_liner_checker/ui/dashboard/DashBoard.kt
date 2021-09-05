@@ -109,22 +109,24 @@ fun DashBoardRowItem(
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text(
-            text = portName,
-            style = MaterialTheme.typography.body2,
-        )
-        Spacer(modifier = Modifier.padding(4.dp))
-        Text(
-            text = status.text,
-            color = Color.White,
-            style = MaterialTheme.typography.body2,
-            modifier = Modifier
-                .background(
-                    color = statusBackgroundColor,
-                    shape = RoundedCornerShape(16)
-                )
-                .padding(4.dp)
-        )
+        if (status.code.isNotEmpty()) {
+            Text(
+                text = portName,
+                style = MaterialTheme.typography.body2,
+            )
+            Spacer(modifier = Modifier.padding(4.dp))
+            Text(
+                text = status.text,
+                color = Color.White,
+                style = MaterialTheme.typography.body2,
+                modifier = Modifier
+                    .background(
+                        color = statusBackgroundColor,
+                        shape = RoundedCornerShape(16)
+                    )
+                    .padding(4.dp)
+            )
+        }
     }
 }
 
