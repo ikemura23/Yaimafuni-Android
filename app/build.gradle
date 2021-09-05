@@ -45,6 +45,15 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion '1.0.1'
     }
+    // Navigation Componentの Directionsが認識されない対応
+    // https://stackoverflow.com/a/67875849
+    sourceSets {
+        main {
+            java {
+                srcDir("build/generated/source/navigation-args")
+            }
+        }
+    }
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
