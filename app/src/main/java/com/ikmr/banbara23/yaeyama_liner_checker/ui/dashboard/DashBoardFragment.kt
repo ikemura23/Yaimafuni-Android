@@ -28,12 +28,6 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
         binding.lifecycleOwner = viewLifecycleOwner
 
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
-            // viewModel.fetchTopStatus().collect { state ->
-            //     when (state) {
-            //         is UiState.Success -> binding.topPort = state.data
-            //         is UiState.Error -> Timber.e(state.error)
-            //     }
-            // }
             viewModel.fetchTopStatuses().collect { state ->
                 when (state) {
                     is UiState.Success -> binding.DashBoardComposeView.ports = state.data

@@ -12,16 +12,6 @@ import org.koin.core.component.inject
 class TopStatusRepositoryImpl : TopStatusRepository, KoinComponent {
     private val database: FirebaseDatabase by inject()
 
-    override fun fetchTopStatus(): Flow<UiState<TopPort>> {
-        val dbRef = database.reference("top_port")
-        return dbRef.valueEvents.map {
-            val deserializeValue = it.value(TopPort.serializer())
-            UiState.Success(deserializeValue)
-        }.catch { error ->
-            UiState.Error(error)
-        }
-    }
-
     override fun fetchTopStatuses(): Flow<UiState<List<Ports>>> {
         val dbRef = database.reference("top_port")
         return dbRef.valueEvents.map {

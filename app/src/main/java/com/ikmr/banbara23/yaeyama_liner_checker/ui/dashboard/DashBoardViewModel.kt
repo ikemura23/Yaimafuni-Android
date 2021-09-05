@@ -19,10 +19,6 @@ class DashBoardViewModelImpl : DashBoardViewModel() {
 
     private val topStatusRepository = TopStatusRepositoryImpl() // TODO: DIする
 
-    fun fetchTopStatus(): Flow<UiState<TopPort>> {
-        return topStatusRepository.fetchTopStatus()
-    }
-
     fun fetchTopStatuses(): Flow<UiState<List<Ports>>> = topStatusRepository.fetchTopStatuses()
 
     /**
