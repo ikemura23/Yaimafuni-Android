@@ -23,7 +23,7 @@ kotlin {
                 implementation(
                     "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
                 )
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.2.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.2.1")
                 // firebase
                 implementation("dev.gitlive:firebase-database:1.3.1")
                 // Koin core features
