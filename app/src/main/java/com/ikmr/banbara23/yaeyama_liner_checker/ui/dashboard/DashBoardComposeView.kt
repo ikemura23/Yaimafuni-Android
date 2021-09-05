@@ -2,10 +2,12 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.AbstractComposeView
 import com.ikemura.shared.model.top.Ports
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 
 /**
  * DashBoardをDataBindingで使うクラス
@@ -27,6 +29,10 @@ class DashBoardComposeView @JvmOverloads constructor(
 
     @Composable
     override fun Content() {
-        DashBoard(_ports.value, onRowClick)
+        YaimafuniAndroidTheme {
+            Surface {
+                DashBoard(_ports.value, onRowClick)
+            }
+        }
     }
 }

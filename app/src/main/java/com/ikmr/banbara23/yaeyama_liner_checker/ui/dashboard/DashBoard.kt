@@ -41,7 +41,7 @@ fun DashBoard(
     onRowClick: (Ports) -> Unit,
 ) {
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
     ) {
         Column {
             DashBoardHeader()
