@@ -1,6 +1,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,7 +36,10 @@ import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.StatusColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 
 @Composable
-fun DashBoard(ports: List<Ports>) {
+fun DashBoard(
+    ports: List<Ports>,
+    onRowClick: (Ports) -> Unit,
+) {
     Card(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -43,7 +47,7 @@ fun DashBoard(ports: List<Ports>) {
             DashBoardHeader()
             ports.forEach { p ->
                 RowDivider()
-                DashBoardRow(p)
+                DashBoardRow(p, onRowClick)
             }
         }
     }
@@ -87,7 +91,7 @@ fun DashBoardPreview() {
     val dummyPorts: List<Ports> = (1..5).toList().map { dummyPort } + dummyPort2
     YaimafuniAndroidTheme {
         Surface {
-            DashBoard(dummyPorts)
+            DashBoard(dummyPorts) {}
         }
     }
 }
@@ -150,9 +154,11 @@ fun Status.getStatusBackgroundColor() = when (this.code) {
 @Composable
 fun DashBoardRow(
     port: Ports,
+    onRowClick: (Ports) -> Unit,
 ) {
     Box(
         modifier = Modifier
+            .clickable(onClick = { onRowClick(port) })
             .fillMaxWidth()
             .padding(horizontal = 16.dp),
     ) {
@@ -180,7 +186,7 @@ fun DashBoardRowPreview() {
         Surface {
             DashBoardRow(
                 dummyPort
-            )
+            ) {}
         }
     }
 }

@@ -30,7 +30,15 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
             viewModel.fetchTopStatuses().collect { state ->
                 when (state) {
-                    is UiState.Success -> binding.DashBoardComposeView.ports = state.data
+                    is UiState.Success -> {
+                        binding.DashBoardComposeView.apply {
+                            ports = state.data
+                            onRowClick = { port ->
+                                Timber.d("clicked status: $port")
+                                // TODO: 詳細へ画面遷移
+                            }
+                        }
+                    }
                     is UiState.Error -> Timber.e(state.error)
                 }
             }

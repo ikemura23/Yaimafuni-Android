@@ -23,9 +23,10 @@ class DashBoardComposeView @JvmOverloads constructor(
         set(value) {
             _ports.value = value
         }
+    var onRowClick: (Ports) -> Unit = {}
 
     @Composable
     override fun Content() {
-        DashBoard(ports)
+        DashBoard(_ports.value, onRowClick)
     }
 }
