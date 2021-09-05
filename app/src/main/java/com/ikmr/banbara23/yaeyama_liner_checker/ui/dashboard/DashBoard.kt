@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -19,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,10 +41,21 @@ fun DashBoard(ports: List<Ports>) {
         Column {
             DashBoardHeader()
             ports.forEach { p ->
+                RowDivider()
                 DashBoardRow(p)
             }
         }
     }
+}
+
+@Composable
+fun RowDivider() {
+    Divider(
+        modifier = Modifier
+            .fillMaxWidth()
+            .width(1.dp),
+        color = colorResource(id = R.color.light_grey)
+    )
 }
 
 @Preview(name = "ヘッダー")
