@@ -42,6 +42,7 @@ fun DashBoard(
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp),
     ) {
         Column {
             DashBoardHeader()
