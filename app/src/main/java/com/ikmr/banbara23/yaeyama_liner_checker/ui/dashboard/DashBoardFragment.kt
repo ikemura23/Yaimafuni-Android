@@ -45,25 +45,7 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
                 }
             }
         }
-        // viewModel.nav.observeEvent(viewLifecycleOwner, this::onNavigate)
     }
-
-    /**
-     * 画面遷移
-     */
-    // private fun onNavigate(nav: DashBoardViewModelImpl.Nav) {
-    //     Timber.d("navigate: $nav")
-    //     when (nav) {
-    //         is DashBoardViewModelImpl.Nav.GoDetail -> {
-    //             DashBoardFragmentDirections.actionDashBoardFragmentToPortStatusDetailActivity(
-    //                 portName = nav.ports.anei.portName,
-    //                 portCode = nav.ports.anei.portCode,
-    //             ).let { directions ->
-    //                 findNavController().navigate(directions)
-    //             }
-    //         }
-    //     }
-    // }
 
     /**
      * 画面遷移
