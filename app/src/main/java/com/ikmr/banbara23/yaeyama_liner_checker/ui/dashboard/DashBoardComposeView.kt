@@ -2,7 +2,6 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard
 
 import android.content.Context
 import android.util.AttributeSet
-import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.AbstractComposeView
@@ -30,9 +29,7 @@ class DashBoardComposeView @JvmOverloads constructor(
     @Composable
     override fun Content() {
         YaimafuniAndroidTheme {
-            Surface {
-                DashBoard(_ports.value, onRowClick)
-            }
+            DashBoard(_ports.value, onRowClick)
         }
     }
 }
