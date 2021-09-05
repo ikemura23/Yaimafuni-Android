@@ -54,6 +54,13 @@
                     />
             </androidx.appcompat.widget.Toolbar>
 
+            <com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard.DashBoardComposeView
+                android:id="@+id/DashBoardComposeView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                />
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -23,6 +23,8 @@ class DashBoardViewModelImpl : DashBoardViewModel() {
         return topStatusRepository.fetchTopStatus()
     }
 
+    fun fetchTopStatuses(): Flow<UiState<List<Ports>>> = topStatusRepository.fetchTopStatuses()
+
     /**
      * 港クリック
      */

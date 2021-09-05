@@ -1,5 +1,6 @@
 package com.ikemura.shared.repository
 
+import com.ikemura.shared.model.top.Ports
 import com.ikemura.shared.model.top.TopPort
 import dev.gitlive.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.flow.Flow
@@ -20,4 +21,25 @@ class TopStatusRepositoryImpl : TopStatusRepository, KoinComponent {
             UiState.Error(error)
         }
     }
+
+    override fun fetchTopStatuses(): Flow<UiState<List<Ports>>> {
+        val dbRef = database.reference("top_port")
+        return dbRef.valueEvents.map {
+            val deserializeValue = it.value(TopPort.serializer())
+            val portList: List<Ports> = deserializeValue.toList()
+            UiState.Success(portList)
+        }.catch { error ->
+            UiState.Error(error)
+        }
+    }
+
+    private fun TopPort.toList(): List<Ports> = listOf(
+        this.taketomi,
+        this.kohama,
+        this.kuroshima,
+        this.oohara,
+        this.uehara,
+        this.hatoma,
+        this.hateruma,
+    )
 }
