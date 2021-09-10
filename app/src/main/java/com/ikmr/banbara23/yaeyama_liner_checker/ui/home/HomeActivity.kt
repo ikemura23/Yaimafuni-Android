@@ -28,6 +28,14 @@ class HomeActivity : AppCompatActivity(R.layout.home_activity) {
 
         if (isShowReview()) setupInAppReview()
         countUpLaunchCount()
+
+        setupBottomNavBadge()
+    }
+
+    private fun setupBottomNavBadge() {
+        // TODO: 仮でbadgeを表示させてみる
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        navView.getOrCreateBadge(R.id.weatherFragment).isVisible = true
     }
 
     /**
