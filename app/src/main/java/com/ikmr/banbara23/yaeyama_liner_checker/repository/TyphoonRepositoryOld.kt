@@ -15,7 +15,7 @@ import timber.log.Timber
  * 台風情報を取得
  */
 @Suppress("EXPERIMENTAL_API_USAGE")
-class TyphoonRepository(private val dbRef: DatabaseReference) {
+class TyphoonRepositoryOld(private val dbRef: DatabaseReference) {
 
     fun getTyphoonList(): Flow<TyphoonUiState> = callbackFlow {
         dbRef.addValueEventListener(object : ValueEventListener {

@@ -10,7 +10,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonListFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
-import com.ikmr.banbara23.yaeyama_liner_checker.repository.TyphoonRepository
+import com.ikmr.banbara23.yaeyama_liner_checker.repository.TyphoonRepositoryOld
 import com.ikmr.banbara23.yaeyama_liner_checker.repository.TyphoonUiState
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
@@ -22,12 +22,12 @@ class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment),
     OnTyphoonDetailFragmentInteractionListener {
 
     private val binding: TyphoonListFragmentBinding by viewBinding()
-    private val repository: TyphoonRepository by lazy {
+    private val repositoryOld: TyphoonRepositoryOld by lazy {
         // TODO: DI化したい
         val databaseReference = FirebaseDatabase.getInstance().reference.ref.child("typhoon/tenkijp")
-        TyphoonRepository(databaseReference)
+        TyphoonRepositoryOld(databaseReference)
     }
-    private val viewModel = TyphoonListViewModel(repository)
+    private val viewModel = TyphoonListViewModel(repositoryOld)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
