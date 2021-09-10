@@ -1,7 +1,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.list
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -14,18 +13,10 @@ import com.squareup.picasso.Picasso
  * 台風一覧 アダプター
  */
 class TyphoonRecyclerViewAdapter(
-    private var mValues: List<Typhoon> = listOf(),
-    private val mListener: OnTyphoonDetailFragmentInteractionListener?,
+    val onClick: (Typhoon) -> Unit,
 ) : RecyclerView.Adapter<TyphoonRecyclerViewAdapter.ViewHolder>() {
 
-    private val mOnClickListener: View.OnClickListener
-
-    init {
-        mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as Typhoon
-            mListener?.onListFragmentInteraction(item)
-        }
-    }
+    private var typhoonList: List<Typhoon> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: TyphoonListItemBinding = DataBindingUtil.inflate(
@@ -38,21 +29,22 @@ class TyphoonRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val typhoon = mValues[position]
+        val typhoon = typhoonList[position]
         holder.binding.typhoon = typhoon
 
         Picasso.get().load(typhoon.img).into(holder.binding.image)
 
         with(holder.binding.root) {
-            tag = typhoon
-            setOnClickListener(mOnClickListener)
+            setOnClickListener {
+                onClick(typhoon)
+            }
         }
     }
 
-    override fun getItemCount(): Int = mValues.size
+    override fun getItemCount(): Int = typhoonList.size
 
-    fun updateData(typhoonList: List<Typhoon>) {
-        mValues = typhoonList
+    fun updateData(data: List<Typhoon>) {
+        typhoonList = data
         notifyDataSetChanged()
     }
 

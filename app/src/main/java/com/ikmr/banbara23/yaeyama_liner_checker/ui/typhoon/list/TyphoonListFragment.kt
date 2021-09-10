@@ -17,15 +17,17 @@ import timber.log.Timber
 /**
  * 台風一覧 Fragment
  */
-class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment),
-    OnTyphoonDetailFragmentInteractionListener {
+class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment) {
 
     private val binding: TyphoonListFragmentBinding by viewBinding()
     private val viewModel = TyphoonListViewModel(TyphoonRepositoryImpl())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.list.adapter = TyphoonRecyclerViewAdapter(mListener = this)
+        binding.list.adapter = TyphoonRecyclerViewAdapter { typhoon: Typhoon ->
+            val uiModel = typhoon.toTyphoonUiModel()
+            navigateToTyphoonDetail(uiModel)
+        }
         fetchTyphoon()
     }
 
@@ -55,12 +57,7 @@ class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment),
         adapter.updateData(typhoonList)
     }
 
-    override fun onListFragmentInteraction(item: Typhoon?) {
-        item ?: return
-        Timber.d(item.toString())
-
-        val uiModel: TyphoonDetailUiModel = item.toTyphoonUiModel()
-
+    private fun navigateToTyphoonDetail(uiModel: TyphoonDetailUiModel) {
         TyphoonListFragmentDirections.actionTyphoonListFragmentToTyphoonDetailFragment(uiModel).let {
             findNavController().navigate(it)
         }
@@ -78,8 +75,4 @@ class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment),
             maxWindSpeedNearCenter = this.maxWindSpeedNearCenter,
         )
     }
-}
-
-interface OnTyphoonDetailFragmentInteractionListener {
-    fun onListFragmentInteraction(item: Typhoon?)
 }
