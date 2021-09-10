@@ -75,7 +75,7 @@ class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment),
 
         val uiModel: TyphoonDetailUiModel = item.toTyphoonUiModel()
 
-        TyphoonListFragmentDirections.actionTyphoonListFragmentToTyphoonDetailFragment(item).let {
+        TyphoonListFragmentDirections.actionTyphoonListFragmentToTyphoonDetailFragment(uiModel).let {
             findNavController().navigate(it)
         }
     }
@@ -92,7 +92,6 @@ class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment),
             maxWindSpeedNearCenter = this.maxWindSpeedNearCenter,
         )
     }
-}
 }
 
 interface OnTyphoonDetailFragmentInteractionListener {

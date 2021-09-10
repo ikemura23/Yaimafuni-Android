@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.ikemura.shared.model.tyhoon.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonDetailFragmentBinding
@@ -18,7 +17,7 @@ import timber.log.Timber
  */
 class TyphoonDetailFragment : Fragment(R.layout.typhoon_detail_fragment) {
     private val binding: TyphoonDetailFragmentBinding by viewBinding()
-    private val argTyphoon: Typhoon by lazy {
+    private val argTyphoon: TyphoonDetailUiModel by lazy {
         TyphoonDetailFragmentArgs.fromBundle(requireArguments()).typhoon
     }
 

@@ -1,5 +1,9 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.detail
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class TyphoonDetailUiModel(
     /** 名前 */
     val name: String = "",
@@ -17,4 +21,4 @@ data class TyphoonDetailUiModel(
     val area: String = "",
     /** 中心の最大風速 */
     val maxWindSpeedNearCenter: String = "",
-)
+) : Parcelable
