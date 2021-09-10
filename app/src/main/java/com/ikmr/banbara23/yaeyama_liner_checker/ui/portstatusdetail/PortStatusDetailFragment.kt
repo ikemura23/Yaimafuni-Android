@@ -17,7 +17,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_COMP
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_PORT_CODE
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
-import com.ikmr.banbara23.yaeyama_liner_checker.model.StatusDetailRoot
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
@@ -50,17 +49,11 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
             viewModel.getStatusDetail(company, portCode).collect { uiState ->
                 when (uiState) {
                     is UiState.Success<StatusDetailResult> -> {
-                        val root = StatusDetailRoot(
-                            portStatus = uiState.data.portStatus,
-                            timeTable = uiState.data.timeTable
-                        )
-                        binding.PortMainStatusComposeView.let { view ->
-                            view.portStatus = root.portStatus
-                        }
-                        binding.TimeTableListComposeView.timeTable = root.timeTable
+                        binding.PortMainStatusComposeView.portStatus = uiState.data.portStatus
+                        binding.TimeTableListComposeView.timeTable = uiState.data.timeTable
                     }
                     else -> {
-                        // 処理しない
+                        // エラー表示はまだ未定
                     }
                 }
             }
