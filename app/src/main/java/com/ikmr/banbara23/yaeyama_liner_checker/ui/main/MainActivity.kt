@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -58,7 +59,9 @@ class MainActivity : AppCompatActivity(R.layout.home_activity) {
      */
     private fun handleTyphoonBadge(existsTyphoon: Boolean) {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-        navView.getOrCreateBadge(R.id.weatherFragment).isVisible = existsTyphoon
+        navView.getOrCreateBadge(R.id.weatherFragment).also {
+            it.backgroundColor = ContextCompat.getColor(this, R.color.orange2)
+        }.isVisible = existsTyphoon
     }
 
     /**
