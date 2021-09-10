@@ -12,6 +12,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonListFragmentB
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.repository.TyphoonRepositoryOld
 import com.ikmr.banbara23.yaeyama_liner_checker.repository.TyphoonUiState
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.detail.TyphoonDetailUiModel
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
@@ -71,10 +72,27 @@ class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment),
     override fun onListFragmentInteraction(item: Typhoon?) {
         item ?: return
         Timber.d(item.toString())
+
+        val uiModel: TyphoonDetailUiModel = item.toTyphoonUiModel()
+
         TyphoonListFragmentDirections.actionTyphoonListFragmentToTyphoonDetailFragment(item).let {
             findNavController().navigate(it)
         }
     }
+
+    private fun Typhoon.toTyphoonUiModel(): TyphoonDetailUiModel {
+        return TyphoonDetailUiModel(
+            name = this.name,
+            dateTime = this.dateTime,
+            img = this.img,
+            scale = this.scale,
+            intensity = this.intensity,
+            pressure = this.pressure,
+            area = this.area,
+            maxWindSpeedNearCenter = this.maxWindSpeedNearCenter,
+        )
+    }
+}
 }
 
 interface OnTyphoonDetailFragmentInteractionListener {
