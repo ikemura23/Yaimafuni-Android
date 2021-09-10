@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.ui.home
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.main
 
 import android.content.Context
 import android.os.Bundle
@@ -16,7 +16,7 @@ import timber.log.Timber
 /**
  * ホーム画面、Bottom NavigationのあるActivity
  */
-class HomeActivity : AppCompatActivity(R.layout.home_activity) {
+class MainActivity : AppCompatActivity(R.layout.home_activity) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

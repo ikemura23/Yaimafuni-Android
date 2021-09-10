@@ -26,7 +26,7 @@
             android:name=".ui.portstatusdetail.PortStatusDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"
             />
-        <activity android:name=".ui.home.HomeActivity">
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
