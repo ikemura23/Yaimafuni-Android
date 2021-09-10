@@ -2,8 +2,12 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.main
 
 import android.content.Context
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -11,12 +15,16 @@ import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.tasks.Task
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.di.AppInjector
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 /**
  * ホーム画面、Bottom NavigationのあるActivity
  */
 class MainActivity : AppCompatActivity(R.layout.home_activity) {
+
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +40,25 @@ class MainActivity : AppCompatActivity(R.layout.home_activity) {
         setupBottomNavBadge()
     }
 
+    /**
+     * ボトムナビゲーションの台風バッジの設定
+     */
     private fun setupBottomNavBadge() {
-        // TODO: 仮でbadgeを表示させてみる
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                mainViewModel.existsTyphoon().collect { result ->
+                    handleTyphoonBadge(result)
+                }
+            }
+        }
+    }
+
+    /**
+     * バッジ表示のハンドリング
+     */
+    private fun handleTyphoonBadge(existsTyphoon: Boolean) {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-        navView.getOrCreateBadge(R.id.weatherFragment).isVisible = true
+        navView.getOrCreateBadge(R.id.weatherFragment).isVisible = existsTyphoon
     }
 
     /**
