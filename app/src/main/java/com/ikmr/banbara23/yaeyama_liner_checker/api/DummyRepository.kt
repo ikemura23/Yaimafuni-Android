@@ -1,6 +1,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.api
 
-import com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon
+import com.ikemura.shared.model.tyhoon.Typhoon
 
 object DummyRepository {
 

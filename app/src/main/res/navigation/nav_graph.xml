@@ -46,7 +46,7 @@
         >
         <argument
             android:name="typhoon"
-            app:argType="com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon"
+            app:argType="com.ikemura.shared.model.tyhoon.Typhoon"
             />
     </fragment>
     <activity

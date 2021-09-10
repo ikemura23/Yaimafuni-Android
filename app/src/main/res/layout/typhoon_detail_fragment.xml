@@ -8,7 +8,7 @@
 
         <variable
             name="typhoon"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.model.Typhoon"
+            type="com.ikemura.shared.model.tyhoon.Typhoon"
             />
     </data>
 
