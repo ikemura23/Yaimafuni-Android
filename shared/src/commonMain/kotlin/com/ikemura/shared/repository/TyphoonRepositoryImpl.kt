@@ -1,12 +1,20 @@
 package com.ikemura.shared.repository
 
 import com.ikemura.shared.model.tyhoon.Typhoon
+import dev.gitlive.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class TyphoonRepositoryImpl : TyphoonRepository {
+class TyphoonRepositoryImpl : TyphoonRepository, KoinComponent {
+
+    private val database: FirebaseDatabase by inject()
 
     override fun fetchTyphoonList(): Flow<List<Typhoon>> {
-        return flow { listOf<Typhoon>() } // TODO: 仮の戻り値
+        val dbRef = database.reference("typhoon/tenkijp")
+        return dbRef.valueEvents.map { snapshot ->
+            snapshot.value() as List<Typhoon>
+        }
     }
 }

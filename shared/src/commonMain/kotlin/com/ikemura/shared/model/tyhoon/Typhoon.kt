@@ -1,8 +1,11 @@
 package com.ikemura.shared.model.tyhoon
 
+import kotlinx.serialization.Serializable
+
 /**
  * 台風のモデル
  */
+@Serializable
 data class Typhoon(
     /** 名前 */
     val name: String = "",
