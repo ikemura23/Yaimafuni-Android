@@ -15,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.tasks.Task
 import com.ikmr.banbara23.yaeyama_liner_checker.R
+import com.ikmr.banbara23.yaeyama_liner_checker.databinding.MainActivityBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.di.AppInjector
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -23,13 +24,17 @@ import timber.log.Timber
 /**
  * ホーム画面、Bottom NavigationのあるActivity
  */
-class MainActivity : AppCompatActivity(R.layout.home_activity) {
+class MainActivity : AppCompatActivity() {
 
     private val mainViewModel: MainViewModel by viewModels()
+    private lateinit var binding: MainActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+
+        binding = MainActivityBinding.inflate(layoutInflater)
+
+        val navView: BottomNavigationView = binding.navView
 
         // val navController = findNavController(R.id.nav_host_fragment) <= ビルドは成功するが起動するとエラーとなる、↓で解決
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -39,6 +44,8 @@ class MainActivity : AppCompatActivity(R.layout.home_activity) {
         countUpLaunchCount()
 
         setupBottomNavBadge()
+
+        setContentView(binding.root)
     }
 
     /**
