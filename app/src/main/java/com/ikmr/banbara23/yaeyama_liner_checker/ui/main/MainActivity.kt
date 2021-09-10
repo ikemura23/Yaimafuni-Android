@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navView.setupWithNavController(navHostFragment.navController)
 
-        if (isShowReview()) setupInAppReview()
+        if (isShowReview()) showInAppReview()
         countUpLaunchCount()
 
         setupBottomNavBadge()
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * In-App Reviewの設定
      */
-    private fun setupInAppReview() {
+    private fun showInAppReview() {
         val reviewManager = AppInjector.reviewManager(this)
         val request = reviewManager.requestReviewFlow()
         request.addOnCompleteListener { task: Task<ReviewInfo> ->
