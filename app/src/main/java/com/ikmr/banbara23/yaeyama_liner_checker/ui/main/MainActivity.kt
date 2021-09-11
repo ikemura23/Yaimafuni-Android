@@ -64,11 +64,16 @@ class MainActivity : AppCompatActivity() {
     /**
      * バッジ表示のハンドリング
      */
-    private fun handleTyphoonBadge(existsTyphoon: Boolean) {
+    private fun handleTyphoonBadge(typhoonCount: Int) {
         binding.navView.getOrCreateBadge(R.id.weatherFragment).also { badgeDrawable ->
             badgeDrawable.backgroundColor = ContextCompat.getColor(this, R.color.badge_color)
-            badgeDrawable.number = 2
-        }.isVisible = existsTyphoon
+            // バッジ数字を設定
+            if (typhoonCount > 0) {
+                badgeDrawable.number = typhoonCount
+            } else {
+                badgeDrawable.clearNumber()
+            }
+        }.isVisible = typhoonCount > 0
     }
 
     /**

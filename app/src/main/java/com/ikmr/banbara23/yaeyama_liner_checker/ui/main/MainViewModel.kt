@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.map
 class MainViewModel : ViewModel() {
     private val typhoonRepository = TyphoonRepositoryImpl()
 
-    fun existsTyphoon(): Flow<Boolean> {
+    fun existsTyphoon(): Flow<Int> {
         return typhoonRepository.fetchTyphoonList().map { list: List<Typhoon> ->
-            list.isNotEmpty()
+            list.size
         }
     }
 }
