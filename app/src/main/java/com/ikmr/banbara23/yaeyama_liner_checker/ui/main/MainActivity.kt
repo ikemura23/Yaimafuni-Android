@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
      * バッジ表示のハンドリング
      */
     private fun handleTyphoonBadge(typhoonCount: Int) {
-        binding.navView.getOrCreateBadge(R.id.weatherFragment).also { badgeDrawable ->
+        binding.navView.getOrCreateBadge(R.id.typhoonListFragment).also { badgeDrawable ->
             badgeDrawable.backgroundColor = ContextCompat.getColor(this, R.color.badge_color)
             // バッジ数字を設定
             if (typhoonCount > 0) {
