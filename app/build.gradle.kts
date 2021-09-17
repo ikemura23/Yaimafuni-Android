@@ -132,7 +132,7 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:${Versions.compose}")
 
     // Koin
-    implementation("io.insert-koin:koin-android:3.1.2")
+    implementation("io.insert-koin:koin-android:${Versions.koin}")
 
     testImplementation("junit:junit:4.13.2")
 

@@ -16,7 +16,6 @@ kotlin {
         }
     }
     sourceSets {
-        val koinVersion = "3.1.2"
         val commonMain by getting {
             dependencies {
                 implementation(
@@ -26,7 +25,7 @@ kotlin {
                 // firebase
                 implementation("dev.gitlive:firebase-database:1.3.1")
                 // Koin core features
-                implementation("io.insert-koin:koin-core:$koinVersion")
+                implementation("io.insert-koin:koin-core:${Versions.koin}")
             }
         }
         val commonTest by getting {
@@ -34,7 +33,7 @@ kotlin {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
                 // Koin test features
-                implementation("io.insert-koin:koin-test:$koinVersion")
+                implementation("io.insert-koin:koin-test:${Versions.koin}")
             }
         }
         val androidMain by getting

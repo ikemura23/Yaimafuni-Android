@@ -6,4 +6,5 @@ object Versions {
     const val firebaseCrashlyticsGradle = "2.7.1"
     const val googleServices = "4.3.10"
     const val coroutine = "1.5.1"
+    const val koin = "3.1.2"
 }
