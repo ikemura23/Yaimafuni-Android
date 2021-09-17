@@ -134,7 +134,7 @@ dependencies {
     // Koin
     implementation("io.insert-koin:koin-android:${Versions.koin}")
 
-    testImplementation("junit:junit:4.13.2")
+    testImplementation("junit:junit:${Versions.junit}")
 
     androidTestImplementation("androidx.test.espresso:espresso-core:3.1.0") {
         exclude(group = "com.android.support", module = "support-annotations")
