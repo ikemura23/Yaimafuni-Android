@@ -99,7 +99,7 @@ dependencies {
     implementation("com.google.firebase:firebase-database")
     implementation("com.google.firebase:firebase-crashlytics")
     // coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}")
 
     // Picasso
     implementation("com.squareup.picasso:picasso:2.71828")
@@ -136,7 +136,6 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
 
-    // TODO: 一時的にコメントアウト、書き方がよく分かってない
     androidTestImplementation("androidx.test.espresso:espresso-core:3.1.0") {
         exclude(group = "com.android.support", module = "support-annotations")
     }
