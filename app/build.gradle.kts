@@ -117,24 +117,23 @@ dependencies {
     implementation("com.google.android.play:core:1.10.0")
     implementation("com.google.android.play:core-ktx:1.8.1")
 
-    val compose_version = "1.0.1" // TODO: 仮ローカル変数、rootの変数を参照していたがKotlin-dsl変換中はとりあえずここを参照させる
     // Jetpack Compose toolkit dependencies
     // https://developer.android.com/jetpack/compose/setup#compose-compiler
-    implementation("androidx.compose.ui:ui:$compose_version")
+    implementation("androidx.compose.ui:ui:${Versions.compose}")
     // Tooling support (Previews, etc.)
-    implementation("androidx.compose.ui:ui-tooling:$compose_version")
+    implementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-    implementation("androidx.compose.foundation:foundation:$compose_version")
+    implementation("androidx.compose.foundation:foundation:${Versions.compose}")
     // Material Design
-    implementation("androidx.compose.material:material:$compose_version")
+    implementation("androidx.compose.material:material:${Versions.compose}")
     // Material design icons
-    implementation("androidx.compose.material:material-icons-core:$compose_version")
-    implementation("androidx.compose.material:material-icons-extended:$compose_version")
-    implementation("com.google.android.material:compose-theme-adapter:$compose_version")
-    implementation("androidx.compose.ui:ui-tooling-preview:$compose_version")
+    implementation("androidx.compose.material:material-icons-core:${Versions.compose}")
+    implementation("androidx.compose.material:material-icons-extended:${Versions.compose}")
+    implementation("com.google.android.material:compose-theme-adapter:${Versions.compose}")
+    implementation("androidx.compose.ui:ui-tooling-preview:${Versions.compose}")
     implementation("androidx.activity:activity-compose:1.3.1")
     // UI Tests
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$compose_version")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:${Versions.compose}")
 
     // Koin
     implementation("io.insert-koin:koin-android:3.1.2")
