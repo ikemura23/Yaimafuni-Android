@@ -24,9 +24,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles("proguard-android.txt") // TODO: 自信がない
-
-            // proguardFiles getDefaultProguardFile ("proguard-android.txt"), "proguard-rules.pro"
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
         debug {
             applicationIdSuffix = ".debug"
