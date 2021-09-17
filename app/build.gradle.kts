@@ -11,12 +11,12 @@ plugins {
 }
 
 android {
-    compileSdk = 30
+    compileSdk = DefaultConfig.compileSdk
 
     defaultConfig {
         applicationId = "com.banbara.yaeyama.liner.checker"
-        minSdk = 24
-        targetSdk = 30
+        minSdk = DefaultConfig.minSdk
+        targetSdk = DefaultConfig.targetSdk
         versionCode = 75
         versionName = "4.3.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
