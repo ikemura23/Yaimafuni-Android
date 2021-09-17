@@ -16,18 +16,16 @@ kotlin {
         }
     }
     sourceSets {
-        val coroutineVersion = "1.4.2"
-        val koinVersion = "3.1.2"
         val commonMain by getting {
             dependencies {
                 implementation(
-                    "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+                    "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
                 )
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.2.1")
                 // firebase
-                implementation("dev.gitlive:firebase-database:1.3.1")
+                implementation("dev.gitlive:firebase-database:${Versions.firebaseDatabase}")
                 // Koin core features
-                implementation("io.insert-koin:koin-core:$koinVersion")
+                implementation("io.insert-koin:koin-core:${Versions.koin}")
             }
         }
         val commonTest by getting {
@@ -35,14 +33,14 @@ kotlin {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
                 // Koin test features
-                implementation("io.insert-koin:koin-test:$koinVersion")
+                implementation("io.insert-koin:koin-test:${Versions.koin}")
             }
         }
         val androidMain by getting
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
-                implementation("junit:junit:4.13.2")
+                implementation("junit:junit:${Versions.junit}")
             }
         }
         val iosMain by getting
@@ -51,10 +49,10 @@ kotlin {
 }
 
 android {
-    compileSdk = 30
+    compileSdk = DefaultConfig.compileSdk
     defaultConfig {
-        minSdk = 24
-        targetSdk = 30
+        minSdk = DefaultConfig.minSdk
+        targetSdk = DefaultConfig.targetSdk
     }
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 }
