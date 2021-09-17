@@ -16,12 +16,11 @@ kotlin {
         }
     }
     sourceSets {
-        val coroutineVersion = "1.4.2"
         val koinVersion = "3.1.2"
         val commonMain by getting {
             dependencies {
                 implementation(
-                    "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+                    "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
                 )
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.2.1")
                 // firebase

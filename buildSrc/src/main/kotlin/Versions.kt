@@ -5,4 +5,5 @@ object Versions {
     const val navigation = "2.3.5"
     const val firebaseCrashlyticsGradle = "2.7.1"
     const val googleServices = "4.3.10"
+    const val coroutine = "1.5.1"
 }
