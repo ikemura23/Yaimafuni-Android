@@ -1,3 +1,5 @@
+import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
+
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
@@ -28,7 +30,12 @@ android {
         }
         debug {
             applicationIdSuffix = ".debug"
-            // ext.enableCrashlytics = false // TODO: あとで解決する
+            configure<CrashlyticsExtension> {
+                // マッピング ファイルを Crashlytics にアップロードしない
+                // https://firebase.google.com/docs/crashlytics/upgrade-sdk?hl=ja&platform=android
+                mappingFileUploadEnabled = false
+            }
+
         }
     }
     buildFeatures {
