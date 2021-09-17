@@ -8,4 +8,8 @@ object Versions {
     const val coroutine = "1.5.1"
     const val koin = "3.1.2"
     const val junit = "4.13.2"
+
+    // https://github.com/GitLiveApp/firebase-kotlin-sdk/releases
+    // https://search.maven.org/artifact/dev.gitlive/firebase-database
+    const val firebaseDatabase = "1.3.1"
 }
