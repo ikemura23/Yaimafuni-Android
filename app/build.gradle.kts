@@ -86,12 +86,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
     implementation("androidx.fragment:fragment-ktx:1.3.6")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-
-    val nav_version = "2.3.5" // TODO: 仮ローカル変数、rootの変数を参照していたがKotlin-dsl変換中はとりあえずここを参照させる
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-runtime-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    // navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
+    implementation("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
+    implementation("androidx.navigation:navigation-runtime-ktx:${Versions.navigation}")
+    implementation("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
     // google
     implementation("com.google.android.gms:play-services-base:17.6.0")
     // firebase
