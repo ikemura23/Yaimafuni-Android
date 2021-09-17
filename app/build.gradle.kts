@@ -106,8 +106,6 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.71828")
 
     implementation("com.jakewharton.timber:timber:4.7.1")
-    val kotlin_version = "1.5.21" // TODO: 仮ローカル変数、rootの変数を参照していたがKotlin-dsl変換中はとりあえずここを参照させる
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
