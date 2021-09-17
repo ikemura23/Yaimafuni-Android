@@ -24,11 +24,11 @@ android {
 
     }
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
-        debug {
+        getByName("debug") {
             applicationIdSuffix = ".debug"
             configure<CrashlyticsExtension> {
                 // マッピング ファイルを Crashlytics にアップロードしない
