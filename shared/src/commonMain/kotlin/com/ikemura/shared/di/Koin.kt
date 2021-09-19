@@ -1,4 +1,4 @@
-package com.ikemura.shared
+package com.ikemura.shared.di
 
 import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.app
