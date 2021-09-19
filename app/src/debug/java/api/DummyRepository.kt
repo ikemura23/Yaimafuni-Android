@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.api
+package api
 
 import com.ikemura.shared.model.tyhoon.Typhoon
 
