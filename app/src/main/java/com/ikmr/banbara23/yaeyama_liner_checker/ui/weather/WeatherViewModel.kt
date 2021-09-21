@@ -3,24 +3,17 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.weather
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.ikemura.shared.repository.WeatherRepositoryImpl
+import com.ikemura.shared.repository.WeatherUiState
 import com.ikmr.banbara23.yaeyama_liner_checker.core.Event
 import com.ikmr.banbara23.yaeyama_liner_checker.core.toEvent
-import com.ikemura.shared.model.weather.WeatherInfo
-import com.ikemura.shared.repository.WeatherRepository
-import com.ikemura.shared.repository.WeatherUiState
-import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 /**
  * 天気詳細 ViewModel
  */
 class WeatherScreenViewModel : ViewModel() {
 
-    private val weatherRepository = WeatherRepository()
+    private val weatherRepository = WeatherRepositoryImpl()
 
     // UI状態
     private val _state = MutableLiveData<WeatherUiState>()
