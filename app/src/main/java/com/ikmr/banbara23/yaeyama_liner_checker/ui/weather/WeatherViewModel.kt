@@ -3,17 +3,19 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.weather
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ikemura.shared.repository.WeatherRepositoryImpl
+import com.ikemura.shared.repository.WeatherRepository
 import com.ikemura.shared.repository.WeatherUiState
 import com.ikmr.banbara23.yaeyama_liner_checker.core.Event
 import com.ikmr.banbara23.yaeyama_liner_checker.core.toEvent
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 /**
  * 天気詳細 ViewModel
  */
-class WeatherScreenViewModel : ViewModel() {
+class WeatherScreenViewModel : ViewModel(), KoinComponent {
 
-    private val weatherRepository = WeatherRepositoryImpl()
+    private val weatherRepository: WeatherRepository by inject()
 
     // UI状態
     private val _state = MutableLiveData<WeatherUiState>()
