@@ -17,7 +17,7 @@ class TyphoonRepositoryImpl : TyphoonRepository, KoinComponent {
         return dbRef.valueEvents.map { snapshot ->
             snapshot.value() as List<Typhoon>
         }.catch {
-            listOf<List<Typhoon>>()
+            listOf<Typhoon>()
         }
     }
 }
