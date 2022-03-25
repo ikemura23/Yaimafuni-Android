@@ -1,5 +1,5 @@
 object Versions {
-    const val gradlePlugin = "7.0.4"
+    const val gradlePlugin = "7.1.2"
     const val kotlin = "1.5.21"
     const val compose = "1.0.1"
     const val navigation = "2.3.5"
