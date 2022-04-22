@@ -62,3 +62,4 @@ freeline_project_description.json
 app/release
 
 /.idea/navEditor.xml
+.DS_Store
