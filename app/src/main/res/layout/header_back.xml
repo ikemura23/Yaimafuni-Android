@@ -31,7 +31,7 @@
             android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
             android:textColor="@color/white"
             android:textSize="@dimen/actionbar_text_size"
-            tools:="タイトル"
+            tools:text="タイトル"
             />
     </androidx.appcompat.widget.Toolbar>
 </layout>
