@@ -21,7 +21,6 @@ android {
         versionName = "4.3.3"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-
     }
     buildTypes {
         getByName("release") {
@@ -35,7 +34,6 @@ android {
                 // https://firebase.google.com/docs/crashlytics/upgrade-sdk?hl=ja&platform=android
                 mappingFileUploadEnabled = false
             }
-
         }
     }
     buildFeatures {
