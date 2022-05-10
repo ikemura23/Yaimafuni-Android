@@ -21,7 +21,6 @@ android {
         versionName = "4.3.3"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-
     }
     buildTypes {
         getByName("release") {
@@ -35,7 +34,6 @@ android {
                 // https://firebase.google.com/docs/crashlytics/upgrade-sdk?hl=ja&platform=android
                 mappingFileUploadEnabled = false
             }
-
         }
     }
     buildFeatures {
@@ -45,14 +43,13 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-        useIR = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.0.1"
+        kotlinCompilerExtensionVersion = Versions.compose
     }
     // TODO: 一時的に外す、kts化が必要
     // Navigation Componentの Directionsが認識されない対応
@@ -125,9 +122,9 @@ dependencies {
     // Material design icons
     implementation("androidx.compose.material:material-icons-core:${Versions.compose}")
     implementation("androidx.compose.material:material-icons-extended:${Versions.compose}")
-    implementation("com.google.android.material:compose-theme-adapter:${Versions.compose}")
+    implementation("com.google.android.material:compose-theme-adapter:${Versions.composeThemeAdapter}")
     implementation("androidx.compose.ui:ui-tooling-preview:${Versions.compose}")
-    implementation("androidx.activity:activity-compose:1.3.1")
+    implementation("androidx.activity:activity-compose:${Versions.activityCompose}")
     // UI Tests
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:${Versions.compose}")
 
