@@ -72,15 +72,15 @@ dependencies {
     implementation(project(":shared"))
 
     // android
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("com.google.android.material:material:1.4.0")
+    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("com.google.android.material:material:1.6.0")
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.browser:browser:1.3.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha03")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
-    implementation("androidx.fragment:fragment-ktx:1.3.6")
+    implementation("androidx.browser:browser:1.4.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.0-beta01")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
+    implementation("androidx.fragment:fragment-ktx:1.4.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     // navigation
     implementation("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
@@ -88,7 +88,7 @@ dependencies {
     implementation("androidx.navigation:navigation-runtime-ktx:${Versions.navigation}")
     implementation("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
     // google
-    implementation("com.google.android.gms:play-services-base:17.6.0")
+    implementation("com.google.android.gms:play-services-base:18.0.1")
     // firebase
     implementation(platform("com.google.firebase:firebase-bom:26.4.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
@@ -107,7 +107,7 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.2.1")
 
     // In-App Review
-    implementation("com.google.android.play:core:1.10.0")
+    implementation("com.google.android.play:core:1.10.3")
     implementation("com.google.android.play:core-ktx:1.8.1")
 
     // Jetpack Compose toolkit dependencies
