@@ -8,7 +8,7 @@ object Versions {
     const val firebaseCrashlyticsGradle = "2.8.1"
     const val googleServices = "4.3.10"
     const val coroutine = "1.6.1"
-    const val koin = "3.1.2"
+    const val koin = "3.1.6"
     const val junit = "4.13.2"
 
     // https://github.com/GitLiveApp/firebase-kotlin-sdk/releases
