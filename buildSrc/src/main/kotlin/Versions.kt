@@ -13,5 +13,5 @@ object Versions {
 
     // https://github.com/GitLiveApp/firebase-kotlin-sdk/releases
     // https://search.maven.org/artifact/dev.gitlive/firebase-database
-    const val firebaseDatabase = "1.3.1"
+    const val firebaseDatabase = "1.6.1"
 }
