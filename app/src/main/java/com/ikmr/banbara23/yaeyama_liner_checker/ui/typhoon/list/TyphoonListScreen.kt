@@ -12,7 +12,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 @Composable
 fun TyphoonListScreen() {
     Column {
-        TitleSection()
+        TyphoonListTopAppBar()
     }
 }
 

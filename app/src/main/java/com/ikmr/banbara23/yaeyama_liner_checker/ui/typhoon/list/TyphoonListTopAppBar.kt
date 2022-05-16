@@ -8,7 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 
 @Composable
-fun TitleSection() {
+fun TyphoonListTopAppBar() {
     TopAppBar(title = { Text(text = "台風情報") })
 }
 
@@ -17,7 +17,7 @@ fun TitleSection() {
 fun TitleSectionPreview() {
     YaimafuniAndroidTheme {
         Surface {
-            TitleSection()
+            TyphoonListTopAppBar()
         }
     }
 }
