@@ -26,7 +26,7 @@ import timber.log.Timber
  */
 class MainActivity : AppCompatActivity() {
 
-    private val mainViewModel: MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel = MainViewModel()
     private lateinit var binding: MainActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
