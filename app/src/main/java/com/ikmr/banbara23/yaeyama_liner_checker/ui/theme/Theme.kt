@@ -28,12 +28,7 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun YaimafuniAndroidTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
-    // val colors = if (darkTheme) {
-    //     DarkColorPalette
-    // } else {
-    //     LightColorPalette
-    // }
+fun YaimafuniAndroidTheme(content: @Composable () -> Unit) {
     val colors = LightColorPalette // ダークモードは対応しない
 
     MaterialTheme(
