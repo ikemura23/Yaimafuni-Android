@@ -15,7 +15,11 @@ class TyphoonRepositoryImpl : TyphoonRepository, KoinComponent {
     override fun fetchTyphoonList(): Flow<List<Typhoon>> {
         val dbRef = database.reference("typhoon/tenkijp")
         return dbRef.valueEvents.map { snapshot ->
-            snapshot.value() as List<Typhoon>
+            if (snapshot.exists) {
+                snapshot.value() as List<Typhoon>
+            } else {
+                listOf()
+            }
         }.catch {
             listOf<Typhoon>()
         }
