@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ikemura.shared.model.tyhoon.Typhoon
-import com.ikemura.shared.repository.TyphoonRepositoryImpl
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonListFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
@@ -19,7 +18,7 @@ import timber.log.Timber
 class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment) {
 
     private val binding: TyphoonListFragmentBinding by viewBinding()
-    private val viewModel = TyphoonListViewModel(TyphoonRepositoryImpl())
+    private val viewModel = TyphoonListViewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
