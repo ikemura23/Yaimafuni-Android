@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -30,6 +31,15 @@ fun TyphoonListItemComponent() {
         ) {
             TyphoonName("台風18号(ミートク)")
             UpdatedTime("2022/05/24 現在")
+        }
+        Row() {
+            TyphoonImage("")
+            Column() {
+                TyphoonTextContent("あああ")
+                TyphoonTextContent("あああ")
+                TyphoonTextContent("あああ")
+                TyphoonTextContent("あああ")
+            }
         }
     }
 }
@@ -97,7 +107,9 @@ private fun TyphoonImage(url: String) {
     Image(
         painter = painterResource(id = R.drawable.ship),
         contentDescription = null,
-        modifier = Modifier.size(120.dp),
+        modifier = Modifier
+            .size(120.dp)
+            .padding(top = 8.dp, end = 8.dp),
     )
 }
 
