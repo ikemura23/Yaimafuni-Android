@@ -33,9 +33,20 @@ fun TyphoonListItemComponent() {
             TyphoonName("台風18号(ミートク)")
             UpdatedTime("2022/05/24 現在")
         }
-        Row {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             TyphoonImage("")
-            TyphoonTextContent("")
+            Column(
+                verticalArrangement = Arrangement.SpaceEvenly,
+                modifier = Modifier
+                    .height(120.dp)
+                    .weight(1f)
+            ) {
+                TyphoonScale("あああ")
+                TyphoonIntensity("あああ")
+                TyphoonPressure("あああ")
+                TyphoonMaxWindSpeedNearCenter("あああ")
+            }
+            ArrowImage()
         }
     }
 }
@@ -193,6 +204,25 @@ fun TyphoonTextContentPreview() {
                 TyphoonPressure("あああ")
                 TyphoonMaxWindSpeedNearCenter("あああ")
             }
+        }
+    }
+}
+
+@Composable
+fun ArrowImage() {
+    Image(
+        painter = painterResource(R.drawable.ic_keyboard_arrow_right_black_24dp),
+        contentDescription = null,
+        modifier = Modifier.padding(bottom = 8.dp)
+    )
+}
+
+@Preview
+@Composable
+fun ArrowImagePreview() {
+    YaimafuniAndroidTheme {
+        Surface {
+            ArrowImage()
         }
     }
 }
