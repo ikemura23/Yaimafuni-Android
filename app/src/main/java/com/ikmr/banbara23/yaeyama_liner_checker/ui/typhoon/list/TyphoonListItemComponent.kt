@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
@@ -32,14 +33,9 @@ fun TyphoonListItemComponent() {
             TyphoonName("台風18号(ミートク)")
             UpdatedTime("2022/05/24 現在")
         }
-        Row() {
+        Row {
             TyphoonImage("")
-            Column() {
-                TyphoonTextContent("あああ")
-                TyphoonTextContent("あああ")
-                TyphoonTextContent("あああ")
-                TyphoonTextContent("あああ")
-            }
+            TyphoonTextContent("")
         }
     }
 }
@@ -123,11 +119,63 @@ private fun TyphoonImagePreview() {
     }
 }
 
+/**
+ * 台風の大きさ、強さ、中心気圧、中心の最大気圧
+ */
 @Composable
 private fun TyphoonTextContent(value: String) {
+    Column(
+        verticalArrangement = Arrangement.SpaceEvenly,
+        modifier = Modifier.height(120.dp)
+    ) {
+        TyphoonScale("あああ")
+        TyphoonIntensity("あああ")
+        TyphoonPressure("あああ")
+        TyphoonMaxWindSpeedNearCenter("あああ")
+    }
+}
+
+/**
+ * 大きさ
+ */
+@Composable
+private fun TyphoonScale(value: String) {
     Text(
-        text = value,
-        style = MaterialTheme.typography.body2,
+        text = "大きさ : $value",
+        style = MaterialTheme.typography.caption,
+    )
+}
+
+/**
+ * 台風の強さ
+ */
+@Composable
+private fun TyphoonIntensity(value: String) {
+    Text(
+        text = "強さ : $value",
+        style = MaterialTheme.typography.caption,
+    )
+}
+
+/**
+ * 気圧
+ */
+@Composable
+private fun TyphoonPressure(value: String) {
+    Text(
+        text = "中心気圧 : $value",
+        style = MaterialTheme.typography.caption,
+    )
+}
+
+/**
+ * 中心の最大風速
+ */
+@Composable
+private fun TyphoonMaxWindSpeedNearCenter(value: String) {
+    Text(
+        text = "中心の最大風速 : $value",
+        style = MaterialTheme.typography.caption,
     )
 }
 
@@ -136,7 +184,15 @@ private fun TyphoonTextContent(value: String) {
 fun TyphoonTextContentPreview() {
     YaimafuniAndroidTheme {
         Surface {
-            TyphoonTextContent("大きさ：大型")
+            Column(
+                verticalArrangement = Arrangement.SpaceEvenly,
+                modifier = Modifier.height(120.dp)
+            ) {
+                TyphoonScale("あああ")
+                TyphoonIntensity("あああ")
+                TyphoonPressure("あああ")
+                TyphoonMaxWindSpeedNearCenter("あああ")
+            }
         }
     }
 }
