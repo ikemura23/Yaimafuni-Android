@@ -29,7 +29,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 @Composable
 fun TyphoonListItemComponent(typhoon: Typhoon) {
     Card(
-        modifier = Modifier.padding(16.dp),
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
         shape = RoundedCornerShape(8.dp),
     ) {
         Column(
