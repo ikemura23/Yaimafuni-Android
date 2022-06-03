@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -26,29 +28,36 @@ import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 
 @Composable
 fun TyphoonListItemComponent(typhoon: Typhoon) {
-    Column {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
+    Card(
+        modifier = Modifier.padding(16.dp),
+        shape = RoundedCornerShape(8.dp),
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
         ) {
-            TyphoonName(typhoon.name)
-            UpdatedTime(typhoon.dateTime)
-        }
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            TyphoonImage(typhoon.img)
-            Column(
-                verticalArrangement = Arrangement.SpaceEvenly,
-                modifier = Modifier
-                    .height(120.dp)
-                    .weight(1f)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                TyphoonScale(typhoon.scale)
-                TyphoonIntensity(typhoon.intensity)
-                TyphoonPressure(typhoon.pressure)
-                TyphoonMaxWindSpeedNearCenter(typhoon.maxWindSpeedNearCenter)
+                TyphoonName(typhoon.name)
+                UpdatedTime(typhoon.dateTime)
             }
-            ArrowImage()
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                TyphoonImage(typhoon.img)
+                Column(
+                    verticalArrangement = Arrangement.SpaceEvenly,
+                    modifier = Modifier
+                        .height(120.dp)
+                        .weight(1f)
+                ) {
+                    TyphoonScale(typhoon.scale)
+                    TyphoonIntensity(typhoon.intensity)
+                    TyphoonPressure(typhoon.pressure)
+                    TyphoonMaxWindSpeedNearCenter(typhoon.maxWindSpeedNearCenter)
+                }
+                ArrowImage()
+            }
         }
     }
 }
