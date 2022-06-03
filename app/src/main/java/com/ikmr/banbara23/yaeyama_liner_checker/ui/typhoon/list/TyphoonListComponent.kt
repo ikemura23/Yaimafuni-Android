@@ -7,23 +7,27 @@ import androidx.compose.material.Card
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 
 @Composable
-fun TyphoonListContent() {
-    Card(
-        modifier = Modifier.padding(16.dp),
-        shape = RoundedCornerShape(8.dp),
-    ) {
-        LazyColumn() {
-            items(5) {
-                Text(text = "アイテム 1")
-                Text(text = "アイテム 2")
-                Text(text = "アイテム 3")
-                Text(text = "アイテム 4")
+fun TyphoonListContent(
+    typhoonListViewModel: TyphoonListViewModel = viewModel()
+) {
+    val data = typhoonListViewModel.getTyphoonList().collectAsState(initial = null)
+    data.value?.let {
+        Card(
+            modifier = Modifier.padding(16.dp),
+            shape = RoundedCornerShape(8.dp),
+        ) {
+            LazyColumn() {
+                items(it.size) { index ->
+                    TyphoonListItemComponent(it[index])
+                }
             }
         }
     }

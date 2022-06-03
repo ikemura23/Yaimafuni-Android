@@ -19,32 +19,34 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import com.ikemura.shared.model.tyhoon.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 
 @Composable
-fun TyphoonListItemComponent() {
+fun TyphoonListItemComponent(typhoon: Typhoon) {
     Column {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            TyphoonName("台風18号(ミートク)")
-            UpdatedTime("2022/05/24 現在")
+            TyphoonName(typhoon.name)
+            UpdatedTime(typhoon.dateTime)
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
-            TyphoonImage("")
+            TyphoonImage(typhoon.img)
             Column(
                 verticalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier
                     .height(120.dp)
                     .weight(1f)
             ) {
-                TyphoonScale("あああ")
-                TyphoonIntensity("あああ")
-                TyphoonPressure("あああ")
-                TyphoonMaxWindSpeedNearCenter("あああ")
+                TyphoonScale(typhoon.scale)
+                TyphoonIntensity(typhoon.intensity)
+                TyphoonPressure(typhoon.pressure)
+                TyphoonMaxWindSpeedNearCenter(typhoon.maxWindSpeedNearCenter)
             }
             ArrowImage()
         }
@@ -54,9 +56,20 @@ fun TyphoonListItemComponent() {
 @Preview
 @Composable
 private fun TyphoonListItemComponentPreview() {
+
+    val typhoon = Typhoon(
+        name = "台風18号(ミートク)",
+        dateTime = "01日15:00現在",
+        img = "https://static.tenki.jp/static-images/typhoon-detail/typhoon_1918/2019/10/01/typhoon_1918_2019-10-01-15-00-00-middle.jpg",
+        scale = "---",
+        intensity = "---",
+        pressure = "980hPa",
+        area = "東シナ海",
+        maxWindSpeedNearCenter = "30m/s"
+    )
     YaimafuniAndroidTheme {
         Surface {
-            TyphoonListItemComponent()
+            TyphoonListItemComponent(typhoon)
         }
     }
 }
@@ -111,8 +124,8 @@ private fun UpdatedTimePreview() {
  */
 @Composable
 private fun TyphoonImage(url: String) {
-    Image(
-        painter = painterResource(id = R.drawable.ship),
+    AsyncImage(
+        model = url,
         contentDescription = null,
         modifier = Modifier
             .size(120.dp)

@@ -1,14 +1,17 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.list
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ikemura.shared.model.tyhoon.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonListFragmentBinding
-import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.detail.TyphoonDetailUiModel
 import timber.log.Timber
 
@@ -17,15 +20,30 @@ import timber.log.Timber
  */
 class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment) {
 
-    private val binding: TyphoonListFragmentBinding by viewBinding()
+    private lateinit var binding: TyphoonListFragmentBinding
     private val viewModel = TyphoonListViewModel()
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = TyphoonListFragmentBinding.inflate(inflater, container, false)
+        binding.composeView.apply {
+
+            setContent {
+                // ViewのLifecycleOwnerが破棄されたときに、コンポジションを破棄する
+                setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+                YaimafuniAndroidTheme {
+                    TyphoonListContent(viewModel)
+                }
+            }
+        }
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.list.adapter = TyphoonRecyclerViewAdapter { typhoon: Typhoon ->
-            val uiModel = typhoon.toTyphoonUiModel()
-            navigateToTyphoonDetail(uiModel)
-        }
+//        binding.list.adapter = TyphoonRecyclerViewAdapter { typhoon: Typhoon ->
+//            val uiModel = typhoon.toTyphoonUiModel()
+//            navigateToTyphoonDetail(uiModel)
+//        }
         fetchTyphoon()
     }
 
@@ -36,7 +54,7 @@ class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment) {
         lifecycleScope.launchWhenCreated {
             viewModel.getTyphoonList().collect { typhoon ->
                 Timber.d("typhoon: $typhoon")
-                bindTyphoon(typhoon)
+//                bindTyphoon(typhoon)
             }
         }
     }
