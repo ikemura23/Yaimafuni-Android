@@ -2,6 +2,7 @@
     <string name="app_name">やいまふに</string>
 
     <!--台風-->
+    <string name="typhoon_list_screen_title">台風情報</string>
     <string name="typhoon_scale">大きさ : %s</string>
     <string name="typhoon_intensity">強さ : %s</string>
     <string name="typhoon_pressure">中心気圧 : %s</string>

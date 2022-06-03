@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.ikemura.shared.model.tyhoon.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.R
@@ -18,11 +19,10 @@ import com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.detail.TyphoonDetailU
  */
 class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment) {
 
-    private lateinit var binding: TyphoonListFragmentBinding
-    private val viewModel = TyphoonListViewModel()
+    private val viewModel: TyphoonListViewModel by viewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = TyphoonListFragmentBinding.inflate(inflater, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        val binding = TyphoonListFragmentBinding.inflate(inflater, container, false)
         binding.composeView.apply {
 
             setContent {
