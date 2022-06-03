@@ -31,7 +31,12 @@ class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment) {
                 // ViewのLifecycleOwnerが破棄されたときに、コンポジションを破棄する
                 setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
                 YaimafuniAndroidTheme {
-                    TyphoonListContent(viewModel)
+                    TyphoonListContent(
+                        typhoonListViewModel = viewModel,
+                        onItemClick = { typhoon: Typhoon ->
+                            navigateToTyphoonDetail(typhoon.toTyphoonUiModel())
+                        }
+                    )
                 }
             }
         }

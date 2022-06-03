@@ -18,7 +18,7 @@ fun TyphoonListScreen() {
             TyphoonListTopAppBar()
         },
         content = { _ ->
-            TyphoonListContent()
+            TyphoonListContent { typhoon: com.ikemura.shared.model.tyhoon.Typhoon -> /* 処理 */ }
 //            TyphoonListEmptyContent()
         }
     )

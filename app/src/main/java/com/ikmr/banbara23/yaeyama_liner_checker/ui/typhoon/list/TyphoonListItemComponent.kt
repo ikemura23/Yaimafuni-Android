@@ -1,6 +1,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.list
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,9 +28,11 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 
 @Composable
-fun TyphoonListItemComponent(typhoon: Typhoon) {
+fun TyphoonListItemComponent(typhoon: Typhoon, onItemClick: (Typhoon) -> Unit) {
     Card(
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+        modifier = Modifier
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .clickable { onItemClick(typhoon) },
         shape = RoundedCornerShape(8.dp),
     ) {
         Column(
@@ -78,7 +81,7 @@ private fun TyphoonListItemComponentPreview() {
     )
     YaimafuniAndroidTheme {
         Surface {
-            TyphoonListItemComponent(typhoon)
+            TyphoonListItemComponent(typhoon = typhoon, onItemClick = {})
         }
     }
 }

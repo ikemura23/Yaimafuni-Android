@@ -7,17 +7,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.ikemura.shared.model.tyhoon.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 
 @Composable
 fun TyphoonListContent(
-    typhoonListViewModel: TyphoonListViewModel = viewModel()
+    typhoonListViewModel: TyphoonListViewModel = viewModel(),
+    onItemClick: (Typhoon) -> Unit
 ) {
     val data = typhoonListViewModel.getTyphoonList().collectAsState(initial = null)
     data.value?.let {
         LazyColumn() {
             items(it.size) { index ->
-                TyphoonListItemComponent(it[index])
+                TyphoonListItemComponent(it[index], onItemClick)
             }
         }
     }
@@ -36,7 +38,7 @@ fun TyphoonListEmptyContent() {
 fun TyphoonListContentPreview() {
     YaimafuniAndroidTheme {
         Surface {
-            TyphoonListContent()
+            TyphoonListContent { typhoon: com.ikemura.shared.model.tyhoon.Typhoon -> /* 処理 */ }
         }
     }
 }
