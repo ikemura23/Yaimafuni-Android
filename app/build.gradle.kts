@@ -98,8 +98,10 @@ dependencies {
     // coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}")
 
-    // Picasso
+    // Picasso TODO: 後に削除
     implementation("com.squareup.picasso:picasso:2.71828")
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.1.0")
 
     implementation("com.jakewharton.timber:timber:4.7.1")
 
@@ -117,6 +119,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
     implementation("androidx.compose.foundation:foundation:${Versions.compose}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0-rc01")
     // Material Design
     implementation("androidx.compose.material:material:${Versions.compose}")
     // Material design icons
