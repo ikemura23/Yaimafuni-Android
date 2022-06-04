@@ -13,7 +13,7 @@ class FakeTyphoonRepositoryImpl : TyphoonRepository, KoinComponent {
 
     override fun fetchTyphoonList(): Flow<List<Typhoon>> {
         return flow {
-            delay(100)
+            delay(1000)
             val data = listOf(
                 Typhoon(
                     name = "台風18号(ミートク)",

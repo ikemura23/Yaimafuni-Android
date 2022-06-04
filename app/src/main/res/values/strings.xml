@@ -15,5 +15,6 @@
     <string name="tab_annei">安栄観光</string>
     <string name="tab_ykf">八重山観光\nフェリー</string>
     <string name="title_activity_port_status_detail_compose">PortStatusDetailComposeActivity</string>
+    <string name="typhoon_list_empty">台風は発生していません。</string>
 
 </resources>
