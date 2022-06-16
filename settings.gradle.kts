@@ -1,1 +1,1 @@
-include(":shared", ":app")
+include(":shared", ":androidApp")
