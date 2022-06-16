@@ -1,1 +1,9 @@
-include(":shared", ":app")
+pluginManagement {
+    repositories {
+        google()
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+include(":shared", ":androidApp")
