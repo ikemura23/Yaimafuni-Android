@@ -16,13 +16,7 @@ kotlin {
             baseName = "shared"
         }
     }
-//    ios {
-//        binaries {
-//            framework {
-//                baseName = "shared"
-//            }
-//        }
-//    }
+
     sourceSets {
         val commonMain by getting {
             dependencies {
