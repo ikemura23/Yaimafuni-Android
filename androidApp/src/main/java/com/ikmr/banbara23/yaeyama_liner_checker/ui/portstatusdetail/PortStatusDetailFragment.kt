@@ -9,8 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.ikemura.shared.model.statusdetail.Company
-import com.ikemura.shared.model.statusdetail.StatusDetailResult
 import com.ikemura.shared.repository.UiState
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_COMPANY
@@ -18,7 +16,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants.BUNDLE_KEY_PORT
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
-import kotlinx.coroutines.flow.collect
+import com.yaeyama_liner_checker.domain.statusdetail.Company
+import com.yaeyama_liner_checker.domain.statusdetail.StatusDetailResult
 import timber.log.Timber
 
 /**

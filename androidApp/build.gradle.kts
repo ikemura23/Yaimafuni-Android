@@ -100,7 +100,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}")
 
     // Picasso TODO: 後に削除
-    implementation("com.squareup.picasso:picasso:2.71828")
+//    implementation("com.squareup.picasso:picasso:2.71828")
     // Coil
     implementation("io.coil-kt:coil-compose:2.1.0")
 
@@ -134,6 +134,8 @@ dependencies {
 
     // Koin
     implementation("io.insert-koin:koin-android:${Versions.koin}")
+
+    implementation(project(":domain"))
 
     testImplementation("junit:junit:${Versions.junit}")
 

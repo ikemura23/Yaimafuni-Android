@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import coil.load
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonDetailFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
-import com.squareup.picasso.Picasso
 import timber.log.Timber
 
 /**
@@ -35,6 +35,6 @@ class TyphoonDetailFragment : Fragment(R.layout.typhoon_detail_fragment) {
             }
         }
         // 画像読み込み
-        Picasso.get().load(argTyphoon.img).into(binding.image)
+        binding.image.load(argTyphoon.img)
     }
 }

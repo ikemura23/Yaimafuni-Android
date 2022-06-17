@@ -22,14 +22,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.ikemura.shared.model.statusdetail.Status
-import com.ikemura.shared.model.time_table.Header
-import com.ikemura.shared.model.time_table.Row
-import com.ikemura.shared.model.time_table.RowItem
-import com.ikemura.shared.model.time_table.TimeTable
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.TableDividerColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.TableHeaderColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
+import com.yaeyama_liner_checker.domain.statusdetail.Status
+import com.yaeyama_liner_checker.domain.time_table.Header
+import com.yaeyama_liner_checker.domain.time_table.Row
+import com.yaeyama_liner_checker.domain.time_table.RowItem
+import com.yaeyama_liner_checker.domain.time_table.TimeTable
 import timber.log.Timber
 
 typealias TimeRow = Row

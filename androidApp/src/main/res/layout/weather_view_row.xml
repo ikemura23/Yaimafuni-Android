@@ -8,7 +8,7 @@
 
         <variable
             name="table"
-            type="com.ikemura.shared.model.weather.Table"
+            type="com.yaeyama_liner_checker.domain.weather.Table"
             />
     </data>
 

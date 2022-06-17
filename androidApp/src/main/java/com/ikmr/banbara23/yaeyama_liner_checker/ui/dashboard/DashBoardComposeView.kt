@@ -5,8 +5,8 @@ import android.util.AttributeSet
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.AbstractComposeView
-import com.ikemura.shared.model.top.Ports
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
+import com.yaeyama_liner_checker.domain.top.Ports
 
 /**
  * DashBoardをDataBindingで使うクラス

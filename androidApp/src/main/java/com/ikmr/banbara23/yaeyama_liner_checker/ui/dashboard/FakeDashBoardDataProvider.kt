@@ -1,8 +1,8 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard
 
-import com.ikemura.shared.model.statusdetail.PortStatus
-import com.ikemura.shared.model.statusdetail.Status
-import com.ikemura.shared.model.top.Ports
+import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
+import com.yaeyama_liner_checker.domain.statusdetail.Status
+import com.yaeyama_liner_checker.domain.top.Ports
 
 object FakeDashBoardDataProvider {
 

@@ -1,6 +1,6 @@
 package com.ikemura.shared.repository
 
-import com.ikemura.shared.model.tyhoon.Typhoon
+import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 import kotlinx.coroutines.flow.Flow
 
 interface TyphoonRepository {

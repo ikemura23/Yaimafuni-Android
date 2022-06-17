@@ -17,9 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.ikemura.shared.model.statusdetail.Status
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.StatusColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
+import com.yaeyama_liner_checker.domain.statusdetail.Status
 import timber.log.Timber
 
 @Composable

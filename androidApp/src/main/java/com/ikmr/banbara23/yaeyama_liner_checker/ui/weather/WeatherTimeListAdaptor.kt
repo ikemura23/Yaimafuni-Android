@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherViewRowBinding
-import com.ikemura.shared.model.weather.Table
+import com.yaeyama_liner_checker.domain.weather.Table
 
 /**
  * 天気詳細 横スクロールできる時間ごと天気

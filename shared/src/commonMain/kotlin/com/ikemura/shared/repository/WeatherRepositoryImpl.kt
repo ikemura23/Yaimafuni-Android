@@ -1,6 +1,6 @@
 package com.ikemura.shared.repository
 
-import com.ikemura.shared.model.weather.WeatherInfo
+import com.yaeyama_liner_checker.domain.weather.WeatherInfo
 import dev.gitlive.firebase.database.DataSnapshot
 import dev.gitlive.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.flow.Flow

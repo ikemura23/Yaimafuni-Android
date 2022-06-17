@@ -1,6 +1,6 @@
 package com.ikemura.shared.repository
 
-import com.ikemura.shared.model.top.Ports
+import com.yaeyama_liner_checker.domain.top.Ports
 import kotlinx.coroutines.flow.Flow
 
 /**

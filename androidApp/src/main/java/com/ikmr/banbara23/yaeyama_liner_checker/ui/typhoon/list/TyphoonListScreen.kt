@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
+import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 
 /**
  * Composeの台風一覧画面
@@ -18,7 +19,7 @@ fun TyphoonListScreen() {
             TyphoonListTopAppBar()
         },
         content = { _ ->
-            TyphoonListContent { typhoon: com.ikemura.shared.model.tyhoon.Typhoon -> /* 処理 */ }
+            TyphoonListContent { typhoon: Typhoon -> /* 処理 */ }
 //            TyphoonListEmptyContent()
         }
     )

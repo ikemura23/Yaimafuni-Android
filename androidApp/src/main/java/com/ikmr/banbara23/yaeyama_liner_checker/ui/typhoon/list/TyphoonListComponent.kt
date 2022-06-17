@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.ikemura.shared.model.tyhoon.Typhoon
+import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 
@@ -74,7 +74,7 @@ fun TyphoonListEmptyContent() {
 fun TyphoonListContentPreview() {
     YaimafuniAndroidTheme {
         Surface {
-            TyphoonListContent { typhoon: com.ikemura.shared.model.tyhoon.Typhoon -> /* 処理 */ }
+            TyphoonListContent { typhoon: Typhoon -> /* 処理 */ }
         }
     }
 }

@@ -1,6 +1,6 @@
 package api
 
-import com.ikemura.shared.model.tyhoon.Typhoon
+import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 
 object DummyRepository {
 
