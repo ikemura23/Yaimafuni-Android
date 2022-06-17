@@ -1,4 +1,4 @@
-package com.ikemura.shared.model.tyhoon
+package com.yaeyama_liner_checker.domain.tyhoon
 
 import kotlinx.serialization.Serializable
 
