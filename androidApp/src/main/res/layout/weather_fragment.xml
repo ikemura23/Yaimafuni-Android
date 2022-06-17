@@ -13,7 +13,7 @@
 
         <variable
             name="weather"
-            type="com.ikemura.shared.model.weather.WeatherInfo"
+            type="com.yaeyama_liner_checker.domain.weather.WeatherInfo"
             />
     </data>
 

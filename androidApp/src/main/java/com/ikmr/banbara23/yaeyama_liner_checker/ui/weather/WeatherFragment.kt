@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ikemura.shared.model.weather.WeatherInfo
+import com.yaeyama_liner_checker.domain.weather.WeatherInfo
 import com.ikemura.shared.repository.UiState
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.common.Constants
@@ -14,7 +14,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.databinding.WeatherFragmentBindi
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.observeEvent
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.utils.CustomTabUtil
-import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
 /**

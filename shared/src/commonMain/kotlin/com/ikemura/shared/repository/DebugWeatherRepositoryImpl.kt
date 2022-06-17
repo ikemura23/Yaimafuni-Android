@@ -1,9 +1,9 @@
 package com.ikemura.shared.repository
 
-import com.ikemura.shared.model.weather.Table
-import com.ikemura.shared.model.weather.Temperature
-import com.ikemura.shared.model.weather.Weather
-import com.ikemura.shared.model.weather.WeatherInfo
+import com.yaeyama_liner_checker.domain.weather.Table
+import com.yaeyama_liner_checker.domain.weather.Temperature
+import com.yaeyama_liner_checker.domain.weather.Weather
+import com.yaeyama_liner_checker.domain.weather.WeatherInfo
 import kotlinx.coroutines.flow.flow
 import org.koin.core.component.KoinComponent
 

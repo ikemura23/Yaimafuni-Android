@@ -15,7 +15,7 @@
 
         <variable
             name="data"
-            type="com.ikemura.shared.model.weather.Weather"
+            type="com.yaeyama_liner_checker.domain.weather.Weather"
             />
     </data>
 

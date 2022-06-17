@@ -1,4 +1,4 @@
-package com.ikemura.shared.model.weather
+package com.yaeyama_liner_checker.domain.weather
 
 import kotlinx.serialization.Serializable
 

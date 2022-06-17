@@ -1,6 +1,6 @@
 package com.ikemura.shared.repository
 
-import com.ikemura.shared.model.weather.WeatherInfo
+import com.yaeyama_liner_checker.domain.weather.WeatherInfo
 import kotlinx.coroutines.flow.Flow
 
 interface WeatherRepository {
