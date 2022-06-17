@@ -1,4 +1,4 @@
-package com.ikemura.shared.model.top
+package com.yaeyama_liner_checker.domain.top
 
 import kotlinx.serialization.Serializable
 

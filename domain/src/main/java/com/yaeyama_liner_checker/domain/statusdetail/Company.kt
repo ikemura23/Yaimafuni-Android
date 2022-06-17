@@ -1,8 +1,11 @@
-package com.ikemura.shared.model.statusdetail
+package com.yaeyama_liner_checker.domain.statusdetail
+
+import kotlinx.serialization.Serializable
 
 /**
  * 会社のenum
  */
+@Serializable
 enum class Company(
     val code: String,
     val fullName: String

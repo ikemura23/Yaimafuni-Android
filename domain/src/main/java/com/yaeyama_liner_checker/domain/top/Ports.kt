@@ -1,6 +1,6 @@
-package com.ikemura.shared.model.top
+package com.yaeyama_liner_checker.domain.top
 
-import com.ikemura.shared.model.statusdetail.PortStatus
+import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
 import kotlinx.serialization.Serializable
 
 @Serializable

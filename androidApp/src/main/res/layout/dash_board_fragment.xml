@@ -15,7 +15,7 @@
 
         <variable
             name="topPort"
-            type="com.ikemura.shared.model.top.TopPort"
+            type="com.yaeyama_liner_checker.domain.top.TopPort"
             />
 
         <variable

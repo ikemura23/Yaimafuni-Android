@@ -1,10 +1,10 @@
 package com.ikemura.shared.usecase
 
-import com.ikemura.shared.model.statusdetail.Company
-import com.ikemura.shared.model.statusdetail.PortStatus
-import com.ikemura.shared.model.statusdetail.StatusDetailResult
 import com.ikemura.shared.repository.StatusDetailRepository
 import com.ikemura.shared.repository.UiState
+import com.yaeyama_liner_checker.domain.statusdetail.Company
+import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
+import com.yaeyama_liner_checker.domain.statusdetail.StatusDetailResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.zip
 

@@ -28,11 +28,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.ikemura.shared.model.statusdetail.Status
-import com.ikemura.shared.model.top.Ports
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.StatusColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
+import com.yaeyama_liner_checker.domain.statusdetail.Status
+import com.yaeyama_liner_checker.domain.top.Ports
 
 @Composable
 fun DashBoard(

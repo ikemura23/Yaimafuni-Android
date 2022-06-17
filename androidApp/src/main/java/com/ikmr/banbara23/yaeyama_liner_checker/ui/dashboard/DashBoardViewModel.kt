@@ -1,12 +1,12 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard
 
 import androidx.lifecycle.MutableLiveData
-import com.ikemura.shared.model.top.Ports
-import com.ikemura.shared.model.top.TopPort
 import com.ikemura.shared.repository.TopStatusRepositoryImpl
 import com.ikemura.shared.repository.UiState
 import com.ikmr.banbara23.yaeyama_liner_checker.core.Event
 import com.ikmr.banbara23.yaeyama_liner_checker.core.toEvent
+import com.yaeyama_liner_checker.domain.top.Ports
+import com.yaeyama_liner_checker.domain.top.TopPort
 import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
 

@@ -1,6 +1,6 @@
-package com.ikemura.shared.model.time_table
+package com.yaeyama_liner_checker.domain.time_table
 
-import com.ikemura.shared.model.statusdetail.Status
+import com.yaeyama_liner_checker.domain.statusdetail.Status
 import kotlinx.serialization.Serializable
 
 @Serializable

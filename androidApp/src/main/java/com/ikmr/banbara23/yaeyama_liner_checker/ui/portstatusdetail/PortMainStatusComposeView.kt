@@ -5,8 +5,8 @@ import android.util.AttributeSet
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.AbstractComposeView
-import com.ikemura.shared.model.statusdetail.PortStatus
-import com.ikemura.shared.model.statusdetail.Status
+import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
+import com.yaeyama_liner_checker.domain.statusdetail.Status
 
 /**
  * xmlでComposeを表示するためのViewクラス

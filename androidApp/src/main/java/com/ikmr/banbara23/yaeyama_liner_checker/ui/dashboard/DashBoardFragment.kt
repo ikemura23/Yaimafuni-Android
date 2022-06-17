@@ -10,7 +10,6 @@ import com.ikemura.shared.repository.UiState
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.DashBoardFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
-import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
 /**

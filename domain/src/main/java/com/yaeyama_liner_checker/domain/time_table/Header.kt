@@ -1,4 +1,4 @@
-package com.ikemura.shared.model.time_table
+package com.yaeyama_liner_checker.domain.time_table
 
 import kotlinx.serialization.Serializable
 

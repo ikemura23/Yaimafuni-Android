@@ -1,8 +1,8 @@
 package com.ikemura.shared.repository
 
-import com.ikemura.shared.model.statusdetail.Company
-import com.ikemura.shared.model.statusdetail.PortStatus
-import com.ikemura.shared.model.time_table.TimeTable
+import com.yaeyama_liner_checker.domain.statusdetail.Company
+import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
+import com.yaeyama_liner_checker.domain.time_table.TimeTable
 import dev.gitlive.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch

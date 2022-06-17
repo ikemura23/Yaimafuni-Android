@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.AbstractComposeView
-import com.ikemura.shared.model.time_table.TimeTable
+import com.yaeyama_liner_checker.domain.time_table.TimeTable
 
 /**
  * 時刻別の運行リストをxmlでComposeを表示するComposeView

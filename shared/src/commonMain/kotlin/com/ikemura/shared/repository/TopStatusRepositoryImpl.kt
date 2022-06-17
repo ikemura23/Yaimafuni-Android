@@ -1,7 +1,7 @@
 package com.ikemura.shared.repository
 
-import com.ikemura.shared.model.top.Ports
-import com.ikemura.shared.model.top.TopPort
+import com.yaeyama_liner_checker.domain.top.Ports
+import com.yaeyama_liner_checker.domain.top.TopPort
 import dev.gitlive.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
