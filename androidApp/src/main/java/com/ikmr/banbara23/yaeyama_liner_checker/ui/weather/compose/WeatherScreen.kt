@@ -1,9 +1,13 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.weather.compose
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -58,8 +62,16 @@ private fun WeatherTopAppBar(
 
 @Composable
 private fun WeatherPage(modifier: Modifier = Modifier) {
-    Box(modifier = modifier.fillMaxSize()) {
-        Text(text = "body")
+    Box(modifier = modifier.background(color = Color.Transparent).fillMaxSize()) {
+        LazyColumn(
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            // TODO: 固定のアイテム数をAPIレスポンスに直す
+            items(5) {
+                WeatherListItem() {}
+            }
+        }
     }
 }
 
