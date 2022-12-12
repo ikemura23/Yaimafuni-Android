@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">やいまふに</string>
 
+    <!-- 天気 -->
+    <string name="weather_screen_title">八重山の天気</string>
+
     <!--台風-->
     <string name="typhoon_list_screen_title">台風情報</string>
     <string name="typhoon_scale">大きさ : %s</string>
