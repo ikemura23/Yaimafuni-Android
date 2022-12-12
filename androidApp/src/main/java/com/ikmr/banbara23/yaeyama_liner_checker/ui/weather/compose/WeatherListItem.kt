@@ -22,6 +22,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R
 @Composable
 fun WeatherListItem(
     modifier: Modifier = Modifier,
+    title: String,
     onItemClick: () -> Unit
 ) {
     Card(
@@ -31,16 +32,16 @@ fun WeatherListItem(
         Column(
             modifier = modifier.fillMaxWidth()
         ) {
-            CardHeader()
+            CardHeader(title)
             CardContent()
         }
     }
 }
 
 @Composable
-fun CardHeader() {
+fun CardHeader(title: String) {
     Text(
-        text = "今日の天気 MM月DD日 (E)",
+        text = title,
         modifier = Modifier.background(color = colorResource(id = R.color.primary)).fillMaxWidth()
             .padding(16.dp),
         style = TextStyle.Default.copy(color = Color.White)
@@ -67,14 +68,15 @@ fun CardContent() {
 @Composable
 private fun WeatherListItemPreview() {
     WeatherListItem(
-        onItemClick = {}
+        onItemClick = {},
+        title = "タイトル"
     )
 }
 
 @Preview
 @Composable
 fun CardHeaderPreview() {
-    CardHeader()
+    CardHeader("タイトル")
 }
 
 @Preview(showBackground = true)
