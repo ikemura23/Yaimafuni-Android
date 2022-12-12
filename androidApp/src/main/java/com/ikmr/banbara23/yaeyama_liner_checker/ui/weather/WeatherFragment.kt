@@ -30,21 +30,21 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
         // 今日の天気のリスト設定
-        with(binding.today.timeList) {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = WeatherTimeListAdaptor()
-        }
+        // with(binding.today.timeList) {
+        //     layoutManager =
+        //         LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        //     adapter = WeatherTimeListAdaptor()
+        // }
 
         // 明日の天気のリスト設定
-        with(binding.tomorrow.timeList) {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = WeatherTimeListAdaptor()
-        }
+        // with(binding.tomorrow.timeList) {
+        //     layoutManager =
+        //         LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        //     adapter = WeatherTimeListAdaptor()
+        // }
 
         setupViewModel()
-        binding.weather = WeatherInfo() // null文字の表示対策、いつか対応して消したい
+        // binding.weather = WeatherInfo() // null文字の表示対策、いつか対応して消したい
     }
 
     private fun setupViewModel() {
@@ -72,9 +72,9 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
 
     private fun bindData(weather: WeatherInfo) {
         Timber.d(weather.toString())
-        binding.weather = weather // TODO:エラー解決したい
-        (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(weather.today.table)
-        (binding.tomorrow.timeList.adapter as WeatherTimeListAdaptor).update(weather.tomorrow.table)
+        // binding.weather = weather // TODO:エラー解決したい
+        // (binding.today.timeList.adapter as WeatherTimeListAdaptor).update(weather.today.table)
+        // (binding.tomorrow.timeList.adapter as WeatherTimeListAdaptor).update(weather.tomorrow.table)
     }
 
     private fun openBrowser() {
