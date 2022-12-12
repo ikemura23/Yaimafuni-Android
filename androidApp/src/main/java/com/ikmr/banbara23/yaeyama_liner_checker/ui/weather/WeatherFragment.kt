@@ -20,7 +20,7 @@ import com.yaeyama_liner_checker.domain.weather.WeatherInfo
 import timber.log.Timber
 
 /**
- * 天気詳細
+ * 天気一覧
  */
 class WeatherFragment : Fragment(R.layout.weather_fragment) {
 
@@ -36,8 +36,7 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
                 YaimafuniAndroidTheme {
                     WeatherScreen(
                         weatherViewModel = viewModel,
-                        onMoreClick = {
-                        }
+                        onMoreClick = ::openBrowser
                     )
                 }
             }
