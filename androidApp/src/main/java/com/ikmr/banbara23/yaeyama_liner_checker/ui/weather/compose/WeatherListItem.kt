@@ -1,7 +1,9 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.weather.compose
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -54,13 +56,37 @@ fun CardContent() {
     Column(
         modifier = Modifier.padding(16.dp)
     ) {
-        Text("天気：曇り")
-        Spacer(modifier = Modifier.height(16.dp))
-        Text("気温 最高: N℃ 最低: 19℃")
-        Spacer(modifier = Modifier.height(16.dp))
-        Text("風：")
-        Spacer(modifier = Modifier.height(16.dp))
-        Text("波：")
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text("天気：")
+            Text("曇り")
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text("気温：")
+            Text("最高: N℃ 最低: 19℃")
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text("風：")
+            Text("やや強め")
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text("波：")
+            Text("3メートル後4メートルうねりをともなう")
+        }
     }
 }
 
