@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
 import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.Text
@@ -15,6 +17,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -45,7 +48,8 @@ private fun WeatherScreen(uiState: WeatherUiState, onMoreClick: () -> Unit) {
         topBar = { WeatherTopAppBar(titleRes = R.string.weather_screen_title) }
     ) { padding ->
         WeatherPage(
-            modifier = Modifier.padding(padding)
+            modifier = Modifier.padding(padding),
+            uiState = uiState
         )
     }
 }
@@ -63,16 +67,24 @@ private fun WeatherTopAppBar(
 }
 
 @Composable
-private fun WeatherPage(modifier: Modifier = Modifier) {
+private fun WeatherPage(modifier: Modifier = Modifier, uiState: WeatherUiState) {
     Box(modifier = modifier.background(color = Color.Transparent).fillMaxSize()) {
-        LazyColumn(
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            // TODO: 固定のアイテム数をAPIレスポンスに直す
-            items(5) {
-                WeatherListItem(title = "仮のタイトル") {}
+        if (uiState is WeatherUiState.Success) {
+            LazyColumn(
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                // TODO: 固定のアイテム数をAPIレスポンスに直す
+                val values = listOf(uiState.weather.today, uiState.weather.tomorrow)
+                items(values) { weather ->
+                    WeatherListItem(title = "仮のタイトル", weather = weather) {}
+                }
             }
+        }
+        if (uiState is WeatherUiState.Loading) {
+            CircularProgressIndicator(
+                modifier = Modifier.align(Alignment.Center)
+            )
         }
     }
 }
@@ -94,5 +106,5 @@ private fun WeatherTopAppBarPreview() {
 @Preview(showBackground = true)
 @Composable
 fun WeatherPagePreview() {
-    WeatherPage()
+    WeatherPage(uiState = WeatherUiState.Loading)
 }

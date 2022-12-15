@@ -19,12 +19,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ikmr.banbara23.yaeyama_liner_checker.R
+import com.yaeyama_liner_checker.domain.weather.Weather
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun WeatherListItem(
     modifier: Modifier = Modifier,
     title: String,
+    weather: Weather,
     onItemClick: () -> Unit
 ) {
     Card(
@@ -34,8 +36,8 @@ fun WeatherListItem(
         Column(
             modifier = modifier.fillMaxWidth()
         ) {
-            CardHeader(title)
-            CardContent()
+            CardHeader(weather.date)
+            CardContent(weather)
         }
     }
 }
@@ -51,7 +53,7 @@ fun CardHeader(title: String) {
 }
 
 @Composable
-fun CardContent() {
+fun CardContent(weather: Weather) {
     // 天気情報（天気・気温・風・波）
     Column(
         modifier = Modifier.padding(16.dp)
@@ -61,7 +63,7 @@ fun CardContent() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text("天気：")
-            Text("曇り")
+            Text(weather.weather)
         }
         Spacer(modifier = Modifier.height(8.dp))
         Row(
@@ -69,7 +71,7 @@ fun CardContent() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text("気温：")
-            Text("最高: N℃ 最低: 19℃")
+            Text("最高: ${weather.temperature.hight}℃ 最低: ${weather.temperature.low}℃")
         }
         Spacer(modifier = Modifier.height(8.dp))
         Row(
@@ -77,7 +79,7 @@ fun CardContent() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text("風：")
-            Text("やや強め")
+            Text(weather.wind)
         }
         Spacer(modifier = Modifier.height(8.dp))
         Row(
@@ -85,7 +87,7 @@ fun CardContent() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text("波：")
-            Text("3メートル後4メートルうねりをともなう")
+            Text(weather.wave)
         }
     }
 }
@@ -95,7 +97,8 @@ fun CardContent() {
 private fun WeatherListItemPreview() {
     WeatherListItem(
         onItemClick = {},
-        title = "タイトル"
+        title = "タイトル",
+        weather = Weather()
     )
 }
 
@@ -108,5 +111,5 @@ fun CardHeaderPreview() {
 @Preview(showBackground = true)
 @Composable
 fun CardContentPreview() {
-    CardContent()
+    CardContent(Weather())
 }
