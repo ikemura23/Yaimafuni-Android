@@ -25,7 +25,6 @@ import com.yaeyama_liner_checker.domain.weather.Weather
 @Composable
 fun WeatherListItem(
     modifier: Modifier = Modifier,
-    title: String,
     weather: Weather,
     onItemClick: () -> Unit
 ) {
@@ -96,9 +95,8 @@ fun CardContent(weather: Weather) {
 @Composable
 private fun WeatherListItemPreview() {
     WeatherListItem(
-        onItemClick = {},
-        title = "タイトル",
-        weather = Weather()
+        weather = Weather(),
+        onItemClick = {}
     )
 }
 

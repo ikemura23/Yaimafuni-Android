@@ -68,7 +68,11 @@ private fun WeatherTopAppBar(
 
 @Composable
 private fun WeatherPage(modifier: Modifier = Modifier, uiState: WeatherUiState) {
-    Box(modifier = modifier.background(color = Color.Transparent).fillMaxSize()) {
+    Box(
+        modifier = modifier
+            .background(color = Color.Transparent)
+            .fillMaxSize()
+    ) {
         if (uiState is WeatherUiState.Success) {
             LazyColumn(
                 contentPadding = PaddingValues(16.dp),
@@ -77,7 +81,10 @@ private fun WeatherPage(modifier: Modifier = Modifier, uiState: WeatherUiState) 
                 // TODO: 固定のアイテム数をAPIレスポンスに直す
                 val values = listOf(uiState.weather.today, uiState.weather.tomorrow)
                 items(values) { weather ->
-                    WeatherListItem(title = "仮のタイトル", weather = weather) {}
+                    WeatherListItem(
+                        weather = weather,
+                        onItemClick = {}
+                    )
                 }
             }
         }
