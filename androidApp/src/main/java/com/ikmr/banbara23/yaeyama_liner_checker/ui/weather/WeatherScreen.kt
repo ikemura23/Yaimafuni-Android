@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.ui.weather.compose
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.weather
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
@@ -10,24 +10,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.ui.weather.WeatherScreenViewModel
-import com.ikmr.banbara23.yaeyama_liner_checker.ui.weather.WeatherUiState
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.weather.compose.WeatherPage
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.weather.compose.WeatherTopAppBar
 import timber.log.Timber
 
 @Composable
 fun WeatherScreen(
-    weatherViewModel: WeatherScreenViewModel,
-    onMoreClick: () -> Unit
+    weatherViewModel: WeatherScreenViewModel
 ) {
     val uiState by weatherViewModel.weatherFlow.collectAsState()
     WeatherScreen(
-        uiState,
-        onMoreClick
+        uiState
     )
 }
 
 @Composable
-private fun WeatherScreen(uiState: WeatherUiState, onMoreClick: () -> Unit) {
+private fun WeatherScreen(uiState: WeatherUiState) {
     Timber.d("XXX uiState: $uiState")
     Scaffold(
         backgroundColor = Color.Transparent,
@@ -45,5 +43,5 @@ private fun WeatherScreen(uiState: WeatherUiState, onMoreClick: () -> Unit) {
 private fun WeatherScreenPreview() {
     WeatherScreen(
         WeatherUiState.Loading
-    ) {}
+    )
 }
