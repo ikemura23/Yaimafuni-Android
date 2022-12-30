@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.yaeyama_liner_checker.domain.weather.Temperature
 import com.yaeyama_liner_checker.domain.weather.Weather
 
 /**
@@ -34,9 +35,18 @@ fun WeatherListItemCardContent(weather: Weather) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("気温：")
-            Text("最高: ${weather.temperature.hight}℃ 最低: ${weather.temperature.low}℃")
+            Text("最高：")
+            Text(" ${weather.temperature.hight} ℃")
         }
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text("最低：")
+            Text(" ${weather.temperature.low} ℃")
+        }
+
         Spacer(modifier = Modifier.height(8.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -59,5 +69,16 @@ fun WeatherListItemCardContent(weather: Weather) {
 @Preview(showBackground = true)
 @Composable
 fun WeatherListItemCardContentPreview() {
-    WeatherListItemCardContent(Weather())
+    WeatherListItemCardContent(
+        Weather(
+            date = "YYYY/MM/DD",
+            weather = "曇り時々雨",
+            temperature = Temperature(
+                hight = "21",
+                low = "18"
+            ),
+            wind = "北東の風強く",
+            wave = "４メートルうねりを伴う"
+        )
+    )
 }
