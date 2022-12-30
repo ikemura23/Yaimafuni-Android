@@ -17,8 +17,8 @@ fun WeatherListItem(
     onItemClick: () -> Unit
 ) {
     Card(
-        modifier = modifier.fillMaxWidth(),
-        onClick = onItemClick
+        modifier = modifier.fillMaxWidth()
+        // onClick = onItemClick // TODO: 遷移先の画面がまだないので、いったんコメントアウト
     ) {
         Column(
             modifier = modifier.fillMaxWidth()
