@@ -31,7 +31,8 @@ class WeatherRepositoryImpl : WeatherRepository, KoinComponent {
     }
 }
 
-sealed class WeatherUiState {
-    data class Success(val weatherInfo: WeatherInfo) : WeatherUiState()
-    data class Error(val message: String) : WeatherUiState()
-}
+// sealed class WeatherUiState {
+//     object Loading
+//     data class Success(val weatherInfo: WeatherInfo) : WeatherUiState()
+//     data class Error(val message: String) : WeatherUiState()
+// }
