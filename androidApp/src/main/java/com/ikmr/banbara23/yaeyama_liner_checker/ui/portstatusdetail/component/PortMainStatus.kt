@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -22,11 +22,14 @@ import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama_liner_checker.domain.statusdetail.Status
 import timber.log.Timber
 
+/**
+ * 運行詳細のに上部に表示するステータスとコメント
+ */
 @Composable
 fun PortMainStatus(
-    portName: String = "港名",
-    status: Status = Status("nomal", "通常運行"),
-    statusDescription: String = "コメントコメントコメントコメントコメントコメントコメントコメント",
+    portName: String,
+    status: Status,
+    statusDescription: String
 ) {
     Timber.d("portName: $portName")
     Timber.d("status: $status")
@@ -78,7 +81,11 @@ fun PortMainStatus(
 private fun PortMainStatusPreview() {
     YaimafuniAndroidTheme {
         Surface(color = MaterialTheme.colors.background) {
-            PortMainStatus()
+            PortMainStatus(
+                portName = "港名",
+                status = Status("nomal", "通常運行"),
+                statusDescription = "コメント"
+            )
         }
     }
 }
