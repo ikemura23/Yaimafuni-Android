@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -67,25 +67,25 @@ fun TimeTableList(timeTable: TimeTable) {
  */
 @Composable
 fun TimeTableListHeader(
-    header: Header = Header(left = "石垣島", right = "大原港"),
+    header: Header = Header(left = "石垣島", right = "大原港")
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .background(color = TableHeaderColor),
-        horizontalArrangement = Arrangement.SpaceAround,
+        horizontalArrangement = Arrangement.SpaceAround
     ) {
         Text(
             text = header.left,
             modifier = Modifier.padding(4.dp),
             fontWeight = FontWeight.Bold,
-            color = Color.White,
+            color = Color.White
         )
         Text(
             text = header.right,
             modifier = Modifier.padding(4.dp),
             fontWeight = FontWeight.Bold,
-            color = Color.White,
+            color = Color.White
         )
     }
 }
@@ -98,12 +98,12 @@ fun TimeTableListItem(
     leftTime: String = "00:00",
     leftStatus: String = "通常運行",
     rightTime: String = "00:00",
-    rightStatus: String = "通常運行",
+    rightStatus: String = "通常運行"
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(IntrinsicSize.Min),
+            .height(IntrinsicSize.Min)
     ) {
         // TODO: modifierをパラメータで渡したくないため、weightを使わない方法にできるか？
         val modifier = Modifier
@@ -114,7 +114,7 @@ fun TimeTableListItem(
         TimeTableRowItem(
             time = leftTime,
             status = leftStatus,
-            modifier = modifier,
+            modifier = modifier
         )
         Divider(
             color = TableDividerColor,
@@ -126,7 +126,7 @@ fun TimeTableListItem(
         TimeTableRowItem(
             time = rightTime,
             status = rightStatus,
-            modifier = modifier,
+            modifier = modifier
         )
     }
 }
@@ -136,21 +136,21 @@ fun TimeTableRowItem(time: String, status: String, modifier: Modifier) {
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center,
+        horizontalArrangement = Arrangement.Center
     ) {
         // 時刻
         Text(
             text = time,
             modifier = Modifier
                 .weight(1f)
-                .padding(4.dp),
+                .padding(4.dp)
         )
         // ステータス文字
         Text(
             text = status,
             modifier = Modifier
                 .weight(1f)
-                .padding(4.dp),
+                .padding(4.dp)
         )
     }
 }
@@ -164,7 +164,7 @@ private fun TimeTableListPreview() {
             val rowItem = RowItem(
                 status = Status(code = "nomal", text = "通常運行"),
                 time = "00:00",
-                memo = "", // 使ってる？
+                memo = "" // 使ってる？
             )
             // TimeRowとは、typealiasでRowクラスの別名、composeのRowと名前が同じなので紛らわしい
             val row = TimeRow(
@@ -199,7 +199,7 @@ fun TimeTableListRowPreview() {
                 leftTime = "00:00",
                 leftStatus = "通常運行",
                 rightTime = "00:00",
-                rightStatus = "通常運行",
+                rightStatus = "通常運行"
             )
         }
     }

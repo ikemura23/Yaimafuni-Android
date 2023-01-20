@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail
+package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

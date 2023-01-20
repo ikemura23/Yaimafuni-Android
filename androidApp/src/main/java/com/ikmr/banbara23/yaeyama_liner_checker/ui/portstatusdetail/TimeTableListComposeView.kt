@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.AbstractComposeView
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.component.TimeTableList
 import com.yaeyama_liner_checker.domain.time_table.TimeTable
 
 /**
