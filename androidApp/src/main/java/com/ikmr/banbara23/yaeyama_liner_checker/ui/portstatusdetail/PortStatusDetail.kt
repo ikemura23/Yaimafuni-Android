@@ -19,6 +19,9 @@ import androidx.compose.ui.unit.dp
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.StatusColor
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 
+/**
+ * どこからも使われていない？
+ */
 @Composable
 private fun PortStatusDetail() {
     Card(
