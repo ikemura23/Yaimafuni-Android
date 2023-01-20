@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,7 +22,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
  * どこからも使われていない？
  */
 @Composable
-private fun PortStatusDetail() {
+fun PortStatusDetailScreen() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -37,7 +36,7 @@ private fun PortStatusDetail() {
             ) {
                 Text(
                     text = "港名",
-                    style = MaterialTheme.typography.h6,
+                    style = MaterialTheme.typography.h6
                 )
                 Text(
                     text = "ステータス",
@@ -53,7 +52,7 @@ private fun PortStatusDetail() {
             }
             Text(
                 text = "コメントコメントコメントコメントコメントコメントコメントコメント",
-                modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
+                modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
             )
         }
     }
@@ -61,10 +60,8 @@ private fun PortStatusDetail() {
 
 @Preview
 @Composable
-private fun PortStatusDetailPreview() {
+private fun PortStatusDetailScreenPreview() {
     YaimafuniAndroidTheme {
-        Surface(color = MaterialTheme.colors.background) {
-            PortStatusDetail()
-        }
+        PortStatusDetailScreen()
     }
 }
