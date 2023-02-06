@@ -66,6 +66,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    namespace = "com.ikmr.banbara23.yaeyama_liner_checker"
 }
 
 dependencies {

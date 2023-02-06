@@ -72,4 +72,5 @@ android {
         targetSdk = DefaultConfig.targetSdk
     }
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    namespace = "com.ikemura.shared"
 }
