@@ -1,5 +1,5 @@
 object Versions {
-    const val gradlePlugin = "7.1.3"
+    const val gradlePlugin = "7.3.1"
     const val kotlin = "1.6.20"
     const val compose = "1.2.0-alpha08"
     const val composeThemeAdapter = "1.1.8"
