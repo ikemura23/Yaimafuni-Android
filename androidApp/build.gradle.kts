@@ -49,7 +49,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
+        kotlinCompilerExtensionVersion = "1.4.3"
     }
     // TODO: 一時的に外す、kts化が必要
     // Navigation Componentの Directionsが認識されない対応
@@ -88,7 +88,6 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
     implementation("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
     implementation("androidx.navigation:navigation-runtime-ktx:${Versions.navigation}")
-    implementation("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
     // google
     implementation("com.google.android.gms:play-services-base:18.0.1")
     // firebase

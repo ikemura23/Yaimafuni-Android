@@ -1,7 +1,7 @@
 object Versions {
     const val gradlePlugin = "7.3.1"
-    const val kotlin = "1.6.20"
-    const val compose = "1.2.0-alpha08"
+    const val kotlin = "1.8.10"
+    const val compose = "1.2.0-rc02"
     const val composeThemeAdapter = "1.1.8"
     const val activityCompose = "1.4.0"
     const val navigation = "2.5.3"
