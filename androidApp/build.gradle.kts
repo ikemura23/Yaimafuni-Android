@@ -2,7 +2,6 @@ import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 
 plugins {
     id("com.android.application")
-    id("com.google.gms.google-services")
     kotlin("android")
     id("kotlin-kapt")
     id("kotlin-parcelize")
@@ -51,21 +50,6 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
     }
-    // TODO: 一時的に外す、kts化が必要
-    // Navigation Componentの Directionsが認識されない対応
-    // https://stackoverflow.com/a/67875849
-    // sourceSets {
-    //     main {
-    //         java {
-    //             srcDir("build/generated/source/navigation-args")
-    //         }
-    //     }
-    // }
-    packagingOptions {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
     namespace = "com.ikmr.banbara23.yaeyama_liner_checker"
 }
 
@@ -88,8 +72,6 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
     implementation("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
     implementation("androidx.navigation:navigation-runtime-ktx:${Versions.navigation}")
-    // google
-    implementation("com.google.android.gms:play-services-base:18.0.1")
     // firebase
     implementation(platform("com.google.firebase:firebase-bom:30.0.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
@@ -99,8 +81,6 @@ dependencies {
     // coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}")
 
-    // Picasso TODO: 後に削除
-//    implementation("com.squareup.picasso:picasso:2.71828")
     // Coil
     implementation("io.coil-kt:coil-compose:2.1.0")
 

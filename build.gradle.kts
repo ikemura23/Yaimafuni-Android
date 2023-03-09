@@ -3,14 +3,13 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath("com.android.tools.build:gradle:${Versions.gradlePlugin}")
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath("com.google.gms:google-services:${Versions.googleServices}")
 
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}")
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}")
@@ -22,7 +21,6 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
         maven("https://jitpack.io")
         maven("https://maven.google.com")
         mavenCentral()
