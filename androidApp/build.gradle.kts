@@ -89,7 +89,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
     implementation("androidx.navigation:navigation-runtime-ktx:${Versions.navigation}")
     // google
-    implementation("com.google.android.gms:play-services-base:18.0.1")
+    // implementation("com.google.android.gms:play-services-base:18.0.1")
     // firebase
     implementation(platform("com.google.firebase:firebase-bom:30.0.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")

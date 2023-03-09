@@ -3,7 +3,7 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath("com.android.tools.build:gradle:${Versions.gradlePlugin}")
@@ -22,7 +22,6 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
         maven("https://jitpack.io")
         maven("https://maven.google.com")
         mavenCentral()
