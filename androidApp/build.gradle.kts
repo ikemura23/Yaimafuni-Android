@@ -50,21 +50,6 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
     }
-    // TODO: 一時的に外す、kts化が必要
-    // Navigation Componentの Directionsが認識されない対応
-    // https://stackoverflow.com/a/67875849
-    // sourceSets {
-    //     main {
-    //         java {
-    //             srcDir("build/generated/source/navigation-args")
-    //         }
-    //     }
-    // }
-    packagingOptions {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
     namespace = "com.ikmr.banbara23.yaeyama_liner_checker"
 }
 
@@ -96,8 +81,6 @@ dependencies {
     // coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}")
 
-    // Picasso TODO: 後に削除
-//    implementation("com.squareup.picasso:picasso:2.71828")
     // Coil
     implementation("io.coil-kt:coil-compose:2.1.0")
 
