@@ -8,10 +8,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 enum class Company(
     val code: String,
-    val fullName: String
+    val fullName: String,
 ) {
     ANEI("anei", "安栄観光"),
-    YKF("ykf", "八重山観光フェリー");
+    YKF("ykf", "八重山観光フェリー"),
+    ;
 
     override fun toString(): String {
         return "Company{" +

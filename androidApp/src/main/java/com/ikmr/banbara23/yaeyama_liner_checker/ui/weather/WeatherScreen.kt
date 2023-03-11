@@ -16,11 +16,11 @@ import timber.log.Timber
 
 @Composable
 fun WeatherScreen(
-    weatherViewModel: WeatherScreenViewModel
+    weatherViewModel: WeatherScreenViewModel,
 ) {
     val uiState by weatherViewModel.weatherFlow.collectAsState()
     WeatherScreen(
-        uiState
+        uiState,
     )
 }
 
@@ -29,11 +29,11 @@ private fun WeatherScreen(uiState: WeatherUiState) {
     Timber.d("XXX uiState: $uiState")
     Scaffold(
         backgroundColor = Color.Transparent,
-        topBar = { WeatherTopAppBar(titleRes = R.string.weather_screen_title) }
+        topBar = { WeatherTopAppBar(titleRes = R.string.weather_screen_title) },
     ) { padding ->
         WeatherPage(
             modifier = Modifier.padding(padding),
-            uiState = uiState
+            uiState = uiState,
         )
     }
 }
@@ -42,6 +42,6 @@ private fun WeatherScreen(uiState: WeatherUiState) {
 @Composable
 private fun WeatherScreenPreview() {
     WeatherScreen(
-        WeatherUiState.Loading
+        WeatherUiState.Loading,
     )
 }

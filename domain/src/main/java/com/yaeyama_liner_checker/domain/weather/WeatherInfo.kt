@@ -10,5 +10,5 @@ data class WeatherInfo(
     // 今日の天気
     var today: Weather = Weather(),
     // 明日の天気
-    var tomorrow: Weather = Weather()
+    var tomorrow: Weather = Weather(),
 )

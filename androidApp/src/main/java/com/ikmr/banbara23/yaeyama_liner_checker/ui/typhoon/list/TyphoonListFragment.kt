@@ -8,11 +8,11 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonListFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.detail.TyphoonDetailUiModel
+import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 
 /**
  * 台風一覧 Fragment
@@ -24,7 +24,6 @@ class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment) {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding = TyphoonListFragmentBinding.inflate(inflater, container, false)
         binding.composeView.apply {
-
             setContent {
                 // ViewのLifecycleOwnerが破棄されたときに、コンポジションを破棄する
                 setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
@@ -33,7 +32,7 @@ class TyphoonListFragment : Fragment(R.layout.typhoon_list_fragment) {
                         typhoonListViewModel = viewModel,
                         onItemClick = { typhoon: Typhoon ->
                             navigateToTyphoonDetail(typhoon.toTyphoonUiModel())
-                        }
+                        },
                     )
                 }
             }

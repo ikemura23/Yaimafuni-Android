@@ -10,5 +10,5 @@ data class Temperature(
     // 最高
     val hight: String = "",
     // 最低
-    val low: String = ""
+    val low: String = "",
 )

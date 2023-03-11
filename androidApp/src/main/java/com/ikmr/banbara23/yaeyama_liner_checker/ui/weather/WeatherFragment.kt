@@ -27,7 +27,7 @@ class WeatherFragment : Fragment(R.layout.weather_fragment) {
                 setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
                 YaimafuniAndroidTheme {
                     WeatherScreen(
-                        weatherViewModel = viewModel
+                        weatherViewModel = viewModel,
                     )
                 }
             }

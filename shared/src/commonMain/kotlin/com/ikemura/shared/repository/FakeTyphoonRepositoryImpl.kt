@@ -23,7 +23,7 @@ class FakeTyphoonRepositoryImpl : TyphoonRepository, KoinComponent {
                     intensity = "---",
                     pressure = "980hPa",
                     area = "東シナ海",
-                    maxWindSpeedNearCenter = "30m/s"
+                    maxWindSpeedNearCenter = "30m/s",
                 ),
                 Typhoon(
                     name = "台風19号(タマーキ)",
@@ -33,7 +33,7 @@ class FakeTyphoonRepositoryImpl : TyphoonRepository, KoinComponent {
                     intensity = "強い",
                     pressure = "981hPa",
                     area = "東シナ海",
-                    maxWindSpeedNearCenter = "40m/s"
+                    maxWindSpeedNearCenter = "40m/s",
                 ),
                 Typhoon(
                     name = "台風20号(シバーム)",
@@ -43,8 +43,8 @@ class FakeTyphoonRepositoryImpl : TyphoonRepository, KoinComponent {
                     intensity = "ヤバイ",
                     pressure = "982hPa",
                     area = "東シナ海",
-                    maxWindSpeedNearCenter = "40m/s"
-                )
+                    maxWindSpeedNearCenter = "40m/s",
+                ),
             )
             emit(data)
         }

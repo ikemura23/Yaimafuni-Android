@@ -30,7 +30,7 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
     }
     private val firebaseAnalytics: FirebaseAnalytics by lazy {
         FirebaseAnalytics.getInstance(
-            requireActivity()
+            requireActivity(),
         )
     }
 
@@ -82,7 +82,7 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
         }
         val intent = Intent(
             Intent.ACTION_VIEW,
-            Uri.parse("tel:$tel")
+            Uri.parse("tel:$tel"),
         )
         try {
             startActivity(intent)

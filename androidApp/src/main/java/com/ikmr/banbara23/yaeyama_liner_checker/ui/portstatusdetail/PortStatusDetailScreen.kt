@@ -25,18 +25,18 @@ import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 fun PortStatusDetailScreen() {
     Card(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth(),
     ) {
         Column {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 4.dp, horizontal = 8.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text(
                     text = "港名",
-                    style = MaterialTheme.typography.h6
+                    style = MaterialTheme.typography.h6,
                 )
                 Text(
                     text = "ステータス",
@@ -45,14 +45,14 @@ fun PortStatusDetailScreen() {
                     modifier = Modifier
                         .background(
                             color = StatusColor.Normal,
-                            shape = RoundedCornerShape(16)
+                            shape = RoundedCornerShape(16),
                         )
-                        .padding(vertical = 4.dp, horizontal = 4.dp)
+                        .padding(vertical = 4.dp, horizontal = 4.dp),
                 )
             }
             Text(
                 text = "コメントコメントコメントコメントコメントコメントコメントコメント",
-                modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
+                modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
             )
         }
     }

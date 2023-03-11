@@ -14,7 +14,7 @@ object FakeDashBoardDataProvider {
             status = Status(
                 text = "通常運航",
                 code = "normal",
-            )
+            ),
         ),
         ykf = PortStatus(
             portCode = "hatoma",
@@ -23,8 +23,8 @@ object FakeDashBoardDataProvider {
             status = Status(
                 text = "欠航",
                 code = "cancel",
-            )
-        )
+            ),
+        ),
     )
 
     val dummyPort2 = Ports(
@@ -35,7 +35,7 @@ object FakeDashBoardDataProvider {
             status = Status(
                 text = "通常運航",
                 code = "normal",
-            )
+            ),
         ),
         ykf = PortStatus(
             portCode = "hatoma",
@@ -44,8 +44,8 @@ object FakeDashBoardDataProvider {
             status = Status(
                 text = "欠航",
                 code = "cancel",
-            )
-        )
+            ),
+        ),
     )
     val dummyPortList: List<Ports> = (1..5).toList().map { dummyPort1 } + dummyPort2
 }

@@ -1,8 +1,8 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.ui.main
 
 import androidx.lifecycle.ViewModel
-import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 import com.ikemura.shared.repository.TyphoonRepositoryImpl
+import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

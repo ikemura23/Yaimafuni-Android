@@ -21,7 +21,7 @@ fun TyphoonListScreen() {
         content = { _ ->
             TyphoonListContent { typhoon: Typhoon -> /* 処理 */ }
 //            TyphoonListEmptyContent()
-        }
+        },
     )
 }
 

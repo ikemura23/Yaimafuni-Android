@@ -12,13 +12,13 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R
 
 @Composable
 fun WeatherTopAppBar(
-    @StringRes titleRes: Int
+    @StringRes titleRes: Int,
 ) {
     TopAppBar(
         contentColor = Color.White,
         title = { Text(stringResource(titleRes)) },
         backgroundColor = Color.Transparent,
-        elevation = 0.dp
+        elevation = 0.dp,
     )
 }
 

@@ -56,7 +56,7 @@ class PortMainStatusComposeView @JvmOverloads constructor(
         PortMainStatus(
             portName = portStatusState.value.portName,
             status = portStatusState.value.status,
-            statusDescription = portStatusState.value.comment
+            statusDescription = portStatusState.value.comment,
         )
     }
 }

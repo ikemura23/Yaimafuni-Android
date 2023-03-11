@@ -21,11 +21,11 @@ import com.yaeyama_liner_checker.domain.weather.Weather
 @Composable
 fun WeatherListItemCardContent(weather: Weather) {
     Column(
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier.padding(16.dp),
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text("天気：")
             Text(weather.weather)
@@ -33,7 +33,7 @@ fun WeatherListItemCardContent(weather: Weather) {
         Spacer(modifier = Modifier.height(8.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text("最高：")
             Text(" ${weather.temperature.hight} ℃")
@@ -41,7 +41,7 @@ fun WeatherListItemCardContent(weather: Weather) {
 
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text("最低：")
             Text(" ${weather.temperature.low} ℃")
@@ -50,7 +50,7 @@ fun WeatherListItemCardContent(weather: Weather) {
         Spacer(modifier = Modifier.height(8.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text("風：")
             Text(weather.wind)
@@ -58,7 +58,7 @@ fun WeatherListItemCardContent(weather: Weather) {
         Spacer(modifier = Modifier.height(8.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text("波：")
             Text(weather.wave)
@@ -75,10 +75,10 @@ fun WeatherListItemCardContentPreview() {
             weather = "曇り時々雨",
             temperature = Temperature(
                 hight = "21",
-                low = "18"
+                low = "18",
             ),
             wind = "北東の風強く",
-            wave = "４メートルうねりを伴う"
-        )
+            wave = "４メートルうねりを伴う",
+        ),
     )
 }

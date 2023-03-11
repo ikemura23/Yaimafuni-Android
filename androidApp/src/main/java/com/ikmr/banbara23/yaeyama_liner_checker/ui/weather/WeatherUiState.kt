@@ -9,6 +9,6 @@ sealed interface WeatherUiState {
     object Loading : WeatherUiState
 
     data class Success(
-        val weather: WeatherInfo
+        val weather: WeatherInfo,
     ) : WeatherUiState
 }

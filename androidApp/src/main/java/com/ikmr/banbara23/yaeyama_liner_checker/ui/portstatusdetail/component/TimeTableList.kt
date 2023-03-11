@@ -38,24 +38,24 @@ typealias TimeRow = Row
 fun TimeTableList(timeTable: TimeTable) {
     Timber.d(timeTable.toString())
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
     ) {
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         ) {
             TimeTableListHeader(
-                header = timeTable.header
+                header = timeTable.header,
             )
             timeTable.row.forEach { row ->
                 Divider(
                     color = TableDividerColor,
-                    modifier = Modifier.height(1.dp)
+                    modifier = Modifier.height(1.dp),
                 )
                 TimeTableListItem(
                     leftStatus = row.left.status.text,
                     leftTime = row.left.time,
                     rightStatus = row.right.status.text,
-                    rightTime = row.right.time
+                    rightTime = row.right.time,
                 )
             }
         }
@@ -67,25 +67,25 @@ fun TimeTableList(timeTable: TimeTable) {
  */
 @Composable
 fun TimeTableListHeader(
-    header: Header = Header(left = "石垣島", right = "大原港")
+    header: Header = Header(left = "石垣島", right = "大原港"),
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .background(color = TableHeaderColor),
-        horizontalArrangement = Arrangement.SpaceAround
+        horizontalArrangement = Arrangement.SpaceAround,
     ) {
         Text(
             text = header.left,
             modifier = Modifier.padding(4.dp),
             fontWeight = FontWeight.Bold,
-            color = Color.White
+            color = Color.White,
         )
         Text(
             text = header.right,
             modifier = Modifier.padding(4.dp),
             fontWeight = FontWeight.Bold,
-            color = Color.White
+            color = Color.White,
         )
     }
 }
@@ -98,12 +98,12 @@ fun TimeTableListItem(
     leftTime: String = "00:00",
     leftStatus: String = "通常運行",
     rightTime: String = "00:00",
-    rightStatus: String = "通常運行"
+    rightStatus: String = "通常運行",
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(IntrinsicSize.Min)
+            .height(IntrinsicSize.Min),
     ) {
         // TODO: modifierをパラメータで渡したくないため、weightを使わない方法にできるか？
         val modifier = Modifier
@@ -114,19 +114,19 @@ fun TimeTableListItem(
         TimeTableRowItem(
             time = leftTime,
             status = leftStatus,
-            modifier = modifier
+            modifier = modifier,
         )
         Divider(
             color = TableDividerColor,
             modifier = Modifier
                 .fillMaxHeight()
-                .width(1.dp)
+                .width(1.dp),
         )
         // 右側（ターゲット港）
         TimeTableRowItem(
             time = rightTime,
             status = rightStatus,
-            modifier = modifier
+            modifier = modifier,
         )
     }
 }
@@ -136,21 +136,21 @@ fun TimeTableRowItem(time: String, status: String, modifier: Modifier) {
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center
+        horizontalArrangement = Arrangement.Center,
     ) {
         // 時刻
         Text(
             text = time,
             modifier = Modifier
                 .weight(1f)
-                .padding(4.dp)
+                .padding(4.dp),
         )
         // ステータス文字
         Text(
             text = status,
             modifier = Modifier
                 .weight(1f)
-                .padding(4.dp)
+                .padding(4.dp),
         )
     }
 }
@@ -164,17 +164,17 @@ private fun TimeTableListPreview() {
             val rowItem = RowItem(
                 status = Status(code = "nomal", text = "通常運行"),
                 time = "00:00",
-                memo = "" // 使ってる？
+                memo = "", // 使ってる？
             )
             // TimeRowとは、typealiasでRowクラスの別名、composeのRowと名前が同じなので紛らわしい
             val row = TimeRow(
                 left = rowItem,
-                right = rowItem
+                right = rowItem,
             )
             val rows = List(5) { row }
             val timeTable = TimeTable(
                 header = header,
-                row = rows
+                row = rows,
             )
             TimeTableList(timeTable)
         }
@@ -199,7 +199,7 @@ fun TimeTableListRowPreview() {
                 leftTime = "00:00",
                 leftStatus = "通常運行",
                 rightTime = "00:00",
-                rightStatus = "通常運行"
+                rightStatus = "通常運行",
             )
         }
     }
@@ -217,7 +217,7 @@ private fun TimeTableRowItemPreview() {
                 time = "16：45\n" +
                     "    上原経由",
                 status = "通常運行",
-                modifier
+                modifier,
             )
         }
     }

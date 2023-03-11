@@ -18,7 +18,7 @@ class GetStatusDetail(
             return@zip if (portStatusState is UiState.Success && timeTableState is UiState.Success) {
                 val result = StatusDetailResult(
                     portStatusState.data,
-                    timeTableState.data
+                    timeTableState.data,
                 )
                 UiState.Success(result)
             } else {

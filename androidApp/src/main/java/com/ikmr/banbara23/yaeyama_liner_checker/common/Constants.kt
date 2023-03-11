@@ -14,4 +14,3 @@ object Constants {
     const val BUNDLE_KEY_COMPANY = "BUNDLE_KEY_COMPANY"
     const val BUNDLE_KEY_PORT_CODE = "BUNDLE_KEY_PORT_CODE"
 }
-

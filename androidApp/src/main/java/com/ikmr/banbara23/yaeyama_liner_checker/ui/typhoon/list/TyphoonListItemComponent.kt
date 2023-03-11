@@ -23,9 +23,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
+import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 
 @Composable
 fun TyphoonListItemComponent(typhoon: Typhoon, onItemClick: (Typhoon) -> Unit) {
@@ -52,7 +52,7 @@ fun TyphoonListItemComponent(typhoon: Typhoon, onItemClick: (Typhoon) -> Unit) {
                     verticalArrangement = Arrangement.SpaceEvenly,
                     modifier = Modifier
                         .height(120.dp)
-                        .weight(1f)
+                        .weight(1f),
                 ) {
                     TyphoonScale(typhoon.scale)
                     TyphoonIntensity(typhoon.intensity)
@@ -68,7 +68,6 @@ fun TyphoonListItemComponent(typhoon: Typhoon, onItemClick: (Typhoon) -> Unit) {
 @Preview
 @Composable
 private fun TyphoonListItemComponentPreview() {
-
     val typhoon = Typhoon(
         name = "台風18号(ミートク)",
         dateTime = "01日15:00現在",
@@ -77,7 +76,7 @@ private fun TyphoonListItemComponentPreview() {
         intensity = "---",
         pressure = "980hPa",
         area = "東シナ海",
-        maxWindSpeedNearCenter = "30m/s"
+        maxWindSpeedNearCenter = "30m/s",
     )
     YaimafuniAndroidTheme {
         Surface {
@@ -162,7 +161,7 @@ private fun TyphoonImagePreview() {
 private fun TyphoonTextContent(value: String) {
     Column(
         verticalArrangement = Arrangement.SpaceEvenly,
-        modifier = Modifier.height(120.dp)
+        modifier = Modifier.height(120.dp),
     ) {
         TyphoonScale("あああ")
         TyphoonIntensity("あああ")
@@ -222,7 +221,7 @@ fun TyphoonTextContentPreview() {
         Surface {
             Column(
                 verticalArrangement = Arrangement.SpaceEvenly,
-                modifier = Modifier.height(120.dp)
+                modifier = Modifier.height(120.dp),
             ) {
                 TyphoonScale("あああ")
                 TyphoonIntensity("あああ")
@@ -238,7 +237,7 @@ fun ArrowImage() {
     Image(
         painter = painterResource(R.drawable.ic_keyboard_arrow_right_black_24dp),
         contentDescription = null,
-        modifier = Modifier.padding(bottom = 8.dp)
+        modifier = Modifier.padding(bottom = 8.dp),
     )
 }
 

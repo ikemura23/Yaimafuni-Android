@@ -19,7 +19,7 @@ fun WeatherListItemCardHeader(title: String) {
         text = title,
         modifier = Modifier.background(color = colorResource(id = R.color.primary)).fillMaxWidth()
             .padding(16.dp),
-        style = TextStyle.Default.copy(color = Color.White)
+        style = TextStyle.Default.copy(color = Color.White),
     )
 }
 

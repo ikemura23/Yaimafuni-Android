@@ -2,7 +2,6 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.main
 
 import android.content.Context
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit

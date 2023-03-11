@@ -14,7 +14,7 @@ class DebugWeatherRepositoryImpl : WeatherRepository, KoinComponent {
                 date = "1月2日(土)",
                 temperature = Temperature(
                     hight = "15℃",
-                    low = "12℃"
+                    low = "12℃",
                 ),
                 wave = "2.5メートル",
                 weather = "曇り",
@@ -24,15 +24,15 @@ class DebugWeatherRepositoryImpl : WeatherRepository, KoinComponent {
                         hour = "06",
                         weather = "晴れ",
                         windBlow = "1",
-                        windSpeed = "5"
-                    )
-                )
+                        windSpeed = "5",
+                    ),
+                ),
             ),
             tomorrow = Weather(
                 date = "1月3日(日)",
                 temperature = Temperature(
                     hight = "15℃",
-                    low = "12℃"
+                    low = "12℃",
                 ),
                 wave = "2.5メートル",
                 weather = "曇り",
@@ -42,9 +42,9 @@ class DebugWeatherRepositoryImpl : WeatherRepository, KoinComponent {
                         hour = "06",
                         weather = "晴れ",
                         windBlow = "1",
-                        windSpeed = "5"
-                    )
-                )
+                        windSpeed = "5",
+                    ),
+                ),
             ),
         )
         emit(UiState.Success(weatherInfo))

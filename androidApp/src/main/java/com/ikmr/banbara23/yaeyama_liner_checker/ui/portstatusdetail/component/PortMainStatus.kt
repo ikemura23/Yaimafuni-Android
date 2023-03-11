@@ -29,22 +29,22 @@ import timber.log.Timber
 fun PortMainStatus(
     portName: String,
     status: Status,
-    statusDescription: String
+    statusDescription: String,
 ) {
     Timber.d("portName: $portName")
     Timber.d("status: $status")
     Timber.d("statusDescription: $statusDescription")
 
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
     ) {
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text(
                     text = portName,
@@ -60,9 +60,9 @@ fun PortMainStatus(
                         modifier = Modifier
                             .background(
                                 color = statusBackgroundColor,
-                                shape = RoundedCornerShape(16)
+                                shape = RoundedCornerShape(16),
                             )
-                            .padding(vertical = 4.dp, horizontal = 4.dp)
+                            .padding(vertical = 4.dp, horizontal = 4.dp),
                     )
                 }
             }
@@ -84,7 +84,7 @@ private fun PortMainStatusPreview() {
             PortMainStatus(
                 portName = "港名",
                 status = Status("nomal", "通常運行"),
-                statusDescription = "コメント"
+                statusDescription = "コメント",
             )
         }
     }

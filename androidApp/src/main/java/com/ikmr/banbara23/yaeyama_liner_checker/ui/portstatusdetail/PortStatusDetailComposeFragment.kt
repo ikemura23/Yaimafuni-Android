@@ -46,14 +46,14 @@ class PortStatusDetailComposeFragment : Fragment() {
 private fun PortStatusDetail() {
     Card(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth(),
     ) {
         Column {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 4.dp, horizontal = 8.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text(
                     text = "港名",
@@ -64,9 +64,9 @@ private fun PortStatusDetail() {
                     modifier = Modifier
                         .background(
                             color = StatusColor.Normal,
-                            shape = RoundedCornerShape(16)
+                            shape = RoundedCornerShape(16),
                         )
-                        .padding(vertical = 4.dp, horizontal = 8.dp)
+                        .padding(vertical = 4.dp, horizontal = 8.dp),
                 )
             }
             Text(

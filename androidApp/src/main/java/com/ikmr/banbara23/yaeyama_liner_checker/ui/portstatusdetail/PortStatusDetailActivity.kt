@@ -51,7 +51,7 @@ class PortStatusDetailActivity : AppCompatActivity() {
         // タブ名
         val tabTitles = arrayOf(
             R.string.tab_annei,
-            R.string.tab_ykf
+            R.string.tab_ykf,
         )
 
         // https://developer.android.com/guide/navigation/navigation-swipe-view-2

@@ -21,25 +21,25 @@ fun WeatherPage(modifier: Modifier = Modifier, uiState: WeatherUiState) {
     Box(
         modifier = modifier
             .background(color = Color.Transparent)
-            .fillMaxSize()
+            .fillMaxSize(),
     ) {
         if (uiState is WeatherUiState.Success) {
             LazyColumn(
                 contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 val values = listOf(uiState.weather.today, uiState.weather.tomorrow)
                 items(values) { weather ->
                     WeatherListItem(
                         weather = weather,
-                        onItemClick = {}
+                        onItemClick = {},
                     )
                 }
             }
         }
         if (uiState is WeatherUiState.Loading) {
             CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier.align(Alignment.Center),
             )
         }
     }

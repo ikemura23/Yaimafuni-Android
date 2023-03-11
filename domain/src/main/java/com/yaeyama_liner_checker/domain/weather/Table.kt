@@ -14,5 +14,5 @@ data class Table(
     // 風向き
     val windBlow: String = "",
     // 風速
-    val windSpeed: String = ""
+    val windSpeed: String = "",
 )

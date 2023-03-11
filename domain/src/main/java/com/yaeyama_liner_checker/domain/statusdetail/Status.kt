@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Status(
     val code: String = "",
-    val text: String = ""
+    val text: String = "",
 )

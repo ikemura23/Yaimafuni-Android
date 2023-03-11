@@ -26,7 +26,7 @@ class PortStatusPagerAdapter(
 
         val bundle = bundleOf(
             Constants.BUNDLE_KEY_PORT_CODE to portCode,
-            Constants.BUNDLE_KEY_COMPANY to company
+            Constants.BUNDLE_KEY_COMPANY to company,
         )
 
         return PortStatusDetailFragment.newInstance(bundle)

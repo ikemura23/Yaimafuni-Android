@@ -35,7 +35,7 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
                                 Timber.d("clicked status: $port")
                                 navigateToStatusDetail(
                                     portCode = port.anei.portCode,
-                                    portName = port.anei.portName
+                                    portName = port.anei.portName,
                                 )
                             }
                         }

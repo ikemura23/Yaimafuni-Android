@@ -14,14 +14,14 @@ import com.yaeyama_liner_checker.domain.weather.Weather
 fun WeatherListItem(
     modifier: Modifier = Modifier,
     weather: Weather,
-    onItemClick: () -> Unit
+    onItemClick: () -> Unit,
 ) {
     Card(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
         // onClick = onItemClick // TODO: 遷移先の画面がまだないので、いったんコメントアウト
     ) {
         Column(
-            modifier = modifier.fillMaxWidth()
+            modifier = modifier.fillMaxWidth(),
         ) {
             WeatherListItemCardHeader(weather.date)
             WeatherListItemCardContent(weather)
@@ -34,6 +34,6 @@ fun WeatherListItem(
 private fun WeatherListItemPreview() {
     WeatherListItem(
         weather = Weather(),
-        onItemClick = {}
+        onItemClick = {},
     )
 }

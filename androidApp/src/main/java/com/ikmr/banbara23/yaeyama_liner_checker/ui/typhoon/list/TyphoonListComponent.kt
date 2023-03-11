@@ -13,16 +13,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
+import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 
 @Composable
 fun TyphoonListContent(
     typhoonListViewModel: TyphoonListViewModel = viewModel(),
-    onItemClick: (Typhoon) -> Unit
+    onItemClick: (Typhoon) -> Unit,
 ) {
-
     // 作りかけ
 //    val uiState = typhoonListViewModel.uiState.collectAsState()
 //    when (uiState.value) {
@@ -44,8 +43,7 @@ fun TyphoonListContent(
     val data = typhoonListViewModel.getTyphoonList().collectAsState(initial = null)
     if (data.value == null) {
         // loading中
-    }
-    else if (data.value!!.isEmpty()) {
+    } else if (data.value!!.isEmpty()) {
         TyphoonListEmptyContent()
     } else {
         LazyColumn() {
@@ -64,7 +62,7 @@ fun TyphoonListEmptyContent() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(
             text = stringResource(id = R.string.typhoon_list_empty),
-            color = Color.White
+            color = Color.White,
         )
     }
 }

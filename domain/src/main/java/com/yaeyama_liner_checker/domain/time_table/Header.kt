@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Header(
     val left: String = "",
-    val right: String = ""
+    val right: String = "",
 )

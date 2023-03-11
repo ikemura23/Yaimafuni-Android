@@ -59,7 +59,7 @@ fun RowDivider() {
         modifier = Modifier
             .fillMaxWidth()
             .width(1.dp),
-        color = colorResource(id = R.color.light_grey)
+        color = colorResource(id = R.color.light_grey),
     )
 }
 
@@ -70,7 +70,7 @@ fun DashBoardHeader() {
         modifier = Modifier
             .fillMaxWidth()
             .requiredHeight(48.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Spacer(modifier = Modifier.padding(8.dp))
         Icon(
@@ -121,9 +121,9 @@ fun DashBoardRowItem(
                 modifier = Modifier
                     .background(
                         color = statusBackgroundColor,
-                        shape = RoundedCornerShape(16)
+                        shape = RoundedCornerShape(16),
                     )
-                    .padding(4.dp)
+                    .padding(4.dp),
             )
         }
     }
@@ -166,17 +166,17 @@ fun DashBoardRow(
     ) {
         Text(
             text = port.anei.portName,
-            modifier = Modifier.align(Alignment.CenterStart)
+            modifier = Modifier.align(Alignment.CenterStart),
         )
         DashBoardRowItem(
             modifier = Modifier.align(Alignment.Center),
             portName = "安栄観光",
-            status = port.anei.status
+            status = port.anei.status,
         )
         DashBoardRowItem(
             modifier = Modifier.align(Alignment.CenterEnd),
             portName = "八観フェ",
-            status = port.ykf.status
+            status = port.ykf.status,
         )
     }
 }
@@ -187,7 +187,7 @@ fun DashBoardRowPreview() {
     YaimafuniAndroidTheme {
         Surface {
             DashBoardRow(
-                FakeDashBoardDataProvider.dummyPort1
+                FakeDashBoardDataProvider.dummyPort1,
             ) {}
         }
     }

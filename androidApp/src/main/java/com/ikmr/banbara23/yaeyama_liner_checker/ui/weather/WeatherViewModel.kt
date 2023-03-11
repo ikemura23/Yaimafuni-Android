@@ -32,6 +32,6 @@ class WeatherScreenViewModel : ViewModel(), KoinComponent {
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = WeatherUiState.Loading
+            initialValue = WeatherUiState.Loading,
         )
 }

@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Row(
     val left: RowItem = RowItem(),
-    val right: RowItem = RowItem()
+    val right: RowItem = RowItem(),
 )

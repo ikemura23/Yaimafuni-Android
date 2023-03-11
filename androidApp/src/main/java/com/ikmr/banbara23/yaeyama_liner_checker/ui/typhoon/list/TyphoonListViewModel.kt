@@ -2,8 +2,8 @@ package com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 import com.ikemura.shared.repository.TyphoonRepository
+import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.StateFlow
@@ -36,7 +36,7 @@ class TyphoonListViewModel : ViewModel(), KoinComponent {
     }.stateIn(
         scope = viewModelScope,
         started = WhileSubscribed(5000), // ５秒間購読がなければコルーチンを停止する
-        initialValue = TyphoonUiState.Loading
+        initialValue = TyphoonUiState.Loading,
     )
 }
 

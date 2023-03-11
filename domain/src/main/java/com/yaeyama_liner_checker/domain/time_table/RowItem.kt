@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 data class RowItem(
     val memo: String = "",
     val status: Status = Status(),
-    val time: String = ""
+    val time: String = "",
 )
