@@ -2,6 +2,7 @@ import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 
 plugins {
     id("com.android.application")
+    id("com.google.gms.google-services") // firebaseに必要
     kotlin("android")
     id("kotlin-kapt")
     id("kotlin-parcelize")
@@ -68,6 +69,8 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.4.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
+    // google
+    // implementation("com.google.android.gms:play-services-base:18.0.1")
     // navigation
     implementation("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
     implementation("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
