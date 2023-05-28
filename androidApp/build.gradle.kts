@@ -56,6 +56,8 @@ android {
 
 dependencies {
     implementation(project(":shared"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
 
     // android
     implementation("androidx.appcompat:appcompat:1.4.1")
@@ -117,8 +119,6 @@ dependencies {
 
     // Koin
     implementation("io.insert-koin:koin-android:${Versions.koin}")
-
-    implementation(project(":domain"))
 
     testImplementation("junit:junit:${Versions.junit}")
 
