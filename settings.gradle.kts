@@ -7,7 +7,6 @@ pluginManagement {
 }
 
 include(
-    ":shared",
     ":androidApp",
     ":domain",
     ":data",
