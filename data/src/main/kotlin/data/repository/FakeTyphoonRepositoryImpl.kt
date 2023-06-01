@@ -1,5 +1,6 @@
-package com.ikemura.shared.repository
+package data.repository
 
+import com.ikemura.shared.repository.TyphoonRepository
 import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow

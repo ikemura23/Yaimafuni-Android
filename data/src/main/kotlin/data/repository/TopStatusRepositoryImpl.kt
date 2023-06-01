@@ -1,5 +1,6 @@
 package com.ikemura.shared.repository
 
+import com.google.firebase.database.FirebaseDatabase
 import com.yaeyama_liner_checker.domain.top.Ports
 import com.yaeyama_liner_checker.domain.top.TopPort
 import dev.gitlive.firebase.database.FirebaseDatabase
