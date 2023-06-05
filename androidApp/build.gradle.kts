@@ -57,7 +57,6 @@ dependencies {
 
     // android
     implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.browser:browser:1.4.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
