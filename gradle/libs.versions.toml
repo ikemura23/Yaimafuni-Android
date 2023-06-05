@@ -4,6 +4,7 @@ firebaseBom = "32.1.0"
 adroidGradlePlugin = "8.0.2"
 googleServices = "4.3.15"
 kotlinxCoroutinesAndroid = "1.6.4"
+timber = "5.0.1"
 
 [libraries]
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
@@ -14,6 +15,7 @@ firebase-crashlytics = {group = "com.google.firebase", name = "firebase-crashlyt
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "adroidGradlePlugin" }
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
 [plugins]
 

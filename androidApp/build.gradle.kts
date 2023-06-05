@@ -83,7 +83,7 @@ dependencies {
     // Coil
     implementation(libs.coil.compose)
 
-    implementation("com.jakewharton.timber:timber:4.7.1")
+    implementation(libs.timber)
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
