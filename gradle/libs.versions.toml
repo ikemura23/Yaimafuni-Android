@@ -1,5 +1,6 @@
 [versions]
 firebaseBom = "32.1.0"
+adroidGradlePlugin = "8.0.2"
 kotlinxCoroutinesAndroid = "1.6.4"
 
 [libraries]
@@ -8,6 +9,7 @@ firebase-database = {group = "com.google.firebase", name = "firebase-database-kt
 firebase-analytics = {group = "com.google.firebase", name = "firebase-analytics-ktx"}
 firebase-crashlytics = {group = "com.google.firebase", name = "firebase-crashlytics"}
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "adroidGradlePlugin" }
 
 [plugins]
 
