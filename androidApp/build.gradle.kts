@@ -57,7 +57,7 @@ dependencies {
 
     // android
     implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("androidx.browser:browser:1.4.0")
+    implementation(libs.browser)
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.0-beta01")
