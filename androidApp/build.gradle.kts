@@ -83,8 +83,8 @@ dependencies {
     implementation(libs.timber)
 
     // In-App Review
-    implementation("com.google.android.play:core:1.10.3")
-    implementation("com.google.android.play:core-ktx:1.8.1")
+    implementation(libs.play.core)
+    implementation(libs.play.core.ktx)
 
     // Jetpack Compose toolkit dependencies
     // https://developer.android.com/jetpack/compose/setup#compose-compiler
