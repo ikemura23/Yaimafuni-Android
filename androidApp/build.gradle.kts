@@ -61,7 +61,6 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.0-beta01")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
     implementation("androidx.fragment:fragment-ktx:1.4.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
