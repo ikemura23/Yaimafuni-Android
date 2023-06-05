@@ -1,6 +1,6 @@
-package com.ikemura.shared.usecase
+package data.usecase
 
-import com.ikemura.shared.repository.StatusDetailRepository
+import data.repository.StatusDetailRepository
 import com.ikemura.shared.repository.UiState
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus

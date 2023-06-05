@@ -1,8 +1,11 @@
 package com.ikemura.shared.repository
 
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.getValue
 import com.yaeyama_liner_checker.domain.weather.WeatherInfo
-import dev.gitlive.firebase.database.DataSnapshot
-import dev.gitlive.firebase.database.FirebaseDatabase
+import data.ext.reference
+import data.ext.valueEvents
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -22,8 +25,7 @@ class WeatherRepositoryImpl : WeatherRepository, KoinComponent {
         val dbRef = database.reference("weather")
         return dbRef.valueEvents
             .map { snapShot: DataSnapshot ->
-                val deserializeValue = snapShot.value(WeatherInfo.serializer())
-                UiState.Success(deserializeValue)
+                UiState.Success(snapShot.getValue<WeatherInfo>()!!)
             }
             .catch {
                 UiState.Error(it)

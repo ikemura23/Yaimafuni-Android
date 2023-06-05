@@ -1,5 +1,7 @@
-package com.ikemura.shared.repository
+package data.repository
 
+import com.ikemura.shared.repository.UiState
+import com.ikemura.shared.repository.WeatherRepository
 import com.yaeyama_liner_checker.domain.weather.Table
 import com.yaeyama_liner_checker.domain.weather.Temperature
 import com.yaeyama_liner_checker.domain.weather.Weather
