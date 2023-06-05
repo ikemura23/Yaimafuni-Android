@@ -5,7 +5,6 @@ object Versions {
     const val activityCompose = "1.4.0"
     const val navigation = "2.5.3"
     const val firebaseCrashlyticsGradle = "2.8.1"
-    const val googleServices = "4.3.15"
     const val coroutine = "1.6.1"
     const val koin = "3.1.6"
     const val junit = "4.13.2"
