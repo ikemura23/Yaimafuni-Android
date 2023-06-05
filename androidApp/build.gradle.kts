@@ -85,8 +85,6 @@ dependencies {
 
     implementation(libs.timber)
 
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-
     // In-App Review
     implementation("com.google.android.play:core:1.10.3")
     implementation("com.google.android.play:core-ktx:1.8.1")
