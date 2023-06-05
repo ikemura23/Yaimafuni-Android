@@ -74,9 +74,9 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
     implementation("androidx.navigation:navigation-runtime-ktx:${Versions.navigation}")
     // firebase
-    implementation(platform("com.google.firebase:firebase-bom:30.0.0"))
-    implementation("com.google.firebase:firebase-analytics-ktx")
-    implementation("com.google.firebase:firebase-crashlytics")
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics)
     // coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}")
 
