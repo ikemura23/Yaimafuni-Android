@@ -1,7 +1,12 @@
-package com.ikemura.shared.repository
+package data.repository
 
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.getValue
+import com.ikemura.shared.repository.TyphoonRepository
 import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
-import dev.gitlive.firebase.database.FirebaseDatabase
+import data.ext.reference
+import data.ext.valueEvents
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -14,12 +19,8 @@ class TyphoonRepositoryImpl : TyphoonRepository, KoinComponent {
 
     override fun fetchTyphoonList(): Flow<List<Typhoon>> {
         val dbRef = database.reference("typhoon/tenkijp")
-        return dbRef.valueEvents.map { snapshot ->
-            if (snapshot.exists) {
-                snapshot.value() as List<Typhoon>
-            } else {
-                listOf()
-            }
+        return dbRef.valueEvents.map { snapshot: DataSnapshot ->
+            snapshot.getValue<List<Typhoon>>() ?: listOf()
         }.catch {
             listOf<Typhoon>()
         }

@@ -4,6 +4,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 import com.ikemura.shared.repository.UiState
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
@@ -27,7 +28,7 @@ class StatusDetailRepository : KoinComponent {
         return callbackFlow<UiState<PortStatus>> {
             val listener = object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val data = snapshot.getValue(PortStatus::class.java)
+                    val data = snapshot.getValue<PortStatus>()
 
                     data?.let {
                         trySend(UiState.Success(data))

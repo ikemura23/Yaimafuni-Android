@@ -1,9 +1,11 @@
 package com.ikemura.shared.repository
 
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.getValue
 import com.yaeyama_liner_checker.domain.top.Ports
 import com.yaeyama_liner_checker.domain.top.TopPort
-import dev.gitlive.firebase.database.FirebaseDatabase
+import data.ext.reference
+import data.ext.valueEvents
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -16,8 +18,7 @@ class TopStatusRepositoryImpl : TopStatusRepository, KoinComponent {
     override fun fetchTopStatuses(): Flow<UiState<List<Ports>>> {
         val dbRef = database.reference("top_port")
         return dbRef.valueEvents.map {
-            val deserializeValue = it.value(TopPort.serializer())
-            val portList: List<Ports> = deserializeValue.toList()
+            val portList = it.getValue<TopPort>()?.toList() ?: listOf()
             UiState.Success(portList)
         }.catch { error ->
             UiState.Error(error)

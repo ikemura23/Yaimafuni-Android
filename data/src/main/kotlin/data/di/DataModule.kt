@@ -1,15 +1,21 @@
 package data.di
 
-
-import org.koin.core.KoinApplication
-import org.koin.core.context.startKoin
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.app
+import com.ikemura.shared.repository.TyphoonRepository
+import data.repository.TyphoonRepositoryImpl
+import com.ikemura.shared.repository.WeatherRepository
+import com.ikemura.shared.repository.WeatherRepositoryImpl
 import org.koin.dsl.module
 
-private val dataModule = module {
-    // single<FirebaseDatabase> { Firebase.database(Firebase.app) }
+val dataModule = module {
+    single<FirebaseDatabase> { Firebase.database(Firebase.app) }
+    single<WeatherRepository> {
+        WeatherRepositoryImpl()
+    }
+    single<TyphoonRepository> {
+        TyphoonRepositoryImpl()
+    }
 }
-
-fun initKoin(): KoinApplication = startKoin {
-    modules(dataModule)
-}
-
