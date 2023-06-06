@@ -6,11 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.ikemura.shared.repository.UiState
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.DashBoardFragmentBinding
 import com.ikmr.banbara23.yaeyama_liner_checker.ext.viewBinding
-import timber.log.Timber
+import com.ikmr.banbara23.yaeyama_liner_checker.ui.theme.YaimafuniAndroidTheme
 
 /**
  * トップに表示するステータスのダッシュボード画面
@@ -26,21 +25,17 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
         binding.lifecycleOwner = viewLifecycleOwner
 
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
-            viewModel.fetchTopStatuses().collect { state ->
-                when (state) {
-                    is UiState.Success -> {
-                        binding.DashBoardComposeView.apply {
-                            ports = state.data
-                            onRowClick = { port ->
-                                Timber.d("clicked status: $port")
-                                navigateToStatusDetail(
-                                    portCode = port.anei.portCode,
-                                    portName = port.anei.portName,
-                                )
-                            }
-                        }
-                    }
-                    is UiState.Error -> Timber.e(state.error)
+            binding.composeView.setContent {
+                YaimafuniAndroidTheme {
+                    DashBoardScreen(
+                        viewModel = viewModel,
+                        onRowClick = { port -> // TODO: portCodeとportNameだけ渡せばいい
+                            navigateToStatusDetail(
+                                portCode = port.anei.portCode,
+                                portName = port.anei.portName,
+                            )
+                        },
+                    )
                 }
             }
         }
