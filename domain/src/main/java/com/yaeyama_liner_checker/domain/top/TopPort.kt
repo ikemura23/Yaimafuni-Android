@@ -1,8 +1,5 @@
 package com.yaeyama_liner_checker.domain.top
 
-import kotlinx.serialization.Serializable
-
-@Serializable
 data class TopPort(
     var hateruma: Ports = Ports(),
     var hatoma: Ports = Ports(),

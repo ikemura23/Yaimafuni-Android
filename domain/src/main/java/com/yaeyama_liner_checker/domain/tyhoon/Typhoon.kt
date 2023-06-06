@@ -1,11 +1,8 @@
 package com.yaeyama_liner_checker.domain.tyhoon
 
-import kotlinx.serialization.Serializable
-
 /**
  * 台風のモデル
  */
-@Serializable
 data class Typhoon(
     /** 名前 */
     val name: String = "",

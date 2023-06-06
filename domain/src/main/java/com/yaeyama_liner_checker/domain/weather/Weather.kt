@@ -1,11 +1,8 @@
 package com.yaeyama_liner_checker.domain.weather
 
-import kotlinx.serialization.Serializable
-
 /**
  * 天気 一日分
  */
-@Serializable
 data class Weather(
     // 日付
     val date: String = "",
