@@ -60,8 +60,6 @@ dependencies {
     implementation(libs.browser)
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-    // google
-    // implementation("com.google.android.gms:play-services-base:18.0.1")
     // navigation
     implementation("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
     implementation("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
