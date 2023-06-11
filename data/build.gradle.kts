@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.banbara23.yaeyama.linerchecker"
+    namespace = "com.yaeyama.linerchecker"
     compileSdk = 33
 
     // Unitテストで使う

@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard.DashBoardViewModel"
+            type="com.yaeyama.linerchecker.ui.dashboard.DashBoardViewModel"
             />
 
         <variable
