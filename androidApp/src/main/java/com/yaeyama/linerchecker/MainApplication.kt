@@ -3,6 +3,7 @@ package com.yaeyama.linerchecker
 import android.app.Application
 import com.google.firebase.crashlytics.BuildConfig
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.yaeyama.linerchecker.di.appModule
 import com.yaeyama.linerchecker.di.dataModule
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
@@ -27,6 +28,7 @@ class MainApplication : Application() {
     private fun initKoin(): KoinApplication = startKoin {
         modules(
             module { single { applicationContext } },
+            appModule,
             dataModule,
         )
     }
