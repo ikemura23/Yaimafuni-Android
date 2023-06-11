@@ -7,7 +7,6 @@ import com.yaeyama_liner_checker.domain.top.TopPort
 import data.ext.reference
 import data.ext.valueEvents
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -15,13 +14,10 @@ import org.koin.core.component.inject
 class TopStatusRepositoryImpl : TopStatusRepository, KoinComponent {
     private val database: FirebaseDatabase by inject()
 
-    override fun fetchTopStatuses(): Flow<UiState<List<Ports>>> {
+    override fun fetchTopStatuses(): Flow<List<Ports>> {
         val dbRef = database.reference("top_port")
         return dbRef.valueEvents.map {
-            val portList = it.getValue<TopPort>()?.toList() ?: listOf()
-            UiState.Success(portList)
-        }.catch { error ->
-            UiState.Error(error)
+            it.getValue<TopPort>()?.toList() ?: listOf()
         }
     }
 

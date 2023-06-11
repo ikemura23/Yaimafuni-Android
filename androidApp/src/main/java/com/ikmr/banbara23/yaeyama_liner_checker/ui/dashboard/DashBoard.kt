@@ -36,11 +36,12 @@ import com.yaeyama_liner_checker.domain.top.Ports
 
 @Composable
 fun DashBoard(
+    modifier: Modifier = Modifier,
     ports: List<Ports>,
     onRowClick: (Ports) -> Unit,
 ) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(8.dp),
     ) {
         Column {
@@ -91,7 +92,7 @@ fun DashBoardPreview() {
     val dummyPorts = FakeDashBoardDataProvider.dummyPortList
     YaimafuniAndroidTheme {
         Surface {
-            DashBoard(dummyPorts) {}
+            DashBoard(ports = dummyPorts) {}
         }
     }
 }
