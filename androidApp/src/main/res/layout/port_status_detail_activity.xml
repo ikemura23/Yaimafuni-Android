@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/top_background"
-    tools:context=".ui.portstatusdetail.PortStatusDetailActivity"
     >
 
     <com.google.android.material.appbar.AppBarLayout

@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/dashBoardFragment"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.dashboard.DashBoardFragment"
+        android:name="com.yaeyama.linerchecker.ui.dashboard.DashBoardFragment"
         android:label="dash_board_fragment"
         tools:layout="@layout/dash_board_fragment"
         >
@@ -19,13 +19,13 @@
     </fragment>
     <fragment
         android:id="@+id/weatherFragment"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.weather.WeatherFragment"
+        android:name="com.yaeyama.linerchecker.ui.weather.WeatherFragment"
         android:label="WeatherFragment"
         tools:layout="@layout/weather_fragment"
         />
     <fragment
         android:id="@+id/typhoonListFragment"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.list.TyphoonListFragment"
+        android:name="com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListFragment"
         android:label="TyphoonListFragment"
         tools:layout="@layout/typhoon_list_fragment"
         >
@@ -40,18 +40,18 @@
     </fragment>
     <fragment
         android:id="@+id/typhoonDetailFragment"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.detail.TyphoonDetailFragment"
+        android:name="com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailFragment"
         android:label="TyphoonDetailFragment"
         tools:layout="@layout/typhoon_detail_fragment"
         >
         <argument
             android:name="typhoon"
-            app:argType="com.ikmr.banbara23.yaeyama_liner_checker.ui.typhoon.detail.TyphoonDetailUiModel"
+            app:argType="com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailUiModel"
             />
     </fragment>
     <activity
         android:id="@+id/portStatusDetailActivity"
-        android:name="com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail.PortStatusDetailActivity"
+        android:name="com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailActivity"
         android:label="port_status_detail_activity"
         tools:layout="@layout/port_status_detail_activity"
         >

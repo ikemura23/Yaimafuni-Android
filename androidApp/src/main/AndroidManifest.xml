@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".MainApplication"
+        android:name="com.yaeyama.linerchecker.MainApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -15,17 +15,17 @@
         android:theme="@style/AppTheme"
         >
         <activity
-            android:name=".ui.portstatusdetail.PortStatusDetailComposeActivity"
+            android:name="com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailComposeActivity"
             android:exported="true"
             android:label="@string/title_activity_port_status_detail_compose"
             android:theme="@style/AppTheme.NoActionBar"
             />
         <activity
-            android:name=".ui.portstatusdetail.PortStatusDetailActivity"
+            android:name="com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"
             />
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name="com.yaeyama.linerchecker.ui.main.MainActivity"
             android:exported="true"
             >
             <intent-filter>
