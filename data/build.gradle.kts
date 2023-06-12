@@ -11,10 +11,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildTypes {
-        getByName("debug")
-        getByName("release")
-    }
 }
 
 dependencies {
