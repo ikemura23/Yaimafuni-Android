@@ -25,7 +25,7 @@ import timber.log.Timber
  */
 class MainActivity : AppCompatActivity() {
 
-    private val mainViewModel: MainViewModel = MainViewModel()
+    private val mainViewModel: MainViewModel by inject()
     private lateinit var binding: MainActivityBinding
     private val reviewManager: ReviewManager by inject()
 

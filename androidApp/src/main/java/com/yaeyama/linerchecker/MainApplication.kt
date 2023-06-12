@@ -5,6 +5,7 @@ import com.google.firebase.crashlytics.BuildConfig
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.yaeyama.linerchecker.di.appModule
 import com.yaeyama.linerchecker.di.dataModule
+import com.yaeyama.linerchecker.di.viewModelModule
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
@@ -30,6 +31,7 @@ class MainApplication : Application() {
             module { single { applicationContext } },
             appModule,
             dataModule,
+            viewModelModule,
         )
     }
 }
