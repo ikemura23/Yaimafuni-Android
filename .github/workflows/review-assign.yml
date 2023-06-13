@@ -2,7 +2,7 @@ name: Review Assign
 
 on:
   pull_request:
-    types: [opened, edited]
+    types: [opened, unassigned]
 
 jobs:
   assign:
@@ -10,10 +10,5 @@ jobs:
     steps:
       - name: Action
         uses: hkusu/review-assign-action@v1
-        id: assign
         with:
           assignees: ${{ github.actor }}
-          draft-keyword: wip
-      - name: Result
-        if: always()
-        run: echo '${{ steps.assign.outputs.result }}'
