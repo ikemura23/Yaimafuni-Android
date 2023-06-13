@@ -12,11 +12,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.play.core.review.ReviewInfo
+import com.google.android.play.core.review.ReviewManager
 import com.google.android.play.core.tasks.Task
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.MainActivityBinding
-import com.yaeyama.linerchecker.di.AppInjector
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 /**
@@ -24,8 +25,9 @@ import timber.log.Timber
  */
 class MainActivity : AppCompatActivity() {
 
-    private val mainViewModel: MainViewModel = MainViewModel()
+    private val mainViewModel: MainViewModel by inject()
     private lateinit var binding: MainActivityBinding
+    private val reviewManager: ReviewManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +80,6 @@ class MainActivity : AppCompatActivity() {
      * In-App Reviewの設定
      */
     private fun showInAppReview() {
-        val reviewManager = AppInjector.reviewManager(this)
         val request = reviewManager.requestReviewFlow()
         request.addOnCompleteListener { task: Task<ReviewInfo> ->
             if (task.isSuccessful) {

@@ -45,7 +45,7 @@ class DashBoardFragment : Fragment(R.layout.dash_board_fragment) {
      * 画面遷移
      */
     private fun navigateToStatusDetail(portName: String, portCode: String) {
-        com.yaeyama.linerchecker.ui.dashboard.DashBoardFragmentDirections.actionDashBoardFragmentToPortStatusDetailActivity(
+        DashBoardFragmentDirections.actionDashBoardFragmentToPortStatusDetailActivity(
             portName = portName,
             portCode = portCode,
         ).let { directions ->

@@ -59,7 +59,7 @@ freeline_project_description.json
 .idea
 .idea/misc.xml
 
-app/release
+androidApp/release
 
 /.idea/navEditor.xml
 .DS_Store
