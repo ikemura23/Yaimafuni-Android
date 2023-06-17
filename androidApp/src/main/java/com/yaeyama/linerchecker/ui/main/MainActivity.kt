@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -18,12 +19,13 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.MainActivityBinding
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import org.koin.java.KoinJavaComponent.inject
 import timber.log.Timber
 
 /**
  * ホーム画面、Bottom NavigationのあるActivity
  */
-class MainActivity : AppCompatActivity() {
+class MainActivity : AAppCompatActivity() {
 
     private val mainViewModel: MainViewModel by inject()
     private lateinit var binding: MainActivityBinding
