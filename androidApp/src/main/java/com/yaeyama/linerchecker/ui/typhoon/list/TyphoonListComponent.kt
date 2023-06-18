@@ -75,7 +75,7 @@ fun TyphoonListEmptyContent() {
 fun TyphoonListContentPreview() {
     YaimafuniAndroidTheme {
         Surface {
-            TyphoonListContent { typhoon: Typhoon -> /* 処理 */ }
+            TyphoonListContent { /* 処理 */ }
         }
     }
 }
