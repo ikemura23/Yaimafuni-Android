@@ -26,3 +26,6 @@ jobs:
 
       - name: Build Release
         run: ./gradlew assembleRelease
+
+      - name: Lint
+        run: ./gradlew lint
