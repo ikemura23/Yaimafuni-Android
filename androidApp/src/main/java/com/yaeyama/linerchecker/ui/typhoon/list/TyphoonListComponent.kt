@@ -19,6 +19,7 @@ import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 
 @Composable
 fun TyphoonListContent(
+    modifier: Modifier = Modifier,
     typhoonListViewModel: TyphoonListViewModel = viewModel(),
     onItemClick: (Typhoon) -> Unit,
 ) {
@@ -46,7 +47,9 @@ fun TyphoonListContent(
     } else if (data.value!!.isEmpty()) {
         TyphoonListEmptyContent()
     } else {
-        LazyColumn() {
+        LazyColumn(
+            modifier = modifier,
+        ) {
             items(data.value!!.size) { index ->
                 TyphoonListItemComponent(data.value!![index], onItemClick)
             }
@@ -72,7 +75,7 @@ fun TyphoonListEmptyContent() {
 fun TyphoonListContentPreview() {
     YaimafuniAndroidTheme {
         Surface {
-            TyphoonListContent { typhoon: Typhoon -> /* 処理 */ }
+            TyphoonListContent { /* 処理 */ }
         }
     }
 }

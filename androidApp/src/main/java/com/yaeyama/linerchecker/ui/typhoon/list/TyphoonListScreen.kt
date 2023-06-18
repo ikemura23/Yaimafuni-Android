@@ -1,26 +1,30 @@
 package com.yaeyama.linerchecker.ui.typhoon.list
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
-import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 
 /**
  * Composeの台風一覧画面
  */
 @Composable
-fun TyphoonListScreen() {
+fun TyphoonListScreen(
+    modifier: Modifier = Modifier,
+) {
     Scaffold(
-        modifier = Modifier,
+        modifier = modifier,
         topBar = {
             TyphoonListTopAppBar()
         },
-        content = { _ ->
-            TyphoonListContent { typhoon: Typhoon -> /* 処理 */ }
-//            TyphoonListEmptyContent()
+        content = { padding ->
+            TyphoonListContent(
+                modifier = Modifier.padding(padding),
+                onItemClick = { /* 処理 */ },
+            )
         },
     )
 }
