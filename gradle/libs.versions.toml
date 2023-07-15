@@ -1,10 +1,19 @@
 [versions]
+activityCompose = "1.4.0"
 appcompat = "1.6.1"
 browser = "1.5.0"
 coilCompose = "2.4.0"
+composeThemeAdapter = "1.1.8"
 constraintlayout = "2.1.4"
+composeFoundation = "1.2.0-rc02"
+composeMaterial = "1.2.0-rc02"
+composeUi = "1.2.0-rc02"
+composeUiTooling = "1.2.0-rc02"
 junit = "4.13.2"
 koinAndroid = "3.1.6"
+lifecycleViewmodelCompose = "2.6.1"
+materialIconsCore = "1.2.0-rc02"
+materialIconsExtended = "1.2.0-rc02"
 navigationFragmentKtx = "2.6.0"
 navigationUiKtx = "2.5.3"
 playCore = "1.10.3"
@@ -14,15 +23,24 @@ adroidGradlePlugin = "8.1.0-rc01"
 googleServices = "4.3.15"
 kotlinxCoroutinesAndroid = "1.7.1"
 timber = "5.0.1"
+uiTestJunit4 = "1.2.0-rc02"
+uiToolingPreview = "1.2.0-rc02"
 viewpager2 = "1.0.0"
 
 [libraries]
+activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 browser = { module = "androidx.browser:browser", version.ref = "browser" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
+compose-theme-adapter = { module = "com.google.android.material:compose-theme-adapter", version.ref = "composeThemeAdapter" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "composeFoundation" }
 junit = { module = "junit:junit", version.ref = "junit" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
+lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
+compose-material = { module = "androidx.compose.material:material", version.ref = "composeMaterial" }
+material-icons-core = { module = "androidx.compose.material:material-icons-core", version.ref = "materialIconsCore" }
+material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 navigation-runtime-ktx = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigationUiKtx" }
 navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtx" }
@@ -36,6 +54,10 @@ coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-androi
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "adroidGradlePlugin" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "composeUi" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "composeUiTooling" }
+ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "uiTestJunit4" }
+ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreview" }
 viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2" }
 
 [plugins]

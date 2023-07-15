@@ -83,22 +83,22 @@ dependencies {
 
     // Jetpack Compose toolkit dependencies
     // https://developer.android.com/jetpack/compose/setup#compose-compiler
-    implementation("androidx.compose.ui:ui:${Versions.compose}")
+    implementation(libs.compose.ui)
     // Tooling support (Previews, etc.)
-    implementation("androidx.compose.ui:ui-tooling:${Versions.compose}")
+    implementation(libs.compose.ui.tooling)
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-    implementation("androidx.compose.foundation:foundation:${Versions.compose}")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0-rc01")
+    implementation(libs.compose.foundation)
+    implementation(libs.lifecycle.viewmodel.compose)
     // Material Design
-    implementation("androidx.compose.material:material:${Versions.compose}")
+    implementation(libs.compose.material)
     // Material design icons
-    implementation("androidx.compose.material:material-icons-core:${Versions.compose}")
-    implementation("androidx.compose.material:material-icons-extended:${Versions.compose}")
-    implementation("com.google.android.material:compose-theme-adapter:${Versions.composeThemeAdapter}")
-    implementation("androidx.compose.ui:ui-tooling-preview:${Versions.compose}")
-    implementation("androidx.activity:activity-compose:${Versions.activityCompose}")
+    implementation(libs.material.icons.core)
+    implementation(libs.material.icons.extended)
+    implementation(libs.compose.theme.adapter)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.activity.compose)
     // UI Tests
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:${Versions.compose}")
+    androidTestImplementation(libs.ui.test.junit4)
 
     // Koin
     implementation(libs.koin.android)
