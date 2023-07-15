@@ -3,6 +3,7 @@ appcompat = "1.6.1"
 browser = "1.5.0"
 coilCompose = "2.4.0"
 constraintlayout = "2.1.4"
+junit = "4.13.2"
 koinAndroid = "3.1.6"
 navigationFragmentKtx = "2.6.0"
 navigationUiKtx = "2.5.3"
@@ -20,6 +21,7 @@ appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat"
 browser = { module = "androidx.browser:browser", version.ref = "browser" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+junit = { module = "junit:junit", version.ref = "junit" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
 navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 navigation-runtime-ktx = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigationUiKtx" }
