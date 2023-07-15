@@ -1,4 +1,5 @@
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
+import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.exclude
 
 plugins {
     id("com.android.application")
@@ -100,7 +101,7 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:${Versions.compose}")
 
     // Koin
-    implementation("io.insert-koin:koin-android:${Versions.koin}")
+    implementation(libs.koin.android)
 
     testImplementation("junit:junit:${Versions.junit}")
 
