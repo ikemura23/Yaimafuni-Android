@@ -58,8 +58,8 @@ dependencies {
     // android
     implementation(libs.appcompat)
     implementation(libs.browser)
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation(libs.constraintlayout)
+    implementation(libs.viewpager2)
     // navigation
     implementation("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
     implementation("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
