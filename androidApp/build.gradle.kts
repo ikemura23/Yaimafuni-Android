@@ -1,5 +1,4 @@
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
-import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.exclude
 
 plugins {
     id("com.android.application")
