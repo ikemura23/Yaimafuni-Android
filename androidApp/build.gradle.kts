@@ -69,7 +69,7 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
     // coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}")
+    implementation(libs.coroutines.android)
 
     // Coil
     implementation(libs.coil.compose)
