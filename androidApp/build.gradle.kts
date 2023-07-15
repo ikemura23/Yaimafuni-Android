@@ -56,7 +56,7 @@ dependencies {
     implementation(project(":data"))
 
     // android
-    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation(libs.appcompat)
     implementation(libs.browser)
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
