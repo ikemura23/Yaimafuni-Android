@@ -61,9 +61,9 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.viewpager2)
     // navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
-    implementation("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
-    implementation("androidx.navigation:navigation-runtime-ktx:${Versions.navigation}")
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
+    implementation(libs.navigation.runtime.ktx)
     // firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)

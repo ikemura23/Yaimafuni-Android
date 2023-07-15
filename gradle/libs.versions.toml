@@ -3,6 +3,8 @@ appcompat = "1.6.1"
 browser = "1.5.0"
 coilCompose = "2.4.0"
 constraintlayout = "2.1.4"
+navigationFragmentKtx = "2.6.0"
+navigationUiKtx = "2.5.3"
 playCore = "1.10.3"
 playCoreKtx = "1.8.1"
 firebaseBom = "32.2.0"
@@ -17,6 +19,9 @@ appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat"
 browser = { module = "androidx.browser:browser", version.ref = "browser" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+navigation-runtime-ktx = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigationUiKtx" }
+navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtx" }
 play-core = { module = "com.google.android.play:core", version.ref = "playCore" }
 play-core-ktx = { module = "com.google.android.play:core-ktx", version.ref = "playCoreKtx" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
