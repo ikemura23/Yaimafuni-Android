@@ -1,12 +1,12 @@
 [versions]
 browser = "1.5.0"
-coilCompose = "2.3.0"
+coilCompose = "2.4.0"
 playCore = "1.10.3"
 playCoreKtx = "1.8.1"
-firebaseBom = "32.1.0"
+firebaseBom = "32.2.0"
 adroidGradlePlugin = "8.1.0-rc01"
 googleServices = "4.3.15"
-kotlinxCoroutinesAndroid = "1.6.4"
+kotlinxCoroutinesAndroid = "1.7.1"
 timber = "5.0.1"
 
 [libraries]
