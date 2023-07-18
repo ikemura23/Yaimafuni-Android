@@ -14,7 +14,7 @@ android {
 }
 
 dependencies {
-    implementation("io.insert-koin:koin-core:${Versions.koin}")
+    implementation(libs.koin.core)
 
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.database)
