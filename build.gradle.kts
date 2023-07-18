@@ -10,9 +10,9 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         classpath(libs.google.services)
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}")
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}")
-        classpath("com.google.firebase:firebase-crashlytics-gradle:${Versions.firebaseCrashlyticsGradle}")
+        classpath(libs.kotlin.gradle.plugin)
+        classpath(libs.navigation.safe.args.gradle.plugin)
+        classpath(libs.firebase.crashlytics.gradle)
     }
 }
 

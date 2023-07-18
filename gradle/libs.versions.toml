@@ -9,8 +9,10 @@ composeFoundation = "1.2.0-rc02"
 composeMaterial = "1.2.0-rc02"
 composeUi = "1.2.0-rc02"
 composeUiTooling = "1.2.0-rc02"
+firebaseCrashlyticsGradle = "2.8.1"
 junit = "4.13.2"
 koinAndroid = "3.1.6"
+kotlinGradlePlugin = "1.8.10"
 lifecycleViewmodelCompose = "2.6.1"
 materialIconsCore = "1.2.0-rc02"
 materialIconsExtended = "1.2.0-rc02"
@@ -35,14 +37,17 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose"
 compose-theme-adapter = { module = "com.google.android.material:compose-theme-adapter", version.ref = "composeThemeAdapter" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "composeFoundation" }
+firebase-crashlytics-gradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsGradle" }
 junit = { module = "junit:junit", version.ref = "junit" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
 lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 compose-material = { module = "androidx.compose.material:material", version.ref = "composeMaterial" }
 material-icons-core = { module = "androidx.compose.material:material-icons-core", version.ref = "materialIconsCore" }
 material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 navigation-runtime-ktx = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigationUiKtx" }
+navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationUiKtx" }
 navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtx" }
 play-core = { module = "com.google.android.play:core", version.ref = "playCore" }
 play-core-ktx = { module = "com.google.android.play:core-ktx", version.ref = "playCoreKtx" }
