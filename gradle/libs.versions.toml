@@ -1,4 +1,8 @@
 [versions]
+app-compileSdk = "33"
+app-minSdk = "24"
+app-targetSdk = "33"
+
 activityCompose = "1.4.0"
 appcompat = "1.6.1"
 browser = "1.5.0"
