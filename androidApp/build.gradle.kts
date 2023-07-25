@@ -17,14 +17,14 @@ android {
         applicationId = "com.banbara.yaeyama.liner.checker"
         minSdk = libs.versions.app.minSdk.get().toInt()
         targetSdk = libs.versions.app.targetSdk.get().toInt()
-        versionCode = 81
-        versionName = "4.5.0"
+        versionCode = 82
+        versionName = "4.5.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
         getByName("debug") {
