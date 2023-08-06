@@ -17,8 +17,8 @@ android {
         applicationId = "com.banbara.yaeyama.liner.checker"
         minSdk = libs.versions.app.minSdk.get().toInt()
         targetSdk = libs.versions.app.targetSdk.get().toInt()
-        versionCode = 82
-        versionName = "4.5.1"
+        versionCode = 87
+        versionName = "4.6.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -28,6 +28,8 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
         getByName("debug") {
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             applicationIdSuffix = ".debug"
             configure<CrashlyticsExtension> {
                 // マッピング ファイルを Crashlytics にアップロードしない
