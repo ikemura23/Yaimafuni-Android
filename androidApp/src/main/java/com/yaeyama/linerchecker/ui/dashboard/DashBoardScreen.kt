@@ -30,7 +30,7 @@ private fun DashBoardScreen(
     modifier: Modifier = Modifier,
     onRowClick: (Ports) -> Unit,
 ) {
-    DashBoard(
+    DashBoardPage(
         modifier = modifier.padding(16.dp),
         ports = uiState.portList,
         onRowClick = onRowClick,

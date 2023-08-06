@@ -35,7 +35,7 @@ import com.yaeyama_liner_checker.domain.statusdetail.Status
 import com.yaeyama_liner_checker.domain.top.Ports
 
 @Composable
-fun DashBoard(
+fun DashBoardPage(
     modifier: Modifier = Modifier,
     ports: List<Ports>,
     onRowClick: (Ports) -> Unit,
@@ -92,7 +92,7 @@ fun DashBoardPreview() {
     val dummyPorts = FakeDashBoardDataProvider.dummyPortList
     YaimafuniAndroidTheme {
         Surface {
-            DashBoard(ports = dummyPorts) {}
+            DashBoardPage(ports = dummyPorts) {}
         }
     }
 }
