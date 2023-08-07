@@ -11,7 +11,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yaeyama.linerchecker.ui.dashboard.DashBoardRowItem
 import com.yaeyama.linerchecker.ui.dashboard.FakeDashBoardDataProvider
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama_liner_checker.domain.top.Ports
