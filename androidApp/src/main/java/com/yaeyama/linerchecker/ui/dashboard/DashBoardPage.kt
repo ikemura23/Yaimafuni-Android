@@ -1,9 +1,7 @@
 package com.yaeyama.linerchecker.ui.dashboard
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardHeader
+import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardRow
 import com.yaeyama.linerchecker.ui.theme.StatusColor
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama_liner_checker.domain.statusdetail.Status
@@ -125,44 +124,4 @@ fun Status.getStatusBackgroundColor() = when (this.code) {
     "cation" -> StatusColor.Cation
     "cancel" -> StatusColor.Cancel
     else -> StatusColor.Cation
-}
-
-@Composable
-fun DashBoardRow(
-    port: Ports,
-    onRowClick: (Ports) -> Unit,
-) {
-    Box(
-        modifier = Modifier
-            .clickable(onClick = { onRowClick(port) })
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp),
-    ) {
-        Text(
-            text = port.anei.portName,
-            modifier = Modifier.align(Alignment.CenterStart),
-        )
-        DashBoardRowItem(
-            modifier = Modifier.align(Alignment.Center),
-            portName = "安栄観光",
-            status = port.anei.status,
-        )
-        DashBoardRowItem(
-            modifier = Modifier.align(Alignment.CenterEnd),
-            portName = "八観フェ",
-            status = port.ykf.status,
-        )
-    }
-}
-
-@Preview(name = "Body Row")
-@Composable
-fun DashBoardRowPreview() {
-    YaimafuniAndroidTheme {
-        Surface {
-            DashBoardRow(
-                FakeDashBoardDataProvider.dummyPort1,
-            ) {}
-        }
-    }
 }
