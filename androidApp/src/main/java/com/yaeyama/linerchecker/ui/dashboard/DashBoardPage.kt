@@ -50,7 +50,7 @@ fun RowDivider() {
 
 @Preview
 @Composable
-fun DashBoardPreview() {
+private fun DashBoardPreview() {
     val dummyPorts = FakeDashBoardDataProvider.dummyPortList
     YaimafuniAndroidTheme {
         Surface {

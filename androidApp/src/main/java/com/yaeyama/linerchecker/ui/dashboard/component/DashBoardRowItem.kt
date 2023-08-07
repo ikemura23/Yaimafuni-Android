@@ -14,6 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.getStatusBackgroundColor
 import com.yaeyama.linerchecker.ui.theme.StatusColor
@@ -61,18 +63,53 @@ fun Status.getStatusBackgroundColor() = when (this.code) {
     else -> StatusColor.Cation
 }
 
-@Preview(name = "Body Row")
+@Preview
 @Composable
-fun DashBoardRowItemPreview() {
-    val portName = "仮の港名"
-    val status = Status("normal", text = "運行")
+private fun DashBoardRowItemPreview(
+    @PreviewParameter(ItemPreviewProvider::class)
+    item: DashBoardRowItem,
+) {
     YaimafuniAndroidTheme {
         Surface {
             DashBoardRowItem(
-                portName = portName,
-                status = status,
+                portName = item.portName,
+                status = item.status,
                 modifier = Modifier,
             )
         }
     }
 }
+
+/**
+ * Preview用のクラス
+ */
+private data class DashBoardRowItem(
+    val portName: String,
+    val status: Status,
+)
+
+private class ItemPreviewProvider : CollectionPreviewParameterProvider<DashBoardRowItem>(
+    listOf(
+        DashBoardRowItem(
+            portName = "安栄",
+            status = Status(
+                "normal",
+                "通常運転",
+            ),
+        ),
+        DashBoardRowItem(
+            portName = "YKF",
+            status = Status(
+                "cation",
+                "未定",
+            ),
+        ),
+        DashBoardRowItem(
+            portName = "その他",
+            status = Status(
+                "cancel",
+                "欠航",
+            ),
+        ),
+    ),
+)
