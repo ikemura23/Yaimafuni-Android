@@ -17,8 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import com.yaeyama.linerchecker.ui.portstatusdetail.component.getStatusBackgroundColor
-import com.yaeyama.linerchecker.ui.theme.StatusColor
+import com.yaeyama.linerchecker.ui.common.getStatusBackgroundColor
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama_liner_checker.domain.statusdetail.Status
 
@@ -53,14 +52,6 @@ fun DashBoardRowItem(
             )
         }
     }
-}
-
-// ステータスの背景色
-fun Status.getStatusBackgroundColor() = when (this.code) {
-    "nomal", "normal" -> StatusColor.Normal
-    "cation" -> StatusColor.Cation
-    "cancel" -> StatusColor.Cancel
-    else -> StatusColor.Cation
 }
 
 @Preview

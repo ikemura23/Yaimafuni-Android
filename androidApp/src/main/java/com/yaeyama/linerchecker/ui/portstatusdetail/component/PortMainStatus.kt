@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yaeyama.linerchecker.ui.theme.StatusColor
+import com.yaeyama.linerchecker.ui.common.getStatusBackgroundColor
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama_liner_checker.domain.statusdetail.Status
 import timber.log.Timber
@@ -88,12 +88,4 @@ private fun PortMainStatusPreview() {
             )
         }
     }
-}
-
-// ステータスの背景色
-fun Status.getStatusBackgroundColor() = when (this.code) {
-    "nomal", "normal" -> StatusColor.Normal
-    "cation" -> StatusColor.Cation
-    "cancel" -> StatusColor.Cancel
-    else -> StatusColor.Cation
 }
