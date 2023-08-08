@@ -8,5 +8,6 @@ import kotlinx.coroutines.flow.StateFlow
 interface DashBoardViewModel {
     val nav: LiveData<Event<DashBoardViewModelImpl.Nav>>
     val uiState: StateFlow<DashBoardUiState>
+    suspend fun fetchPortList()
     fun onClickPort(ports: Ports?)
 }

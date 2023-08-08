@@ -12,7 +12,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 /**
@@ -23,7 +26,7 @@ class DashBoardViewModelImpl : ViewModel(), DashBoardViewModel {
     override val nav = MutableLiveData<Event<Nav>>()
     private val isLoading = MutableStateFlow(false)
     private val isError = MutableStateFlow(false)
-    private val portList = topStatusRepository.fetchTopStatuses()
+    private val portList: MutableStateFlow<List<Ports>> = MutableStateFlow(listOf())
 
     override val uiState: StateFlow<DashBoardUiState> = combine(
         isLoading,
@@ -41,7 +44,13 @@ class DashBoardViewModelImpl : ViewModel(), DashBoardViewModel {
         initialValue = DashBoardUiState.InitialValue,
     )
 
-    // override fun fetchTopStatuses(): Flow<UiState<List<Ports>>> = topStatusRepository.fetchTopStatuses()
+    override suspend fun fetchPortList() {
+        viewModelScope.launch {
+            portList.update {
+                topStatusRepository.fetchTopStatuses().first()
+            }
+        }
+    }
 
     /**
      * 港クリック
