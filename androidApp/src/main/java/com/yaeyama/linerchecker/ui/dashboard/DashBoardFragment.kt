@@ -15,7 +15,7 @@ import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
  */
 class DashBoardFragment : Fragment() {
 
-    private val viewModel by viewModels<DashBoardViewModelImpl>()
+    private val viewModel by viewModels<DashBoardViewModel>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return ComposeView(requireContext()).apply {
             setContent {
