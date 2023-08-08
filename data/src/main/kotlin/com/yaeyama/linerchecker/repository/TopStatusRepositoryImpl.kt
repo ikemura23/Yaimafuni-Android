@@ -21,6 +21,7 @@ class TopStatusRepositoryImpl : TopStatusRepository, KoinComponent {
         return dbRef.valueEvents.map { snapShot: DataSnapshot ->
             snapShot.getValue<TopPort>()?.toList() ?: listOf()
         }.catch {
+            it.printStackTrace()
             listOf<Ports>()
         }
     }
