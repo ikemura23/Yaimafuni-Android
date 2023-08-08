@@ -1,13 +1,9 @@
 package com.yaeyama.linerchecker.ui.dashboard
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yaeyama.linerchecker.core.Event
-import com.yaeyama.linerchecker.core.toEvent
 import com.yaeyama.linerchecker.repository.TopStatusRepositoryImpl
 import com.yaeyama_liner_checker.domain.top.Ports
-import com.yaeyama_liner_checker.domain.top.TopPort
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -16,14 +12,12 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 /**
  * トップに表示するステータスのダッシュボード ViewModel
  */
 class DashBoardViewModelImpl : ViewModel(), DashBoardViewModel {
     private val topStatusRepository = TopStatusRepositoryImpl() // TODO: DIする
-    override val nav = MutableLiveData<Event<Nav>>()
     private val isLoading = MutableStateFlow(false)
     private val isError = MutableStateFlow(false)
     private val portList: MutableStateFlow<List<Ports>> = MutableStateFlow(listOf())
@@ -51,22 +45,4 @@ class DashBoardViewModelImpl : ViewModel(), DashBoardViewModel {
             }
         }
     }
-
-    /**
-     * 港クリック
-     */
-    override fun onClickPort(ports: Ports?) {
-        Timber.d("clicked: $ports")
-        ports ?: return
-        nav.value = Nav.GoDetail(ports).toEvent()
-    }
-
-    sealed class Nav {
-        data class GoDetail(val ports: Ports) : Nav()
-    }
-}
-
-sealed class TopPortStatusState {
-    data class Success(val topPort: TopPort) : TopPortStatusState()
-    data class Error(val error: Throwable) : TopPortStatusState()
 }
