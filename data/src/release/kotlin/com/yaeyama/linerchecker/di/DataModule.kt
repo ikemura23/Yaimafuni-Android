@@ -10,6 +10,9 @@ import com.yaeyama.linerchecker.repository.WeatherRepository
 import com.yaeyama.linerchecker.repository.WeatherRepositoryImpl
 import org.koin.dsl.module
 
+/**
+ * release用のdata module
+ */
 val dataModule = module {
     single<FirebaseDatabase> { Firebase.database(Firebase.app) }
     single<WeatherRepository> {
@@ -18,4 +21,5 @@ val dataModule = module {
     single<TyphoonRepository> {
         TyphoonRepositoryImpl()
     }
+    single<TopStatusRepository> { TopStatusRepositoryImpl() }
 }
