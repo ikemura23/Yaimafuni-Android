@@ -9,6 +9,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.yaeyama.linerchecker.common.Constants.BUNDLE_KEY_COMPANY
 import com.yaeyama.linerchecker.common.Constants.BUNDLE_KEY_PORT_CODE
+import com.yaeyama.linerchecker.ext.getSerialize
 import com.yaeyama.linerchecker.ext.viewBinding
 import com.yaeyama.linerchecker.repository.UiState
 import com.yaeyama_liner_checker.domain.statusdetail.Company
@@ -26,11 +27,11 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
 
     /** パラメータ取得 会社 */
     private val company: Company
-        get() = arguments?.getSerializable(BUNDLE_KEY_COMPANY) as? Company ?: Company.ANEI
+        get() = arguments?.getSerialize(BUNDLE_KEY_COMPANY, Company::class.java) ?: Company.ANEI
 
     /** 港コード */
     private val portCode: String
-        get() = arguments?.getString(BUNDLE_KEY_PORT_CODE)
+        get() = arguments?.getSerialize(BUNDLE_KEY_PORT_CODE, String::class.java)
             ?: throw IllegalArgumentException("portCodeがありません")
 
     private fun setupViews() {
