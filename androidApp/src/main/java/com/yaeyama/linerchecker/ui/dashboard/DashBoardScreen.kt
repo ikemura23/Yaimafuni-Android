@@ -3,6 +3,7 @@ package com.yaeyama.linerchecker.ui.dashboard
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -19,6 +20,10 @@ fun DashBoardScreen(
     modifier: Modifier = Modifier,
     onRowClick: (Ports) -> Unit,
 ) {
+    LaunchedEffect(Unit) {
+        viewModel.fetchPortList()
+    }
+
     val uiState: State<DashBoardUiState> = viewModel.uiState.collectAsState()
     DashBoardScreen(
         uiState.value,
