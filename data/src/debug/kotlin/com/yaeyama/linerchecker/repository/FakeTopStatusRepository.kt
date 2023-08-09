@@ -3,13 +3,16 @@ package com.yaeyama.linerchecker.repository
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
 import com.yaeyama_liner_checker.domain.statusdetail.Status
 import com.yaeyama_liner_checker.domain.top.Ports
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import org.koin.core.component.KoinComponent
 
-class FakeTopStatusRepository : TopStatusRepository {
+class FakeTopStatusRepository : TopStatusRepository, KoinComponent {
 
     override fun fetchTopStatuses(): Flow<List<Ports>> = flow {
-        listOf(
+        delay(1000)
+        val dummy = listOf(
             Ports(
                 anei = PortStatus(
                     portCode = "taketomi",
@@ -25,8 +28,8 @@ class FakeTopStatusRepository : TopStatusRepository {
                     portName = "ダミー竹富航路",
                     comment = "",
                     status = Status(
-                        text = "通常運航",
-                        code = "normal",
+                        text = "未定",
+                        code = "cation",
                     ),
                 ),
             ),
@@ -151,5 +154,6 @@ class FakeTopStatusRepository : TopStatusRepository {
                 ),
             ),
         )
+        emit(dummy)
     }
 }

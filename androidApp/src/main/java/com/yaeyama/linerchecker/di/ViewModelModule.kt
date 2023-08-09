@@ -13,6 +13,6 @@ val viewModelModule = module {
         MainViewModel(get())
     }
     viewModel {
-        DashBoardViewModel()
+        DashBoardViewModel(get())
     }
 }

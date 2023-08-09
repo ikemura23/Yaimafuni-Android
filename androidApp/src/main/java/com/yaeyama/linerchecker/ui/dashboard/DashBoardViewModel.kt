@@ -2,7 +2,7 @@ package com.yaeyama.linerchecker.ui.dashboard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yaeyama.linerchecker.repository.TopStatusRepositoryImpl
+import com.yaeyama.linerchecker.repository.TopStatusRepository
 import com.yaeyama_liner_checker.domain.top.Ports
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -16,8 +16,10 @@ import kotlinx.coroutines.launch
 /**
  * トップに表示するステータスのダッシュボード ViewModel
  */
-class DashBoardViewModel : ViewModel() {
-    private val topStatusRepository = TopStatusRepositoryImpl() // TODO: DIする
+class DashBoardViewModel(
+    private val topStatusRepository: TopStatusRepository,
+) : ViewModel() {
+
     private val isLoading = MutableStateFlow(false)
     private val isError = MutableStateFlow(false)
     private val portList: MutableStateFlow<List<Ports>> = MutableStateFlow(listOf())
@@ -40,8 +42,13 @@ class DashBoardViewModel : ViewModel() {
 
     suspend fun fetchPortList() {
         viewModelScope.launch {
-            portList.update {
-                topStatusRepository.fetchTopStatuses().first()
+            runCatching {
+                portList.update {
+                    topStatusRepository.fetchTopStatuses().first()
+                }
+            }.onFailure {
+                isLoading.update { false }
+                isError.update { true }
             }
         }
     }
