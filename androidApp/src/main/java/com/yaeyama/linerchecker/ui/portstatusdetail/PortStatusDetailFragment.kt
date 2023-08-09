@@ -27,12 +27,13 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
 
     /** パラメータ取得 会社 */
     private val company: Company
-        get() = arguments?.getSerialize(BUNDLE_KEY_COMPANY, Company::class.java) ?: Company.ANEI
+        get() = arguments?.getSerialize(BUNDLE_KEY_COMPANY, Company::class.java)
+            ?: throw IllegalArgumentException("PortStatusDetailFragment の Arguments から Company が取得できません")
 
     /** 港コード */
     private val portCode: String
         get() = arguments?.getSerialize(BUNDLE_KEY_PORT_CODE, String::class.java)
-            ?: throw IllegalArgumentException("portCodeがありません")
+            ?: throw IllegalArgumentException("PortStatusDetailFragment の Arguments から PortCode が取得できません")
 
     private fun setupViews() {
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
