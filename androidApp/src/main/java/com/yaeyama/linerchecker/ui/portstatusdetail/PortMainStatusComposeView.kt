@@ -7,7 +7,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.AbstractComposeView
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.PortMainStatus
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
-import com.yaeyama_liner_checker.domain.statusdetail.Status
 
 /**
  * xmlでComposeを表示するためのViewクラス
@@ -22,28 +21,7 @@ class PortMainStatusComposeView @JvmOverloads constructor(
     defStyleAttr: Int = 0,
 ) : AbstractComposeView(context, attributes, defStyleAttr) {
 
-    private val portNameState = mutableStateOf("")
-    private val statusState = mutableStateOf<Status>(Status())
-    private val statusDescriptionState = mutableStateOf("")
     private val portStatusState = mutableStateOf<PortStatus>(PortStatus())
-
-    var portName: String
-        get() = portNameState.value
-        set(value) {
-            portNameState.value = value
-        }
-
-    var status
-        get() = statusState.value
-        set(value) {
-            statusState.value = value
-        }
-
-    var statusDescription
-        get() = statusDescriptionState.value
-        set(value) {
-            statusDescriptionState.value = value
-        }
 
     var portStatus
         get() = portStatusState.value
