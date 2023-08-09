@@ -58,6 +58,7 @@ dependencies {
     implementation(project(":data"))
 
     // android
+    implementation(libs.androidx.core)
     implementation(libs.appcompat)
     implementation(libs.browser)
     implementation(libs.constraintlayout)
