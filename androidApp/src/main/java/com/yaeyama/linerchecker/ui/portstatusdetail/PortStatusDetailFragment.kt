@@ -3,7 +3,7 @@ package com.yaeyama.linerchecker.ui.portstatusdetail
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
@@ -21,9 +21,7 @@ import timber.log.Timber
  */
 class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
     private val binding: StatusDetailFragmentBinding by viewBinding()
-    private val viewModel: PortStatusDetailViewModel by lazy {
-        ViewModelProvider(this).get(PortStatusDetailViewModel::class.java)
-    }
+    private val viewModel: PortStatusDetailViewModel by activityViewModels()
 
     /** パラメータ取得 会社 */
     private val company: Company
