@@ -7,7 +7,6 @@ import androidx.navigation.fragment.findNavController
 import coil.load
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonDetailFragmentBinding
-import com.yaeyama.linerchecker.common.Constants
 import com.yaeyama.linerchecker.ext.viewBinding
 import com.yaeyama.linerchecker.utils.CustomTabUtil
 import timber.log.Timber
@@ -31,10 +30,13 @@ class TyphoonDetailFragment : Fragment(R.layout.typhoon_detail_fragment) {
             includeTitle.titleBar.setNavigationOnClickListener { findNavController().navigateUp() }
             // Webで見るボタン
             button.setOnClickListener {
-                CustomTabUtil.start(requireActivity(), Constants.TYPHOON_URL)
+                CustomTabUtil.start(requireActivity(), TYPHOON_WEB_URL)
             }
         }
         // 画像読み込み
         binding.image.load(argTyphoon.img)
     }
 }
+
+/** 台風 Webページ URL */
+private const val TYPHOON_WEB_URL = "https://tenki.jp/lite/bousai/typhoon/"

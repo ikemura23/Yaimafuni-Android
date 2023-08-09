@@ -7,8 +7,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
-import com.yaeyama.linerchecker.common.Constants.BUNDLE_KEY_COMPANY
-import com.yaeyama.linerchecker.common.Constants.BUNDLE_KEY_PORT_CODE
 import com.yaeyama.linerchecker.ext.getSerialize
 import com.yaeyama.linerchecker.ext.viewBinding
 import com.yaeyama.linerchecker.repository.UiState
@@ -57,6 +55,9 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
     }
 
     companion object {
+        const val BUNDLE_KEY_COMPANY = "BUNDLE_KEY_COMPANY"
+        const val BUNDLE_KEY_PORT_CODE = "BUNDLE_KEY_PORT_CODE"
+
         /**
          * New Instance
          *
