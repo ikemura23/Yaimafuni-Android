@@ -1,58 +1,34 @@
 package com.yaeyama.linerchecker.ui.portstatusdetail
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.yaeyama.linerchecker.ui.theme.StatusColor
+import com.yaeyama.linerchecker.ui.portstatusdetail.component.PortMainStatus
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
+import com.yaeyama_liner_checker.domain.statusdetail.Status
 
 /**
  * どこからも使われていない？
  */
 @Composable
-fun PortStatusDetailScreen() {
+fun PortStatusDetailScreen(
+    portName: String,
+    status: Status,
+    statusDescription: String,
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth(),
     ) {
         Column {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 4.dp, horizontal = 8.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Text(
-                    text = "港名",
-                    style = MaterialTheme.typography.h6,
-                )
-                Text(
-                    text = "ステータス",
-                    color = Color.White,
-                    style = MaterialTheme.typography.h6,
-                    modifier = Modifier
-                        .background(
-                            color = StatusColor.Normal,
-                            shape = RoundedCornerShape(16),
-                        )
-                        .padding(vertical = 4.dp, horizontal = 4.dp),
-                )
-            }
-            Text(
-                text = "コメントコメントコメントコメントコメントコメントコメントコメント",
-                modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
+            // PortMainStatus()
+            PortMainStatus(
+                portName = portName,
+                status = status,
+                statusDescription = statusDescription,
             )
         }
     }
@@ -62,6 +38,10 @@ fun PortStatusDetailScreen() {
 @Composable
 private fun PortStatusDetailScreenPreview() {
     YaimafuniAndroidTheme {
-        PortStatusDetailScreen()
+        PortStatusDetailScreen(
+            portName = "portName",
+            status = Status(code = "normal", text = "text"),
+            statusDescription = "statusDescription",
+        )
     }
 }
