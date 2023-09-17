@@ -13,16 +13,27 @@ import com.yaeyama.linerchecker.ui.portstatusdetail.component.PortMainStatus
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.TimeRow
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.TimeTableList
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
+import com.yaeyama_liner_checker.domain.statusdetail.Company
 import com.yaeyama_liner_checker.domain.statusdetail.Status
 import com.yaeyama_liner_checker.domain.time_table.Header
 import com.yaeyama_liner_checker.domain.time_table.RowItem
 import com.yaeyama_liner_checker.domain.time_table.TimeTable
 
 /**
- * どこからも使われていない？
+ * 運行詳細スクリーン
  */
+
 @Composable
 fun PortStatusDetailScreen(
+    company: Company,
+    portCode: String,
+    viewModel: PortStatusDetailViewModel,
+) {
+    // TODO: viewModelで値を取得する
+}
+
+@Composable
+private fun PortStatusDetailScreen(
     portName: String,
     status: Status,
     statusDescription: String,

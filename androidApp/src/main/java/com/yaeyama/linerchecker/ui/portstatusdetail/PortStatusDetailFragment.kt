@@ -1,7 +1,10 @@
 package com.yaeyama.linerchecker.ui.portstatusdetail
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -10,6 +13,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragment
 import com.yaeyama.linerchecker.ext.getSerialize
 import com.yaeyama.linerchecker.ext.viewBinding
 import com.yaeyama.linerchecker.repository.UiState
+import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 import com.yaeyama_liner_checker.domain.statusdetail.StatusDetailResult
 import timber.log.Timber
@@ -48,9 +52,23 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
         }
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return ComposeView(requireContext()).apply {
+            setContent {
+                YaimafuniAndroidTheme {
+                    PortStatusDetailScreen(
+                        company = company,
+                        portCode = portCode,
+                        viewModel = viewModel,
+                    )
+                }
+            }
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupViews()
+        // setupViews()
         arguments?.let { Timber.d(arguments.toString()) }
     }
 
