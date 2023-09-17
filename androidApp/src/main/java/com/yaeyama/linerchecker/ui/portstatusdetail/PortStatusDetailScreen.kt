@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -29,7 +31,13 @@ fun PortStatusDetailScreen(
     portCode: String,
     viewModel: PortStatusDetailViewModel,
 ) {
-    // TODO: viewModelで値を取得する
+    val uiState = viewModel.uiState.collectAsState()
+
+    LaunchedEffect(Unit) {
+        // TODO: viewModelでfetchを呼ぶ
+    }
+
+    // TODO: PortStatusDetailScreen に uiState を渡す
 }
 
 @Composable
