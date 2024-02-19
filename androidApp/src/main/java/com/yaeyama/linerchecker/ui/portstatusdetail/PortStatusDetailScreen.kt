@@ -20,23 +20,22 @@ import com.yaeyama_liner_checker.domain.statusdetail.Status
 import com.yaeyama_liner_checker.domain.time_table.Header
 import com.yaeyama_liner_checker.domain.time_table.RowItem
 import com.yaeyama_liner_checker.domain.time_table.TimeTable
+import timber.log.Timber
 
 /**
  * 運行詳細スクリーン
  */
-
 @Composable
 fun PortStatusDetailScreen(
     company: Company,
     portCode: String,
     viewModel: PortStatusDetailViewModel,
 ) {
-    val uiState = viewModel.uiState.collectAsState()
-
     LaunchedEffect(Unit) {
-        // TODO: viewModelでfetchを呼ぶ
+        viewModel.fetchDetail(company, portCode)
     }
-
+    val uiState = viewModel.uiState.collectAsState()
+    Timber.tag("PortStatusDetailScreen").d(uiState.value.toString())
     // TODO: PortStatusDetailScreen に uiState を渡す
 }
 

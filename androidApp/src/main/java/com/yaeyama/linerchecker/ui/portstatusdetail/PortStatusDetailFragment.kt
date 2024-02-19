@@ -35,23 +35,6 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
         get() = arguments?.getSerialize(BUNDLE_KEY_PORT_CODE, String::class.java)
             ?: throw IllegalArgumentException("PortStatusDetailFragment の Arguments から PortCode が取得できません")
 
-    private fun setupViews() {
-        viewLifecycleOwner.lifecycleScope.launchWhenResumed {
-            viewModel.getStatusDetail(company, portCode).collect { uiState ->
-                when (uiState) {
-                    is UiState.Success<StatusDetailResult> -> {
-                        binding.PortMainStatusComposeView.portStatus = uiState.data.portStatus
-                        binding.TimeTableListComposeView.timeTable = uiState.data.timeTable
-                    }
-
-                    else -> {
-                        // エラー表示はまだ未定
-                    }
-                }
-            }
-        }
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return ComposeView(requireContext()).apply {
             setContent {
@@ -68,7 +51,6 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // setupViews()
         arguments?.let { Timber.d(arguments.toString()) }
     }
 
