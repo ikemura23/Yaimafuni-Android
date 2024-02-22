@@ -21,22 +21,21 @@ class StatusDetailRepositoryImpl : StatusDetailRepository,KoinComponent {
     /**
      * 運行情報の詳細を取得する
      */
-    override fun fetchStatusDetail(company: Company, portCode: String): Flow<UiState<PortStatus>> {
+    override fun fetchStatusDetail(company: Company, portCode: String): Flow<PortStatus> {
         val path = "${company.code}/$portCode"
         val dbRef = database.getReference(path)
-        return callbackFlow<UiState<PortStatus>> {
+        return callbackFlow<PortStatus> {
             val listener = object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val data = snapshot.getValue<PortStatus>()
 
                     data?.let {
-                        trySend(UiState.Success(data))
-                    } ?: trySend(UiState.Error(Exception("nullになったよ")))
+                        trySend(data)
+                    } ?: throw Exception("nullになったよ")
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    trySend(UiState.Error(error.toException()))
-                    // close(error.toException())
+                    throw error.toException()
                 }
             }
             dbRef.addValueEventListener(listener)
@@ -52,21 +51,22 @@ class StatusDetailRepositoryImpl : StatusDetailRepository,KoinComponent {
         //     .catch { UiState.Error(it) }
     }
 
-    override fun fetchTimeTable(company: Company, portCode: String): Flow<UiState<TimeTable>> {
+    override fun fetchTimeTable(company: Company, portCode: String): Flow<TimeTable> {
         val path = "${company.code}_timeTable/$portCode"
         val dbRef = database.getReference(path)
-        return callbackFlow<UiState<TimeTable>> {
+        return callbackFlow<TimeTable> {
             val listener = object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val data = snapshot.getValue(TimeTable::class.java)
 
                     data?.let {
-                        trySend(UiState.Success(data))
-                    } ?: trySend(UiState.Error(Exception("nullになったよ")))
+                        trySend(data)
+                    } ?: throw  Exception("nullになったよ")
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    trySend(UiState.Error(error.toException()))
+                    throw error.toException()
+                    // trySend(UiState.Error(error.toException()))
                     // close(error.toException())
                 }
             }

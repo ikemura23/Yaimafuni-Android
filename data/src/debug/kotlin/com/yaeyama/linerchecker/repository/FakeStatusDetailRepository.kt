@@ -1,5 +1,6 @@
 package com.yaeyama.linerchecker.repository
 
+import android.util.Log
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
 import com.yaeyama_liner_checker.domain.statusdetail.Status
@@ -10,27 +11,28 @@ import com.yaeyama_liner_checker.domain.time_table.TimeTable
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
 import org.koin.core.component.KoinComponent
 
 /**
  * 運行詳細のFakeリポジトリ
  */
 class FakeStatusDetailRepository : StatusDetailRepository, KoinComponent {
-    override fun fetchStatusDetail(company: Company, portCode: String): Flow<UiState<PortStatus>> = flow {
+    override fun fetchStatusDetail(company: Company, portCode: String): Flow<PortStatus> = flow {
         delay(1000)
         val portStatus = PortStatus(
             portCode = portCode,
             portName = "ダミー",
-            comment = "",
+            comment = "コメントコメント",
             status = Status(
                 text = "通常運航",
                 code = "normal",
             ),
         )
-        emit(UiState.Success(portStatus))
+        emit(portStatus)
     }
 
-    override fun fetchTimeTable(company: Company, portCode: String): Flow<UiState<TimeTable>> = flow {
+    override fun fetchTimeTable(company: Company, portCode: String): Flow<TimeTable> = flow {
         delay(1000)
         val rowItem = RowItem(
             status = Status(
@@ -42,11 +44,13 @@ class FakeStatusDetailRepository : StatusDetailRepository, KoinComponent {
         )
         val timeTable = TimeTable(
             header = Header(left = "left", right = "right"),
-            row = listOf(Row(
-                left = rowItem,
-                right = rowItem
-            ))
+            row = listOf(
+                Row(
+                    left = rowItem,
+                    right = rowItem
+                )
+            )
         )
-        emit(UiState.Success(timeTable))
+        emit(timeTable)
     }
 }

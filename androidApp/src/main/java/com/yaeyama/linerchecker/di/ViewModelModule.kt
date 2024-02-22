@@ -14,7 +14,7 @@ val viewModelModule = module {
         MainViewModel(get())
     }
     viewModel {
-        PortStatusDetailViewModel()
+        PortStatusDetailViewModel(get())
     }
     viewModel {
         DashBoardViewModel(get())

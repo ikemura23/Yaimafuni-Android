@@ -3,15 +3,15 @@ package com.yaeyama.linerchecker.ui.portstatusdetail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yaeyama.linerchecker.repository.StatusDetailRepository
-import com.yaeyama.linerchecker.repository.UiState
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
 import com.yaeyama_liner_checker.domain.time_table.TimeTable
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -22,7 +22,6 @@ import kotlinx.coroutines.launch
 class PortStatusDetailViewModel(
     private val statusDetailRepository: StatusDetailRepository,
 ) : ViewModel() {
-
 
     private val isLoading = MutableStateFlow(false)
     private val isError = MutableStateFlow(false)
@@ -57,15 +56,13 @@ class PortStatusDetailViewModel(
         portCode: String,
     ) {
         viewModelScope.launch {
-            statusDetailRepository.fetchStatusDetail(company = company, portCode = portCode).map { uiState ->
-                when (uiState) {
-                    is UiState.Success -> {
-                        portStatus.update { it }
-                    }
-
-                    else -> isError.update { true }
-                }
+            runCatching {
+                val res: Flow<PortStatus> = statusDetailRepository.fetchStatusDetail(company = company, portCode = portCode)
+                portStatus.update { res.first() } // TODO: firstをやめたい
+            }.onFailure {
+                isError.update { true }
             }
+
         }
     }
 }

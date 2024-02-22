@@ -35,7 +35,7 @@ fun PortStatusDetailScreen(
         viewModel.fetchDetail(company, portCode)
     }
     val uiState = viewModel.uiState.collectAsState()
-
+    Timber.d("KKKK uiState:${uiState.value}")
     PortStatusDetailScreen(
         portName = uiState.value.portStatus.portName,
         status = uiState.value.portStatus.status,

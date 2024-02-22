@@ -6,6 +6,6 @@ import com.yaeyama_liner_checker.domain.time_table.TimeTable
 import kotlinx.coroutines.flow.Flow
 
 interface StatusDetailRepository {
-    fun fetchStatusDetail(company: Company, portCode: String): Flow<UiState<PortStatus>>
-    fun fetchTimeTable(company: Company, portCode: String): Flow<UiState<TimeTable>>
+    fun fetchStatusDetail(company: Company, portCode: String): Flow<PortStatus>
+    fun fetchTimeTable(company: Company, portCode: String): Flow<TimeTable>
 }
