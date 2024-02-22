@@ -64,5 +64,14 @@ class PortStatusDetailViewModel(
             }
 
         }
+        viewModelScope.launch {
+            runCatching {
+                timeTable.update {
+                    statusDetailRepository.fetchTimeTable(company, portCode).first()  // TODO: firstをやめたい
+                }
+            }.onFailure {
+                isError.update { true } // TODO: TimeTableだけエラーの場合を考慮する
+            }
+        }
     }
 }
