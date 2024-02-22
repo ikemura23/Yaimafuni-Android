@@ -19,9 +19,10 @@ import kotlinx.coroutines.launch
 /**
  * 運行詳細 ViewModel
  */
-class PortStatusDetailViewModel : ViewModel() {
+class PortStatusDetailViewModel(
+    private val statusDetailRepository: StatusDetailRepository,
+) : ViewModel() {
 
-    private val statusDetailRepository = StatusDetailRepository()
 
     private val isLoading = MutableStateFlow(false)
     private val isError = MutableStateFlow(false)

@@ -35,8 +35,13 @@ fun PortStatusDetailScreen(
         viewModel.fetchDetail(company, portCode)
     }
     val uiState = viewModel.uiState.collectAsState()
-    Timber.tag("PortStatusDetailScreen").d(uiState.value.toString())
-    // TODO: PortStatusDetailScreen に uiState を渡す
+
+    PortStatusDetailScreen(
+        portName = uiState.value.portStatus.portName,
+        status = uiState.value.portStatus.status,
+        statusDescription = uiState.value.portStatus.comment,
+        timeTable = uiState.value.timeTable,
+    )
 }
 
 @Composable

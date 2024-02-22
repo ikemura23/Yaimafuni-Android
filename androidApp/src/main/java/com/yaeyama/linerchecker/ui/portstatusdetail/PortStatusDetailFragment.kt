@@ -7,23 +7,24 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
-import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.yaeyama.linerchecker.ext.getSerialize
-import com.yaeyama.linerchecker.ext.viewBinding
-import com.yaeyama.linerchecker.repository.UiState
+import com.yaeyama.linerchecker.repository.FakeStatusDetailRepository
+import com.yaeyama.linerchecker.repository.StatusDetailRepository
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama_liner_checker.domain.statusdetail.Company
-import com.yaeyama_liner_checker.domain.statusdetail.StatusDetailResult
 import timber.log.Timber
 
 /**
  * 詳細フラグメント
  */
-class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
-    private val binding: StatusDetailFragmentBinding by viewBinding()
-    private val viewModel: PortStatusDetailViewModel by activityViewModels()
+class PortStatusDetailFragment : Fragment() {
+    // private val binding: StatusDetailFragmentBinding by viewBinding()
+
+    // FIXME viewModelをKoinで作成するとエラーとなるため、いったんKoinを使わずインスタンス作成する
+    // private val viewModel by activityViewModels<PortStatusDetailViewModel>()
+    private val viewModel: PortStatusDetailViewModel = PortStatusDetailViewModel(
+        FakeStatusDetailRepository()
+    )
 
     /** パラメータ取得 会社 */
     private val company: Company
@@ -36,6 +37,7 @@ class PortStatusDetailFragment : Fragment(R.layout.status_detail_fragment) {
             ?: throw IllegalArgumentException("PortStatusDetailFragment の Arguments から PortCode が取得できません")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         return ComposeView(requireContext()).apply {
             setContent {
                 YaimafuniAndroidTheme {
