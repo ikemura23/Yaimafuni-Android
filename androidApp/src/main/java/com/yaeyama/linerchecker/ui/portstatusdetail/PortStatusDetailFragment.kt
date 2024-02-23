@@ -16,7 +16,6 @@ import timber.log.Timber
  * 詳細フラグメント
  */
 class PortStatusDetailFragment : Fragment() {
-    // private val binding: StatusDetailFragmentBinding by viewBinding()
 
     private val viewModel by viewModel<PortStatusDetailViewModel>()
 
