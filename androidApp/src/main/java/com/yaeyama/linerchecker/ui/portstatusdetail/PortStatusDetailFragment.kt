@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.yaeyama.linerchecker.ext.getSerialize
+import com.yaeyama.linerchecker.ext.viewBinding
 import com.yaeyama.linerchecker.repository.FakeStatusDetailRepository
 import com.yaeyama.linerchecker.repository.StatusDetailRepository
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme

@@ -1,14 +1,15 @@
 package com.yaeyama.linerchecker.ui.portstatusdetail
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.PortMainStatus
@@ -46,29 +47,26 @@ fun PortStatusDetailScreen(
 
 @Composable
 private fun PortStatusDetailScreen(
+    modifier: Modifier = Modifier,
     portName: String,
     status: Status,
     statusDescription: String,
     timeTable: TimeTable,
 ) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth(),
+    Column(
+        modifier = modifier.padding(16.dp)
     ) {
-        Column {
-            // PortMainStatus()
-            PortMainStatus(
-                portName = portName,
-                status = status,
-                statusDescription = statusDescription,
-            )
+        PortMainStatus(
+            portName = portName,
+            status = status,
+            statusDescription = statusDescription,
+        )
 
-            Spacer(modifier = Modifier.size(16.dp))
+        Spacer(modifier = Modifier.size(16.dp))
 
-            TimeTableList(
-                timeTable = timeTable,
-            )
-        }
+        TimeTableList(
+            timeTable = timeTable,
+        )
     }
 }
 
@@ -95,6 +93,7 @@ private fun PortStatusDetailScreenPreview() {
 
     YaimafuniAndroidTheme {
         PortStatusDetailScreen(
+            modifier = Modifier.background(Color.Blue),
             portName = "portName",
             status = Status(code = "normal", text = "text"),
             statusDescription = "statusDescription",
