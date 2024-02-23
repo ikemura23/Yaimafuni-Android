@@ -6,14 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import com.ikmr.banbara23.yaeyama_liner_checker.databinding.StatusDetailFragmentBinding
 import com.yaeyama.linerchecker.ext.getSerialize
-import com.yaeyama.linerchecker.ext.viewBinding
-import com.yaeyama.linerchecker.repository.FakeStatusDetailRepository
-import com.yaeyama.linerchecker.repository.StatusDetailRepository
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama_liner_checker.domain.statusdetail.Company
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 /**
@@ -22,11 +18,7 @@ import timber.log.Timber
 class PortStatusDetailFragment : Fragment() {
     // private val binding: StatusDetailFragmentBinding by viewBinding()
 
-    // FIXME viewModelをKoinで作成するとエラーとなるため、いったんKoinを使わずインスタンス作成する
-    // private val viewModel by activityViewModels<PortStatusDetailViewModel>()
-    private val viewModel: PortStatusDetailViewModel = PortStatusDetailViewModel(
-        FakeStatusDetailRepository()
-    )
+    private val viewModel by viewModel<PortStatusDetailViewModel>()
 
     /** パラメータ取得 会社 */
     private val company: Company
