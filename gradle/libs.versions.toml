@@ -3,6 +3,8 @@ app-compileSdk = "34"
 app-minSdk = "24"
 app-targetSdk = "34"
 
+compose-compiler-version = "1.5.10"
+
 activityCompose = "1.8.2"
 appcompat = "1.6.1"
 browser = "1.7.0"
@@ -16,7 +18,7 @@ composeUiTooling = "1.2.0-rc02"
 firebaseCrashlyticsGradle = "2.8.1"
 junit = "4.13.2"
 koinAndroid = "3.4.0"
-kotlinGradlePlugin = "1.8.10"
+kotlinGradlePlugin = "1.9.22" # 互換性のある Compose Compiler Version と合わせること
 lifecycleViewmodelCompose = "2.6.1"
 materialIconsCore = "1.2.0-rc02"
 materialIconsExtended = "1.2.0-rc02"

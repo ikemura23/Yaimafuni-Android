@@ -48,7 +48,9 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        // 互換性のあるCompatible Kotlin Versionと合わせること
+        // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.version.get()
     }
     namespace = "com.ikmr.banbara23.yaeyama_liner_checker"
 }
