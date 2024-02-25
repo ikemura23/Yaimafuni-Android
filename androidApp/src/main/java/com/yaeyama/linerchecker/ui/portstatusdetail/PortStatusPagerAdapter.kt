@@ -4,7 +4,6 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.yaeyama.linerchecker.common.Constants
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 
 class PortStatusPagerAdapter(
@@ -25,8 +24,8 @@ class PortStatusPagerAdapter(
         }
 
         val bundle = bundleOf(
-            Constants.BUNDLE_KEY_PORT_CODE to portCode,
-            Constants.BUNDLE_KEY_COMPANY to company,
+            PortStatusDetailFragment.BUNDLE_KEY_PORT_CODE to portCode,
+            PortStatusDetailFragment.BUNDLE_KEY_COMPANY to company,
         )
 
         return PortStatusDetailFragment.newInstance(bundle)

@@ -6,10 +6,6 @@
 
     <!--台風-->
     <string name="typhoon_list_screen_title">台風情報</string>
-    <string name="typhoon_scale">大きさ : %s</string>
-    <string name="typhoon_intensity">強さ : %s</string>
-    <string name="typhoon_pressure">中心気圧 : %s</string>
-    <string name="typhoon_maxWindSpeed">中心最大風速 : %s</string>
     <!--ボトムナビゲーション-->
     <string name="title_home">運行状況</string>
     <string name="title_weather">天気</string>
