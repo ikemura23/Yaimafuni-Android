@@ -5,7 +5,7 @@ app-targetSdk = "34"
 
 activityCompose = "1.8.2"
 appcompat = "1.6.1"
-browser = "1.5.0"
+browser = "1.7.0"
 coilCompose = "2.5.0"
 composeThemeAdapter = "1.1.8"
 constraintlayout = "2.1.4"
