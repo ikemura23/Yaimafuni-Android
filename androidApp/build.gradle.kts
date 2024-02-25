@@ -18,7 +18,7 @@ android {
         minSdk = libs.versions.app.minSdk.get().toInt()
         targetSdk = libs.versions.app.targetSdk.get().toInt()
         versionCode = 89
-        versionName = "4.7.0-20240225"
+        versionName = "4.7.0-20240225-1658"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
