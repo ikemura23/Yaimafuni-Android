@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.yaeyama.linerchecker"
-    compileSdk = 33
+    compileSdk = libs.versions.app.compileSdk.get().toInt()
 
     // Unitテストで使う
     kotlinOptions {
