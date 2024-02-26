@@ -17,8 +17,8 @@ android {
         applicationId = "com.banbara.yaeyama.liner.checker"
         minSdk = libs.versions.app.minSdk.get().toInt()
         targetSdk = libs.versions.app.targetSdk.get().toInt()
-        versionCode = 88
-        versionName = "4.6.1"
+        versionCode = 89
+        versionName = "4.7.0-20240225-1658"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -48,7 +48,9 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        // 互換性のあるCompatible Kotlin Versionと合わせること
+        // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.version.get()
     }
     namespace = "com.ikmr.banbara23.yaeyama_liner_checker"
 }
