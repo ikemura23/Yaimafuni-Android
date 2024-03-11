@@ -6,7 +6,7 @@ import org.koin.dsl.module
 
 val appModule = module {
     single {
-        if (com.yaeyama.linerchecker.BuildConfig.DEBUG) {
+        if (com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig.DEBUG) {
             FakeReviewManager(get())
         } else {
             ReviewManagerFactory.create(get())
