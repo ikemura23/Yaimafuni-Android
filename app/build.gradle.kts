@@ -8,7 +8,7 @@ android {
     compileSdk = libs.versions.app.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.banbara.yaeyama.liner.checker2"
+        applicationId = "com.banbara.yaeyama.liner.checker2" // TODO: 末尾の2を外す
         minSdk = libs.versions.app.minSdk.get().toInt()
         targetSdk = libs.versions.app.targetSdk.get().toInt()
         versionCode = 90
