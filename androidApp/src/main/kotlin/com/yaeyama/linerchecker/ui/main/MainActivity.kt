@@ -14,8 +14,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManager
 import com.google.android.play.core.tasks.Task
-import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.databinding.MainActivityBinding
+import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.databinding.MainActivityBinding
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber

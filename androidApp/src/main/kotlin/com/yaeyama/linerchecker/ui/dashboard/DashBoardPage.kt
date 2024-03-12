@@ -9,12 +9,11 @@ import androidx.compose.material.Divider
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardHeader
 import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardRow
+import com.yaeyama.linerchecker.ui.theme.DashBoardRowDividerColor
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama_liner_checker.domain.top.Ports
 
@@ -44,7 +43,7 @@ fun RowDivider() {
         modifier = Modifier
             .fillMaxWidth()
             .width(1.dp),
-        color = colorResource(id = R.color.light_grey),
+        color = DashBoardRowDividerColor,
     )
 }
 

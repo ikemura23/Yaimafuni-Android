@@ -52,7 +52,7 @@ android {
         // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.version.get()
     }
-    namespace = "com.ikmr.banbara23.yaeyama_liner_checker"
+    namespace = "com.yaeyama.linerchecker"
 }
 
 dependencies {
