@@ -4,6 +4,9 @@ plugins {
 }
 
 android {
+    defaultConfig {
+        minSdk = libs.versions.app.minSdk.get().toInt()
+    }
     namespace = "com.yaeyama.linerchecker"
     compileSdk = libs.versions.app.compileSdk.get().toInt()
 
