@@ -27,7 +27,7 @@ navigationUiKtx = "2.7.7"
 playCore = "1.10.3"
 playCoreKtx = "1.8.1"
 firebaseBom = "32.7.2"
-adroidGradlePlugin = "8.2.2"
+androidGradlePlugin = "8.3.0"
 googleServices = "4.4.1"
 kotlinxCoroutinesAndroid = "1.7.3"
 timber = "5.0.1"
@@ -65,7 +65,7 @@ firebase-analytics = {group = "com.google.firebase", name = "firebase-analytics-
 firebase-crashlytics = {group = "com.google.firebase", name = "firebase-crashlytics"}
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
-gradle = { module = "com.android.tools.build:gradle", version.ref = "adroidGradlePlugin" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "composeUi" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "composeUiTooling" }
