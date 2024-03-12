@@ -10,6 +10,11 @@ android {
     namespace = "com.yaeyama.linerchecker"
     compileSdk = libs.versions.app.compileSdk.get().toInt()
 
+    // BuildConfigクラスの生成を無効化
+    buildFeatures {
+        buildConfig = false
+    }
+
     // Unitテストで使う
     kotlinOptions {
         jvmTarget = "1.8"
