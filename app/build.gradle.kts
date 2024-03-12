@@ -5,14 +5,14 @@ plugins {
 
 android {
     namespace = "com.yaeyama.liner.checker"
-    compileSdk = 34
+    compileSdk = libs.versions.app.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.banbara.yaeyama.liner.checker2"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = libs.versions.app.minSdk.get().toInt()
+        targetSdk = libs.versions.app.targetSdk.get().toInt()
+        versionCode = 90
+        versionName = "4.7.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -24,6 +24,9 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+        debug {
+            applicationIdSuffix = ".debug"
         }
     }
     compileOptions {
