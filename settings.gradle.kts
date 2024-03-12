@@ -10,4 +10,5 @@ include(
     ":androidApp",
     ":domain",
     ":data",
+    ":app",
 )
