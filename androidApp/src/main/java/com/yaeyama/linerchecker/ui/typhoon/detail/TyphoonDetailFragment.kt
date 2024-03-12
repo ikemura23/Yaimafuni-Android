@@ -5,8 +5,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import coil.load
-import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonDetailFragmentBinding
+import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.databinding.TyphoonDetailFragmentBinding
 import com.yaeyama.linerchecker.ext.viewBinding
 import com.yaeyama.linerchecker.utils.CustomTabUtil
 import timber.log.Timber

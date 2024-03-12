@@ -16,3 +16,5 @@ object StatusColor {
 val TableHeaderColor = Color(0xFF303F9F)
 
 val TableDividerColor = Color(0xFFC9E6FF)
+
+val DashBoardRowDividerColor = Color(0xFFd3d3d3)

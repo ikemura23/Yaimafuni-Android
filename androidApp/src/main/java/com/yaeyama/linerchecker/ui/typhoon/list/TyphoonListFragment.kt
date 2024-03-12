@@ -8,8 +8,8 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.databinding.TyphoonListFragmentBinding
+import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.databinding.TyphoonListFragmentBinding
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailUiModel
 import com.yaeyama_liner_checker.domain.tyhoon.Typhoon

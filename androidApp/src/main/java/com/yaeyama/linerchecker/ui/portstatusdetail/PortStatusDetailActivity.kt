@@ -3,8 +3,8 @@ package com.yaeyama.linerchecker.ui.portstatusdetail
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayoutMediator
-import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.databinding.PortStatusDetailActivityBinding
+import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.databinding.PortStatusDetailActivityBinding
 
 /**
  * ステータス詳細のActivity

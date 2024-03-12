@@ -5,7 +5,7 @@ import android.net.Uri
 import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
-import com.ikmr.banbara23.yaeyama_liner_checker.R
+import com.yaeyama.linerchecker.R
 
 /**
  * カスタムタブ
