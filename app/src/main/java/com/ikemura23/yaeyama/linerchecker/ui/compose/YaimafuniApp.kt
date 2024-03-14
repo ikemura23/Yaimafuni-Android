@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ikemura23.yaeyama.linerchecker.ui.compose.dashboard.DashboardScreen
+import com.ikemura23.yaeyama.linerchecker.ui.compose.portstatusdetail.LinerStatusDetailScreen
 
 @Composable
 fun YaimafuniApp() {
@@ -23,10 +24,19 @@ fun YaimafuniNavHost(
         composable(route = Screen.Dashboard.route) {
             DashboardScreen(
                 onRowClick = {
-                    // TODO: 運行詳細への遷移
-                    // navController.navigate()
+                    // TODO: routeId を引数にわたす
+                    navController.navigate(
+                        Screen.PortStatusDetail.createRoute("tempRouteId")
+                    )
                 }
             )
+        }
+
+        composable(
+            route = Screen.PortStatusDetail.route,
+            arguments = Screen.PortStatusDetail.navArguments,
+        ) {
+            LinerStatusDetailScreen()
         }
     }
 }
