@@ -1,4 +1,4 @@
-package com.yaeyama.liner.checker.ui.theme
+package com.ikemura23.yaeyama.linerchecker.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

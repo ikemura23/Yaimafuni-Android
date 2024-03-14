@@ -1,4 +1,4 @@
-package com.yaeyama.liner.checker
+package com.ikemura23.yaeyama.linerchecker
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.yaeyama.liner.checker.ui.theme.YaimafuniAndroidTheme
+import com.ikemura23.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
