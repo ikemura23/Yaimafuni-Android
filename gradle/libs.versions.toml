@@ -22,6 +22,7 @@ kotlinGradlePlugin = "1.9.22" # 互換性のある Compose Compiler Version と�
 lifecycleViewmodelCompose = "2.7.0"
 materialIconsCore = "1.6.2"
 materialIconsExtended = "1.6.2"
+navigationCompose = "2.7.7"
 navigationFragmentKtx = "2.7.7"
 navigationUiKtx = "2.7.7"
 playCore = "1.10.3"
@@ -42,6 +43,7 @@ composeBom = "2023.08.00"
 
 [libraries]
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 browser = { module = "androidx.browser:browser", version.ref = "browser" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
