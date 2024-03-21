@@ -14,6 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ikemura23.yaeyama.linerchecker.R
 import com.ikemura23.yaeyama.linerchecker.ui.compose.YaimafuniScaffold
+import com.ikemura23.yaeyama.linerchecker.ui.compose.navigation.MainDestination
+import com.ikemura23.yaeyama.linerchecker.ui.compose.navigation.MainNavigation
 import com.ikemura23.yaeyama.linerchecker.ui.theme.BackgroundSkyColor
 import com.ikemura23.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 
@@ -28,6 +30,11 @@ fun DashboardScreen(
             DashboardAppBar()
         },
         containerColor = BackgroundSkyColor,
+        bottomBar = {
+            MainNavigation(
+                destinations = MainDestination.entries
+            )
+        }
     ) { contentPadding ->
         Surface(
             modifier = Modifier.fillMaxWidth(),
