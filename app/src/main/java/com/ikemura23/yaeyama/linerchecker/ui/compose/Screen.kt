@@ -9,7 +9,7 @@ sealed class Screen(
     val navArguments: List<NamedNavArgument> = emptyList()
 ) {
     data object Dashboard : Screen("dashboard")
-    data object PortStatusDetail:Screen(
+    data object PortStatusDetail : Screen(
         route = "portStatusDetail/{routeId}",
         navArguments = listOf(navArgument("routeId") {
             type = NavType.StringType
