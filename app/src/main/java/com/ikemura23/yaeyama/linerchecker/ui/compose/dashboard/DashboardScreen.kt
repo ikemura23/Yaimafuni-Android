@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -13,9 +14,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ikemura23.yaeyama.linerchecker.R
-import com.ikemura23.yaeyama.linerchecker.ui.compose.YaimafuniScaffold
-import com.ikemura23.yaeyama.linerchecker.ui.compose.navigation.MainDestination
-import com.ikemura23.yaeyama.linerchecker.ui.compose.navigation.MainNavigation
 import com.ikemura23.yaeyama.linerchecker.ui.theme.BackgroundSkyColor
 import com.ikemura23.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 
@@ -24,17 +22,12 @@ fun DashboardScreen(
     modifier: Modifier = Modifier,
     onRowClick: () -> Unit,
 ) {
-    YaimafuniScaffold(
+    Scaffold(
         modifier = modifier,
         topBar = {
             DashboardAppBar()
         },
         containerColor = BackgroundSkyColor,
-        bottomBar = {
-            MainNavigation(
-                destinations = MainDestination.entries
-            )
-        }
     ) { contentPadding ->
         Surface(
             modifier = Modifier.fillMaxWidth(),
