@@ -11,9 +11,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ikemura23.yaeyama.linerchecker.BuildConfig
 import com.ikemura23.yaeyama.linerchecker.R
+import com.ikemura23.yaeyama.linerchecker.ui.compose.common.TitleAppBar
 import com.ikemura23.yaeyama.linerchecker.ui.theme.BackgroundSkyColor
 import com.ikemura23.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 
@@ -25,7 +28,9 @@ fun DashboardScreen(
     Scaffold(
         modifier = modifier,
         topBar = {
-            DashboardAppBar()
+            TitleAppBar(
+                stringResource(R.string.app_name) + if (BuildConfig.DEBUG) " ${BuildConfig.VERSION_NAME}" else ""
+            )
         },
         containerColor = BackgroundSkyColor,
     ) { contentPadding ->
