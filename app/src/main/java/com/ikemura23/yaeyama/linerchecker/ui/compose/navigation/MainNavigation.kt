@@ -20,30 +20,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.ikemura23.yaeyama.linerchecker.R
 import com.ikemura23.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
-
-enum class MainDestination(
-    val route: String,
-    val iconDrawableId: Int,
-    val iconTextId: Int,
-) {
-    DASHBOARD(
-        route = "dashboard",
-        iconDrawableId = R.drawable.ic_boat_white,
-        iconTextId = R.string.title_home,
-    ),
-    WEATHER(
-        route = "dashboard", // weather
-        iconDrawableId = R.drawable.ic_weather_white,
-        iconTextId = R.string.title_weather,
-    ),
-    TYPHOON(
-        route = "dashboard", // typhoon
-        iconDrawableId = R.drawable.ic_typhoon_white,
-        iconTextId = R.string.title_typhoon,
-    ),
-}
 
 @Composable
 fun MainNavigation(
@@ -75,7 +52,7 @@ fun MainNavigation(
                     )
                 },
                 onClick = {
-                          navController.navigate(destination.route)
+                    navController.navigate(destination.route)
                 },
                 selected = true,
                 colors = NavigationBarItemDefaults.colors(
