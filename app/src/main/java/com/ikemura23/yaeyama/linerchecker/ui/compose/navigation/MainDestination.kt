@@ -3,7 +3,7 @@ package com.ikemura23.yaeyama.linerchecker.ui.compose.navigation
 import com.ikemura23.yaeyama.linerchecker.R
 
 /**
- * 画面の遷移用のEnum
+ * ボトムナビゲーションの表示アイコン, 文字列を管理するEnum
  */
 enum class MainDestination(
     val route: String,
