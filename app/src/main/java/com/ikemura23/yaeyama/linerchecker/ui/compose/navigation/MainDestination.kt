@@ -16,12 +16,12 @@ enum class MainDestination(
         iconTextId = R.string.title_home,
     ),
     WEATHER(
-        route = "dashboard", // weather
+        route = "weather", // weather
         iconDrawableId = R.drawable.ic_weather_white,
         iconTextId = R.string.title_weather,
     ),
     TYPHOON(
-        route = "dashboard", // typhoon
+        route = "typhoon", // typhoon
         iconDrawableId = R.drawable.ic_typhoon_white,
         iconTextId = R.string.title_typhoon,
     ),
