@@ -54,7 +54,7 @@ fun MainNavigation(
                 onClick = {
                     navController.navigate(destination.route)
                 },
-                selected = true,
+                selected = selected,
                 colors = NavigationBarItemDefaults.colors(
                     indicatorColor = Color(0xFF007AB7),
                     selectedIconColor = Color.White,
