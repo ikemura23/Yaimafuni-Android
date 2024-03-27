@@ -6,7 +6,9 @@ plugins {
 android {
     namespace = "com.yaeyama.linerchecker"
     compileSdk = libs.versions.app.compileSdk.get().toInt()
-
+    defaultConfig {
+        minSdk = libs.versions.app.minSdk.get().toInt()
+    }
     // Unitテストで使う
     kotlinOptions {
         jvmTarget = "1.8"
