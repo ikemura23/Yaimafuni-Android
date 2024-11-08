@@ -43,10 +43,6 @@ android {
         viewBinding = true
         compose = true
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
     composeOptions {
         // 互換性のあるCompatible Kotlin Versionと合わせること
         // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
@@ -54,7 +50,9 @@ android {
     }
     namespace = "com.ikmr.banbara23.yaeyama_liner_checker"
 }
-
+kotlin {
+    jvmToolchain(17)
+}
 dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
