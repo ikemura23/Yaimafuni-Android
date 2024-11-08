@@ -43,10 +43,6 @@ android {
         viewBinding = true
         compose = true
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
     composeOptions {
         // 互換性のあるCompatible Kotlin Versionと合わせること
         // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
@@ -82,8 +78,8 @@ dependencies {
     implementation(libs.timber)
 
     // In-App Review
-    implementation(libs.play.core)
-    implementation(libs.play.core.ktx)
+    implementation(libs.play.review)
+    implementation(libs.play.review.ktx)
 
     // Jetpack Compose toolkit dependencies
     // https://developer.android.com/jetpack/compose/setup#compose-compiler

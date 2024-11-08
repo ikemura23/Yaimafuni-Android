@@ -24,8 +24,8 @@ materialIconsCore = "1.6.2"
 materialIconsExtended = "1.6.2"
 navigationFragmentKtx = "2.7.7"
 navigationUiKtx = "2.7.7"
-playCore = "1.10.3"
-playCoreKtx = "1.8.1"
+playReview = "2.0.2"
+playReviewKtx = "2.0.2"
 firebaseBom = "32.7.2"
 androidGradlePlugin = "8.3.0"
 googleServices = "4.4.1"
@@ -57,8 +57,8 @@ navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-kt
 navigation-runtime-ktx = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigationUiKtx" }
 navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationUiKtx" }
 navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtx" }
-play-core = { module = "com.google.android.play:core", version.ref = "playCore" }
-play-core-ktx = { module = "com.google.android.play:core-ktx", version.ref = "playCoreKtx" }
+play-review = { module = "com.google.android.play:review", version.ref = "playReview" }
+play-review-ktx = { module = "com.google.android.play:review-ktx", version.ref = "playReviewKtx" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-database = {group = "com.google.firebase", name = "firebase-database-ktx"}
 firebase-analytics = {group = "com.google.firebase", name = "firebase-analytics-ktx"}
