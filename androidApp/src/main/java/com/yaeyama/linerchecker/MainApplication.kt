@@ -1,8 +1,8 @@
 package com.yaeyama.linerchecker
 
 import android.app.Application
-import com.google.firebase.crashlytics.BuildConfig
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig
 import com.yaeyama.linerchecker.di.appModule
 import com.yaeyama.linerchecker.di.dataModule
 import com.yaeyama.linerchecker.di.viewModelModule
