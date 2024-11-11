@@ -42,6 +42,7 @@ android {
         dataBinding = true
         viewBinding = true
         compose = true
+        buildConfig = true
     }
     composeOptions {
         // 互換性のあるCompatible Kotlin Versionと合わせること
