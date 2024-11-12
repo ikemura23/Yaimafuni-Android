@@ -23,11 +23,12 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("debug")
         }
-        getByName("debug") {
+        debug {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             applicationIdSuffix = ".debug"
@@ -42,6 +43,7 @@ android {
         dataBinding = true
         viewBinding = true
         compose = true
+        buildConfig = true
     }
     composeOptions {
         // 互換性のあるCompatible Kotlin Versionと合わせること
