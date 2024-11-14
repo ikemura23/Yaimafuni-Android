@@ -22,6 +22,8 @@
             />
         <activity
             android:name="com.yaeyama.linerchecker.ui.main.MainActivity"
+            android:theme="@style/Theme.OptOutEdgeToEdgeEnforcement"
+
             android:exported="true"
             >
             <intent-filter>
