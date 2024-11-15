@@ -18,10 +18,12 @@
         >
         <activity
             android:name="com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/Theme.OptOutEdgeToEdgeEnforcement"
             />
         <activity
             android:name="com.yaeyama.linerchecker.ui.main.MainActivity"
+            android:theme="@style/Theme.OptOutEdgeToEdgeEnforcement"
+
             android:exported="true"
             >
             <intent-filter>

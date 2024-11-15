@@ -1,28 +1,9 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <!--時刻表ベース-->
-
-    <!--時刻表ヘッダー-->
-
-    <!--時刻表ボディ-->
-
-    <!--時刻表の安栄アイコン-->
-
-    <!--時刻表の八重山観光フェリーアイコン-->
-
-    <!--時刻表のドリーム観光の注意書き-->
-
-    <!--時刻表の注意書き-->
-
-    <!--時刻表の注意書き-->
-
-    <!--詳細画面のCardView共通スタイル-->
 
 </resources>
