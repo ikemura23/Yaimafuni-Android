@@ -5,7 +5,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.OptOutEdgeToEdgeEnforcement" parent="Theme.AppCompat">
+    <style name="Theme.OptOutEdgeToEdgeEnforcement" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
     </style>
 
