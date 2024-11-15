@@ -17,7 +17,7 @@ android {
         applicationId = "com.banbara.yaeyama.liner.checker"
         minSdk = libs.versions.app.minSdk.get().toInt()
         targetSdk = libs.versions.app.targetSdk.get().toInt()
-        versionCode = 91
+        versionCode = 94
         versionName = "4.8.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
