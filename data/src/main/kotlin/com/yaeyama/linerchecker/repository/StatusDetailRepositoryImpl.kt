@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class StatusDetailRepositoryImpl : StatusDetailRepository,KoinComponent {
+class StatusDetailRepositoryImpl : StatusDetailRepository, KoinComponent {
     // Firebase Realtime Database
     private val database: FirebaseDatabase by inject()
 
@@ -61,7 +61,7 @@ class StatusDetailRepositoryImpl : StatusDetailRepository,KoinComponent {
 
                     data?.let {
                         trySend(data)
-                    } ?: throw  Exception("nullになったよ")
+                    } ?: throw Exception("nullになったよ")
                 }
 
                 override fun onCancelled(error: DatabaseError) {

@@ -4,6 +4,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.app
+import com.yaeyama.linerchecker.repository.StatusDetailRepository
+import com.yaeyama.linerchecker.repository.StatusDetailRepositoryImpl
 import com.yaeyama.linerchecker.repository.TopStatusRepository
 import com.yaeyama.linerchecker.repository.TopStatusRepositoryImpl
 import com.yaeyama.linerchecker.repository.TyphoonRepository
@@ -24,4 +26,7 @@ val dataModule = module {
         TyphoonRepositoryImpl()
     }
     single<TopStatusRepository> { TopStatusRepositoryImpl() }
+    single<StatusDetailRepository> {
+        StatusDetailRepositoryImpl()
+    }
 }
