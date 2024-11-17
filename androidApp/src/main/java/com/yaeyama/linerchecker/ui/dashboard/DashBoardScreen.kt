@@ -8,6 +8,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardAppBar
@@ -56,6 +57,25 @@ private fun DashBoardScreen(
 @Preview(showBackground = true, backgroundColor = 0xFF0000FF)
 @Composable
 private fun DashBoardScreenPreview() {
+    YaimafuniAndroidTheme {
+        DashBoardScreen(
+            uiState = DashBoardUiState(
+                isLoading = false,
+                isError = false,
+                portList = FakeDashBoardDataProvider.dummyPortList,
+            ),
+            onRowClick = {},
+        )
+    }
+}
+
+@Preview(
+    name = "Small Phone",
+    showBackground = false,
+    widthDp = 320,
+    heightDp = 480)
+@Composable
+private fun DashBoardScreenSmallDevicePreview() {
     YaimafuniAndroidTheme {
         DashBoardScreen(
             uiState = DashBoardUiState(
