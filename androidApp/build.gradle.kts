@@ -1,56 +1,23 @@
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 
 plugins {
-    id("com.android.application")
-    id("com.google.gms.google-services") // firebaseに必要
-    kotlin("android")
-    id("kotlin-kapt")
-    id("kotlin-parcelize")
-    id("com.google.firebase.crashlytics")
-    id("androidx.navigation.safeargs.kotlin")
+    id("yaeyama.android.application")
 }
 
 android {
-    compileSdk = libs.versions.app.compileSdk.get().toInt()
-
+    namespace = "com.ikmr.banbara23.yaeyama_liner_checker"
+    
     defaultConfig {
         applicationId = "com.banbara.yaeyama.liner.checker"
-        minSdk = libs.versions.app.minSdk.get().toInt()
-        targetSdk = libs.versions.app.targetSdk.get().toInt()
         versionCode = 94
         versionName = "4.8.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
     }
+    
     buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
-            signingConfig = signingConfigs.getByName("debug")
-        }
         debug {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             applicationIdSuffix = ".debug"
-            configure<CrashlyticsExtension> {
-                // マッピング ファイルを Crashlytics にアップロードしない
-                // https://firebase.google.com/docs/crashlytics/upgrade-sdk?hl=ja&platform=android
-                mappingFileUploadEnabled = false
-            }
         }
     }
-    buildFeatures {
-        dataBinding = true
-        viewBinding = true
-        compose = true
-        buildConfig = true
-    }
-    composeOptions {
-        // 互換性のあるCompatible Kotlin Versionと合わせること
-        // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.version.get()
-    }
-    namespace = "com.ikmr.banbara23.yaeyama_liner_checker"
 }
 
 dependencies {
