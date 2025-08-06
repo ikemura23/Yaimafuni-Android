@@ -60,3 +60,6 @@ androidApp/release
 
 /.idea/navEditor.xml
 .DS_Store
+
+# AI Documentation
+.ai/
