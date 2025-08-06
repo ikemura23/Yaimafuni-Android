@@ -1,14 +1,9 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id("yaeyama.android.library")
 }
 
 android {
     namespace = "com.yaeyama.linerchecker"
-    compileSdk = libs.versions.app.compileSdk.get().toInt()
-    defaultConfig {
-        minSdk = libs.versions.app.minSdk.get().toInt()
-    }
 }
 
 dependencies {
