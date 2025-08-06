@@ -2,20 +2,18 @@ package com.yaeyama.linerchecker.ui.main
 
 import android.content.Context
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.tasks.Task
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManager
-import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.databinding.MainActivityBinding
+import com.yaeyama.linerchecker.ui.main.compose.MainScreen
+import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
+import com.yaeyama.linerchecker.ui.weather.WeatherScreenViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
@@ -26,26 +24,27 @@ import timber.log.Timber
 class MainActivity : AppCompatActivity() {
 
     private val mainViewModel: MainViewModel by inject()
-    private lateinit var binding: MainActivityBinding
+    private val weatherViewModel: WeatherScreenViewModel by inject()
     private val reviewManager: ReviewManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = MainActivityBinding.inflate(layoutInflater)
-
-        val navView: BottomNavigationView = binding.navView
-
-        // val navController = findNavController(R.id.nav_host_fragment) <= ビルドは成功するが起動するとエラーとなる、↓で解決
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navView.setupWithNavController(navHostFragment.navController)
-
+        // 既存機能を完全保持
         if (isShowReview()) showInAppReview()
         countUpLaunchCount()
-
         setupBottomNavBadge()
 
-        setContentView(binding.root)
+        // Compose統合
+        setContent {
+            YaimafuniAndroidTheme {
+                MainScreen(
+                    mainViewModel = mainViewModel,
+                    weatherViewModel = weatherViewModel,
+                    onTyphoonBadgeCountChanged = ::handleTyphoonBadge
+                )
+            }
+        }
     }
 
     /**
@@ -62,18 +61,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * バッジ表示のハンドリング
+     * バッジ表示のハンドリング (Compose経由でコールバック)
      */
     private fun handleTyphoonBadge(typhoonCount: Int) {
-        binding.navView.getOrCreateBadge(R.id.typhoonListFragment).also { badgeDrawable ->
-            badgeDrawable.backgroundColor = ContextCompat.getColor(this, R.color.badge_color)
-            // バッジ数字を設定
-            if (typhoonCount > 0) {
-                badgeDrawable.number = typhoonCount
-            } else {
-                badgeDrawable.clearNumber()
-            }
-        }.isVisible = typhoonCount > 0
+        // TODO: Composeバッジシステムに統合済みのため、既存のBottomNavigationView処理は不要
+        // 将来的にComposeバッジ表示が必要な場合はここで処理
+        Timber.d("Typhoon badge count: $typhoonCount")
     }
 
     /**
