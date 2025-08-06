@@ -11,6 +11,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.gms.tasks.Task
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManager
+import com.yaeyama.linerchecker.ui.dashboard.DashBoardViewModel
 import com.yaeyama.linerchecker.ui.main.compose.MainScreen
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama.linerchecker.ui.weather.WeatherScreenViewModel
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private val mainViewModel: MainViewModel by inject()
     private val weatherViewModel: WeatherScreenViewModel by inject()
+    private val dashboardViewModel: DashBoardViewModel by inject()
     private val reviewManager: ReviewManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                 MainScreen(
                     mainViewModel = mainViewModel,
                     weatherViewModel = weatherViewModel,
+                    dashboardViewModel = dashboardViewModel,
                     onTyphoonBadgeCountChanged = ::handleTyphoonBadge
                 )
             }

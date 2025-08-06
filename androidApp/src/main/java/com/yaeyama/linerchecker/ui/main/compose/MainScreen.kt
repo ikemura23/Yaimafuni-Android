@@ -11,6 +11,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.yaeyama.linerchecker.ui.dashboard.DashBoardViewModel
+import com.yaeyama.linerchecker.ui.dashboard.compose.DashboardScreen
 import com.yaeyama.linerchecker.ui.main.MainViewModel
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama.linerchecker.ui.weather.WeatherScreen
@@ -20,6 +22,7 @@ import com.yaeyama.linerchecker.ui.weather.WeatherScreenViewModel
 fun MainScreen(
     mainViewModel: MainViewModel,
     weatherViewModel: WeatherScreenViewModel,
+    dashboardViewModel: DashBoardViewModel,
     onTyphoonBadgeCountChanged: (Int) -> Unit,
 ) {
     var selectedTab by remember { mutableStateOf(MainTab.Dashboard) }
@@ -42,10 +45,11 @@ fun MainScreen(
     ) { paddingValues ->
         when (selectedTab) {
             MainTab.Dashboard -> {
-                DashboardPlaceholder(
+                DashboardScreen(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(paddingValues)
+                        .padding(paddingValues),
+                    viewModel = dashboardViewModel
                 )
             }
             MainTab.Weather -> {
