@@ -1,18 +1,16 @@
-import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
-
 plugins {
     id("yaeyama.android.application")
 }
 
 android {
     namespace = "com.ikmr.banbara23.yaeyama_liner_checker"
-    
+
     defaultConfig {
         applicationId = "com.banbara.yaeyama.liner.checker"
         versionCode = 94
         versionName = "4.8.0"
     }
-    
+
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"

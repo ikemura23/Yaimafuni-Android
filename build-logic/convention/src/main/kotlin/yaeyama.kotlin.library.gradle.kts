@@ -1,6 +1,6 @@
 import org.gradle.api.JavaVersion
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import org.gradle.kotlin.dsl.configure
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 
 plugins {
     kotlin("jvm")
