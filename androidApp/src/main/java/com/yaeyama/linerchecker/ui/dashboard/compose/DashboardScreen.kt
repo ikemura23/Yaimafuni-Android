@@ -37,10 +37,10 @@ fun DashboardScreen(
             viewModel = vm,
             modifier = modifier,
             onRowClick = { port ->
-                // PortStatusDetailActivityへの遷移（Safe Args互換）
+                // PortStatusDetailActivityへの遷移
                 val intent = Intent(context, PortStatusDetailActivity::class.java).apply {
-                    putExtra("portName", port.anei.portName)
-                    putExtra("portCode", port.anei.portCode)
+                    putExtra(PortStatusDetailActivity.EXTRA_PORT_NAME, port.anei.portName)
+                    putExtra(PortStatusDetailActivity.EXTRA_PORT_CODE, port.anei.portCode)
                 }
                 launcher.launch(intent)
             }

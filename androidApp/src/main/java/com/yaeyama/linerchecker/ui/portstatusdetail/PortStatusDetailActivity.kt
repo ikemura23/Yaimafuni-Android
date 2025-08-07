@@ -13,14 +13,19 @@ import org.koin.android.ext.android.inject
  */
 class PortStatusDetailActivity : AppCompatActivity() {
 
+    companion object {
+        const val EXTRA_PORT_CODE = "port_code"
+        const val EXTRA_PORT_NAME = "port_name"
+    }
+
     private val viewModel: PortStatusDetailViewModel by inject()
 
     private val portCode: String by lazy {
-        PortStatusDetailActivityArgs.fromBundle(intent.extras!!).portCode
+        intent.getStringExtra(EXTRA_PORT_CODE) ?: ""
     }
 
     private val portName: String by lazy {
-        PortStatusDetailActivityArgs.fromBundle(intent.extras!!).portName
+        intent.getStringExtra(EXTRA_PORT_NAME) ?: ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
