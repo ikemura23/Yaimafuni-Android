@@ -1,6 +1,5 @@
 import com.android.build.gradle.LibraryExtension
-import org.gradle.api.JavaVersion
-import org.gradle.kotlin.dsl.configure
+import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 
 plugins {
     id("com.android.library")
@@ -18,7 +17,10 @@ configure<LibraryExtension> {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -27,3 +29,5 @@ configure<LibraryExtension> {
         targetCompatibility = JavaVersion.VERSION_17
     }
 }
+
+kotlinExtension.jvmToolchain(17)
