@@ -28,6 +28,7 @@ import timber.log.Timber
  */
 @Composable
 fun PortStatusDetailScreen(
+    modifier: Modifier = Modifier,
     company: Company,
     portCode: String,
     viewModel: PortStatusDetailViewModel,
@@ -38,6 +39,7 @@ fun PortStatusDetailScreen(
     val uiState = viewModel.uiState.collectAsState()
     Timber.d("KKKK uiState:${uiState.value}")
     PortStatusDetailScreen(
+        modifier = modifier,
         portName = uiState.value.portStatus.portName,
         status = uiState.value.portStatus.status,
         statusDescription = uiState.value.portStatus.comment,
