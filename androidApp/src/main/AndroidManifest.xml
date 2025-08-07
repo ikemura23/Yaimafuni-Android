@@ -21,6 +21,10 @@
             android:theme="@style/Theme.OptOutEdgeToEdgeEnforcement"
             />
         <activity
+            android:name="com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailActivity"
+            android:theme="@style/Theme.OptOutEdgeToEdgeEnforcement"
+            />
+        <activity
             android:name="com.yaeyama.linerchecker.ui.main.MainActivity"
             android:theme="@style/Theme.OptOutEdgeToEdgeEnforcement"
 
