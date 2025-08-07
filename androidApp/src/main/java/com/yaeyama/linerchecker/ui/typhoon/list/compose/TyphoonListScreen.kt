@@ -1,5 +1,6 @@
 package com.yaeyama.linerchecker.ui.typhoon.list.compose
 
+import android.content.Intent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -17,8 +18,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailActivity
+import com.yaeyama.linerchecker.ui.typhoon.detail.toTyphoonDetailUiModel
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListTopAppBar
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonUiState
@@ -33,6 +37,8 @@ fun TyphoonListScreen(
     modifier: Modifier = Modifier,
     viewModel: TyphoonListViewModel? = null,
 ) {
+    val context = LocalContext.current
+    
     viewModel?.let { vm ->
         val uiState by vm.uiState.collectAsState()
         
@@ -58,7 +64,11 @@ fun TyphoonListScreen(
                                 modifier = Modifier.padding(paddingValues),
                                 typhoons = currentState.typhoons,
                                 onItemClick = { typhoon ->
-                                    // TODO: Phase 4でTyphoonDetailActivityへの遷移を実装予定
+                                    // TyphoonDetailActivityへの遷移
+                                    val intent = Intent(context, TyphoonDetailActivity::class.java).apply {
+                                        putExtra(TyphoonDetailActivity.EXTRA_TYPHOON, typhoon.toTyphoonDetailUiModel())
+                                    }
+                                    context.startActivity(intent)
                                 }
                             )
                         }
