@@ -2,6 +2,9 @@
 
 このファイルは、このリポジトリでコードを扱う際のClaude Code (claude.ai/code) への指針を提供します。
 
+## Claude AIの基本指針
+- **言語**: AIの返答は日本語で行うこと
+
 ## プロジェクト概要
 
 Yaimafuni-Androidは、沖縄県八重山諸島の船舶運航情報を提供するAndroidアプリケーションです。このアプリは[Google Play](https://play.google.com/store/apps/details?id=com.banbara.yaeyama.liner.checker&hl=ja&gl=US)で公開されています。
