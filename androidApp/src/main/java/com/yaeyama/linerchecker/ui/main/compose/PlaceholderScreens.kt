@@ -27,19 +27,3 @@ fun DashboardPlaceholder(
     }
 }
 
-@Composable
-fun TyphoonPlaceholder(
-    modifier: Modifier = Modifier,
-) {
-    Box(
-        modifier = modifier,
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(
-            text = "Typhoon List (TODO: Migration)",
-            color = Color.White,
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold,
-        )
-    }
-}

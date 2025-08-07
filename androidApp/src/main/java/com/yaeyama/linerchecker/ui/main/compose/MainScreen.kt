@@ -15,6 +15,8 @@ import com.yaeyama.linerchecker.ui.dashboard.DashBoardViewModel
 import com.yaeyama.linerchecker.ui.dashboard.compose.DashboardScreen
 import com.yaeyama.linerchecker.ui.main.MainViewModel
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
+import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
+import com.yaeyama.linerchecker.ui.typhoon.list.compose.TyphoonListScreen
 import com.yaeyama.linerchecker.ui.weather.WeatherScreen
 import com.yaeyama.linerchecker.ui.weather.WeatherScreenViewModel
 
@@ -23,6 +25,7 @@ fun MainScreen(
     mainViewModel: MainViewModel,
     weatherViewModel: WeatherScreenViewModel,
     dashboardViewModel: DashBoardViewModel,
+    typhoonListViewModel: TyphoonListViewModel,
     onTyphoonBadgeCountChanged: (Int) -> Unit,
 ) {
     var selectedTab by remember { mutableStateOf(MainTab.Dashboard) }
@@ -58,10 +61,11 @@ fun MainScreen(
                 )
             }
             MainTab.Typhoon -> {
-                TyphoonPlaceholder(
+                TyphoonListScreen(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(paddingValues)
+                        .padding(paddingValues),
+                    viewModel = typhoonListViewModel
                 )
             }
         }
