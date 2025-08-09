@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.compose)
     // Material Design
     implementation(libs.compose.material)
+    implementation(libs.compose.material3)
     // Material design icons
     implementation(libs.material.icons.core)
     implementation(libs.material.icons.extended)
