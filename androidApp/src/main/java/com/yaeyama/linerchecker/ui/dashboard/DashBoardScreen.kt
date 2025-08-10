@@ -1,17 +1,17 @@
 package com.yaeyama.linerchecker.ui.dashboard
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Scaffold
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardAppBar
+import com.yaeyama.linerchecker.ui.theme.SeeBlue
 import com.yaeyama_liner_checker.domain.top.Ports
 
 @Composable
@@ -40,7 +40,7 @@ private fun DashBoardScreen(
 ) {
     Scaffold(
         topBar = { DashBoardAppBar() },
-        backgroundColor = Color.Transparent,
+        containerColor = SeeBlue,
     ) {
         DashBoardPage(
             modifier = modifier.padding(
