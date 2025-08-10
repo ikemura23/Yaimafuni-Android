@@ -11,10 +11,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.yaeyama.linerchecker.ui.dashboard.DashBoardScreenRoot
 import com.yaeyama.linerchecker.ui.dashboard.DashBoardViewModel
-import com.yaeyama.linerchecker.ui.dashboard.compose.DashboardScreen
 import com.yaeyama.linerchecker.ui.main.MainViewModel
-import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
 import com.yaeyama.linerchecker.ui.typhoon.list.compose.TyphoonListScreen
 import com.yaeyama.linerchecker.ui.weather.WeatherScreen
@@ -29,10 +28,10 @@ fun MainScreen(
     onTyphoonBadgeCountChanged: (Int) -> Unit,
 ) {
     var selectedTab by remember { mutableStateOf(MainTab.Dashboard) }
-    
+
     // 台風バッジカウントの監視
     val typhoonCount by mainViewModel.existsTyphoon().collectAsState(initial = 0)
-    
+
     // カウント変更をActivityに通知
     onTyphoonBadgeCountChanged(typhoonCount)
 
@@ -48,18 +47,20 @@ fun MainScreen(
     ) { paddingValues ->
         when (selectedTab) {
             MainTab.Dashboard -> {
-                DashboardScreen(
+                DashBoardScreenRoot(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(paddingValues),
                     viewModel = dashboardViewModel
                 )
             }
+
             MainTab.Weather -> {
                 WeatherScreen(
                     weatherViewModel = weatherViewModel,
                 )
             }
+
             MainTab.Typhoon -> {
                 TyphoonListScreen(
                     modifier = Modifier
