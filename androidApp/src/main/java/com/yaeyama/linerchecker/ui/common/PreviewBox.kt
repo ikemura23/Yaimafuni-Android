@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.yaeyama.linerchecker.ui.theme.SeeBlue
+import com.yaeyama.linerchecker.ui.theme.AppBackgroundColor
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 
 /**
@@ -17,7 +17,7 @@ import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 @Composable
 fun PreviewBox(
     modifier: Modifier = Modifier,
-    backgroundColor: Color = SeeBlue,
+    backgroundColor: Color = AppBackgroundColor,
     content: @Composable () -> Unit,
 ) {
     YaimafuniAndroidTheme {

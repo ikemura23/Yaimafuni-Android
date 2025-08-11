@@ -2,7 +2,6 @@ package com.yaeyama.linerchecker.ui.main.compose
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -10,7 +9,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import com.yaeyama.linerchecker.ui.dashboard.DashBoardScreenRoot
 import com.yaeyama.linerchecker.ui.dashboard.DashBoardViewModel
 import com.yaeyama.linerchecker.ui.main.MainViewModel
@@ -26,6 +24,7 @@ fun MainScreen(
     dashboardViewModel: DashBoardViewModel,
     typhoonListViewModel: TyphoonListViewModel,
     onTyphoonBadgeCountChanged: (Int) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     var selectedTab by remember { mutableStateOf(MainTab.Dashboard) }
 
@@ -35,8 +34,7 @@ fun MainScreen(
     // カウント変更をActivityに通知
     onTyphoonBadgeCountChanged(typhoonCount)
 
-    Scaffold(
-        backgroundColor = Color.Transparent,
+    MainScaffold(
         bottomBar = {
             MainBottomNavigation(
                 selectedTab = selectedTab,
@@ -57,6 +55,9 @@ fun MainScreen(
 
             MainTab.Weather -> {
                 WeatherScreen(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(paddingValues),
                     weatherViewModel = weatherViewModel,
                 )
             }
