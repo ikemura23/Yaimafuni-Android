@@ -1,62 +1,45 @@
 package com.yaeyama.linerchecker.ui.portstatusdetail
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.tabs.TabLayoutMediator
-import com.ikmr.banbara23.yaeyama_liner_checker.R
-import com.ikmr.banbara23.yaeyama_liner_checker.databinding.PortStatusDetailActivityBinding
+import com.yaeyama.linerchecker.ui.portstatusdetail.compose.PortStatusDetailScreen
+import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
+import org.koin.android.ext.android.inject
 
 /**
- * ステータス詳細のActivity
+ * ステータス詳細のActivity - Compose移行完了版
+ * DataBindingとFragment/ViewPager2からCompose完全移行
  */
 class PortStatusDetailActivity : AppCompatActivity() {
 
-    private lateinit var binding: PortStatusDetailActivityBinding
+    companion object {
+        const val EXTRA_PORT_CODE = "port_code"
+        const val EXTRA_PORT_NAME = "port_name"
+    }
+
+    private val viewModel: PortStatusDetailViewModel by inject()
 
     private val portCode: String by lazy {
-        PortStatusDetailActivityArgs.fromBundle(intent.extras!!).portCode
+        intent.getStringExtra(EXTRA_PORT_CODE) ?: ""
     }
 
     private val portName: String by lazy {
-        PortStatusDetailActivityArgs.fromBundle(intent.extras!!).portName
+        intent.getStringExtra(EXTRA_PORT_NAME) ?: ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = PortStatusDetailActivityBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setupTitle()
-        setupTabLayout()
-    }
-
-    /**
-     * タイトル設定
-     */
-    private fun setupTitle() {
-        binding.includeTitleBar.title = portName
-        binding.includeTitleBar.titleBar.setNavigationOnClickListener {
-            finish()
+        setContent {
+            YaimafuniAndroidTheme {
+                PortStatusDetailScreen(
+                    portCode = portCode,
+                    portName = portName,
+                    viewModel = viewModel,
+                    onBackPressed = { finish() }
+                )
+            }
         }
-    }
-
-    /**
-     * タブ設定
-     */
-    private fun setupTabLayout() {
-        binding.viewPager.adapter = PortStatusPagerAdapter(
-            fa = this,
-            portCode = portCode,
-        )
-        // タブ名
-        val tabTitles = arrayOf(
-            R.string.tab_annei,
-            R.string.tab_ykf,
-        )
-
-        // https://developer.android.com/guide/navigation/navigation-swipe-view-2
-        TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
-            tab.text = getString(tabTitles[position])
-        }.attach()
     }
 }

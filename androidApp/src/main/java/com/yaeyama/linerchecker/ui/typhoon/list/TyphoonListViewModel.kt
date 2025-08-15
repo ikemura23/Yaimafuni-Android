@@ -26,18 +26,15 @@ class TyphoonListViewModel : ViewModel(), KoinComponent {
      */
     fun getTyphoonList(): Flow<List<Typhoon>> = typhoonRepository.fetchTyphoonList()
 
-    private val typhoons: Flow<List<Typhoon>> = typhoonRepository.fetchTyphoonList()
-    val uiState: StateFlow<TyphoonUiState> = flow {
-        typhoonRepository.fetchTyphoonList().map {
-            TyphoonUiState.Data(it)
-        }
-            .onStart { emit(TyphoonUiState.Loading) }
-            .catch { emit(TyphoonUiState.Error) }
-    }.stateIn(
-        scope = viewModelScope,
-        started = WhileSubscribed(5000), // ５秒間購読がなければコルーチンを停止する
-        initialValue = TyphoonUiState.Loading,
-    )
+    val uiState: StateFlow<TyphoonUiState> = typhoonRepository.fetchTyphoonList()
+        .map<List<Typhoon>, TyphoonUiState> { TyphoonUiState.Data(it) }
+        .onStart { emit(TyphoonUiState.Loading) }
+        .catch { emit(TyphoonUiState.Error) }
+        .stateIn(
+            scope = viewModelScope,
+            started = WhileSubscribed(5000), // ５秒間購読がなければコルーチンを停止する
+            initialValue = TyphoonUiState.Loading,
+        )
 }
 
 sealed interface TyphoonUiState {
