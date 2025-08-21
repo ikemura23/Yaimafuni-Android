@@ -15,7 +15,7 @@ import com.yaeyama.linerchecker.ui.dashboard.DashBoardViewModel
 import com.yaeyama.linerchecker.ui.main.compose.MainScreen
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
-import com.yaeyama.linerchecker.ui.weather.WeatherScreenViewModel
+import com.yaeyama.linerchecker.ui.weather.WeatherViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
@@ -26,7 +26,7 @@ import timber.log.Timber
 class MainActivity : AppCompatActivity() {
 
     private val mainViewModel: MainViewModel by inject()
-    private val weatherViewModel: WeatherScreenViewModel by inject()
+    private val weatherViewModel: WeatherViewModel by inject()
     private val dashboardViewModel: DashBoardViewModel by inject()
     private val typhoonListViewModel: TyphoonListViewModel by inject()
     private val reviewManager: ReviewManager by inject()

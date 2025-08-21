@@ -15,12 +15,12 @@ import com.yaeyama.linerchecker.ui.main.MainViewModel
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
 import com.yaeyama.linerchecker.ui.typhoon.list.compose.TyphoonListScreen
 import com.yaeyama.linerchecker.ui.weather.WeatherScreen
-import com.yaeyama.linerchecker.ui.weather.WeatherScreenViewModel
+import com.yaeyama.linerchecker.ui.weather.WeatherViewModel
 
 @Composable
 fun MainScreen(
     mainViewModel: MainViewModel,
-    weatherViewModel: WeatherScreenViewModel,
+    weatherViewModel: WeatherViewModel,
     dashboardViewModel: DashBoardViewModel,
     typhoonListViewModel: TyphoonListViewModel,
     onTyphoonBadgeCountChanged: (Int) -> Unit,

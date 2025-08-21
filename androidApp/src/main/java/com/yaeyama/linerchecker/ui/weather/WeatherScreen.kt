@@ -15,7 +15,7 @@ import timber.log.Timber
 
 @Composable
 fun WeatherScreen(
-    weatherViewModel: WeatherScreenViewModel,
+    weatherViewModel: WeatherViewModel,
     modifier: Modifier = Modifier,
 ) {
     val uiState by weatherViewModel.weatherFlow.collectAsState()
