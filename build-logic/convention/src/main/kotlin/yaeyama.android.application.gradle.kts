@@ -40,7 +40,6 @@ configure<BaseAppModuleExtension> {
     }
 
     buildFeatures {
-        viewBinding = true
         compose = true
         buildConfig = true
     }
