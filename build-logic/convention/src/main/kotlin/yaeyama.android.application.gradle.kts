@@ -8,10 +8,8 @@ plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
     kotlin("android")
-    id("kotlin-kapt")
     id("kotlin-parcelize")
     id("com.google.firebase.crashlytics")
-    id("androidx.navigation.safeargs.kotlin")
 }
 
 configure<BaseAppModuleExtension> {
