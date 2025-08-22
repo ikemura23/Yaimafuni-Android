@@ -7,7 +7,6 @@ dependencies {
     implementation(libs.kotlin.gradle.plugin)
     implementation(libs.google.services)
     implementation(libs.firebase.crashlytics.gradle)
-    implementation(libs.navigation.safe.args.gradle.plugin)
 }
 
 kotlin {

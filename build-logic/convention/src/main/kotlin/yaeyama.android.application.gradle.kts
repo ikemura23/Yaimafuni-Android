@@ -2,15 +2,14 @@ import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import org.gradle.api.JavaVersion
 import org.gradle.kotlin.dsl.configure
+import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
     kotlin("android")
-    id("kotlin-kapt")
     id("kotlin-parcelize")
     id("com.google.firebase.crashlytics")
-    id("androidx.navigation.safeargs.kotlin")
 }
 
 configure<BaseAppModuleExtension> {
@@ -39,8 +38,6 @@ configure<BaseAppModuleExtension> {
     }
 
     buildFeatures {
-        dataBinding = true
-        viewBinding = true
         compose = true
         buildConfig = true
     }
@@ -54,3 +51,5 @@ configure<BaseAppModuleExtension> {
         targetCompatibility = JavaVersion.VERSION_17
     }
 }
+
+kotlinExtension.jvmToolchain(17)

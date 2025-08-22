@@ -16,7 +16,7 @@ import org.koin.core.component.inject
 /**
  * 天気詳細 ViewModel
  */
-class WeatherScreenViewModel : ViewModel(), KoinComponent {
+class WeatherViewModel : ViewModel(), KoinComponent {
 
     private val weatherRepository: WeatherRepository by inject()
 

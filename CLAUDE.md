@@ -2,6 +2,9 @@
 
 このファイルは、このリポジトリでコードを扱う際のClaude Code (claude.ai/code) への指針を提供します。
 
+## Claude AIの基本指針
+- **言語**: AIの返答は日本語で行うこと
+
 ## プロジェクト概要
 
 Yaimafuni-Androidは、沖縄県八重山諸島の船舶運航情報を提供するAndroidアプリケーションです。このアプリは[Google Play](https://play.google.com/store/apps/details?id=com.banbara.yaeyama.liner.checker&hl=ja&gl=US)で公開されています。
@@ -179,6 +182,7 @@ AIが作業種別に応じて自動生成する要件定義：
 - ドメインモデル → データレイヤー → UIレイヤーの順で実装
 - 各段階でビルド・テスト実行による品質確認
 - 既存コードとの整合性チェック
+- **tasks.mdチェックボックス更新**: 各タスク完了時に該当チェックボックスを✅に更新
 - **適切な粒度でのGitコミット**: 機能単位・モジュール単位で論理的にコミット
 
 #### コミット戦略
