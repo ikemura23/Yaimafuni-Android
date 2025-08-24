@@ -25,6 +25,6 @@ fun WeatherListItemCardHeader(title: String) {
 
 @Preview
 @Composable
-fun WeatherListItemCardHeaderPreview() {
+private fun WeatherListItemCardHeaderPreview() {
     WeatherListItemCardHeader("タイトル")
 }

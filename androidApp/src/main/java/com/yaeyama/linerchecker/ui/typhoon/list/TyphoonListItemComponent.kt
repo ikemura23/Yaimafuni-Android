@@ -155,22 +155,6 @@ private fun TyphoonImagePreview() {
 }
 
 /**
- * 台風の大きさ、強さ、中心気圧、中心の最大気圧
- */
-@Composable
-private fun TyphoonTextContent(value: String) {
-    Column(
-        verticalArrangement = Arrangement.SpaceEvenly,
-        modifier = Modifier.height(120.dp),
-    ) {
-        TyphoonScale("あああ")
-        TyphoonIntensity("あああ")
-        TyphoonPressure("あああ")
-        TyphoonMaxWindSpeedNearCenter("あああ")
-    }
-}
-
-/**
  * 大きさ
  */
 @Composable
@@ -216,7 +200,7 @@ private fun TyphoonMaxWindSpeedNearCenter(value: String) {
 
 @Preview
 @Composable
-fun TyphoonTextContentPreview() {
+private fun TyphoonTextContentPreview() {
     YaimafuniAndroidTheme {
         Surface {
             Column(
@@ -243,7 +227,7 @@ fun ArrowImage() {
 
 @Preview
 @Composable
-fun ArrowImagePreview() {
+private fun ArrowImagePreview() {
     YaimafuniAndroidTheme {
         Surface {
             ArrowImage()
