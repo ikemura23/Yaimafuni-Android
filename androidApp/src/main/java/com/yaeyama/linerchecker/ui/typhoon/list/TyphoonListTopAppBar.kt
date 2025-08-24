@@ -14,7 +14,7 @@ fun TyphoonListTopAppBar() {
 
 @Preview
 @Composable
-fun TyphoonListTopAppBarPreview() {
+private fun TyphoonListTopAppBarPreview() {
     YaimafuniAndroidTheme {
         Surface {
             TyphoonListTopAppBar()

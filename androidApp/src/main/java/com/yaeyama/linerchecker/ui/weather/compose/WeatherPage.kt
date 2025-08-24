@@ -48,6 +48,6 @@ fun WeatherPage(modifier: Modifier = Modifier, uiState: WeatherUiState) {
 
 @Preview(showBackground = true)
 @Composable
-fun WeatherPagePreview() {
+private fun WeatherPagePreview() {
     WeatherPage(uiState = WeatherUiState.Loading)
 }

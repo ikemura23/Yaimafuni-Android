@@ -183,7 +183,7 @@ private fun TimeTableListPreview() {
 
 @Preview(name = "ヘッダー")
 @Composable
-fun TimeTableListHeaderPreview() {
+private fun TimeTableListHeaderPreview() {
     val dummy = Header(left = "石垣島", right = "大原港")
     YaimafuniAndroidTheme {
         TimeTableListHeader(dummy)
@@ -192,7 +192,7 @@ fun TimeTableListHeaderPreview() {
 
 @Preview(name = "ボディ > Row")
 @Composable
-fun TimeTableListRowPreview() {
+private fun TimeTableListRowPreview() {
     YaimafuniAndroidTheme {
         Surface(color = MaterialTheme.colors.background) {
             TimeTableListItem(

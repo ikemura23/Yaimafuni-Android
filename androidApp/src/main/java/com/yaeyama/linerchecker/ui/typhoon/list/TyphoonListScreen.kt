@@ -31,7 +31,7 @@ fun TyphoonListScreen(
 
 @Preview
 @Composable
-fun TyphoonListScreenPreview() {
+private fun TyphoonListScreenPreview() {
     YaimafuniAndroidTheme {
         Surface {
             TyphoonListScreen()

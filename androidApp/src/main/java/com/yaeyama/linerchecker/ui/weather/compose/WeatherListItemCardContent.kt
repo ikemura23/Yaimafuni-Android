@@ -68,7 +68,7 @@ fun WeatherListItemCardContent(weather: Weather) {
 
 @Preview(showBackground = true)
 @Composable
-fun WeatherListItemCardContentPreview() {
+private fun WeatherListItemCardContentPreview() {
     WeatherListItemCardContent(
         Weather(
             date = "YYYY/MM/DD",

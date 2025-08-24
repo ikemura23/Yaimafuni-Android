@@ -72,7 +72,7 @@ fun TyphoonListEmptyContent() {
 
 @Preview
 @Composable
-fun TyphoonListContentPreview() {
+private fun TyphoonListContentPreview() {
     YaimafuniAndroidTheme {
         Surface {
             TyphoonListContent { /* 処理 */ }
@@ -82,7 +82,7 @@ fun TyphoonListContentPreview() {
 
 @Preview
 @Composable
-fun TyphoonListEmptyContentPreview() {
+private fun TyphoonListEmptyContentPreview() {
     YaimafuniAndroidTheme {
         Surface {
             TyphoonListEmptyContent()
