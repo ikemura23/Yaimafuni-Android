@@ -3,6 +3,8 @@ package com.yaeyama.linerchecker.ui.dashboard
 import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -11,7 +13,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import com.google.common.math.LinearTransformation.horizontal
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
 import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardAppBar
@@ -30,7 +34,7 @@ fun DashBoardScreenRoot(
 
     // PortStatusDetailActivity起動用のランチャー
     val launcher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.StartActivityForResult()
+        contract = ActivityResultContracts.StartActivityForResult(),
     ) { result ->
         // 結果処理が必要な場合はここで処理
     }
@@ -48,7 +52,7 @@ fun DashBoardScreenRoot(
                 putExtra(PortStatusDetailActivity.EXTRA_PORT_CODE, port.anei.portCode)
             }
             launcher.launch(intent)
-        }
+        },
     )
 }
 
@@ -60,12 +64,11 @@ private fun DashBoardScreen(
 ) {
     YaimafuniScaffold(
         topBar = { DashBoardAppBar() },
-    ) {
+    ) { paddingValues ->
         DashBoardPage(
-            modifier = modifier.padding(
-                horizontal = 16.dp,
-                vertical = it.calculateTopPadding() + 16.dp,
-            ),
+            modifier = modifier
+                .padding(paddingValues) // Edge to edge対応のためのpaddingを追加
+                .padding(horizontal = 16.dp), // 子コンポーネントに画面端からの余白
             ports = uiState.portList,
             onRowClick = onRowClick,
         )
@@ -91,7 +94,7 @@ private fun DashBoardScreenPreview() {
     name = "Small Phone",
     showBackground = false,
     widthDp = 320,
-    heightDp = 480
+    heightDp = 480,
 )
 @Composable
 private fun DashBoardScreenSmallDevicePreview() {
