@@ -20,7 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailActivity
 import com.yaeyama.linerchecker.ui.typhoon.detail.toTyphoonDetailUiModel
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListTopAppBar
@@ -38,10 +40,10 @@ fun TyphoonListScreen(
     viewModel: TyphoonListViewModel? = null,
 ) {
     val context = LocalContext.current
-    
+
     viewModel?.let { vm ->
         val uiState by vm.uiState.collectAsState()
-        
+
         Scaffold(
             modifier = modifier,
             backgroundColor = Color.Transparent,
@@ -53,9 +55,11 @@ fun TyphoonListScreen(
                     is TyphoonUiState.Loading -> {
                         LoadingContent(modifier = Modifier.padding(paddingValues))
                     }
+
                     is TyphoonUiState.Error -> {
                         ErrorContent(modifier = Modifier.padding(paddingValues))
                     }
+
                     is TyphoonUiState.Data -> {
                         if (currentState.typhoons.isEmpty()) {
                             EmptyContent(modifier = Modifier.padding(paddingValues))
@@ -69,7 +73,7 @@ fun TyphoonListScreen(
                                         putExtra(TyphoonDetailActivity.EXTRA_TYPHOON, typhoon.toTyphoonDetailUiModel())
                                     }
                                     context.startActivity(intent)
-                                }
+                                },
                             )
                         }
                     }
@@ -83,7 +87,7 @@ fun TyphoonListScreen(
 private fun LoadingContent(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         CircularProgressIndicator()
     }
@@ -93,12 +97,12 @@ private fun LoadingContent(modifier: Modifier = Modifier) {
 private fun ErrorContent(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         Text(
             text = "エラーが発生しました",
             color = Color.White,
-            style = MaterialTheme.typography.h6
+            style = MaterialTheme.typography.h6,
         )
     }
 }
@@ -107,13 +111,13 @@ private fun ErrorContent(modifier: Modifier = Modifier) {
 private fun EmptyContent(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         Text(
             text = "台風は発生していません。",
             color = Color.White,
             style = MaterialTheme.typography.h6,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
         )
     }
 }
@@ -123,10 +127,10 @@ private fun EmptyContent(modifier: Modifier = Modifier) {
 private fun TyphoonListContent(
     modifier: Modifier = Modifier,
     typhoons: List<Typhoon>,
-    onItemClick: (Typhoon) -> Unit
+    onItemClick: (Typhoon) -> Unit,
 ) {
     LazyColumn(
-        modifier = modifier.padding(16.dp)
+        modifier = modifier.padding(16.dp),
     ) {
         items(typhoons) { typhoon ->
             Card(
@@ -134,14 +138,29 @@ private fun TyphoonListContent(
                     .fillMaxSize()
                     .padding(vertical = 4.dp),
                 onClick = { onItemClick(typhoon) },
-                backgroundColor = MaterialTheme.colors.surface.copy(alpha = 0.9f)
+                backgroundColor = MaterialTheme.colors.surface.copy(alpha = 0.9f),
             ) {
                 Text(
                     text = typhoon.name,
                     modifier = Modifier.padding(16.dp),
-                    style = MaterialTheme.typography.body1
+                    style = MaterialTheme.typography.body1,
                 )
             }
         }
+    }
+}
+
+@Preview
+@Composable
+private fun TyphoonListContentPreview() {
+    PreviewBox {
+        TyphoonListContent(
+            typhoons = listOf(
+                Typhoon(name = "Typhoon 1"),
+                Typhoon(name = "Typhoon 2"),
+                Typhoon(name = "Typhoon 3"),
+            ),
+            onItemClick = {},
+        )
     }
 }
