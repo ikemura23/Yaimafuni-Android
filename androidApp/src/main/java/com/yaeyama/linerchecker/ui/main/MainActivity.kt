@@ -2,6 +2,7 @@ package com.yaeyama.linerchecker.ui.main
 
 import android.content.Context
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
@@ -23,7 +24,7 @@ import timber.log.Timber
 /**
  * ホーム画面、Bottom NavigationのあるActivity
  */
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
 
     private val mainViewModel: MainViewModel by inject()
     private val weatherViewModel: WeatherViewModel by inject()

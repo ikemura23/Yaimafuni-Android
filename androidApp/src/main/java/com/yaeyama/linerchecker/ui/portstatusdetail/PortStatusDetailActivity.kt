@@ -1,8 +1,8 @@
 package com.yaeyama.linerchecker.ui.portstatusdetail
 
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import com.yaeyama.linerchecker.ui.portstatusdetail.compose.PortStatusDetailScreen
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import org.koin.android.ext.android.inject
@@ -11,7 +11,7 @@ import org.koin.android.ext.android.inject
  * ステータス詳細のActivity - Compose移行完了版
  * DataBindingとFragment/ViewPager2からCompose完全移行
  */
-class PortStatusDetailActivity : AppCompatActivity() {
+class PortStatusDetailActivity : ComponentActivity() {
 
     companion object {
         const val EXTRA_PORT_CODE = "port_code"
@@ -37,7 +37,7 @@ class PortStatusDetailActivity : AppCompatActivity() {
                     portCode = portCode,
                     portName = portName,
                     viewModel = viewModel,
-                    onBackPressed = { finish() }
+                    onBackPressed = { finish() },
                 )
             }
         }
