@@ -10,11 +10,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Card
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,7 +45,7 @@ fun TimeTableList(timeTable: TimeTable) {
                 header = timeTable.header,
             )
             timeTable.row.forEach { row ->
-                Divider(
+                HorizontalDivider(
                     color = TableDividerColor,
                     modifier = Modifier.height(1.dp),
                 )
@@ -116,7 +114,7 @@ fun TimeTableListItem(
             status = leftStatus,
             modifier = modifier,
         )
-        Divider(
+        HorizontalDivider(
             color = TableDividerColor,
             modifier = Modifier
                 .fillMaxHeight()
@@ -155,29 +153,27 @@ fun TimeTableRowItem(time: String, status: String, modifier: Modifier) {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun TimeTableListPreview() {
     YaimafuniAndroidTheme {
-        Surface(color = MaterialTheme.colors.background) {
-            val header = Header(left = "石垣島", right = "大原港")
-            val rowItem = RowItem(
-                status = Status(code = "nomal", text = "通常運行"),
-                time = "00:00",
-                memo = "", // 使ってる？
-            )
-            // TimeRowとは、typealiasでRowクラスの別名、composeのRowと名前が同じなので紛らわしい
-            val row = TimeRow(
-                left = rowItem,
-                right = rowItem,
-            )
-            val rows = List(5) { row }
-            val timeTable = TimeTable(
-                header = header,
-                row = rows,
-            )
-            TimeTableList(timeTable)
-        }
+        val header = Header(left = "石垣島", right = "大原港")
+        val rowItem = RowItem(
+            status = Status(code = "nomal", text = "通常運行"),
+            time = "00:00",
+            memo = "", // 使ってる？
+        )
+        // TimeRowとは、typealiasでRowクラスの別名、composeのRowと名前が同じなので紛らわしい
+        val row = TimeRow(
+            left = rowItem,
+            right = rowItem,
+        )
+        val rows = List(5) { row }
+        val timeTable = TimeTable(
+            header = header,
+            row = rows,
+        )
+        TimeTableList(timeTable)
     }
 }
 
@@ -190,35 +186,31 @@ private fun TimeTableListHeaderPreview() {
     }
 }
 
-@Preview(name = "ボディ > Row")
+@Preview(name = "ボディ > Row", showBackground = true)
 @Composable
 private fun TimeTableListRowPreview() {
     YaimafuniAndroidTheme {
-        Surface(color = MaterialTheme.colors.background) {
-            TimeTableListItem(
-                leftTime = "00:00",
-                leftStatus = "通常運行",
-                rightTime = "00:00",
-                rightStatus = "通常運行",
-            )
-        }
+        TimeTableListItem(
+            leftTime = "00:00",
+            leftStatus = "通常運行",
+            rightTime = "00:00",
+            rightStatus = "通常運行",
+        )
     }
 }
 
-@Preview(name = "TimeTableRowItem")
+@Preview(name = "TimeTableRowItem", showBackground = true)
 @Composable
 private fun TimeTableRowItemPreview() {
     YaimafuniAndroidTheme {
-        Surface(color = MaterialTheme.colors.background) {
-            val modifier = Modifier
-                .fillMaxWidth()
+        val modifier = Modifier
+            .fillMaxWidth()
 
-            TimeTableRowItem(
-                time = "16：45\n" +
-                    "    上原経由",
-                status = "通常運行",
-                modifier,
-            )
-        }
+        TimeTableRowItem(
+            time = "16：45\n" +
+                "    上原経由",
+            status = "通常運行",
+            modifier,
+        )
     }
 }

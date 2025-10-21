@@ -6,9 +6,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Card
-import androidx.compose.material.Divider
-import androidx.compose.material.Surface
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -29,9 +29,12 @@ fun DashBoardPage(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = colorResource(id = R.color.white),
+        ),
     ) {
         Column(
-            modifier = Modifier.verticalScroll(rememberScrollState()) // スクロール可能にする
+            modifier = Modifier.verticalScroll(rememberScrollState()), // スクロール可能にする
         ) {
             DashBoardHeader()
             ports.forEach { p ->
@@ -44,7 +47,7 @@ fun DashBoardPage(
 
 @Composable
 fun RowDivider() {
-    Divider(
+    HorizontalDivider(
         modifier = Modifier
             .fillMaxWidth()
             .width(1.dp),
@@ -52,13 +55,11 @@ fun RowDivider() {
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DashBoardPreview() {
     val dummyPorts = FakeDashBoardDataProvider.dummyPortList
     YaimafuniAndroidTheme {
-        Surface {
-            DashBoardPage(ports = dummyPorts) {}
-        }
+        DashBoardPage(ports = dummyPorts) {}
     }
 }
