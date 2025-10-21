@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,6 +23,7 @@ import com.yaeyama.linerchecker.ui.common.compose.BackNavigationTopAppBar
 import com.yaeyama.linerchecker.ui.main.compose.MainScaffold
 import com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailScreen
 import com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailViewModel
+import com.yaeyama.linerchecker.ui.theme.AppBackgroundColor
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 
 /**
@@ -68,11 +70,12 @@ fun PortStatusDetailScreen(
             // Composeタブ
             TabRow(
                 selectedTabIndex = selectedTabIndex,
-                // backgroundColor = colorResource(id = R.color.colorPrimary),
+                contentColor = colorResource(id = R.color.colorPrimary),
+                containerColor = AppBackgroundColor,
                 indicator = { tabPositions ->
-                    TabRowDefaults.Indicator(
+                    TabRowDefaults.SecondaryIndicator(
                         color = colorResource(id = R.color.orange3),
-                        modifier = Modifier.padding(0.dp),
+                        modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
                     )
                 },
                 modifier = Modifier.padding(0.dp),
