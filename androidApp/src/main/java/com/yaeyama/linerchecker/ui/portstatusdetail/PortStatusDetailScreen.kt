@@ -26,6 +26,7 @@ import timber.log.Timber
 /**
  * 運行詳細スクリーン
  */
+// TODO: コンポーネント名がScreenではないのでリネームしたい
 @Composable
 fun PortStatusDetailScreen(
     modifier: Modifier = Modifier,
