@@ -13,12 +13,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.ikmr.banbara23.yaeyama_liner_checker.R
 import com.yaeyama.linerchecker.ui.common.compose.BackNavigationTopAppBar
+import com.yaeyama.linerchecker.ui.main.compose.MainScaffold
 import com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailUiModel
 
 /**
@@ -44,15 +44,15 @@ fun TyphoonDetailScreen(
     onBackPressed: () -> Unit,
 ) {
     val context = LocalContext.current
-    
-    Scaffold(
+
+    MainScaffold(
         topBar = {
             BackNavigationTopAppBar(
                 title = typhoon?.name ?: "台風詳細",
-                onBackPressed = onBackPressed
+                onBackPressed = onBackPressed,
             )
         },
-        backgroundColor = Color.Transparent,
+        // backgroundColor = Color.Transparent,
     ) { paddingValues ->
         if (typhoon != null) {
             TyphoonDetailContent(
@@ -64,13 +64,13 @@ fun TyphoonDetailScreen(
                     // Webブラウザで天気サイトを開く
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(TYPHOON_WEB_URL))
                     context.startActivity(intent)
-                }
+                },
             )
         } else {
             ErrorContent(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(paddingValues)
+                    .padding(paddingValues),
             )
         }
     }
@@ -86,7 +86,7 @@ private fun TyphoonDetailContent(
         modifier = modifier
             .verticalScroll(rememberScrollState())
             .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         // 台風画像
         AsyncImage(
@@ -95,64 +95,64 @@ private fun TyphoonDetailContent(
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(16f / 9f),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
-        
+
         // 台風情報カード
         Card(
             modifier = Modifier.fillMaxWidth(),
-            elevation = 2.dp
+            // elevation = 2.dp,
         ) {
             Column(
                 modifier = Modifier.padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 TyphoonInfoItem(
                     label = "更新日",
-                    value = typhoon.dateTime
+                    value = typhoon.dateTime,
                 )
-                
+
                 TyphoonInfoItem(
                     label = "大きさ",
-                    value = typhoon.scale
+                    value = typhoon.scale,
                 )
-                
+
                 TyphoonInfoItem(
                     label = "強さ",
-                    value = typhoon.intensity
+                    value = typhoon.intensity,
                 )
-                
+
                 TyphoonInfoItem(
                     label = "存在地域",
-                    value = typhoon.area
+                    value = typhoon.area,
                 )
-                
+
                 TyphoonInfoItem(
                     label = "中心気圧",
-                    value = typhoon.pressure
+                    value = typhoon.pressure,
                 )
-                
+
                 TyphoonInfoItem(
                     label = "中心最大風速",
-                    value = typhoon.maxWindSpeedNearCenter
+                    value = typhoon.maxWindSpeedNearCenter,
                 )
             }
         }
-        
+
         // Webブラウザで見るボタン
         Button(
             onClick = onWebButtonClick,
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = colorResource(id = R.color.orange3)
-            )
+                containerColor = colorResource(id = R.color.orange3),
+            ),
         ) {
             Text(
                 text = "Webブラウザでみる",
-                color = Color.White
+                color = Color.White,
             )
         }
-        
+
         Spacer(modifier = Modifier.height(16.dp))
     }
 }
@@ -160,28 +160,28 @@ private fun TyphoonDetailContent(
 @Composable
 private fun TyphoonInfoItem(
     label: String,
-    value: String
+    value: String,
 ) {
     Text(
         text = "$label: $value",
         fontSize = 16.sp,
-        style = MaterialTheme.typography.body1
+        style = MaterialTheme.typography.bodyLarge,
     )
 }
 
 @Composable
 private fun ErrorContent(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Box(
         modifier = modifier,
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         Text(
             text = "台風データの読み込みに失敗しました",
             color = Color.White,
-            style = MaterialTheme.typography.h6,
-            textAlign = TextAlign.Center
+            style = MaterialTheme.typography.bodyLarge,
+            textAlign = TextAlign.Center,
         )
     }
 }

@@ -10,20 +10,18 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.ikmr.banbara23.yaeyama_liner_checker.R
+import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
 
@@ -79,7 +77,7 @@ private fun TyphoonListItemComponentPreview() {
         maxWindSpeedNearCenter = "30m/s",
     )
     YaimafuniAndroidTheme {
-        Surface {
+        PreviewBox {
             TyphoonListItemComponent(typhoon = typhoon, onItemClick = {})
         }
     }
@@ -92,10 +90,7 @@ private fun TyphoonListItemComponentPreview() {
 private fun TyphoonName(name: String) {
     Text(
         text = name,
-        style = MaterialTheme.typography.subtitle1.copy(
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold,
-        ),
+        style = MaterialTheme.typography.bodyLarge,
     )
 }
 
@@ -103,7 +98,7 @@ private fun TyphoonName(name: String) {
 @Composable
 private fun TyphoonNameScreen() {
     YaimafuniAndroidTheme {
-        Surface {
+        PreviewBox {
             TyphoonName("台風18号(ミートク)")
         }
     }
@@ -116,7 +111,7 @@ private fun TyphoonNameScreen() {
 private fun UpdatedTime(value: String) {
     Text(
         text = value,
-        style = MaterialTheme.typography.body2,
+        style = MaterialTheme.typography.bodySmall,
     )
 }
 
@@ -124,7 +119,7 @@ private fun UpdatedTime(value: String) {
 @Composable
 private fun UpdatedTimePreview() {
     YaimafuniAndroidTheme {
-        Surface {
+        PreviewBox {
             UpdatedTime("2022/05/24 現在")
         }
     }
@@ -148,7 +143,7 @@ private fun TyphoonImage(url: String) {
 @Composable
 private fun TyphoonImagePreview() {
     YaimafuniAndroidTheme {
-        Surface {
+        PreviewBox {
             TyphoonImage("2022/05/24 現在")
         }
     }
@@ -161,7 +156,7 @@ private fun TyphoonImagePreview() {
 private fun TyphoonScale(value: String) {
     Text(
         text = "大きさ : $value",
-        style = MaterialTheme.typography.caption,
+        style = MaterialTheme.typography.bodySmall,
     )
 }
 
@@ -172,7 +167,7 @@ private fun TyphoonScale(value: String) {
 private fun TyphoonIntensity(value: String) {
     Text(
         text = "強さ : $value",
-        style = MaterialTheme.typography.caption,
+        style = MaterialTheme.typography.bodySmall,
     )
 }
 
@@ -183,7 +178,7 @@ private fun TyphoonIntensity(value: String) {
 private fun TyphoonPressure(value: String) {
     Text(
         text = "中心気圧 : $value",
-        style = MaterialTheme.typography.caption,
+        style = MaterialTheme.typography.bodySmall,
     )
 }
 
@@ -194,7 +189,7 @@ private fun TyphoonPressure(value: String) {
 private fun TyphoonMaxWindSpeedNearCenter(value: String) {
     Text(
         text = "中心の最大風速 : $value",
-        style = MaterialTheme.typography.caption,
+        style = MaterialTheme.typography.bodySmall,
     )
 }
 
@@ -202,7 +197,7 @@ private fun TyphoonMaxWindSpeedNearCenter(value: String) {
 @Composable
 private fun TyphoonTextContentPreview() {
     YaimafuniAndroidTheme {
-        Surface {
+        PreviewBox {
             Column(
                 verticalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier.height(120.dp),
@@ -229,7 +224,7 @@ fun ArrowImage() {
 @Composable
 private fun ArrowImagePreview() {
     YaimafuniAndroidTheme {
-        Surface {
+        PreviewBox {
             ArrowImage()
         }
     }

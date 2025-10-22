@@ -3,7 +3,10 @@ package com.yaeyama.linerchecker.ui.dashboard
 import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
@@ -30,7 +33,7 @@ fun DashBoardScreenRoot(
 
     // PortStatusDetailActivity起動用のランチャー
     val launcher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.StartActivityForResult()
+        contract = ActivityResultContracts.StartActivityForResult(),
     ) { result ->
         // 結果処理が必要な場合はここで処理
     }
@@ -48,7 +51,7 @@ fun DashBoardScreenRoot(
                 putExtra(PortStatusDetailActivity.EXTRA_PORT_CODE, port.anei.portCode)
             }
             launcher.launch(intent)
-        }
+        },
     )
 }
 
@@ -60,15 +63,20 @@ private fun DashBoardScreen(
 ) {
     YaimafuniScaffold(
         topBar = { DashBoardAppBar() },
-    ) {
-        DashBoardPage(
-            modifier = modifier.padding(
-                horizontal = 16.dp,
-                vertical = it.calculateTopPadding() + 16.dp,
-            ),
-            ports = uiState.portList,
-            onRowClick = onRowClick,
-        )
+    ) { paddingValues ->
+        Column(
+            modifier = modifier
+                .padding(paddingValues) // Edge to edge対応のためのpaddingを追加
+                .verticalScroll(rememberScrollState()), // スクロール可能にする
+        ) {
+            DashBoardPage(
+                ports = uiState.portList,
+                onRowClick = onRowClick,
+                modifier = Modifier
+                    .padding(horizontal = 16.dp) // 子コンポーネントに画面端からの余白
+                    .padding(bottom = 16.dp), // スクロール時にコンテンツが見切れないように余白を追加
+            )
+        }
     }
 }
 
@@ -91,7 +99,7 @@ private fun DashBoardScreenPreview() {
     name = "Small Phone",
     showBackground = false,
     widthDp = 320,
-    heightDp = 480
+    heightDp = 480,
 )
 @Composable
 private fun DashBoardScreenSmallDevicePreview() {

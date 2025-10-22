@@ -1,20 +1,21 @@
 package com.yaeyama.linerchecker.ui.dashboard.component
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig
 import com.ikmr.banbara23.yaeyama_liner_checker.R
+import com.yaeyama.linerchecker.ui.theme.AppBackgroundColor
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DashBoardAppBar(modifier: Modifier = Modifier) {
     val titleText = stringResource(R.string.app_name) + if (BuildConfig.DEBUG) BuildConfig.VERSION_NAME else ""
@@ -26,8 +27,9 @@ fun DashBoardAppBar(modifier: Modifier = Modifier) {
                 color = Color.White,
             )
         },
-        backgroundColor = Color.Transparent,
-        elevation = 0.dp,
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = Color.Transparent,
+        ),
     )
 }
 
@@ -37,9 +39,7 @@ private fun DashBoardAppBarPreview() {
     YaimafuniAndroidTheme {
         DashBoardAppBar(
             modifier = Modifier
-                .height(56.dp)
-                .fillMaxWidth()
-                .background(Color.Blue),
+                .background(AppBackgroundColor),
         )
     }
 }

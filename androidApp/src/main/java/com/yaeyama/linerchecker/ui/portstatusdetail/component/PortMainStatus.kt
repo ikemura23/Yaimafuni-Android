@@ -8,17 +8,16 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.getStatusBackgroundColor
-import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama_liner_checker.domain.statusdetail.Status
 import timber.log.Timber
 
@@ -48,7 +47,7 @@ fun PortMainStatus(
             ) {
                 Text(
                     text = portName,
-                    style = MaterialTheme.typography.h6,
+                    style = MaterialTheme.typography.bodyMedium,
                 )
                 if (status.code.isNotEmpty()) {
                     // ステータスの背景色
@@ -56,7 +55,7 @@ fun PortMainStatus(
                     Text(
                         text = status.text,
                         color = Color.White,
-                        style = MaterialTheme.typography.h6,
+                        style = MaterialTheme.typography.bodyMedium,
                         modifier = Modifier
                             .background(
                                 color = statusBackgroundColor,
@@ -79,13 +78,11 @@ fun PortMainStatus(
 @Preview
 @Composable
 private fun PortMainStatusPreview() {
-    YaimafuniAndroidTheme {
-        Surface(color = MaterialTheme.colors.background) {
-            PortMainStatus(
-                portName = "港名",
-                status = Status("nomal", "通常運行"),
-                statusDescription = "コメント",
-            )
-        }
+    PreviewBox {
+        PortMainStatus(
+            portName = "港名",
+            status = Status("nomal", "通常運行"),
+            statusDescription = "コメント",
+        )
     }
 }
