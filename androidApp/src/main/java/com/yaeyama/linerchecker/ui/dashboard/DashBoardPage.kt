@@ -3,8 +3,6 @@ package com.yaeyama.linerchecker.ui.dashboard
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -31,9 +29,7 @@ fun DashBoardPage(
             containerColor = colorResource(id = R.color.white),
         ),
     ) {
-        Column(
-            modifier = Modifier.verticalScroll(rememberScrollState()), // スクロール可能にする
-        ) {
+        Column {
             DashBoardHeader()
             ports.forEach { p ->
                 RowDivider()

@@ -3,7 +3,10 @@ package com.yaeyama.linerchecker.ui.dashboard
 import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
@@ -61,13 +64,19 @@ private fun DashBoardScreen(
     YaimafuniScaffold(
         topBar = { DashBoardAppBar() },
     ) { paddingValues ->
-        DashBoardPage(
+        Column(
             modifier = modifier
                 .padding(paddingValues) // Edge to edge対応のためのpaddingを追加
-                .padding(horizontal = 16.dp), // 子コンポーネントに画面端からの余白
-            ports = uiState.portList,
-            onRowClick = onRowClick,
-        )
+                .verticalScroll(rememberScrollState()), // スクロール可能にする
+        ) {
+            DashBoardPage(
+                ports = uiState.portList,
+                onRowClick = onRowClick,
+                modifier = Modifier
+                    .padding(horizontal = 16.dp) // 子コンポーネントに画面端からの余白
+                    .padding(bottom = 16.dp), // スクロール時にコンテンツが見切れないように余白を追加
+            )
+        }
     }
 }
 
