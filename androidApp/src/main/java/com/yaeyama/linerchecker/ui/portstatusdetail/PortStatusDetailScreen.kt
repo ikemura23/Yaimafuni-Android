@@ -34,7 +34,7 @@ fun PortStatusDetailScreen(
     portCode: String,
     viewModel: PortStatusDetailViewModel,
 ) {
-    LaunchedEffect(Unit) {
+    LaunchedEffect(company, portCode) {
         viewModel.fetchDetail(company, portCode)
     }
     val uiState = viewModel.uiState.collectAsState()
