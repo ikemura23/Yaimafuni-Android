@@ -7,8 +7,8 @@ android {
 
     defaultConfig {
         applicationId = "com.banbara.yaeyama.liner.checker"
-        versionCode = 94
-        versionName = "4.8.0"
+        versionCode = 95
+        versionName = "4.9.0"
     }
 
     buildTypes {
