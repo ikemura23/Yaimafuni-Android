@@ -63,3 +63,6 @@ androidApp/release
 
 # AI Documentation
 .ai/
+
+# Firebase configuration files
+**/google-services.json
