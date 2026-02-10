@@ -8,6 +8,7 @@ plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
     id("kotlin-parcelize")
+    id("org.jetbrains.kotlin.plugin.compose")
     id("com.google.firebase.crashlytics")
 }
 
@@ -39,10 +40,6 @@ configure<ApplicationExtension> {
     buildFeatures {
         compose = true
         buildConfig = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
     }
 
     compileOptions {
