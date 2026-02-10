@@ -1,4 +1,4 @@
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import com.android.build.api.dsl.ApplicationExtension
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import org.gradle.api.JavaVersion
 import org.gradle.kotlin.dsl.configure
@@ -11,7 +11,7 @@ plugins {
     id("com.google.firebase.crashlytics")
 }
 
-configure<BaseAppModuleExtension> {
+configure<ApplicationExtension> {
     compileSdk = 35
 
     defaultConfig {
