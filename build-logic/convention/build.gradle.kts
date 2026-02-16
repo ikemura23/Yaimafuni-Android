@@ -5,6 +5,7 @@ plugins {
 dependencies {
     implementation(libs.gradle)
     implementation(libs.kotlin.gradle.plugin)
+    implementation(libs.compose.compiler.gradle.plugin)
     implementation(libs.google.services)
     implementation(libs.firebase.crashlytics.gradle)
 }

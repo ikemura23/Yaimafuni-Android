@@ -1,9 +1,8 @@
-import com.android.build.gradle.LibraryExtension
+import com.android.build.api.dsl.LibraryExtension
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 
 plugins {
     id("com.android.library")
-    kotlin("android")
 }
 
 configure<LibraryExtension> {

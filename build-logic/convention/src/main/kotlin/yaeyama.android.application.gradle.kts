@@ -1,4 +1,4 @@
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import com.android.build.api.dsl.ApplicationExtension
 import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import org.gradle.api.JavaVersion
 import org.gradle.kotlin.dsl.configure
@@ -7,12 +7,12 @@ import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
-    kotlin("android")
     id("kotlin-parcelize")
+    id("org.jetbrains.kotlin.plugin.compose")
     id("com.google.firebase.crashlytics")
 }
 
-configure<BaseAppModuleExtension> {
+configure<ApplicationExtension> {
     compileSdk = 35
 
     defaultConfig {
@@ -25,12 +25,12 @@ configure<BaseAppModuleExtension> {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("debug")
         }
         debug {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             configure<CrashlyticsExtension> {
                 mappingFileUploadEnabled = false
             }
@@ -40,10 +40,6 @@ configure<BaseAppModuleExtension> {
     buildFeatures {
         compose = true
         buildConfig = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
     }
 
     compileOptions {
