@@ -1,5 +1,6 @@
 package com.yaeyama.linerchecker.repository
 
+import com.yaeyama_liner_checker.domain.repository.TopStatusRepository
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
 import com.yaeyama_liner_checker.domain.statusdetail.Status
 import com.yaeyama_liner_checker.domain.top.Ports

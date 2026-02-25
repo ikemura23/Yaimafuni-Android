@@ -1,5 +1,7 @@
 package com.yaeyama.linerchecker.repository
 
+import com.yaeyama_liner_checker.domain.common.UiState
+import com.yaeyama_liner_checker.domain.repository.WeatherRepository
 import com.yaeyama_liner_checker.domain.weather.Table
 import com.yaeyama_liner_checker.domain.weather.Temperature
 import com.yaeyama_liner_checker.domain.weather.Weather

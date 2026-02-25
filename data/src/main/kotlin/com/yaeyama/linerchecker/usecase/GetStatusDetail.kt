@@ -1,7 +1,6 @@
 package com.yaeyama.linerchecker.usecase
 
-import com.yaeyama.linerchecker.repository.StatusDetailRepository
-import com.yaeyama.linerchecker.repository.UiState
+import com.yaeyama_liner_checker.domain.repository.StatusDetailRepository
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
 import com.yaeyama_liner_checker.domain.statusdetail.StatusDetailResult

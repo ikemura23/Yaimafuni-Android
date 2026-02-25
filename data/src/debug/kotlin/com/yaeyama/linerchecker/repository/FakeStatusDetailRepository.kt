@@ -1,6 +1,7 @@
 package com.yaeyama.linerchecker.repository
 
 import android.util.Log
+import com.yaeyama_liner_checker.domain.repository.StatusDetailRepository
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
 import com.yaeyama_liner_checker.domain.statusdetail.Status
