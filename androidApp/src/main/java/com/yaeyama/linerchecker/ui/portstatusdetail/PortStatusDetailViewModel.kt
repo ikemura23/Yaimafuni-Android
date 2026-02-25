@@ -2,7 +2,7 @@ package com.yaeyama.linerchecker.ui.portstatusdetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yaeyama.linerchecker.repository.StatusDetailRepository
+import com.yaeyama_liner_checker.domain.repository.StatusDetailRepository
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
 import com.yaeyama_liner_checker.domain.time_table.TimeTable

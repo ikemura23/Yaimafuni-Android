@@ -2,8 +2,8 @@ package com.yaeyama.linerchecker.ui.weather
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yaeyama.linerchecker.repository.UiState
-import com.yaeyama.linerchecker.repository.WeatherRepository
+import com.yaeyama_liner_checker.domain.common.UiState
+import com.yaeyama_liner_checker.domain.repository.WeatherRepository
 import com.yaeyama_liner_checker.domain.weather.WeatherInfo
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

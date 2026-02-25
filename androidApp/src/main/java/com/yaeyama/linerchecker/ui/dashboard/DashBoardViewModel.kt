@@ -2,7 +2,7 @@ package com.yaeyama.linerchecker.ui.dashboard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yaeyama.linerchecker.repository.TopStatusRepository
+import com.yaeyama_liner_checker.domain.repository.TopStatusRepository
 import com.yaeyama_liner_checker.domain.top.Ports
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

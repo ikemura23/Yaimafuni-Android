@@ -1,4 +1,4 @@
-package com.yaeyama.linerchecker.repository
+package com.yaeyama_liner_checker.domain.common
 
 sealed class UiState<out T> {
     object Loading

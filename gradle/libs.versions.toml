@@ -93,6 +93,7 @@ firebase-database = {group = "com.google.firebase", name = "firebase-database-kt
 firebase-analytics = {group = "com.google.firebase", name = "firebase-analytics-ktx"}
 firebase-crashlytics = {group = "com.google.firebase", name = "firebase-crashlytics"}
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
+coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesAndroid" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }

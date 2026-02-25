@@ -1,4 +1,4 @@
-package com.yaeyama.linerchecker.repository
+package com.yaeyama_liner_checker.domain.repository
 
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
