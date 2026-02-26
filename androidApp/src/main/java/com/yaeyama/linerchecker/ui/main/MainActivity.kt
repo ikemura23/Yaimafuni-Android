@@ -19,6 +19,7 @@ import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
 import com.yaeyama.linerchecker.ui.weather.WeatherViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 /**
@@ -26,10 +27,10 @@ import timber.log.Timber
  */
 class MainActivity : ComponentActivity() {
 
-    private val mainViewModel: MainViewModel by inject()
-    private val weatherViewModel: WeatherViewModel by inject()
-    private val dashboardViewModel: DashBoardViewModel by inject()
-    private val typhoonListViewModel: TyphoonListViewModel by inject()
+    private val mainViewModel: MainViewModel by viewModel()
+    private val weatherViewModel: WeatherViewModel by viewModel()
+    private val dashboardViewModel: DashBoardViewModel by viewModel()
+    private val typhoonListViewModel: TyphoonListViewModel by viewModel()
     private val reviewManager: ReviewManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {

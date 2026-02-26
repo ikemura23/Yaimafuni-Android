@@ -8,18 +8,16 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
 /**
  * 台風一覧 ViewModel
  */
-class TyphoonListViewModel : ViewModel(), KoinComponent {
-    private val typhoonRepository: TyphoonRepository by inject()
+class TyphoonListViewModel(
+    private val typhoonRepository: TyphoonRepository,
+) : ViewModel() {
 
     /**
      * 台風一覧を取得する

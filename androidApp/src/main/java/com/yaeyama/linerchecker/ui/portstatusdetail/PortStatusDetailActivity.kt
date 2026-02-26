@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.yaeyama.linerchecker.ui.portstatusdetail.compose.PortStatusDetailScreen
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * ステータス詳細のActivity - Compose移行完了版
@@ -18,7 +18,7 @@ class PortStatusDetailActivity : ComponentActivity() {
         const val EXTRA_PORT_NAME = "port_name"
     }
 
-    private val viewModel: PortStatusDetailViewModel by inject()
+    private val viewModel: PortStatusDetailViewModel by viewModel()
 
     private val portCode: String by lazy {
         intent.getStringExtra(EXTRA_PORT_CODE) ?: ""

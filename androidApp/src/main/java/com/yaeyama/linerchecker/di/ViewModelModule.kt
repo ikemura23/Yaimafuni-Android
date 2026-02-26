@@ -12,11 +12,11 @@ import org.koin.dsl.module
  * https://insert-koin.io/docs/reference/koin-android/viewmodel/
  */
 val viewModelModule = module {
-    single {
+    viewModel {
         MainViewModel(get())
     }
-    single {
-        WeatherViewModel()
+    viewModel {
+        WeatherViewModel(get())
     }
     viewModel {
         PortStatusDetailViewModel(get())
@@ -24,7 +24,7 @@ val viewModelModule = module {
     viewModel {
         DashBoardViewModel(get())
     }
-    single {
-        TyphoonListViewModel()
+    viewModel {
+        TyphoonListViewModel(get())
     }
 }
