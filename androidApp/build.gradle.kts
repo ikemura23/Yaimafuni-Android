@@ -17,6 +17,7 @@ android {
         }
         create("mock") {
             initWith(getByName("debug"))
+            applicationIdSuffix = ".mock"
             matchingFallbacks += listOf("debug")
         }
     }
