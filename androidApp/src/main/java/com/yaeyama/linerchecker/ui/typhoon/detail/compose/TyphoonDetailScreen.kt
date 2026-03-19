@@ -29,7 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.ikmr.banbara23.yaeyama_liner_checker.R
+import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.ui.common.compose.BackNavigationTopAppBar
 import com.yaeyama.linerchecker.ui.main.compose.MainScaffold
 import com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailUiModel

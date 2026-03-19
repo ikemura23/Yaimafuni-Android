@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker.ui.portstatusdetail
+package com.yaeyama.linerchecker.ui.portstatusdetail
 
 import com.yaeyama.linerchecker.ui.common.getStatusBackgroundColor
 import com.yaeyama.linerchecker.ui.theme.StatusColor

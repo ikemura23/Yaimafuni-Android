@@ -1,4 +1,4 @@
-package com.ikmr.banbara23.yaeyama_liner_checker;
+package com.yaeyama.linerchecker;
 
 import org.junit.Test;
 

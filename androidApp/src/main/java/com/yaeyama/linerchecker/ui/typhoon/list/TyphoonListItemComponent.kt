@@ -20,7 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.ikmr.banbara23.yaeyama_liner_checker.R
+import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama_liner_checker.domain.tyhoon.Typhoon

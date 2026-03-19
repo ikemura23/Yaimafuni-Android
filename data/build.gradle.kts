@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.yaeyama.linerchecker"
+    namespace = "com.yaeyama.linerchecker.data"
 
     buildTypes {
         create("mock") {
