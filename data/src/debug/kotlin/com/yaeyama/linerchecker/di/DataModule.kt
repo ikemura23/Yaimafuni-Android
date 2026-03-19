@@ -15,8 +15,7 @@ import com.yaeyama_liner_checker.domain.repository.WeatherRepository
 import org.koin.dsl.module
 
 /**
- * DebugのRepositoryモジュール
- * Fake Repositoryを返すようにする
+ * debug用のdata module（releaseと同じ実装を使用）
  */
 val dataModule = module {
     single<FirebaseDatabase> { Firebase.database(Firebase.app) }

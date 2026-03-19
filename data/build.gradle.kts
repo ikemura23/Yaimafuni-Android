@@ -4,6 +4,13 @@ plugins {
 
 android {
     namespace = "com.yaeyama.linerchecker"
+
+    buildTypes {
+        create("mock") {
+            initWith(getByName("debug"))
+            matchingFallbacks += listOf("debug")
+        }
+    }
 }
 
 dependencies {
