@@ -18,7 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.ikmr.banbara23.yaeyama_liner_checker.R
+import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.ui.common.compose.BackNavigationTopAppBar
 import com.yaeyama.linerchecker.ui.main.compose.MainScaffold
 import com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailScreen

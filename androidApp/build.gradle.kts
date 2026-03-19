@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.ikmr.banbara23.yaeyama_liner_checker"
+    namespace = "com.yaeyama.linerchecker"
 
     defaultConfig {
         applicationId = "com.banbara.yaeyama.liner.checker"
