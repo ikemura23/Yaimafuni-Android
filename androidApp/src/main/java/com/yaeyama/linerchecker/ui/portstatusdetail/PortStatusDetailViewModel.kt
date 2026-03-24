@@ -6,15 +6,16 @@ import com.yaeyama_liner_checker.domain.repository.StatusDetailRepository
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
 import com.yaeyama_liner_checker.domain.time_table.TimeTable
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * 運行詳細 ViewModel
@@ -27,6 +28,9 @@ class PortStatusDetailViewModel(
     private val isError = MutableStateFlow(false)
     private val portStatus = MutableStateFlow(PortStatus())
     private val timeTable = MutableStateFlow(TimeTable())
+
+    private var statusDetailJob: Job? = null
+    private var timeTableJob: Job? = null
 
     val uiState: StateFlow<PortStatusDetailUiState> = combine(
         isLoading,
@@ -55,23 +59,27 @@ class PortStatusDetailViewModel(
         company: Company,
         portCode: String,
     ) {
-        viewModelScope.launch {
-            runCatching {
-                val res: Flow<PortStatus> = statusDetailRepository.fetchStatusDetail(company = company, portCode = portCode)
-                portStatus.update { res.first() } // TODO: firstをやめたい
-            }.onFailure {
-                isError.update { true }
-            }
+        statusDetailJob?.cancel()
+        timeTableJob?.cancel()
+        isError.update { false }
 
-        }
-        viewModelScope.launch {
-            runCatching {
-                timeTable.update {
-                    statusDetailRepository.fetchTimeTable(company, portCode).first()  // TODO: firstをやめたい
+        statusDetailJob = viewModelScope.launch {
+            statusDetailRepository.fetchStatusDetail(company = company, portCode = portCode)
+                .catch { e ->
+                    Timber.e(e, "fetchStatusDetail failed")
+                    isError.update { true }
                 }
-            }.onFailure {
-                isError.update { true } // TODO: TimeTableだけエラーの場合を考慮する
-            }
+                .collect { portStatus.value = it }
+        }
+
+        timeTableJob = viewModelScope.launch {
+            statusDetailRepository.fetchTimeTable(company, portCode)
+                .catch { e ->
+                    Timber.e(e, "fetchTimeTable failed")
+                    // TODO: 時刻表のみ失敗した場合は isError を分離して扱う
+                    isError.update { true }
+                }
+                .collect { timeTable.value = it }
         }
     }
 }
