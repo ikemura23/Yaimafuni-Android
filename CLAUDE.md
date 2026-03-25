@@ -209,11 +209,7 @@ AIが作業種別に応じて自動生成する要件定義：
 #### 自動Pull Request作成
 全ての品質確認が完了したら、AIが自動でPull Requestを作成：
 
-**PRタイトル生成ルール:**
-- **新機能**: `feat: [機能概要]を追加`
-- **リファクタリング**: `refactor: [対象範囲]を改善`
-- **バグ修正**: `fix: [問題の概要]を修正`
-- **技術改善**: `chore: [改善内容]を更新`
+**PRタイトル:** Cursor プロジェクトルール `.cursor/rules/pr-title.mdc` に従うこと。
 
 **PR説明の自動生成:**
 .github/PULL_REQUEST_TEMPLATE.mdに準拠
