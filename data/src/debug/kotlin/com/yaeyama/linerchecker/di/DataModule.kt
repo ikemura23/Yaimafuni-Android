@@ -19,16 +19,8 @@ import org.koin.dsl.module
  */
 val dataModule = module {
     single<FirebaseDatabase> { Firebase.database(Firebase.app) }
-    single<WeatherRepository> {
-        WeatherRepositoryImpl()
-    }
-    single<TyphoonRepository> {
-        TyphoonRepositoryImpl()
-    }
-    single<TopStatusRepository> {
-        TopStatusRepositoryImpl()
-    }
-    single<StatusDetailRepository> {
-        StatusDetailRepositoryImpl()
-    }
+    single<WeatherRepository> { WeatherRepositoryImpl(get()) }
+    single<TyphoonRepository> { TyphoonRepositoryImpl(get()) }
+    single<TopStatusRepository> { TopStatusRepositoryImpl(get()) }
+    single<StatusDetailRepository> { StatusDetailRepositoryImpl(get()) }
 }

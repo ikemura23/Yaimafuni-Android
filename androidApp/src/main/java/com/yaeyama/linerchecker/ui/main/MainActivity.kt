@@ -4,11 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.gms.tasks.Task
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManager
@@ -17,7 +13,6 @@ import com.yaeyama.linerchecker.ui.main.compose.MainScreen
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
 import com.yaeyama.linerchecker.ui.weather.WeatherViewModel
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -36,12 +31,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // 既存機能を完全保持
         if (isShowReview()) showInAppReview()
         countUpLaunchCount()
-        setupBottomNavBadge()
 
-        // Compose統合
         setContent {
             YaimafuniAndroidTheme {
                 MainScreen(
@@ -49,32 +41,9 @@ class MainActivity : ComponentActivity() {
                     weatherViewModel = weatherViewModel,
                     dashboardViewModel = dashboardViewModel,
                     typhoonListViewModel = typhoonListViewModel,
-                    onTyphoonBadgeCountChanged = ::handleTyphoonBadge
                 )
             }
         }
-    }
-
-    /**
-     * ボトムナビゲーションの台風バッジの設定
-     */
-    private fun setupBottomNavBadge() {
-        lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED) {
-                mainViewModel.existsTyphoon().collect { result ->
-                    handleTyphoonBadge(result)
-                }
-            }
-        }
-    }
-
-    /**
-     * バッジ表示のハンドリング (Compose経由でコールバック)
-     */
-    private fun handleTyphoonBadge(typhoonCount: Int) {
-        // TODO: Composeバッジシステムに統合済みのため、既存のBottomNavigationView処理は不要
-        // 将来的にComposeバッジ表示が必要な場合はここで処理
-        Timber.d("Typhoon badge count: $typhoonCount")
     }
 
     /**

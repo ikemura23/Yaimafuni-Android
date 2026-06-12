@@ -11,14 +11,12 @@ import com.yaeyama_liner_checker.domain.weather.WeatherInfo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
-
 /**
  * 天気 Repository
  */
-class WeatherRepositoryImpl : WeatherRepository, KoinComponent {
-    private val database: FirebaseDatabase by inject()
+class WeatherRepositoryImpl(
+    private val database: FirebaseDatabase,
+) : WeatherRepository {
 
     /**
      * 天気を取得
@@ -27,16 +25,12 @@ class WeatherRepositoryImpl : WeatherRepository, KoinComponent {
         val dbRef = database.reference("weather")
         return dbRef.valueEvents
             .map { snapShot: DataSnapshot ->
-                UiState.Success(snapShot.getValue<WeatherInfo>()!!)
+                snapShot.getValue<WeatherInfo>()
+                    ?.let { UiState.Success(it) }
+                    ?: UiState.Error(Exception("天気データが取得できませんでした"))
             }
             .catch {
-                UiState.Error(it)
+                emit(UiState.Error(it))
             }
     }
 }
-
-// sealed class WeatherUiState {
-//     object Loading
-//     data class Success(val weatherInfo: WeatherInfo) : WeatherUiState()
-//     data class Error(val message: String) : WeatherUiState()
-// }

@@ -29,11 +29,3 @@ val DatabaseReference.valueEvents: Flow<DataSnapshot>
             this@valueEvents.removeEventListener(listener)
         }
     }
-
-// data class DataSnapshot(
-//     val snapshot: DataSnapshot,
-// ) {
-//     inline fun <reified T> value() = snapshot.getValue<T>()
-//
-//     val exists get() = snapshot.exists()
-// }

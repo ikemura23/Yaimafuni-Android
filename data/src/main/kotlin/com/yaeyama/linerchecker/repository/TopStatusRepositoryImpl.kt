@@ -11,19 +11,19 @@ import com.yaeyama_liner_checker.domain.top.TopPort
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
+import timber.log.Timber
 
-class TopStatusRepositoryImpl : TopStatusRepository, KoinComponent {
-    private val database: FirebaseDatabase by inject()
+class TopStatusRepositoryImpl(
+    private val database: FirebaseDatabase,
+) : TopStatusRepository {
 
     override fun fetchTopStatuses(): Flow<List<Ports>> {
         val dbRef = database.reference("top_port")
         return dbRef.valueEvents.map { snapShot: DataSnapshot ->
             snapShot.getValue<TopPort>()?.toList() ?: listOf()
         }.catch {
-            it.printStackTrace()
-            listOf<Ports>()
+            Timber.e(it, "fetchTopStatuses failed")
+            emit(listOf())
         }
     }
 

@@ -21,8 +21,6 @@ import com.yaeyama_liner_checker.domain.statusdetail.Status
 import com.yaeyama_liner_checker.domain.time_table.Header
 import com.yaeyama_liner_checker.domain.time_table.RowItem
 import com.yaeyama_liner_checker.domain.time_table.TimeTable
-import timber.log.Timber
-
 /**
  * 運行詳細スクリーン
  */
@@ -38,7 +36,6 @@ fun PortStatusDetailScreen(
         viewModel.fetchDetail(company, portCode)
     }
     val uiState = viewModel.uiState.collectAsState()
-    Timber.d("KKKK uiState:${uiState.value}")
     PortStatusDetailScreen(
         modifier = modifier,
         portName = uiState.value.portStatus.portName,

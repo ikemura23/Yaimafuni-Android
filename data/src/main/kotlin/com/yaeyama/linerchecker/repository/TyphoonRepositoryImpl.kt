@@ -6,23 +6,23 @@ import com.google.firebase.database.ktx.getValue
 import com.yaeyama.linerchecker.ext.reference
 import com.yaeyama.linerchecker.ext.valueEvents
 import com.yaeyama_liner_checker.domain.repository.TyphoonRepository
-import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
+import com.yaeyama_liner_checker.domain.typhoon.Typhoon
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
+import timber.log.Timber
 
-class TyphoonRepositoryImpl : TyphoonRepository, KoinComponent {
+class TyphoonRepositoryImpl(
+    private val database: FirebaseDatabase,
+) : TyphoonRepository {
 
-    private val database: FirebaseDatabase by inject()
 
     override fun fetchTyphoonList(): Flow<List<Typhoon>> {
         val dbRef = database.reference("typhoon/tenkijp")
         return dbRef.valueEvents.map { snapshot: DataSnapshot ->
             snapshot.getValue<List<Typhoon>>() ?: listOf()
         }.catch {
-            it.printStackTrace()
+            Timber.e(it, "fetchTyphoonList failed")
             emit(listOf())
         }
     }

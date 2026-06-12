@@ -11,7 +11,6 @@ import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
 import com.yaeyama.linerchecker.ui.weather.compose.WeatherPage
 import com.yaeyama.linerchecker.ui.weather.compose.WeatherTopAppBar
-import timber.log.Timber
 
 @Composable
 fun WeatherScreen(
@@ -30,7 +29,6 @@ private fun WeatherScreen(
     uiState: WeatherUiState,
     modifier: Modifier = Modifier,
 ) {
-    Timber.d("XXX uiState: $uiState")
     YaimafuniScaffold(
         modifier = modifier,
         topBar = { WeatherTopAppBar(titleRes = R.string.weather_screen_title) },
