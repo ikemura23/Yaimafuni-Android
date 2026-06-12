@@ -6,7 +6,7 @@ import com.google.firebase.database.ktx.getValue
 import com.yaeyama.linerchecker.ext.reference
 import com.yaeyama.linerchecker.ext.valueEvents
 import com.yaeyama_liner_checker.domain.repository.TyphoonRepository
-import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
+import com.yaeyama_liner_checker.domain.typhoon.Typhoon
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map

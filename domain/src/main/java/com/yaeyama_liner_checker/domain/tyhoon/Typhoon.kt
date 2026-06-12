@@ -1,4 +1,4 @@
-package com.yaeyama_liner_checker.domain.tyhoon
+package com.yaeyama_liner_checker.domain.typhoon
 
 /**
  * 台風のモデル

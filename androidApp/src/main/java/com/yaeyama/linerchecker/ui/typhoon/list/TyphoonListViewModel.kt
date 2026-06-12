@@ -3,7 +3,7 @@ package com.yaeyama.linerchecker.ui.typhoon.list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yaeyama_liner_checker.domain.repository.TyphoonRepository
-import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
+import com.yaeyama_liner_checker.domain.typhoon.Typhoon
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.StateFlow

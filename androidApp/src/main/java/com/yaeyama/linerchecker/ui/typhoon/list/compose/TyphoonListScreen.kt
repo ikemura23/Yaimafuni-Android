@@ -27,7 +27,7 @@ import com.yaeyama.linerchecker.ui.typhoon.detail.toTyphoonDetailUiModel
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListTopAppBar
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonUiState
-import com.yaeyama_liner_checker.domain.tyhoon.Typhoon
+import com.yaeyama_liner_checker.domain.typhoon.Typhoon
 
 /**
  * TyphoonListScreen for MainScreen integration
