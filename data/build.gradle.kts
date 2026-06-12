@@ -20,5 +20,6 @@ dependencies {
     implementation(libs.firebase.database)
     // coroutines
     implementation(libs.coroutines.android)
+    implementation(libs.timber)
     implementation(project(":domain"))
 }
