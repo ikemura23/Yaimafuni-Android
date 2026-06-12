@@ -23,16 +23,11 @@ fun MainScreen(
     weatherViewModel: WeatherViewModel,
     dashboardViewModel: DashBoardViewModel,
     typhoonListViewModel: TyphoonListViewModel,
-    onTyphoonBadgeCountChanged: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var selectedTab by remember { mutableStateOf(MainTab.Dashboard) }
 
-    // 台風バッジカウントの監視
     val typhoonCount by mainViewModel.existsTyphoon().collectAsState(initial = 0)
-
-    // カウント変更をActivityに通知
-    onTyphoonBadgeCountChanged(typhoonCount)
 
     MainScaffold(
         bottomBar = {
