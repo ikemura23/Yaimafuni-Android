@@ -1,8 +1,11 @@
 package com.yaeyama.linerchecker.ui.portstatusdetail
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import com.yaeyama.linerchecker.ui.portstatusdetail.compose.PortStatusDetailScreen
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -30,6 +33,11 @@ class PortStatusDetailActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // アプリはダークモード非対応のため、システムのダークモード設定に関わらず常にlightスタイル(濃色アイコン)にする
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+        )
 
         setContent {
             YaimafuniAndroidTheme {
