@@ -36,7 +36,6 @@ viewpager2 = "1.1.0"
 lifecycleViewmodelCompose = "2.8.7"
 
 # Navigation
-navigationFragmentKtx = "2.8.6"
 navigationUiKtx = "2.8.6"
 
 # Kotlin / Coroutines
@@ -83,7 +82,6 @@ compose-material = { module = "androidx.compose.material:material", version.ref 
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial3" }
 material-icons-core = { module = "androidx.compose.material:material-icons-core", version.ref = "materialIconsCore" }
 material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 navigation-runtime-ktx = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigationUiKtx" }
 navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtx" }
 play-review = { module = "com.google.android.play:review", version.ref = "playReview" }
