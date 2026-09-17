@@ -1,15 +1,19 @@
 import com.android.build.api.dsl.LibraryExtension
+import org.gradle.api.artifacts.VersionCatalogsExtension
+import org.gradle.kotlin.dsl.the
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 
 plugins {
     id("com.android.library")
 }
 
+val libs = the<VersionCatalogsExtension>().named("libs")
+
 configure<LibraryExtension> {
-    compileSdk = 35
+    compileSdk = libs.findVersion("app-compileSdk").get().requiredVersion.toInt()
 
     defaultConfig {
-        minSdk = 24
+        minSdk = libs.findVersion("app-minSdk").get().requiredVersion.toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
