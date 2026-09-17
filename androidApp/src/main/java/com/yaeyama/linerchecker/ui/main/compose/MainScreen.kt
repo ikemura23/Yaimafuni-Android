@@ -1,5 +1,6 @@
 package com.yaeyama.linerchecker.ui.main.compose
 
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -37,6 +38,8 @@ fun MainScreen(
                 typhoonBadgeCount = typhoonCount,
             )
         },
+        // 各タブが自身のScaffold(topBar)でinsetを消費するため、ここでは二重に確保しない
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
     ) { paddingValues ->
         when (selectedTab) {
             MainTab.Dashboard -> {

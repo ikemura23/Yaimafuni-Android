@@ -1,5 +1,6 @@
 package com.yaeyama.linerchecker.ui.weather
 
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -32,6 +33,8 @@ private fun WeatherScreen(
     YaimafuniScaffold(
         modifier = modifier,
         topBar = { WeatherTopAppBar(titleRes = R.string.weather_screen_title) },
+        // MainScreenのMainScaffold(bottomBar)が下端のinsetを既に確保しているため、二重に確保しない
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
     ) { padding ->
         WeatherPage(
             modifier = Modifier.padding(padding),
