@@ -1,8 +1,8 @@
 [versions]
 # App SDK
-app-compileSdk = "35"
+app-compileSdk = "36"
 app-minSdk = "24"
-app-targetSdk = "35"
+app-targetSdk = "36"
 
 # Build tools & Gradle plugins
 androidGradlePlugin = "9.0.0"

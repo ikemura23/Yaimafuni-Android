@@ -98,9 +98,9 @@ Yaimafuni-Androidは、沖縄県八重山諸島の船舶運航情報を提供す
 
 ### 依存関係管理
 依存関係は`gradle/libs.versions.toml`でバージョンカタログを使用して一元管理されています。主要バージョン制約：
-- Compile SDK: 35
+- Compile SDK: 36
 - Min SDK: 24
-- Target SDK: 35
+- Target SDK: 36
 - Kotlin: 1.9.24
 - Compose Compiler: 1.5.14
 - JVM Toolchain: 17
