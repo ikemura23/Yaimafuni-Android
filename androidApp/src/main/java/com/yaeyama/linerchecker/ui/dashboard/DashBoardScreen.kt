@@ -3,15 +3,22 @@ package com.yaeyama.linerchecker.ui.dashboard
 import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -53,6 +60,7 @@ fun DashBoardScreenRoot(
             }
             launcher.launch(intent)
         },
+        onRetry = viewModel::fetchPortList,
     )
 }
 
@@ -61,24 +69,53 @@ private fun DashBoardScreen(
     uiState: DashBoardUiState,
     modifier: Modifier = Modifier,
     onRowClick: (Ports) -> Unit,
+    onRetry: () -> Unit = {},
 ) {
     YaimafuniScaffold(
         topBar = { DashBoardAppBar() },
         // MainScreenのMainScaffold(bottomBar)が下端のinsetを既に確保しているため、二重に確保しない
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
     ) { paddingValues ->
-        Column(
+        Box(
             modifier = modifier
                 .padding(paddingValues) // Edge to edge対応のためのpaddingを追加
-                .verticalScroll(rememberScrollState()), // スクロール可能にする
+                .fillMaxSize(),
         ) {
-            DashBoardPage(
-                ports = uiState.portList,
-                onRowClick = onRowClick,
-                modifier = Modifier
-                    .padding(horizontal = 16.dp) // 子コンポーネントに画面端からの余白
-                    .padding(bottom = 16.dp), // スクロール時にコンテンツが見切れないように余白を追加
-            )
+            when {
+                uiState.isLoading -> {
+                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                }
+                uiState.isError -> {
+                    Column(
+                        modifier = Modifier.align(Alignment.Center),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Text(
+                            text = "運航情報の取得に失敗しました",
+                            style = MaterialTheme.typography.bodyLarge,
+                        )
+                        Button(
+                            modifier = Modifier.padding(top = 16.dp),
+                            onClick = onRetry,
+                        ) {
+                            Text(text = "再試行")
+                        }
+                    }
+                }
+                else -> {
+                    Column(
+                        modifier = Modifier.verticalScroll(rememberScrollState()), // スクロール可能にする
+                    ) {
+                        DashBoardPage(
+                            ports = uiState.portList,
+                            onRowClick = onRowClick,
+                            modifier = Modifier
+                                .padding(horizontal = 16.dp) // 子コンポーネントに画面端からの余白
+                                .padding(bottom = 16.dp), // スクロール時にコンテンツが見切れないように余白を追加
+                        )
+                    }
+                }
+            }
         }
     }
 }
@@ -118,14 +155,29 @@ private fun DashBoardScreenSmallDevicePreview() {
     }
 }
 
-@Preview(showBackground = true, name = "Error Pattern")
+@Preview(showBackground = true, name = "Loading Pattern")
 @Composable
-private fun DashBoardScreenPreview2() {
+private fun DashBoardScreenLoadingPreview() {
     PreviewBox {
         DashBoardScreen(
             uiState = DashBoardUiState(
                 isLoading = true,
                 isError = false,
+                portList = emptyList(),
+            ),
+            onRowClick = {},
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "Error Pattern")
+@Composable
+private fun DashBoardScreenErrorPreview() {
+    PreviewBox {
+        DashBoardScreen(
+            uiState = DashBoardUiState(
+                isLoading = false,
+                isError = true,
                 portList = emptyList(),
             ),
             onRowClick = {},
