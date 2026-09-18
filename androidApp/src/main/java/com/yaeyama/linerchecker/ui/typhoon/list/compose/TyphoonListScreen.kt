@@ -2,6 +2,7 @@ package com.yaeyama.linerchecker.ui.typhoon.list.compose
 
 import android.content.Intent
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -48,6 +49,8 @@ fun TyphoonListScreen(
             topBar = {
                 TyphoonListTopAppBar()
             },
+            // MainScreenのMainScaffold(bottomBar)が下端のinsetを既に確保しているため、二重に確保しない
+            contentWindowInsets = WindowInsets(0, 0, 0, 0),
             content = { paddingValues ->
                 when (val currentState = uiState) {
                     is TyphoonUiState.Loading -> {

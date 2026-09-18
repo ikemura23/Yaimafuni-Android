@@ -1,9 +1,12 @@
 package com.yaeyama.linerchecker.ui.main
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.core.content.edit
 import com.google.android.gms.tasks.Task
 import com.google.android.play.core.review.ReviewInfo
@@ -30,6 +33,11 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // アプリはダークモード非対応のため、システムのダークモード設定に関わらず常にlightスタイル(濃色アイコン)にする
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+            navigationBarStyle = SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+        )
 
         if (isShowReview()) showInAppReview()
         countUpLaunchCount()
