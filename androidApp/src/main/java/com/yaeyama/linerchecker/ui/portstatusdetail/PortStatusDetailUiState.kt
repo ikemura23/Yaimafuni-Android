@@ -6,6 +6,7 @@ import com.yaeyama_liner_checker.domain.time_table.TimeTable
 data class PortStatusDetailUiState(
     val isLoading: Boolean,
     val isError: Boolean,
+    val isTimeTableError: Boolean,
     val portStatus: PortStatus,
     val timeTable: TimeTable,
 ) {
@@ -13,6 +14,7 @@ data class PortStatusDetailUiState(
         val InitialValue = PortStatusDetailUiState(
             isLoading = false,
             isError = false,
+            isTimeTableError = false,
             portStatus = PortStatus(),
             timeTable = TimeTable(),
         )
