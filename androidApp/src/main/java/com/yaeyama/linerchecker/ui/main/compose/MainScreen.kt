@@ -28,7 +28,7 @@ fun MainScreen(
 ) {
     var selectedTab by remember { mutableStateOf(MainTab.Dashboard) }
 
-    val typhoonCount by mainViewModel.existsTyphoon().collectAsState(initial = 0)
+    val typhoonCount by mainViewModel.typhoonCount.collectAsState()
 
     MainScaffold(
         bottomBar = {
