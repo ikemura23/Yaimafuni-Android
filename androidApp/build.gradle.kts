@@ -54,6 +54,8 @@ dependencies {
 
     // Jetpack Compose toolkit dependencies
     // https://developer.android.com/jetpack/compose/setup#compose-compiler
+    implementation(platform(libs.compose.bom))
+    androidTestImplementation(platform(libs.compose.bom))
     implementation(libs.compose.ui)
     // Tooling support (Previews, etc.)
     implementation(libs.compose.ui.tooling)
