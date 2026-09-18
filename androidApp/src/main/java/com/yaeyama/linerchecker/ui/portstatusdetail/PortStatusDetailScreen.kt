@@ -1,13 +1,20 @@
 package com.yaeyama.linerchecker.ui.portstatusdetail
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,35 +45,74 @@ fun PortStatusDetailScreen(
     val uiState = viewModel.uiState.collectAsState()
     PortStatusDetailScreen(
         modifier = modifier,
+        isLoading = uiState.value.isLoading,
+        isError = uiState.value.isError,
+        isTimeTableError = uiState.value.isTimeTableError,
         portName = uiState.value.portStatus.portName,
         status = uiState.value.portStatus.status,
         statusDescription = uiState.value.portStatus.comment,
         timeTable = uiState.value.timeTable,
+        onRetry = { viewModel.fetchDetail(company, portCode) },
     )
 }
 
 @Composable
 private fun PortStatusDetailScreen(
     modifier: Modifier = Modifier,
+    isLoading: Boolean = false,
+    isError: Boolean = false,
+    isTimeTableError: Boolean = false,
     portName: String,
     status: Status,
     statusDescription: String,
     timeTable: TimeTable,
+    onRetry: () -> Unit = {},
 ) {
-    Column(
-        modifier = modifier.padding(16.dp)
-    ) {
-        PortMainStatus(
-            portName = portName,
-            status = status,
-            statusDescription = statusDescription,
-        )
+    Box(modifier = modifier.fillMaxSize()) {
+        when {
+            isLoading -> {
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+            }
+            isError -> {
+                Column(
+                    modifier = Modifier.align(Alignment.Center),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    Text(
+                        text = "運行情報の取得に失敗しました",
+                        style = MaterialTheme.typography.bodyLarge,
+                    )
+                    Button(
+                        modifier = Modifier.padding(top = 16.dp),
+                        onClick = onRetry,
+                    ) {
+                        Text(text = "再試行")
+                    }
+                }
+            }
+            else -> {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    PortMainStatus(
+                        portName = portName,
+                        status = status,
+                        statusDescription = statusDescription,
+                    )
 
-        Spacer(modifier = Modifier.size(16.dp))
+                    Spacer(modifier = Modifier.size(16.dp))
 
-        TimeTableList(
-            timeTable = timeTable,
-        )
+                    if (isTimeTableError) {
+                        Text(
+                            text = "時刻表の取得に失敗しました",
+                            style = MaterialTheme.typography.bodyLarge,
+                        )
+                    } else {
+                        TimeTableList(
+                            timeTable = timeTable,
+                        )
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -98,6 +144,48 @@ private fun PortStatusDetailScreenPreview() {
             status = Status(code = "normal", text = "text"),
             statusDescription = "statusDescription",
             timeTable = dummyTimeTable,
+        )
+    }
+}
+
+@Preview(name = "Loading Pattern")
+@Composable
+private fun PortStatusDetailScreenLoadingPreview() {
+    YaimafuniAndroidTheme {
+        PortStatusDetailScreen(
+            isLoading = true,
+            portName = "",
+            status = Status(),
+            statusDescription = "",
+            timeTable = TimeTable(),
+        )
+    }
+}
+
+@Preview(name = "Error Pattern")
+@Composable
+private fun PortStatusDetailScreenErrorPreview() {
+    YaimafuniAndroidTheme {
+        PortStatusDetailScreen(
+            isError = true,
+            portName = "",
+            status = Status(),
+            statusDescription = "",
+            timeTable = TimeTable(),
+        )
+    }
+}
+
+@Preview(name = "TimeTable Error Pattern")
+@Composable
+private fun PortStatusDetailScreenTimeTableErrorPreview() {
+    YaimafuniAndroidTheme {
+        PortStatusDetailScreen(
+            isTimeTableError = true,
+            portName = "portName",
+            status = Status(code = "normal", text = "text"),
+            statusDescription = "statusDescription",
+            timeTable = TimeTable(),
         )
     }
 }
