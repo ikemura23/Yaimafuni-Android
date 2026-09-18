@@ -8,6 +8,8 @@ import com.yaeyama_liner_checker.domain.weather.WeatherInfo
 sealed interface WeatherUiState {
     object Loading : WeatherUiState
 
+    object Error : WeatherUiState
+
     data class Success(
         val weather: WeatherInfo,
     ) : WeatherUiState

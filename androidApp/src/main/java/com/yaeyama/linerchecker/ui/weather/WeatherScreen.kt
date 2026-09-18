@@ -22,6 +22,7 @@ fun WeatherScreen(
     WeatherScreen(
         uiState,
         modifier,
+        onRetry = weatherViewModel::retry,
     )
 }
 
@@ -29,6 +30,7 @@ fun WeatherScreen(
 private fun WeatherScreen(
     uiState: WeatherUiState,
     modifier: Modifier = Modifier,
+    onRetry: () -> Unit = {},
 ) {
     YaimafuniScaffold(
         modifier = modifier,
@@ -39,6 +41,7 @@ private fun WeatherScreen(
         WeatherPage(
             modifier = Modifier.padding(padding),
             uiState = uiState,
+            onRetry = onRetry,
         )
     }
 }
