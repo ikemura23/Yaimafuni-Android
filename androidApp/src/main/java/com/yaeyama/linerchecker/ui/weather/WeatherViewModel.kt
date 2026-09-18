@@ -23,7 +23,7 @@ class WeatherViewModel(
             when (uiState) {
                 is UiState.Error -> WeatherUiState.Success(WeatherInfo())
                 is UiState.Success -> WeatherUiState.Success(uiState.data)
-                else -> WeatherUiState.Loading
+                is UiState.Loading -> WeatherUiState.Loading
             }
         }
         .onStart { emit(WeatherUiState.Loading) }
