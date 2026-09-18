@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
+import timber.log.Timber
 
 /**
  * 台風一覧 ViewModel
@@ -27,7 +28,10 @@ class TyphoonListViewModel(
     val uiState: StateFlow<TyphoonUiState> = typhoonRepository.fetchTyphoonList()
         .map<List<Typhoon>, TyphoonUiState> { TyphoonUiState.Data(it) }
         .onStart { emit(TyphoonUiState.Loading) }
-        .catch { emit(TyphoonUiState.Error) }
+        .catch {
+            Timber.e(it, "fetchTyphoonList failed")
+            emit(TyphoonUiState.Error)
+        }
         .stateIn(
             scope = viewModelScope,
             started = WhileSubscribed(5000), // ５秒間購読がなければコルーチンを停止する
