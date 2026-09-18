@@ -78,6 +78,9 @@ dependencies {
     implementation(libs.koin.android)
 
     testImplementation(libs.junit)
+    testImplementation(libs.coroutines.test)
+    testImplementation(libs.turbine)
+    testImplementation(libs.mockk)
 
     androidTestImplementation("androidx.test.espresso:espresso-core:3.1.0") {
         exclude(group = "com.android.support", module = "support-annotations")
