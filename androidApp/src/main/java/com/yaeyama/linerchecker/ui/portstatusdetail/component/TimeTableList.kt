@@ -28,13 +28,11 @@ import com.yaeyama_liner_checker.domain.time_table.Header
 import com.yaeyama_liner_checker.domain.time_table.Row
 import com.yaeyama_liner_checker.domain.time_table.RowItem
 import com.yaeyama_liner_checker.domain.time_table.TimeTable
-import timber.log.Timber
 
 typealias TimeRow = Row
 
 @Composable
 fun TimeTableList(timeTable: TimeTable) {
-    Timber.d(timeTable.toString())
     Card(
         modifier = Modifier.fillMaxWidth(),
     ) {
