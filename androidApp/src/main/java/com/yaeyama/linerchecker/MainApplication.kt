@@ -23,7 +23,9 @@ class MainApplication : Application() {
         initKoin()
 
         // デバッグビルドのみログ出力
-        Timber.plant(Timber.DebugTree())
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
     }
 
     private fun initKoin(): KoinApplication = startKoin {

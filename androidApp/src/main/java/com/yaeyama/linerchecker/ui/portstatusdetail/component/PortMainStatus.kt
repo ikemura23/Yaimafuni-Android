@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.getStatusBackgroundColor
 import com.yaeyama_liner_checker.domain.statusdetail.Status
-import timber.log.Timber
 
 /**
  * 運行詳細のに上部に表示するステータスとコメント
@@ -30,10 +29,6 @@ fun PortMainStatus(
     status: Status,
     statusDescription: String,
 ) {
-    Timber.d("portName: $portName")
-    Timber.d("status: $status")
-    Timber.d("statusDescription: $statusDescription")
-
     Card(
         modifier = Modifier.fillMaxWidth(),
     ) {
