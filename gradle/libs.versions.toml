@@ -48,6 +48,8 @@ composeThemeAdapter = "1.2.1"
 
 # Testing
 junit = "4.13.2"
+mockk = "1.13.13"
+turbine = "1.1.0"
 
 # Logging
 timber = "5.0.1"
@@ -81,6 +83,9 @@ firebase-analytics = {group = "com.google.firebase", name = "firebase-analytics-
 firebase-crashlytics = {group = "com.google.firebase", name = "firebase-crashlytics"}
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesAndroid" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesAndroid" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
