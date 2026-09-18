@@ -8,9 +8,7 @@ import com.yaeyama.linerchecker.ext.valueEvents
 import com.yaeyama_liner_checker.domain.repository.TyphoonRepository
 import com.yaeyama_liner_checker.domain.typhoon.Typhoon
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
-import timber.log.Timber
 
 class TyphoonRepositoryImpl(
     private val database: FirebaseDatabase,
@@ -21,9 +19,6 @@ class TyphoonRepositoryImpl(
         val dbRef = database.reference("typhoon/tenkijp")
         return dbRef.valueEvents.map { snapshot: DataSnapshot ->
             snapshot.getValue<List<Typhoon>>() ?: listOf()
-        }.catch {
-            Timber.e(it, "fetchTyphoonList failed")
-            emit(listOf())
         }
     }
 }

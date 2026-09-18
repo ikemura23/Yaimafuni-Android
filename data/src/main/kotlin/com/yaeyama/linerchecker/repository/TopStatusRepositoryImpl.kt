@@ -9,9 +9,7 @@ import com.yaeyama_liner_checker.domain.repository.TopStatusRepository
 import com.yaeyama_liner_checker.domain.top.Ports
 import com.yaeyama_liner_checker.domain.top.TopPort
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
-import timber.log.Timber
 
 class TopStatusRepositoryImpl(
     private val database: FirebaseDatabase,
@@ -21,9 +19,6 @@ class TopStatusRepositoryImpl(
         val dbRef = database.reference("top_port")
         return dbRef.valueEvents.map { snapShot: DataSnapshot ->
             snapShot.getValue<TopPort>()?.toList() ?: listOf()
-        }.catch {
-            Timber.e(it, "fetchTopStatuses failed")
-            emit(listOf())
         }
     }
 
