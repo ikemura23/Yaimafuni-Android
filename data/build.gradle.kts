@@ -22,4 +22,9 @@ dependencies {
     implementation(libs.coroutines.android)
     implementation(libs.timber)
     implementation(project(":domain"))
+
+    testImplementation(libs.junit)
+    testImplementation(libs.coroutines.test)
+    testImplementation(libs.turbine)
+    testImplementation(libs.mockk)
 }
