@@ -10,9 +10,6 @@ firebaseCrashlyticsGradle = "3.0.2"
 googleServices = "4.4.2"
 kotlin = "2.3.10"
 
-# Compose compiler
-compose-compiler-version = "1.5.14"
-
 # Compose BOM
 composeBom = "2026.09.00"
 
