@@ -3,10 +3,10 @@ package com.yaeyama.linerchecker.ui.weather
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
@@ -18,7 +18,7 @@ fun WeatherScreen(
     weatherViewModel: WeatherViewModel,
     modifier: Modifier = Modifier,
 ) {
-    val uiState by weatherViewModel.weatherFlow.collectAsState()
+    val uiState by weatherViewModel.weatherFlow.collectAsStateWithLifecycle()
     WeatherScreen(
         uiState,
         modifier,
