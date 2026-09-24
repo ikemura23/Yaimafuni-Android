@@ -25,3 +25,23 @@
 #-renamesourcefileattribute SourceFile
 -dontwarn okio.**
 -dontwarn javax.annotation.**
+
+# Crashlytics: スタックトレースの行番号を残す
+# https://firebase.google.com/docs/crashlytics/android/get-deobfuscated-reports
+-keepattributes SourceFile,LineNumberTable
+-keep public class * extends java.lang.Exception
+
+# Firebase Realtime Database
+# https://firebase.google.com/docs/database/android/start#proguard
+# getValue<T>() の GenericTypeIndicator がジェネリクス情報を参照できるようにする
+-keepattributes Signature,InnerClasses,EnclosingMethod,*Annotation*
+-keep class com.google.firebase.database.GenericTypeIndicator { *; }
+-keep class * extends com.google.firebase.database.GenericTypeIndicator { *; }
+
+# DataSnapshot.getValue() でデシリアライズする domain のモデル
+# リフレクションでコンストラクタ・フィールド・getter/setter を名前で参照するため keep する
+-keep class com.yaeyama_liner_checker.domain.top.** { *; }
+-keep class com.yaeyama_liner_checker.domain.statusdetail.** { *; }
+-keep class com.yaeyama_liner_checker.domain.weather.** { *; }
+-keep class com.yaeyama_liner_checker.domain.time_table.** { *; }
+-keep class com.yaeyama_liner_checker.domain.typhoon.** { *; }
