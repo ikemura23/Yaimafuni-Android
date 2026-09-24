@@ -17,12 +17,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
 import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardAppBar
@@ -47,7 +47,7 @@ fun DashBoardScreenRoot(
     }
 
     val context = LocalContext.current
-    val uiState: State<DashBoardUiState> = viewModel.uiState.collectAsState()
+    val uiState: State<DashBoardUiState> = viewModel.uiState.collectAsStateWithLifecycle()
 
     DashBoardScreen(
         uiState.value,

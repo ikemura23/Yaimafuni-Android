@@ -15,12 +15,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.PortMainStatus
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.TimeRow
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.TimeTableList
@@ -44,7 +44,7 @@ fun PortStatusDetailScreen(
     LaunchedEffect(company, portCode) {
         viewModel.fetchDetail(company, portCode)
     }
-    val uiState = viewModel.uiState.collectAsState()
+    val uiState = viewModel.uiState.collectAsStateWithLifecycle()
     PortStatusDetailScreen(
         modifier = modifier,
         isLoading = uiState.value.isLoading,

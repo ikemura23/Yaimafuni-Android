@@ -4,12 +4,12 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yaeyama.linerchecker.ui.dashboard.DashBoardScreenRoot
 import com.yaeyama.linerchecker.ui.dashboard.DashBoardViewModel
 import com.yaeyama.linerchecker.ui.main.MainViewModel
@@ -28,7 +28,7 @@ fun MainScreen(
 ) {
     var selectedTab by remember { mutableStateOf(MainTab.Dashboard) }
 
-    val typhoonCount by mainViewModel.typhoonCount.collectAsState()
+    val typhoonCount by mainViewModel.typhoonCount.collectAsStateWithLifecycle()
 
     MainScaffold(
         bottomBar = {

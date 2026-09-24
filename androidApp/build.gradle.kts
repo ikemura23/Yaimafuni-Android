@@ -62,6 +62,7 @@ dependencies {
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
     implementation(libs.compose.foundation)
     implementation(libs.lifecycle.viewmodel.compose)
+    implementation(libs.lifecycle.runtime.compose)
     // Material Design
     implementation(libs.compose.material)
     implementation(libs.compose.material3)
