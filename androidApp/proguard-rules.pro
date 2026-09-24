@@ -31,6 +31,12 @@
 -keepattributes SourceFile,LineNumberTable
 -keep public class * extends java.lang.Exception
 
+# Firebase Components
+# ComponentDiscovery が AndroidManifest の meta-data に記載された Registrar を
+# 引数なしコンストラクタからリフレクションで生成するため keep する
+# 削除されると "FirebaseCrashlytics component is not present." で起動時にクラッシュする
+-keep class * implements com.google.firebase.components.ComponentRegistrar { <init>(); }
+
 # Firebase Realtime Database
 # https://firebase.google.com/docs/database/android/start#proguard
 # getValue<T>() の GenericTypeIndicator がジェネリクス情報を参照できるようにする
