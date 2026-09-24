@@ -34,7 +34,7 @@ kotlinxCoroutinesAndroid = "1.7.3"
 koinAndroid = "3.4.0"
 
 # Firebase
-firebaseBom = "33.5.1"
+firebaseBom = "34.19.0"
 
 # Play
 playReview = "2.0.2"
@@ -79,8 +79,8 @@ navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.
 play-review = { module = "com.google.android.play:review", version.ref = "playReview" }
 play-review-ktx = { module = "com.google.android.play:review-ktx", version.ref = "playReviewKtx" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
-firebase-database = {group = "com.google.firebase", name = "firebase-database-ktx"}
-firebase-analytics = {group = "com.google.firebase", name = "firebase-analytics-ktx"}
+firebase-database = {group = "com.google.firebase", name = "firebase-database"}
+firebase-analytics = {group = "com.google.firebase", name = "firebase-analytics"}
 firebase-crashlytics = {group = "com.google.firebase", name = "firebase-crashlytics"}
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesAndroid" }

@@ -1,9 +1,9 @@
 package com.yaeyama.linerchecker.di
 
+import com.google.firebase.Firebase
+import com.google.firebase.app
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.ktx.app
+import com.google.firebase.database.database
 import com.yaeyama.linerchecker.repository.StatusDetailRepositoryImpl
 import com.yaeyama.linerchecker.repository.TopStatusRepositoryImpl
 import com.yaeyama.linerchecker.repository.TyphoonRepositoryImpl
