@@ -16,4 +16,10 @@
     <string name="title_activity_port_status_detail_compose">PortStatusDetailComposeActivity</string>
     <string name="typhoon_list_empty">台風は発生していません。</string>
 
+    <!-- 運航詳細 -->
+    <string name="port_status_fetch_failed">運航情報の取得に失敗しました</string>
+    <string name="port_status_not_found">この航路の運航情報は見つかりませんでした</string>
+    <string name="time_table_fetch_failed">時刻表の取得に失敗しました</string>
+    <string name="time_table_not_found">この航路の時刻表は見つかりませんでした</string>
+
 </resources>

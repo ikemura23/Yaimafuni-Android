@@ -5,6 +5,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.getValue
+import com.yaeyama_liner_checker.domain.common.DataNotFoundException
 import com.yaeyama_liner_checker.domain.repository.StatusDetailRepository
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
@@ -27,7 +28,7 @@ class StatusDetailRepositoryImpl(
             val listener = object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val data = snapshot.getValue<PortStatus>()
-                    data?.let { trySend(it) } ?: close(IllegalStateException("運行情報データが取得できませんでした"))
+                    data?.let { trySend(it) } ?: close(DataNotFoundException(path))
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -48,7 +49,7 @@ class StatusDetailRepositoryImpl(
             val listener = object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val data = snapshot.getValue(TimeTable::class.java)
-                    data?.let { trySend(it) } ?: close(IllegalStateException("時刻表データが取得できませんでした"))
+                    data?.let { trySend(it) } ?: close(DataNotFoundException(path))
                 }
 
                 override fun onCancelled(error: DatabaseError) {
