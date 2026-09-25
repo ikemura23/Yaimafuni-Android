@@ -1,10 +1,9 @@
 package com.yaeyama.linerchecker.repository
 
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.getValue
 import com.yaeyama.linerchecker.domain.repository.WeatherRepository
 import com.yaeyama.linerchecker.domain.weather.WeatherInfo
-import com.yaeyama.linerchecker.ext.valueEvents
+import com.yaeyama.linerchecker.ext.valueEventsOf
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -18,7 +17,5 @@ class WeatherRepositoryImpl(
      * 天気を取得
      */
     override fun fetchWeather(): Flow<WeatherInfo> =
-        database.valueEvents("weather") { snapshot ->
-            snapshot.getValue<WeatherInfo>()
-        }
+        database.valueEventsOf<WeatherInfo>("weather")
 }

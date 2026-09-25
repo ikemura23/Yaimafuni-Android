@@ -27,3 +27,11 @@ class DataFetchException(
     path: String,
     cause: Throwable,
 ) : DataException(path, "Failed to fetch data at path: $path", cause)
+
+/**
+ * 取得したデータを期待する型に変換できなかったことを表す例外
+ */
+class DataParseException(
+    path: String,
+    cause: Throwable,
+) : DataException(path, "Failed to parse data at path: $path", cause)
