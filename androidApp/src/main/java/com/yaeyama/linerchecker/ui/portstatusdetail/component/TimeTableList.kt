@@ -178,9 +178,9 @@ private fun TimeTableListPreview() {
 @Preview(name = "ヘッダー")
 @Composable
 private fun TimeTableListHeaderPreview() {
-    val dummy = Header(left = "石垣島", right = "大原港")
+    val header = Header(left = "石垣島", right = "大原港")
     YaimafuniAndroidTheme {
-        TimeTableListHeader(dummy)
+        TimeTableListHeader(header)
     }
 }
 

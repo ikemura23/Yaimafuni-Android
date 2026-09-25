@@ -1,6 +1,5 @@
 package com.yaeyama.linerchecker.repository
 
-import android.util.Log
 import com.yaeyama.linerchecker.domain.repository.StatusDetailRepository
 import com.yaeyama.linerchecker.domain.statusdetail.Company
 import com.yaeyama.linerchecker.domain.statusdetail.PortStatus
@@ -12,13 +11,11 @@ import com.yaeyama.linerchecker.domain.timetable.TimeTable
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
-import org.koin.core.component.KoinComponent
 
 /**
  * 運行詳細のFakeリポジトリ
  */
-class FakeStatusDetailRepository : StatusDetailRepository, KoinComponent {
+class FakeStatusDetailRepository : StatusDetailRepository {
     override fun fetchStatusDetail(company: Company, portCode: String): Flow<PortStatus> = flow {
         delay(1000)
         val portStatus = PortStatus(

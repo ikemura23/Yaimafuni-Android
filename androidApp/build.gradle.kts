@@ -89,6 +89,8 @@ dependencies {
     testImplementation(libs.coroutines.test)
     testImplementation(libs.turbine)
     testImplementation(libs.mockk)
+    testImplementation(libs.koin.test)
+    testImplementation(libs.koin.test.junit4)
     // Compose UI テスト（Robolectric 上で JVM テストとして実行する）
     testImplementation(platform(libs.compose.bom))
     testImplementation(libs.ui.test.junit4)

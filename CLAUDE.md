@@ -67,6 +67,8 @@ Yaimafuni-Androidは、沖縄県八重山諸島の船舶運航情報を提供す
 ```
 
 ### コード品質
+命名規則とレビュー観点は `docs/code-review-guidelines.md` を参照すること。
+
 ```bash
 # Lint解析の実行
 ./gradlew lint
@@ -112,8 +114,11 @@ Yaimafuni-Androidは、沖縄県八重山諸島の船舶運航情報を提供す
 - `androidApp/src/*/java/com/yaeyama/linerchecker/di/AppModule.kt` - アプリレベルの依存関係
 - `data/src/*/kotlin/com/yaeyama/linerchecker/di/DataModule.kt` - データレイヤーの依存関係
 - `androidApp/src/main/java/com/yaeyama/linerchecker/di/ViewModelModule.kt` - ViewModelの依存関係
+- `androidApp/src/main/java/com/yaeyama/linerchecker/di/UseCaseModule.kt` - domainのUseCase（domainはKoinに依存させない）
 
 debug / release / mock の各ビルドタイプに対して、それぞれのソースセットで異なる実装が提供されています（mockはFake Repositoryと`FakeReviewManager`を注入）。
+
+依存グラフは`KoinModuleTest`（`verify()`による静的検証）で登録漏れを検出します。Repositoryをモックに差し替えたグラフを使うテストでは、テストソースの`testRepositoryModule`を使います。
 
 ## Firebase設定
 

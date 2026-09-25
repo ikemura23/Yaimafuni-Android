@@ -8,18 +8,18 @@ import org.junit.Test
 
 class PortMainStatusKtTest {
 
-    private val statusNomal = Status("nomal")
-    private val statusCation = Status("cation")
+    private val statusNormal = Status("nomal")
+    private val statusCaution = Status("cation")
     private val statusCancel = Status("cancel")
 
     @Test
     fun `ステータスが通常のとき、StatusColor Normal が返る`() {
-        assertEquals(statusNomal.getStatusBackgroundColor(), StatusColor.Normal)
+        assertEquals(statusNormal.getStatusBackgroundColor(), StatusColor.Normal)
     }
 
     @Test
-    fun `ステータスが未定のとき、StatusColor Cation が返る`() {
-        assertEquals(statusCation.getStatusBackgroundColor(), StatusColor.Cation)
+    fun `ステータスが未定のとき、StatusColor Caution が返る`() {
+        assertEquals(statusCaution.getStatusBackgroundColor(), StatusColor.Caution)
     }
 
     @Test
@@ -28,8 +28,8 @@ class PortMainStatusKtTest {
     }
 
     @Test
-    fun `ステータスが不明（一致する値がない）とき、StatusColor Cation が返る`() {
+    fun `ステータスが不明（一致する値がない）とき、StatusColor Caution が返る`() {
         val statusXXX = Status("xxx")
-        assertEquals(statusXXX.getStatusBackgroundColor(), StatusColor.Cation)
+        assertEquals(statusXXX.getStatusBackgroundColor(), StatusColor.Caution)
     }
 }

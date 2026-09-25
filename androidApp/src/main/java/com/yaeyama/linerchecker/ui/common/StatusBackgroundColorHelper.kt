@@ -11,5 +11,5 @@ import com.yaeyama.linerchecker.ui.theme.StatusColor
 fun Status.getStatusBackgroundColor() = when (toOperationStatus()) {
     OperationStatus.NORMAL -> StatusColor.Normal
     OperationStatus.CANCEL -> StatusColor.Cancel
-    OperationStatus.CAUTION, null -> StatusColor.Cation
+    OperationStatus.CAUTION, null -> StatusColor.Caution
 }

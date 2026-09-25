@@ -40,55 +40,52 @@ import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
 @Composable
 fun TyphoonListScreen(
     modifier: Modifier = Modifier,
-    viewModel: TyphoonListViewModel? = null,
+    viewModel: TyphoonListViewModel,
 ) {
     val context = LocalContext.current
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    viewModel?.let { vm ->
-        val uiState by vm.uiState.collectAsStateWithLifecycle()
+    YaimafuniScaffold(
+        modifier = modifier,
+        topBar = {
+            TyphoonListTopAppBar()
+        },
+        // MainScreenのMainScaffold(bottomBar)が下端のinsetを既に確保しているため、二重に確保しない
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
+        content = { paddingValues ->
+            when (val state = uiState) {
+                is LoadState.Loading -> {
+                    LoadingContent(modifier = Modifier.padding(paddingValues))
+                }
 
-        YaimafuniScaffold(
-            modifier = modifier,
-            topBar = {
-                TyphoonListTopAppBar()
-            },
-            // MainScreenのMainScaffold(bottomBar)が下端のinsetを既に確保しているため、二重に確保しない
-            contentWindowInsets = WindowInsets(0, 0, 0, 0),
-            content = { paddingValues ->
-                when (val currentState = uiState) {
-                    is LoadState.Loading -> {
-                        LoadingContent(modifier = Modifier.padding(paddingValues))
-                    }
+                is LoadState.Error -> {
+                    FullScreenErrorContent(
+                        messageRes = state.messageRes,
+                        modifier = Modifier.padding(paddingValues),
+                        onRetry = viewModel::retry,
+                    )
+                }
 
-                    is LoadState.Error -> {
-                        FullScreenErrorContent(
-                            messageRes = currentState.messageRes,
+                is LoadState.Success -> {
+                    if (state.data.isEmpty()) {
+                        EmptyContent(modifier = Modifier.padding(paddingValues))
+                    } else {
+                        TyphoonListContent(
                             modifier = Modifier.padding(paddingValues),
-                            onRetry = vm::retry,
+                            typhoons = state.data,
+                            onItemClick = { typhoon ->
+                                // TyphoonDetailActivityへの遷移
+                                val intent = Intent(context, TyphoonDetailActivity::class.java).apply {
+                                    putExtra(TyphoonDetailActivity.EXTRA_TYPHOON, typhoon.toTyphoonDetailUiModel())
+                                }
+                                context.startActivity(intent)
+                            },
                         )
                     }
-
-                    is LoadState.Success -> {
-                        if (currentState.data.isEmpty()) {
-                            EmptyContent(modifier = Modifier.padding(paddingValues))
-                        } else {
-                            TyphoonListContent(
-                                modifier = Modifier.padding(paddingValues),
-                                typhoons = currentState.data,
-                                onItemClick = { typhoon ->
-                                    // TyphoonDetailActivityへの遷移
-                                    val intent = Intent(context, TyphoonDetailActivity::class.java).apply {
-                                        putExtra(TyphoonDetailActivity.EXTRA_TYPHOON, typhoon.toTyphoonDetailUiModel())
-                                    }
-                                    context.startActivity(intent)
-                                },
-                            )
-                        }
-                    }
                 }
-            },
-        )
-    }
+            }
+        },
+    )
 }
 
 @Composable
