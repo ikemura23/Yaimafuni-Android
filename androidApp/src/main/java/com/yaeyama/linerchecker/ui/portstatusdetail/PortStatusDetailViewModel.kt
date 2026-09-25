@@ -2,6 +2,8 @@ package com.yaeyama.linerchecker.ui.portstatusdetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.yaeyama.linerchecker.R
+import com.yaeyama_liner_checker.domain.common.DataNotFoundException
 import com.yaeyama_liner_checker.domain.repository.StatusDetailRepository
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
@@ -27,8 +29,8 @@ class PortStatusDetailViewModel(
 ) : ViewModel() {
 
     private val isLoading = MutableStateFlow(false)
-    private val isError = MutableStateFlow(false)
-    private val isTimeTableError = MutableStateFlow(false)
+    private val errorMessageRes = MutableStateFlow<Int?>(null)
+    private val timeTableErrorMessageRes = MutableStateFlow<Int?>(null)
     private val portStatus = MutableStateFlow(PortStatus())
     private val timeTable = MutableStateFlow(TimeTable())
 
@@ -37,21 +39,21 @@ class PortStatusDetailViewModel(
 
     val uiState: StateFlow<PortStatusDetailUiState> = combine(
         isLoading,
-        isError,
-        isTimeTableError,
+        errorMessageRes,
+        timeTableErrorMessageRes,
         portStatus,
         timeTable,
     ) {
             isLoading,
-            isError,
-            isTimeTableError,
+            errorMessageRes,
+            timeTableErrorMessageRes,
             portStatus,
             timeTable,
         ->
         PortStatusDetailUiState(
             isLoading,
-            isError,
-            isTimeTableError,
+            errorMessageRes,
+            timeTableErrorMessageRes,
             portStatus,
             timeTable,
         )
@@ -67,8 +69,8 @@ class PortStatusDetailViewModel(
     ) {
         statusDetailJob?.cancel()
         timeTableJob?.cancel()
-        isError.update { false }
-        isTimeTableError.update { false }
+        errorMessageRes.update { null }
+        timeTableErrorMessageRes.update { null }
 
         statusDetailJob = viewModelScope.launch {
             statusDetailRepository.fetchStatusDetail(company = company, portCode = portCode)
@@ -77,7 +79,9 @@ class PortStatusDetailViewModel(
                 .catch { e ->
                     Timber.e(e, "fetchStatusDetail failed")
                     isLoading.update { false }
-                    isError.update { true }
+                    errorMessageRes.update {
+                        if (e is DataNotFoundException) R.string.port_status_not_found else R.string.port_status_fetch_failed
+                    }
                 }
                 .collect { portStatus.value = it }
         }
@@ -86,7 +90,9 @@ class PortStatusDetailViewModel(
             statusDetailRepository.fetchTimeTable(company, portCode)
                 .catch { e ->
                     Timber.e(e, "fetchTimeTable failed")
-                    isTimeTableError.update { true }
+                    timeTableErrorMessageRes.update {
+                        if (e is DataNotFoundException) R.string.time_table_not_found else R.string.time_table_fetch_failed
+                    }
                 }
                 .collect { timeTable.value = it }
         }

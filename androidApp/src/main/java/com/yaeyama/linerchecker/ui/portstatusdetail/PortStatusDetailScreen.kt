@@ -1,5 +1,6 @@
 package com.yaeyama.linerchecker.ui.portstatusdetail
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,9 +19,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.PortMainStatus
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.TimeRow
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.TimeTableList
@@ -48,8 +51,8 @@ fun PortStatusDetailScreen(
     PortStatusDetailScreen(
         modifier = modifier,
         isLoading = uiState.value.isLoading,
-        isError = uiState.value.isError,
-        isTimeTableError = uiState.value.isTimeTableError,
+        errorMessageRes = uiState.value.errorMessageRes,
+        timeTableErrorMessageRes = uiState.value.timeTableErrorMessageRes,
         portName = uiState.value.portStatus.portName,
         status = uiState.value.portStatus.status,
         statusDescription = uiState.value.portStatus.comment,
@@ -62,8 +65,8 @@ fun PortStatusDetailScreen(
 private fun PortStatusDetailScreen(
     modifier: Modifier = Modifier,
     isLoading: Boolean = false,
-    isError: Boolean = false,
-    isTimeTableError: Boolean = false,
+    @StringRes errorMessageRes: Int? = null,
+    @StringRes timeTableErrorMessageRes: Int? = null,
     portName: String,
     status: Status,
     statusDescription: String,
@@ -75,13 +78,13 @@ private fun PortStatusDetailScreen(
             isLoading -> {
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             }
-            isError -> {
+            errorMessageRes != null -> {
                 Column(
                     modifier = Modifier.align(Alignment.Center),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Text(
-                        text = "運行情報の取得に失敗しました",
+                        text = stringResource(errorMessageRes),
                         style = MaterialTheme.typography.bodyLarge,
                     )
                     Button(
@@ -106,9 +109,9 @@ private fun PortStatusDetailScreen(
 
                     Spacer(modifier = Modifier.size(16.dp))
 
-                    if (isTimeTableError) {
+                    if (timeTableErrorMessageRes != null) {
                         Text(
-                            text = "時刻表の取得に失敗しました",
+                            text = stringResource(timeTableErrorMessageRes),
                             style = MaterialTheme.typography.bodyLarge,
                         )
                     } else {
@@ -173,7 +176,7 @@ private fun PortStatusDetailScreenLoadingPreview() {
 private fun PortStatusDetailScreenErrorPreview() {
     YaimafuniAndroidTheme {
         PortStatusDetailScreen(
-            isError = true,
+            errorMessageRes = R.string.port_status_fetch_failed,
             portName = "",
             status = Status(),
             statusDescription = "",
@@ -187,7 +190,7 @@ private fun PortStatusDetailScreenErrorPreview() {
 private fun PortStatusDetailScreenTimeTableErrorPreview() {
     YaimafuniAndroidTheme {
         PortStatusDetailScreen(
-            isTimeTableError = true,
+            timeTableErrorMessageRes = R.string.time_table_not_found,
             portName = "portName",
             status = Status(code = "normal", text = "text"),
             statusDescription = "statusDescription",
