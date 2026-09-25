@@ -5,6 +5,7 @@ import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.repository.TyphoonRepository
 import com.yaeyama.linerchecker.domain.typhoon.Typhoon
 import com.yaeyama.linerchecker.domain.usecase.GetTyphoonList
+import com.yaeyama.linerchecker.ui.common.LoadState
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
@@ -36,14 +37,14 @@ class TyphoonListViewModelTest {
     }
 
     @Test
-    fun `repository failure surfaces as TyphoonUiState Error instead of being silently dropped`() = runTest(testDispatcher) {
+    fun `repository failure surfaces as LoadState Error instead of being silently dropped`() = runTest(testDispatcher) {
         val repository = mockk<TyphoonRepository>()
         every { repository.fetchTyphoonList() } returns flow { throw RuntimeException("boom") }
         val viewModel = TyphoonListViewModel(GetTyphoonList(repository))
 
         viewModel.uiState.test {
-            assertEquals(TyphoonUiState.Loading, awaitItem())
-            assertEquals(TyphoonUiState.Error(R.string.typhoon_list_fetch_failed), awaitItem())
+            assertEquals(LoadState.Loading, awaitItem())
+            assertEquals(LoadState.Error(R.string.typhoon_list_fetch_failed), awaitItem())
         }
     }
 
@@ -58,13 +59,13 @@ class TyphoonListViewModelTest {
         val viewModel = TyphoonListViewModel(GetTyphoonList(repository))
 
         viewModel.uiState.test {
-            assertEquals(TyphoonUiState.Loading, awaitItem())
-            assertEquals(TyphoonUiState.Error(R.string.typhoon_list_fetch_failed), awaitItem())
+            assertEquals(LoadState.Loading, awaitItem())
+            assertEquals(LoadState.Error(R.string.typhoon_list_fetch_failed), awaitItem())
 
             viewModel.retry()
 
-            assertEquals(TyphoonUiState.Loading, awaitItem())
-            assertEquals(TyphoonUiState.Data(typhoons), awaitItem())
+            assertEquals(LoadState.Loading, awaitItem())
+            assertEquals(LoadState.Success(typhoons), awaitItem())
         }
     }
 }

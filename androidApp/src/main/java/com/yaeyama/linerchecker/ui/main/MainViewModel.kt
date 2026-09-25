@@ -1,13 +1,13 @@
 package com.yaeyama.linerchecker.ui.main
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.yaeyama.linerchecker.domain.typhoon.Typhoon
 import com.yaeyama.linerchecker.domain.usecase.GetTyphoonList
-import kotlinx.coroutines.flow.SharingStarted
+import com.yaeyama.linerchecker.ui.common.stateInWhileSubscribed
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import timber.log.Timber
 
 class MainViewModel(
     getTyphoonList: GetTyphoonList,
@@ -15,9 +15,10 @@ class MainViewModel(
 
     val typhoonCount: StateFlow<Int> = getTyphoonList()
         .map { list: List<Typhoon> -> list.size }
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = 0,
-        )
+        // バッジ表示のみのため、取得に失敗したらバッジを出さない（未捕捉の例外でクラッシュさせない）
+        .catch { e ->
+            Timber.e(e, "fetch typhoon count failed")
+            emit(0)
+        }
+        .stateInWhileSubscribed(this, initialValue = 0)
 }

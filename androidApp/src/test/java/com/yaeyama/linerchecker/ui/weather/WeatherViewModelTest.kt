@@ -6,6 +6,7 @@ import com.yaeyama.linerchecker.domain.common.DataNotFoundException
 import com.yaeyama.linerchecker.domain.repository.WeatherRepository
 import com.yaeyama.linerchecker.domain.usecase.GetWeatherInfo
 import com.yaeyama.linerchecker.domain.weather.WeatherInfo
+import com.yaeyama.linerchecker.ui.common.LoadState
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
@@ -37,14 +38,14 @@ class WeatherViewModelTest {
     }
 
     @Test
-    fun `error from repository maps to WeatherUiState Error`() = runTest(testDispatcher) {
+    fun `error from repository maps to LoadState Error`() = runTest(testDispatcher) {
         val repository = mockk<WeatherRepository>()
         every { repository.fetchWeather() } returns flow { throw RuntimeException("boom") }
         val viewModel = WeatherViewModel(GetWeatherInfo(repository))
 
-        viewModel.weatherFlow.test {
-            assertEquals(WeatherUiState.Loading, awaitItem())
-            assertEquals(WeatherUiState.Error(R.string.weather_fetch_failed), awaitItem())
+        viewModel.uiState.test {
+            assertEquals(LoadState.Loading, awaitItem())
+            assertEquals(LoadState.Error(R.string.weather_fetch_failed), awaitItem())
         }
     }
 
@@ -54,22 +55,22 @@ class WeatherViewModelTest {
         every { repository.fetchWeather() } returns flow { throw DataNotFoundException("weather") }
         val viewModel = WeatherViewModel(GetWeatherInfo(repository))
 
-        viewModel.weatherFlow.test {
-            assertEquals(WeatherUiState.Loading, awaitItem())
-            assertEquals(WeatherUiState.Error(R.string.weather_not_found), awaitItem())
+        viewModel.uiState.test {
+            assertEquals(LoadState.Loading, awaitItem())
+            assertEquals(LoadState.Error(R.string.weather_not_found), awaitItem())
         }
     }
 
     @Test
-    fun `success from repository maps to WeatherUiState Success`() = runTest(testDispatcher) {
+    fun `success from repository maps to LoadState Success`() = runTest(testDispatcher) {
         val repository = mockk<WeatherRepository>()
         val weatherInfo = WeatherInfo()
         every { repository.fetchWeather() } returns flowOf(weatherInfo)
         val viewModel = WeatherViewModel(GetWeatherInfo(repository))
 
-        viewModel.weatherFlow.test {
-            assertEquals(WeatherUiState.Loading, awaitItem())
-            assertEquals(WeatherUiState.Success(weatherInfo), awaitItem())
+        viewModel.uiState.test {
+            assertEquals(LoadState.Loading, awaitItem())
+            assertEquals(LoadState.Success(weatherInfo), awaitItem())
         }
     }
 
@@ -82,14 +83,14 @@ class WeatherViewModelTest {
         )
         val viewModel = WeatherViewModel(GetWeatherInfo(repository))
 
-        viewModel.weatherFlow.test {
-            assertEquals(WeatherUiState.Loading, awaitItem())
-            assertEquals(WeatherUiState.Error(R.string.weather_fetch_failed), awaitItem())
+        viewModel.uiState.test {
+            assertEquals(LoadState.Loading, awaitItem())
+            assertEquals(LoadState.Error(R.string.weather_fetch_failed), awaitItem())
 
             viewModel.retry()
 
-            assertEquals(WeatherUiState.Loading, awaitItem())
-            assertEquals(WeatherUiState.Success(WeatherInfo()), awaitItem())
+            assertEquals(LoadState.Loading, awaitItem())
+            assertEquals(LoadState.Success(WeatherInfo()), awaitItem())
         }
     }
 }
