@@ -8,16 +8,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -25,6 +19,8 @@ import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.top.Ports
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
+import com.yaeyama.linerchecker.ui.common.compose.FullScreenErrorContent
+import com.yaeyama.linerchecker.ui.common.compose.LoadingContent
 import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardAppBar
 import com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailActivity
 
@@ -71,24 +67,13 @@ internal fun DashBoardScreen(
         ) {
             when {
                 uiState.isLoading -> {
-                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                    LoadingContent()
                 }
-                uiState.isError -> {
-                    Column(
-                        modifier = Modifier.align(Alignment.Center),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        Text(
-                            text = stringResource(R.string.dashboard_fetch_failed),
-                            style = MaterialTheme.typography.bodyLarge,
-                        )
-                        Button(
-                            modifier = Modifier.padding(top = 16.dp),
-                            onClick = onRetry,
-                        ) {
-                            Text(text = stringResource(R.string.retry))
-                        }
-                    }
+                uiState.errorMessageRes != null -> {
+                    FullScreenErrorContent(
+                        messageRes = uiState.errorMessageRes,
+                        onRetry = onRetry,
+                    )
                 }
                 else -> {
                     Column(
@@ -115,7 +100,7 @@ private fun DashBoardScreenPreview() {
         DashBoardScreen(
             uiState = DashBoardUiState(
                 isLoading = false,
-                isError = false,
+                errorMessageRes = null,
                 portList = FakeDashBoardDataProvider.dummyPortList,
             ),
             onRowClick = {},
@@ -135,7 +120,7 @@ private fun DashBoardScreenSmallDevicePreview() {
         DashBoardScreen(
             uiState = DashBoardUiState(
                 isLoading = false,
-                isError = false,
+                errorMessageRes = null,
                 portList = FakeDashBoardDataProvider.dummyPortList,
             ),
             onRowClick = {},
@@ -150,7 +135,7 @@ private fun DashBoardScreenLoadingPreview() {
         DashBoardScreen(
             uiState = DashBoardUiState(
                 isLoading = true,
-                isError = false,
+                errorMessageRes = null,
                 portList = emptyList(),
             ),
             onRowClick = {},
@@ -165,7 +150,7 @@ private fun DashBoardScreenErrorPreview() {
         DashBoardScreen(
             uiState = DashBoardUiState(
                 isLoading = false,
-                isError = true,
+                errorMessageRes = R.string.dashboard_fetch_failed,
                 portList = emptyList(),
             ),
             onRowClick = {},

@@ -3,7 +3,6 @@ package com.yaeyama.linerchecker.ui.typhoon.detail.compose
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -19,19 +18,17 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.ui.common.compose.BackNavigationTopAppBar
+import com.yaeyama.linerchecker.ui.common.compose.FullScreenErrorContent
 import com.yaeyama.linerchecker.ui.main.compose.MainScaffold
 import com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailUiModel
 
@@ -67,10 +64,10 @@ fun TyphoonDetailScreen(
                 },
             )
         } else {
-            ErrorContent(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues),
+            // 一覧から渡されたデータが無い場合のため、再試行は無し（戻るで一覧に戻る）
+            FullScreenErrorContent(
+                messageRes = R.string.typhoon_detail_load_failed,
+                modifier = Modifier.padding(paddingValues),
             )
         }
     }
@@ -166,23 +163,6 @@ private fun TyphoonInfoItem(
         fontSize = 16.sp,
         style = MaterialTheme.typography.bodyLarge,
     )
-}
-
-@Composable
-private fun ErrorContent(
-    modifier: Modifier = Modifier,
-) {
-    Box(
-        modifier = modifier,
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(
-            text = stringResource(R.string.typhoon_detail_load_failed),
-            color = Color.White,
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center,
-        )
-    }
 }
 
 /** 台風 Webページ URL */

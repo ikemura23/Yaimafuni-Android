@@ -3,25 +3,19 @@ package com.yaeyama.linerchecker.ui.weather.compose
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.weather.Weather
+import com.yaeyama.linerchecker.ui.common.compose.FullScreenErrorContent
+import com.yaeyama.linerchecker.ui.common.compose.LoadingContent
 import com.yaeyama.linerchecker.ui.weather.WeatherUiState
 
 @Composable
@@ -49,27 +43,13 @@ fun WeatherPage(
             }
         }
         if (uiState is WeatherUiState.Loading) {
-            CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center),
-            )
+            LoadingContent()
         }
         if (uiState is WeatherUiState.Error) {
-            Column(
-                modifier = Modifier.align(Alignment.Center),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                Text(
-                    text = stringResource(R.string.weather_fetch_failed),
-                    color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge,
-                )
-                Button(
-                    modifier = Modifier.padding(top = 16.dp),
-                    onClick = onRetry,
-                ) {
-                    Text(text = stringResource(R.string.retry))
-                }
-            }
+            FullScreenErrorContent(
+                messageRes = uiState.messageRes,
+                onRetry = onRetry,
+            )
         }
     }
 }
@@ -83,5 +63,5 @@ private fun WeatherPagePreview() {
 @Preview(showBackground = true)
 @Composable
 private fun WeatherPageErrorPreview() {
-    WeatherPage(uiState = WeatherUiState.Error)
+    WeatherPage(uiState = WeatherUiState.Error(R.string.weather_fetch_failed))
 }

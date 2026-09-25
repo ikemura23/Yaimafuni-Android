@@ -4,6 +4,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.weather.Weather
 import com.yaeyama.linerchecker.domain.weather.WeatherInfo
 import com.yaeyama.linerchecker.testing.ComponentActivityRegistrationRule
@@ -41,7 +42,7 @@ class WeatherPageTest {
     @Test
     fun `error state shows message and retry invokes callback`() {
         var retryCount = 0
-        setContent(WeatherUiState.Error, onRetry = { retryCount++ })
+        setContent(WeatherUiState.Error(R.string.weather_fetch_failed), onRetry = { retryCount++ })
 
         composeRule.onNodeWithText("天気データの取得に失敗しました").assertIsDisplayed()
         composeRule.onNodeWithText("再試行").performClick()

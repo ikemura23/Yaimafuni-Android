@@ -1,5 +1,6 @@
 package com.yaeyama.linerchecker.ui.weather
 
+import androidx.annotation.StringRes
 import com.yaeyama.linerchecker.domain.weather.WeatherInfo
 
 /**
@@ -8,7 +9,9 @@ import com.yaeyama.linerchecker.domain.weather.WeatherInfo
 sealed interface WeatherUiState {
     object Loading : WeatherUiState
 
-    object Error : WeatherUiState
+    data class Error(
+        @StringRes val messageRes: Int,
+    ) : WeatherUiState
 
     data class Success(
         val weather: WeatherInfo,

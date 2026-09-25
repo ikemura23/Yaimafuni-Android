@@ -2,8 +2,10 @@ package com.yaeyama.linerchecker.ui.dashboard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.repository.TopStatusRepository
 import com.yaeyama.linerchecker.domain.top.Ports
+import com.yaeyama.linerchecker.ui.common.toErrorMessageRes
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -25,19 +27,19 @@ class DashBoardViewModel(
 ) : ViewModel() {
 
     private val isLoading = MutableStateFlow(false)
-    private val isError = MutableStateFlow(false)
+    private val errorMessageRes = MutableStateFlow<Int?>(null)
     private val portList: MutableStateFlow<List<Ports>> = MutableStateFlow(listOf())
 
     private var topStatusesJob: Job? = null
 
     val uiState: StateFlow<DashBoardUiState> = combine(
         isLoading,
-        isError,
+        errorMessageRes,
         portList,
-    ) { loading, error, ports ->
+    ) { loading, errorMessage, ports ->
         DashBoardUiState(
             isLoading = loading,
-            isError = error,
+            errorMessageRes = errorMessage,
             portList = ports,
         )
     }.stateIn(
@@ -57,14 +59,19 @@ class DashBoardViewModel(
     fun fetchPortList() {
         topStatusesJob?.cancel()
         topStatusesJob = viewModelScope.launch {
-            isError.update { false }
+            errorMessageRes.update { null }
             topStatusRepository.fetchTopStatuses()
                 .onStart { isLoading.update { true } }
                 .onEach { isLoading.update { false } }
                 .catch { e ->
                     Timber.e(e, "fetchTopStatuses failed")
                     isLoading.update { false }
-                    isError.update { true }
+                    errorMessageRes.update {
+                        e.toErrorMessageRes(
+                            notFoundRes = R.string.dashboard_not_found,
+                            fetchFailedRes = R.string.dashboard_fetch_failed,
+                        )
+                    }
                 }
                 .collect { portList.value = it }
         }
