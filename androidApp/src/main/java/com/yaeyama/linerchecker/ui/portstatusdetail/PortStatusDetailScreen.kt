@@ -16,6 +16,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -47,16 +48,16 @@ fun PortStatusDetailScreen(
     LaunchedEffect(company, portCode) {
         viewModel.fetchDetail(company, portCode)
     }
-    val uiState = viewModel.uiState.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     PortStatusDetailScreen(
         modifier = modifier,
-        isLoading = uiState.value.isLoading,
-        errorMessageRes = uiState.value.errorMessageRes,
-        timeTableErrorMessageRes = uiState.value.timeTableErrorMessageRes,
-        portName = uiState.value.portStatus.portName,
-        status = uiState.value.portStatus.status,
-        statusDescription = uiState.value.portStatus.comment,
-        timeTable = uiState.value.timeTable,
+        isLoading = uiState.isLoading,
+        errorMessageRes = uiState.errorMessageRes,
+        timeTableErrorMessageRes = uiState.timeTableErrorMessageRes,
+        portName = uiState.portStatus.portName,
+        status = uiState.portStatus.status,
+        statusDescription = uiState.portStatus.comment,
+        timeTable = uiState.timeTable,
         onRetry = { viewModel.fetchDetail(company, portCode) },
     )
 }
