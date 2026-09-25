@@ -1,7 +1,7 @@
 package com.yaeyama.linerchecker.ui.common
 
 import androidx.annotation.StringRes
-import com.yaeyama_liner_checker.domain.common.DataNotFoundException
+import com.yaeyama.linerchecker.domain.common.DataNotFoundException
 
 /**
  * Repository から受け取った例外の種類に応じて、ユーザー向けのエラーメッセージを返す

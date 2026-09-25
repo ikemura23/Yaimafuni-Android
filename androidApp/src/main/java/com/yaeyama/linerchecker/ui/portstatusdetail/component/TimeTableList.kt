@@ -20,14 +20,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.yaeyama.linerchecker.domain.statusdetail.Status
+import com.yaeyama.linerchecker.domain.timetable.Header
+import com.yaeyama.linerchecker.domain.timetable.Row
+import com.yaeyama.linerchecker.domain.timetable.RowItem
+import com.yaeyama.linerchecker.domain.timetable.TimeTable
 import com.yaeyama.linerchecker.ui.theme.TableDividerColor
 import com.yaeyama.linerchecker.ui.theme.TableHeaderColor
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
-import com.yaeyama_liner_checker.domain.statusdetail.Status
-import com.yaeyama_liner_checker.domain.time_table.Header
-import com.yaeyama_liner_checker.domain.time_table.Row
-import com.yaeyama_liner_checker.domain.time_table.RowItem
-import com.yaeyama_liner_checker.domain.time_table.TimeTable
 
 typealias TimeRow = Row
 

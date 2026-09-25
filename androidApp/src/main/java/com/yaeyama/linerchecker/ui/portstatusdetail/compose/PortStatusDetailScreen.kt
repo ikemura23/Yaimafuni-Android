@@ -19,12 +19,12 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.domain.statusdetail.Company
 import com.yaeyama.linerchecker.ui.common.compose.BackNavigationTopAppBar
 import com.yaeyama.linerchecker.ui.main.compose.MainScaffold
 import com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailScreen
 import com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailViewModel
 import com.yaeyama.linerchecker.ui.theme.AppBackgroundColor
-import com.yaeyama_liner_checker.domain.statusdetail.Company
 
 /**
  * PortStatusDetailActivity用のCompose実装

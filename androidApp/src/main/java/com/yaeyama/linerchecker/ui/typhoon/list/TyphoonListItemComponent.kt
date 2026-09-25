@@ -21,9 +21,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.domain.typhoon.Typhoon
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
-import com.yaeyama_liner_checker.domain.typhoon.Typhoon
 
 @Composable
 fun TyphoonListItemComponent(typhoon: Typhoon, onItemClick: (Typhoon) -> Unit) {

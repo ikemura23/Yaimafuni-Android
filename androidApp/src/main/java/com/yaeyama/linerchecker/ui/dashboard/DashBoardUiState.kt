@@ -1,6 +1,6 @@
 package com.yaeyama.linerchecker.ui.dashboard
 
-import com.yaeyama_liner_checker.domain.top.Ports
+import com.yaeyama.linerchecker.domain.top.Ports
 
 data class DashBoardUiState(
     val isLoading: Boolean,

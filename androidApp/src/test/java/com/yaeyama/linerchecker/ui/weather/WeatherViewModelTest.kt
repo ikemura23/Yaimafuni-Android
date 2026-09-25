@@ -1,8 +1,8 @@
 package com.yaeyama.linerchecker.ui.weather
 
 import app.cash.turbine.test
-import com.yaeyama_liner_checker.domain.repository.WeatherRepository
-import com.yaeyama_liner_checker.domain.weather.WeatherInfo
+import com.yaeyama.linerchecker.domain.repository.WeatherRepository
+import com.yaeyama.linerchecker.domain.weather.WeatherInfo
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers

@@ -1,9 +1,9 @@
 package com.yaeyama.linerchecker.repository
 
-import com.yaeyama_liner_checker.domain.repository.TopStatusRepository
-import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
-import com.yaeyama_liner_checker.domain.statusdetail.Status
-import com.yaeyama_liner_checker.domain.top.Ports
+import com.yaeyama.linerchecker.domain.repository.TopStatusRepository
+import com.yaeyama.linerchecker.domain.statusdetail.PortStatus
+import com.yaeyama.linerchecker.domain.statusdetail.Status
+import com.yaeyama.linerchecker.domain.top.Ports
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

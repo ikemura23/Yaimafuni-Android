@@ -1,14 +1,14 @@
 package com.yaeyama.linerchecker.repository
 
 import android.util.Log
-import com.yaeyama_liner_checker.domain.repository.StatusDetailRepository
-import com.yaeyama_liner_checker.domain.statusdetail.Company
-import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
-import com.yaeyama_liner_checker.domain.statusdetail.Status
-import com.yaeyama_liner_checker.domain.time_table.Header
-import com.yaeyama_liner_checker.domain.time_table.Row
-import com.yaeyama_liner_checker.domain.time_table.RowItem
-import com.yaeyama_liner_checker.domain.time_table.TimeTable
+import com.yaeyama.linerchecker.domain.repository.StatusDetailRepository
+import com.yaeyama.linerchecker.domain.statusdetail.Company
+import com.yaeyama.linerchecker.domain.statusdetail.PortStatus
+import com.yaeyama.linerchecker.domain.statusdetail.Status
+import com.yaeyama.linerchecker.domain.timetable.Header
+import com.yaeyama.linerchecker.domain.timetable.Row
+import com.yaeyama.linerchecker.domain.timetable.RowItem
+import com.yaeyama.linerchecker.domain.timetable.TimeTable
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

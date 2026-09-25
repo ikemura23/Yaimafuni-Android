@@ -6,7 +6,7 @@ import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.yaeyama_liner_checker.domain.weather.Weather
+import com.yaeyama.linerchecker.domain.weather.Weather
 
 @Composable
 fun WeatherListItem(

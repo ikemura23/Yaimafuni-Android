@@ -2,11 +2,11 @@ package com.yaeyama.linerchecker.repository
 
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.getValue
+import com.yaeyama.linerchecker.domain.repository.StatusDetailRepository
+import com.yaeyama.linerchecker.domain.statusdetail.Company
+import com.yaeyama.linerchecker.domain.statusdetail.PortStatus
+import com.yaeyama.linerchecker.domain.timetable.TimeTable
 import com.yaeyama.linerchecker.ext.valueEvents
-import com.yaeyama_liner_checker.domain.repository.StatusDetailRepository
-import com.yaeyama_liner_checker.domain.statusdetail.Company
-import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
-import com.yaeyama_liner_checker.domain.time_table.TimeTable
 import kotlinx.coroutines.flow.Flow
 
 class StatusDetailRepositoryImpl(

@@ -1,7 +1,7 @@
 package com.yaeyama.linerchecker.ui.typhoon.list
 
 import app.cash.turbine.test
-import com.yaeyama_liner_checker.domain.repository.TyphoonRepository
+import com.yaeyama.linerchecker.domain.repository.TyphoonRepository
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers

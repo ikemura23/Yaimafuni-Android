@@ -16,9 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.yaeyama.linerchecker.domain.statusdetail.Status
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.getStatusBackgroundColor
-import com.yaeyama_liner_checker.domain.statusdetail.Status
 
 /**
  * 運行詳細のに上部に表示するステータスとコメント

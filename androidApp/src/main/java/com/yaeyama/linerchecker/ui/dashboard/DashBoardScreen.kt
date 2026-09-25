@@ -25,11 +25,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.domain.top.Ports
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
 import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardAppBar
 import com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailActivity
-import com.yaeyama_liner_checker.domain.top.Ports
 
 @Composable
 fun DashBoardScreenRoot(

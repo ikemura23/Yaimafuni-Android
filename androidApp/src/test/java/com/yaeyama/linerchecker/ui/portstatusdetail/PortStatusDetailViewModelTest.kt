@@ -1,10 +1,10 @@
 package com.yaeyama.linerchecker.ui.portstatusdetail
 
 import com.yaeyama.linerchecker.R
-import com.yaeyama_liner_checker.domain.common.DataNotFoundException
-import com.yaeyama_liner_checker.domain.repository.StatusDetailRepository
-import com.yaeyama_liner_checker.domain.statusdetail.Company
-import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
+import com.yaeyama.linerchecker.domain.common.DataNotFoundException
+import com.yaeyama.linerchecker.domain.repository.StatusDetailRepository
+import com.yaeyama.linerchecker.domain.statusdetail.Company
+import com.yaeyama.linerchecker.domain.statusdetail.PortStatus
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
