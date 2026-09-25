@@ -1,7 +1,8 @@
 package com.yaeyama.linerchecker.ui.dashboard
 
 import com.yaeyama.linerchecker.domain.repository.TopStatusRepository
-import com.yaeyama.linerchecker.domain.top.Ports
+import com.yaeyama.linerchecker.domain.top.TopPort
+import com.yaeyama.linerchecker.domain.usecase.GetTopStatuses
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -41,7 +42,7 @@ class DashBoardViewModelTest {
     fun `repository failure surfaces as isError instead of being silently dropped`() = runTest(testDispatcher) {
         val repository = mockk<TopStatusRepository>()
         every { repository.fetchTopStatuses() } returns flow { throw RuntimeException("boom") }
-        val viewModel = DashBoardViewModel(repository)
+        val viewModel = DashBoardViewModel(GetTopStatuses(repository))
 
         val collectorJob = launch { viewModel.uiState.collect {} }
         advanceUntilIdle()
@@ -57,8 +58,8 @@ class DashBoardViewModelTest {
     @Test
     fun `port list is subscribed once when the view model is created`() = runTest(testDispatcher) {
         val repository = mockk<TopStatusRepository>()
-        every { repository.fetchTopStatuses() } returns flowOf(listOf(Ports()))
-        val viewModel = DashBoardViewModel(repository)
+        every { repository.fetchTopStatuses() } returns flowOf(TopPort())
+        val viewModel = DashBoardViewModel(GetTopStatuses(repository))
 
         // タブの切り替えで画面が何度 collect しても再購読しない
         repeat(2) {
@@ -67,7 +68,7 @@ class DashBoardViewModelTest {
             collectorJob.cancel()
         }
 
-        assertEquals(1, viewModel.uiState.value.portList.size)
+        assertEquals(7, viewModel.uiState.value.portList.size)
         verify(exactly = 1) { repository.fetchTopStatuses() }
     }
 }

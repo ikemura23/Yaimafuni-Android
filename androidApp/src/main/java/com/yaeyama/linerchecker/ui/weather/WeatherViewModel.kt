@@ -3,7 +3,7 @@ package com.yaeyama.linerchecker.ui.weather
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yaeyama.linerchecker.R
-import com.yaeyama.linerchecker.domain.repository.WeatherRepository
+import com.yaeyama.linerchecker.domain.usecase.GetWeatherInfo
 import com.yaeyama.linerchecker.ui.common.toErrorMessageRes
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -21,7 +21,7 @@ import timber.log.Timber
  */
 @OptIn(ExperimentalCoroutinesApi::class)
 class WeatherViewModel(
-    private val weatherRepository: WeatherRepository,
+    private val getWeatherInfo: GetWeatherInfo,
 ) : ViewModel() {
 
     private val retryTrigger = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
@@ -29,7 +29,7 @@ class WeatherViewModel(
     val weatherFlow: StateFlow<WeatherUiState> = retryTrigger
         .onStart { emit(Unit) }
         .flatMapLatest {
-            weatherRepository.fetchWeather()
+            getWeatherInfo()
                 .map<_, WeatherUiState> { weatherInfo -> WeatherUiState.Success(weatherInfo) }
                 .onStart { emit(WeatherUiState.Loading) }
                 .catch { e ->

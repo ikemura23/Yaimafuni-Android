@@ -2,6 +2,7 @@ package com.yaeyama.linerchecker.ui.main
 
 import com.yaeyama.linerchecker.domain.repository.TyphoonRepository
 import com.yaeyama.linerchecker.domain.typhoon.Typhoon
+import com.yaeyama.linerchecker.domain.usecase.GetTyphoonList
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -39,7 +40,7 @@ class MainViewModelTest {
         val repository = mockk<TyphoonRepository>()
         val typhoonListFlow = MutableSharedFlow<List<Typhoon>>(replay = 1)
         every { repository.fetchTyphoonList() } returns typhoonListFlow
-        val viewModel = MainViewModel(repository)
+        val viewModel = MainViewModel(GetTyphoonList(repository))
 
         typhoonListFlow.emit(listOf(Typhoon(), Typhoon()))
 

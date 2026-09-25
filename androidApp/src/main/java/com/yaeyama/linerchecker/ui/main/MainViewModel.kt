@@ -2,18 +2,18 @@ package com.yaeyama.linerchecker.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yaeyama.linerchecker.domain.repository.TyphoonRepository
 import com.yaeyama.linerchecker.domain.typhoon.Typhoon
+import com.yaeyama.linerchecker.domain.usecase.GetTyphoonList
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
 class MainViewModel(
-    private val typhoonRepository: TyphoonRepository,
+    getTyphoonList: GetTyphoonList,
 ) : ViewModel() {
 
-    val typhoonCount: StateFlow<Int> = typhoonRepository.fetchTyphoonList()
+    val typhoonCount: StateFlow<Int> = getTyphoonList()
         .map { list: List<Typhoon> -> list.size }
         .stateIn(
             scope = viewModelScope,
