@@ -105,6 +105,21 @@ class FirebaseExtTest {
         }
     }
 
+    @Test
+    fun `valueEvents with converter skips values equal to the previous one`() = runTest {
+        var value = "cached"
+        database.valueEvents(PATH) { value }.test {
+            listenerSlot.captured.onDataChange(mockk())
+            assertEquals("cached", awaitItem())
+            // ディスクキャッシュと同じ値がサーバーから届いても流さない
+            listenerSlot.captured.onDataChange(mockk())
+            value = "updated"
+            listenerSlot.captured.onDataChange(mockk())
+            assertEquals("updated", awaitItem())
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
+
     private companion object {
         const val PATH = "path/to/data"
     }

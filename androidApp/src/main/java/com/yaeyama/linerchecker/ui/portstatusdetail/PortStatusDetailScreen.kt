@@ -58,7 +58,7 @@ fun PortStatusDetailScreen(
         status = uiState.portStatus.status,
         statusDescription = uiState.portStatus.comment,
         timeTable = uiState.timeTable,
-        onRetry = { viewModel.fetchDetail(company, portCode) },
+        onRetry = viewModel::retry,
     )
 }
 
