@@ -4,8 +4,8 @@ import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yaeyama.linerchecker.R
-import com.yaeyama.linerchecker.domain.repository.TyphoonRepository
 import com.yaeyama.linerchecker.domain.typhoon.Typhoon
+import com.yaeyama.linerchecker.domain.usecase.GetTyphoonList
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
@@ -22,7 +22,7 @@ import timber.log.Timber
  */
 @OptIn(ExperimentalCoroutinesApi::class)
 class TyphoonListViewModel(
-    private val typhoonRepository: TyphoonRepository,
+    private val getTyphoonList: GetTyphoonList,
 ) : ViewModel() {
 
     private val retryTrigger = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
@@ -30,7 +30,7 @@ class TyphoonListViewModel(
     val uiState: StateFlow<TyphoonUiState> = retryTrigger
         .onStart { emit(Unit) }
         .flatMapLatest {
-            typhoonRepository.fetchTyphoonList()
+            getTyphoonList()
                 .map<List<Typhoon>, TyphoonUiState> { TyphoonUiState.Data(it) }
                 .onStart { emit(TyphoonUiState.Loading) }
                 .catch {

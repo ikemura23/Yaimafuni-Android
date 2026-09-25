@@ -4,6 +4,7 @@ import app.cash.turbine.test
 import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.repository.TyphoonRepository
 import com.yaeyama.linerchecker.domain.typhoon.Typhoon
+import com.yaeyama.linerchecker.domain.usecase.GetTyphoonList
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
@@ -38,7 +39,7 @@ class TyphoonListViewModelTest {
     fun `repository failure surfaces as TyphoonUiState Error instead of being silently dropped`() = runTest(testDispatcher) {
         val repository = mockk<TyphoonRepository>()
         every { repository.fetchTyphoonList() } returns flow { throw RuntimeException("boom") }
-        val viewModel = TyphoonListViewModel(repository)
+        val viewModel = TyphoonListViewModel(GetTyphoonList(repository))
 
         viewModel.uiState.test {
             assertEquals(TyphoonUiState.Loading, awaitItem())
@@ -54,7 +55,7 @@ class TyphoonListViewModelTest {
             flow { throw RuntimeException("boom") },
             flowOf(typhoons),
         )
-        val viewModel = TyphoonListViewModel(repository)
+        val viewModel = TyphoonListViewModel(GetTyphoonList(repository))
 
         viewModel.uiState.test {
             assertEquals(TyphoonUiState.Loading, awaitItem())

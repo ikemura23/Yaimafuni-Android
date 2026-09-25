@@ -3,8 +3,8 @@ package com.yaeyama.linerchecker.ui.dashboard
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yaeyama.linerchecker.R
-import com.yaeyama.linerchecker.domain.repository.TopStatusRepository
 import com.yaeyama.linerchecker.domain.top.Ports
+import com.yaeyama.linerchecker.domain.usecase.GetTopStatuses
 import com.yaeyama.linerchecker.ui.common.toErrorMessageRes
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,7 +23,7 @@ import timber.log.Timber
  * トップに表示するステータスのダッシュボード ViewModel
  */
 class DashBoardViewModel(
-    private val topStatusRepository: TopStatusRepository,
+    private val getTopStatuses: GetTopStatuses,
 ) : ViewModel() {
 
     private val isLoading = MutableStateFlow(false)
@@ -60,7 +60,7 @@ class DashBoardViewModel(
         topStatusesJob?.cancel()
         topStatusesJob = viewModelScope.launch {
             errorMessageRes.update { null }
-            topStatusRepository.fetchTopStatuses()
+            getTopStatuses()
                 .onStart { isLoading.update { true } }
                 .onEach { isLoading.update { false } }
                 .catch { e ->

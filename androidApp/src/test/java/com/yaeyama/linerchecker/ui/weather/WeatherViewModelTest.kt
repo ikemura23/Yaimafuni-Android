@@ -4,6 +4,7 @@ import app.cash.turbine.test
 import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.common.DataNotFoundException
 import com.yaeyama.linerchecker.domain.repository.WeatherRepository
+import com.yaeyama.linerchecker.domain.usecase.GetWeatherInfo
 import com.yaeyama.linerchecker.domain.weather.WeatherInfo
 import io.mockk.every
 import io.mockk.mockk
@@ -39,7 +40,7 @@ class WeatherViewModelTest {
     fun `error from repository maps to WeatherUiState Error`() = runTest(testDispatcher) {
         val repository = mockk<WeatherRepository>()
         every { repository.fetchWeather() } returns flow { throw RuntimeException("boom") }
-        val viewModel = WeatherViewModel(repository)
+        val viewModel = WeatherViewModel(GetWeatherInfo(repository))
 
         viewModel.weatherFlow.test {
             assertEquals(WeatherUiState.Loading, awaitItem())
@@ -51,7 +52,7 @@ class WeatherViewModelTest {
     fun `not found error from repository maps to not found message`() = runTest(testDispatcher) {
         val repository = mockk<WeatherRepository>()
         every { repository.fetchWeather() } returns flow { throw DataNotFoundException("weather") }
-        val viewModel = WeatherViewModel(repository)
+        val viewModel = WeatherViewModel(GetWeatherInfo(repository))
 
         viewModel.weatherFlow.test {
             assertEquals(WeatherUiState.Loading, awaitItem())
@@ -64,7 +65,7 @@ class WeatherViewModelTest {
         val repository = mockk<WeatherRepository>()
         val weatherInfo = WeatherInfo()
         every { repository.fetchWeather() } returns flowOf(weatherInfo)
-        val viewModel = WeatherViewModel(repository)
+        val viewModel = WeatherViewModel(GetWeatherInfo(repository))
 
         viewModel.weatherFlow.test {
             assertEquals(WeatherUiState.Loading, awaitItem())
@@ -79,7 +80,7 @@ class WeatherViewModelTest {
             flow { throw RuntimeException("boom") },
             flowOf(WeatherInfo()),
         )
-        val viewModel = WeatherViewModel(repository)
+        val viewModel = WeatherViewModel(GetWeatherInfo(repository))
 
         viewModel.weatherFlow.test {
             assertEquals(WeatherUiState.Loading, awaitItem())
