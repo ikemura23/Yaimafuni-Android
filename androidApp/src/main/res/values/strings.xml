@@ -16,6 +16,16 @@
     <string name="title_activity_port_status_detail_compose">PortStatusDetailComposeActivity</string>
     <string name="typhoon_list_empty">台風は発生していません。</string>
 
+    <!-- アクセシビリティ -->
+    <string name="navigate_back">戻る</string>
+    <string name="loading">読み込み中</string>
+    <string name="dashboard_row_click_label">運航詳細を表示</string>
+    <string name="company_ykf_short">八観フェ</string>
+    <string name="typhoon_image_description">%1$sの台風画像</string>
+    <plurals name="typhoon_badge_description">
+        <item quantity="other">発生中の台風 %1$d件</item>
+    </plurals>
+
     <!-- エラー -->
     <string name="retry">再試行</string>
     <string name="error_retry_hint">通信環境の良い場所で、もう一度お試しください</string>

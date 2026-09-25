@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.domain.weather.Temperature
@@ -24,7 +25,10 @@ fun WeatherListItemCardContent(weather: Weather) {
         modifier = Modifier.padding(16.dp),
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            // 「天気：」と値を1項目として読み上げる
+            modifier = Modifier
+                .fillMaxWidth()
+                .semantics(mergeDescendants = true) {},
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text("天気：")
@@ -32,7 +36,10 @@ fun WeatherListItemCardContent(weather: Weather) {
         }
         Spacer(modifier = Modifier.height(8.dp))
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            // 「天気：」と値を1項目として読み上げる
+            modifier = Modifier
+                .fillMaxWidth()
+                .semantics(mergeDescendants = true) {},
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text("最高：")
@@ -40,7 +47,10 @@ fun WeatherListItemCardContent(weather: Weather) {
         }
 
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            // 「天気：」と値を1項目として読み上げる
+            modifier = Modifier
+                .fillMaxWidth()
+                .semantics(mergeDescendants = true) {},
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text("最低：")
@@ -49,7 +59,10 @@ fun WeatherListItemCardContent(weather: Weather) {
 
         Spacer(modifier = Modifier.height(8.dp))
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            // 「天気：」と値を1項目として読み上げる
+            modifier = Modifier
+                .fillMaxWidth()
+                .semantics(mergeDescendants = true) {},
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text("風：")
@@ -57,7 +70,10 @@ fun WeatherListItemCardContent(weather: Weather) {
         }
         Spacer(modifier = Modifier.height(8.dp))
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            // 「天気：」と値を1項目として読み上げる
+            modifier = Modifier
+                .fillMaxWidth()
+                .semantics(mergeDescendants = true) {},
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text("波：")

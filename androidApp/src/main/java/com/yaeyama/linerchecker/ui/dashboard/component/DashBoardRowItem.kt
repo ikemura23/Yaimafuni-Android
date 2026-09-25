@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
@@ -26,6 +28,7 @@ fun DashBoardRowItem(
     modifier: Modifier,
     companyName: String,
     status: Status,
+    companyAccessibilityName: String = companyName,
 ) {
     val statusBackgroundColor = status.getStatusBackgroundColor()
     Column(
@@ -36,6 +39,7 @@ fun DashBoardRowItem(
         if (status.hasOperationStatus) {
             Text(
                 text = companyName,
+                modifier = Modifier.semantics { contentDescription = companyAccessibilityName },
                 style = MaterialTheme.typography.bodyMedium,
             )
             Spacer(modifier = Modifier.padding(4.dp))
