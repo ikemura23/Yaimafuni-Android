@@ -1,6 +1,5 @@
 package com.yaeyama.linerchecker.repository
 
-import com.yaeyama_liner_checker.domain.common.UiState
 import com.yaeyama_liner_checker.domain.repository.WeatherRepository
 import com.yaeyama_liner_checker.domain.weather.Table
 import com.yaeyama_liner_checker.domain.weather.Temperature
@@ -10,7 +9,7 @@ import kotlinx.coroutines.flow.flow
 import org.koin.core.component.KoinComponent
 
 class DebugWeatherRepositoryImpl : WeatherRepository, KoinComponent {
-    override fun fetchWeather() = flow<UiState<WeatherInfo>> {
+    override fun fetchWeather() = flow {
         val weatherInfo = WeatherInfo(
             today = Weather(
                 date = "1月2日(土)",
@@ -49,6 +48,6 @@ class DebugWeatherRepositoryImpl : WeatherRepository, KoinComponent {
                 ),
             ),
         )
-        emit(UiState.Success(weatherInfo))
+        emit(weatherInfo)
     }
 }

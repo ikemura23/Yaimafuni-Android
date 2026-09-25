@@ -17,10 +17,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
 import com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailActivity
@@ -101,7 +103,7 @@ private fun ErrorContent(modifier: Modifier = Modifier) {
         contentAlignment = Alignment.Center,
     ) {
         Text(
-            text = "エラーが発生しました",
+            text = stringResource(R.string.typhoon_list_fetch_failed),
             color = Color.White,
             style = MaterialTheme.typography.bodyLarge,
         )
@@ -115,7 +117,7 @@ private fun EmptyContent(modifier: Modifier = Modifier) {
         contentAlignment = Alignment.Center,
     ) {
         Text(
-            text = "台風は発生していません。",
+            text = stringResource(R.string.typhoon_list_empty),
             color = Color.White,
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,

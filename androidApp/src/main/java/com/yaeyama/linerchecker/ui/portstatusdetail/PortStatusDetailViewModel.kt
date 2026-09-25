@@ -3,7 +3,7 @@ package com.yaeyama.linerchecker.ui.portstatusdetail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yaeyama.linerchecker.R
-import com.yaeyama_liner_checker.domain.common.DataNotFoundException
+import com.yaeyama.linerchecker.ui.common.toErrorMessageRes
 import com.yaeyama_liner_checker.domain.repository.StatusDetailRepository
 import com.yaeyama_liner_checker.domain.statusdetail.Company
 import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
@@ -80,7 +80,10 @@ class PortStatusDetailViewModel(
                     Timber.e(e, "fetchStatusDetail failed")
                     isLoading.update { false }
                     errorMessageRes.update {
-                        if (e is DataNotFoundException) R.string.port_status_not_found else R.string.port_status_fetch_failed
+                        e.toErrorMessageRes(
+                            notFoundRes = R.string.port_status_not_found,
+                            fetchFailedRes = R.string.port_status_fetch_failed,
+                        )
                     }
                 }
                 .collect { portStatus.value = it }
@@ -91,7 +94,10 @@ class PortStatusDetailViewModel(
                 .catch { e ->
                     Timber.e(e, "fetchTimeTable failed")
                     timeTableErrorMessageRes.update {
-                        if (e is DataNotFoundException) R.string.time_table_not_found else R.string.time_table_fetch_failed
+                        e.toErrorMessageRes(
+                            notFoundRes = R.string.time_table_not_found,
+                            fetchFailedRes = R.string.time_table_fetch_failed,
+                        )
                     }
                 }
                 .collect { timeTable.value = it }
