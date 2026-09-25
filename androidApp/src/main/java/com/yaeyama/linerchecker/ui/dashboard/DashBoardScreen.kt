@@ -20,9 +20,11 @@ import androidx.compose.runtime.State
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
 import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardAppBar
@@ -91,14 +93,14 @@ private fun DashBoardScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
                         Text(
-                            text = "運航情報の取得に失敗しました",
+                            text = stringResource(R.string.dashboard_fetch_failed),
                             style = MaterialTheme.typography.bodyLarge,
                         )
                         Button(
                             modifier = Modifier.padding(top = 16.dp),
                             onClick = onRetry,
                         ) {
-                            Text(text = "再試行")
+                            Text(text = stringResource(R.string.retry))
                         }
                     }
                 }

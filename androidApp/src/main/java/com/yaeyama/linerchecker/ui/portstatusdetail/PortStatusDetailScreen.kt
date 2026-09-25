@@ -91,7 +91,7 @@ private fun PortStatusDetailScreen(
                         modifier = Modifier.padding(top = 16.dp),
                         onClick = onRetry,
                     ) {
-                        Text(text = "再試行")
+                        Text(text = stringResource(R.string.retry))
                     }
                 }
             }

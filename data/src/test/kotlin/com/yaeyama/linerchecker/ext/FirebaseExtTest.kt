@@ -5,25 +5,35 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseException
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.yaeyama_liner_checker.domain.common.DataFetchException
+import com.yaeyama_liner_checker.domain.common.DataNotFoundException
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.slot
 import io.mockk.verify
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class FirebaseExtTest {
 
+    private val database = mockk<FirebaseDatabase>()
+    private val reference = mockk<DatabaseReference>(relaxed = true)
+    private val listenerSlot = slot<ValueEventListener>()
+
+    init {
+        every { database.getReference(PATH) } returns reference
+        every { reference.addValueEventListener(capture(listenerSlot)) } answers { listenerSlot.captured }
+    }
+
     @Test
     fun `valueEvents emits snapshot on data change and removes listener on close`() = runTest {
-        val reference = mockk<DatabaseReference>(relaxed = true)
         val snapshot = mockk<DataSnapshot>()
-        val listenerSlot = slot<ValueEventListener>()
-        every { reference.addValueEventListener(capture(listenerSlot)) } answers { listenerSlot.captured }
 
-        reference.valueEvents.test {
+        database.valueEvents(PATH).test {
             listenerSlot.captured.onDataChange(snapshot)
             assertEquals(snapshot, awaitItem())
             cancelAndIgnoreRemainingEvents()
@@ -33,19 +43,40 @@ class FirebaseExtTest {
     }
 
     @Test
-    fun `valueEvents closes with exception on cancelled`() = runTest {
-        val reference = mockk<DatabaseReference>(relaxed = true)
-        val listenerSlot = slot<ValueEventListener>()
+    fun `valueEvents closes with DataFetchException on cancelled`() = runTest {
         val error = mockk<DatabaseError>()
-        val exception = DatabaseException("boom")
-        every { error.toException() } returns exception
-        every { reference.addValueEventListener(capture(listenerSlot)) } answers { listenerSlot.captured }
+        val cause = DatabaseException("boom")
+        every { error.toException() } returns cause
 
-        reference.valueEvents.test {
+        database.valueEvents(PATH).test {
             listenerSlot.captured.onCancelled(error)
             val thrown = awaitError()
-            assertEquals(DatabaseException::class, thrown::class)
-            assertEquals("boom", thrown.message)
+            assertTrue(thrown is DataFetchException)
+            assertEquals(PATH, (thrown as DataFetchException).path)
+            assertEquals(cause, thrown.cause)
         }
+    }
+
+    @Test
+    fun `valueEvents with converter emits converted value`() = runTest {
+        database.valueEvents(PATH) { "converted" }.test {
+            listenerSlot.captured.onDataChange(mockk())
+            assertEquals("converted", awaitItem())
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
+
+    @Test
+    fun `valueEvents with converter closes with DataNotFoundException when converter returns null`() = runTest {
+        database.valueEvents<String>(PATH) { null }.test {
+            listenerSlot.captured.onDataChange(mockk())
+            val thrown = awaitError()
+            assertTrue(thrown is DataNotFoundException)
+            assertEquals(PATH, (thrown as DataNotFoundException).path)
+        }
+    }
+
+    private companion object {
+        const val PATH = "path/to/data"
     }
 }
