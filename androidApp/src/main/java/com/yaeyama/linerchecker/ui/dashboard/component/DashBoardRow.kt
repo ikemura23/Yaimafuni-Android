@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.statusdetail.Company
 import com.yaeyama.linerchecker.domain.top.Ports
+import com.yaeyama.linerchecker.ui.common.nameRes
 import com.yaeyama.linerchecker.ui.dashboard.FakeDashBoardDataProvider
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 
@@ -40,14 +41,14 @@ fun DashBoardRow(
         )
         DashBoardRowItem(
             modifier = Modifier.align(Alignment.Center),
-            companyName = Company.ANEI.fullName,
+            companyName = stringResource(Company.ANEI.nameRes),
             status = port.anei.status,
         )
         DashBoardRowItem(
             modifier = Modifier.align(Alignment.CenterEnd),
             companyName = stringResource(R.string.company_ykf_short),
             // 画面上は略称のため、読み上げでは正式名称を使う
-            companyAccessibilityName = Company.YKF.fullName,
+            companyAccessibilityName = stringResource(Company.YKF.nameRes),
             status = port.ykf.status,
         )
     }
