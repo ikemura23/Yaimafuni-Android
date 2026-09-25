@@ -46,6 +46,14 @@ class DashBoardViewModel(
         initialValue = DashBoardUiState.InitialValue,
     )
 
+    init {
+        fetchPortList()
+    }
+
+    /**
+     * 運航状況の購読を（再）開始する
+     * 初回は ViewModel 生成時に呼ばれるため、画面表示のたびに呼ぶ必要はない
+     */
     fun fetchPortList() {
         topStatusesJob?.cancel()
         topStatusesJob = viewModelScope.launch {

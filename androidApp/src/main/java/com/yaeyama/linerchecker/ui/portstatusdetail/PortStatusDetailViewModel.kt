@@ -37,6 +37,9 @@ class PortStatusDetailViewModel(
     private var statusDetailJob: Job? = null
     private var timeTableJob: Job? = null
 
+    /** 購読中の会社と港。同じ条件での重複した購読を防ぐために保持する */
+    private var currentRequest: Pair<Company, String>? = null
+
     val uiState: StateFlow<PortStatusDetailUiState> = combine(
         isLoading,
         errorMessageRes,
@@ -63,10 +66,30 @@ class PortStatusDetailViewModel(
         initialValue = PortStatusDetailUiState.InitialValue,
     )
 
+    /**
+     * 運航詳細と時刻表の購読を開始する
+     * 画面回転などで同じ条件で呼ばれた場合、購読中でエラーが無ければ何もしない
+     */
     fun fetchDetail(
         company: Company,
         portCode: String,
     ) {
+        val request = company to portCode
+        val state = uiState.value
+        if (request == currentRequest && !state.isError && !state.isTimeTableError) return
+        subscribe(request)
+    }
+
+    /**
+     * 購読中の条件で再取得する
+     */
+    fun retry() {
+        currentRequest?.let { subscribe(it) }
+    }
+
+    private fun subscribe(request: Pair<Company, String>) {
+        val (company, portCode) = request
+        currentRequest = request
         statusDetailJob?.cancel()
         timeTableJob?.cancel()
         errorMessageRes.update { null }

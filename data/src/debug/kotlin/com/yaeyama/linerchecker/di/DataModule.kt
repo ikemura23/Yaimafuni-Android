@@ -1,9 +1,6 @@
 package com.yaeyama.linerchecker.di
 
-import com.google.firebase.Firebase
-import com.google.firebase.app
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.database
 import com.yaeyama.linerchecker.domain.repository.StatusDetailRepository
 import com.yaeyama.linerchecker.domain.repository.TopStatusRepository
 import com.yaeyama.linerchecker.domain.repository.TyphoonRepository
@@ -18,7 +15,7 @@ import org.koin.dsl.module
  * debug用のdata module（releaseと同じ実装を使用）
  */
 val dataModule = module {
-    single<FirebaseDatabase> { Firebase.database(Firebase.app) }
+    single<FirebaseDatabase> { createFirebaseDatabase() }
     single<WeatherRepository> { WeatherRepositoryImpl(get()) }
     single<TyphoonRepository> { TyphoonRepositoryImpl(get()) }
     single<TopStatusRepository> { TopStatusRepositoryImpl(get()) }
