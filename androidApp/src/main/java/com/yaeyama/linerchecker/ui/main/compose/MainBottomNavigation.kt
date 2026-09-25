@@ -13,7 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.R
 
@@ -33,7 +36,8 @@ fun MainBottomNavigation(
             icon = {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_directions_boat_white),
-                    contentDescription = stringResource(id = R.string.title_home),
+                    // ラベルと同じ内容が二重に読み上げられないよう、アイコンは装飾扱いにする
+                    contentDescription = null,
                     modifier = Modifier.size(24.dp),
                 )
             },
@@ -56,7 +60,8 @@ fun MainBottomNavigation(
             icon = {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_weather_white),
-                    contentDescription = stringResource(id = R.string.title_weather),
+                    // ラベルと同じ内容が二重に読み上げられないよう、アイコンは装飾扱いにする
+                    contentDescription = null,
                     modifier = Modifier.size(24.dp),
                 )
             },
@@ -80,7 +85,14 @@ fun MainBottomNavigation(
                 BadgedBox(
                     badge = {
                         if (typhoonBadgeCount > 0) {
-                            Badge {
+                            val badgeDescription = pluralStringResource(
+                                R.plurals.typhoon_badge_description,
+                                typhoonBadgeCount,
+                                typhoonBadgeCount,
+                            )
+                            Badge(
+                                modifier = Modifier.clearAndSetSemantics { contentDescription = badgeDescription },
+                            ) {
                                 Text(text = typhoonBadgeCount.toString())
                             }
                         }
@@ -88,7 +100,8 @@ fun MainBottomNavigation(
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_typhoon_white),
-                        contentDescription = stringResource(id = R.string.title_typhoon),
+                        // ラベルと同じ内容が二重に読み上げられないよう、アイコンは装飾扱いにする
+                        contentDescription = null,
                         modifier = Modifier.size(24.dp),
                     )
                 }

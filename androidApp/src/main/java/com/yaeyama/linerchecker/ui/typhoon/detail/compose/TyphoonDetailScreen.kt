@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -46,7 +47,7 @@ fun TyphoonDetailScreen(
     MainScaffold(
         topBar = {
             BackNavigationTopAppBar(
-                title = typhoon?.name ?: "台風詳細",
+                title = typhoon?.name ?: stringResource(R.string.typhoon_detail_title),
                 onBackPressed = onBackPressed,
             )
         },
@@ -88,7 +89,7 @@ private fun TyphoonDetailContent(
         // 台風画像
         AsyncImage(
             model = typhoon.img,
-            contentDescription = "${typhoon.name}の台風画像",
+            contentDescription = stringResource(R.string.typhoon_image_description, typhoon.name),
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(16f / 9f),
@@ -104,32 +105,32 @@ private fun TyphoonDetailContent(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 TyphoonInfoItem(
-                    label = "更新日",
+                    label = stringResource(R.string.typhoon_label_date_time),
                     value = typhoon.dateTime,
                 )
 
                 TyphoonInfoItem(
-                    label = "大きさ",
+                    label = stringResource(R.string.typhoon_label_scale),
                     value = typhoon.scale,
                 )
 
                 TyphoonInfoItem(
-                    label = "強さ",
+                    label = stringResource(R.string.typhoon_label_intensity),
                     value = typhoon.intensity,
                 )
 
                 TyphoonInfoItem(
-                    label = "存在地域",
+                    label = stringResource(R.string.typhoon_label_area),
                     value = typhoon.area,
                 )
 
                 TyphoonInfoItem(
-                    label = "中心気圧",
+                    label = stringResource(R.string.typhoon_label_pressure),
                     value = typhoon.pressure,
                 )
 
                 TyphoonInfoItem(
-                    label = "中心最大風速",
+                    label = stringResource(R.string.typhoon_label_max_wind_speed),
                     value = typhoon.maxWindSpeedNearCenter,
                 )
             }
@@ -144,7 +145,7 @@ private fun TyphoonDetailContent(
             ),
         ) {
             Text(
-                text = "Webブラウザでみる",
+                text = stringResource(R.string.typhoon_open_in_browser),
                 color = Color.White,
             )
         }
@@ -159,7 +160,7 @@ private fun TyphoonInfoItem(
     value: String,
 ) {
     Text(
-        text = "$label: $value",
+        text = stringResource(R.string.label_value_format, label, value),
         fontSize = 16.sp,
         style = MaterialTheme.typography.bodyLarge,
     )

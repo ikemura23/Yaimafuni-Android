@@ -8,6 +8,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -17,8 +19,11 @@ import com.yaeyama.linerchecker.R
 fun WeatherListItemCardHeader(title: String) {
     Text(
         text = title,
-        modifier = Modifier.background(color = colorResource(id = R.color.primary)).fillMaxWidth()
-            .padding(16.dp),
+        modifier = Modifier
+            .background(color = colorResource(id = R.color.primary))
+            .fillMaxWidth()
+            .padding(16.dp)
+            .semantics { heading() },
         style = TextStyle.Default.copy(color = Color.White),
     )
 }

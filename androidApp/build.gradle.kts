@@ -22,6 +22,12 @@ android {
         }
     }
 
+    androidResources {
+        // values-xx/ を追加するだけで Android 13 以降のアプリ別言語設定に対応言語が表示されるよう、
+        // res/ の言語から LocaleConfig を自動生成する（既定言語は res/resources.properties で日本語に指定）
+        generateLocaleConfig = true
+    }
+
     testOptions {
         unitTests {
             // Robolectric で Compose UI テストを動かすためにリソースを含める
