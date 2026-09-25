@@ -22,7 +22,6 @@ configure<ApplicationExtension> {
     defaultConfig {
         minSdk = libs.findVersion("app-minSdk").get().requiredVersion.toInt()
         targetSdk = libs.findVersion("app-targetSdk").get().requiredVersion.toInt()
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
 
