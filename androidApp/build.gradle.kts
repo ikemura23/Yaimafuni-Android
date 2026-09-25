@@ -21,6 +21,13 @@ android {
             matchingFallbacks += listOf("debug")
         }
     }
+
+    testOptions {
+        unitTests {
+            // Robolectric で Compose UI テストを動かすためにリソースを含める
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -82,6 +89,10 @@ dependencies {
     testImplementation(libs.coroutines.test)
     testImplementation(libs.turbine)
     testImplementation(libs.mockk)
+    // Compose UI テスト（Robolectric 上で JVM テストとして実行する）
+    testImplementation(platform(libs.compose.bom))
+    testImplementation(libs.ui.test.junit4)
+    testImplementation(libs.robolectric)
 
     androidTestImplementation("androidx.test.espresso:espresso-core:3.1.0") {
         exclude(group = "com.android.support", module = "support-annotations")

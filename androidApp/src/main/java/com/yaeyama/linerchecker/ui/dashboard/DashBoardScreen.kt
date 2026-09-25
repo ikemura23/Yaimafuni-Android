@@ -67,7 +67,7 @@ fun DashBoardScreenRoot(
 }
 
 @Composable
-private fun DashBoardScreen(
+internal fun DashBoardScreen(
     uiState: DashBoardUiState,
     modifier: Modifier = Modifier,
     onRowClick: (Ports) -> Unit,

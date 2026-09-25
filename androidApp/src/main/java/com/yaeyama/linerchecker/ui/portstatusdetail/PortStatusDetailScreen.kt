@@ -62,7 +62,7 @@ fun PortStatusDetailScreen(
 }
 
 @Composable
-private fun PortStatusDetailScreen(
+internal fun PortStatusDetailScreen(
     modifier: Modifier = Modifier,
     isLoading: Boolean = false,
     @StringRes errorMessageRes: Int? = null,
