@@ -14,7 +14,6 @@ configure<LibraryExtension> {
 
     defaultConfig {
         minSdk = libs.findVersion("app-minSdk").get().requiredVersion.toInt()
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {

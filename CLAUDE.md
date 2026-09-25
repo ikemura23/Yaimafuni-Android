@@ -47,9 +47,6 @@ Yaimafuni-Androidは、沖縄県八重山諸島の船舶運航情報を提供す
 # ユニットテストの実行
 ./gradlew test
 
-# 接続テストの実行（デバイス/エミュレータが必要）
-./gradlew connectedAndroidTest
-
 # クリーンビルド
 ./gradlew clean
 ```
@@ -90,6 +87,8 @@ Yaimafuni-Androidは、沖縄県八重山諸島の船舶運航情報を提供す
 # デバッグビルドのみのテスト実行
 ./gradlew testDebugUnitTest
 ```
+
+テストはすべて各モジュールの`src/test`にJVMテストとして書く。`androidTest`（実機・エミュレータ上の計装テスト）は使わない方針のため、UIテストもRobolectric上で実行する。
 
 ## 開発設定
 

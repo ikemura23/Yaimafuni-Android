@@ -14,22 +14,22 @@ class PortMainStatusKtTest {
 
     @Test
     fun `ステータスが通常のとき、StatusColor Normal が返る`() {
-        assertEquals(statusNormal.getStatusBackgroundColor(), StatusColor.Normal)
+        assertEquals(StatusColor.Normal, statusNormal.getStatusBackgroundColor())
     }
 
     @Test
     fun `ステータスが未定のとき、StatusColor Caution が返る`() {
-        assertEquals(statusCaution.getStatusBackgroundColor(), StatusColor.Caution)
+        assertEquals(StatusColor.Caution, statusCaution.getStatusBackgroundColor())
     }
 
     @Test
     fun `ステータスが欠航のとき、StatusColor Cancel が返る`() {
-        assertEquals(statusCancel.getStatusBackgroundColor(), StatusColor.Cancel)
+        assertEquals(StatusColor.Cancel, statusCancel.getStatusBackgroundColor())
     }
 
     @Test
     fun `ステータスが不明（一致する値がない）とき、StatusColor Caution が返る`() {
         val statusXXX = Status("xxx")
-        assertEquals(statusXXX.getStatusBackgroundColor(), StatusColor.Caution)
+        assertEquals(StatusColor.Caution, statusXXX.getStatusBackgroundColor())
     }
 }

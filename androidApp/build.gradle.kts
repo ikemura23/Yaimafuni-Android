@@ -68,7 +68,6 @@ dependencies {
     // Jetpack Compose toolkit dependencies
     // https://developer.android.com/jetpack/compose/setup#compose-compiler
     implementation(platform(libs.compose.bom))
-    androidTestImplementation(platform(libs.compose.bom))
     implementation(libs.compose.ui)
     // Tooling support (Previews, etc.)
     implementation(libs.compose.ui.tooling)
@@ -85,8 +84,6 @@ dependencies {
     implementation(libs.compose.theme.adapter)
     implementation(libs.ui.tooling.preview)
     implementation(libs.activity.compose)
-    // UI Tests
-    androidTestImplementation(libs.ui.test.junit4)
 
     // Koin
     implementation(libs.koin.android)
@@ -101,8 +98,4 @@ dependencies {
     testImplementation(platform(libs.compose.bom))
     testImplementation(libs.ui.test.junit4)
     testImplementation(libs.robolectric)
-
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.1.0") {
-        exclude(group = "com.android.support", module = "support-annotations")
-    }
 }
