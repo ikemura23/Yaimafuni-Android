@@ -8,6 +8,7 @@ import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.weather.Weather
 import com.yaeyama.linerchecker.domain.weather.WeatherInfo
 import com.yaeyama.linerchecker.testing.ComponentActivityRegistrationRule
+import com.yaeyama.linerchecker.ui.common.LoadState
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import com.yaeyama.linerchecker.ui.weather.compose.WeatherPage
 import org.junit.Assert.assertEquals
@@ -31,7 +32,7 @@ class WeatherPageTest {
             today = Weather(date = "1月2日(土)", weather = "晴れ"),
             tomorrow = Weather(date = "1月3日(日)", weather = "曇り"),
         )
-        setContent(WeatherUiState.Success(weatherInfo))
+        setContent(LoadState.Success(weatherInfo))
 
         composeRule.onNodeWithText("1月2日(土)").assertIsDisplayed()
         composeRule.onNodeWithText("晴れ").assertIsDisplayed()
@@ -42,7 +43,7 @@ class WeatherPageTest {
     @Test
     fun `error state shows message and retry invokes callback`() {
         var retryCount = 0
-        setContent(WeatherUiState.Error(R.string.weather_fetch_failed), onRetry = { retryCount++ })
+        setContent(LoadState.Error(R.string.weather_fetch_failed), onRetry = { retryCount++ })
 
         composeRule.onNodeWithText("天気データの取得に失敗しました").assertIsDisplayed()
         composeRule.onNodeWithText("再試行").performClick()
@@ -52,12 +53,12 @@ class WeatherPageTest {
 
     @Test
     fun `loading state does not show error`() {
-        setContent(WeatherUiState.Loading)
+        setContent(LoadState.Loading)
 
         composeRule.onNodeWithText("再試行").assertDoesNotExist()
     }
 
-    private fun setContent(uiState: WeatherUiState, onRetry: () -> Unit = {}) {
+    private fun setContent(uiState: LoadState<WeatherInfo>, onRetry: () -> Unit = {}) {
         composeRule.setContent {
             YaimafuniAndroidTheme {
                 WeatherPage(uiState = uiState, onRetry = onRetry)

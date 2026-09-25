@@ -8,6 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.domain.weather.WeatherInfo
+import com.yaeyama.linerchecker.ui.common.LoadState
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
 import com.yaeyama.linerchecker.ui.weather.compose.WeatherPage
@@ -18,7 +20,7 @@ fun WeatherScreen(
     weatherViewModel: WeatherViewModel,
     modifier: Modifier = Modifier,
 ) {
-    val uiState by weatherViewModel.weatherFlow.collectAsStateWithLifecycle()
+    val uiState by weatherViewModel.uiState.collectAsStateWithLifecycle()
     WeatherScreen(
         uiState,
         modifier,
@@ -28,7 +30,7 @@ fun WeatherScreen(
 
 @Composable
 private fun WeatherScreen(
-    uiState: WeatherUiState,
+    uiState: LoadState<WeatherInfo>,
     modifier: Modifier = Modifier,
     onRetry: () -> Unit = {},
 ) {
@@ -51,7 +53,7 @@ private fun WeatherScreen(
 private fun WeatherScreenPreview() {
     PreviewBox {
         WeatherScreen(
-            WeatherUiState.Loading,
+            LoadState.Loading,
         )
     }
 }

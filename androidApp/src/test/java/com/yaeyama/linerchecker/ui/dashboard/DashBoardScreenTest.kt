@@ -7,6 +7,7 @@ import androidx.compose.ui.test.performClick
 import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.top.Ports
 import com.yaeyama.linerchecker.testing.ComponentActivityRegistrationRule
+import com.yaeyama.linerchecker.ui.common.LoadState
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 import org.junit.Assert.assertEquals
 import org.junit.Rule
@@ -26,7 +27,7 @@ class DashBoardScreenTest {
     @Test
     fun `port list is displayed`() {
         val ports = listOf(FakeDashBoardDataProvider.dummyPort1, FakeDashBoardDataProvider.dummyPort2)
-        setContent(DashBoardUiState(isLoading = false, errorMessageRes = null, portList = ports))
+        setContent(LoadState.Success(ports))
 
         composeRule.onNodeWithText("鳩間島航路").assertIsDisplayed()
         composeRule.onNodeWithText("上原航路").assertIsDisplayed()
@@ -36,7 +37,7 @@ class DashBoardScreenTest {
     fun `clicking a row passes the port`() {
         var clickedPortName: String? = null
         setContent(
-            DashBoardUiState(isLoading = false, errorMessageRes = null, portList = listOf(FakeDashBoardDataProvider.dummyPort2)),
+            LoadState.Success(listOf(FakeDashBoardDataProvider.dummyPort2)),
             onRowClick = { clickedPortName = it.anei.portName },
         )
 
@@ -49,7 +50,7 @@ class DashBoardScreenTest {
     fun `error state shows message and retry invokes callback`() {
         var retryCount = 0
         setContent(
-            DashBoardUiState(isLoading = false, errorMessageRes = R.string.dashboard_fetch_failed, portList = emptyList()),
+            LoadState.Error(R.string.dashboard_fetch_failed),
             onRetry = { retryCount++ },
         )
 
@@ -62,14 +63,14 @@ class DashBoardScreenTest {
 
     @Test
     fun `loading state does not show the port list or error`() {
-        setContent(DashBoardUiState(isLoading = true, errorMessageRes = null, portList = FakeDashBoardDataProvider.dummyPortList))
+        setContent(LoadState.Loading)
 
         composeRule.onNodeWithText("上原航路").assertDoesNotExist()
         composeRule.onNodeWithText("再試行").assertDoesNotExist()
     }
 
     private fun setContent(
-        uiState: DashBoardUiState,
+        uiState: LoadState<List<Ports>>,
         onRowClick: (Ports) -> Unit = {},
         onRetry: () -> Unit = {},
     ) {

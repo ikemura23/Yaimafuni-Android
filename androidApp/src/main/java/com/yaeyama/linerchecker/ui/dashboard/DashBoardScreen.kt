@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.top.Ports
+import com.yaeyama.linerchecker.ui.common.LoadState
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
 import com.yaeyama.linerchecker.ui.common.compose.FullScreenErrorContent
@@ -44,13 +45,13 @@ fun DashBoardScreenRoot(
             }
             context.startActivity(intent)
         },
-        onRetry = viewModel::fetchPortList,
+        onRetry = viewModel::retry,
     )
 }
 
 @Composable
 internal fun DashBoardScreen(
-    uiState: DashBoardUiState,
+    uiState: LoadState<List<Ports>>,
     modifier: Modifier = Modifier,
     onRowClick: (Ports) -> Unit,
     onRetry: () -> Unit = {},
@@ -65,22 +66,22 @@ internal fun DashBoardScreen(
                 .padding(paddingValues) // Edge to edge対応のためのpaddingを追加
                 .fillMaxSize(),
         ) {
-            when {
-                uiState.isLoading -> {
+            when (uiState) {
+                LoadState.Loading -> {
                     LoadingContent()
                 }
-                uiState.errorMessageRes != null -> {
+                is LoadState.Error -> {
                     FullScreenErrorContent(
-                        messageRes = uiState.errorMessageRes,
+                        messageRes = uiState.messageRes,
                         onRetry = onRetry,
                     )
                 }
-                else -> {
+                is LoadState.Success -> {
                     Column(
                         modifier = Modifier.verticalScroll(rememberScrollState()), // スクロール可能にする
                     ) {
                         DashBoardPage(
-                            ports = uiState.portList,
+                            ports = uiState.data,
                             onRowClick = onRowClick,
                             modifier = Modifier
                                 .padding(horizontal = 16.dp) // 子コンポーネントに画面端からの余白
@@ -98,11 +99,7 @@ internal fun DashBoardScreen(
 private fun DashBoardScreenPreview() {
     PreviewBox {
         DashBoardScreen(
-            uiState = DashBoardUiState(
-                isLoading = false,
-                errorMessageRes = null,
-                portList = FakeDashBoardDataProvider.dummyPortList,
-            ),
+            uiState = LoadState.Success(FakeDashBoardDataProvider.dummyPortList),
             onRowClick = {},
         )
     }
@@ -118,11 +115,7 @@ private fun DashBoardScreenPreview() {
 private fun DashBoardScreenSmallDevicePreview() {
     PreviewBox {
         DashBoardScreen(
-            uiState = DashBoardUiState(
-                isLoading = false,
-                errorMessageRes = null,
-                portList = FakeDashBoardDataProvider.dummyPortList,
-            ),
+            uiState = LoadState.Success(FakeDashBoardDataProvider.dummyPortList),
             onRowClick = {},
         )
     }
@@ -133,11 +126,7 @@ private fun DashBoardScreenSmallDevicePreview() {
 private fun DashBoardScreenLoadingPreview() {
     PreviewBox {
         DashBoardScreen(
-            uiState = DashBoardUiState(
-                isLoading = true,
-                errorMessageRes = null,
-                portList = emptyList(),
-            ),
+            uiState = LoadState.Loading,
             onRowClick = {},
         )
     }
@@ -148,11 +137,7 @@ private fun DashBoardScreenLoadingPreview() {
 private fun DashBoardScreenErrorPreview() {
     PreviewBox {
         DashBoardScreen(
-            uiState = DashBoardUiState(
-                isLoading = false,
-                errorMessageRes = R.string.dashboard_fetch_failed,
-                portList = emptyList(),
-            ),
+            uiState = LoadState.Error(R.string.dashboard_fetch_failed),
             onRowClick = {},
         )
     }

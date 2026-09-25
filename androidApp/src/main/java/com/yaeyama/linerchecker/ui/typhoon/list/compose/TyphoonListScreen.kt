@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.typhoon.Typhoon
+import com.yaeyama.linerchecker.ui.common.LoadState
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
 import com.yaeyama.linerchecker.ui.common.compose.FullScreenErrorContent
@@ -31,7 +32,6 @@ import com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailActivity
 import com.yaeyama.linerchecker.ui.typhoon.detail.toTyphoonDetailUiModel
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListTopAppBar
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
-import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonUiState
 
 /**
  * TyphoonListScreen for MainScreen integration
@@ -56,11 +56,11 @@ fun TyphoonListScreen(
             contentWindowInsets = WindowInsets(0, 0, 0, 0),
             content = { paddingValues ->
                 when (val currentState = uiState) {
-                    is TyphoonUiState.Loading -> {
+                    is LoadState.Loading -> {
                         LoadingContent(modifier = Modifier.padding(paddingValues))
                     }
 
-                    is TyphoonUiState.Error -> {
+                    is LoadState.Error -> {
                         FullScreenErrorContent(
                             messageRes = currentState.messageRes,
                             modifier = Modifier.padding(paddingValues),
@@ -68,13 +68,13 @@ fun TyphoonListScreen(
                         )
                     }
 
-                    is TyphoonUiState.Data -> {
-                        if (currentState.typhoons.isEmpty()) {
+                    is LoadState.Success -> {
+                        if (currentState.data.isEmpty()) {
                             EmptyContent(modifier = Modifier.padding(paddingValues))
                         } else {
                             TyphoonListContent(
                                 modifier = Modifier.padding(paddingValues),
-                                typhoons = currentState.typhoons,
+                                typhoons = currentState.data,
                                 onItemClick = { typhoon ->
                                     // TyphoonDetailActivityへの遷移
                                     val intent = Intent(context, TyphoonDetailActivity::class.java).apply {
