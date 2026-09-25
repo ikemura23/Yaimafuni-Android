@@ -35,8 +35,8 @@ fun WeatherPage(
                 contentPadding = PaddingValues(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
-                val values: List<Weather> = listOf(uiState.data.today, uiState.data.tomorrow)
-                items(values) { weather ->
+                val dailyWeathers: List<Weather> = listOf(uiState.data.today, uiState.data.tomorrow)
+                items(dailyWeathers) { weather ->
                     WeatherListItem(
                         weather = weather,
                     )

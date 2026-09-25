@@ -13,7 +13,7 @@ class FakeTopStatusRepository : TopStatusRepository {
 
     override fun fetchTopStatuses(): Flow<TopPort> = flow {
         delay(1000)
-        val dummy = listOf(
+        val dummyPorts = listOf(
             Ports(
                 anei = PortStatus(
                     portCode = "taketomi",
@@ -157,13 +157,13 @@ class FakeTopStatusRepository : TopStatusRepository {
         )
         emit(
             TopPort(
-                taketomi = dummy[0],
-                kohama = dummy[1],
-                kuroshima = dummy[2],
-                oohara = dummy[3],
-                uehara = dummy[4],
-                hatoma = dummy[5],
-                hateruma = dummy[6],
+                taketomi = dummyPorts[0],
+                kohama = dummyPorts[1],
+                kuroshima = dummyPorts[2],
+                oohara = dummyPorts[3],
+                uehara = dummyPorts[4],
+                hatoma = dummyPorts[5],
+                hateruma = dummyPorts[6],
             ),
         )
     }
