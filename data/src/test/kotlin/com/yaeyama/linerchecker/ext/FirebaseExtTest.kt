@@ -6,9 +6,12 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseException
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ValueEventListener
 import com.yaeyama.linerchecker.domain.common.DataFetchException
 import com.yaeyama.linerchecker.domain.common.DataNotFoundException
+import com.yaeyama.linerchecker.domain.common.DataParseException
+import com.yaeyama.linerchecker.domain.statusdetail.PortStatus
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.slot
@@ -73,6 +76,32 @@ class FirebaseExtTest {
             val thrown = awaitError()
             assertTrue(thrown is DataNotFoundException)
             assertEquals(PATH, (thrown as DataNotFoundException).path)
+        }
+    }
+
+    @Test
+    fun `valueEvents with converter closes with DataParseException when deserialization fails`() = runTest {
+        val cause = DatabaseException("Failed to convert value")
+
+        database.valueEvents<String>(PATH) { throw cause }.test {
+            listenerSlot.captured.onDataChange(mockk())
+            val thrown = awaitError()
+            assertTrue(thrown is DataParseException)
+            assertEquals(PATH, (thrown as DataParseException).path)
+            assertEquals(cause, thrown.cause)
+        }
+    }
+
+    @Test
+    fun `valueEventsOf deserializes snapshot into the requested type`() = runTest {
+        val snapshot = mockk<DataSnapshot>()
+        val portStatus = PortStatus(portName = "竹富")
+        every { snapshot.getValue(any<GenericTypeIndicator<PortStatus>>()) } returns portStatus
+
+        database.valueEventsOf<PortStatus>(PATH).test {
+            listenerSlot.captured.onDataChange(snapshot)
+            assertEquals(portStatus, awaitItem())
+            cancelAndIgnoreRemainingEvents()
         }
     }
 
