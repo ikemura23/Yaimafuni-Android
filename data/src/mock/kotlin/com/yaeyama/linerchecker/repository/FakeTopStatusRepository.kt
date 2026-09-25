@@ -8,9 +8,8 @@ import com.yaeyama.linerchecker.domain.top.TopPort
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import org.koin.core.component.KoinComponent
 
-class FakeTopStatusRepository : TopStatusRepository, KoinComponent {
+class FakeTopStatusRepository : TopStatusRepository {
 
     override fun fetchTopStatuses(): Flow<TopPort> = flow {
         delay(1000)

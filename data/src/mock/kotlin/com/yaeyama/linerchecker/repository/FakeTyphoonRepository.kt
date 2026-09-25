@@ -5,12 +5,11 @@ import com.yaeyama.linerchecker.domain.typhoon.Typhoon
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import org.koin.core.component.KoinComponent
 
 /***
  * 台風のダミー値を作成するFakeRepository
  */
-class FakeTyphoonRepositoryImpl : TyphoonRepository, KoinComponent {
+class FakeTyphoonRepository : TyphoonRepository {
 
     override fun fetchTyphoonList(): Flow<List<Typhoon>> {
         return flow {
