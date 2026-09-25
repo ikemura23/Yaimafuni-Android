@@ -10,9 +10,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.weather.Temperature
 import com.yaeyama.linerchecker.domain.weather.Weather
 
@@ -31,7 +33,7 @@ fun WeatherListItemCardContent(weather: Weather) {
                 .semantics(mergeDescendants = true) {},
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Text("天気：")
+            Text(stringResource(R.string.weather_label_weather))
             Text(weather.weather)
         }
         Spacer(modifier = Modifier.height(8.dp))
@@ -42,8 +44,8 @@ fun WeatherListItemCardContent(weather: Weather) {
                 .semantics(mergeDescendants = true) {},
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Text("最高：")
-            Text(" ${weather.temperature.hight} ℃")
+            Text(stringResource(R.string.weather_label_high))
+            Text(stringResource(R.string.temperature_format, weather.temperature.hight))
         }
 
         Row(
@@ -53,8 +55,8 @@ fun WeatherListItemCardContent(weather: Weather) {
                 .semantics(mergeDescendants = true) {},
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Text("最低：")
-            Text(" ${weather.temperature.low} ℃")
+            Text(stringResource(R.string.weather_label_low))
+            Text(stringResource(R.string.temperature_format, weather.temperature.low))
         }
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -65,7 +67,7 @@ fun WeatherListItemCardContent(weather: Weather) {
                 .semantics(mergeDescendants = true) {},
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Text("風：")
+            Text(stringResource(R.string.weather_label_wind))
             Text(weather.wind)
         }
         Spacer(modifier = Modifier.height(8.dp))
@@ -76,7 +78,7 @@ fun WeatherListItemCardContent(weather: Weather) {
                 .semantics(mergeDescendants = true) {},
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Text("波：")
+            Text(stringResource(R.string.weather_label_wave))
             Text(weather.wave)
         }
     }

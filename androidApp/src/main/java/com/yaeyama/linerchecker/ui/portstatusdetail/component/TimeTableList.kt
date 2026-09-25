@@ -65,7 +65,7 @@ fun TimeTableList(timeTable: TimeTable) {
  */
 @Composable
 fun TimeTableListHeader(
-    header: Header = Header(left = "石垣島", right = "大原港"),
+    header: Header,
 ) {
     Row(
         modifier = Modifier
@@ -97,10 +97,10 @@ fun TimeTableListHeader(
  */
 @Composable
 fun TimeTableListItem(
-    leftTime: String = "00:00",
-    leftStatus: String = "通常運行",
-    rightTime: String = "00:00",
-    rightStatus: String = "通常運行",
+    leftTime: String,
+    leftStatus: String,
+    rightTime: String,
+    rightStatus: String,
 ) {
     Row(
         modifier = Modifier

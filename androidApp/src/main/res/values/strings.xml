@@ -13,14 +13,37 @@
     <string name="dash_board_title">港別の運行情報</string>
     <string name="tab_annei">安栄観光</string>
     <string name="tab_ykf">八重山観光\nフェリー</string>
-    <string name="title_activity_port_status_detail_compose">PortStatusDetailComposeActivity</string>
     <string name="typhoon_list_empty">台風は発生していません。</string>
+
+    <!-- 共通 -->
+    <string name="company_anei">安栄観光</string>
+    <string name="company_ykf">八重山観光フェリー</string>
+    <string name="company_ykf_short">八観フェ</string>
+    <!-- 項目名と値を並べる書式（言語によって区切り文字や語順が変わるため書式ごとリソース化する） -->
+    <string name="label_value_format">%1$s: %2$s</string>
+
+    <!-- 天気 詳細 -->
+    <string name="weather_label_weather">天気：</string>
+    <string name="weather_label_high">最高：</string>
+    <string name="weather_label_low">最低：</string>
+    <string name="weather_label_wind">風：</string>
+    <string name="weather_label_wave">波：</string>
+    <string name="temperature_format">%1$s ℃</string>
+
+    <!-- 台風 詳細 -->
+    <string name="typhoon_detail_title">台風詳細</string>
+    <string name="typhoon_label_date_time">更新日</string>
+    <string name="typhoon_label_scale">大きさ</string>
+    <string name="typhoon_label_intensity">強さ</string>
+    <string name="typhoon_label_area">存在地域</string>
+    <string name="typhoon_label_pressure">中心気圧</string>
+    <string name="typhoon_label_max_wind_speed">中心最大風速</string>
+    <string name="typhoon_open_in_browser">Webブラウザでみる</string>
 
     <!-- アクセシビリティ -->
     <string name="navigate_back">戻る</string>
     <string name="loading">読み込み中</string>
     <string name="dashboard_row_click_label">運航詳細を表示</string>
-    <string name="company_ykf_short">八観フェ</string>
     <string name="typhoon_image_description">%1$sの台風画像</string>
     <plurals name="typhoon_badge_description">
         <item quantity="other">発生中の台風 %1$d件</item>
