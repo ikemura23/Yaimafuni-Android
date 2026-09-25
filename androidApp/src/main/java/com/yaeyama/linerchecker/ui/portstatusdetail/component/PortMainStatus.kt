@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.domain.statusdetail.Status
+import com.yaeyama.linerchecker.domain.statusdetail.hasOperationStatus
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.getStatusBackgroundColor
 
@@ -44,7 +45,7 @@ fun PortMainStatus(
                     text = portName,
                     style = MaterialTheme.typography.bodyMedium,
                 )
-                if (status.code.isNotEmpty()) {
+                if (status.hasOperationStatus) {
                     // ステータスの背景色
                     val statusBackgroundColor = status.getStatusBackgroundColor()
                     Text(
