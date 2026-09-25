@@ -2,9 +2,9 @@ package com.yaeyama.linerchecker.repository
 
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.getValue
+import com.yaeyama.linerchecker.domain.repository.TyphoonRepository
+import com.yaeyama.linerchecker.domain.typhoon.Typhoon
 import com.yaeyama.linerchecker.ext.valueEvents
-import com.yaeyama_liner_checker.domain.repository.TyphoonRepository
-import com.yaeyama_liner_checker.domain.typhoon.Typhoon
 import kotlinx.coroutines.flow.Flow
 
 class TyphoonRepositoryImpl(

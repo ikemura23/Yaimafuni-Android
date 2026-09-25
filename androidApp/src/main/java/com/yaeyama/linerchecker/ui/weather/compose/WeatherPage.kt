@@ -21,8 +21,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.domain.weather.Weather
 import com.yaeyama.linerchecker.ui.weather.WeatherUiState
-import com.yaeyama_liner_checker.domain.weather.Weather
 
 @Composable
 fun WeatherPage(

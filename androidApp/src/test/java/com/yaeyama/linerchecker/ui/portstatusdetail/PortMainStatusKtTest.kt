@@ -1,8 +1,8 @@
 package com.yaeyama.linerchecker.ui.portstatusdetail
 
+import com.yaeyama.linerchecker.domain.statusdetail.Status
 import com.yaeyama.linerchecker.ui.common.getStatusBackgroundColor
 import com.yaeyama.linerchecker.ui.theme.StatusColor
-import com.yaeyama_liner_checker.domain.statusdetail.Status
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

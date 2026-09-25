@@ -1,7 +1,7 @@
 package com.yaeyama.linerchecker.ui.main
 
-import com.yaeyama_liner_checker.domain.repository.TyphoonRepository
-import com.yaeyama_liner_checker.domain.typhoon.Typhoon
+import com.yaeyama.linerchecker.domain.repository.TyphoonRepository
+import com.yaeyama.linerchecker.domain.typhoon.Typhoon
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify

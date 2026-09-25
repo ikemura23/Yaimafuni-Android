@@ -23,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.domain.typhoon.Typhoon
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
 import com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailActivity
@@ -30,7 +31,6 @@ import com.yaeyama.linerchecker.ui.typhoon.detail.toTyphoonDetailUiModel
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListTopAppBar
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonUiState
-import com.yaeyama_liner_checker.domain.typhoon.Typhoon
 
 /**
  * TyphoonListScreen for MainScreen integration

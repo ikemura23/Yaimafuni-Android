@@ -7,8 +7,8 @@ import com.google.firebase.database.DatabaseException
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.yaeyama_liner_checker.domain.common.DataFetchException
-import com.yaeyama_liner_checker.domain.common.DataNotFoundException
+import com.yaeyama.linerchecker.domain.common.DataFetchException
+import com.yaeyama.linerchecker.domain.common.DataNotFoundException
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.slot

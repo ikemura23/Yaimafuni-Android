@@ -3,11 +3,11 @@ package com.yaeyama.linerchecker.ui.portstatusdetail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.domain.repository.StatusDetailRepository
+import com.yaeyama.linerchecker.domain.statusdetail.Company
+import com.yaeyama.linerchecker.domain.statusdetail.PortStatus
+import com.yaeyama.linerchecker.domain.timetable.TimeTable
 import com.yaeyama.linerchecker.ui.common.toErrorMessageRes
-import com.yaeyama_liner_checker.domain.repository.StatusDetailRepository
-import com.yaeyama_liner_checker.domain.statusdetail.Company
-import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
-import com.yaeyama_liner_checker.domain.time_table.TimeTable
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

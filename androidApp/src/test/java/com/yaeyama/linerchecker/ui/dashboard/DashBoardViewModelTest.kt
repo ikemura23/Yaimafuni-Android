@@ -1,6 +1,6 @@
 package com.yaeyama.linerchecker.ui.dashboard
 
-import com.yaeyama_liner_checker.domain.repository.TopStatusRepository
+import com.yaeyama.linerchecker.domain.repository.TopStatusRepository
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers

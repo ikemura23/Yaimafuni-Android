@@ -1,6 +1,6 @@
 package com.yaeyama.linerchecker.ui.typhoon.detail
 
-import com.yaeyama_liner_checker.domain.typhoon.Typhoon
+import com.yaeyama.linerchecker.domain.typhoon.Typhoon
 
 /**
  * DomainのTyphoonモデルをUIのTyphoonDetailUiModelに変換する

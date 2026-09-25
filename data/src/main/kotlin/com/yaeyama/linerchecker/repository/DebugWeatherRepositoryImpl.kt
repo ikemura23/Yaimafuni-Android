@@ -1,10 +1,10 @@
 package com.yaeyama.linerchecker.repository
 
-import com.yaeyama_liner_checker.domain.repository.WeatherRepository
-import com.yaeyama_liner_checker.domain.weather.Table
-import com.yaeyama_liner_checker.domain.weather.Temperature
-import com.yaeyama_liner_checker.domain.weather.Weather
-import com.yaeyama_liner_checker.domain.weather.WeatherInfo
+import com.yaeyama.linerchecker.domain.repository.WeatherRepository
+import com.yaeyama.linerchecker.domain.weather.Table
+import com.yaeyama.linerchecker.domain.weather.Temperature
+import com.yaeyama.linerchecker.domain.weather.Weather
+import com.yaeyama.linerchecker.domain.weather.WeatherInfo
 import kotlinx.coroutines.flow.flow
 import org.koin.core.component.KoinComponent
 

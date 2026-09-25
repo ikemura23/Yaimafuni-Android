@@ -1,8 +1,8 @@
 package com.yaeyama.linerchecker.ui.dashboard
 
-import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
-import com.yaeyama_liner_checker.domain.statusdetail.Status
-import com.yaeyama_liner_checker.domain.top.Ports
+import com.yaeyama.linerchecker.domain.statusdetail.PortStatus
+import com.yaeyama.linerchecker.domain.statusdetail.Status
+import com.yaeyama.linerchecker.domain.top.Ports
 
 object FakeDashBoardDataProvider {
 

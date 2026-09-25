@@ -24,15 +24,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.domain.statusdetail.Company
+import com.yaeyama.linerchecker.domain.statusdetail.Status
+import com.yaeyama.linerchecker.domain.timetable.Header
+import com.yaeyama.linerchecker.domain.timetable.RowItem
+import com.yaeyama.linerchecker.domain.timetable.TimeTable
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.PortMainStatus
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.TimeRow
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.TimeTableList
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
-import com.yaeyama_liner_checker.domain.statusdetail.Company
-import com.yaeyama_liner_checker.domain.statusdetail.Status
-import com.yaeyama_liner_checker.domain.time_table.Header
-import com.yaeyama_liner_checker.domain.time_table.RowItem
-import com.yaeyama_liner_checker.domain.time_table.TimeTable
 /**
  * 運行詳細スクリーン
  */

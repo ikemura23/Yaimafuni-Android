@@ -1,7 +1,7 @@
 package com.yaeyama.linerchecker.ui.common
 
+import com.yaeyama.linerchecker.domain.statusdetail.Status
 import com.yaeyama.linerchecker.ui.theme.StatusColor
-import com.yaeyama_liner_checker.domain.statusdetail.Status
 
 /**
  * ステータスの値を判定して背景色を返す

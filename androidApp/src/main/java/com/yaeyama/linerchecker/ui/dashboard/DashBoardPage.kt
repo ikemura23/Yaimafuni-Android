@@ -12,10 +12,10 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.domain.top.Ports
 import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardHeader
 import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardRow
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
-import com.yaeyama_liner_checker.domain.top.Ports
 
 @Composable
 fun DashBoardPage(

@@ -1,10 +1,10 @@
 package com.yaeyama.linerchecker.usecase
 
-import com.yaeyama_liner_checker.domain.repository.StatusDetailRepository
-import com.yaeyama_liner_checker.domain.statusdetail.Company
-import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
-import com.yaeyama_liner_checker.domain.statusdetail.StatusDetailResult
-import com.yaeyama_liner_checker.domain.time_table.TimeTable
+import com.yaeyama.linerchecker.domain.repository.StatusDetailRepository
+import com.yaeyama.linerchecker.domain.statusdetail.Company
+import com.yaeyama.linerchecker.domain.statusdetail.PortStatus
+import com.yaeyama.linerchecker.domain.statusdetail.StatusDetailResult
+import com.yaeyama.linerchecker.domain.timetable.TimeTable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.zip
 

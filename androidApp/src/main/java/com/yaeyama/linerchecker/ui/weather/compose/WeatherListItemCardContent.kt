@@ -12,8 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yaeyama_liner_checker.domain.weather.Temperature
-import com.yaeyama_liner_checker.domain.weather.Weather
+import com.yaeyama.linerchecker.domain.weather.Temperature
+import com.yaeyama.linerchecker.domain.weather.Weather
 
 /**
  * 天気情報（天気・気温・風・波）

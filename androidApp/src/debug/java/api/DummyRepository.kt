@@ -1,6 +1,6 @@
 package api
 
-import com.yaeyama_liner_checker.domain.typhoon.Typhoon
+import com.yaeyama.linerchecker.domain.typhoon.Typhoon
 
 object DummyRepository {
 

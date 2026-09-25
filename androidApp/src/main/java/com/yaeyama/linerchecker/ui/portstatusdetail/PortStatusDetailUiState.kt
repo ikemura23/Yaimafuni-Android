@@ -1,8 +1,8 @@
 package com.yaeyama.linerchecker.ui.portstatusdetail
 
 import androidx.annotation.StringRes
-import com.yaeyama_liner_checker.domain.statusdetail.PortStatus
-import com.yaeyama_liner_checker.domain.time_table.TimeTable
+import com.yaeyama.linerchecker.domain.statusdetail.PortStatus
+import com.yaeyama.linerchecker.domain.timetable.TimeTable
 
 data class PortStatusDetailUiState(
     val isLoading: Boolean,

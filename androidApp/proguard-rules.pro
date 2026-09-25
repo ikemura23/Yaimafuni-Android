@@ -46,8 +46,8 @@
 
 # DataSnapshot.getValue() でデシリアライズする domain のモデル
 # リフレクションでコンストラクタ・フィールド・getter/setter を名前で参照するため keep する
--keep class com.yaeyama_liner_checker.domain.top.** { *; }
--keep class com.yaeyama_liner_checker.domain.statusdetail.** { *; }
--keep class com.yaeyama_liner_checker.domain.weather.** { *; }
--keep class com.yaeyama_liner_checker.domain.time_table.** { *; }
--keep class com.yaeyama_liner_checker.domain.typhoon.** { *; }
+-keep class com.yaeyama.linerchecker.domain.top.** { *; }
+-keep class com.yaeyama.linerchecker.domain.statusdetail.** { *; }
+-keep class com.yaeyama.linerchecker.domain.weather.** { *; }
+-keep class com.yaeyama.linerchecker.domain.timetable.** { *; }
+-keep class com.yaeyama.linerchecker.domain.typhoon.** { *; }

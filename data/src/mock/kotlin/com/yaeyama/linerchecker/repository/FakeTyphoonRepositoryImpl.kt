@@ -1,7 +1,7 @@
 package com.yaeyama.linerchecker.repository
 
-import com.yaeyama_liner_checker.domain.repository.TyphoonRepository
-import com.yaeyama_liner_checker.domain.typhoon.Typhoon
+import com.yaeyama.linerchecker.domain.repository.TyphoonRepository
+import com.yaeyama.linerchecker.domain.typhoon.Typhoon
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
