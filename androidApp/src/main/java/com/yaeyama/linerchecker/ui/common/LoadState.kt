@@ -35,7 +35,7 @@ fun <T> Flow<T>.asLoadState(
     @StringRes notFoundRes: Int,
     @StringRes fetchFailedRes: Int,
 ): Flow<LoadState<T>> =
-    map<T, LoadState<T>> { LoadState.Success(it) }
+    map<T, LoadState<T>> { value -> LoadState.Success(value) }
         .onStart { emit(LoadState.Loading) }
         .catch { e ->
             Timber.e(e, "load failed")
@@ -61,4 +61,4 @@ fun <T> Flow<T>.stateInWhileSubscribed(viewModel: ViewModel, initialValue: T): S
  * 再試行の仕組みを ViewModel 間で揃えるために使う
  */
 @OptIn(ExperimentalCoroutinesApi::class)
-fun <K, T> Flow<K>.reloadOnEach(load: (K) -> Flow<T>): Flow<T> = flatMapLatest { load(it) }
+fun <K, T> Flow<K>.reloadOnEach(load: (K) -> Flow<T>): Flow<T> = flatMapLatest { key -> load(key) }

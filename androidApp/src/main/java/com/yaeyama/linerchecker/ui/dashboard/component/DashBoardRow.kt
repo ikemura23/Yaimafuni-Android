@@ -31,12 +31,12 @@ fun DashBoardRow(
         )
         DashBoardRowItem(
             modifier = Modifier.align(Alignment.Center),
-            portName = "安栄観光",
+            companyName = "安栄観光",
             status = port.anei.status,
         )
         DashBoardRowItem(
             modifier = Modifier.align(Alignment.CenterEnd),
-            portName = "八観フェ",
+            companyName = "八観フェ",
             status = port.ykf.status,
         )
     }

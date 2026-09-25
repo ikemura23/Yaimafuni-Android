@@ -14,7 +14,7 @@ class FakeTyphoonRepository : TyphoonRepository {
     override fun fetchTyphoonList(): Flow<List<Typhoon>> {
         return flow {
             delay(1000)
-            val data = listOf(
+            val typhoons = listOf(
                 Typhoon(
                     name = "台風18号(ミートク)",
                     dateTime = "01日15:00現在",
@@ -46,7 +46,7 @@ class FakeTyphoonRepository : TyphoonRepository {
                     maxWindSpeedNearCenter = "40m/s",
                 ),
             )
-            emit(data)
+            emit(typhoons)
         }
     }
 }

@@ -67,6 +67,8 @@ Yaimafuni-Androidは、沖縄県八重山諸島の船舶運航情報を提供す
 ```
 
 ### コード品質
+命名規則とレビュー観点は `docs/code-review-guidelines.md` を参照すること。
+
 ```bash
 # Lint解析の実行
 ./gradlew lint

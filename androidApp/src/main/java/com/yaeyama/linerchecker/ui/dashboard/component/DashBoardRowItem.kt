@@ -24,7 +24,7 @@ import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 @Composable
 fun DashBoardRowItem(
     modifier: Modifier,
-    portName: String,
+    companyName: String,
     status: Status,
 ) {
     val statusBackgroundColor = status.getStatusBackgroundColor()
@@ -35,7 +35,7 @@ fun DashBoardRowItem(
     ) {
         if (status.hasOperationStatus) {
             Text(
-                text = portName,
+                text = companyName,
                 style = MaterialTheme.typography.bodyMedium,
             )
             Spacer(modifier = Modifier.padding(4.dp))
@@ -62,7 +62,7 @@ private fun DashBoardRowItemPreview(
 ) {
     YaimafuniAndroidTheme {
         DashBoardRowItem(
-            portName = item.portName,
+            companyName = item.companyName,
             status = item.status,
             modifier = Modifier,
         )
@@ -73,28 +73,28 @@ private fun DashBoardRowItemPreview(
  * Preview用のクラス
  */
 private data class DashBoardRowItem(
-    val portName: String,
+    val companyName: String,
     val status: Status,
 )
 
 private class ItemPreviewProvider : CollectionPreviewParameterProvider<DashBoardRowItem>(
     listOf(
         DashBoardRowItem(
-            portName = "安栄",
+            companyName = "安栄",
             status = Status(
                 "normal",
                 "通常運転",
             ),
         ),
         DashBoardRowItem(
-            portName = "YKF",
+            companyName = "YKF",
             status = Status(
                 "cation",
                 "未定",
             ),
         ),
         DashBoardRowItem(
-            portName = "その他",
+            companyName = "その他",
             status = Status(
                 "cancel",
                 "欠航",
