@@ -5,7 +5,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseException
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.getValue
 import com.yaeyama.linerchecker.domain.common.DataFetchException
 import com.yaeyama.linerchecker.domain.common.DataNotFoundException
 import com.yaeyama.linerchecker.domain.common.DataParseException
@@ -58,7 +57,11 @@ inline fun <T : Any> FirebaseDatabase.valueEvents(
 /**
  * [path] の値の変更を [T] としてデシリアライズして購読する Flow
  *
+ * [T] はジェネリクスを持たないクラスに限る。
+ * getValue<T>() (GenericTypeIndicator) はこの入れ子の inline 関数内では型引数が T のまま残り、
+ * HashMap が返って ClassCastException になるため Class を渡してデシリアライズする
+ *
  * @see valueEvents
  */
 inline fun <reified T : Any> FirebaseDatabase.valueEventsOf(path: String): Flow<T> =
-    valueEvents(path) { snapshot -> snapshot.getValue<T>() }
+    valueEvents(path) { snapshot -> snapshot.getValue(T::class.java) }
