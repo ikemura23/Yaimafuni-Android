@@ -6,7 +6,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseException
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ValueEventListener
 import com.yaeyama.linerchecker.domain.common.DataFetchException
 import com.yaeyama.linerchecker.domain.common.DataNotFoundException
@@ -89,7 +88,7 @@ class StatusDetailRepositoryImplTest {
     @Test
     fun `fetchStatusDetail fails with DataParseException when deserialization fails`() = runTest {
         val snapshot = mockk<DataSnapshot>()
-        every { snapshot.getValue(any<GenericTypeIndicator<PortStatus>>()) } throws DatabaseException("Failed to convert value")
+        every { snapshot.getValue(PortStatus::class.java) } throws DatabaseException("Failed to convert value")
 
         repository.fetchStatusDetail(Company.ANEI, "taketomi").test {
             listenerSlot.captured.onDataChange(snapshot)
@@ -139,7 +138,7 @@ class StatusDetailRepositoryImplTest {
 
     private inline fun <reified T : Any> snapshotOf(value: T?): DataSnapshot {
         val snapshot = mockk<DataSnapshot>()
-        every { snapshot.getValue(any<GenericTypeIndicator<T>>()) } returns value
+        every { snapshot.getValue(T::class.java) } returns value
         return snapshot
     }
 }
