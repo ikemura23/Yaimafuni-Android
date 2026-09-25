@@ -13,17 +13,16 @@ Yaimafuni-Androidは、沖縄県八重山諸島の船舶運航情報を提供す
 
 このプロジェクトはクリーンアーキテクチャの原則に従ったマルチモジュールAndroidアーキテクチャを採用しています：
 
-- **`:androidApp`** - UIコンポーネント、Activity、Fragment、Jetpack Composeスクリーンを含むメインのAndroidアプリケーションモジュール
+- **`:androidApp`** - UIコンポーネント、Activity、Jetpack Composeスクリーンを含むメインのAndroidアプリケーションモジュール
 - **`:data`** - リポジトリ、Firebase連携、データソースを含むデータレイヤーモジュール
 - **`:domain`** - ビジネスモデルとエンティティを含むドメインレイヤーモジュール（純KotlinまたはJava）
 
 ### 主要技術
-- **Jetpack Compose** - モダンUIツールキット（従来のViewと混在）
+- **Jetpack Compose** - UIはすべてComposeで実装（XMLレイアウト・Fragmentは不使用）
 - **Firebase** - Realtime Database、Analytics、Crashlytics
 - **Koin** - 依存性注入フレームワーク
-- **Navigation Component** - Safe Argsを使用したFragment基盤のナビゲーション
-- **Data Binding & View Binding** - UIバインディングパターン
-- **Coroutines** - 非同期プログラミング
+- **画面遷移** - Activity + Intent（Navigation Component / Navigation Composeは不使用）
+- **Coroutines / Flow** - 非同期プログラミング、UI状態はStateFlowで公開
 - **Timber** - ログ出力
 
 ### パッケージ構造
@@ -93,17 +92,20 @@ Yaimafuni-Androidは、沖縄県八重山諸島の船舶運航情報を提供す
 ## 開発設定
 
 ### ビルドバリアント
-- **Debug** - `.debug`サフィックス付きの開発ビルド、Firebase Crashlytics無効、追加デバッグツール
-- **Release** - 難読化無効の本番ビルド、デバッグキーストアで署名
+- **Debug** - `.debug`サフィックス付きの開発ビルド、Firebase Crashlytics無効、実際のFirebaseに接続
+- **Mock** - `.mock`サフィックス付きの開発ビルド（debugを継承）。Fake Repositoryと`FakeReviewManager`を使い、Firebaseに接続せずに動作確認できる
+- **Release** - R8（minify）有効の本番ビルド、デバッグキーストアで署名
 
 ### 依存関係管理
-依存関係は`gradle/libs.versions.toml`でバージョンカタログを使用して一元管理されています。主要バージョン制約：
-- Compile SDK: 36
+依存関係は`gradle/libs.versions.toml`でバージョンカタログを使用して一元管理されています。SDKバージョンは`build-logic`のconvention pluginがバージョンカタログから参照します。主要バージョン：
+- Compile SDK: 37
 - Min SDK: 24
 - Target SDK: 36
-- Kotlin: 1.9.24
-- Compose Compiler: 1.5.14
+- AGP: 9.1.1 / Gradle: 9.3.1
+- Kotlin: 2.3.10（Compose CompilerはKotlinの`org.jetbrains.kotlin.plugin.compose`プラグインで適用）
 - JVM Toolchain: 17
+
+バージョンは変わりうるため、正確な値は`gradle/libs.versions.toml`と`gradle/wrapper/gradle-wrapper.properties`を確認すること。
 
 ### 依存性注入
 アプリケーションは以下で定義されたモジュールでKoinを使用しています：
@@ -111,16 +113,16 @@ Yaimafuni-Androidは、沖縄県八重山諸島の船舶運航情報を提供す
 - `data/src/*/kotlin/com/yaeyama/linerchecker/di/DataModule.kt` - データレイヤーの依存関係
 - `androidApp/src/main/java/com/yaeyama/linerchecker/di/ViewModelModule.kt` - ViewModelの依存関係
 
-デバッグ/リリースビルドに対して、それぞれのソースセットで異なる実装が提供されています。
+debug / release / mock の各ビルドタイプに対して、それぞれのソースセットで異なる実装が提供されています（mockはFake Repositoryと`FakeReviewManager`を注入）。
 
 ## Firebase設定
 
-このプロジェクトはFirebaseサービスと統合しており、`google-services.json`ファイルが必要です：
-- 本番: `androidApp/src/main/google-services.json`
-- デバッグ: `androidApp/src/debug/google-services.json`
+このプロジェクトはFirebaseサービスと統合しており、`google-services.json`ファイルが必要です（Git管理外。CIではSecretから復元。手順は`docs/google-services-secret-setup.md`）：
+- アプリ: `androidApp/google-services.json`（モジュールルート）
+- ビルドタイプ別: `androidApp/src/main/`、`androidApp/src/debug/`、`androidApp/src/mock/` 配下
 - データモジュール: `data/google-services.json`
 
-Firebase Crashlyticsはデバッグビルドでは無効になっており、開発時はマッピングファイルのアップロードも無効化されています。
+Firebase Crashlyticsはdebug / mockビルドでは無効になっており、debugビルドではマッピングファイルのアップロードも無効化されています。
 
 ## AI主導開発ワークフロー
 
@@ -165,7 +167,7 @@ AIが作業種別に応じて自動生成する要件定義：
 要件レビュー後、AIが自動生成する技術設計：
 - **アーキテクチャ設計** - 既存のマルチモジュール構成への統合方法
 - **データモデル設計** - Firebase Realtime Databaseスキーマ、Kotlinエンティティ
-- **UI設計** - Jetpack Compose/従来Viewでの実装方針
+- **UI設計** - Jetpack Composeでの実装方針
 - **依存性注入** - Koinモジュールへの追加方法
 - **技術選択** - プロジェクトの既存技術スタック活用
 
@@ -186,15 +188,10 @@ AIが作業種別に応じて自動生成する要件定義：
 - **適切な粒度でのGitコミット**: 機能単位・モジュール単位で論理的にコミット
 
 #### コミット戦略
-- **ドメインレイヤー完了時**: `feat: [機能名]のドメインモデルとユースケースを追加`
-- **データレイヤー完了時**: `feat: [機能名]のリポジトリとデータソースを追加`  
-- **UIレイヤー完了時**: `feat: [機能名]のUIコンポーネントを追加`
-- **リファクタリング単位**: `refactor: [対象クラス/機能]の[改善内容]を改善`
-- **テスト追加時**: `test: [対象機能]のユニットテストを追加`
-- **設定・依存関係**: `chore: [ライブラリ名]の設定を更新`
+- ドメインレイヤー / データレイヤー / UIレイヤー / テスト / 設定・依存関係 など、レイヤーや目的の単位でコミットを分ける
 
 #### コミットメッセージ
-プレフィックスおよび形式は Cursor プロジェクトルール `.cursor/rules/git-commit.mdc` に従うこと。
+プレフィックスおよび形式は Cursor プロジェクトルール `.cursor/rules/git-commit.mdc` に従うこと（このファイルを単一の情報源とする）。
 
 各コミットは動作可能な状態を保ち、ビルドエラーが発生しないことを確認してからコミットします。
 
