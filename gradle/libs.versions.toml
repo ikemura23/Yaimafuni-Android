@@ -49,6 +49,7 @@ composeThemeAdapter = "1.2.1"
 # Testing
 junit = "4.13.2"
 mockk = "1.13.13"
+robolectric = "4.17"
 turbine = "1.1.0"
 
 # Logging
@@ -94,6 +95,7 @@ compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = 
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2" }
 androidx-core = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCoreKtx" }

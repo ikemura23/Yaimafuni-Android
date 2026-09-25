@@ -7,6 +7,7 @@ import com.yaeyama.linerchecker.domain.statusdetail.Company
 import com.yaeyama.linerchecker.domain.statusdetail.PortStatus
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -130,6 +131,51 @@ class PortStatusDetailViewModelTest {
         val state = viewModel.uiState.value
         assertEquals(R.string.port_status_fetch_failed, state.errorMessageRes)
         assertEquals(R.string.time_table_fetch_failed, state.timeTableErrorMessageRes)
+
+        collectorJob.cancel()
+    }
+
+    @Test
+    fun `fetching the same port again does not resubscribe`() = runTest(testDispatcher) {
+        val repository = mockk<StatusDetailRepository>()
+        every { repository.fetchStatusDetail(Company.ANEI, "ishigaki") } returns MutableSharedFlow(replay = 1)
+        every { repository.fetchTimeTable(Company.ANEI, "ishigaki") } returns MutableSharedFlow(replay = 1)
+        val viewModel = PortStatusDetailViewModel(repository)
+
+        val collectorJob = launch { viewModel.uiState.collect {} }
+        viewModel.fetchDetail(Company.ANEI, "ishigaki")
+        advanceUntilIdle()
+        // 画面回転などで同じ条件で再度呼ばれる
+        viewModel.fetchDetail(Company.ANEI, "ishigaki")
+        advanceUntilIdle()
+
+        verify(exactly = 1) { repository.fetchStatusDetail(Company.ANEI, "ishigaki") }
+        verify(exactly = 1) { repository.fetchTimeTable(Company.ANEI, "ishigaki") }
+
+        collectorJob.cancel()
+    }
+
+    @Test
+    fun `retry resubscribes after a failure`() = runTest(testDispatcher) {
+        val repository = mockk<StatusDetailRepository>()
+        every { repository.fetchStatusDetail(Company.ANEI, "ishigaki") } returnsMany listOf(
+            flow { throw RuntimeException("boom") },
+            MutableSharedFlow<PortStatus>(replay = 1).apply { tryEmit(PortStatus(portName = "石垣島")) },
+        )
+        every { repository.fetchTimeTable(Company.ANEI, "ishigaki") } returns MutableSharedFlow(replay = 1)
+        val viewModel = PortStatusDetailViewModel(repository)
+
+        val collectorJob = launch { viewModel.uiState.collect {} }
+        viewModel.fetchDetail(Company.ANEI, "ishigaki")
+        advanceUntilIdle()
+        assertTrue(viewModel.uiState.value.isError)
+
+        viewModel.retry()
+        advanceUntilIdle()
+
+        val state = viewModel.uiState.value
+        assertFalse(state.isError)
+        assertEquals("石垣島", state.portStatus.portName)
 
         collectorJob.cancel()
     }

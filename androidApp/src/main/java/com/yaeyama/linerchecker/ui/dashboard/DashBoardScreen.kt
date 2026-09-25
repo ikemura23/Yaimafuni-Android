@@ -1,8 +1,6 @@
 package com.yaeyama.linerchecker.ui.dashboard
 
 import android.content.Intent
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -15,8 +13,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -37,22 +34,11 @@ fun DashBoardScreenRoot(
     modifier: Modifier = Modifier,
     // TODO: onRowClickをMainScreenに移動して、MainScreenからPortStatusDetailActivityを起動するようにする
 ) {
-    LaunchedEffect(Unit) {
-        viewModel.fetchPortList()
-    }
-
-    // PortStatusDetailActivity起動用のランチャー
-    val launcher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.StartActivityForResult(),
-    ) { result ->
-        // 結果処理が必要な場合はここで処理
-    }
-
     val context = LocalContext.current
-    val uiState: State<DashBoardUiState> = viewModel.uiState.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     DashBoardScreen(
-        uiState.value,
+        uiState,
         modifier = modifier,
         onRowClick = { port ->
             // PortStatusDetailActivityへの遷移
@@ -60,14 +46,14 @@ fun DashBoardScreenRoot(
                 putExtra(PortStatusDetailActivity.EXTRA_PORT_NAME, port.anei.portName)
                 putExtra(PortStatusDetailActivity.EXTRA_PORT_CODE, port.anei.portCode)
             }
-            launcher.launch(intent)
+            context.startActivity(intent)
         },
         onRetry = viewModel::fetchPortList,
     )
 }
 
 @Composable
-private fun DashBoardScreen(
+internal fun DashBoardScreen(
     uiState: DashBoardUiState,
     modifier: Modifier = Modifier,
     onRowClick: (Ports) -> Unit,

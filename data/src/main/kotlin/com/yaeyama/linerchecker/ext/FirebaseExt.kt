@@ -12,6 +12,7 @@ import com.yaeyama.linerchecker.domain.common.DataParseException
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 
 /**
@@ -40,6 +41,7 @@ fun FirebaseDatabase.valueEvents(path: String): Flow<DataSnapshot> = callbackFlo
  *
  * - [convert] が null を返した（データが存在しない）場合は [DataNotFoundException] で終了する
  * - [convert] でデシリアライズに失敗した場合は [DataParseException] で終了する
+ * - 前回と同じ値は流さない（ディスクキャッシュの値とサーバーの値が同じ場合など、不要な再描画を防ぐ）
  */
 inline fun <T : Any> FirebaseDatabase.valueEvents(
     path: String,
@@ -51,7 +53,7 @@ inline fun <T : Any> FirebaseDatabase.valueEvents(
         throw DataParseException(path, e)
     }
     value ?: throw DataNotFoundException(path)
-}
+}.distinctUntilChanged()
 
 /**
  * [path] の値の変更を [T] としてデシリアライズして購読する Flow
