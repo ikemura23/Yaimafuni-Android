@@ -18,6 +18,9 @@
 
     <!-- エラー -->
     <string name="retry">再試行</string>
+    <string name="error_retry_hint">通信環境の良い場所で、もう一度お試しください</string>
+    <string name="dashboard_not_found">運航情報が見つかりませんでした</string>
+    <string name="weather_not_found">天気データが見つかりませんでした</string>
     <string name="dashboard_fetch_failed">運航情報の取得に失敗しました</string>
     <string name="weather_fetch_failed">天気データの取得に失敗しました</string>
     <string name="typhoon_list_fetch_failed">台風情報の取得に失敗しました</string>

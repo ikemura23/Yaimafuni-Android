@@ -10,17 +10,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -30,6 +25,9 @@ import com.yaeyama.linerchecker.domain.statusdetail.Status
 import com.yaeyama.linerchecker.domain.timetable.Header
 import com.yaeyama.linerchecker.domain.timetable.RowItem
 import com.yaeyama.linerchecker.domain.timetable.TimeTable
+import com.yaeyama.linerchecker.ui.common.compose.ErrorContent
+import com.yaeyama.linerchecker.ui.common.compose.FullScreenErrorContent
+import com.yaeyama.linerchecker.ui.common.compose.LoadingContent
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.PortMainStatus
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.TimeRow
 import com.yaeyama.linerchecker.ui.portstatusdetail.component.TimeTableList
@@ -77,24 +75,13 @@ internal fun PortStatusDetailScreen(
     Box(modifier = modifier.fillMaxSize()) {
         when {
             isLoading -> {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                LoadingContent()
             }
             errorMessageRes != null -> {
-                Column(
-                    modifier = Modifier.align(Alignment.Center),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Text(
-                        text = stringResource(errorMessageRes),
-                        style = MaterialTheme.typography.bodyLarge,
-                    )
-                    Button(
-                        modifier = Modifier.padding(top = 16.dp),
-                        onClick = onRetry,
-                    ) {
-                        Text(text = stringResource(R.string.retry))
-                    }
-                }
+                FullScreenErrorContent(
+                    messageRes = errorMessageRes,
+                    onRetry = onRetry,
+                )
             }
             else -> {
                 Column(
@@ -111,9 +98,10 @@ internal fun PortStatusDetailScreen(
                     Spacer(modifier = Modifier.size(16.dp))
 
                     if (timeTableErrorMessageRes != null) {
-                        Text(
-                            text = stringResource(timeTableErrorMessageRes),
-                            style = MaterialTheme.typography.bodyLarge,
+                        ErrorContent(
+                            messageRes = timeTableErrorMessageRes,
+                            modifier = Modifier.align(Alignment.CenterHorizontally),
+                            onRetry = onRetry,
                         )
                     } else {
                         TimeTableList(

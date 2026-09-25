@@ -2,7 +2,9 @@ package com.yaeyama.linerchecker.ui.weather
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.repository.WeatherRepository
+import com.yaeyama.linerchecker.ui.common.toErrorMessageRes
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -32,7 +34,14 @@ class WeatherViewModel(
                 .onStart { emit(WeatherUiState.Loading) }
                 .catch { e ->
                     Timber.e(e, "fetchWeather failed")
-                    emit(WeatherUiState.Error)
+                    emit(
+                        WeatherUiState.Error(
+                            e.toErrorMessageRes(
+                                notFoundRes = R.string.weather_not_found,
+                                fetchFailedRes = R.string.weather_fetch_failed,
+                            ),
+                        ),
+                    )
                 }
         }
         .stateIn(

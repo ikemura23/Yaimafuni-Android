@@ -1,6 +1,8 @@
 package com.yaeyama.linerchecker.ui.weather
 
 import app.cash.turbine.test
+import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.domain.common.DataNotFoundException
 import com.yaeyama.linerchecker.domain.repository.WeatherRepository
 import com.yaeyama.linerchecker.domain.weather.WeatherInfo
 import io.mockk.every
@@ -41,7 +43,19 @@ class WeatherViewModelTest {
 
         viewModel.weatherFlow.test {
             assertEquals(WeatherUiState.Loading, awaitItem())
-            assertEquals(WeatherUiState.Error, awaitItem())
+            assertEquals(WeatherUiState.Error(R.string.weather_fetch_failed), awaitItem())
+        }
+    }
+
+    @Test
+    fun `not found error from repository maps to not found message`() = runTest(testDispatcher) {
+        val repository = mockk<WeatherRepository>()
+        every { repository.fetchWeather() } returns flow { throw DataNotFoundException("weather") }
+        val viewModel = WeatherViewModel(repository)
+
+        viewModel.weatherFlow.test {
+            assertEquals(WeatherUiState.Loading, awaitItem())
+            assertEquals(WeatherUiState.Error(R.string.weather_not_found), awaitItem())
         }
     }
 
@@ -69,7 +83,7 @@ class WeatherViewModelTest {
 
         viewModel.weatherFlow.test {
             assertEquals(WeatherUiState.Loading, awaitItem())
-            assertEquals(WeatherUiState.Error, awaitItem())
+            assertEquals(WeatherUiState.Error(R.string.weather_fetch_failed), awaitItem())
 
             viewModel.retry()
 
