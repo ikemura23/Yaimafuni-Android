@@ -44,7 +44,6 @@ fun WeatherPage(
                 items(values) { weather ->
                     WeatherListItem(
                         weather = weather,
-                        onItemClick = {},
                     )
                 }
             }

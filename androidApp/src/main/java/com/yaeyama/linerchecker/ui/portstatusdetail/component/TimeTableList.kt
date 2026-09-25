@@ -159,7 +159,7 @@ private fun TimeTableListPreview() {
         val rowItem = RowItem(
             status = Status(code = "nomal", text = "通常運行"),
             time = "00:00",
-            memo = "", // 使ってる？
+            memo = "",
         )
         // TimeRowとは、typealiasでRowクラスの別名、composeのRowと名前が同じなので紛らわしい
         val row = TimeRow(
