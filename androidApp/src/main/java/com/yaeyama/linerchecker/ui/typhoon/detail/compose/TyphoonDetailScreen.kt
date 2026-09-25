@@ -53,7 +53,6 @@ fun TyphoonDetailScreen(
                 onBackPressed = onBackPressed,
             )
         },
-        // backgroundColor = Color.Transparent,
     ) { paddingValues ->
         if (typhoon != null) {
             TyphoonDetailContent(
@@ -102,7 +101,6 @@ private fun TyphoonDetailContent(
         // 台風情報カード
         Card(
             modifier = Modifier.fillMaxWidth(),
-            // elevation = 2.dp,
         ) {
             Column(
                 modifier = Modifier.padding(16.dp),
