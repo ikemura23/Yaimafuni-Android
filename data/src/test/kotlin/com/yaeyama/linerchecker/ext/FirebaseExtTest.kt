@@ -6,12 +6,15 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseException
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.GenericTypeIndicator
+import com.google.firebase.database.InternalHelpers
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.snapshot.IndexedNode
+import com.google.firebase.database.snapshot.NodeUtilities
 import com.yaeyama.linerchecker.domain.common.DataFetchException
 import com.yaeyama.linerchecker.domain.common.DataNotFoundException
 import com.yaeyama.linerchecker.domain.common.DataParseException
 import com.yaeyama.linerchecker.domain.statusdetail.PortStatus
+import com.yaeyama.linerchecker.domain.statusdetail.Status
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.slot
@@ -94,13 +97,40 @@ class FirebaseExtTest {
 
     @Test
     fun `valueEventsOf deserializes snapshot into the requested type`() = runTest {
-        val snapshot = mockk<DataSnapshot>()
-        val portStatus = PortStatus(portName = "竹富")
-        every { snapshot.getValue(any<GenericTypeIndicator<PortStatus>>()) } returns portStatus
+        // getValue をモックすると型情報が消える問題を検出できないため、実際の DataSnapshot でデシリアライズする
+        val snapshot = InternalHelpers.createDataSnapshot(
+            reference,
+            IndexedNode.from(
+                NodeUtilities.NodeFromJSON(
+                    mapOf(
+                        "portName" to "竹富",
+                        "status" to mapOf("code" to "normal", "text" to "通常運航"),
+                    ),
+                ),
+            ),
+        )
 
         database.valueEventsOf<PortStatus>(PATH).test {
             listenerSlot.captured.onDataChange(snapshot)
-            assertEquals(portStatus, awaitItem())
+            assertEquals(
+                PortStatus(portName = "竹富", status = Status(code = "normal", text = "通常運航")),
+                awaitItem(),
+            )
+            cancelAndIgnoreRemainingEvents()
+        }
+    }
+
+    @Test
+    fun `valueEvents with converter skips values equal to the previous one`() = runTest {
+        var value = "cached"
+        database.valueEvents(PATH) { value }.test {
+            listenerSlot.captured.onDataChange(mockk())
+            assertEquals("cached", awaitItem())
+            // ディスクキャッシュと同じ値がサーバーから届いても流さない
+            listenerSlot.captured.onDataChange(mockk())
+            value = "updated"
+            listenerSlot.captured.onDataChange(mockk())
+            assertEquals("updated", awaitItem())
             cancelAndIgnoreRemainingEvents()
         }
     }

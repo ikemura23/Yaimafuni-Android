@@ -1,46 +1,38 @@
 package com.yaeyama.linerchecker.ui.weather
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.yaeyama.linerchecker.domain.repository.WeatherRepository
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import com.yaeyama.linerchecker.R
+import com.yaeyama.linerchecker.domain.usecase.GetWeatherInfo
+import com.yaeyama.linerchecker.domain.weather.WeatherInfo
+import com.yaeyama.linerchecker.ui.common.LoadState
+import com.yaeyama.linerchecker.ui.common.asLoadState
+import com.yaeyama.linerchecker.ui.common.reloadOnEach
+import com.yaeyama.linerchecker.ui.common.stateInWhileSubscribed
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.stateIn
-import timber.log.Timber
 
 /**
  * 天気詳細 ViewModel
  */
-@OptIn(ExperimentalCoroutinesApi::class)
 class WeatherViewModel(
-    private val weatherRepository: WeatherRepository,
+    private val getWeatherInfo: GetWeatherInfo,
 ) : ViewModel() {
 
     private val retryTrigger = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
 
-    val weatherFlow: StateFlow<WeatherUiState> = retryTrigger
+    /** 画面に表示する読み込み状態。画面が購読している間だけ取得する */
+    val uiState: StateFlow<LoadState<WeatherInfo>> = retryTrigger
         .onStart { emit(Unit) }
-        .flatMapLatest {
-            weatherRepository.fetchWeather()
-                .map<_, WeatherUiState> { weatherInfo -> WeatherUiState.Success(weatherInfo) }
-                .onStart { emit(WeatherUiState.Loading) }
-                .catch { e ->
-                    Timber.e(e, "fetchWeather failed")
-                    emit(WeatherUiState.Error)
-                }
+        .reloadOnEach {
+            getWeatherInfo().asLoadState(
+                notFoundRes = R.string.weather_not_found,
+                fetchFailedRes = R.string.weather_fetch_failed,
+            )
         }
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = WeatherUiState.Loading,
-        )
+        .stateInWhileSubscribed(this, initialValue = LoadState.Loading)
 
+    /** 取得をやり直す */
     fun retry() {
         retryTrigger.tryEmit(Unit)
     }

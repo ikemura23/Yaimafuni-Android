@@ -12,19 +12,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.domain.statusdetail.Status
+import com.yaeyama.linerchecker.domain.statusdetail.hasOperationStatus
 import com.yaeyama.linerchecker.ui.common.getStatusBackgroundColor
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 
 @Composable
 fun DashBoardRowItem(
     modifier: Modifier,
-    portName: String,
+    companyName: String,
     status: Status,
+    companyAccessibilityName: String = companyName,
 ) {
     val statusBackgroundColor = status.getStatusBackgroundColor()
     Column(
@@ -32,9 +36,10 @@ fun DashBoardRowItem(
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        if (status.code.isNotEmpty()) {
+        if (status.hasOperationStatus) {
             Text(
-                text = portName,
+                text = companyName,
+                modifier = Modifier.semantics { contentDescription = companyAccessibilityName },
                 style = MaterialTheme.typography.bodyMedium,
             )
             Spacer(modifier = Modifier.padding(4.dp))
@@ -61,7 +66,7 @@ private fun DashBoardRowItemPreview(
 ) {
     YaimafuniAndroidTheme {
         DashBoardRowItem(
-            portName = item.portName,
+            companyName = item.companyName,
             status = item.status,
             modifier = Modifier,
         )
@@ -72,28 +77,28 @@ private fun DashBoardRowItemPreview(
  * Preview用のクラス
  */
 private data class DashBoardRowItem(
-    val portName: String,
+    val companyName: String,
     val status: Status,
 )
 
 private class ItemPreviewProvider : CollectionPreviewParameterProvider<DashBoardRowItem>(
     listOf(
         DashBoardRowItem(
-            portName = "安栄",
+            companyName = "安栄",
             status = Status(
                 "normal",
                 "通常運転",
             ),
         ),
         DashBoardRowItem(
-            portName = "YKF",
+            companyName = "YKF",
             status = Status(
                 "cation",
                 "未定",
             ),
         ),
         DashBoardRowItem(
-            portName = "その他",
+            companyName = "その他",
             status = Status(
                 "cancel",
                 "欠航",

@@ -21,6 +21,19 @@ android {
             matchingFallbacks += listOf("debug")
         }
     }
+
+    androidResources {
+        // values-xx/ を追加するだけで Android 13 以降のアプリ別言語設定に対応言語が表示されるよう、
+        // res/ の言語から LocaleConfig を自動生成する（既定言語は res/resources.properties で日本語に指定）
+        generateLocaleConfig = true
+    }
+
+    testOptions {
+        unitTests {
+            // Robolectric で Compose UI テストを動かすためにリソースを含める
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -79,4 +92,10 @@ dependencies {
     testImplementation(libs.coroutines.test)
     testImplementation(libs.turbine)
     testImplementation(libs.mockk)
+    testImplementation(libs.koin.test)
+    testImplementation(libs.koin.test.junit4)
+    // Compose UI テスト（Robolectric 上で JVM テストとして実行する）
+    testImplementation(platform(libs.compose.bom))
+    testImplementation(libs.ui.test.junit4)
+    testImplementation(libs.robolectric)
 }

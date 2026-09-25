@@ -1,23 +1,28 @@
 package com.yaeyama.linerchecker.ui.main
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.yaeyama.linerchecker.domain.repository.TyphoonRepository
 import com.yaeyama.linerchecker.domain.typhoon.Typhoon
-import kotlinx.coroutines.flow.SharingStarted
+import com.yaeyama.linerchecker.domain.usecase.GetTyphoonList
+import com.yaeyama.linerchecker.ui.common.stateInWhileSubscribed
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import timber.log.Timber
 
+/**
+ * メイン画面（ボトムナビゲーション）の ViewModel
+ */
 class MainViewModel(
-    private val typhoonRepository: TyphoonRepository,
+    getTyphoonList: GetTyphoonList,
 ) : ViewModel() {
 
-    val typhoonCount: StateFlow<Int> = typhoonRepository.fetchTyphoonList()
+    /** 台風タブのバッジに表示する、発生中の台風の数 */
+    val typhoonCount: StateFlow<Int> = getTyphoonList()
         .map { list: List<Typhoon> -> list.size }
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = 0,
-        )
+        // バッジ表示のみのため、取得に失敗したらバッジを出さない（未捕捉の例外でクラッシュさせない）
+        .catch { e ->
+            Timber.e(e, "fetch typhoon count failed")
+            emit(0)
+        }
+        .stateInWhileSubscribed(this, initialValue = 0)
 }

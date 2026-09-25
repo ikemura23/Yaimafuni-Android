@@ -1,64 +1,39 @@
 package com.yaeyama.linerchecker.ui.dashboard
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.yaeyama.linerchecker.domain.repository.TopStatusRepository
+import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.top.Ports
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
+import com.yaeyama.linerchecker.domain.usecase.GetTopStatuses
+import com.yaeyama.linerchecker.ui.common.LoadState
+import com.yaeyama.linerchecker.ui.common.asLoadState
+import com.yaeyama.linerchecker.ui.common.reloadOnEach
+import com.yaeyama.linerchecker.ui.common.stateInWhileSubscribed
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
-import timber.log.Timber
 
 /**
  * トップに表示するステータスのダッシュボード ViewModel
  */
 class DashBoardViewModel(
-    private val topStatusRepository: TopStatusRepository,
+    private val getTopStatuses: GetTopStatuses,
 ) : ViewModel() {
 
-    private val isLoading = MutableStateFlow(false)
-    private val isError = MutableStateFlow(false)
-    private val portList: MutableStateFlow<List<Ports>> = MutableStateFlow(listOf())
+    private val retryTrigger = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
 
-    private var topStatusesJob: Job? = null
-
-    val uiState: StateFlow<DashBoardUiState> = combine(
-        isLoading,
-        isError,
-        portList,
-    ) { loading, error, ports ->
-        DashBoardUiState(
-            isLoading = loading,
-            isError = error,
-            portList = ports,
-        )
-    }.stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = DashBoardUiState.InitialValue,
-    )
-
-    fun fetchPortList() {
-        topStatusesJob?.cancel()
-        topStatusesJob = viewModelScope.launch {
-            isError.update { false }
-            topStatusRepository.fetchTopStatuses()
-                .onStart { isLoading.update { true } }
-                .onEach { isLoading.update { false } }
-                .catch { e ->
-                    Timber.e(e, "fetchTopStatuses failed")
-                    isLoading.update { false }
-                    isError.update { true }
-                }
-                .collect { portList.value = it }
+    /** 画面に表示する読み込み状態。画面が購読している間だけ取得する */
+    val uiState: StateFlow<LoadState<List<Ports>>> = retryTrigger
+        .onStart { emit(Unit) }
+        .reloadOnEach {
+            getTopStatuses().asLoadState(
+                notFoundRes = R.string.dashboard_not_found,
+                fetchFailedRes = R.string.dashboard_fetch_failed,
+            )
         }
+        .stateInWhileSubscribed(this, initialValue = LoadState.Loading)
+
+    /** 取得をやり直す */
+    fun retry() {
+        retryTrigger.tryEmit(Unit)
     }
 }

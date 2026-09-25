@@ -1,46 +1,40 @@
 package com.yaeyama.linerchecker.ui.typhoon.list
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.yaeyama.linerchecker.domain.repository.TyphoonRepository
+import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.typhoon.Typhoon
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
+import com.yaeyama.linerchecker.domain.usecase.GetTyphoonList
+import com.yaeyama.linerchecker.ui.common.LoadState
+import com.yaeyama.linerchecker.ui.common.asLoadState
+import com.yaeyama.linerchecker.ui.common.reloadOnEach
+import com.yaeyama.linerchecker.ui.common.stateInWhileSubscribed
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.stateIn
-import timber.log.Timber
 
 /**
  * 台風一覧 ViewModel
  */
 class TyphoonListViewModel(
-    private val typhoonRepository: TyphoonRepository,
+    private val getTyphoonList: GetTyphoonList,
 ) : ViewModel() {
 
-    /**
-     * 台風一覧を取得する
-     */
-    fun getTyphoonList(): Flow<List<Typhoon>> = typhoonRepository.fetchTyphoonList()
+    private val retryTrigger = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
 
-    val uiState: StateFlow<TyphoonUiState> = typhoonRepository.fetchTyphoonList()
-        .map<List<Typhoon>, TyphoonUiState> { TyphoonUiState.Data(it) }
-        .onStart { emit(TyphoonUiState.Loading) }
-        .catch {
-            Timber.e(it, "fetchTyphoonList failed")
-            emit(TyphoonUiState.Error)
+    /** 画面に表示する読み込み状態。画面が購読している間だけ取得する */
+    val uiState: StateFlow<LoadState<List<Typhoon>>> = retryTrigger
+        .onStart { emit(Unit) }
+        .reloadOnEach {
+            // 台風が無いときは空リストになるため、エラーは取得失敗のみ
+            getTyphoonList().asLoadState(
+                notFoundRes = R.string.typhoon_list_fetch_failed,
+                fetchFailedRes = R.string.typhoon_list_fetch_failed,
+            )
         }
-        .stateIn(
-            scope = viewModelScope,
-            started = WhileSubscribed(5000), // ５秒間購読がなければコルーチンを停止する
-            initialValue = TyphoonUiState.Loading,
-        )
-}
+        .stateInWhileSubscribed(this, initialValue = LoadState.Loading)
 
-sealed interface TyphoonUiState {
-    data class Data(val typhoons: List<Typhoon>) : TyphoonUiState
-    object Loading : TyphoonUiState
-    object Error : TyphoonUiState
+    /** 取得をやり直す */
+    fun retry() {
+        retryTrigger.tryEmit(Unit)
+    }
 }

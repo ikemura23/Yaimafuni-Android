@@ -4,16 +4,16 @@ import com.yaeyama.linerchecker.domain.repository.TopStatusRepository
 import com.yaeyama.linerchecker.domain.statusdetail.PortStatus
 import com.yaeyama.linerchecker.domain.statusdetail.Status
 import com.yaeyama.linerchecker.domain.top.Ports
+import com.yaeyama.linerchecker.domain.top.TopPort
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import org.koin.core.component.KoinComponent
 
-class FakeTopStatusRepository : TopStatusRepository, KoinComponent {
+class FakeTopStatusRepository : TopStatusRepository {
 
-    override fun fetchTopStatuses(): Flow<List<Ports>> = flow {
+    override fun fetchTopStatuses(): Flow<TopPort> = flow {
         delay(1000)
-        val dummy = listOf(
+        val dummyPorts = listOf(
             Ports(
                 anei = PortStatus(
                     portCode = "taketomi",
@@ -155,6 +155,16 @@ class FakeTopStatusRepository : TopStatusRepository, KoinComponent {
                 ),
             ),
         )
-        emit(dummy)
+        emit(
+            TopPort(
+                taketomi = dummyPorts[0],
+                kohama = dummyPorts[1],
+                kuroshima = dummyPorts[2],
+                oohara = dummyPorts[3],
+                uehara = dummyPorts[4],
+                hatoma = dummyPorts[5],
+                hateruma = dummyPorts[6],
+            ),
+        )
     }
 }

@@ -5,13 +5,13 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseException
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.getValue
 import com.yaeyama.linerchecker.domain.common.DataFetchException
 import com.yaeyama.linerchecker.domain.common.DataNotFoundException
 import com.yaeyama.linerchecker.domain.common.DataParseException
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 
 /**
@@ -40,6 +40,7 @@ fun FirebaseDatabase.valueEvents(path: String): Flow<DataSnapshot> = callbackFlo
  *
  * - [convert] が null を返した（データが存在しない）場合は [DataNotFoundException] で終了する
  * - [convert] でデシリアライズに失敗した場合は [DataParseException] で終了する
+ * - 前回と同じ値は流さない（ディスクキャッシュの値とサーバーの値が同じ場合など、不要な再描画を防ぐ）
  */
 inline fun <T : Any> FirebaseDatabase.valueEvents(
     path: String,
@@ -51,12 +52,16 @@ inline fun <T : Any> FirebaseDatabase.valueEvents(
         throw DataParseException(path, e)
     }
     value ?: throw DataNotFoundException(path)
-}
+}.distinctUntilChanged()
 
 /**
  * [path] の値の変更を [T] としてデシリアライズして購読する Flow
  *
+ * [T] はジェネリクスを持たないクラスに限る。
+ * getValue<T>() (GenericTypeIndicator) はこの入れ子の inline 関数内では型引数が T のまま残り、
+ * HashMap が返って ClassCastException になるため Class を渡してデシリアライズする
+ *
  * @see valueEvents
  */
 inline fun <reified T : Any> FirebaseDatabase.valueEventsOf(path: String): Flow<T> =
-    valueEvents(path) { snapshot -> snapshot.getValue<T>() }
+    valueEvents(path) { snapshot -> snapshot.getValue(T::class.java) }

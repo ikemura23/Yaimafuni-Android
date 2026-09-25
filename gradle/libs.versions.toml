@@ -49,6 +49,7 @@ composeThemeAdapter = "1.2.1"
 # Testing
 junit = "4.13.2"
 mockk = "1.13.13"
+robolectric = "4.17"
 turbine = "1.1.0"
 
 # Logging
@@ -66,6 +67,8 @@ firebase-crashlytics-gradle = { module = "com.google.firebase:firebase-crashlyti
 junit = { module = "junit:junit", version.ref = "junit" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinAndroid" } # koin-androidにできない？
+koin-test = { module = "io.insert-koin:koin-test", version.ref = "koinAndroid" }
+koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koinAndroid" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 compose-compiler-gradle-plugin = { module = "org.jetbrains.kotlin.plugin.compose:org.jetbrains.kotlin.plugin.compose.gradle.plugin", version.ref = "kotlin" }
 lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
@@ -94,6 +97,7 @@ compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = 
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2" }
 androidx-core = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCoreKtx" }

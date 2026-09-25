@@ -3,7 +3,6 @@ package com.yaeyama.linerchecker.ui.typhoon.detail.compose
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -19,19 +18,18 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.ui.common.compose.BackNavigationTopAppBar
+import com.yaeyama.linerchecker.ui.common.compose.FullScreenErrorContent
 import com.yaeyama.linerchecker.ui.main.compose.MainScaffold
 import com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailUiModel
 
@@ -49,7 +47,7 @@ fun TyphoonDetailScreen(
     MainScaffold(
         topBar = {
             BackNavigationTopAppBar(
-                title = typhoon?.name ?: "台風詳細",
+                title = typhoon?.name ?: stringResource(R.string.typhoon_detail_title),
                 onBackPressed = onBackPressed,
             )
         },
@@ -67,10 +65,10 @@ fun TyphoonDetailScreen(
                 },
             )
         } else {
-            ErrorContent(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues),
+            // 一覧から渡されたデータが無い場合のため、再試行は無し（戻るで一覧に戻る）
+            FullScreenErrorContent(
+                messageRes = R.string.typhoon_detail_load_failed,
+                modifier = Modifier.padding(paddingValues),
             )
         }
     }
@@ -91,7 +89,7 @@ private fun TyphoonDetailContent(
         // 台風画像
         AsyncImage(
             model = typhoon.img,
-            contentDescription = "${typhoon.name}の台風画像",
+            contentDescription = stringResource(R.string.typhoon_image_description, typhoon.name),
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(16f / 9f),
@@ -107,32 +105,32 @@ private fun TyphoonDetailContent(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 TyphoonInfoItem(
-                    label = "更新日",
+                    label = stringResource(R.string.typhoon_label_date_time),
                     value = typhoon.dateTime,
                 )
 
                 TyphoonInfoItem(
-                    label = "大きさ",
+                    label = stringResource(R.string.typhoon_label_scale),
                     value = typhoon.scale,
                 )
 
                 TyphoonInfoItem(
-                    label = "強さ",
+                    label = stringResource(R.string.typhoon_label_intensity),
                     value = typhoon.intensity,
                 )
 
                 TyphoonInfoItem(
-                    label = "存在地域",
+                    label = stringResource(R.string.typhoon_label_area),
                     value = typhoon.area,
                 )
 
                 TyphoonInfoItem(
-                    label = "中心気圧",
+                    label = stringResource(R.string.typhoon_label_pressure),
                     value = typhoon.pressure,
                 )
 
                 TyphoonInfoItem(
-                    label = "中心最大風速",
+                    label = stringResource(R.string.typhoon_label_max_wind_speed),
                     value = typhoon.maxWindSpeedNearCenter,
                 )
             }
@@ -147,7 +145,7 @@ private fun TyphoonDetailContent(
             ),
         ) {
             Text(
-                text = "Webブラウザでみる",
+                text = stringResource(R.string.typhoon_open_in_browser),
                 color = Color.White,
             )
         }
@@ -162,27 +160,10 @@ private fun TyphoonInfoItem(
     value: String,
 ) {
     Text(
-        text = "$label: $value",
+        text = stringResource(R.string.label_value_format, label, value),
         fontSize = 16.sp,
         style = MaterialTheme.typography.bodyLarge,
     )
-}
-
-@Composable
-private fun ErrorContent(
-    modifier: Modifier = Modifier,
-) {
-    Box(
-        modifier = modifier,
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(
-            text = stringResource(R.string.typhoon_detail_load_failed),
-            color = Color.White,
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center,
-        )
-    }
 }
 
 /** 台風 Webページ URL */

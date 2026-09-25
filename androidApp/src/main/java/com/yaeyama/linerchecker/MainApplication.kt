@@ -5,10 +5,11 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.yaeyama.linerchecker.BuildConfig
 import com.yaeyama.linerchecker.di.appModule
 import com.yaeyama.linerchecker.di.dataModule
+import com.yaeyama.linerchecker.di.useCaseModule
 import com.yaeyama.linerchecker.di.viewModelModule
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
-import org.koin.dsl.module
 import timber.log.Timber
 
 class MainApplication : Application() {
@@ -29,10 +30,11 @@ class MainApplication : Application() {
     }
 
     private fun initKoin(): KoinApplication = startKoin {
+        androidContext(this@MainApplication)
         modules(
-            module { single { applicationContext } },
             appModule,
             dataModule,
+            useCaseModule,
             viewModelModule,
         )
     }

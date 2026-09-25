@@ -6,9 +6,11 @@ import com.yaeyama.linerchecker.domain.weather.Temperature
 import com.yaeyama.linerchecker.domain.weather.Weather
 import com.yaeyama.linerchecker.domain.weather.WeatherInfo
 import kotlinx.coroutines.flow.flow
-import org.koin.core.component.KoinComponent
 
-class DebugWeatherRepositoryImpl : WeatherRepository, KoinComponent {
+/**
+ * 天気のFakeリポジトリ
+ */
+class FakeWeatherRepository : WeatherRepository {
     override fun fetchWeather() = flow {
         val weatherInfo = WeatherInfo(
             today = Weather(

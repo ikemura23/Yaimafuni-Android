@@ -1,7 +1,10 @@
 package com.yaeyama.linerchecker.domain.statusdetail
 
 /**
- * 会社のenum
+ * 運航会社
+ *
+ * @property code Firebase のパスに使うコード
+ * @property fullName 会社の正式名称（画面の表示には androidApp の文字列リソースを使う）
  */
 enum class Company(
     val code: String,

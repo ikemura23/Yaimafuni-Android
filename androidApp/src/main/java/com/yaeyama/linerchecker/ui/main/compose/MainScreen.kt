@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -26,7 +26,8 @@ fun MainScreen(
     typhoonListViewModel: TyphoonListViewModel,
     modifier: Modifier = Modifier,
 ) {
-    var selectedTab by remember { mutableStateOf(MainTab.Dashboard) }
+    // 画面回転などの構成変更後も選択中のタブを保持する
+    var selectedTab by rememberSaveable { mutableStateOf(MainTab.Dashboard) }
 
     val typhoonCount by mainViewModel.typhoonCount.collectAsStateWithLifecycle()
 

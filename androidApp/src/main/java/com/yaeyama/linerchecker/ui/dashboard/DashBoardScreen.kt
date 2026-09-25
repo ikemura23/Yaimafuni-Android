@@ -1,8 +1,6 @@
 package com.yaeyama.linerchecker.ui.dashboard
 
 import android.content.Intent
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -10,24 +8,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.State
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.top.Ports
+import com.yaeyama.linerchecker.ui.common.LoadState
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
+import com.yaeyama.linerchecker.ui.common.compose.FullScreenErrorContent
+import com.yaeyama.linerchecker.ui.common.compose.LoadingContent
 import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardAppBar
 import com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailActivity
 
@@ -37,22 +31,11 @@ fun DashBoardScreenRoot(
     modifier: Modifier = Modifier,
     // TODO: onRowClickをMainScreenに移動して、MainScreenからPortStatusDetailActivityを起動するようにする
 ) {
-    LaunchedEffect(Unit) {
-        viewModel.fetchPortList()
-    }
-
-    // PortStatusDetailActivity起動用のランチャー
-    val launcher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.StartActivityForResult(),
-    ) { result ->
-        // 結果処理が必要な場合はここで処理
-    }
-
     val context = LocalContext.current
-    val uiState: State<DashBoardUiState> = viewModel.uiState.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     DashBoardScreen(
-        uiState.value,
+        uiState,
         modifier = modifier,
         onRowClick = { port ->
             // PortStatusDetailActivityへの遷移
@@ -60,15 +43,15 @@ fun DashBoardScreenRoot(
                 putExtra(PortStatusDetailActivity.EXTRA_PORT_NAME, port.anei.portName)
                 putExtra(PortStatusDetailActivity.EXTRA_PORT_CODE, port.anei.portCode)
             }
-            launcher.launch(intent)
+            context.startActivity(intent)
         },
-        onRetry = viewModel::fetchPortList,
+        onRetry = viewModel::retry,
     )
 }
 
 @Composable
-private fun DashBoardScreen(
-    uiState: DashBoardUiState,
+internal fun DashBoardScreen(
+    uiState: LoadState<List<Ports>>,
     modifier: Modifier = Modifier,
     onRowClick: (Ports) -> Unit,
     onRetry: () -> Unit = {},
@@ -83,33 +66,22 @@ private fun DashBoardScreen(
                 .padding(paddingValues) // Edge to edge対応のためのpaddingを追加
                 .fillMaxSize(),
         ) {
-            when {
-                uiState.isLoading -> {
-                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+            when (uiState) {
+                LoadState.Loading -> {
+                    LoadingContent()
                 }
-                uiState.isError -> {
-                    Column(
-                        modifier = Modifier.align(Alignment.Center),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        Text(
-                            text = stringResource(R.string.dashboard_fetch_failed),
-                            style = MaterialTheme.typography.bodyLarge,
-                        )
-                        Button(
-                            modifier = Modifier.padding(top = 16.dp),
-                            onClick = onRetry,
-                        ) {
-                            Text(text = stringResource(R.string.retry))
-                        }
-                    }
+                is LoadState.Error -> {
+                    FullScreenErrorContent(
+                        messageRes = uiState.messageRes,
+                        onRetry = onRetry,
+                    )
                 }
-                else -> {
+                is LoadState.Success -> {
                     Column(
                         modifier = Modifier.verticalScroll(rememberScrollState()), // スクロール可能にする
                     ) {
                         DashBoardPage(
-                            ports = uiState.portList,
+                            ports = uiState.data,
                             onRowClick = onRowClick,
                             modifier = Modifier
                                 .padding(horizontal = 16.dp) // 子コンポーネントに画面端からの余白
@@ -127,11 +99,7 @@ private fun DashBoardScreen(
 private fun DashBoardScreenPreview() {
     PreviewBox {
         DashBoardScreen(
-            uiState = DashBoardUiState(
-                isLoading = false,
-                isError = false,
-                portList = FakeDashBoardDataProvider.dummyPortList,
-            ),
+            uiState = LoadState.Success(FakeDashBoardDataProvider.dummyPortList),
             onRowClick = {},
         )
     }
@@ -147,11 +115,7 @@ private fun DashBoardScreenPreview() {
 private fun DashBoardScreenSmallDevicePreview() {
     PreviewBox {
         DashBoardScreen(
-            uiState = DashBoardUiState(
-                isLoading = false,
-                isError = false,
-                portList = FakeDashBoardDataProvider.dummyPortList,
-            ),
+            uiState = LoadState.Success(FakeDashBoardDataProvider.dummyPortList),
             onRowClick = {},
         )
     }
@@ -162,11 +126,7 @@ private fun DashBoardScreenSmallDevicePreview() {
 private fun DashBoardScreenLoadingPreview() {
     PreviewBox {
         DashBoardScreen(
-            uiState = DashBoardUiState(
-                isLoading = true,
-                isError = false,
-                portList = emptyList(),
-            ),
+            uiState = LoadState.Loading,
             onRowClick = {},
         )
     }
@@ -177,11 +137,7 @@ private fun DashBoardScreenLoadingPreview() {
 private fun DashBoardScreenErrorPreview() {
     PreviewBox {
         DashBoardScreen(
-            uiState = DashBoardUiState(
-                isLoading = false,
-                isError = true,
-                portList = emptyList(),
-            ),
+            uiState = LoadState.Error(R.string.dashboard_fetch_failed),
             onRowClick = {},
         )
     }

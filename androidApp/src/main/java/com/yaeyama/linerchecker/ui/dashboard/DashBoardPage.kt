@@ -31,9 +31,9 @@ fun DashBoardPage(
     ) {
         Column {
             DashBoardHeader()
-            ports.forEach { p ->
+            ports.forEach { port ->
                 RowDivider()
-                DashBoardRow(p, onRowClick)
+                DashBoardRow(port, onRowClick)
             }
         }
     }

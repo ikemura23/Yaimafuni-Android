@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,13 +23,15 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.typhoon.Typhoon
+import com.yaeyama.linerchecker.ui.common.LoadState
 import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
+import com.yaeyama.linerchecker.ui.common.compose.FullScreenErrorContent
+import com.yaeyama.linerchecker.ui.common.compose.LoadingContent
 import com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailActivity
 import com.yaeyama.linerchecker.ui.typhoon.detail.toTyphoonDetailUiModel
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListTopAppBar
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
-import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonUiState
 
 /**
  * TyphoonListScreen for MainScreen integration
@@ -39,75 +40,52 @@ import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonUiState
 @Composable
 fun TyphoonListScreen(
     modifier: Modifier = Modifier,
-    viewModel: TyphoonListViewModel? = null,
+    viewModel: TyphoonListViewModel,
 ) {
     val context = LocalContext.current
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    viewModel?.let { vm ->
-        val uiState by vm.uiState.collectAsStateWithLifecycle()
+    YaimafuniScaffold(
+        modifier = modifier,
+        topBar = {
+            TyphoonListTopAppBar()
+        },
+        // MainScreenのMainScaffold(bottomBar)が下端のinsetを既に確保しているため、二重に確保しない
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
+        content = { paddingValues ->
+            when (val state = uiState) {
+                is LoadState.Loading -> {
+                    LoadingContent(modifier = Modifier.padding(paddingValues))
+                }
 
-        YaimafuniScaffold(
-            modifier = modifier,
-            topBar = {
-                TyphoonListTopAppBar()
-            },
-            // MainScreenのMainScaffold(bottomBar)が下端のinsetを既に確保しているため、二重に確保しない
-            contentWindowInsets = WindowInsets(0, 0, 0, 0),
-            content = { paddingValues ->
-                when (val currentState = uiState) {
-                    is TyphoonUiState.Loading -> {
-                        LoadingContent(modifier = Modifier.padding(paddingValues))
-                    }
+                is LoadState.Error -> {
+                    FullScreenErrorContent(
+                        messageRes = state.messageRes,
+                        modifier = Modifier.padding(paddingValues),
+                        onRetry = viewModel::retry,
+                    )
+                }
 
-                    is TyphoonUiState.Error -> {
-                        ErrorContent(modifier = Modifier.padding(paddingValues))
-                    }
-
-                    is TyphoonUiState.Data -> {
-                        if (currentState.typhoons.isEmpty()) {
-                            EmptyContent(modifier = Modifier.padding(paddingValues))
-                        } else {
-                            TyphoonListContent(
-                                modifier = Modifier.padding(paddingValues),
-                                typhoons = currentState.typhoons,
-                                onItemClick = { typhoon ->
-                                    // TyphoonDetailActivityへの遷移
-                                    val intent = Intent(context, TyphoonDetailActivity::class.java).apply {
-                                        putExtra(TyphoonDetailActivity.EXTRA_TYPHOON, typhoon.toTyphoonDetailUiModel())
-                                    }
-                                    context.startActivity(intent)
-                                },
-                            )
-                        }
+                is LoadState.Success -> {
+                    if (state.data.isEmpty()) {
+                        EmptyContent(modifier = Modifier.padding(paddingValues))
+                    } else {
+                        TyphoonListContent(
+                            modifier = Modifier.padding(paddingValues),
+                            typhoons = state.data,
+                            onItemClick = { typhoon ->
+                                // TyphoonDetailActivityへの遷移
+                                val intent = Intent(context, TyphoonDetailActivity::class.java).apply {
+                                    putExtra(TyphoonDetailActivity.EXTRA_TYPHOON, typhoon.toTyphoonDetailUiModel())
+                                }
+                                context.startActivity(intent)
+                            },
+                        )
                     }
                 }
-            },
-        )
-    }
-}
-
-@Composable
-private fun LoadingContent(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
-    ) {
-        CircularProgressIndicator()
-    }
-}
-
-@Composable
-private fun ErrorContent(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(
-            text = stringResource(R.string.typhoon_list_fetch_failed),
-            color = Color.White,
-            style = MaterialTheme.typography.bodyLarge,
-        )
-    }
+            }
+        },
+    )
 }
 
 @Composable
@@ -165,22 +143,6 @@ private fun TyphoonListContentPreview() {
             ),
             onItemClick = {},
         )
-    }
-}
-
-@Preview
-@Composable
-private fun LoadingContentPreview() {
-    PreviewBox {
-        LoadingContent()
-    }
-}
-
-@Preview
-@Composable
-private fun ErrorContentPreview() {
-    PreviewBox {
-        ErrorContent()
     }
 }
 
