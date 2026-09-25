@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.R
 import com.yaeyama.linerchecker.domain.statusdetail.Company
+import com.yaeyama.linerchecker.domain.statusdetail.RouteOperators
 import com.yaeyama.linerchecker.ui.common.compose.BackNavigationTopAppBar
 import com.yaeyama.linerchecker.ui.main.compose.MainScaffold
 import com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailScreen
@@ -41,21 +42,9 @@ fun PortStatusDetailScreen(
     // タブの状態管理（画面回転などの構成変更後も選択中のタブを保持する）
     var selectedTabIndex by rememberSaveable { mutableIntStateOf(0) }
 
-    // タブタイトルを定義 (波照間港は安栄観光のみなので1つ、他は2つ)
-    val tabTitles = remember(portCode) {
-        if (portCode == "hateruma") {
-            listOf(R.string.tab_annei)
-        } else {
-            listOf(R.string.tab_annei, R.string.tab_ykf)
-        }
-    }
-
-    // 選択されたタブに応じてCompanyを取得
-    val selectedCompany = when (selectedTabIndex) {
-        0 -> Company.ANEI
-        1 -> Company.YKF
-        else -> Company.ANEI
-    }
+    // 航路を運航している会社ごとにタブを表示する
+    val companies = remember(portCode) { RouteOperators.companiesOf(portCode) }
+    val selectedCompany = companies.getOrElse(selectedTabIndex) { companies.first() }
 
     MainScaffold(
         topBar = {
@@ -83,13 +72,13 @@ fun PortStatusDetailScreen(
                 },
                 modifier = Modifier.padding(0.dp),
             ) {
-                tabTitles.forEachIndexed { index, titleRes ->
+                companies.forEachIndexed { index, company ->
                     Tab(
                         selected = selectedTabIndex == index,
                         onClick = { selectedTabIndex = index },
                         text = {
                             Text(
-                                text = stringResource(titleRes),
+                                text = stringResource(company.tabTitleRes),
                                 color = Color.White,
                             )
                         },
@@ -124,3 +113,10 @@ private fun PortStatusDetailTabContent(
         viewModel = viewModel,
     )
 }
+
+/** タブに表示する会社名 */
+private val Company.tabTitleRes: Int
+    get() = when (this) {
+        Company.ANEI -> R.string.tab_annei
+        Company.YKF -> R.string.tab_ykf
+    }

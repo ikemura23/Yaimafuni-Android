@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.yaeyama.linerchecker.domain.statusdetail.Status
+import com.yaeyama.linerchecker.domain.statusdetail.hasOperationStatus
 import com.yaeyama.linerchecker.ui.common.getStatusBackgroundColor
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
 
@@ -32,7 +33,7 @@ fun DashBoardRowItem(
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        if (status.code.isNotEmpty()) {
+        if (status.hasOperationStatus) {
             Text(
                 text = portName,
                 style = MaterialTheme.typography.bodyMedium,
