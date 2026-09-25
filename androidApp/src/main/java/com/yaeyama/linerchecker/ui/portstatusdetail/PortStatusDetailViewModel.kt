@@ -32,6 +32,7 @@ class PortStatusDetailViewModel(
 
     private val request = MutableStateFlow<Request?>(null)
 
+    /** 画面に表示する状態。画面が購読している間だけ取得する */
     val uiState: StateFlow<PortStatusDetailUiState> = request
         .filterNotNull()
         .reloadOnEach { (company, portCode) ->

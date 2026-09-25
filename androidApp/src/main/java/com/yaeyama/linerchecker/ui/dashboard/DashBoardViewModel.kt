@@ -21,6 +21,7 @@ class DashBoardViewModel(
 
     private val retryTrigger = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
 
+    /** 画面に表示する読み込み状態。画面が購読している間だけ取得する */
     val uiState: StateFlow<LoadState<List<Ports>>> = retryTrigger
         .onStart { emit(Unit) }
         .reloadOnEach {
@@ -31,6 +32,7 @@ class DashBoardViewModel(
         }
         .stateInWhileSubscribed(this, initialValue = LoadState.Loading)
 
+    /** 取得をやり直す */
     fun retry() {
         retryTrigger.tryEmit(Unit)
     }
