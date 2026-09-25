@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -37,14 +38,16 @@ fun PortStatusDetailScreen(
     viewModel: PortStatusDetailViewModel,
     onBackPressed: () -> Unit,
 ) {
-    // タブの状態管理
-    var selectedTabIndex by remember { mutableIntStateOf(0) }
+    // タブの状態管理（画面回転などの構成変更後も選択中のタブを保持する）
+    var selectedTabIndex by rememberSaveable { mutableIntStateOf(0) }
 
     // タブタイトルを定義 (波照間港は安栄観光のみなので1つ、他は2つ)
-    val tabTitles = if (portCode == "hateruma") {
-        listOf(R.string.tab_annei)
-    } else {
-        listOf(R.string.tab_annei, R.string.tab_ykf)
+    val tabTitles = remember(portCode) {
+        if (portCode == "hateruma") {
+            listOf(R.string.tab_annei)
+        } else {
+            listOf(R.string.tab_annei, R.string.tab_ykf)
+        }
     }
 
     // 選択されたタブに応じてCompanyを取得
