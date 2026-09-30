@@ -24,9 +24,6 @@ viewpager2 = "1.1.0"
 # Lifecycle
 lifecycleViewmodelCompose = "2.8.7"
 
-# Navigation
-navigationUiKtx = "2.8.6"
-
 # Kotlin / Coroutines
 kotlinxCoroutinesAndroid = "1.7.3"
 
@@ -77,8 +74,6 @@ compose-material = { module = "androidx.compose.material:material" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
 material-icons-core = { module = "androidx.compose.material:material-icons-core" }
 material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
-navigation-runtime-ktx = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigationUiKtx" }
-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtx" }
 play-review = { module = "com.google.android.play:review", version.ref = "playReview" }
 play-review-ktx = { module = "com.google.android.play:review-ktx", version.ref = "playReviewKtx" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
