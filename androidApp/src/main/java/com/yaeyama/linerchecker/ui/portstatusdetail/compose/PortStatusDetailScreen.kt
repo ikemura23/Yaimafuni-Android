@@ -29,8 +29,8 @@ import com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailViewModel
 import com.yaeyama.linerchecker.ui.theme.AppBackgroundColor
 
 /**
- * PortStatusDetailActivity用のCompose実装
- * TabLayoutをComposeのTabRowに置き換え、ViewPager2も不要にした統合版
+ * 港ごとの運航詳細画面
+ * 航路を運航している会社ごとにタブを切り替えて表示する
  */
 @Composable
 fun PortStatusDetailScreen(

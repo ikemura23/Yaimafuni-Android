@@ -1,6 +1,5 @@
 package com.yaeyama.linerchecker.ui.dashboard
 
-import android.content.Intent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -11,7 +10,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -23,28 +21,19 @@ import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
 import com.yaeyama.linerchecker.ui.common.compose.FullScreenErrorContent
 import com.yaeyama.linerchecker.ui.common.compose.LoadingContent
 import com.yaeyama.linerchecker.ui.dashboard.component.DashBoardAppBar
-import com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailActivity
 
 @Composable
 fun DashBoardScreenRoot(
     viewModel: DashBoardViewModel,
+    onRowClick: (Ports) -> Unit,
     modifier: Modifier = Modifier,
-    // TODO: onRowClickをMainScreenに移動して、MainScreenからPortStatusDetailActivityを起動するようにする
 ) {
-    val context = LocalContext.current
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     DashBoardScreen(
         uiState,
         modifier = modifier,
-        onRowClick = { port ->
-            // PortStatusDetailActivityへの遷移
-            val intent = Intent(context, PortStatusDetailActivity::class.java).apply {
-                putExtra(PortStatusDetailActivity.EXTRA_PORT_NAME, port.anei.portName)
-                putExtra(PortStatusDetailActivity.EXTRA_PORT_CODE, port.anei.portCode)
-            }
-            context.startActivity(intent)
-        },
+        onRowClick = onRowClick,
         onRetry = viewModel::retry,
     )
 }

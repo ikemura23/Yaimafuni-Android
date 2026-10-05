@@ -11,24 +11,17 @@ import androidx.core.content.edit
 import com.google.android.gms.tasks.Task
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManager
-import com.yaeyama.linerchecker.ui.dashboard.DashBoardViewModel
-import com.yaeyama.linerchecker.ui.main.compose.MainScreen
+import com.yaeyama.linerchecker.ui.navigation.AppNavDisplay
 import com.yaeyama.linerchecker.ui.theme.YaimafuniAndroidTheme
-import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
-import com.yaeyama.linerchecker.ui.weather.WeatherViewModel
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 /**
- * ホーム画面、Bottom NavigationのあるActivity
+ * アプリで唯一のActivity
+ * 画面遷移は Navigation 3（[AppNavDisplay]）で管理する
  */
 class MainActivity : ComponentActivity() {
 
-    private val mainViewModel: MainViewModel by viewModel()
-    private val weatherViewModel: WeatherViewModel by viewModel()
-    private val dashboardViewModel: DashBoardViewModel by viewModel()
-    private val typhoonListViewModel: TyphoonListViewModel by viewModel()
     private val reviewManager: ReviewManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,12 +37,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             YaimafuniAndroidTheme {
-                MainScreen(
-                    mainViewModel = mainViewModel,
-                    weatherViewModel = weatherViewModel,
-                    dashboardViewModel = dashboardViewModel,
-                    typhoonListViewModel = typhoonListViewModel,
-                )
+                AppNavDisplay()
             }
         }
     }

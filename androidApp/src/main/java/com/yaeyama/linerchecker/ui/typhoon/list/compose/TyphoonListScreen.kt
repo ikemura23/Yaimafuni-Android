@@ -1,6 +1,5 @@
 package com.yaeyama.linerchecker.ui.typhoon.list.compose
 
-import android.content.Intent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,7 +14,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,8 +26,6 @@ import com.yaeyama.linerchecker.ui.common.PreviewBox
 import com.yaeyama.linerchecker.ui.common.YaimafuniScaffold
 import com.yaeyama.linerchecker.ui.common.compose.FullScreenErrorContent
 import com.yaeyama.linerchecker.ui.common.compose.LoadingContent
-import com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailActivity
-import com.yaeyama.linerchecker.ui.typhoon.detail.toTyphoonDetailUiModel
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListTopAppBar
 import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
 
@@ -41,8 +37,8 @@ import com.yaeyama.linerchecker.ui.typhoon.list.TyphoonListViewModel
 fun TyphoonListScreen(
     modifier: Modifier = Modifier,
     viewModel: TyphoonListViewModel,
+    onTyphoonClick: (Typhoon) -> Unit,
 ) {
-    val context = LocalContext.current
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     YaimafuniScaffold(
@@ -73,13 +69,7 @@ fun TyphoonListScreen(
                         TyphoonListContent(
                             modifier = Modifier.padding(paddingValues),
                             typhoons = state.data,
-                            onItemClick = { typhoon ->
-                                // TyphoonDetailActivityへの遷移
-                                val intent = Intent(context, TyphoonDetailActivity::class.java).apply {
-                                    putExtra(TyphoonDetailActivity.EXTRA_TYPHOON, typhoon.toTyphoonDetailUiModel())
-                                }
-                                context.startActivity(intent)
-                            },
+                            onItemClick = onTyphoonClick,
                         )
                     }
                 }
