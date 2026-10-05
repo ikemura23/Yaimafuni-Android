@@ -10,6 +10,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.yaeyama.linerchecker.domain.top.Ports
+import com.yaeyama.linerchecker.domain.typhoon.Typhoon
 import com.yaeyama.linerchecker.ui.dashboard.DashBoardScreenRoot
 import com.yaeyama.linerchecker.ui.dashboard.DashBoardViewModel
 import com.yaeyama.linerchecker.ui.main.MainViewModel
@@ -18,12 +20,21 @@ import com.yaeyama.linerchecker.ui.typhoon.list.compose.TyphoonListScreen
 import com.yaeyama.linerchecker.ui.weather.WeatherScreen
 import com.yaeyama.linerchecker.ui.weather.WeatherViewModel
 
+/**
+ * ボトムナビゲーションでタブを切り替えるホーム画面
+ * タブの切り替えはバックスタックに積まず、この画面の状態として扱う
+ *
+ * @param onPortClick 運航状況タブで港が選ばれたとき
+ * @param onTyphoonClick 台風タブで台風が選ばれたとき
+ */
 @Composable
 fun MainScreen(
     mainViewModel: MainViewModel,
     weatherViewModel: WeatherViewModel,
     dashboardViewModel: DashBoardViewModel,
     typhoonListViewModel: TyphoonListViewModel,
+    onPortClick: (Ports) -> Unit,
+    onTyphoonClick: (Typhoon) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     // 画面回転などの構成変更後も選択中のタブを保持する
@@ -48,7 +59,8 @@ fun MainScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(paddingValues),
-                    viewModel = dashboardViewModel
+                    viewModel = dashboardViewModel,
+                    onRowClick = onPortClick,
                 )
             }
 
@@ -66,7 +78,8 @@ fun MainScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(paddingValues),
-                    viewModel = typhoonListViewModel
+                    viewModel = typhoonListViewModel,
+                    onTyphoonClick = onTyphoonClick,
                 )
             }
         }

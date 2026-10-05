@@ -19,12 +19,6 @@
         tools:targetApi="33"
         >
         <activity
-            android:name="com.yaeyama.linerchecker.ui.portstatusdetail.PortStatusDetailActivity"
-            />
-        <activity
-            android:name="com.yaeyama.linerchecker.ui.typhoon.detail.TyphoonDetailActivity"
-            />
-        <activity
             android:name="com.yaeyama.linerchecker.ui.main.MainActivity"
             android:exported="true"
             >

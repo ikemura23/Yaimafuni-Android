@@ -14,7 +14,7 @@ kotlin = "2.3.10"
 composeBom = "2026.09.00"
 
 # AndroidX UI / Views
-activityCompose = "1.10.0"
+activityCompose = "1.12.0"
 androidxCoreKtx = "1.15.0"
 appcompat = "1.7.0"
 browser = "1.8.0"
@@ -22,13 +22,18 @@ constraintlayout = "2.2.0"
 viewpager2 = "1.1.0"
 
 # Lifecycle
-lifecycleViewmodelCompose = "2.8.7"
+lifecycleViewmodelCompose = "2.11.0"
+
+# Navigation
+navigation3 = "1.2.0"
 
 # Kotlin / Coroutines
 kotlinxCoroutinesAndroid = "1.7.3"
 
 # Dependency Injection
 koinAndroid = "3.4.0"
+# koin-androidx-compose は koin-android と別にバージョンが振られている（3.4.3 以降は Navigation 2 系に依存しない）
+koinAndroidxCompose = "3.4.5"
 
 # Firebase
 firebaseBom = "34.19.0"
@@ -63,17 +68,22 @@ compose-foundation = { module = "androidx.compose.foundation:foundation" }
 firebase-crashlytics-gradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsGradle" }
 junit = { module = "junit:junit", version.ref = "junit" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinAndroidxCompose" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinAndroid" } # koin-androidにできない？
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koinAndroid" }
 koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koinAndroid" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-serialization-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 compose-compiler-gradle-plugin = { module = "org.jetbrains.kotlin.plugin.compose:org.jetbrains.kotlin.plugin.compose.gradle.plugin", version.ref = "kotlin" }
 lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
+lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleViewmodelCompose" }
 lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleViewmodelCompose" }
 compose-material = { module = "androidx.compose.material:material" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
 material-icons-core = { module = "androidx.compose.material:material-icons-core" }
 material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
+navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "navigation3" }
+navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "navigation3" }
 play-review = { module = "com.google.android.play:review", version.ref = "playReview" }
 play-review-ktx = { module = "com.google.android.play:review-ktx", version.ref = "playReviewKtx" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }

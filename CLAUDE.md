@@ -13,7 +13,7 @@ Yaimafuni-Androidは、沖縄県八重山諸島の船舶運航情報を提供す
 
 このプロジェクトはクリーンアーキテクチャの原則に従ったマルチモジュールAndroidアーキテクチャを採用しています：
 
-- **`:androidApp`** - UIコンポーネント、Activity、Jetpack Composeスクリーンを含むメインのAndroidアプリケーションモジュール
+- **`:androidApp`** - UIコンポーネント、Activity、Jetpack Composeスクリーン、画面遷移を含むメインのAndroidアプリケーションモジュール
 - **`:data`** - リポジトリ、Firebase連携、データソースを含むデータレイヤーモジュール
 - **`:domain`** - ビジネスモデルとエンティティを含むドメインレイヤーモジュール（純KotlinまたはJava）
 
@@ -21,13 +21,13 @@ Yaimafuni-Androidは、沖縄県八重山諸島の船舶運航情報を提供す
 - **Jetpack Compose** - UIはすべてComposeで実装（XMLレイアウト・Fragmentは不使用）
 - **Firebase** - Realtime Database、Analytics、Crashlytics
 - **Koin** - 依存性注入フレームワーク
-- **画面遷移** - Activity + Intent（Navigation Component / Navigation Composeは不使用）
+- **画面遷移** - Jetpack Navigation 3。Activityは`MainActivity`のみ（シングルActivity）で、遷移先は`ui/navigation/`の`NavKey`、遷移は`AppNavDisplay`で管理する。ViewModelは`koinViewModel()`でNavEntryごとに取得する（Navigation Component / Navigation Composeは不使用）
 - **Coroutines / Flow** - 非同期プログラミング、UI状態はStateFlowで公開
 - **Timber** - ログ出力
 
 ### パッケージ構造
 メインアプリケーションコードは`com.yaeyama.linerchecker`配下に整理されています：
-- `ui/` - 機能別に整理されたUIコンポーネント（dashboard、portstatusdetail、typhoon、weather）
+- `ui/` - 機能別に整理されたUIコンポーネント（dashboard、portstatusdetail、typhoon、weather）と画面遷移（navigation）
 - `di/` - 依存性注入モジュール
 - `utils/` - ユーティリティクラス
 

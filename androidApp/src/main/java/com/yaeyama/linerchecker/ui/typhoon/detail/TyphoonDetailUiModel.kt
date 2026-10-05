@@ -1,9 +1,12 @@
 package com.yaeyama.linerchecker.ui.typhoon.detail
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
-@Parcelize
+/**
+ * 台風詳細画面に表示するデータ
+ * Navigation 3 の NavKey（[com.yaeyama.linerchecker.ui.navigation.TyphoonDetail]）に持たせて保存・復元するため Serializable にする
+ */
+@Serializable
 data class TyphoonDetailUiModel(
     /** 名前 */
     val name: String = "",
@@ -21,4 +24,4 @@ data class TyphoonDetailUiModel(
     val area: String = "",
     /** 中心の最大風速 */
     val maxWindSpeedNearCenter: String = "",
-) : Parcelable
+)
