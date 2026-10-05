@@ -11,6 +11,8 @@ plugins {
     id("com.google.gms.google-services")
     id("kotlin-parcelize")
     id("org.jetbrains.kotlin.plugin.compose")
+    // Navigation 3 の NavKey を保存・復元するために使う
+    id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.firebase.crashlytics")
 }
 

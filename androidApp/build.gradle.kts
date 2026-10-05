@@ -46,6 +46,10 @@ dependencies {
     implementation(libs.browser)
     implementation(libs.constraintlayout)
     implementation(libs.viewpager2)
+    // navigation
+    implementation(libs.navigation3.runtime)
+    implementation(libs.navigation3.ui)
+    implementation(libs.lifecycle.viewmodel.navigation3)
     // firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
@@ -84,6 +88,7 @@ dependencies {
 
     // Koin
     implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
 
     testImplementation(libs.junit)
     testImplementation(libs.coroutines.test)
